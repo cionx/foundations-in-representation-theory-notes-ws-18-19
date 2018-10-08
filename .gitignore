@@ -1,5 +1,7 @@
 *.aux
+*.bbl
 *.bcf
+*.blg
 *.idx
 *.ilg
 *.ind
