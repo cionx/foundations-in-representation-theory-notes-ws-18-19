@@ -1,0 +1,44 @@
+\documentclass[a4paper, 10pt, oneside, openany,  bibliography=totocnumbered, index=totoc]{scrbook}
+% bibliography-totocnumbered: Adds bibliography to toc.
+\usepackage{generalstyle}
+
+\begin{document}
+% informations for the titlepage
+\subject{Lecture Notes for}
+\title{Foundations in \\ Representation Theory}
+\subtitle{Homological Algebra}
+\date{
+  Winter Semester 2018/19\footnote{
+    Last Changes: \texttt{\gitAuthorDate}
+    \hfill
+    Commit: \texttt{\gitAbbrevHash}
+  }
+  \\
+  University of Bonn
+}
+\author{Jendrik Stelzner}
+\publishers{
+  Available at \texttt{\url{https://github.com/cionx/foundations-in-representation-theory-notes-ws-18-19}.}
+  \\
+  Please send comments and corrections at \texttt{\href{mailto:stelzner@uni-bonn.de}{stelzner@uni-bonn.de}.}
+}
+
+\frontmatter
+\maketitle
+\tableofcontents
+
+
+\mainmatter
+
+
+% nothing so far
+
+\backmatter
+
+% TODO: Add list of symbols.
+\printindex
+\input{bibliographystyle.sty}
+\printbibliography
+
+
+\end{document}

@@ -1,0 +1,186 @@
+% all the packages
+
+\usepackage{gitinfo2}   % git information on the title page
+\usepackage[backend=biber,style=alphabetic, dateabbrev=false, urldate=long]{biblatex}   %for bibliography
+\usepackage{amsmath, amssymb, amsthm, mathtools}      % general math stuff
+\usepackage{fontspec}   % for font stuff
+\usepackage[british]{babel}
+\usepackage{tikz-cd}    % commutative diagrams
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows,arrows.meta}
+\usepackage{enumitem}   % more control over enumerates
+\usepackage[automark, headsepline]{scrlayer-scrpage}  %for headers
+\usepackage{csquotes}   % for proper quotation marks
+\usepackage{microtype}  % for better typography
+\usepackage{mathdots}
+\usepackage[original]{imakeidx} % for the index, load before hyperref
+\usepackage{hyperref}   % for internal (and external) links
+\usepackage[capitalise,noabbrev]{cleveref}  % for smarter referencing, load after hyperref
+
+
+
+% the file for the refercences
+\addbibresource{references.bib}
+% no unplaned surprises with \cite
+\DeclareFieldFormat{postnote}{#1}
+\DeclareFieldFormat{multipostnote}{#1}
+
+
+% for the index
+\makeindex
+
+
+
+% don't reset section counters between chapters
+\counterwithout{section}{chapter}
+
+
+% fonts for titlepage
+\setkomafont{publishers}{\normalsize}
+
+
+% prevents breaking inline math around binary or relationship symbols
+\binoppenalty=\maxdimen
+\relpenalty=\maxdimen
+
+
+% settings for scrlayer-scrpage
+\pagestyle{scrheadings}
+\automark{section}
+
+
+% table of contents
+\setcounter{tocdepth}{1}  % no subsections in the toc
+
+
+% colours for hyperref
+\hypersetup{
+    colorlinks,
+    linkcolor={green!35!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+
+% settings for list like environments
+\setlist[enumerate, 1]{leftmargin=*, align=left, label=\arabic*)}
+\setlist[enumerate, 2]{leftmargin=*, align=left, label=\alph*)}
+\setlist[description, 1]{leftmargin=\labelwidth, font=\normalfont}
+\setlist[description, 2]{leftmargin=\labelwidth, font=\normalfont}
+\setlist[itemize, 1]{leftmargin=*}
+\setlist[itemize, 2]{leftmargin=*, label={\textopenbullet}}
+\setlist[itemize, 3]{leftmargin=*}
+
+
+% theorem like environments
+\theoremstyle{definition}
+\newcounter{everything}[section]
+\newtheorem{example}[everything]{Example}
+\newtheorem*{claim}{Claim}
+\newtheorem{corollary}[everything]{Corollary}
+\newtheorem{definition}[everything]{Definition}
+\newtheorem{lemma}[everything]{Lemma}
+\newtheorem{proposition}[everything]{Proposition}
+\newtheorem{remark}[everything]{Remark}
+\newtheorem{theorem}[everything]{Theorem}
+
+
+% reset equation counters between sections
+\counterwithin*{equation}{section}
+
+
+% how counters are printed
+\renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\theeverything}{\thesection.\arabic{everything}}
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+
+
+% often used commands
+\newcommand{\mc}{\mathcal}
+\newcommand{\mf}{\mathfrak}
+
+
+% relations
+\newcommand{\defined}{\coloneqq}
+\newcommand{\defines}{\eqqcolon}
+
+
+% binary operators
+\newcommand{\tensor}{\otimes}
+\newcommand{\dsum}{\oplus}
+\newcommand{\bigdsum}{\bigoplus}
+\newcommand{\hd}{\mathbin{:}}
+
+
+% misc. shortcuts
+\newcommand{\del}{\partial}
+\newcommand{\longto}{\longrightarrow}
+\newcommand{\inclusion}{\hookrightarrow}
+\newcommand{\projection}{\twoheadrightarrow}
+
+
+% numbers and fields
+\newcommand{\Natural}{\mathbb{N}}
+\newcommand{\Integer}{\mathbb{Z}}
+\newcommand{\Rational}{\mathbb{Q}}
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\Complex}{\mathbb{C}}
+\newcommand{\Finite}{\mathbb{F}}
+
+
+% categories
+\newcommand{\catname}[1]{\mathbf{#1}}
+\newcommand{\Ab}{\catname{Ab}}
+
+
+% spaces and sets
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\ringcenter}{Z}
+\DeclareMathOperator{\im}{im}
+\DeclarePairedDelimiter{\gen}{\langle}{\rangle}
+\DeclarePairedDelimiter{\genideal}{(}{)}
+
+
+% functions
+\newcommand{\id}{\operatorname{id}}
+\DeclareMathOperator{\ringchar}{char}
+
+% operations
+\newcommand{\class}[1]{\overline{#1}}
+\newcommand{\rad}[1]{\sqrt{#1}}
+
+
+% custom macros with case distinctions
+\NewDocumentCommand{\suchthat}{s}{
+  \IfBooleanTF{#1}
+    {\,\middle|\,}
+    {\mathrel{|}}       
+}
+\NewDocumentCommand{\restrict}{smmO{}}{
+  \IfBooleanTF{#1}
+    {\left. {#2} \,\middle|_{#3}^{#4} \right.}
+    {{#2}\,|_{#3}^{#4}}
+}
+
+
+% copied from https://tex.stackexchange.com/questions/198771/align-in-substack
+\newcommand{\subalign}[1]{%
+  \vcenter{%
+    \Let@ \restore@math@cr \default@tag
+    \baselineskip\fontdimen10 \scriptfont\tw@
+    \advance\baselineskip\fontdimen12 \scriptfont\tw@
+    \lineskip\thr@@\fontdimen8 \scriptfont\thr@@
+    \lineskiplimit\lineskip
+    \ialign{\hfil$\m@th\scriptstyle##$&$\m@th\scriptstyle{}##$\crcr
+      #1\crcr
+    }%
+  }
+}
+
+
+
+
