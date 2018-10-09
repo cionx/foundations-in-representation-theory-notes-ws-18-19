@@ -63,8 +63,8 @@
 
 
 % settings for list like environments
-\setlist[enumerate, 1]{leftmargin=*, align=left, label=\arabic*)}
-\setlist[enumerate, 2]{leftmargin=*, align=left, label=\alph*)}
+\setlist[enumerate, 1]{leftmargin=*, align=left, label=\roman*)}
+% \setlist[enumerate, 2]{leftmargin=*, align=left, label=\alph*)}
 \setlist[description, 1]{leftmargin=\labelwidth, font=\normalfont}
 \setlist[description, 2]{leftmargin=\labelwidth, font=\normalfont}
 \setlist[itemize, 1]{leftmargin=*}
@@ -77,6 +77,7 @@
 \newcounter{everything}[section]
 \newtheorem{example}[everything]{Example}
 \newtheorem*{claim}{Claim}
+\newtheorem*{conventions}{Conventions}
 \newtheorem{corollary}[everything]{Corollary}
 \newtheorem{definition}[everything]{Definition}
 \newtheorem{lemma}[everything]{Lemma}
@@ -103,6 +104,18 @@
 \newcommand{\mf}{\mathfrak}
 
 
+% text shortcuts
+\newcommand{\dash}[2]{#1\nobreakdash-#2}
+\newcommand{\fd}{finite\nobreakdash-dimensional}
+\newcommand{\kalg}{$\kf$\nobreakdash-algebra}
+\newcommand{\kalgs}{$\kf$\nobreakdash-algebras}
+\newcommand{\kbilin}{$\kf$\nobreakdash-bilinear}
+\newcommand{\klin}{$\kf$\nobreakdash-linear}
+\newcommand{\kmod}{$\kf$\nobreakdash-module}
+\newcommand{\ksmod}{$\kf$\nobreakdash-submodule}
+\newcommand{\kdash}{$\kf$\nobreakdash-}
+
+
 % relations
 \newcommand{\defined}{\coloneqq}
 \newcommand{\defines}{\eqqcolon}
@@ -123,6 +136,7 @@
 
 
 % numbers and fields
+\newcommand{\kf}{\mathbf{k}}
 \newcommand{\Natural}{\mathbb{N}}
 \newcommand{\Integer}{\mathbb{Z}}
 \newcommand{\Rational}{\mathbb{Q}}
@@ -139,6 +153,8 @@
 % spaces and sets
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\End}{End}
+\newcommand{\mat}[2]{\operatorname{M}_{#1 \times #1}(#2)}
+\newcommand{\triag}[2]{\operatorname{T}_{#1}(#2)}
 \DeclareMathOperator{\ringcenter}{Z}
 \DeclareMathOperator{\im}{im}
 \DeclarePairedDelimiter{\gen}{\langle}{\rangle}

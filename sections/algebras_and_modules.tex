@@ -1,0 +1,456 @@
+\chapter{Algebras and Modules}
+
+
+\begin{conventions}
+  In this course we adhere to the following conventions:
+  \begin{enumerate}
+    \item
+      All rings are unital, i.e.\ there exists for every ring~$A$ an element~$1 \in A$ with both~$1 \cdot a = a$ and~$a \cdot 1 = a$ for every~$a \in A$.
+    \item
+      If~$A$ and~$B$ are rings then every ring homomorphism~$f \colon A \to B$ respects the unit, i.e.\ it holds that~$f(1_A) = 1_B$.
+  \end{enumerate}
+\end{conventions}
+
+
+
+
+
+\section{Algebras}
+
+
+\begin{conventions}
+  Throughout this lecture~$\kf$ denotes a commutative ring, which we will often additionally assume to be a field.
+\end{conventions}
+
+
+\begin{definition}
+  A~\emph{{\kalg}}\index{k-algebra@{\kalg}} is a ring~$A$ together with the structure of a~{\kmod} on~$A$, such that the ring multiplication and the scalar multiplication are compatible in the sense that
+  \begin{equation}
+    \label{compatibility of multiplications}
+      (\lambda a) b
+    = \lambda (ab)
+    = a (\lambda b)
+  \end{equation}
+  for all~$\lambda \in \kf$ and all~$a, b \in A$.
+\end{definition}
+
+
+\begin{definition}
+  For~{\kalgs}~$A$ and~$B$ a map~$f \colon A \to B$ is a \emph{homomorphisms of~{\kalgs}}\index{homomorphism of k-algebras@homomorphism of~{\kalgs}}\index{k-algebra@{\kalg}!homomorphism of} if it is a ring homomorphism which is also {\klin}.
+\end{definition}
+
+
+\begin{remark}
+  Let~$A$ be a ring.
+  Then
+  \[
+              \ringcenter(A)
+    \defined  \{
+                a \in A
+              \suchthat
+                \text{$ab = ba$ for every~$b \in A$}
+              \}
+  \]
+  is a commutative subring of~$A$, the \emph{center}\index{center} of~$A$.
+\end{remark}
+
+
+\begin{remark}
+  Let~$A$ be a ring.
+  To give a~{\kalg} structure on~$A$ is the same as giving a ring homomorphism~$\varphi \colon \kf \to \ringcenter(A)$.
+  More precisely:
+  \begin{enumerate}
+    \item
+      If~$A$ is a~{\kalg} then we get a ring homomorphism~$\tilde{\varphi} \colon \kf \to A$ given by~$\lambda \mapsto \lambda \cdot 1_A$.
+      This ring homomorphism satisfies~$\im(\tilde{\varphi}) \subseteq \ringcenter(A)$ and therefore restricts to a ring homomorphism~$\varphi \colon A \to \ringcenter(A)$.
+    \item
+      Let~$\varphi \colon \kf \to \ringcenter(A)$ be a ring homomorphism.
+      Define~$\lambda \cdot a = \varphi(\lambda) \cdot a$ for all~$\lambda \in \kf$ and all~$a \in A$.
+      This gives~$A$ the structure of a~{\kmod}.
+      The compatibility condition~\eqref{compatibility of multiplications} is satisfied because~$\im(\varphi) \subseteq \ringcenter(A)$.
+  \end{enumerate}
+  These two constructions are mutually inverse.
+  \begin{enumerate}[resume]
+    \item
+      Let~$A$ and~$B$ be~{\kalgs} and let~$f \colon A \to B$ be a homomorphisms of rings.
+      Then~$f$ is a homomorphism of~{\kalgs} if and only if it is compatible with the ring homomorphisms~$\kf \to \ringcenter(A)$ and~$\kf \to \ringcenter(B)$ in the sense that the following diagram commutes:
+      \[
+        \begin{tikzcd}[column sep = small]
+            A
+            \arrow{rr}[above]{f}
+          & {}
+          & B
+          \\
+            \ringcenter(A)
+            \arrow[hook]{u}
+          & {}
+          & \ringcenter(B)
+            \arrow[hook]{u}
+          \\
+            {}
+          & \kf
+            \arrow{ul}
+            \arrow{ur}
+          & {}
+        \end{tikzcd}
+      \]
+  \end{enumerate}
+\end{remark}
+
+
+\begin{example}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Let~$V$ be a~{\kmod} and consider ~$\End_\kf(V)$ with the multiplication
+      \[
+                \End_\kf(V) \times \End_\kf(V)
+        \to     \End_\kf(V) \,,
+        \quad   (f, g)
+        \mapsto f \circ g \,.
+      \]
+      Then~$\End_\kf(V)$ is a ring and becomes a~{\kalg} via the ring homomorphim
+      \[
+                \tilde{\varphi}
+        \colon  \kf
+        \to     \End_\kf(V) \,,
+        \quad   \lambda
+        \mapsto \lambda \cdot \id_V \,,
+      \]
+      for which~$\im(\tilde{\varphi}) \subseteq \End_\kf(V)$.
+      (If~$\kf$ is a field then~$\ringcenter(\End_\kf(V)) = \kf \cdot \id_V \cong \kf$.)
+    \item
+      Take~$V = \kf^n$ (the free~{\kmod} of rank~$n$).
+      Then
+      \begin{gather*}
+              \End_\kf(V)
+        \cong \mat{n}{\kf} \,,
+      \shortintertext{and}
+                  \triag{n}{\kf}
+        \defined  \left\{
+                    M \in \mat{n}{\kf}
+                  \suchthat
+                    \text{$M$ is upper triangular}
+                  \right\}
+      \end{gather*}
+      is a subalgebra\index{subalgebra} of~$\mat{n}{\kf}$, i.e.\ it is both a subring and a {\ksmod} of~$\mat{n}{\kf}$.
+    \item
+      Let~$G$ be a group.
+      We define the \emph{group algebra}\index{group algebra}\index{algebra!group}~$\kf[G]$ as follows:
+      As a~{\kmod} we have that
+      \begin{align*}
+                  \kf[G]
+         \defined \kf^{(G)}
+        &\defined \text{free~{\kmod} with basis~$G$}  \\
+        &=        \left\{
+                    \sum_{g \in G} a_g g
+                  \suchthat*
+                    \begin{tabular}{@{}c@{}}
+                      $a_g \in \kf$ for every~$g \in G$, \\
+                      all but finitely many~$a_g$ vanish
+                    \end{tabular}
+                  \right\} \,.
+      \end{align*}
+      The multiplication of two elements~$x, y \in \kf[G]$ that are given by linear combinations~$x = \sum_{g \in G} a_g g$ and~$y = \sum_{g \in G} b_g g$ is given by
+      \[
+          x \cdot y
+        = \sum_{g, h \in G} a_g b_h (gh)
+        = \sum_{g \in G}
+          \left(
+            \sum_{\substack{h, h' \in G \\ h h' = g}} a_{h} b_{h'}
+          \right)
+          g \,.
+      \]
+      This multiplication is associative and {\kbilin}, and the unit of~$\kf[G]$ is given by~$1_{\kf[G]} = e$ (where~$e$ denotes the neutral element of~$G$).
+  \end{enumerate}
+\end{example}
+
+
+\begin{definition}
+  A \emph{quiver}\index{quiver}~$Q$ is a directed graph.
+  Formally~$Q$ is a quadruple~$(Q_0, Q_1, s, t)$ consisting of two sets~$Q_0$,~$Q_1$ and two functions~$s, t \colon Q_1 \to Q_0$.
+  \begin{itemize}
+    \item
+      The elements~$i \in Q_0$ are the \emph{vertices}\index{vertex} of~$Q$.
+    \item
+      The lements~$\alpha \in Q_1$ are the \emph{arrows}\index{arrow} of~$Q$.
+    \item
+      For an arrow~$\alpha \in Q_1$ the vertex~$s(\alpha)$ is the \emph{source}\index{source!of an arrow} of~$\alpha$.
+    \item
+      For an arrow~$\alpha \in Q_1$ the vertex~$t(\alpha)$ is the \emph{target}\index{target!of an arrow} of~$\alpha$.
+  \end{itemize}
+  An arrow~$\alpha \in Q_1$ can pictorially be represented as follows:
+  \[
+    \begin{tikzcd}
+        s(\alpha)
+        \arrow{r}[above]{\alpha}
+      & t(\alpha)
+    \end{tikzcd}
+  \]
+\end{definition}
+
+
+\begin{example}
+  \label{quivers first examples}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      The quiver~$Q = (\{1\}, \emptyset, \emptyset, \emptyset)$ is given by a single vertex, labeled~$1$, and no arrows:% dont let footnote see this line break
+      \footnote{The third and fourth elements of the quadrupel~$(\{1\}, \emptyset, \emptyset, \emptyset)$ refer to the empty function~$\emptyset \to \{1\}$.}
+      \[
+        \begin{tikzcd}
+          1
+        \end{tikzcd}
+      \]
+    \item
+      The quiver~$Q = (\{1\}, \{\alpha\}, s, t)$ with (necessarily)~$s(\alpha) = t(\alpha) = 1$ is given by a single vertex, labeled~$1$, together with a single arrow, labeled~$\alpha$:
+      \[
+        \begin{tikzcd}
+          1
+          \arrow[loop]{r}[above]{\alpha}
+        \end{tikzcd}
+      \]
+    \item
+      The quiver~$Q = (\{1, 2\}, \{\alpha, \beta\}, s, t)$ with~$s(\alpha) = s(\beta) = 1$ and~$t(\alpha) = t(\beta) = 2$ is given by two vertices, labeled~$1$ and~$2$, which are connected via two parallel arrows going from~$1$ to~$2$, that are labeled~$\alpha$ and~$\beta$:
+      \[
+        \begin{tikzcd}
+            1
+            \arrow[shift left = 0.3em]{r}[above]{\alpha}
+            \arrow[shift right = 0.3em]{r}[below]{\beta}
+          & 2
+        \end{tikzcd}
+      \]
+  \end{enumerate}
+\end{example}
+
+
+\begin{definition}
+  Let~$Q$ be a quiver, assumed to be finite (i.e.\ both~$Q_0$ and~$Q_1$ are finite sets)\index{quiver!finite}.
+  \begin{enumerate}
+    \item
+      Let~$\ell \in \Integer_{\geq 1}$.
+      A \emph{path}\index{path!of length~$\geq 1$} in~$Q$ of length\index{length}~$\ell$ is a sequence~$\alpha_\ell \dotsm \alpha_1$ of arrows in~$Q$ such that~$t(\alpha_i) = s(\alpha_{i+1})$ for every~$i$.
+      This may pictorially be represented as follows:
+      \[
+        \begin{tikzcd}
+            \bullet
+            \arrow{r}[above]{\alpha_1}
+          & \bullet
+            \arrow{r}[above]{\alpha_2}
+          & \bullet
+            \arrow{r}
+          & \cdots
+            \arrow{r}[above]{\alpha_\ell}
+          & \bullet
+        \end{tikzcd}
+      \]
+      The set of all paths of length~$\ell$ in~$Q$ is denoted by~$Q_\ell$.
+      For a path~$p = \alpha_\ell \dotsm \alpha_1 \in Q_\ell$ its \emph{source}\index{source!of a path} is given by~$s(p) \defined s(\alpha_1)$ and its \emph{target}\index{target!of a path} is given by~$t(p) \defined t(\alpha_\ell)$.
+      
+      The set of paths of length~$0$\index{path!of length~$0$} in~$Q$ is formally defined as~$Q_0$, i.e.\ there exists for every~$i \in Q_0$ a unique path~$\varepsilon_i$ of length~$0$, and every path of length~$0$ is of this form.
+      The path~$\varepsilon_i$ is the \enquote{lazy path}\index{path!lazy} at~$i$.
+      We set~$s(\varepsilon_i) = i$,~$t(\varepsilon_i) = i$.
+    \item
+      Let~$p = \alpha_\ell \dotsm \alpha_1$ and~$q = \beta_k \dotsm \beta_1$ be paths in~$Q$ of lengths~$\ell, k \geq 1$.
+      If~$t(p) = s(q)$ then the \emph{composition}\index{composition of paths} of~$p$ and~$q$ is defined as
+      \[
+          p \circ q
+        = \beta_k \dotsm \beta_1 \alpha_\ell \dotsm \alpha_1 \,.
+      \]
+      The path~$p \circ q$ can pictorially be represented as follows:
+      \[
+        \begin{tikzcd}
+            \bullet
+            \arrow{r}[above]{\alpha_1}
+          & \bullet
+            \arrow{r}[above]{\alpha_2}
+          & \cdots
+            \arrow{r}[above]{\alpha_\ell}
+          & \bullet
+            \arrow[equal]{r}
+          & \bullet
+            \arrow{r}[above]{\beta_1}
+          & \bullet
+            \arrow{r}[above]{\beta_2}
+          & \cdots
+            \arrow{r}
+            \arrow{r}[above]{\beta_k}
+          & \bullet
+        \end{tikzcd}
+      \]
+      % TODO: Add underbraces under the parts belonging to p and q.
+      
+      If~$p$ is a path in~$Q$ of length~$\ell \geq 0$ and~$i \in Q_0$ is a vertex then we set~$\varepsilon_i \circ p = p$ if~$t(p) = i$, as well as~$p \circ \varepsilon_i = p$ if~$s(p) = i$.
+      
+      In all other cases the composition of paths is not defined.
+      
+    \item
+      We define~$Q_*$ to be the set of all paths in~$Q$, that is~$Q_* \defined \coprod_{\ell \geq 0} Q_\ell$.
+      The \emph{path algebra}\index{path!algebra}\index{algebra!path}~$\kf Q$ of~$Q$ is defined as follows:
+      As a {\kmod} we have that
+      \[
+                  \kf Q
+        \defined  \kf^{(Q_*)}
+        =         \left\{
+                    \sum_{p \in Q_*} a_p p
+                  \suchthat*
+                    \begin{tabular}{@{}c@{}}
+                      $a_p \in \kf$ for every~$p \in Q_*$ \\
+                      all but finitely many~$a_p$ vanish
+                    \end{tabular}
+                  \right\} \,.
+      \]
+      The multiplication of two elements~$x, y \in \kf Q$ which are given by linear combinations~$x = \sum_{p \in Q_*} a_p p$ and~$y = \sum_{p \in Q_*} b_p p$ is given by
+      \begin{gather*}
+                  x \cdot y
+        \defined \sum_{p, q \in Q_*} a_p b_q (p \cdot q) \,,
+      \shortintertext{where}
+                  p \cdot q
+        \defined  \begin{cases}
+                    p \circ q & \text{if~$s(p) = t(q)$},  \\
+                    0         & \text{else} \,,
+                  \end{cases}
+      \end{gather*}
+      for all paths~$p, q \in Q_*$.
+      This multiplication is associative because composition of paths is associative and {\kbilin}, and the unit of~$\kf Q$ is given by~$1_{\kf Q} = \sum_{i \in Q_0} \varepsilon_i$.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{example}
+  We determine the path algebras of the quivers from \cref{quivers first examples}.
+  \begin{enumerate}
+    \item
+      For the quiver
+      \[
+        Q :
+        \begin{tikzcd}
+          1
+        \end{tikzcd}
+      \]
+      its path algebra is given by~$\kf Q = k$, as it is \dash{one}{dimensional}.
+    \item
+      For the quiver
+      \[
+        Q :
+        \begin{tikzcd}
+            1
+            \arrow[loop]{r}[above]{\alpha}
+        \end{tikzcd}
+      \]
+      % TODO: Fix the vertical placement of Q in the above.
+      its set of paths is given by~$Q_* = \{ \alpha^n \suchthat n \geq 0 \}$ with multiplication given by~$\alpha^n \cdot \alpha^m = \alpha^n \circ \alpha^m = \alpha^{n+m}$ for all~$n, m \geq 0$.
+      It follows that~$\kf Q \cong \kf[t]$.
+    \item
+      For the quiver
+      \[
+        Q :
+        \begin{tikzcd}
+            1
+            \arrow[shift left = 0.3em]{r}[above]{\alpha}
+            \arrow[shift right = 0.3em]{r}[below]{\beta}
+          & 2
+        \end{tikzcd}
+      \]
+      its set of paths is given by~$Q_* = \{ \varepsilon_1, \varepsilon_2, \alpha, \beta \}$.
+      Its path algebra is given by
+      \[
+          \kf Q
+        = \kf \varepsilon_1 \oplus \kf \varepsilon_2 \oplus \kf \alpha \oplus \kf \beta \,,
+      \]
+      with multiplication being given on the basis elements given as follows:
+      \[
+        \begin{array}{r|cccc}
+            \text{row $\cdot$ column}
+          & \varepsilon_1
+          & \varepsilon_2
+          & \alpha
+          & \beta
+          \\
+          \hline
+            \varepsilon_1
+          & \varepsilon_1
+          & 0
+          & 0
+          & 0
+          \\
+            \varepsilon_2
+          & 0
+          & \varepsilon_2
+          & \alpha
+          & \beta
+          \\
+            \alpha
+          & \alpha
+          & 0
+          & 0
+          & 0
+          \\
+            \beta
+          & \beta
+          & 0
+          & 0
+          & 0
+        \end{array}
+      \]
+
+  \end{enumerate}
+\end{example}
+
+
+\begin{lemma}
+  Let~$\kf$ be a field and let~$A$ be a {\fd}~{\kalg}.
+  Then there exists an injective homomorphism of~{\kalgs}~$\varphi \colon A \to \mat{n}{\kf}$ for~$n \defined \dim_\kf(A)$.
+\end{lemma}
+
+
+\begin{proof}
+  Consider the~{\kalg}~$\End_\kf(A)$.
+  It follows from choosing a \kdash{basis} of~$A$ that~$\End_\kf(A) \cong \mat{n}{\kf}$.
+  It therefore sufficies to construct an injective homomorphism of~{\kalgs}~$\varphi \colon A \to \End_\kf(A)$.
+  Let~$a \in A$.
+  Then the map
+  \[
+            \varphi(a)
+    \colon  A
+    \to     A \,,
+    \quad   b
+    \mapsto ab
+  \]
+  is {\klin} by~\eqref{compatibility of multiplications}.
+  The map~$\varphi \colon A \to \End_\kf(A)$ is the desired injective homomorphism of~{\kalgs}:
+  \begin{itemize}
+    \item
+      The map~$\varphi$ is~{\klin} by~\eqref{compatibility of multiplications} and by the distributivity of the multiplication of~$A$.
+    \item
+      It holds for all~$a, a', b \in A$ that
+      \[
+          \varphi(a a')(b)
+        = (a a') b
+        = a (a' b)
+        = \varphi(a)( \varphi(a')(b) )
+        = (\varphi(a) \varphi(a'))(b) \,,
+      \]
+      which shows that~$\varphi(a a') = \varphi(a) \varphi(a')$, i.e.\ that~$\varphi$ is multiplicative.
+    \item
+      It holds that~$\varphi(1_A) = \id_A = 1_{\End_\kf(A)}$.
+    \item
+      It holds for~$a \in \ker(\varphi)$ that~$\varphi(a) = 0$ and therefore that
+      \[
+          0
+        = \varphi(a)(1)
+        = a \cdot 1
+        = a \,,
+      \]
+      which shows that~$\varphi$ is injective.
+  \end{itemize}
+  This altogether shows claim.
+\end{proof}
+
+
+
+
+
+
+
+
