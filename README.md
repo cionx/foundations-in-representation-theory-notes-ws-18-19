@@ -8,7 +8,7 @@ An up to date compiled version can be found [here][2].
 For those who want to compile these notes themselves:
 
 - Compiling is intented to be done using `lualatex`.
-- The bibliography is using `biber`.
+- The bibliography is using `biblatex` with the `biber` backend.
 - The `gitinfo2` package is used to display the date and hash of the last commit.
 - The included `make` file is intented for remote building via [travis.ci][3].
 
