@@ -3,15 +3,17 @@
 \usepackage{gitinfo2}   % git information on the title page
 \usepackage[backend=biber,style=alphabetic, dateabbrev=false, urldate=long]{biblatex}   %for bibliography
 \usepackage{amsmath, amssymb, amsthm, mathtools}      % general math stuff
+\usepackage{extarrows}  % xlongrightarrow
 \usepackage{fontspec}   % for font stuff
 \usepackage[british]{babel}
 \usepackage{tikz-cd}    % commutative diagrams
 \usetikzlibrary{positioning}
 \usetikzlibrary{arrows,arrows.meta}
 \usepackage{enumitem}   % more control over enumerates
-\usepackage[automark, headsepline]{scrlayer-scrpage}  %for headers
+\usepackage[automark,headsepline,autooneside=false]{scrlayer-scrpage}  %for headers
 \usepackage{csquotes}   % for proper quotation marks
 \usepackage{microtype}  % for better typography
+\usepackage{xhfill}
 \usepackage{mathdots}
 \usepackage[original]{imakeidx} % for the index, load before hyperref
 \usepackage{hyperref}   % for internal (and external) links
@@ -45,8 +47,9 @@
 
 
 % settings for scrlayer-scrpage
-\pagestyle{scrheadings}
-\automark{section}
+\ihead{\leftmark}
+\chead{}
+\ohead{\rightmark}
 
 
 % table of contents
@@ -62,9 +65,13 @@
 }
 
 
+% 
+\newcommand{\boxline}[1]{\noindent\xrfill[0.7ex]{0.4pt}\fbox{#1}\xrfill[0.7ex]{0.4pt}}
+
+
 % settings for list like environments
 \setlist[enumerate, 1]{leftmargin=*, align=left, label=\roman*)}
-% \setlist[enumerate, 2]{leftmargin=*, align=left, label=\alph*)}
+\setlist[enumerate, 2]{leftmargin=*, align=left, label=\alph*)}
 \setlist[description, 1]{leftmargin=\labelwidth, font=\normalfont}
 \setlist[description, 2]{leftmargin=\labelwidth, font=\normalfont}
 \setlist[itemize, 1]{leftmargin=*}
@@ -74,7 +81,7 @@
 
 % theorem like environments
 \theoremstyle{definition}
-\newcounter{everything}[section]
+\newcounter{everything}[chapter]
 \newtheorem{example}[everything]{Example}
 \newtheorem*{claim}{Claim}
 \newtheorem*{conventions}{Conventions}
@@ -83,6 +90,7 @@
 \newtheorem{lemma}[everything]{Lemma}
 \newtheorem{proposition}[everything]{Proposition}
 \newtheorem{remark}[everything]{Remark}
+\newtheorem{remarkdefinition}[everything]{Remark\nobreakdash-Definition}
 \newtheorem{theorem}[everything]{Theorem}
 
 
@@ -91,12 +99,11 @@
 
 
 % how counters are printed
-\renewcommand{\thechapter}{\Roman{chapter}}
-\renewcommand{\thesection}{\arabic{section}}
-\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
-\renewcommand{\theeverything}{\thesection.\arabic{everything}}
-\renewcommand{\thefigure}{\thesection.\arabic{figure}}
-\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\setcounter{secnumdepth}{0}
+\renewcommand{\thechapter}{\arabic{chapter}}
+\renewcommand{\theeverything}{\thechapter.\arabic{everything}}
+\renewcommand{\thefigure}{\thechapter.\arabic{figure}}
+\renewcommand{\theequation}{\thechapter.\arabic{equation}}
 
 
 % often used commands
@@ -106,14 +113,23 @@
 
 % text shortcuts
 \newcommand{\dash}[2]{#1\nobreakdash-#2}
+\newcommand{\Amod}{$A$\nobreakdash-module}
+\newcommand{\Amods}{$A$\nobreakdash-modules}
+\newcommand{\Asmod}{$A$\nobreakdash-submodule}
+\newcommand{\Asmods}{$A$\nobreakdash-submodules}
+\newcommand{\Aopmod}{$A^\op$\nobreakdash-module}
+\newcommand{\Aopmods}{$A^\op$\nobreakdash-modules}
 \newcommand{\fd}{finite\nobreakdash-dimensional}
 \newcommand{\kalg}{$\kf$\nobreakdash-algebra}
 \newcommand{\kalgs}{$\kf$\nobreakdash-algebras}
 \newcommand{\kbilin}{$\kf$\nobreakdash-bilinear}
 \newcommand{\klin}{$\kf$\nobreakdash-linear}
 \newcommand{\kmod}{$\kf$\nobreakdash-module}
+\newcommand{\kmods}{$\kf$\nobreakdash-modules}
 \newcommand{\ksmod}{$\kf$\nobreakdash-submodule}
 \newcommand{\kdash}{$\kf$\nobreakdash-}
+\newcommand{\twosided}{two\nobreakdash-sided}
+\newcommand{\welldef}{well\nobreakdash-defined}
 
 
 % relations
@@ -151,23 +167,33 @@
 
 
 % spaces and sets
-\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\coim}{coim}
+\DeclareMathOperator{\coker}{coker}
 \DeclareMathOperator{\End}{End}
-\newcommand{\mat}[2]{\operatorname{M}_{#1 \times #1}(#2)}
-\newcommand{\triag}[2]{\operatorname{T}_{#1}(#2)}
-\DeclareMathOperator{\ringcenter}{Z}
-\DeclareMathOperator{\im}{im}
 \DeclarePairedDelimiter{\gen}{\langle}{\rangle}
 \DeclarePairedDelimiter{\genideal}{(}{)}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\im}{im}
+\newcommand{\mat}[2]{\operatorname{M}_{#1 \times #1}(#2)}
+\DeclareMathOperator{\ringcenter}{Z}
+\newcommand{\triag}[2]{\operatorname{T}_{#1}(#2)}
 
 
 % functions
 \newcommand{\id}{\operatorname{id}}
 \DeclareMathOperator{\ringchar}{char}
 
+
 % operations
 \newcommand{\class}[1]{\overline{#1}}
 \newcommand{\rad}[1]{\sqrt{#1}}
+
+
+% decorations
+\newcommand{\bimod}[3]{\prescript{}{#1}{#2}_{#3}}
+\newcommand{\lmod}[2]{\prescript{}{#1}{#2}}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\rmod}[2]{#1_{#2}}
 
 
 % custom macros with case distinctions

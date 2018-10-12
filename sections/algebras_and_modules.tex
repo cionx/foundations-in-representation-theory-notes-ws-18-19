@@ -36,7 +36,7 @@
 
 
 \begin{definition}
-  For~{\kalgs}~$A$ and~$B$ a map~$f \colon A \to B$ is a \emph{homomorphisms of~{\kalgs}}\index{homomorphism of k-algebras@homomorphism of~{\kalgs}}\index{k-algebra@{\kalg}!homomorphism of} if it is a ring homomorphism which is also {\klin}.
+  For~{\kalgs}~$A$ and~$B$ a map~$f \colon A \to B$ is a \emph{homomorphism of~{\kalgs}}\index{homomorphism!of k-algebras@homomorphism of~{\kalgs}}\index{k-algebra@{\kalg}!homomorphism of} if it is a ring homomorphism which is also~{\klin}.
 \end{definition}
 
 
@@ -448,8 +448,497 @@
 \end{proof}
 
 
+\boxline{End of lecture 1}
 
 
+\begin{definition}
+  Let~$A$ be a~{\kalg}.
+  The \emph{opposite algebra}\index{opposite!algebra}\index{algebra!opposite}~$A^\op$ of~$A$ has the same underlying~{\kmod} as~$A$ but with multiplication given by
+  \[
+              a \cdot_{A^\op} b
+    \defined  b \cdot_A a
+  \]
+  for all~$a, b \in A^\op$.
+\end{definition}
+
+
+\begin{example}
+  Let~$Q$ be a quiver.
+  The \emph{opposite quiver}\index{opposite!quiver}\index{quiver!opposite}~$Q^\op$ of~$Q$ results from~$Q$ by reversing the direction of all its arrows.
+  More formally, if $Q = (Q_0, Q_1, s, t)$ then the opposite quiver~$Q^\op$ is given by~$Q^\op = (Q_0, Q_1, s^\op, t^\op)$ with
+  \[
+      s^\op(\alpha)
+    = t(\alpha)
+    \quad\text{and}\quad
+      t^\op(\alpha)
+    = s(\alpha) \,.
+  \]
+  This may also be expressed as~$(Q_0, Q_1, s, t)^\op = (Q_0, Q_1, t, s)$.
+  It then holds that
+  \[
+    (\kf Q)^\op = \kf (Q^\op) \,.
+  \]
+\end{example}
+
+
+
+
+
+\section{Modules}
+
+
+\begin{definition}
+  Let~$A$ be a~{\kalg}.
+  A \emph{left~{\Amod}}~$M$\index{module}\index{left module|see {module}} is a~{\kmod}~$M$ together with a multiplication
+  \[
+            A \times M
+    \to     M \,,
+    \quad   (a,m)
+    \mapsto am \,,
+  \]
+  such that the following conditions are satisfied:
+  \begin{enumerate}[label={(L\arabic*})]
+    \item
+      $a(m_1 + m_2) = am_1 + am_2$,
+    \item
+      $(a_1 + a_2) m = a_1 m + a_2 m$,
+    \item
+      $a_1 (a_2 m) = (a_1 a_2) m$,
+    \item
+      $1 \cdot m = m$,
+    \item
+      $(\lambda a)m = \lambda (am) = a (\lambda m)$
+  \end{enumerate}
+  for all~$a, a_1, a_2 \in A$, all~$m, m_1, m_2 \in M$ and all~$\lambda \in \kf$
+  That~$M$ is a left~{\Amod} is denoted by~$\lmod{A}{M}$.
+  
+  The notion of a \emph{right~{\Amod}}\index{right module|see{module}} is defined analogous.
+  That~$M$ is a right~{\Amod} is denoted by~$\rmod{M}{A}$.
+  Note that the axiom~(R3) for a right~{\Amod}~$M$ reads
+  \[
+      (m a_1) a_2
+    = m (a_1 a_2)
+  \]
+  for all~$a_1, a_2 \in A$ and all~$m \in M$.
+  Note also that a right~{\Amod} has the underlying structure of a right~{\kmod}, and that scalars~$\lambda \in k$ therefore also act from the right on~$M$.
+\end{definition}
+
+
+\begin{remark}
+  For a~{\kmod}~$M$, the data of a right~{\Amod} structure on~$M$ is equivalent to that of a left~{\Aopmod} module structure on~$M$, i.e.\ right~{\Amods} are \enquote{the same} as left~{\Aopmods}.
+\end{remark}
+
+
+\begin{definition}
+  Let~$A$ be a~{\kalg} and let~$M$ and~$N$ be two left~{\Amods}.
+  A map~$f \colon M \to N$ is a \emph{homomorphism of~{\Amods}}\index{homomorphism!of modules}\index{module!homomorphism of} if is it~{\klin} and satisfies
+  \[
+      f(am)
+    = a f(m)
+  \]
+  for all~$a \in A$ and all~$m \in M$.
+  The set of~{\Amod} homomorphisms~$M \to N$ is denoted by~$\Hom_A(M,N)$.
+  A homomorphism of~{\Amods}~$f \colon M \to N$ is an \emph{isomorphism}\index{isomorphism!of modules}\index{module!isomorphism of} if~$f$ is bijective.
+  
+  The notion of a homomorphism of right~{\Amods} and that of an isomorphim of right~{\Amods} is defined analogous.
+\end{definition}
+
+
+\begin{remark}
+  Let~$A$ be a~{\kalg} and let~$M$ and~$N$ be two left~{\Amods}.
+  \begin{enumerate}
+    \item
+      The set of homomorphisms~$\Hom_A(M,N)$ becomes a~{\kmod} when endowed with pointwise addition
+      \[
+                  (f + g)(m)
+        \defined  f(m) + g(m)
+      \]
+      and pointwise scalar multiplication
+      \[
+                  (\lambda \cdot f)(m)
+        \defined  \lambda \cdot f(m)
+      \]
+      for all~$f, g \in \Hom_A(M,N)$, all~$\lambda \in k$ and all~$m \in M$.
+      That this scalar multiplication is {\welldef} follows from~$\lambda$ being central in~$A$.
+    \item
+      The homomorphism space~$\Hom_A(M,N)$ does in general carry neither the structure of a left~{\Amod} nor that of a right~{\Amod}.
+    \item
+      A map~$f \colon M \to N$ is an isomorphism of~{\Amods} if and only if there exists a homomorphism of left~{\Amods}~$g \colon N \to M$ with~$g \circ f = \id_M$ and~$f \circ g = \id_N$.
+    \item
+      Every homomorphism of left~{\Amods}~$f \colon M' \to M$ induces a~{\klin} map
+      \[
+                f^*
+        \colon  \Hom_A(M, N)
+        \to     \Hom_A(M', N) \,,
+        \quad   h
+        \mapsto h \circ f \,,
+      \]
+      and every homomorphism of left~{\Amods}~$g \colon N \to N'$ induces a~{\klin} map
+      \[
+                g_*
+        \colon  \Hom_A(M, N)
+        \to     \Hom_A(M, N') \,,
+        \quad   g
+        \mapsto g \circ h \,.
+      \]
+  \end{enumerate}
+\end{remark}
+
+
+\begin{remarkdefinition}
+  Let~$A$ be a~{\kalg} and let~$M$,~$N$ be two left~{\Amods}.
+  \begin{enumerate}
+    \item
+      A subset~$M' \subseteq M$ is a \emph{left~{\Asmod}}\index{submodule} of~$M$ if
+      \begin{itemize}
+        \item
+          $0 \in M'$,
+        \item
+          $m'_1 + m'_2 \in M'$ for all~$m'_1, m'_2 \in M'$,
+        \item
+          $a m' \in M'$ for all~$a \in A$ and all~$m' \in M'$.
+      \end{itemize}
+    \item
+      Let~$M' \subseteq M$ be a left~{\Asmod}.
+      We can form the quotient~{\kmod}~$M/M'$, which becomes a left~{\Amod} via the scalar multiplication
+      \[
+          a \cdot (m + I)
+        = (am) + I
+      \]
+      for all~$a \in A$ and all~$m + I \in M/M'$.
+      The canonical projection
+      \[
+                \pi
+        \colon  M
+        \to     M/M' \,,
+        \quad   m
+        \mapsto m + I
+      \]
+      is a homomorphism of~{\Amods}.
+    \item
+      A \emph{left ideal}\index{ideal}\index{left ideal|see {ideal}} of~$A$ is a left~{\Asmod} of~$\lmod{A}{A}$.
+      The notion a right ideal is defined analogous.
+      
+      Note that if~$I \subseteq A$ is a left ideal, then the quotient~$A/I$ does in general not inherit an~{\kalg} structure from~$A$.
+
+      A subset~$I \subseteq A$ is a \emph{{\twosided} ideal}\index{ideal}\index{two-sided@{\twosided}} if it is both a left ideal and a right ideal.
+      The quotient~$A/I$ then inherits from~$A$ the structure of a~{\kalg} with multiplication given by
+      \[
+                  (x + I) \cdot (y + I)
+        \defined  xy + I
+      \]
+      for all~$x + I, y + I \in A/I$.
+    \item
+      Associated to every homomorphism of~{\Amods}~$f \colon M \to N$ are
+      \begin{itemize}
+        \item
+          the \emph{kernel}\index{kernel}~$\ker(f) \defined \{m \in M \suchthat f(m) = 0\}$,
+        \item
+          the \emph{image}\index{image}~$\im(f) \defined \{f(m) \suchthat m \in M\}$,
+        \item
+          the \emph{cokernel}\index{cokernel}~$\coker(f) \defined N/\im(f)$,
+        \item
+          the \emph{coimage}\index{coimage}~$\coim(f) \defined M/\ker(f)$,
+      \end{itemize}
+      all of which are~{\Amods}.
+      The homomorphism~$f$ factors uniquely as a composition of the canonical projection~$M \to \coim(f)$, followed by a homomorphism~$\tilde{f} \colon \coker(f) \to \im(f)$ and then by the inclusion~$\im(f) \to N$; and the induced homomorphism~$\tilde{f}$ is an isomorphism.
+      This results in the following commutative diagram:
+      \[
+        \begin{tikzcd}
+            M
+            \arrow{r}[above]{f}
+            \arrow[two heads]{d}
+          & N
+          \\
+            \coim(f)
+            \arrow{r}[above]{\exists!}[below]{\cong}
+          & \im(f)
+            \arrow[hook]{u}
+        \end{tikzcd}
+      \]
+    \item
+      Let~$M_i \subseteq M$ with~$i \in I$ be a family of left~{\Asmods}.
+      Then the intersection~$\bigcap_{i \in I} M_i$ and the sum~$\sum_{i \in I} M_i$ are again~{\Asmods} of~$M$.
+    \item
+      For~$x \in M$ the subset~$Ax = \{ax \suchthat a \in A\}$ is the~\emph{{\Asmod} of~$M$ generated by~$x$}\index{generated submodule}\index{submodule!generated}.
+      It is the smallest~{\Asmod} of~$M$ which contains~$x$.
+      For any subset~$E \subseteq M$ the subset~$\sum_{x \in E} Ax$ of~$M$ is the \emph{{\Asmod} of~$M$ generated by~$E$}\index{generated submodule}\index{submodule!generated}.
+      It is the smallest~{\Asmod} of~$M$ which contains~$E$, i.e.\ it holds that
+      \[
+          \sum_{x \in E} Ax
+        = \bigcap_{\substack{\text{submodule $M' \subseteq M$} \\ \text{with $E \subseteq M'$}}} M' \,.
+      \]
+      The~{\Amod}~$M$ is \emph{finitely generated}\index{finitely generated}\index{module!finitely generated} if there exist finitely many~$x_1, \dotsc, x_n \in M$ with~$M = \sum_{i=1}^n A x_i$.
+    \item
+      Let~$M_i$ with~$i \in I$ be a family of~{\Amods}.
+      Then the product~$\prod_{i \in I} M_i$ and the direct sum~$\bigdsum_{i \in I} M_i$ are again left~{\Amods}.
+      For every~$j \in I$ both the projection
+      \[
+                \pi_j
+        \colon  \prod_{i \in I} M_i
+        \to     M_j \,,
+        \quad   (x_i)_i
+        \mapsto x_j
+      \]
+      and the inclusion
+      \[
+                \iota_j
+        \colon  M_j
+        \to     \bigdsum_{i \in I} M_i \,,
+        \quad   x
+        \mapsto ( \delta_{ij} x )_{i \in I}
+      \]
+      are homomorphism of left~{\Amods}.
+    \item
+      The left~{\Amod}~$M$ is finitely generated if and only if there exists for some~$n \in \Natural$ a surjective homomorphism of left~{\Amods}~$A^n \to M$, where~$A^n = \bigoplus_{i=1}^n A$.
+      
+      The left~{\Amod}~$M$ is \emph{finitely presented}\index{finitely presented}\index{presented, finitely} if there exists for some~$m, n \in \Natural$ an exact sequence of left~{\Amods}
+      \[
+            A^m
+        \to A^n
+        \to M
+        \to 0 \,,
+      \]
+      i.e.~there exists a surjective homomorphism of~{\Amods}~$u \colon A^n \to M$ for which the kernel~$\ker(u)$ is again finitely generated.
+      (Finitely presented~{\Amods} are in particular finitely generated.)
+  \end{enumerate}
+\end{remarkdefinition}
+
+
+\begin{proposition}[Left exactness of~$\Hom$]
+  \leavevmode
+  \begin{enumerate}
+    \item
+      A sequence
+      \[
+        M_1
+        \xlongrightarrow{f_1}
+        M_2
+        \xlongrightarrow{f_2}
+        M_3
+        \to 0
+      \]
+      of~{\Amods} is exact if and only if for every~{\Amod}~$N$ the induced sequence
+      \[
+        0
+        \to
+        \Hom_A(M_3, N)
+        \xlongrightarrow{f_2^*}
+        \Hom_A(M_2, N)
+        \xlongrightarrow{f_1^*}
+        \Hom_A(M_1, N)
+      \]
+      of~{\kmods} is exact.
+    \item
+      \label{left exactness of covariant hom}
+      A sequence
+      \[
+        0
+        \to
+        N_1
+        \xlongrightarrow{g_1}
+        N_2
+        \xlongrightarrow{g_2}
+        N_3
+      \]
+      of~{\Amods} is exact if and only if for every~{\Amod}~$M$ the induced sequence
+      \[
+        0
+        \to
+        \Hom_A(M, N_1)
+        \xlongrightarrow{(g_1)_*}
+        \Hom_A(M, N_2)
+        \xlongrightarrow{(g_2)_*}
+        \Hom_A(M, N_3)
+      \]
+      of~{\kmods} is exact.
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+  We show only the implication \enquote{$\implies$} for part~\ref*{left exactness of covariant hom}, the rest will be done in the tutorials.
+  
+  To show that~$(g_1)_*$ is injective let~$h \in \Hom_A(M,N_1)$ with~$0 = (g_1)_*(h) = g_1 \circ h$.
+  It then follows that~$\im(h) \subseteq \ker(g_1) = 0$ and therefore that~$h = 0$.
+  
+  The inclusion~$\im((g_1)_*) \subseteq \ker((g_2)_*)$ holds because
+  \[
+      (g_2)_* \circ (g_1)_*
+    = (g_2 \circ g_1)_*
+    = 0_*
+    = 0 \,.
+  \]
+  
+  To show the inclusion~$\ker((g_2)_*) \subseteq \im((g_1)_*)$ let~$h \in \ker(g_2)_*$.
+  It follows from the injectivity of~$g_1$ that~$g_1 = \tilde{g}_1 \circ i$ for a unique isomorphism~$\tilde{g}_1 \colon N_1 \to \im(g_1)$ and the inclusion~$i \colon \im(g_1) \to N_2$.
+  This results in the following commutative diagram:
+  \[
+    \begin{tikzcd}[row sep = large]
+        0
+        \arrow{rr}
+      & {}
+      & N_1
+        \arrow{rr}[above]{g_1}
+        \arrow{dr}[below left]{\exists! \tilde{g}_1}[above right]{\cong}
+      & {}
+      & N_2
+        \arrow{rr}[above]{g_2}
+      & {}
+      & N_3
+      \\
+        {}
+      & {}
+      & {}
+      & \im(g_1)
+        \arrow[hook]{ur}[above left]{i}
+        \arrow[equal]{rr}
+      & {}
+      & \ker(g_2)
+        \arrow[hook']{ul}[above right]{i}
+      & {}
+    \end{tikzcd}
+  \]
+  It follows from~$0 = (g_2)_*(h) = g_2 \circ h$ that~$\im(h) \subseteq \ker(g_2)$ and therefore that~$h = i \circ \tilde{h}$ for a unique homomorphism~$\tilde{h} \colon M \to \ker(g_2)$.
+  This results in the following commutative digram:
+    \[
+    \begin{tikzcd}[row sep = large]
+        {}
+      & {}
+      & {}
+      & {}
+      & M
+        \arrow[bend left]{rrd}{0}
+        \arrow{d}{h}
+        \arrow[bend left, dashed]{ddr}[near start, above right]{\exists! \tilde{h}}
+      & {}
+      & {}
+      \\
+        0
+        \arrow{rr}
+      & {}
+      & N_1
+        \arrow{rr}[above]{g_1}
+        \arrow{dr}[below left]{\exists! \tilde{g}_1}[above right]{\cong}
+      & {}
+      & N_2
+        \arrow{rr}[above]{g_2}
+      & {}
+      & N_3
+      \\
+        {}
+      & {}
+      & {}
+      & \im(g_1)
+        \arrow[hook]{ur}[above left]{i}
+        \arrow[equal]{rr}
+      & {}
+      & \ker(g_2)
+        \arrow[hook']{ul}[above right]{i}
+      & {}
+    \end{tikzcd}
+  \]
+  It follows for the homomorphism~$h' \defined \tilde{g}_1^{-1} \circ \tilde{h}$ that
+  \[
+      (g_1)_*(h')
+    = g_1 \circ h'
+    = i \circ \tilde{g}_1 \circ \tilde{g}_1^{-1} \circ \tilde{h}
+    = i \circ \tilde{h}
+    = h \,,
+  \]
+  which shows the claimed inclusion.
+\end{proof}
+
+
+
+\begin{proposition}
+  Let~$A$ be a~{\kalg}.
+  \begin{enumerate}
+    \item
+      To give a left~{\Amod} structure on a~{\kmod}~$V$ is equivalent to giving a homomorphism of~{\kalg}~$A \to \End_k(V)$.
+    \item
+      To give a right~{\Amod} structure on a~{\kmod}~$V$ is equivalent to giving a homomorphism of~{\kalg}~$A \to \End_k(V)^\op$.
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+  This will be an exercise on the second exercise sheet.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\section{Representations of Quivers}
+
+
+\begin{remarkdefinition}
+  Let~$Q$ be a quiver.
+  \begin{enumerate}
+    \item
+      A \emph{representation}~$X$\index{representation of a quiver}\index{quiver!representation} of~$Q$ consists of the following data:
+      \begin{itemize}
+        \item
+          A~{\kmod}~$X_i$ for every vertex~$i \in Q_0$.
+        \item
+          For every arrow~$\alpha \in Q_1$ a~{\klin} map~$X_\alpha \colon X_{s(\alpha)} \to X_{t(\alpha)}$.
+      \end{itemize}
+  \end{enumerate}
+  Let~$X$,~$Y$ and~$Z$ be representations of~$Q$.
+  \begin{enumerate}[resume]
+    \item
+      A \emph{homomorphism}\index{homomorphism!of quiver representations}~$f \colon X \to Y$ is a tupel~$(f_i)_{i \in Q_0}$ of~{\klin} maps~$f_i \colon X_i \to Y_i$ such that the diagram
+      \[
+        \begin{tikzcd}
+            X_{s(\alpha)}
+            \arrow{r}[above]{X_\alpha}
+            \arrow{d}[left]{f_{s(\alpha)}}
+          & X_{t(\alpha)}
+            \arrow{d}[right]{f_{t(\alpha)}}
+          \\
+            Y_{s(\alpha)}
+            \arrow{r}[above]{Y_\alpha}
+          & Y_{t(\alpha)}
+        \end{tikzcd}
+      \]
+      commutes for every arrow~$\alpha \in Q_1$.
+      
+      If~$f \colon X \to Y$ and~$g \colon Y \to Z$ are homomorphisms of representations then the \emph{composition}~$g \circ f$ is the homomorphism~$X \to Z$ with components~$(g \circ f)_i = g_i \circ f_i$ for every~$i \in Q_0$.
+      
+      The \emph{identity homomorphism}\index{identity homomorphism}\index{homomorphism!identity} of the representation~$X$ is the homomorphism of representations~$\id_X \colon X \to X$ with~$(\id_X)_i = \id_{X_i}$ for every~$i \in Q_0$.
+      It holds for every homomorphism of representations~$f \colon X \to Y$ that~${\id_Y} \circ f = f$ and~$f \circ {\id_X} = f$.
+    \item
+      A homomorphism~$f \colon X \to Y$ of representations is an~\emph{isomorphism}\index{isomorphism!of quiver representations} if there exists a homomorphism of representations~$g \colon Y \to X$ with~$g \circ f = \id_X$ and~$f \circ g = \id_Y$.
+      The homomorphism~$f$ is an isomorphism if and only if the component~$f_i$ is an isomorphism for every~$i \in Q_0$.
+  \end{enumerate}
+\end{remarkdefinition}
+
+
+\begin{example}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      For the quiver~$Q = (\bullet)$ a representation of~$Q$ is the same a~{\kmod}~$V$.
+      For two such representations~$V$ and~$W$, a homomorphism of representations~$V \to W$ is just a {\klin} map.
+    \item
+      For the quiver~$Q = (\begin{tikzcd} \bullet \arrow[loop right] \end{tikzcd})$ a representation of~$Q$ is the same as a pair~$(V,\varphi)$ consisting of a~{\kmod}~$V$ together with a~{\klin} endomorphism~$\varphi \colon V \to V$.
+      
+      Given two such representations~$(V, \varphi)$ and~$(W,\psi)$, a homomorphism of representations~$f \colon (V,\varphi) \to (W,\psi)$ is the same as a~{\klin} map~$f \colon V \to W$ with~$f \circ \varphi = \psi \circ f$.
+    \item
+      For the quiver~$Q = (\begin{tikzcd} 1 \arrow[shift left]{r}[above]{\alpha} \arrow[shift right]{r}[below]{\beta} & 2 \end{tikzcd})$ a representation of~$Q$ is the same as a quadruple~$(V_1,V_2,A_1,A_2)$ consisting of two~{\kmods}~$V_1$ and~$V_2$ and two~{\klin} maps~$A_1, A_2 \colon V_1 \to V_2$.
+      
+      Given two such representations~$(V_1, V_2, A_1, B_1)$ and~$(W_1, W_2, A_2, B_2)$, a homomorphism of representations~$f \colon (V_1, V_2, A_1, B_1) \to (W_1, W_2, A_2, B_2)$ is the same as a pair~$(f_1, f_2)$ of~{\klin} maps~$f_1 \colon V_1 \to W_1$ and~$f \colon V_2 \to W_2$ with~$f_2 A_1 = A_2 f_1$ and~$f_2 B_1 = B_2 f_1$.
+  \end{enumerate}
+\end{example}
+
+
+\boxline{End of lecture 2}
 
 
 
