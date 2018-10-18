@@ -9,6 +9,7 @@
 \usepackage{tikz-cd}    % commutative diagrams
 \usetikzlibrary{positioning}
 \usetikzlibrary{arrows,arrows.meta}
+\usetikzlibrary{decorations.pathmorphing}
 \usepackage{enumitem}   % more control over enumerates
 \usepackage[automark,headsepline,autooneside=false]{scrlayer-scrpage}  %for headers
 \usepackage{csquotes}   % for proper quotation marks
@@ -113,20 +114,11 @@
 
 % text shortcuts
 \newcommand{\dash}[2]{#1\nobreakdash-#2}
-\newcommand{\Amod}{$A$\nobreakdash-module}
-\newcommand{\Amods}{$A$\nobreakdash-modules}
-\newcommand{\Asmod}{$A$\nobreakdash-submodule}
-\newcommand{\Asmods}{$A$\nobreakdash-submodules}
-\newcommand{\Aopmod}{$A^\op$\nobreakdash-module}
-\newcommand{\Aopmods}{$A^\op$\nobreakdash-modules}
 \newcommand{\fd}{finite\nobreakdash-dimensional}
 \newcommand{\kalg}{$\kf$\nobreakdash-algebra}
 \newcommand{\kalgs}{$\kf$\nobreakdash-algebras}
 \newcommand{\kbilin}{$\kf$\nobreakdash-bilinear}
 \newcommand{\klin}{$\kf$\nobreakdash-linear}
-\newcommand{\kmod}{$\kf$\nobreakdash-module}
-\newcommand{\kmods}{$\kf$\nobreakdash-modules}
-\newcommand{\ksmod}{$\kf$\nobreakdash-submodule}
 \newcommand{\kdash}{$\kf$\nobreakdash-}
 \newcommand{\twosided}{two\nobreakdash-sided}
 \newcommand{\welldef}{well\nobreakdash-defined}
@@ -146,6 +138,8 @@
 
 % misc. shortcuts
 \newcommand{\del}{\partial}
+\newcommand{\xto}{\xrightarrow}
+\newcommand{\xlongto}{\xlongrightarrow}
 \newcommand{\longto}{\longrightarrow}
 \newcommand{\inclusion}{\hookrightarrow}
 \newcommand{\projection}{\twoheadrightarrow}
@@ -189,11 +183,31 @@
 \newcommand{\rad}[1]{\sqrt{#1}}
 
 
+% kind of modules
+\NewDocumentCommand{\indmodule}{O{} m O{}}{%
+  {}_{#1} #2_{#3}
+}
+
+\NewDocumentCommand{\module}{m o}{%
+  \IfNoValueTF{#2}{{#1}\nobreakdash-module}
+                  {{#1}\nobreakdash-{#2}\nobreakdash-bimodule}%
+}
+\NewDocumentCommand{\modules}{m o}{%
+  \IfNoValueTF{#2}{{#1}\nobreakdash-modules}
+                  {{#1}\nobreakdash-{#2}\nobreakdash-bimodules}%
+}
+\NewDocumentCommand{\submodule}{m o}{%
+  \IfNoValueTF{#2}{{#1}\nobreakdash-submodule}
+                  {{#1}\nobreakdash-{#2}\nobreakdash-bisubmodule}%
+}
+\NewDocumentCommand{\submodules}{m o}{%
+  \IfNoValueTF{#2}{{#1}\nobreakdash-submodules}
+                  {{#1}\nobreakdash-{#2}\nobreakdash-bisubmodules}%
+}
+
+
 % decorations
-\newcommand{\bimod}[3]{\prescript{}{#1}{#2}_{#3}}
-\newcommand{\lmod}[2]{\prescript{}{#1}{#2}}
 \newcommand{\op}{\mathrm{op}}
-\newcommand{\rmod}[2]{#1_{#2}}
 
 
 % custom macros with case distinctions
