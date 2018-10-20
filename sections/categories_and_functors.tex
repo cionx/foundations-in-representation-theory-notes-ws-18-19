@@ -1,0 +1,80 @@
+\chapter{Categories and Functors}
+
+
+\begin{definition}
+  A \emph{category}~$\Ccat$\index{category} consists of the following data:
+  \begin{itemize}
+    \item
+      A class~$\Ob(\Ccat)$.
+      The elements are the \emph{objects}\index{objects of a category} of~$\Ccat$.
+    \item
+      For any two objects~$X, Y \in \Ob(\Ccat)$ a set~$\Ccat(X,Y)$.
+      The elements of~$\Ccat(X, Y)$ are the \emph{morphisms}\index{morphisms in a category} from~$X$ to~$Y$.
+      That~$f \in \Ccat(X,Y)$ is denoted by~$f \colon X \to Y$ or~$X \xto{f} Y$.
+    \item
+      For any three objects~$X, Y, Z \in \Ob(\Ccat)$ a map
+      \[
+                \Ccat(Y,Z) \times \Ccat(X,Y)
+        \to     \Ccat(X,Z) \,,
+        \quad   (g \circ f)
+        \mapsto g \circ f \,.
+      \]
+      For any two morphisms~$f \colon X \to Y$ and~$g \colon Y \to Z$ the morphism~$g \circ f \colon X \to Z$ is the \emph{composition} of~$g$ and~$f$.
+  \end{itemize}
+  These data are subject to the following conditions:
+  \begin{enumerate}[label=(C\arabic*)]
+    \item
+      The composition of morphisms is associative\index{associativity}:
+      For all objects~$X, Y, Z, W \in \Ob(\Ccat)$ and morphisms~$f \colon X \to Y$,~$g \colon Y \to Z$ and~$h \colon Z \to W$ it holds that
+      \[
+          (h \circ g) \circ f
+        = h \circ (g \circ f) \,.
+      \]
+    \item
+      There exists for every object~$X \in \Ob(\Ccat)$ an \emph{identity morphism}\index{identity morphism}~$\id_X \colon X \to X$ such that
+      \[
+        f \circ \id_X = f
+        \quad\text{and}\quad
+        \id_X \circ g = g
+      \]
+      for all morphisms~$f \colon X \to Y$ and~$g \colon Y \to X$ in~$\Ccat$.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+  Let~$\Ccat$ be a category.
+  \begin{enumerate}
+    \item
+      It could happen for objects~$X, Y \in \Ccat$ that~$\Ccat(X,Y) = \emptyset$, i.e.\ that there exists no morphism from~$X$ to~$Y$ in~$\Ccat$.
+    \item
+      For every object~$X \in \Ccat$ the identity morphism~$\id_X$ is unique.
+      If~$\id'_X$ is another identity morphism of~$X$ then
+      \[
+          \id_X
+        = \id_X \id'_X
+        = \id'_X \,.
+      \]
+  \end{enumerate}
+\end{remark}
+
+
+\begin{remark}
+  We sometimes want to consider categories whose objects are all sets (which satisfy certain conditions).
+  This can lead to set theoretic problems (also known as \emph{set theoretic difficulties}\index{set theoretic difficulties}).
+  One way out of this predicament are \emph{universes}\index{universe}.
+  (See \cite[I.6]{Working} and \cite[3.2]{Schubert} for more details on this.)
+  We will always fix a universe~$U$ and say that
+  \begin{itemize}
+    \item
+      $X$ is a set if~$X \in U$, and that
+    \item
+      $X$ is a class if~$X \subseteq U$.
+  \end{itemize}
+\end{remark}
+
+
+
+
+
+\lecturend{4}

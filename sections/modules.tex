@@ -1,0 +1,386 @@
+\section{Modules}
+
+
+\begin{definition}
+  Let~$A$ be a~{\kalg}.
+  A \emph{left~{\module{$A$}}}~$M$\index{module}\index{left module|see {module}} is a~{\module{$\kf$}}~$M$ together with a multiplication
+  \[
+            A \times M
+    \to     M \,,
+    \quad   (a,m)
+    \mapsto am \,,
+  \]
+  such that the following conditions are satisfied:
+  \begin{enumerate}[label={(L\arabic*})]
+    \item
+      $a(m_1 + m_2) = am_1 + am_2$,
+    \item
+      $(a_1 + a_2) m = a_1 m + a_2 m$,
+    \item
+      \label{module associative}
+      $a_1 (a_2 m) = (a_1 a_2) m$,
+    \item
+      $1 \cdot m = m$,
+    \item
+      $(\lambda a)m = \lambda (am) = a (\lambda m)$
+  \end{enumerate}
+  for all~$a, a_1, a_2 \in A$, all~$m, m_1, m_2 \in M$ and all~$\lambda \in \kf$
+  That~$M$ is a left~{\module{$A$}} is denoted by~$\indmodule[A]{M}$.
+  
+  The notion of a \emph{right~{\module{$A$}}}\index{right module|see {module}} is defined analogous.
+  That~$M$ is a right~{\module{$A$}} is denoted by~$\indmodule{M}[A]$.
+  Note that the axiom~(R3) for a right~{\module{$A$}}~$M$ reads
+  \[
+      (m a_1) a_2
+    = m (a_1 a_2)
+  \]
+  for all~$a_1, a_2 \in A$ and all~$m \in M$.
+  Note also that a right~{\module{$A$}} has the underlying structure of a right~{\module{$\kf$}}, and that scalars~$\lambda \in k$ therefore also act from the right on~$M$.
+\end{definition}
+
+
+\begin{remark}
+  For a~{\module{$\kf$}}~$M$, the data of a right~{\module{$A$}} structure on~$M$ is equivalent to that of a left~{\module{$A^\op$}} structure on~$M$, i.e.\ right~{\modules{$A$}} are \enquote{the same} as left~{\modules{$A^\op$}}.
+\end{remark}
+
+
+\begin{definition}
+  Let~$A$ be a~{\kalg} and let~$M$ and~$N$ be two left~{\modules{$A$}}.
+  A map~$f \colon M \to N$ is a \emph{homomorphism of~{\modules{$A$}}}\index{homomorphism!of modules}\index{module!homomorphism of} if is it~{\klin} and satisfies
+  \[
+      f(am)
+    = a f(m)
+  \]
+  for all~$a \in A$ and all~$m \in M$.
+  The set of~{\module{$A$}} homomorphisms~$M \to N$ is denoted by~$\Hom_A(M,N)$.
+  A homomorphism of~{\modules{$A$}}~$f \colon M \to N$ is an \emph{isomorphism}\index{isomorphism!of modules}\index{module!isomorphism of} if~$f$ is bijective.
+  
+  The notion of a homomorphism of right~{\modules{$A$}} and that of an isomorphim of right~{\modules{$A$}} is defined analogous.
+\end{definition}
+
+
+\begin{remark}
+  Let~$A$ be a~{\kalg} and let~$M$ and~$N$ be two left~{\modules{$A$}}.
+  \begin{enumerate}
+    \item
+      The set of homomorphisms~$\Hom_A(M,N)$ becomes a~{\module{$\kf$}} when endowed with pointwise addition
+      \[
+                  (f + g)(m)
+        \defined  f(m) + g(m)
+      \]
+      and pointwise scalar multiplication
+      \[
+                  (\lambda \cdot f)(m)
+        \defined  \lambda \cdot f(m)
+      \]
+      for all~$f, g \in \Hom_A(M,N)$, all~$\lambda \in k$ and all~$m \in M$.
+      That this scalar multiplication is {\welldef} follows from~$\lambda$ being central in~$A$.
+    \item
+      The homomorphism space~$\Hom_A(M,N)$ does in general carry neither the structure of a left~{\module{$A$}} nor that of a right~{\module{$A$}}.
+    \item
+      A map~$f \colon M \to N$ is an isomorphism of~{\modules{$A$}} if and only if there exists a homomorphism of left~{\modules{$A$}}~$g \colon N \to M$ with~$g \circ f = \id_M$ and~$f \circ g = \id_N$.
+    \item
+      Every homomorphism of left~{\modules{$A$}}~$f \colon M' \to M$ induces a~{\klin} map
+      \[
+                f^*
+        \colon  \Hom_A(M, N)
+        \to     \Hom_A(M', N) \,,
+        \quad   h
+        \mapsto h \circ f \,,
+      \]
+      and every homomorphism of left~{\modules{$A$}}~$g \colon N \to N'$ induces a~{\klin} map
+      \[
+                g_*
+        \colon  \Hom_A(M, N)
+        \to     \Hom_A(M, N') \,,
+        \quad   g
+        \mapsto g \circ h \,.
+      \]
+  \end{enumerate}
+\end{remark}
+
+
+\begin{remarkdefinition}
+  Let~$A$ be a~{\kalg} and let~$M$,~$N$ be two left~{\modules{$A$}}.
+  \begin{enumerate}
+    \item
+      A subset~$M' \subseteq M$ is a \emph{left~{\submodule{$A$}}}\index{submodule} of~$M$ if
+      \begin{itemize}
+        \item
+          $0 \in M'$,
+        \item
+          $m'_1 + m'_2 \in M'$ for all~$m'_1, m'_2 \in M'$,
+        \item
+          $a m' \in M'$ for all~$a \in A$ and all~$m' \in M'$.
+      \end{itemize}
+    \item
+      Let~$M' \subseteq M$ be a left~{\submodule{$A$}}.
+      We can form the quotient~{\module{$\kf$}}~$M/M'$, which becomes a left~{\module{$A$}} via the scalar multiplication
+      \[
+          a \cdot (m + I)
+        = (am) + I
+      \]
+      for all~$a \in A$ and all~$m + I \in M/M'$.
+      The canonical projection
+      \[
+                \pi
+        \colon  M
+        \to     M/M' \,,
+        \quad   m
+        \mapsto m + I
+      \]
+      is a homomorphism of~{\modules{$A$}}.
+    \item
+      A \emph{left ideal}\index{ideal}\index{left ideal|see {ideal}} of~$A$ is a left~{\submodule{$A$}} of~$\indmodule[A]{A}$.
+      The notion of a right ideal is defined analogous.
+      
+      Note that if~$I \subseteq A$ is a left ideal, then the quotient~$A/I$ does in general not inherit an~{\kalg} structure from~$A$.
+
+      A subset~$I \subseteq A$ is a \emph{{\twosided} ideal}\index{ideal}\index{two-sided@{\twosided}} if it is both a left ideal and a right ideal.
+      The quotient~$A/I$ then inherits from~$A$ the structure of a~{\kalg} with multiplication given by
+      \[
+                  (x + I) \cdot (y + I)
+        \defined  xy + I
+      \]
+      for all~$x + I, y + I \in A/I$.
+    \item
+      Associated to every homomorphism of~{\modules{$A$}}~$f \colon M \to N$ are
+      \begin{itemize}
+        \item
+          the \emph{kernel}\index{kernel}~$\ker(f) \defined \{m \in M \suchthat f(m) = 0\}$,
+        \item
+          the \emph{image}\index{image}~$\im(f) \defined \{f(m) \suchthat m \in M\}$,
+        \item
+          the \emph{cokernel}\index{cokernel}~$\coker(f) \defined N/\im(f)$,
+        \item
+          the \emph{coimage}\index{coimage}~$\coim(f) \defined M/\ker(f)$,
+      \end{itemize}
+      all of which are~{\modules{$A$}}.
+      The homomorphism~$f$ factors uniquely as a composition of the canonical projection~$M \to \coim(f)$, followed by a homomorphism~$\tilde{f} \colon \coker(f) \to \im(f)$ and then by the inclusion~$\im(f) \to N$; and the induced homomorphism~$\tilde{f}$ is an isomorphism.
+      This results in the following commutative diagram:
+      \[
+        \begin{tikzcd}[sep = large]
+            M
+            \arrow{r}[above]{f}
+            \arrow[two heads]{d}
+          & N
+          \\
+            \coim(f)
+            \arrow{r}[above]{\exists!}[below]{\cong}
+          & \im(f)
+            \arrow[hook]{u}
+        \end{tikzcd}
+      \]
+    \item
+      Let~$(M_i)_{i \in I}$ be a family of left~{\submodules{$A$}}~$M_i$ of~$M$.
+      Then the intersection~$\bigcap_{i \in I} M_i$ and the sum~$\sum_{i \in I} M_i$ are again~{\submodules{$A$}} of~$M$.
+    \item
+      For~$x \in M$ the subset~$Ax = \{ax \suchthat a \in A\}$ is the~\emph{{\submodule{$A$}} of~$M$ generated by~$x$}\index{generated submodule}\index{submodule!generated}.
+      It is the smallest~{\submodule{$A$}} of~$M$ which contains~$x$.
+      For any subset~$E \subseteq M$ the subset~$\sum_{x \in E} Ax$ of~$M$ is the \emph{{\submodule{$A$}} of~$M$ generated by~$E$}\index{generated submodule}\index{submodule!generated}.
+      It is the smallest~{\submodule{$A$}} of~$M$ which contains~$E$, i.e.\ it holds that
+      \[
+          \sum_{x \in E} Ax
+        = \bigcap_{\substack{\text{submodule $M' \subseteq M$} \\ \text{with $E \subseteq M'$}}} M' \,.
+      \]
+      The~{\module{$A$}}~$M$ is \emph{finitely generated}\index{finitely generated}\index{module!finitely generated} if there exist finitely many~$x_1, \dotsc, x_n \in M$ with~$M = \sum_{i=1}^n A x_i$.
+    \item
+      Let~$(M_i)_{i \in I}$ be a family of~{\modules{$A$}}.
+      Then the product~$\prod_{i \in I} M_i$ and the direct sum~$\bigdsum_{i \in I} M_i$ are again left~{\modules{$A$}}.
+      For every~$j \in I$ both the projection
+      \[
+                \pi_j
+        \colon  \prod_{i \in I} M_i
+        \to     M_j \,,
+        \quad   (x_i)_i
+        \mapsto x_j
+      \]
+      and the inclusion
+      \[
+                \iota_j
+        \colon  M_j
+        \to     \bigdsum_{i \in I} M_i \,,
+        \quad   x
+        \mapsto ( \delta_{ij} x )_{i \in I}
+      \]
+      are homomorphism of left~{\modules{$A$}}.
+    \item
+      The left~{\module{$A$}}~$M$ is finitely generated if and only if there exists for some~$n \in \Natural$ a surjective homomorphism of left~{\modules{$A$}}~$A^n \to M$, where~$A^n = \bigdsum_{i=1}^n A$.
+      
+      The left~{\module{$A$}}~$M$ is \emph{finitely presented}\index{finitely presented}\index{presented, finitely} if there exists for some~$m, n \in \Natural$ an exact sequence of left~{\modules{$A$}}
+      \[
+            A^m
+        \to A^n
+        \to M
+        \to 0 \,,
+      \]
+      i.e.~there exists a surjective homomorphism of~{\modules{$A$}}~$u \colon A^n \to M$ for which the kernel~$\ker(u)$ is again finitely generated.
+      (Finitely presented~{\modules{$A$}} are in particular finitely generated.)
+  \end{enumerate}
+\end{remarkdefinition}
+
+
+\begin{proposition}[Left exactness of~$\Hom$]
+  \leavevmode
+  \begin{enumerate}
+    \item
+      A sequence
+      \[
+        M_1
+        \xlongto{f_1}
+        M_2
+        \xlongto{f_2}
+        M_3
+        \to 0
+      \]
+      of~{\modules{$A$}} is exact if and only if for every~{\module{$A$}}~$N$ the induced sequence
+      \[
+        0
+        \to
+        \Hom_A(M_3, N)
+        \xlongto{f_2^*}
+        \Hom_A(M_2, N)
+        \xlongto{f_1^*}
+        \Hom_A(M_1, N)
+      \]
+      of~{\modules{$\kf$}} is exact.
+    \item
+      \label{left exactness of covariant hom}
+      A sequence
+      \[
+        0
+        \to
+        N_1
+        \xlongto{g_1}
+        N_2
+        \xlongto{g_2}
+        N_3
+      \]
+      of~{\modules{$A$}} is exact if and only if for every~{\module{$A$}}~$M$ the induced sequence
+      \[
+        0
+        \to
+        \Hom_A(M, N_1)
+        \xlongto{(g_1)_*}
+        \Hom_A(M, N_2)
+        \xlongto{(g_2)_*}
+        \Hom_A(M, N_3)
+      \]
+      of~{\modules{$\kf$}} is exact.
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+  We show only the implication \enquote{$\implies$} for part~\ref*{left exactness of covariant hom}, the rest will be done in the tutorials.
+  
+  To show that~$(g_1)_*$ is injective let~$h \in \Hom_A(M,N_1)$ with~$0 = (g_1)_*(h) = g_1 \circ h$.
+  It then follows that~$\im(h) \subseteq \ker(g_1) = 0$ and therefore that~$h = 0$.
+  
+  The inclusion~$\im((g_1)_*) \subseteq \ker((g_2)_*)$ holds because
+  \[
+      (g_2)_* \circ (g_1)_*
+    = (g_2 \circ g_1)_*
+    = 0_*
+    = 0 \,.
+  \]
+  
+  To show the inclusion~$\ker((g_2)_*) \subseteq \im((g_1)_*)$ let~$h \in \ker(g_2)_*$.
+  It follows from the injectivity of~$g_1$ that~$g_1 = \tilde{g}_1 \circ i$ for a unique isomorphism~$\tilde{g}_1 \colon N_1 \to \im(g_1)$ and the inclusion~$i \colon \im(g_1) \to N_2$.
+  This results in the following commutative diagram:
+  \[
+    \begin{tikzcd}[row sep = large]
+        0
+        \arrow{rr}
+      & {}
+      & N_1
+        \arrow{rr}[above]{g_1}
+        \arrow{dr}[below left]{\exists! \tilde{g}_1}[above right]{\cong}
+      & {}
+      & N_2
+        \arrow{rr}[above]{g_2}
+      & {}
+      & N_3
+      \\
+        {}
+      & {}
+      & {}
+      & \im(g_1)
+        \arrow[hook]{ur}[above left]{i}
+        \arrow[equal]{rr}
+      & {}
+      & \ker(g_2)
+        \arrow[hook']{ul}[above right]{i}
+      & {}
+    \end{tikzcd}
+  \]
+  It follows from~$0 = (g_2)_*(h) = g_2 \circ h$ that~$\im(h) \subseteq \ker(g_2)$ and therefore that~$h = i \circ \tilde{h}$ for a unique homomorphism~$\tilde{h} \colon M \to \ker(g_2)$.
+  This results in the following commutative digram:
+    \[
+    \begin{tikzcd}[row sep = large]
+        {}
+      & {}
+      & {}
+      & {}
+      & M
+        \arrow[bend left]{rrd}{0}
+        \arrow{d}{h}
+        \arrow[bend left, dashed]{ddr}[near start, above right]{\exists! \tilde{h}}
+      & {}
+      & {}
+      \\
+        0
+        \arrow{rr}
+      & {}
+      & N_1
+        \arrow{rr}[above]{g_1}
+        \arrow{dr}[below left]{\exists! \tilde{g}_1}[above right]{\cong}
+      & {}
+      & N_2
+        \arrow{rr}[above]{g_2}
+      & {}
+      & N_3
+      \\
+        {}
+      & {}
+      & {}
+      & \im(g_1)
+        \arrow[hook]{ur}[above left]{i}
+        \arrow[equal]{rr}
+      & {}
+      & \ker(g_2)
+        \arrow[hook']{ul}[above right]{i}
+      & {}
+    \end{tikzcd}
+  \]
+  It follows for the homomorphism~$h' \defined \tilde{g}_1^{-1} \circ \tilde{h}$ that
+  \[
+      (g_1)_*(h')
+    = g_1 \circ h'
+    = i \circ \tilde{g}_1 \circ \tilde{g}_1^{-1} \circ \tilde{h}
+    = i \circ \tilde{h}
+    = h \,,
+  \]
+  which shows the claimed inclusion.
+\end{proof}
+
+
+
+\begin{proposition}
+  Let~$A$ be a~{\kalg}.
+  \begin{enumerate}
+    \item
+      To give a left~{\module{$A$}} structure on a~{\module{$\kf$}} $V$ is equivalent to giving a homomorphism of~{\kalg}~$A \to \End_k(V)$.
+    \item
+      To give a right~{\module{$A$}} structure on a~{\module{$\kf$}}~$V$ is equivalent to giving a homomorphism of~{\kalg}~$A \to \End_k(V)^\op$.
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+  This will be an exercise on the second exercise sheet.
+\end{proof}
+
+
+
+

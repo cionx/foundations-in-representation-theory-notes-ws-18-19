@@ -1,0 +1,662 @@
+\section{Bimodules and Tensor Products}
+
+
+\begin{remark*}
+  The author recommends \cite[10.4]{DummitFoote2004} for an introduction to tensor products.
+\end{remark*}
+
+
+\begin{definition}
+  Let~$A$ and~$B$ be~{\kalgs}.
+  An~{\module{$A$}[$B$]}\index{bimodule}\index{module!bi-|see {bimodule}} is a~{\module{$\kf$}}~$M$ together with two~{\kbilin} multiplications
+  \begin{gather*}
+            A \times M
+    \to     M \,,
+    \quad   (a,m)
+    \mapsto am \,,
+  \shortintertext{and}
+            M \times B
+    \to     M \,,
+    \quad   (m,b)
+    \mapsto mb \,,
+  \end{gather*}
+  such that
+  \begin{itemize}
+    \item
+      $M$ becomes a left~{\module{$A$}},
+    \item
+      $M$ becomes a right~{\module{$B$}}, and
+    \item
+      $(am)b = a(mb)$ for all~$a \in A$,~$b \in B$ and  all~$m \in M$.
+  \end{itemize}
+  That~$M$ is an~{\module{$A$}[$B$]} is denoted by~$\indmodule[A]{M}[B]$.
+\end{definition}
+
+
+\begin{remark}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Homomorphisms of bimodules\index{homomorphism!of bimodules}\index{bimodule!homomorphism of} and bisubmodules\index{bisubmodule} are defined in the obvious way.
+    \item
+      If~$A$ is a~{\kalg} then~$A$ carries the structure of an~{\module{$A$}[$A$]} by letting~$A$ act on itself via left multiplication and right multiplication.
+  \end{enumerate}
+\end{remark}
+
+
+\begin{lemma}
+  Let~$A$,~$B$ and~$C$ be~{\kalgs}, and let~$\indmodule[A]{M}[B]$ and~$\indmodule[A]{N}[C]$ be bimodules.
+  Then~$\Hom_A(M,N)$ becomes a~{\module{$B$}[$C$]} via the multiplications
+  \begin{align*}
+          B \times \Hom_A(M,N)
+    &\to  \Hom_A(M,N) \,,
+    \\
+              (b,f)
+    &\mapsto  \left[
+                        bf
+                \colon  M
+                \to     N,
+                \;      m
+                \mapsto f(mb)
+              \right] \,,
+  \shortintertext{and}
+          \Hom_A(M,N) \times C
+    &\to  \Hom_A(M,N) \,,
+    \\
+              (g,c)
+    &\mapsto  \left[
+                        gc
+                \colon  M
+                \to     N,
+                \;      m
+                \mapsto f(m)c
+              \right] \,.
+  \end{align*}
+\end{lemma}
+
+
+\begin{proof}
+  We start by showing that for every~$f \in \Hom_A(M,N)$ the~{\klin} maps~$bf$ and~$fc$ are again homomorphisms of left~{\module{$A$}}.
+  This holds because
+  \[
+      (bf)(am)
+    = f(amb)
+    = a f(mb)
+    = a ((bf)(m))
+  \]
+  for all~$a \in A$ and all~$m \in M$, and
+  \[
+      (gc)(am)
+    = g(am) c
+    = a g(m) c
+    = a ((gc)(m))
+  \]
+  for all~$a \in A$ and~all$m \in M$.
+  
+  To show that~$\Hom_A(M,N)$ becomes a left~{\module{$B$}} and right~{\module{$C$}} we need to verify the various module axioms.
+  As an example, we check the axiom~\ref{module associative} for the left~{\module{$B$}} structure via the calculation
+  \[
+      ((b b')(f))(m)
+    = f(m(bb'))
+    = f((mb)b')
+    = (b'f)(mb)
+    = (b(b'f))(m)
+  \]
+  for all~$f \in \Hom_A(M,N)$,~$b, b' \in B$ and all~$m \in M$.
+  
+  The compatibility of the left~{\module{$B$}} structure and right~{\module{$C$}} structure of~$M$ follow from the calculation
+  \[
+    ((bf)c)(m)
+    = (bf)(m)c
+    = f(mb)c
+    = (fc)(mb)
+    = (b(fc))(m)
+  \]
+  for all~$f \in \Hom_A(M,N)$,~$b \in B$,~$c \in C$ and all~$m \in M$.
+\end{proof}
+
+
+
+
+
+\lecturend{End of lecture 3}
+
+
+
+
+
+\begin{definition}
+  Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be right~{\module{$A$}} and let~$\indmodule[A]{N}$ be a left~{\module{$A$}}.
+  \begin{enumerate}
+    \item
+      If~$P$ is a~{\module{$\kf$}} then then a map~$\varphi \colon M \times N \to P$ is~\emph{\balanced{$A$}}\index{balanced map} if it is~{\kbilin} and satisfies
+      \[
+          \varphi(xa, y)
+        = a\varphi(x, ay)
+      \]
+      for all~$x \in M$,~$y \in N$,~$a \in A$.
+    \item
+      A pair~$(T,\tau)$ consisting of a~{\module{$\kf$}}~$T$ and an~{\balanced{$A$}} map~$\tau \colon M \times N \to T$ is a \emph{tensor product}\index{tensor product!of modules} of~$M$ with~$N$ over~$A$ if it satisifies the following universal property:
+      There exists for every~{\module{$\kf$}}~$P$ and every~{\balanced{$A$}} map~$\varphi \colon M \to N \to P$ a unique~{\klin} map~$f \colon M \times N \to T$ with~$f \circ \tau = \varphi$, i.e.\ such that the following diagram commutes:
+      \[
+        \begin{tikzcd}[row sep = large]
+            M \times N
+            \arrow{r}[above]{\varphi}
+            \arrow{d}[left]{\tau}
+          & P
+          \\
+            T
+            \arrow[dashed]{ur}[below right]{\exists! f}
+          & {}
+        \end{tikzcd}
+      \]
+  \end{enumerate}
+\end{definition}
+
+
+\begin{lemma}
+
+Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$\indmodule[A]{N}$ be a left~{\module{$A$}}.
+  \begin{enumerate}
+    \item
+      There exists a tensor product~$(T,\tau)$ of~$M$ with~$N$ over~$A$.
+    \item
+      The tensor product of~$M$ with~$N$ over~$A$ is unique up to unique isomorphism:
+      If~$(T',\tau')$ is another such tensor product then there exists a unique homomorphism of~{\modules{$\kf$}}~$f \colon T \to T'$ with~$f \circ \tau = \tau'$, i.e.\ such that the diagram
+      \[
+        \begin{tikzcd}
+            {}
+          & M \times N
+            \arrow{dl}[above left]{\tau}
+            \arrow{dr}[above right]{\tau'}
+          & {}
+          \\
+            T
+            \arrow[dashed]{rr}[above]{f}
+          & {}
+          & T'
+        \end{tikzcd}
+      \]
+      commutes, and the homomorphism~$f$ is an isomorphism.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+  We start by showing the claimed uniqueness of the tensor product.
+  It follows from the universal property of the tensor product~$(T,\tau)$ applied to the~{\balanced{$A$}} map~$\tau' \colon M \times N \to T'$ that there exists a unique~{\klin} map~$f \colon T \to T'$ with~$f \circ \tau = \tau'$.
+  It also follows from the universal property of the tensor product~$(T',\tau')$ applied to the~{\balanced{$A$}} map $\tau \colon M \times N \to T$ that there exists a unique~{\klin} map~$g \colon T' \to T$ with~$g \circ \tau' = \tau$.
+  Together this means that the following diagrams commute:
+  \[
+    \begin{tikzcd}
+        {}
+      & M \times N
+        \arrow{dl}[above left]{\tau}
+        \arrow{dr}[above right]{\tau'}
+      & {}
+      \\
+        T
+        \arrow{rr}{f}
+      & {}
+      & T'
+    \end{tikzcd}
+    \qquad\qquad
+    \begin{tikzcd}
+        {}
+      & M \times N
+        \arrow{dl}[above left]{\tau'}
+        \arrow{dr}[above right]{\tau}
+      & {}
+      \\
+        T'
+        \arrow{rr}{g}
+      & {}
+      & T
+    \end{tikzcd}
+  \]
+  These two diagrams team up to form the following commutative diagram:
+  \[
+    \begin{tikzcd}[sep = large]
+        {}
+      & M \times N
+        \arrow{dl}[above left]{\tau}
+        \arrow{d}[left]{\tau'}
+        \arrow{dr}[above right]{\tau}
+      & {}
+      \\
+        T
+        \arrow{r}[above, near end]{f}
+        \arrow[bend right]{rr}[below]{g \circ f}
+      & T'
+        \arrow{r}[above, near start]{g}
+      & T
+    \end{tikzcd}
+  \]
+  It follows that~$g \circ f$ is the unique homomorphism~$T \to T$ which makes the diagram
+  \[
+    \begin{tikzcd}
+        {}
+      & M \times N
+        \arrow{dl}[above left]{\tau}
+        \arrow{dr}[above right]{\tau}
+      & {}
+      \\
+        T
+        \arrow[dashed]{rr}
+      & {}
+      & T
+    \end{tikzcd}
+  \]
+  commute.
+  This shows that~$g \circ f = \id_T$ because the identity~$\id_T \colon T \to T$ also makes this diagram commute.
+  It can be shown in the same way that~$f \circ g = \id_{T'}$.
+  Together this then shows that the homomorphism~$f$ is an isomorphism.
+  
+  We now show the existence of the tensor product:
+  Let~$F$ be the free~{\module{$\kf$}} on the set~$M \times N$ and let~$U \subseteq F$ be the~{\submodule{$\kf$}} which is generated by the elements
+  \begin{gather*}
+    (x_1 + x_2, y) - (x_1, y) - (x_2, y) \,,
+    \qquad
+    (x, y_1 + y_2) - (x, y_1) - (x, y_2) \,,
+    \\
+    (\lambda x, y) - \lambda (x,y) \,,
+    \qquad
+    (x, \lambda y) - \lambda (x,y) \,,
+    \qquad
+    (xa, y) - (x, ay)
+  \end{gather*}
+  with~$x, x_1, x_2 \in M$,~$y, y_1, y_2 \in N$,~$\lambda \in \kf$,~$a \in A$.
+  We define~$M \tensor_A N$ to be the~{\module{$\kf$}}~$M \tensor_A N \defined F/U$ and define the required map~$\tau \colon M \times N \to M \tensor_A N$ by~$\tau(x,y) \defined x \tensor y \defined [(x,y)]$ for all~$x \in M$,~$y \in N$.
+  
+  We need to check that~$(M \tensor_A N, \tau)$ satisfies the universal property of the tensor product:
+  Let~$P$ be a~{\module{$\kf$}} and let~$\varphi \colon M \times N \to P$ be an~{\balanced{$A$}} map.
+  It follows from the universal property of the free~{\module{$\kf$}}~$F$ that there exists a unique~{\klin} map~$\hat{\varphi} \colon F \to P$ which makes the diagram
+  \[
+    \begin{tikzcd}
+        M \times N
+        \arrow{r}[above]{\varphi}
+        \arrow{d}[left]{\text{incl.}}
+      & P
+      \\
+        F
+        \arrow[dashed]{ur}[below right]{\hat{\varphi}}
+      & {}
+    \end{tikzcd}
+  \]
+  commute.
+  That~$\varphi$ is~{\balanced{$A$}} means precisely that~$U \subseteq \ker(\hat{\varphi})$.
+  It follows that~$\hat{\varphi}$ factors uniquely through a~{\klin} map~$\overline{\hat{\varphi}} \colon F/U \to P$, which then makes the following diagram commute:
+  \[
+    \begin{tikzcd}[sep = large]
+        M \times N
+        \arrow{r}[above]{\varphi}
+        \arrow{d}[left]{\text{incl.}}
+        \arrow[bend right = 60]{dd}[left]{\tau}
+      & P
+      \\
+        F
+        \arrow{ur}[above left]{\hat{\varphi}}
+        \arrow{d}[left]{\text{can}}
+      & {}
+      \\
+        F/U
+        \arrow[dashed]{uur}[below right]{\overline{\hat{\varphi}}}
+      & {}
+    \end{tikzcd}
+  \]
+  This shows that there exists a unique~{\klin} map~$f \colon F/U \to P$ with~$\varphi = f \circ \tensor$, namely~$f = \overline{\hat{\varphi}}$.
+\end{proof}
+
+
+\begin{notation*}
+  For a right~{\module{$A$}}~$M$ and a left~{\module{$N$}} we denote the (up to unique isomorphism unique) tensor product of~$M$ by~$N$ over~$A$ by~$M \tensor_A N$, and the associated~{\balanced{$A$}} map~$M \times N \to M \tensor_A N$ by~$\tensor$.
+  For all~$x \in M$ and~$y \in N$ the resulting element of~$M \tensor_A N$ is hence denoted by~$x \tensor y$.
+\end{notation*}
+
+
+\begin{lemma}
+  Let~$A$,~$B$ and~$C$ be~{\kalgs} and let~$\indmodule[A]{M}[B]$ and~$\indmodule[B]{N}[C]$ be bimodules.
+  Then~$M \tensor_B N$ is an~{\module{$A$}[$C$]} via
+  \[
+      a (x \tensor y)
+    = (ax) \tensor y
+    \quad\text{and}\quad
+      (x \tensor y) c
+    = x \tensor (yc)
+  \]
+  for all~$x \in M$,~$y \in N$,~$a \in A$,~$b \in C$.
+\end{lemma}
+
+
+\begin{proof}
+  The tensor product~$M \tensor_A N$ is by definition a~{\module{$\kf$}}, so it remains to show that the actions of~$A$ and~$C$ are {\welldef}, that they are module structures and that they are mutually compatible.
+  
+  To show that the proposed action of~$A$ on~$M \tensor_B N$ is {\welldef} let~$a \in A$.
+  Then the map
+  \[
+            \tau_a
+    \colon  M \times N
+    \to     M \tensor_A N \,,
+    \quad   (x,y)
+    \mapsto (ax) \tensor y
+  \]
+  is~{\balanced{$B$}} because
+  \begin{gather*}
+    \begin{aligned}
+          \tau_a(x_1 + x_2, y)
+       =  (a(x_1 + x_2)) \tensor y
+       =  (a x_1 + a x_2) \tensor y
+      &=  (a x_1) \tensor y + (a x_2) \tensor y \\
+      &=  \tau_a(x_1, y) + \tau_a(x_2, y) \,,
+    \end{aligned}
+  \\
+      \tau_a(x, y_1 + y_2)
+    = (ax) \tensor (y_1 + y_2)
+    = (ax) \tensor y_1 + (ax) \tensor y_2
+    = \tau_a(x, y_1) + \tau_a(x, y_2) \,,
+  \\
+      \tau_a(\lambda x, y)
+    = (a \lambda x) \tensor y
+    = (\lambda a x) \tensor y
+    = \lambda ((ax) \tensor y)
+    = \lambda \tau_a(x,y) \,,
+  \\
+      \tau_a(x, \lambda y)
+    = (ax) \tensor (\lambda y)
+    = \lambda ((ax) \tensor y)
+    = \lambda \tau_a(x,y) \,,
+  \\
+      \tau_a(xb,y)
+    = (axb) \tensor y
+    = (ax) \tensor (by)
+    = \tau_a(x,by)
+  \end{gather*}
+  for all~$x, x_1, x_2 \in M$,~$y, y_1, y_2 \in N$,~$\lambda \in \kf$,~$b \in B$.
+  It follows that that~$\tau_a$ induces a {\welldef}~{\klin} map
+  \[
+            M \tensor_B N
+    \to     M \tensor_B N \,,
+    \quad   x \tensor y
+    \mapsto (ax) \tensor y \,.
+  \]
+  This shows that the proposed action of~$A$ on~$M \tensor_B N$ is {\welldef}.
+  It can be shown in the same way that the proposed action of~$C$ on~$M \tensor_B N$ is {\welldef}.
+  
+  It can be checked that the action of~$A$ on~$M \tensor_B N$ satisfies the various left module axioms, and hence is a left~{\module{$A$}} structure on~$M \tensor_B N$.
+  The action of~$C$ on~$M \tensor_B N$ is similarly a right~{\module{$C$}} structure.
+  
+  The left~{\module{$A$}} structure of~$M \tensor_B N$ is compatible with the right~{\module{$C$}} structure because
+  \[
+      ( a(x \tensor y) )c
+    = ((ax) \tensor y)c
+    = (ax) \tensor (yc)
+    = a( x \tensor (yc) )
+    = a( (x \tensor y)c )
+  \]
+  for all~$x \in M$,~$y \in N$,~$a \in A$,~$c \in C$.
+\end{proof}
+
+
+\begin{remark}
+  Let~$\varphi \colon B \to A$ be a {\kalg} homomorphism and let~$\indmodule[B]{N}$ be a left~{\module{$B$}}.
+  Then~$A$ carries the structure of an~{\module{$A$}[$B$]} via
+  \[
+      a x b
+    = a x \varphi(b)
+  \]
+  for all~$x \in A$ and all~$a \in A$,~$b \in B$.
+  We can regard~$N$ as a~{\module{$B$}[$\kf$]}.
+  It then follows that~$A \tensor_B N$ carries the structure of an~{\module{$A$}[$\kf$]}, and hence the structure of a left~{\module{$A$}} via
+  \[
+      a' \cdot (a \tensor y)
+    = (a' a) \tensor y
+  \]
+  for all~$a',a \in A$,~$y \in N$.
+  
+  This construction is the \emph{extension of scalars}\index{extension of scalars} or \emph{induction}\index{induction} from~$B$ to~$A$.
+\end{remark}
+
+
+\begin{lemma}
+  Let~$A$,~$B$,~$C$ and~$D$ be {\kalgs}.
+  \begin{enumerate}
+    \item
+      Let~$( \indmodule[A]{(M_i)}[B] )_{i \in I}$ be a family of bimodules and let~$\indmodule[B]{N}[C]$ be a bimodule.
+      Then there exists a unique homomorphism of~{\modules{$A$}[$C$]}
+      \begin{gather*}
+                \Phi_1
+        \colon  \left( \bigdsum_{i \in I} M_i \right) \tensor_B N
+        \to     \bigdsum_{i \in I} (M_i \tensor_B N)
+      \shortintertext{with}
+          \Phi_1\left( (x_i)_{i \in I} \tensor y \right)
+        = ( x_i \tensor y )_{i \in I}
+      \end{gather*}
+      for all~$(x_i)_{i \in I} \in \bigoplus_{i \in I} M_i$,~$y \in N$, and the homomorphism~$\Phi_1$ is already an isomorphism.
+    \item
+      Let~$\indmodule[A]{M}[B]$ be a bimodule and let~$( \indmodule[B]{(N_j)}[C] )_{j \in J}$ be a family of bimodules.
+      Then there exists a unique homomorphism of~{\modules{$A$}[$C$]}
+      \begin{gather*}
+                \Phi_2
+        \colon  M \tensor_B \left( \bigdsum_{j \in J} N_j \right)
+        \to     \bigdsum_{j \in J} (M \tensor_B N_j)
+      \shortintertext{with}
+          \Phi_2\left( x \tensor (y_j)_{j \in J} \right)
+        = ( x \tensor y_j )_{j \in J}
+      \end{gather*}
+      for all~$x \in M$,~$(y_j)_{j \in J} \in \bigoplus_{j \in J} N_j$, and the homomorphism~$\Phi_2$ is already an isomorphism.
+    \item
+      Let~$\indmodule[A]{M}[B]$,~$\indmodule[B]{N}[C]$ and $\indmodule[C]{P}[D]$ be bimodules.
+      There exists a unique homomorphism of~{\modules{$A$}[$D$]}
+      \begin{gather*}
+                \Phi_3
+        \colon  (M \tensor_B N) \tensor_C P
+        \to     M \tensor_B (N \tensor_C P)
+      \shortintertext{with}
+          \Phi_3( (x \tensor y) \tensor z )
+        = x \tensor (y \tensor z)
+      \end{gather*}
+      for all~$x \in M$,~$y \in N$,~$z \in P$, and~$\Phi_3$ is an isomorphism.
+    \item
+      For every bimodule~$\indmodule[A]{M}[B]$ there exist unique homomorphisms of~{\modules{$A$}[$B$]}
+      \begin{gather*}
+                \Phi_4
+        \colon  A \tensor_A M
+        \to     M 
+        \quad\text{and}\quad
+                \Phi_5
+        \colon  M \tensor_B B
+        \to     M
+      \shortintertext{with}
+        \Phi_4(a \tensor m) = m
+        \quad\text{and}\quad
+        \Phi_5(m \tensor b) = m
+      \end{gather*}
+      for all~$x \in M$,~$a \in A$,~$b \in B$, and both~$\Phi_4$ and~$\Phi_5$ are isomorphisms.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+  The proofs are the same as in the commutative case, see Proposition~2.27 in Algebra~I.
+  One only has to additionally check that the maps are already homomorphisms of bimodules.
+\end{proof}
+
+
+\begin{proposition}
+  Let~$A$ and~$B$ be {\kalgs} and let~$\indmodule{M}[A]$,~$\indmodule[A]{N}[B]$ and~$\indmodule{P}[B]$ be (bi)modules.
+  Then the map
+  \begin{gather*}
+            \Phi
+    \colon  \Hom_B( M \tensor_A N, P)
+    \to     \Hom_A( M, \Hom_B(N, P) )
+  \intertext{given by}
+      \Phi(f)(x)(y)
+    = f(x \tensor y)
+  \end{gather*}
+  is a {\welldef} isomorphism of~{\modules{$\kf$}}, which is natural in~$M$,~$N$ and~$P$.
+\end{proposition}
+
+
+\begin{proof}
+  For all~$f \in \Hom_B(M \tensor_A N, P)$ and all~$x \in M$ the map~$\Phi(f)(x) \colon N \to P$ is a homomorphism of right~{\modules{$B$}} because
+  \begin{gather*}
+    \begin{aligned}
+          \Phi(f)(x)(y_1 + y_2)
+      &=  f(x \tensor (y_1 + y_2))
+       =  f(x \tensor y_1 + x \tensor y_2)  \\
+      &=  f(x \tensor y_1) + f(x \tensor y_2)
+       =  \Phi(f)(x)(y_1) + \Phi(f)(x)(y_2)
+    \end{aligned}
+    \intertext{and}
+      \Phi(f)(x)(yb)
+    = f(x \tensor (yb))
+    = f((x \tensor y) b)
+    = f(x \tensor y) b
+    = \Phi(f)(x)(y) b
+  \end{gather*}
+  for all~$y, y_1, y_2 \in N$,~$b \in B$.
+  This shows that the map~$\Phi(f)(x)$ is a {\welldef} element of~$\Hom_B(N,P)$, hence that for every~$f \in \Hom_B(M \tensor_A N, P)$ the map
+  \[
+            \Phi(f)
+    \colon  M
+    \to     \Hom_B(N,P)
+  \]
+  is {\welldef}.
+  The map~$\Phi(f)$ is then a homomorphism of right~{\modules{$A$}} because
+  \begin{gather*}
+    \begin{aligned}
+          \Phi(f)(x_1 + x_2)(y)
+      &=  f((x_1 + x_2) \tensor y)
+       =  f(x_1 \tensor y + x_2 \tensor y)
+       =  f(x_1 \tensor y) + f(x_2 \tensor y) \\
+      &=  \Phi(f)(x_1)(y) + \Phi(f)(x_2)(y)
+       =  ( \Phi(f)(x_1) + \Phi(f)(x_2) )(y)
+    \end{aligned}
+  \shortintertext{and}
+      \Phi(f)(xa)(y)
+    = f((xa) \tensor y)
+    = f(x \tensor (ay))
+    = \Phi(f)(x)(ay)
+    = (\Phi(f)(x)a)(y) \,.
+  \end{gather*}
+  for all~$x, x_1, x_2 \in M$,~$a \in A$,~$y \in N$.
+  This shows that the proposed map
+  \[
+            \Phi
+    \colon  \Hom_B(M \tensor_A N, P)
+    \to     \Hom_A(M, \Hom_B(N,P))
+  \]
+  is {\welldef}.
+  The map~$\Phi$ is a homomorphism of~{\modules{$\kf$}} because
+  \begin{gather*}
+    \begin{aligned}
+          \Phi(f_1 + f_2)(x)(y)
+      &=  (f_1 + f_2)(x \tensor y)
+       =  f_1(x \tensor y) + f_2(x \tensor y) \\
+      &=  \Phi(f_1)(x)(y) + \Phi_2(f_2)(x)(y)
+       =  ( \Phi(f_1) + \Phi(f_2) )(x)(y)
+    \end{aligned}
+  \shortintertext{and}
+      \Phi(\lambda f)(x)(y)
+    = (\lambda f)(x \tensor y)
+    = \lambda f(x \tensor y)
+    = \lambda \Phi(f)(x)(y)
+    = (\lambda \Phi)(f)(x)(y) \,.
+  \end{gather*}
+  for all~$f, f_1, f_2 \in \Hom_B(M \tensor_A N, P)$,~$\lambda \in \kf$,~$x \in M$,~$y \in N$.
+  
+  To show that~$\Phi$ is already an isomorphism of~{\modules{$\kf$}} we construct its inverse map:
+  Let~$g \in \Hom_A(M, \Hom_B(N,P))$.
+  Then the map
+  \[
+            \psi(g)
+    \colon  M \times N
+    \to     P \,,
+    \quad   (x,y)
+    \mapsto g(x)(y)
+  \]
+  is~{\balanced{$A$}} because
+  \begin{gather*}
+    \begin{aligned}
+          \psi(g)(x_1 + x_2, y)
+      &=  g(x_1 + x_2)(y)
+       =  (g(x_1) + g(x_2))(y)  \\
+      &=  g(x_1)(y) + g(x_2)(y)
+       =  \psi(g)(x_1,y) + \psi(g)(x_2,y) \,,
+    \end{aligned}
+  \\
+      \psi(g)(x)(y_1 + y_2)
+    = g(x)(y_1 + y_2)
+    = g(x)(y_1) + g(x)(y_2)
+    = \psi(g)(x, y_1) + \psi(g)(x, y_2) \,,
+  \\
+      \psi(g)(xa, y)
+    = g(xa)(y)
+    = (g(x)a)(y)
+    = g(x)(ay)
+    = \psi(g)(x,ay) \,.
+  \end{gather*}
+  for all~$x, x_1, x_2 \in M$,~$y, y_1, y_2 \in M$,~$a \in A$.
+  It follows from the universal property of the tensor product~$M \tensor_A N$ that the~{\balanced{$A$}} map~$\psi(g)$ induces a {\welldef}~{\klin} map~$\Psi(g) \colon M \tensor_A N \to P$ with
+  \[
+      \Psi(g)(x \tensor y)
+    = g(x)(y) \,,
+  \]
+  for all~$x \in M$,~$y \in N$, i.e.\ such that the following diagram commutes:
+  \[
+    \begin{tikzcd}[sep = large]
+        M \times N
+        \arrow{r}[above]{\psi(g)}
+        \arrow{d}[left]{\tensor}
+      & P
+      \\
+        M \tensor_A N
+        \arrow{ur}[below right]{\Psi(g)}
+      & {}
+    \end{tikzcd}
+  \]
+  The maps~$\Psi(g)$ is already a homomorphism of right~{\modules{$B$}} because
+  \[
+      \Psi(g)((x \tensor y) b)
+    = \Psi{g}(x \tensor (yb))
+    = g(x)(yb)
+    = g(x)(y) b
+    = \Psi(g)(x \tensor y) b
+  \]
+  for all~$x \in M$,~$y \in N$,~$b \in B$.
+  This shows that~$\Psi(g)$ is a {\welldef} element of~$\Hom_B(M \tensor_A N, P)$, hence that the map
+  \begin{align*}
+              \Psi
+     \colon   \Hom_A(M, \Hom_B(N,P))
+    &\to      \Hom_B(M \tensor_A N, P) \,, \\
+              g
+    &\mapsto  \left[
+                        \Phi(g)
+                \colon  x \tensor y
+                \mapsto g(x)(y)
+              \right]
+  \end{align*}
+  is {\welldef}.
+  
+  The maps~$\Phi$ and~$\Psi$ are mutually inverse:
+  It holds for every~$f \in \Hom_B(M \tensor_A N, P)$ that
+  \[
+      \Psi(\Phi(f))(x \tensor y)
+    = \Phi(f)(x)(y)
+    = f(x \tensor y) \,,
+  \]
+  which shows that~$\Psi \circ \Phi = \id$, and it holds for every~$g \in \Hom_A(\Hom_B(N, P))$ that
+  \[
+      \Phi(\Psi(g))(x,y)
+    = \Psi(g)(x \tensor y)
+    = g(x)(y) \,,
+  \]
+  which shows that~$\Phi \circ \Psi = \id$.
+  
+  The naturality in~$M$,~$N$ and~$P$ follows from a direct calculation.
+\end{proof}
+% TODO: Check the naturality.
+
+
+
+
