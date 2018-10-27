@@ -201,10 +201,11 @@
 \newcommand{\gencat}[1]{\mathcal{#1}}
 % fixed categories
 \newcommand{\Ab}{\catname{Ab}}
+\newcommand{\Fun}{\catname{Fun}}
 \newcommand{\Group}{\catname{Grp}}
-\newcommand{\Mod}{\catname{Mod}}
 \newcommand{\kAlg}{\text{$\kf$-$\catname{Alg}$}}
 \newcommand{\Path}{\catname{Path}}
+\newcommand{\Rep}[2]{\catname{Rep}_{#1}(#2)}
 \newcommand{\Set}{\catname{Set}}
 \newcommand{\Top}{\catname{Top}}
 % generaic categories
@@ -213,6 +214,7 @@
 \newcommand{\Ecat}{\gencat{E}}
 \newcommand{\Gcat}{\gencat{G}}
 % more complicated constructions
+\newcommand{\Mod}{\catname{Mod}}
 \newcommand{\Modl}[1]{\text{$#1$-$\Mod$}}
 \newcommand{\Modr}[1]{\text{$\Mod$-$#1$}}
 
@@ -223,6 +225,7 @@
 \DeclareMathOperator{\End}{End}
 \DeclarePairedDelimiter{\gen}{\langle}{\rangle}
 \DeclarePairedDelimiter{\genideal}{(}{)}
+\DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\im}{im}
 \newcommand{\mat}[2]{\operatorname{M}_{#1 \times #1}(#2)}
@@ -233,6 +236,7 @@
 
 % functions and functors
 \DeclareMathOperator{\ringchar}{char}
+\newcommand{\ev}{\mathrm{ev}}
 \newcommand{\Id}{\mathrm{Id}}
 \newcommand{\id}{\mathrm{id}}
 \DeclareMathOperator{\power}{P}

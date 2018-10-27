@@ -27,7 +27,7 @@
     \item
       For any two objects~$X, Y \in \Ob(\Ccat)$ a set~$\Ccat(X,Y)$.% dont let footnote see this line break
       \footnote{Other common notations are~$\Hom_{\Ccat}(X,Y)$ or~$\operatorname{Mor}_{\Ccat}(X,Y)$.}
-      The elements of~$\Ccat(X, Y)$ are the \emph{morphisms}\index{morphisms in a category} from~$X$ to~$Y$.
+      The elements of~$\Ccat(X, Y)$ are the \emph{morphisms}\index{morphism!in a category} from~$X$ to~$Y$.
       That~$f \in \Ccat(X,Y)$ is denoted by~$f \colon X \to Y$ or~$X \xto{f} Y$.
     \item
       For any three objects~$X, Y, Z \in \Ob(\Ccat)$ a map
@@ -508,7 +508,7 @@
 
 \begin{definition}
   Let~$\Ccat$,~$\Dcat$ be two categories and let~$F, G \colon \Ccat \to \Dcat$ be two functors between them.
-  A \emph{natural transformation}\index{natural transformation}~$\eta \colon F \to G$ is a family~$\eta = (\eta_X)_{X \in \Ob(\Ccat)}$ of morphisms~$\eta_X \colon F(X) \to G(X)$ such that for every morphism~$f \colon X \to Y$ in~$\Ccat$ the following diagram (in~$\Dcat$) commutes:
+  A \emph{natural transformation}\index{natural!transformation}~$\eta \colon F \to G$ is a family~$\eta = (\eta_X)_{X \in \Ob(\Ccat)}$ of morphisms~$\eta_X \colon F(X) \to G(X)$ such that for every morphism~$f \colon X \to Y$ in~$\Ccat$ the following diagram (in~$\Dcat$) commutes:
   \[
     \begin{tikzcd}
         F(X)
@@ -684,8 +684,455 @@
 
 
 
+\begin{remarkdefinition}
+  Let~$F, G \colon \Ccat \to \Dcat$ be two functors.
+  A natural transformation~$\eta \colon F \to G$ is a \emph{natural isomorphism}\index{natural!isomorphism}\index{isomorphism!natural} if for every~$X \in \Ob(\Ccat)$ the morphism~$\eta_X \colon F(X) \to G(X)$ is an isomorphism.
+  
+  The natural transformation~$\eta$ is a natural isomorphism if and only if there exists a natural transformation~$\zeta \colon G \to F$ with~$\zeta \circ \eta = \id_F$ and~$\eta \circ \zeta = \id_G$:
+  
+  If such a natural transformation exists then it holds for exery~$X \in \Ob(\Ccat)$ that
+  \[
+      \zeta_X \circ \eta_X
+    = (\zeta \circ \eta)_X
+    = (\id_F)_X
+    = \id_{F(X)}
+  \]
+  and similarly~$\eta_X \circ \zeta_X = \id_{G(X)}$.
+  This then shows that~$\eta_X$ is for every~$X \in \Ob(\Ccat)$ an isomorphism, with inverse given by~$\eta_X^{-1} = \zeta_X$.
+  
+  If on the other hand~$\eta_X \colon F(X) \to G(X)$ is an isomorphism for every~$X \in \Ob(\Ccat)$, then it follows for every morphism~$f \colon X \to Y$ in~$\Ccat$ from the commutativity of the diagram
+  \[
+    \begin{tikzcd}
+        F(X)
+        \arrow{r}[above]{F(f)}
+        \arrow{d}[left]{\eta_X}
+      & F(Y)
+        \arrow{d}[right]{\eta_Y}
+      \\
+        G(X)
+        \arrow{r}[above]{G(f)}
+      & G(Y)
+    \end{tikzcd}
+  \]
+  that the diagram
+  \[
+    \begin{tikzcd}
+        F(X)
+        \arrow{r}[above]{F(f)}
+      & F(Y)
+      \\
+        G(X)
+        \arrow{u}[left]{\eta_X^{-1}}
+        \arrow{r}[above]{G(f)}
+      & G(Y)
+        \arrow{u}[right]{\eta_Y^{-1}}
+    \end{tikzcd}
+  \]
+  also commutes.
+  This shows that the family~$\zeta \defined (\eta_X^{-1})_{X \in \Ob(\Ccat)}$ is a natural transformation~$\zeta \colon G \to F$.
+  It holds by construction of~$\zeta$ that~$\zeta \circ \eta = \id_F$ and~$\eta \circ \zeta = \id_G$.
+  
+  That~$\eta$ is a natural isomorphism is denoted by~$\eta \colon F \xto{\sim} G$.
+  The two functors~$F$ and~$G$ are \emph{isomorphic}\index{isomorphic functors}\index{functor!isomorphic} if there exist a natural isomorphism~$F \xto{\sim} G$.
+  That~$F$ and~$G$ are isomorphic is denoted by~$F \cong G$.
+\end{remarkdefinition}
 
 
+\begin{definition}
+  Let~$\Ccat$ and~$\Dcat$ be categories.
+  A functor~$F \colon \Ccat \to \Dcat$ is an \emph{equivalence of categories}\index{equivalence of categories}\index{functor!equivalence} if there exists a functor~$G \colon \Dcat \to \Ccat$ with~$G \circ F \cong \Id_{\Ccat}$ and~$F \circ G \cong \Id_{\Dcat}$.
+  The categories~$\Ccat$ and~$\Dcat$ are \emph{equivalent}\index{category!equivalent} if there exists an equivalence of categories between them.
+  That~$\Ccat$ and~$\Dcat$ are equivalent is denoted by~$\Ccat \simeq \Dcat$.
+\end{definition}
+
+
+\begin{example}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Let~$Q$ be a finite quiver.
+      \Cref{quiver rep are modules} shows that~$\Rep{\kf}{Q} \simeq \Modl{\kf Q}$, where~$\Rep{\kf}{Q}$ denotes the category of representations of~$Q$ over~$\kf$;
+      the only missing ingredient is that the constructed isomorphisms
+      \[
+              FG(M)
+        \cong M
+        \quad\text{and}\quad
+              GF(X)
+        \cong X
+      \]
+      for~$M \in \Ob(\Modl{\kf Q})$ and~$X \in \Ob(\Rep{\kf}{Q})$ are natural, i.e.\ that for every homomorphism of left~{\modules{$\kf Q$}}~$f \colon M \to N$ the diagram
+      \[
+        \begin{tikzcd}[column sep = large]
+            FG(M)
+            \arrow{r}[above]{FG(f)}
+            \arrow{d}[left]{\sim}
+          & FG(N)
+            \arrow{d}[right]{\sim}
+          \\
+            M
+            \arrow{r}[above]{f}
+          & N
+        \end{tikzcd}
+      \]
+      commutes, and that for every homomorphism of representations~$f \colon X \to Y$ the diagram
+      \[
+        \begin{tikzcd}[column sep = large]
+            GF(X)
+            \arrow{r}[above]{GF(f)}
+            \arrow{d}[left]{\sim}
+          & GF(Y)
+            \arrow{d}[right]{\sim}
+          \\
+            X
+            \arrow{r}[above]{f}
+          & Y
+        \end{tikzcd}
+      \]
+      commutes.
+    \item
+      Let~$G$ be a group.
+      A \emph{representation}\index{representation!of a group}\index{group representation} of~$G$ over~$\kf$ is a pair~$(V,\rho)$ consisting of a~{\module{$\kf$}}~$V$ and a group homomorphism~$\rho \colon G \to \GL(V)$.
+      A \emph{homomorphism of representations}\index{homomorphism!of group representations}~$f \colon (V, \rho) \to (W,\sigma)$ is a~{\klin} map~$f \colon V \to W$ such that the diagram
+      \[
+        \begin{tikzcd}
+            V
+            \arrow{r}[above]{\rho(g)}
+            \arrow{d}[left]{f}
+          & V
+            \arrow{d}[right]{f}
+          \\
+            W
+            \arrow{r}[above]{\sigma(g)}
+          & W
+        \end{tikzcd}
+      \]
+      commutes for every~$g \in G$.
+      It holds for the category~$\Rep{\kf}{G}$ of representations of~$G$ over~$\kf$ that~$\Rep{\kf}{G} \simeq \Modl{\kf[G]}$.
+    \item
+      Let~$\Ccat$ be the category whose objects are pairs~$(A, \varphi)$ consisting of a ring~$A$ and a ring homomorphism~$\varphi \colon \kf \to \ringcenter(A)$, and where a morphism~$f \colon (A, \varphi) \to (B, \psi)$ is a ring homomorphism~$f \colon A \to B$ which makes the diagram
+      \[
+        \begin{tikzcd}[column sep = small]
+            A
+            \arrow{rr}[above]{f}
+          & {}
+          & B
+          \\
+            \ringcenter(A)
+            \arrow[hook]{u}
+          & {}
+          & \ringcenter(B)
+            \arrow[hook]{u}
+          \\
+            {}
+          & \kf
+            \arrow{ul}
+            \arrow{ur}
+          & {}
+        \end{tikzcd}
+      \]
+      commute.
+      Then \cref{characterization of algebras} shows that the categories~$\kAlg$ and~$\Ccat$ are equivalent.
+    \item
+      Let~$A$ be a~{\kalg}.
+      Let~$\Dcat$ be the category whose objects are pairs~$(V, \varphi)$ consisting of a~{\module{$\kf$}}~$V$ and a homomorphism of~{\kalgs}~$\varphi \colon A \to \End_\kf(V)$, and where a morphism~$f \colon (V,\varphi) \to (W,\psi)$ is a~{\klin} map~$f \colon V \to W$ which makes the diagram
+      \[
+        \begin{tikzcd}
+            V
+            \arrow{r}[above]{\varphi(a)}
+            \arrow{d}[left]{f}
+          & V
+            \arrow{d}[right]{f}
+          \\
+            W
+            \arrow{r}[above]{\psi(a)}
+          & W
+        \end{tikzcd}
+      \]
+      commute for every~$a \in A$.
+      \Cref{modules as homomorphisms into endomorphisms} shows that the categories~$\Modl{A}$ and~$\Dcat$ are equivalent.
+  \end{enumerate}
+\end{example}
+
+
+
+
+
+\section{Functor Categories}
+
+
+\begin{definition}
+  Let~$\Ccat$ and~$\Dcat$ be two categories.
+  The \emph{functor category}\index{functor!category}\index{category!functor}~$\Fun(\Ccat, \Dcat)$ has as objects
+  \[
+              \Ob(\Fun(\Ccat, \Dcat))
+    \defined  \{
+                \text{functors~$F \colon \Ccat \to \Dcat$}
+              \} \,,
+  \]
+  and for any two functors~$F, G \colon \Ccat \to \Dcat$ their morphism set~$\Fun(\Ccat, \Dcat)(F,G)$ is given by
+  \[
+              \Fun(\Ccat, \Dcat)(F,G)
+    \defined  \{
+                \text{natural transformations~$\eta \colon F \to G$}
+              \} \,.
+  \]
+  The composition of morphisms in~$\Fun(\Ccat, \Dcat)$ is the composition of natural transformations.
+\end{definition}
+
+
+\begin{remark}
+  We’re running into \dash{set}{theoretic} issues again:
+  If~$\Ccat$ and~$\Dcat$ are two categories in our fixed universe~$U$ (i.e.\~$\Ob(\Ccat), \Ob(\Dcat) \subseteq U$) then~$\Ob(\Fun(\Ccat, \Dcat))$ might not be a subset of~$U$.
+  The solution to this problem is to choose another universe~$V$ with~$U \in V$.
+  Then~$\Ob(\Fun(\Ccat, \Dcat)) \subseteq V$, so~$\Fun(\Ccat, \Dcat)$ becomes a category with respect to the universe~$V$.
+\end{remark}
+
+
+\begin{example}
+  Let~$Q$ be a quiver and consider the category~$\Fun(\Path(Q),\Modl{\kf})$.
+  
+  Every functor~$V \in \Ob(\Fun(\Path(Q),\Modl{\kf}))$ gives rise to a representation~$F(V)$ of~$Q$ over~$\kf$ with
+  \[
+              F(V)_i
+    \defined  V(i)
+  \]
+  for every~$i \in Q_0 = \Ob(\Path(Q))$ and
+  \[
+              F(V)_\alpha
+    \defined  V(\alpha)
+    \colon    F(V)_i
+    \to       F(V)_j
+  \]
+  for every arrow~$\alpha$ from~$i$ to~$j$ in~$Q_0$ (and thus morphisms from~$i$ to~$j$ in~$\Path(Q)$).
+  In this way we obtain a functor
+  \[
+            F
+    \colon  \Fun(\Path(Q), \Modl{\kf})
+    \to     \Rep{\kf}{Q}  \,.
+  \]
+  
+  Conversely, let~$X$ be a representation of~$Q$ over~$\kf$.
+  We can use~$X$ to define a functor~$G(X) \colon \Path(Q) \to \Modl{\kf}$ via
+  \[
+            G(X)
+    \colon  \left\{
+              \begin{aligned}
+                          i
+                &\mapsto  X_i \,, \\
+                          (p = \alpha_\ell \dotsm \alpha_1)
+                &\mapsto  X_{\alpha_\ell} \circ \dotsb \circ X_{\alpha_1} \,.
+              \end{aligned}
+            \right.
+  \]
+  This construction yields a functor
+  \[
+            G
+    \colon  \Rep{\kf}{Q}
+    \to     \Fun(\Path(Q), \Modl{\kf}) \,.
+  \]
+  It can now be checked that~$G \circ F = \Id_{\Fun(\Path(Q), \Modl{\kf})}$ and~$F \circ G = \Id_{\Rep{\kf}{Q}}$, which shows that~$\Rep{\kf}{Q} \simeq \Fun(\Path(Q), \Modl{\kf})$.
+\end{example}
+
+
+\begin{definition}
+  Let~$\Ccat$ and~$\Dcat$ betwo categories.
+  For every object~$X \in \Ob(\Ccat)$ the \emph{evaluation}\index{evaluation}\index{functor!evaluation} at~$X$ is the functor~$\ev_X \colon \Fun(\Ccat, \Dcat) \to \Dcat$ given by
+  \[
+            \ev_X
+    \colon  \left\{
+              \begin{aligned}
+                          F
+                &\mapsto  F(X) \,,
+                \\
+                          (F \xto{\eta} G)
+                &\mapsto  (\eta_X \colon F(X) \to G(X)) \,.
+              \end{aligned}
+            \right.
+  \]
+\end{definition}
+
+
+\begin{remark}
+  Let~$\Ccat$ and~$\Dcat$ be two categories.
+  If~$f \colon X \to Y$ is a morphism in~$\Ccat$ then we get an induced natural transformation~$\ev_f \colon \ev_X \to \ev_Y$ given by
+  \[
+              (\ev_f)_F
+    \defined  F(f)
+  \]
+  for every functor~$F \in \Ob(\Fun(\Ccat, \Dcat))$.
+  This is indeed a natural transformation:
+  Let~$F, G \in \Ob(\Fun(\Ccat, \Dcat))$ be functors and let~$\eta \colon F \to G$ be a natural transformation between them.
+  We then have the following diagram:
+  \[
+    \begin{tikzcd}
+        \ev_X(F)
+        \arrow{rrr}[above]{\ev_X(\eta)}
+        \arrow{ddd}[left]{(\ev_f)_F}
+        \arrow[equal]{dr}
+      & {}
+      & {}
+      & \ev_X(G)
+        \arrow{ddd}[right]{(\ev_f)_G}
+        \arrow[equal]{dl}
+      \\
+        {}
+      & F(X)
+        \arrow{r}[above]{\eta_X}
+        \arrow{d}[left]{F(f)}
+      & G(X)
+        \arrow{d}[right]{G(f)}
+      & {}
+      \\
+        {}
+      & F(Y)
+        \arrow{r}[below]{\eta_Y}
+      & G(Y)
+      & {}
+      \\
+        \ev_Y(F)
+        \arrow{rrr}[below]{\ev_Y(\eta)}
+        \arrow[equal]{ur}
+      & {}
+      & {}
+      & \ev_Y(G)
+        \arrow[equal]{ul}
+    \end{tikzcd}
+  \]
+  The inner square commutes because~$\eta$ is a natural transformation, and so it follows that the outer square commutes.
+  
+  It also holds that~$\ev_{\id_X} = \id_{\ev_X}$ and that~$\ev_{f \circ g} = \ev_f \circ \ev_g$ for every two composable morphisms~$f \colon X \to Y$ and~$g \colon Y \to Z$ in~$\Ccat$.
+  We hence obtain a functor
+  \[
+            \ev
+    \colon  \Ccat
+    \to     \Fun( \Fun(\Ccat, \Dcat), \Dcat ) \,.
+  \]
+
+\end{remark}
+
+
+
+
+
+\section{Representable Functors}
+
+
+\begin{lemma}[Yoneda’s lemma]\index{Yoneda’s lemma}
+  \label{yoneda lemma}
+  Let~$\Ccat$ be a category and let~$X \in \Ob(\Ccat) = \Ob(\Ccat^\op)$.
+  \begin{enumerate}
+    \item
+      \label{covariant yoneda}
+      Let~$F \colon \Ccat \to \Set$ be a (covariant) functor.
+      Then the map
+      \[
+                Y^{F,X}
+        \colon  \Fun(\Ccat, \Set)(h^X, F)
+        \to     F(X) \,,
+        \quad   ( \eta \colon h^X \to F)
+        \mapsto \eta_X(\id_X)
+      \]
+      is a bijection.
+    \item
+      \label{contravariant yoneda}
+      Let~$G \colon \Ccat^\op \to \Set$ be a (contravariant) functor.
+      Then the map
+      \[
+                Y_{G,X}
+        \colon  \Fun(\Ccat, \Set)(h_X, G)
+        \to     G(X) \,,
+        \quad   ( \eta \colon h_X \to G)
+        \mapsto \eta_X(\id_X)
+      \]
+      is a bijection.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+  Part~\ref*{covariant yoneda} follows from part~\ref*{contravariant yoneda} because~$\Ccat = (\Ccat^\op)^\op$ and
+  \[
+      h^X_{(\Ccat)}
+    = \Ccat(X,-)
+    = \Ccat^\op(-,X)
+    = h_X^{(\Ccat^\op)}
+  \]
+  for every~$X \in \Ob(\Ccat) = \Ob(\Ccat^\op)$.
+  We therefore only prove part~\ref*{contravariant yoneda}.
+  
+  To show that the map~$Y_{G,X}$ is injective we need to show that a natural transformation~$\eta \colon h_X \to G$ is uniquely determined by its value~$\eta_X(\id_X)$.
+  This holds because it follows for every~$Y \in \Ob(\Ccat)$ and every~$f \in h_X(Y) = \Ccat(Y,X)$ from the commutativity of the diagram
+  \[
+    \begin{tikzcd}
+        h_X(X)
+        \arrow{r}[above]{f^*}
+        \arrow{d}[left]{\eta_X}
+      & h_X(Y)
+        \arrow{d}[right]{\eta_Y}
+      \\
+        G(X)
+        \arrow{r}[above]{G(f)}
+      & G(Y)
+    \end{tikzcd}
+  \]
+  that
+  \[
+      \eta_Y(f)
+    = \eta_Y(\id_X \circ f)
+    = \eta_Y(f^*(\id_X))
+    = G(f)(\eta_X(\id_X)) \,.
+  \]
+  
+  To show the surjectivity of~$Y_{G,X}$ let~$z \in G(X)$.
+  For every~$Y \in \Ob(\Ccat)$ let
+  \[
+            \zeta_Y
+    \colon  h_X(Y)
+    =       \Ccat(Y,X)
+    \to     G(Y) \,,
+    \quad   f
+    \mapsto G(f)(z) \,.
+  \]
+  It then holds for every morphism~$g \colon Y \to Y'$ in~$\Ccat$ that the diagram
+  \[
+    \begin{tikzcd}
+        h_X(Y')
+        \arrow{r}[above]{g^*}
+        \arrow{d}[left]{\zeta_{Y'}}
+      & h_X(Y)
+        \arrow{d}[right]{\zeta_Y}
+      \\
+        G(Y')
+        \arrow{r}[above]{G(g)}
+      & G(Y)
+    \end{tikzcd}
+  \]
+  commutes, because
+  \[
+      G(g)( \zeta_{Y'}( f ) )
+    = G(g)( G(f)(z) )
+    = G(f \circ g)(z)
+    = \zeta_Y(f \circ g)
+    = \zeta_Y( g^*(f) )
+  \]
+  for every~$f \in h_X(Y')$.
+  This shows that~$\zeta \defined (\zeta_X)_{X \in \Ob(\Ccat)}$ is a natural transformation~$\zeta \colon h_X \to F$.
+  It holds that
+  \[
+      Y_{G,X}(\zeta)
+    = \zeta_X(\id_X)
+    = G(\id_X)(z)
+    = \id_{G(X)}(z)
+    = z \,,
+  \]
+  which altogether shows that~$Y_{G,X}$ is surjective.
+\end{proof}
+
+
+
+
+
+\lecturend{6}
 
 
 
