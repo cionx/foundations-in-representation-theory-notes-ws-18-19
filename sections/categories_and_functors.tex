@@ -1,6 +1,23 @@
 \chapter{Categories and Functors}
 
 
+
+
+
+% need to draw the cat myself
+% \begin{tikzpicture}[remember picture,overlay]
+%   \node[anchor=east,inner sep=0pt]
+%   at (current page text area.east|-0,2cm)
+%   {\includegraphics[scale=0.15]{cat.pdf}};
+% \end{tikzpicture}
+% \vspace{-0.7cm}
+
+
+
+
+
+\section{Categories}
+
 \begin{definition}
   A \emph{category}~$\Ccat$\index{category} consists of the following data:
   \begin{itemize}
@@ -8,7 +25,8 @@
       A class~$\Ob(\Ccat)$.
       The elements are the \emph{objects}\index{objects of a category} of~$\Ccat$.
     \item
-      For any two objects~$X, Y \in \Ob(\Ccat)$ a set~$\Ccat(X,Y)$.
+      For any two objects~$X, Y \in \Ob(\Ccat)$ a set~$\Ccat(X,Y)$.% dont let footnote see this line break
+      \footnote{Other common notations are~$\Hom_{\Ccat}(X,Y)$ or~$\operatorname{Mor}_{\Ccat}(X,Y)$.}
       The elements of~$\Ccat(X, Y)$ are the \emph{morphisms}\index{morphisms in a category} from~$X$ to~$Y$.
       That~$f \in \Ccat(X,Y)$ is denoted by~$f \colon X \to Y$ or~$X \xto{f} Y$.
     \item
@@ -16,7 +34,7 @@
       \[
                 \Ccat(Y,Z) \times \Ccat(X,Y)
         \to     \Ccat(X,Z) \,,
-        \quad   (g \circ f)
+        \quad   (g, f)
         \mapsto g \circ f \,.
       \]
       For any two morphisms~$f \colon X \to Y$ and~$g \colon Y \to Z$ the morphism~$g \circ f \colon X \to Z$ is the \emph{composition} of~$g$ and~$f$.
@@ -78,3 +96,597 @@
 
 
 \lecturend{4}
+
+
+
+
+\begin{example}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      The category~$\Set$\index{category!of sets} of sets:
+      The objects of~$\Set$ are given by
+      \[
+          \Ob(\Set)
+        = \{
+            \text{sets (which are elements of the fixed universe)}
+          \} \,,
+      \]
+      and for any two sets~$X$ and~$Y$ the morphism set~$\Set(X,Y)$ is given by
+      \[
+          \Set(X,Y)
+        = \{
+            \text{maps~$f \colon X \to Y$}
+          \} \,.
+      \]
+      The composition of morphisms in~$\Set$ is the usual composition of maps.
+    \item
+      The category~$\Group$\index{category!of groups} of groups:
+      The objects of~$\Group$ are given by
+      \[
+          \Ob(\Group)
+        = \{
+            \text{groups}
+          \} \,,
+      \]
+      and for any two groups~$G$ and~$H$ the morphism set~$\Group(G,H)$ is given by
+      \[
+          \Group(G,H)
+        = \{
+            \text{group homomorphisms~$f \colon G \to H$}
+          \} \,.
+      \]
+      The composition of morphisms in~$\Group$ is the usual composition of group homomorphisms.
+    \item
+      The category~$\kAlg$\index{category!of $k$-algebras} of~{\kalgs}:%
+      \footnote{This example was not given in the lecture, but will be used \cref{examples for functors}.}
+      The objects of~$\kAlg$ are given by
+      \[
+          \Ob(\kAlg)
+        = \{
+            \text{{\kalgs}}
+          \} \,,
+      \]
+      and for any two {\kalgs}~$A$ and~$B$ the morphism set~$(\kAlg)(A,B)$ is given by
+      \[
+          \kAlg(A,B)
+        = \{
+            \text{{\kalg} homomorphisms~$f \colon A \to B$}
+          \} \,.
+      \]
+      The composition of morphisms in~$\kAlg$ is the usual composition of~{\kalg} homomorphisms.
+    \item
+      For a~{\kalg}~$A$ the category~$\Modl{A}$\index{category!of $A$-modules} of left~{\modules{$A$}}:
+      The objects of~$\Modl{A}$ are given by
+      \[
+          \Ob(\Modl{A})
+        = \{
+            \text{left~{\modules{$A$}}}
+          \} \,,
+      \]
+      and for any two left~{\modules{$A$}}~$M$ and~$N$ the morphism set~$(\Modl{A})(M,N)$ is given by
+      \[
+          (\Modl{A})(M,N)
+        = \left\{
+            \text{homomorphisms of left~{\modules{$A$}}~$f \colon M \to N$}
+          \right\} \,.
+      \]
+      The composition of morphisms in~$\Modl{A}$ is the usual composition of module homomorphisms.
+      
+      The category~$\Modr{A}$ of right~{\modules{$A$}} is defined analogous.
+    \item
+      The category~$\Top$\index{category!of topological spaces} of topological spaces:
+      The objects of~$\Top$ are given by
+      \[
+          \Ob(\Top)
+        = \{
+            \text{topological spaces}
+          \} \,,
+      \]
+      and for any two topological spaces~$X$ and~$Y$ the morphism set~$\Top(X,Y)$ is given by
+      \[
+          \Top(X,Y)
+        = \{
+            \text{continuous maps~$f \colon X \to Y$}
+          \} \,.
+      \]
+      The composition of morphisms in~$\Top$ is the usual composition of continuous maps.
+    \item
+      Let~$G$ be a group.
+      We can then define a category~$\Gcat$ which consists of a single object~$\Ob(\Gcat) = \{ \ast \}$, the single morphism set~$\Gcat(\ast,\ast) = G$, and for which the composition of morphisms is the multiplication of~$G$, i.e.\ the composition is given as
+      \[
+                  g \circ h
+        \defined  gh
+      \]
+      for all~$g, h \in \Gcat(\ast,\ast) = G$.
+      One may pictorially represent the category~$\Gcat$ as follows:
+      \[
+        \begin{tikzcd}
+          \ast
+          \arrow[out=30,in=110,loop]{}[above right, near start]{G}
+          \arrow[out=150,in=230,loop,looseness=6.5]
+          \arrow[out=270,in=350,loop]
+        \end{tikzcd}
+      \]
+    \item
+      Let~$Q$ be a quiver.
+      Its \emph{category of paths}\index{category!of paths}~$\Path(Q)$, is defined as follows:%
+      \footnote{In the lecture, the notation~$Q_*$ is used for the category of paths in~$Q$.}
+      The objects of~$\Path(Q)$ are the vertices of~$Q$, hence
+      \[
+          \Ob(\Path(Q))
+        = Q_0 \,,
+      \]
+      and for any two vertices~$i$ and~$j$ in~$Q$ the morphism set~$\Path(Q)(i,j)$ is given by
+      \[
+          \Path(Q)(i,j)
+        = \{
+            \text{paths from~$i$ to~$j$ in~$Q$}
+          \} \,.
+      \]
+      The composition of morphisms in~$\Path(Q)$ is given by concatenation of paths.
+      This gives a category because concatenation of paths is associative, and for every~$i \in Q_0$ the lazy path~$\varepsilon_i \in \Path(Q)(i,i)$ acts as the identity of the object~$i$.
+  \end{enumerate}
+\end{example}
+
+
+\begin{definition}
+  Let~$\Ccat$ be a category.
+  The \emph{opposite category}\index{opposite!category}~$\Ccat^\op$ results from~$\Ccat$ by formally reversing the direction of all morphisms:
+  The objects of~$\Ccat^\op$ are given by
+  \[
+      \Ob(\Ccat^\op)
+    = \Ob(\Ccat) \,,
+  \]
+  for any two objects~$X, Y \in \Ob(\Ccat^\op)$ the morphisms set~$\Ccat^\op(X,Y)$ is given by
+  \[
+      \Ccat^\op(X,Y)
+    = \Ccat(Y,X) \,.
+  \]
+  The composition of any two morphisms~$f \colon X \to Y$ and~$g \colon Y \to Z$ in~$\Ccat^\op$ is given by
+  \[
+      g \circ_{\Ccat^\op} f
+    = f \circ_{\Ccat} g \,.
+  \]
+\end{definition}
+
+
+
+
+
+\section{Functors}
+
+
+\begin{definition}
+  Let~$\Ccat$ and~$\Dcat$ be categories.
+  A \emph{functor}\index{functor}~$F \colon \Ccat \to \Dcat$ consists of the following data:
+  \begin{itemize}
+    \item
+      A map (of classes)~$F \colon \Ob(\Ccat) \to \Ob(\Dcat)$, $X \mapsto F(X)$.
+    \item
+      For any two objects~$X$ and~$Y$ of $\Ccat$ a map
+      \[
+                \Ccat(X, Y)
+        \to     \Dcat(F(X), F(Y)) \,,
+        \quad   f
+        \mapsto F(f) \,.
+      \]
+  \end{itemize}
+  These data are subject to the following conditions:
+  \begin{enumerate}[label=(F\arabic*)]
+    \item
+      It holds for every object~$X$ of~$\Ccat$ that~$F(\id_X) = \id_{F(X)}$.
+    \item
+      It holds for any two composable morphisms~$f \colon X \to Y$ and~$g \colon Y \to Z$ in~$\Ccat$ that
+      \[
+          F(g \circ f)
+        = F(g) \circ F(f) \,.
+      \]
+  \end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+  What we call a \enquote{functor} is sometimes called a \enquote{covariant functor}\index{functor!covariant}\index{covariant functor|see {functor}}.
+  A \emph{contravariant functor}~$G \colon \Ccat \to \Dcat$\index{functor!contravariant}\index{contravariant functor|see {functor}} is a (covariant) functor~$G \colon \Ccat^\op \to \Dcat$.
+  This means in terms of the category~$\Ccat$ that~$G$ assigns to every object~$X \in \Ob(\Ccat)$ an object~$G(X) \in \Dcat$ and to every morphism~$f \colon X \to Y$ in~$\Ccat$ a morphism~$G(f) \colon G(Y) \to G(X)$ in~$\Dcat$, in such a way that
+  \begin{itemize}
+    \item
+      $G(\id_X) = \id_{G(X)}$ for every~$X \in \Ccat$, and
+    \item
+      $G(g \circ f) = G(f) \circ G(g)$ for every pair of composable morphisms~$f \colon X \to Y$ and~$g \colon Y \to Z$ in~$\Ccat$.
+  \end{itemize}
+\end{remark}
+
+
+\begin{remark}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Let~$\Ccat$ be a category.
+      The \emph{identity functor}~$\Id_{\Ccat} \colon \Ccat \to \Ccat$\index{identity!functor} is given by
+      \[
+                \Id_\Ccat
+        \colon  \left\{
+                  \begin{aligned}
+                    X &\mapsto  X \,, \\
+                    f &\mapsto  f \,.
+                  \end{aligned}
+                \right.
+      \]
+    \item
+      If~$\Ccat$,~$\Dcat$ and~$\Ecat$ are categories and~$F \colon \Ccat \to \Dcat$ and~$G \colon \Dcat \to \Ecat$ are functors, then they can be composed to a functor~$G \circ F \colon \Ccat \to \Ecat$ given by
+      \[
+                (F \circ G)
+        \colon  \left\{
+                  \begin{aligned}
+                    X &\mapsto  G(F(X)) \,, \\
+                    f &\mapsto  G(F(f)) \,.
+                  \end{aligned}
+                \right.
+      \]
+  \end{enumerate}
+\end{remark}
+
+
+\begin{example}
+  \label{examples for functors}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      We can define two functors which assign to each set~$X$ its power set:
+      
+      We define a functor~$P_* \colon \Set \to \Set$ which assigns to each set~$X$ its power set~$\power(X)$, and to each map~$f \colon X \to Y$ the induced map
+      \[
+                P_*(f)
+        \colon  \power(X)
+        \to     \power(Y) \,,
+        \quad   A
+        \mapsto f(A) \,.
+      \]
+      We can also define a (contravariant) functor~$P^* \colon \Set^\op \to \Set$ which again assigns to each set~$X$ its power set~$\power(X)$, but to each map~$f \colon X \to Y$ the induced map
+      \[
+                P^*(f)
+        \colon  \power(Y)
+        \to     \power(X) \,,
+        \quad   B
+        \mapsto f^{-1}(B) \,.
+      \]
+    \item
+      We have two functors between the categories~$\kAlg$ and~$\Group$:
+      
+      In the one direction there exists a functor~$(-)^\times \colon \kAlg \to \Group$ which assigns to each~{\kalg}~$A$ its group of units~$A^\times$ and to every homomorphism of~{\kalgs}~$f \colon A \to B$ its induces group homomorphism~$f^\times \colon A^\times \to B^\times$.
+      
+      In the other direction there exists a functor~$\kf[-] \colon \Group \to \kAlg$ which assigns to each group~$G$ its group algebra~$\kf[G]$, and to each group homomorphism~$\varphi \colon G \to H$ the induced homorphism of~{\kalgs}~$\kf[\varphi] \colon \kf[G] \to \kf[H]$, i.e.\ the unique homomorphism of~{\kalgs}~$\kf[G] \to \kf[H]$ which makes the diagram
+      \[
+        \begin{tikzcd}
+            G
+            \arrow{r}[above]{\varphi}
+            \arrow[hook]{d}
+          & H
+            \arrow[hook]{d}
+          \\
+            \kf[G]
+            \arrow{r}[above]{\kf[\varphi]}
+          & \kf[H]
+        \end{tikzcd}
+      \]
+      commute.
+      (Recall from the first exercise sheet that for every~{\kalg}~$A$, every group homomorphism~$G \to A^\times$ extends uniquely to a homomorphism of~{\kalgs}~$\kf[G] \to A$.
+      By applying this to the composition~$G \to H \inclusion k[H]^\times$ it follows that there exists a unique homomorphism~$\kf[G] \to \kf[H]$ which makes the above diagram commute.)
+    \item
+      The functor
+      \[
+                V
+        \colon  \Group
+        \to     \Set \,,
+        \quad   \left\{
+                  \begin{aligned}
+                              G
+                    &\mapsto  (\text{$G$ as a set}) \,,
+                    \\
+                              f
+                    &\mapsto  f
+                  \end{aligned}
+                \right.
+      \]
+      is the \emph{forgetful functor}\index{forgetful functor}\index{functor!forgetful}.
+      More generally, we call every functor \emph{forgetful} if it forgets part of the structure.
+      We have for example forgetful functors~$\Top \to \Set$ and~$\Modl{A} \to \Modl{\kf}$, where~$A$ is a~{\kalg}.
+  \end{enumerate}
+\end{example}
+
+
+\begin{example}
+  Let~$\Ccat$ be a category.
+  \begin{enumerate}
+    \item
+      Every object~$X \in \Ob(\Ccat)$ gives rise to a functor
+      \[
+                h^X
+        \colon  \Ccat
+        \to     \Set \,,
+        \quad   \left\{
+                  \begin{aligned}
+                              Y
+                    &\mapsto  \Ccat(X,Y) \,,
+                    \\
+                              \left( Y \xlongto{f} Y' \right)
+                    &\mapsto  \left( \Ccat(X,Y) \xlongto{f_*} \Ccat(X,Y') \right) \,,
+                  \end{aligned}
+                \right.
+      \]
+      where the induced map~$f_* \colon \Ccat(X,Y) \to \Ccat(X,Y')$ is given by~$f_*(g) = f \circ g$ for every~$g \in \Ccat(X,Y)$.
+      The functor~$h^X$ is also denoted by~$\Ccat(X,-)$.
+    \item
+      Every object~$X \in \Ob(\Ccat)$ gives rise to a (contravariant) functor
+      \[
+                h_X
+        \colon  \Ccat^\op
+        \to     \Set \,,
+        \quad   \left\{
+                  \begin{aligned}
+                              Y
+                    &\mapsto  \Ccat(Y,X) \,,
+                    \\
+                              \left( Y \xlongto{f} Y' \right)
+                    &\mapsto  \left( \Ccat(Y',X) \xlongto{f^*} \Ccat(Y,X) \right) \,,
+                  \end{aligned}
+                \right.
+      \]
+      where the induced map~$f^* \colon \Ccat(Y',X) \to \Ccat(Y,X)$ is given by~$f^*(g) = g \circ f$ for every~$g \in \Ccat(Y',X)$.
+      The functor~$h_X$ is also denoted by~$\Ccat(-,X)$.
+  \end{enumerate}
+\end{example}
+
+
+\begin{definition}[label=properties of functors]
+  Let~$F \colon \Ccat \to \Dcat$ be a functor.
+  \begin{enumerate}
+    \item
+      The functor~$F$ is \emph{faithful}\index{faithful}\index{functor!faithful} if the induced map~$\Ccat(X,Y) \to \Dcat(F(X),F(Y))$,~$f \mapsto F(f)$ is injective for all~$X, Y \in \Ccat$.
+    \item
+      The functor~$F$ is \emph{full}\index{full}\index{functor!full} if the induced map~$\Ccat(X,Y) \to \Dcat(F(X),F(Y))$,~$f \mapsto F(f)$ is surjective for all~$X, Y \in \Ccat$.
+    \item
+      The functor~$F$ is \emph{fully faithful}\index{fully faithful}\index{functor!fully faithful} if it is both full and faithful, i.e.\ if the induced map~$\Ccat(X,Y) \to \Dcat(F(X),F(Y))$,~$f \mapsto F(f)$ is injective for all~$X, Y \in \Ccat$.
+  \end{enumerate}
+\end{definition}
+
+
+
+
+
+\section{Isomorphisms}
+
+
+\begin{definition}
+  A morphism~$f \colon X \to Y$ in a category~$\Ccat$ is an \emph{isomorphism}\index{isomorphism!in a category} if there exist a morphism~$g \colon Y \to X$ with~$g \circ f = \id_X$ and~$f \circ g = \id_Y$.
+\end{definition}
+
+
+\begin{definition}[continues=properties of functors]
+  \leavevmode
+  \begin{enumerate}[start=4]
+    \item
+      The functor~$F$ is \emph{dense}\index{dense}\index{functor!dense} or \emph{essentially surjective}\index{essentially surjective}\index{functor!essentially surjective} if there exist for every object~$Y \in \Ob(\Dcat)$ some object~$X \in \Ob(\Ccat)$ with~$Y \cong F(X)$.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+  Let~$\Ccat$ and~$\Dcat$ be categories.
+  \begin{enumerate}
+    \item
+      If~$f \colon X \to Y$ is an isomorphism in~$\Ccat$ the the morphism~$g \colon Y \to X$ with~$g \circ f = \id_X$ and~$f \circ g = \id_Y$ is uniquely determined.
+      The morphisms~$g$ is the \emph{inverse}\index{inverse}\index{morphism!inverse} of~$f$, and is denoted by~$f^{-1}$.
+    \item
+      For every~$X \in \Ob(\Ccat)$ its identity~$\id_X \colon X \to X$ is an isomorphism.
+    \item
+      If~$F \colon \Ccat \to \Dcat$ is a functor and~$f$ is an isomorphism in~$\Ccat$ then~$F(f)$ is an isomorphism in~$\Dcat$, and it holds that~$F(f)^{-1} = F(f^{-1})$.
+  \end{enumerate}
+\end{remark}
+
+
+\begin{example}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      In the categories~$\Set$,~$\Group$,~$\Modl{A}$, \dots, a morphism~$f$ is an isomorphism if and only if it is bijective (as a \dash{set}{theoretic} map).
+    \item
+      In the category~$\Top$, the isomorphisms are precisely the homeomorphisms, i.e.\ the continuous maps which are both bijective and open.
+    \item
+      In the path category~$\Path(Q)$ of a quiver~$Q$ the isomorphisms are precisely the lazy paths~$\varepsilon_i = \id_i$ for~$i \in Q_0 = \Ob(\Path(Q))$.
+  \end{enumerate}
+\end{example}
+
+
+
+
+
+\section{Natural Transformations}
+
+
+\begin{definition}
+  Let~$\Ccat$,~$\Dcat$ be two categories and let~$F, G \colon \Ccat \to \Dcat$ be two functors between them.
+  A \emph{natural transformation}\index{natural transformation}~$\eta \colon F \to G$ is a family~$\eta = (\eta_X)_{X \in \Ob(\Ccat)}$ of morphisms~$\eta_X \colon F(X) \to G(X)$ such that for every morphism~$f \colon X \to Y$ in~$\Ccat$ the following diagram (in~$\Dcat$) commutes:
+  \[
+    \begin{tikzcd}
+        F(X)
+        \arrow{r}[above]{\eta_X}
+        \arrow{d}[left]{F(f)}
+      & G(X)
+        \arrow{d}[right]{G(f)}
+      \\
+        F(Y)
+        \arrow{r}[above]{\eta_Y}
+      & G(Y)
+    \end{tikzcd}
+  \]
+\end{definition}
+
+
+\begin{remark}
+  Let~$\Ccat$ and~$\Dcat$ be categories.
+  \begin{enumerate}
+    \item
+      Let~$F, G, H \colon \Ccat \to \Dcat$ be functors and let~$\eta \colon F \to G$ and~$\zeta \colon G \to H$ be natural transformations.
+      Their composition~$\zeta \circ \eta$ is the natural transformation~$F \to H$ which is given by~$(\zeta \circ \eta)_X \defined \zeta_X \circ \eta_X \colon F(X) \to H(X)$ for every~$X \in \Ob(\Ccat)$.
+      To see that this is indeed a natural transfomation we consider the following diagram:
+      \[
+        \begin{tikzcd}
+            F(X)
+            \arrow[bend left]{rr}[above]{(\zeta \circ \eta)_X}
+            \arrow{r}[above]{\eta_X}
+            \arrow{d}[left]{F(f)}
+          & G(X)
+            \arrow{r}[above]{\zeta_X}
+            \arrow{d}[left]{G(f)}
+          & H(X)
+            \arrow{d}[right]{H(f)}
+          \\
+            F(Y)
+            \arrow{r}[above]{\eta_Y}
+            \arrow[bend right]{rr}[below]{(\zeta \circ \eta)_Y}
+          & G(Y)
+            \arrow{r}[above]{\zeta_Y}
+          & H(Y)
+        \end{tikzcd}
+      \]
+      In this diagram the left and right squares commute because~$\eta$ and~$\zeta$ are natural trasformations, and the upper and lower triangles commute by definition of~$\zeta \circ \eta$.
+      It follows that the outer square commutes, which shows that~$\zeta \circ \eta$ is again a natural transformation.
+    \item
+      For any functor~$F \colon \Ccat \to \Dcat$ its \emph{identical natural transformation}\index{identical natural transformation}\index{natural transformation!identical}~$\id_F \colon F \to F$ is given by~$(\id_F)_X = \id_{F(X)}$ for every~$X \in \Ob(\Ccat)$.
+      This is indeed a natural transformation, and it holds for every other functor~$G \colon \Ccat \to \Dcat$ that~$\eta \circ \id_F = \eta$ for every natural transformation~$\eta \colon F \to G$, and also~$\id_F \circ \zeta = \zeta$ for every natural transformation~$\zeta \colon G \to F$.
+  \end{enumerate}
+\end{remark}
+
+
+\begin{example}
+  Consider the two functors
+  \[
+              G
+    \defined  (-)^\times
+    \colon    \kAlg
+    \to       \Group
+    \quad\text{and}\quad
+              F
+    \defined  k[-]
+    \colon    \Group
+    \to       \kAlg \,.
+  \]
+  We examine how the compositions~$F \circ G \colon \Group \to \Group$ and~$G \circ F \colon \kAlg \to \kAlg$ relate to the identity functors~$\id_{\Group}$ and~$\id_{\kAlg}$.
+  
+  Let us first examine the composition~$G \circ F$:
+  This functor is on objects given by
+  \[
+      (G \circ F)(\Gamma)
+    = \kf[\Gamma]^\times
+  \]
+  for every groups~$\Gamma$.
+  If~$\varphi \colon \Gamma \to \Delta$ is a homomorphism of groups, then the group homomorphism
+  \[
+            (G \circ F)(\varphi)
+    =       \kf[\varphi]^\times
+    \colon  \kf[\Gamma]^\times
+    \to     \kf[\Delta]^\times
+  \]
+  is the restriction of the induced homomorphism of~{\kalgs}~$\kf[\varphi] \colon \kf[\Gamma] \to \kf[\Delta]$ to the unit groups.
+  For every group~$\Gamma$ we have a group homomorphism
+  \[
+            \eta_\Gamma
+    \colon  \Gamma
+    \to     \kf[\Gamma]^\times \,,
+    \quad   \gamma
+    \mapsto [\gamma] \,.
+  \]
+  The resulting family~$\eta \defined (\eta_X)_{X \in \Ob(\Group)}$ is a natural transformation~$\eta \colon \Id_{\Group} \to G \circ F$, i.e.\ the diagram
+  \[
+    \begin{tikzcd}[column sep = large]
+        \Gamma
+        \arrow{r}[above]{\varphi}
+        \arrow{d}[left]{\eta_\Gamma}
+      & \Delta
+        \arrow{d}[right]{\eta_\Delta}
+      \\
+        \kf[\Gamma]^\times
+        \arrow{r}[above]{\kf[\varphi]^\times}
+      & \kf[\Delta]^\times
+    \end{tikzcd}
+  \]
+  commutes for every group homomorphism~$f \colon \Gamma \to \Delta$.
+  This holds because
+  \[
+      \kf[\varphi]^\times( \eta_\Gamma( \gamma ) )
+    = \kf[\varphi]^\times( [\gamma] )
+    = [\varphi(\gamma)]
+    = \eta_\Delta( \varphi( \gamma ) )
+  \]
+  for every~$\gamma \in \Gamma$.
+  
+  The functor~$F \circ G$ is given on objects by
+  \[
+      (F \circ G)(A)
+    = \kf[A^\times]
+  \]
+  for every~{\kalg}~$A$.
+  If~$f \colon A \to B$ is a homomorphism of~{\kalgs} then the induced~{\kalg} homomorphism~$(F \circ G)(f)$ is given by
+  \[
+            (F \circ G)(f)
+    =       \kf[f^\times]
+    \colon  \kf[A^\times]
+    \to     \kf[B^\times] \,,
+    \quad   \sum_{a \in A^\times} \lambda_a [a]
+    \mapsto \sum_{a \in A^\times} \lambda_a [f(a)] \,.
+  \]
+  For every~{\kalg}~$A$ the identity~$A^\times \to A^\times$ corresponds (as seen on the first exercise sheet) to a homomorphism of~{\kalg}~$\varepsilon_A \colon \kf[A^\times] \to A$, which is given by
+  \[
+            \varepsilon_A
+    \colon  \kf[A^\times]
+    \to     A \,,
+    \quad   \sum_{a \in A^\times} \lambda_a [a]
+    \mapsto \sum_{a \in A^\times} \lambda_a a \,.
+  \]
+  The resulting family~$\varepsilon \defined (\varepsilon_A)_{A \in \Ob(\kAlg)}$ is a natural transformation~$F \circ G \to \Id_{\kAlg}$, i.e.\ the diagram
+  \[
+    \begin{tikzcd}[column sep = large]
+        \kf[A^\times]
+        \arrow{r}[above]{\kf[f^\times]}
+        \arrow{d}[left]{\varepsilon_A}
+      & \kf[B^\times]
+        \arrow{d}[right]{\varepsilon_B}
+      \\
+        A
+        \arrow{r}[above]{f}
+      & B
+    \end{tikzcd}
+  \]
+  commutes for every homomorphism of~{\kalgs}~$f \colon A \to B$.
+  This holds because
+  \begin{align*}
+        \varepsilon_B\left( \kf[f^\times]\left( \sum_{a \in A^\times} \lambda_a [a] \right) \right)
+    &=  \varepsilon_B\left( \sum_{a \in A^\times} \lambda_a [f(a)] \right)
+     =  \sum_{a \in A^\times} \lambda_a f(a)  \\
+    &=  f\left( \sum_{a \in A^\times} \lambda_a a \right)
+     =  f\left( \varepsilon_A\left( \sum_{a \in A^\times} \lambda_a [a] \right) \right)
+  \end{align*}
+  for every~$\sum_{a \in A^\times} \lambda_a [a] \in \kf[A^\times]$.
+  
+  We will later see that the functors~$F \colon \Group \to \kAlg$ and~$G \colon \kAlg \to \Group$ form an \emph{adjunction}, and how this can be expressed via the natural transformations~$\eta \colon \Id_{\Group} \to G \circ F$ and~$\varepsilon \colon F \circ G \to \Id_{\kAlg}$.
+\end{example}
+
+
+
+
+
+\lecturend{5}
+
+
+
+
+
+
+
+
+
+
+

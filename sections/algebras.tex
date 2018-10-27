@@ -126,7 +126,7 @@
          \defined \kf^{(G)}
         &\defined \text{free~{\module{$\kf$}} with basis~$G$}  \\
         &=        \left\{
-                    \sum_{g \in G} a_g g
+                    \sum_{g \in G} a_g [g]
                   \suchthat*
                     \begin{tabular}{@{}c@{}}
                       $a_g \in \kf$ for every~$g \in G$, \\
@@ -134,17 +134,17 @@
                     \end{tabular}
                   \right\} \,.
       \end{align*}
-      The multiplication of two elements~$x, y \in \kf[G]$ that are given by linear combinations~$x = \sum_{g \in G} a_g g$ and~$y = \sum_{g \in G} b_g g$ is given by
+      The multiplication of two elements~$x, y \in \kf[G]$ that are given by linear combinations~$x = \sum_{g \in G} a_g [g]$ and~$y = \sum_{g \in G} b_g [g]$ is given by
       \[
           x \cdot y
-        = \sum_{g, h \in G} a_g b_h (gh)
+        = \sum_{g, h \in G} a_g b_h [gh]
         = \sum_{g \in G}
           \left(
             \sum_{\substack{h, h' \in G \\ h h' = g}} a_{h} b_{h'}
           \right)
-          g \,.
+          [g] \,.
       \]
-      This multiplication is associative and {\kbilin}, and the unit of~$\kf[G]$ is given by~$1_{\kf[G]} = e$ (where~$e$ denotes the neutral element of~$G$).
+      This multiplication is associative and {\kbilin}, and the unit of~$\kf[G]$ is given by~$1_{\kf[G]} = [e]$ (where~$[e]$ denotes the neutral element of~$G$).
   \end{enumerate}
 \end{example}
 

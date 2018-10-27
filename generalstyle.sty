@@ -3,9 +3,11 @@
 \usepackage{gitinfo2}   % git information on the title page
 \usepackage[backend=biber,style=alphabetic, dateabbrev=false, urldate=long]{biblatex}   %for bibliography
 \usepackage{amsmath, amssymb, amsthm, mathtools}      % general math stuff
+\usepackage{thmtools}
 \usepackage{extarrows}  % xlongrightarrow
 \usepackage{fontspec}   % for font stuff
 \usepackage[british]{babel}
+  \usepackage{tikzpagenodes}  % to include an image at the right position
 \usepackage{tikz-cd}    % commutative diagrams
 \usetikzlibrary{positioning}
 \usetikzlibrary{arrows,arrows.meta}
@@ -82,19 +84,33 @@
 
 % theorem like environments
 \theoremstyle{definition}
-\newcounter{everything}[chapter]
-\newtheorem{example}[everything]{Example}
-\newtheorem*{claim}{Claim}
-\newtheorem*{conventions}{Conventions}
-\newtheorem{corollary}[everything]{Corollary}
-\newtheorem{definition}[everything]{Definition}
-\newtheorem{lemma}[everything]{Lemma}
-\newtheorem*{notation*}{Notation}
-\newtheorem{proposition}[everything]{Proposition}
-\newtheorem{remark}[everything]{Remark}
-\newtheorem*{remark*}{Remark}
-\newtheorem{remarkdefinition}[everything]{Remark\nobreakdash-Definition}
-\newtheorem{theorem}[everything]{Theorem}
+% \newcounter{everything}[chapter]
+% \newtheorem{example}[everything]{Example}
+% \newtheorem*{claim}{Claim}
+% \newtheorem*{conventions}{Conventions}
+% \newtheorem{corollary}[everything]{Corollary}
+% \newtheorem{definition}[everything]{Definition}
+% \newtheorem{lemma}[everything]{Lemma}
+% \newtheorem*{notation*}{Notation}
+% \newtheorem{proposition}[everything]{Proposition}
+% \newtheorem{remark}[everything]{Remark}
+% \newtheorem*{remark*}{Remark}
+% \newtheorem{remarkdefinition}[everything]{Remark\nobreakdash-Definition}
+% \newtheorem{theorem}[everything]{Theorem}
+
+\declaretheorem[numberwithin=chapter]{everything}
+\declaretheorem[numbered=no]{conventions}
+\declaretheorem[sibling=everything]{corollary}
+\declaretheorem[sibling=everything]{definition}
+\declaretheorem[sibling=everything]{example}
+\declaretheorem[sibling=everything]{lemma}
+\declaretheorem[numbered=no,name=Notation]{notation*}
+\declaretheorem[sibling=everything]{proposition}
+\declaretheorem[sibling=everything]{remark}
+\declaretheorem[numbered=no,name=Remark]{remark*}
+\declaretheorem[sibling=everything,name=Remark-Definition]{remarkdefinition}
+\declaretheorem[sibling=everything]{theorem}
+\renewcommand\thmcontinues[1]{Continued}
 
 
 % reset equation counters between sections
@@ -180,10 +196,25 @@
 
 
 % categories
+% generic macros
 \newcommand{\catname}[1]{\mathbf{#1}}
+\newcommand{\gencat}[1]{\mathcal{#1}}
+% fixed categories
 \newcommand{\Ab}{\catname{Ab}}
-\newcommand{\cat}[1]{\mathcal{#1}}
-\newcommand{\Ccat}{\cat{C}}
+\newcommand{\Group}{\catname{Grp}}
+\newcommand{\Mod}{\catname{Mod}}
+\newcommand{\kAlg}{\text{$\kf$-$\catname{Alg}$}}
+\newcommand{\Path}{\catname{Path}}
+\newcommand{\Set}{\catname{Set}}
+\newcommand{\Top}{\catname{Top}}
+% generaic categories
+\newcommand{\Ccat}{\gencat{C}}
+\newcommand{\Dcat}{\gencat{D}}
+\newcommand{\Ecat}{\gencat{E}}
+\newcommand{\Gcat}{\gencat{G}}
+% more complicated constructions
+\newcommand{\Modl}[1]{\text{$#1$-$\Mod$}}
+\newcommand{\Modr}[1]{\text{$\Mod$-$#1$}}
 
 
 % spaces and sets
@@ -200,10 +231,11 @@
 \DeclareMathOperator{\ringcenter}{Z}
 
 
-
-% functions
-\newcommand{\id}{\mathrm{id}}
+% functions and functors
 \DeclareMathOperator{\ringchar}{char}
+\newcommand{\Id}{\mathrm{Id}}
+\newcommand{\id}{\mathrm{id}}
+\DeclareMathOperator{\power}{P}
 
 
 % operations
