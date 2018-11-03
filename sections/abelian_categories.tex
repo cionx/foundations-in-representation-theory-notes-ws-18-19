@@ -1,0 +1,163 @@
+\chapter{Abelian Categories}
+
+
+
+
+
+\section{Monomorphisms and Epimorphisms}
+
+
+\begin{definition}
+  Let~$f \colon X \to Y$ be a morphism in a category~$\Ccat$.
+  \begin{enumerate}
+    \item
+      The morphism~$f$ is a \emph{monomorphism}\index{monomorphism}\index{morphism!mono-} if it follows for every pair of parallel morphisms~$u, v \colon Z \to X$ from~$f \circ u = f \circ v$ that already~$u = v$.
+    \item
+      The morphism~$f$ is an \emph{epimorphism}\index{epimorphism}\index{morphism!epi-} if it follows for every pair of parallel morphisms~$u, v \colon Y \to Z$ from~$u \circ f = v \circ f$ that already~$u = v$.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+  Let~$f \colon X \to Y$ and~$g \colon Y \to Z$ be composable morphisms in a category~$\Ccat$.
+  \begin{enumerate}
+    \item
+      If~$f$ is an isomorphism then it is both a monomorphism and an epimorphism.
+    \item
+      If both~$f$ and~$g$ are monomorphisms then their composition~$g \circ f$ is again a monomorphism.
+      If both~$f$ and~$g$ are epimorphisms then their composition~$g \circ f$ is again an epimorphism.
+    \item
+      If the composition~$g \circ f$ is a monomorphism then~$f$ is a monomorphism.
+      If the composition~$g \circ f$ is an epimorphism then~$g$ is an epimorphism.
+    \item
+      The morphism~$f$ is a monomorphism (in~$\Ccat$) if and only if it is an epimorphism in~$\Ccat^\op$.
+  \end{enumerate}
+\end{remark}
+
+
+\begin{example}
+  We give examples of monomorphisms.
+  \begin{enumerate}
+    \item
+      In the category~$\Set$ the monomorphisms are precisely the injective maps.
+      The same holds for the categories~$\Modl{A}$,~$\Group$,~$\Ring$,~$\CommRing$,~$\kAlg$,~$\kCommAlg$,~$\Top$.
+    \item
+      If~$Q$ is a quiver then in its path category~$\Path(Q)$ every morphism is a monomorphism:
+      Let~$p = \alpha_\ell \dotsm \alpha_1$ be a morphism in~$Q$, i.e.\ a path in~$Q$.
+      If~$u = u_r \dotsm u_1$ and~$v = v_s \dotsm v_1$ are morphisms in~$\Path(Q)$, i.e.\ paths in~$Q$, with~$s(u) = s(v)$ and~$t(u) = t(v) = s(p)$ then the equality~$p \circ u = p \circ v$ means that
+      \[
+          \alpha_\ell \dotsm \alpha_1 u_r \dotsm u_1
+        = \alpha_\ell \dotsm \alpha_1 v_s \dotsm v_1 \,.
+      \]
+      It then follows that~$r = s$ and~$u_i = v_i$ for all~$i = 1, \dotsc, r$.
+    \item
+      Let~$\Conn_*$ be the category of pointed, connected topological spaces:
+      The objects of~$\Conn_*$ are pairs~$(X, x_0)$ consisting of a connected topological space~$X$ and a base point~$x_0 \in X$.
+      A morphism~$f \colon (X, x_0) \to (Y, y_0)$ is a continuous map~$f \colon X \to Y$ with~$f(x_0) = y_0$.
+      The morphism~$f \colon (\Real, 0) \to (S^1, 1)$ with~$f(x) = e^{2 \pi i x}$ is then a monomorphism.
+  \end{enumerate}
+\end{example}
+
+
+\begin{example}
+  We give examples for epimorphisms.
+  \begin{enumerate}
+    \item
+      In the category~$\Set$ a morphism is an epimorphism if and only if it surjective.
+    \item
+      If~$Q$ is a quiver then in its path category~$\Path(Q)$ every morphism in an epimorphism.
+    \item
+      Let~$\Haus$ be the category of Hausdorff topological spaces (where morphisms are just continuous maps).
+      A morphism~$f \colon X \to Y$ in~$\Haus$ is an epimorphism if and only if it has dense image.
+    \item
+      Let~$A$ be a commutative ring and let~$S \subseteq A$ be a multiplicative set.
+      Then the canonical map~$f \colon A \to S^{-1} A$,~$a \mapsto a/1$ is an epimorphism:
+      If~$u,v \colon S^{-1} A \to B$ are two ring homomorphisms with~$u \circ f = v \circ f$ then~$u(a/1) = v(a/1)$ for every~$a \in A$.
+      It then follows for every fraction~$a/s \in S^{-1} A$ that
+      \[
+          u\left( \frac{a}{s} \right)
+        = u\left( \frac{a}{1} \right) u\left( \frac{s}{1} \right)^{-1}
+        = v\left( \frac{a}{1} \right) v\left( \frac{s}{1} \right)^{-1}
+        = v\left( \frac{a}{s} \right) \,,
+      \]
+      which then shows that~$u = v$.
+  \end{enumerate}
+\end{example}
+
+
+
+
+
+\section{Special Objects}
+
+
+\begin{definition}
+  Let~$X$ be an object in a category~$\Ccat$.
+  \begin{enumerate}
+    \item
+      The object~$X$ is \emph{initial}\index{initial object}\index{object!initial} if there exist for every object~$Y \in \Ob(\Ccat)$ a unique morphism~$X \to Y$ in~$\Ccat$.
+    \item
+      The object~$X$ is \emph{terminal}\index{terminal object}\index{object!terminal} or \emph{final}\index{final object}\index{object!final} if there exist for every object~$Y \in \Ob(\Ccat)$ a unique morphism~$Y \to X$ in~$\Ccat$.
+    \item
+      The object~$X$ is a \emph{zero object}\index{zero!object}\index{object!zero} if it is both initial and terminal.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+  Let~$\Ccat$ be a category.
+  \begin{enumerate}
+    \item
+      An object~$X$ of~$\Ccat$ is initial (in~$\Ccat$) if and only if it is terminal in~$\Ccat^\op$.
+    \item
+      Initial and terminal objects are unique up to unique isomorphisms (if they exist).
+    \item
+      If~$\Ccat$ admits a zero object then it is denoted by~$0 = 0_\Ccat$.
+  \end{enumerate}
+\end{remark}
+
+
+\begin{example}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      In the category~$\Set$, the empty set~$\emptyset$ is the unique initial object, and every \dash{one}{point} set~$\{\ast\}$ is a final object.
+    \item
+      In the category~$\Modl{A}$ the zero module~$0$ is the zero object.
+    \item
+      In the category~$\kAlg$ the~{\kalg}~$\kf$ is initial, while the zero algebra~$0$ is final.
+  \end{enumerate}
+\end{example}
+
+
+\begin{remarkdefinition}
+  Let~$\Ccat$ be a category which admits a zero object~$0$.
+  Then there exist for any two objects~$X, Y \in \Ob(\Ccat)$ a unique morphism~$0_{XY} \colon X \to Y$ which factors trough the zero object, i.e.\ which makes the triangle
+  \[
+    \begin{tikzcd}
+        X
+        \arrow{dr}
+        \arrow{rr}[above]{0_{XY}}
+      & {}
+      & Y
+      \\
+        {}
+      & 0
+        \arrow{ur}
+      & {}
+    \end{tikzcd}
+  \]
+  commute.
+  The morphism~$0_{XY}$ is the \emph{zero morphism}\index{zero!morphism}\index{morphism!zero} from~$X$ to~$Y$.
+\end{remarkdefinition}
+
+
+
+
+
+
+\lecturend{8}
+
+
+
+
