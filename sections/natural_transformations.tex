@@ -1,0 +1,353 @@
+\section{Natural Transformations}
+
+
+\begin{definition}
+  Let~$\Ccat$,~$\Dcat$ be two categories and let~$F, G \colon \Ccat \to \Dcat$ be two functors between them.
+  A \emph{natural transformation}\index{natural!transformation}~$\eta \colon F \to G$ is a family~$\eta = (\eta_X)_{X \in \Ob(\Ccat)}$ of morphisms~$\eta_X \colon F(X) \to G(X)$ such that for every morphism~$f \colon X \to Y$ in~$\Ccat$ the following diagram (in~$\Dcat$) commutes:
+  \[
+    \begin{tikzcd}
+        F(X)
+        \arrow{r}[above]{\eta_X}
+        \arrow{d}[left]{F(f)}
+      & G(X)
+        \arrow{d}[right]{G(f)}
+      \\
+        F(Y)
+        \arrow{r}[above]{\eta_Y}
+      & G(Y)
+    \end{tikzcd}
+  \]
+\end{definition}
+
+
+\begin{remark}
+  Let~$\Ccat$ and~$\Dcat$ be categories.
+  \begin{enumerate}
+    \item
+      Let~$F, G, H \colon \Ccat \to \Dcat$ be functors and let~$\eta \colon F \to G$ and~$\zeta \colon G \to H$ be natural transformations.
+      Their composition~$\zeta \circ \eta$ is the natural transformation~$F \to H$ which is given by~$(\zeta \circ \eta)_X \defined \zeta_X \circ \eta_X \colon F(X) \to H(X)$ for every~$X \in \Ob(\Ccat)$.
+      To see that this is indeed a natural transfomation we consider the following diagram:
+      \[
+        \begin{tikzcd}
+            F(X)
+            \arrow[bend left]{rr}[above]{(\zeta \circ \eta)_X}
+            \arrow{r}[above]{\eta_X}
+            \arrow{d}[left]{F(f)}
+          & G(X)
+            \arrow{r}[above]{\zeta_X}
+            \arrow{d}[left]{G(f)}
+          & H(X)
+            \arrow{d}[right]{H(f)}
+          \\
+            F(Y)
+            \arrow{r}[above]{\eta_Y}
+            \arrow[bend right]{rr}[below]{(\zeta \circ \eta)_Y}
+          & G(Y)
+            \arrow{r}[above]{\zeta_Y}
+          & H(Y)
+        \end{tikzcd}
+      \]
+      In this diagram the left and right squares commute because~$\eta$ and~$\zeta$ are natural trasformations, and the upper and lower triangles commute by definition of~$\zeta \circ \eta$.
+      It follows that the outer square commutes, which shows that~$\zeta \circ \eta$ is again a natural transformation.
+    \item
+      For any functor~$F \colon \Ccat \to \Dcat$ its \emph{identical natural transformation}\index{identical natural transformation}\index{natural transformation!identical}~$\id_F \colon F \to F$ is given by~$(\id_F)_X = \id_{F(X)}$ for every~$X \in \Ob(\Ccat)$.
+      This is indeed a natural transformation, and it holds for every other functor~$G \colon \Ccat \to \Dcat$ that~$\eta \circ \id_F = \eta$ for every natural transformation~$\eta \colon F \to G$, and also~$\id_F \circ \zeta = \zeta$ for every natural transformation~$\zeta \colon G \to F$.
+  \end{enumerate}
+\end{remark}
+
+
+\begin{example}
+  Consider the two functors
+  \[
+              G
+    \defined  (-)^\times
+    \colon    \kAlg
+    \to       \Group
+    \quad\text{and}\quad
+              F
+    \defined  k[-]
+    \colon    \Group
+    \to       \kAlg \,.
+  \]
+  We examine how the compositions~$F \circ G \colon \Group \to \Group$ and~$G \circ F \colon \kAlg \to \kAlg$ relate to the identity functors~$\id_{\Group}$ and~$\id_{\kAlg}$.
+  
+  Let us first examine the composition~$G \circ F$:
+  This functor is on objects given by
+  \[
+      (G \circ F)(\Gamma)
+    = \kf[\Gamma]^\times
+  \]
+  for every groups~$\Gamma$.
+  If~$\varphi \colon \Gamma \to \Delta$ is a homomorphism of groups, then the group homomorphism
+  \[
+            (G \circ F)(\varphi)
+    =       \kf[\varphi]^\times
+    \colon  \kf[\Gamma]^\times
+    \to     \kf[\Delta]^\times
+  \]
+  is the restriction of the induced homomorphism of~{\kalgs}~$\kf[\varphi] \colon \kf[\Gamma] \to \kf[\Delta]$ to the unit groups.
+  For every group~$\Gamma$ we have a group homomorphism
+  \[
+            \eta_\Gamma
+    \colon  \Gamma
+    \to     \kf[\Gamma]^\times \,,
+    \quad   \gamma
+    \mapsto [\gamma] \,.
+  \]
+  The resulting family~$\eta \defined (\eta_X)_{X \in \Ob(\Group)}$ is a natural transformation~$\eta \colon \Id_{\Group} \to G \circ F$, i.e.\ the diagram
+  \[
+    \begin{tikzcd}[column sep = large]
+        \Gamma
+        \arrow{r}[above]{\varphi}
+        \arrow{d}[left]{\eta_\Gamma}
+      & \Delta
+        \arrow{d}[right]{\eta_\Delta}
+      \\
+        \kf[\Gamma]^\times
+        \arrow{r}[above]{\kf[\varphi]^\times}
+      & \kf[\Delta]^\times
+    \end{tikzcd}
+  \]
+  commutes for every group homomorphism~$f \colon \Gamma \to \Delta$.
+  This holds because
+  \[
+      \kf[\varphi]^\times( \eta_\Gamma( \gamma ) )
+    = \kf[\varphi]^\times( [\gamma] )
+    = [\varphi(\gamma)]
+    = \eta_\Delta( \varphi( \gamma ) )
+  \]
+  for every~$\gamma \in \Gamma$.
+  
+  The functor~$F \circ G$ is given on objects by
+  \[
+      (F \circ G)(A)
+    = \kf[A^\times]
+  \]
+  for every~{\kalg}~$A$.
+  If~$f \colon A \to B$ is a homomorphism of~{\kalgs} then the induced~{\kalg} homomorphism~$(F \circ G)(f)$ is given by
+  \[
+            (F \circ G)(f)
+    =       \kf[f^\times]
+    \colon  \kf[A^\times]
+    \to     \kf[B^\times] \,,
+    \quad   \sum_{a \in A^\times} \lambda_a [a]
+    \mapsto \sum_{a \in A^\times} \lambda_a [f(a)] \,.
+  \]
+  For every~{\kalg}~$A$ the identity~$A^\times \to A^\times$ corresponds (as seen on the first exercise sheet) to a homomorphism of~{\kalg}~$\varepsilon_A \colon \kf[A^\times] \to A$, which is given by
+  \[
+            \varepsilon_A
+    \colon  \kf[A^\times]
+    \to     A \,,
+    \quad   \sum_{a \in A^\times} \lambda_a [a]
+    \mapsto \sum_{a \in A^\times} \lambda_a a \,.
+  \]
+  The resulting family~$\varepsilon \defined (\varepsilon_A)_{A \in \Ob(\kAlg)}$ is a natural transformation~$F \circ G \to \Id_{\kAlg}$, i.e.\ the diagram
+  \[
+    \begin{tikzcd}[column sep = large]
+        \kf[A^\times]
+        \arrow{r}[above]{\kf[f^\times]}
+        \arrow{d}[left]{\varepsilon_A}
+      & \kf[B^\times]
+        \arrow{d}[right]{\varepsilon_B}
+      \\
+        A
+        \arrow{r}[above]{f}
+      & B
+    \end{tikzcd}
+  \]
+  commutes for every homomorphism of~{\kalgs}~$f \colon A \to B$.
+  This holds because
+  \begin{align*}
+        \varepsilon_B\left( \kf[f^\times]\left( \sum_{a \in A^\times} \lambda_a [a] \right) \right)
+    &=  \varepsilon_B\left( \sum_{a \in A^\times} \lambda_a [f(a)] \right)
+     =  \sum_{a \in A^\times} \lambda_a f(a)  \\
+    &=  f\left( \sum_{a \in A^\times} \lambda_a a \right)
+     =  f\left( \varepsilon_A\left( \sum_{a \in A^\times} \lambda_a [a] \right) \right)
+  \end{align*}
+  for every~$\sum_{a \in A^\times} \lambda_a [a] \in \kf[A^\times]$.
+  
+  We will later see that the functors~$F \colon \Group \to \kAlg$ and~$G \colon \kAlg \to \Group$ form an \emph{adjunction}, and how this can be expressed via the natural transformations~$\eta \colon \Id_{\Group} \to G \circ F$ and~$\varepsilon \colon F \circ G \to \Id_{\kAlg}$.
+\end{example}
+
+
+
+
+
+\lecturend{5}
+
+
+
+
+
+\begin{remarkdefinition}
+  Let~$F, G \colon \Ccat \to \Dcat$ be two functors.
+  A natural transformation~$\eta \colon F \to G$ is a \emph{natural isomorphism}\index{natural!isomorphism}\index{isomorphism!natural} if for every~$X \in \Ob(\Ccat)$ the morphism~$\eta_X \colon F(X) \to G(X)$ is an isomorphism.
+  
+  The natural transformation~$\eta$ is a natural isomorphism if and only if there exists a natural transformation~$\zeta \colon G \to F$ with~$\zeta \circ \eta = \id_F$ and~$\eta \circ \zeta = \id_G$:
+  
+  If such a natural transformation exists then it holds for exery~$X \in \Ob(\Ccat)$ that
+  \[
+      \zeta_X \circ \eta_X
+    = (\zeta \circ \eta)_X
+    = (\id_F)_X
+    = \id_{F(X)}
+  \]
+  and similarly~$\eta_X \circ \zeta_X = \id_{G(X)}$.
+  This then shows that~$\eta_X$ is for every~$X \in \Ob(\Ccat)$ an isomorphism, with inverse given by~$\eta_X^{-1} = \zeta_X$.
+  
+  If on the other hand~$\eta_X \colon F(X) \to G(X)$ is an isomorphism for every~$X \in \Ob(\Ccat)$, then it follows for every morphism~$f \colon X \to Y$ in~$\Ccat$ from the commutativity of the diagram
+  \[
+    \begin{tikzcd}
+        F(X)
+        \arrow{r}[above]{F(f)}
+        \arrow{d}[left]{\eta_X}
+      & F(Y)
+        \arrow{d}[right]{\eta_Y}
+      \\
+        G(X)
+        \arrow{r}[above]{G(f)}
+      & G(Y)
+    \end{tikzcd}
+  \]
+  that the diagram
+  \[
+    \begin{tikzcd}
+        F(X)
+        \arrow{r}[above]{F(f)}
+      & F(Y)
+      \\
+        G(X)
+        \arrow{u}[left]{\eta_X^{-1}}
+        \arrow{r}[above]{G(f)}
+      & G(Y)
+        \arrow{u}[right]{\eta_Y^{-1}}
+    \end{tikzcd}
+  \]
+  also commutes.
+  This shows that the family~$\zeta \defined (\eta_X^{-1})_{X \in \Ob(\Ccat)}$ is a natural transformation~$\zeta \colon G \to F$.
+  It holds by construction of~$\zeta$ that~$\zeta \circ \eta = \id_F$ and~$\eta \circ \zeta = \id_G$.
+  
+  That~$\eta$ is a natural isomorphism is denoted by~$\eta \colon F \xto{\sim} G$.
+  The two functors~$F$ and~$G$ are \emph{isomorphic}\index{isomorphic functors}\index{functor!isomorphic} if there exist a natural isomorphism~$F \xto{\sim} G$.
+  That~$F$ and~$G$ are isomorphic is denoted by~$F \cong G$.
+\end{remarkdefinition}
+
+
+\begin{definition}
+  Let~$\Ccat$ and~$\Dcat$ be categories.
+  A functor~$F \colon \Ccat \to \Dcat$ is an \emph{equivalence of categories}\index{equivalence of categories}\index{functor!equivalence} if there exists a functor~$G \colon \Dcat \to \Ccat$ with~$G \circ F \cong \Id_{\Ccat}$ and~$F \circ G \cong \Id_{\Dcat}$.
+  The categories~$\Ccat$ and~$\Dcat$ are \emph{equivalent}\index{category!equivalent} if there exists an equivalence of categories between them.
+  That~$\Ccat$ and~$\Dcat$ are equivalent is denoted by~$\Ccat \simeq \Dcat$.
+\end{definition}
+
+
+\begin{example}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Let~$Q$ be a finite quiver.
+      \Cref{quiver rep are modules} shows that~$\Rep{\kf}{Q} \simeq \Modl{\kf Q}$, where~$\Rep{\kf}{Q}$ denotes the category of representations of~$Q$ over~$\kf$;
+      the only missing ingredient is that the constructed isomorphisms
+      \[
+              FG(M)
+        \cong M
+        \quad\text{and}\quad
+              GF(X)
+        \cong X
+      \]
+      for~$M \in \Ob(\Modl{\kf Q})$ and~$X \in \Ob(\Rep{\kf}{Q})$ are natural, i.e.\ that for every homomorphism of left~{\modules{$\kf Q$}}~$f \colon M \to N$ the diagram
+      \[
+        \begin{tikzcd}[column sep = large]
+            FG(M)
+            \arrow{r}[above]{FG(f)}
+            \arrow{d}[left]{\sim}
+          & FG(N)
+            \arrow{d}[right]{\sim}
+          \\
+            M
+            \arrow{r}[above]{f}
+          & N
+        \end{tikzcd}
+      \]
+      commutes, and that for every homomorphism of representations~$f \colon X \to Y$ the diagram
+      \[
+        \begin{tikzcd}[column sep = large]
+            GF(X)
+            \arrow{r}[above]{GF(f)}
+            \arrow{d}[left]{\sim}
+          & GF(Y)
+            \arrow{d}[right]{\sim}
+          \\
+            X
+            \arrow{r}[above]{f}
+          & Y
+        \end{tikzcd}
+      \]
+      commutes.
+    \item
+      Let~$G$ be a group.
+      A \emph{representation}\index{representation!of a group}\index{group representation} of~$G$ over~$\kf$ is a pair~$(V,\rho)$ consisting of a~{\module{$\kf$}}~$V$ and a group homomorphism~$\rho \colon G \to \GL(V)$.
+      A \emph{homomorphism of representations}\index{homomorphism!of group representations}~$f \colon (V, \rho) \to (W,\sigma)$ is a~{\klin} map~$f \colon V \to W$ such that the diagram
+      \[
+        \begin{tikzcd}
+            V
+            \arrow{r}[above]{\rho(g)}
+            \arrow{d}[left]{f}
+          & V
+            \arrow{d}[right]{f}
+          \\
+            W
+            \arrow{r}[above]{\sigma(g)}
+          & W
+        \end{tikzcd}
+      \]
+      commutes for every~$g \in G$.
+      It holds for the category~$\Rep{\kf}{G}$ of representations of~$G$ over~$\kf$ that~$\Rep{\kf}{G} \simeq \Modl{\kf[G]}$.
+    \item
+      Let~$\Ccat$ be the category whose objects are pairs~$(A, \varphi)$ consisting of a ring~$A$ and a ring homomorphism~$\varphi \colon \kf \to \ringcenter(A)$, and where a morphism~$f \colon (A, \varphi) \to (B, \psi)$ is a ring homomorphism~$f \colon A \to B$ which makes the diagram
+      \[
+        \begin{tikzcd}[column sep = small]
+            A
+            \arrow{rr}[above]{f}
+          & {}
+          & B
+          \\
+            \ringcenter(A)
+            \arrow[hook]{u}
+          & {}
+          & \ringcenter(B)
+            \arrow[hook]{u}
+          \\
+            {}
+          & \kf
+            \arrow{ul}
+            \arrow{ur}
+          & {}
+        \end{tikzcd}
+      \]
+      commute.
+      Then \cref{characterization of algebras} shows that the categories~$\kAlg$ and~$\Ccat$ are equivalent.
+    \item
+      Let~$A$ be a~{\kalg}.
+      Let~$\Dcat$ be the category whose objects are pairs~$(V, \varphi)$ consisting of a~{\module{$\kf$}}~$V$ and a homomorphism of~{\kalgs}~$\varphi \colon A \to \End_\kf(V)$, and where a morphism~$f \colon (V,\varphi) \to (W,\psi)$ is a~{\klin} map~$f \colon V \to W$ which makes the diagram
+      \[
+        \begin{tikzcd}
+            V
+            \arrow{r}[above]{\varphi(a)}
+            \arrow{d}[left]{f}
+          & V
+            \arrow{d}[right]{f}
+          \\
+            W
+            \arrow{r}[above]{\psi(a)}
+          & W
+        \end{tikzcd}
+      \]
+      commute for every~$a \in A$.
+      \Cref{modules as homomorphisms into endomorphisms} shows that the categories~$\Modl{A}$ and~$\Dcat$ are equivalent.
+  \end{enumerate}
+\end{example}
+
+
+
+

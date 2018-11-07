@@ -1,0 +1,237 @@
+\section{Categories}
+
+\begin{definition}
+  A \emph{category}~$\Ccat$\index{category} consists of the following data:
+  \begin{itemize}
+    \item
+      A class~$\Ob(\Ccat)$.
+      The elements are the \emph{objects}\index{objects of a category} of~$\Ccat$.
+    \item
+      For any two objects~$X, Y \in \Ob(\Ccat)$ a set~$\Ccat(X,Y)$.% dont let footnote see this line break
+      \footnote{Other common notations are~$\Hom_{\Ccat}(X,Y)$ or~$\operatorname{Mor}_{\Ccat}(X,Y)$.}
+      The elements of~$\Ccat(X, Y)$ are the \emph{morphisms}\index{morphism!in a category} from~$X$ to~$Y$.
+      That~$f \in \Ccat(X,Y)$ is denoted by~$f \colon X \to Y$ or~$X \xto{f} Y$.
+    \item
+      For any three objects~$X, Y, Z \in \Ob(\Ccat)$ a map
+      \[
+                \Ccat(Y,Z) \times \Ccat(X,Y)
+        \to     \Ccat(X,Z) \,,
+        \quad   (g, f)
+        \mapsto g \circ f \,.
+      \]
+      For any two morphisms~$f \colon X \to Y$ and~$g \colon Y \to Z$ the morphism~$g \circ f \colon X \to Z$ is the \emph{composition} of~$g$ and~$f$.
+  \end{itemize}
+  These data are subject to the following conditions:
+  \begin{enumerate}[label=(C\arabic*)]
+    \item
+      The composition of morphisms is associative\index{associativity}:
+      For all objects~$X, Y, Z, W \in \Ob(\Ccat)$ and morphisms~$f \colon X \to Y$,~$g \colon Y \to Z$ and~$h \colon Z \to W$ it holds that
+      \[
+          (h \circ g) \circ f
+        = h \circ (g \circ f) \,.
+      \]
+    \item
+      There exists for every object~$X \in \Ob(\Ccat)$ an \emph{identity morphism}\index{identity!morphism}~$\id_X \colon X \to X$ such that
+      \[
+        f \circ \id_X = f
+        \quad\text{and}\quad
+        \id_X \circ g = g
+      \]
+      for all morphisms~$f \colon X \to Y$ and~$g \colon Y \to X$ in~$\Ccat$.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+  Let~$\Ccat$ be a category.
+  \begin{enumerate}
+    \item
+      It could happen for objects~$X, Y \in \Ccat$ that~$\Ccat(X,Y) = \emptyset$, i.e.\ that there exists no morphism from~$X$ to~$Y$ in~$\Ccat$.
+    \item
+      For every object~$X \in \Ccat$ the identity morphism~$\id_X$ is unique.
+      If~$\id'_X$ is another identity morphism of~$X$ then
+      \[
+          \id_X
+        = \id_X \id'_X
+        = \id'_X \,.
+      \]
+  \end{enumerate}
+\end{remark}
+
+
+\begin{remark}
+  We sometimes want to consider categories whose objects are all sets (which satisfy certain conditions).
+  This can lead to set theoretic problems (also known as \emph{set theoretic difficulties}\index{set theoretic difficulties}).
+  One way out of this predicament are \emph{universes}\index{universe}.
+  (See \cite[I.6]{Working} and \cite[3.2]{Schubert} for more details on this.)
+  We will always fix a universe~$U$ and say that
+  \begin{itemize}
+    \item
+      $X$ is a set if~$X \in U$, and that
+    \item
+      $X$ is a class if~$X \subseteq U$.
+  \end{itemize}
+\end{remark}
+
+
+
+
+
+\lecturend{4}
+
+
+
+
+\begin{example}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      The category~$\Set$\index{category!of sets} of sets:
+      The objects of~$\Set$ are given by
+      \[
+          \Ob(\Set)
+        = \{
+            \text{sets (which are elements of the fixed universe)}
+          \} \,,
+      \]
+      and for any two sets~$X$ and~$Y$ the morphism set~$\Set(X,Y)$ is given by
+      \[
+          \Set(X,Y)
+        = \{
+            \text{maps~$f \colon X \to Y$}
+          \} \,.
+      \]
+      The composition of morphisms in~$\Set$ is the usual composition of maps.
+    \item
+      The category~$\Group$\index{category!of groups} of groups:
+      The objects of~$\Group$ are given by
+      \[
+          \Ob(\Group)
+        = \{
+            \text{groups}
+          \} \,,
+      \]
+      and for any two groups~$G$ and~$H$ the morphism set~$\Group(G,H)$ is given by
+      \[
+          \Group(G,H)
+        = \{
+            \text{group homomorphisms~$f \colon G \to H$}
+          \} \,.
+      \]
+      The composition of morphisms in~$\Group$ is the usual composition of group homomorphisms.
+    \item
+      The category~$\kAlg$\index{category!of $k$-algebras} of~{\kalgs}:%
+      \footnote{This example was not given in the lecture, but will be used \cref{examples for functors}.}
+      The objects of~$\kAlg$ are given by
+      \[
+          \Ob(\kAlg)
+        = \{
+            \text{{\kalgs}}
+          \} \,,
+      \]
+      and for any two {\kalgs}~$A$ and~$B$ the morphism set~$(\kAlg)(A,B)$ is given by
+      \[
+          \kAlg(A,B)
+        = \{
+            \text{{\kalg} homomorphisms~$f \colon A \to B$}
+          \} \,.
+      \]
+      The composition of morphisms in~$\kAlg$ is the usual composition of~{\kalg} homomorphisms.
+    \item
+      For a~{\kalg}~$A$ the category~$\Modl{A}$\index{category!of $A$-modules} of left~{\modules{$A$}}:
+      The objects of~$\Modl{A}$ are given by
+      \[
+          \Ob(\Modl{A})
+        = \{
+            \text{left~{\modules{$A$}}}
+          \} \,,
+      \]
+      and for any two left~{\modules{$A$}}~$M$ and~$N$ the morphism set~$(\Modl{A})(M,N)$ is given by
+      \[
+          (\Modl{A})(M,N)
+        = \left\{
+            \text{homomorphisms of left~{\modules{$A$}}~$f \colon M \to N$}
+          \right\} \,.
+      \]
+      The composition of morphisms in~$\Modl{A}$ is the usual composition of module homomorphisms.
+      
+      The category~$\Modr{A}$ of right~{\modules{$A$}} is defined analogous.
+    \item
+      The category~$\Top$\index{category!of topological spaces} of topological spaces:
+      The objects of~$\Top$ are given by
+      \[
+          \Ob(\Top)
+        = \{
+            \text{topological spaces}
+          \} \,,
+      \]
+      and for any two topological spaces~$X$ and~$Y$ the morphism set~$\Top(X,Y)$ is given by
+      \[
+          \Top(X,Y)
+        = \{
+            \text{continuous maps~$f \colon X \to Y$}
+          \} \,.
+      \]
+      The composition of morphisms in~$\Top$ is the usual composition of continuous maps.
+    \item
+      Let~$G$ be a group.
+      We can then define a category~$\Gcat$ which consists of a single object~$\Ob(\Gcat) = \{ \ast \}$, the single morphism set~$\Gcat(\ast,\ast) = G$, and for which the composition of morphisms is the multiplication of~$G$, i.e.\ the composition is given as
+      \[
+                  g \circ h
+        \defined  gh
+      \]
+      for all~$g, h \in \Gcat(\ast,\ast) = G$.
+      One may pictorially represent the category~$\Gcat$ as follows:
+      \[
+        \begin{tikzcd}
+          \ast
+          \arrow[out=30,in=110,loop]{}[above right, near start]{G}
+          \arrow[out=150,in=230,loop,looseness=6.5]
+          \arrow[out=270,in=350,loop]
+        \end{tikzcd}
+      \]
+    \item
+      Let~$Q$ be a quiver.
+      Its \emph{category of paths}\index{category!of paths}~$\Path(Q)$, is defined as follows:%
+      \footnote{In the lecture, the notation~$Q_*$ is used for the category of paths in~$Q$.}
+      The objects of~$\Path(Q)$ are the vertices of~$Q$, hence
+      \[
+          \Ob(\Path(Q))
+        = Q_0 \,,
+      \]
+      and for any two vertices~$i$ and~$j$ in~$Q$ the morphism set~$\Path(Q)(i,j)$ is given by
+      \[
+          \Path(Q)(i,j)
+        = \{
+            \text{paths from~$i$ to~$j$ in~$Q$}
+          \} \,.
+      \]
+      The composition of morphisms in~$\Path(Q)$ is given by concatenation of paths.
+      This gives a category because concatenation of paths is associative, and for every~$i \in Q_0$ the lazy path~$\varepsilon_i \in \Path(Q)(i,i)$ acts as the identity of the object~$i$.
+  \end{enumerate}
+\end{example}
+
+
+\begin{definition}
+  Let~$\Ccat$ be a category.
+  The \emph{opposite category}\index{opposite!category}~$\Ccat^\op$ results from~$\Ccat$ by formally reversing the direction of all morphisms:
+  The objects of~$\Ccat^\op$ are given by
+  \[
+      \Ob(\Ccat^\op)
+    = \Ob(\Ccat) \,,
+  \]
+  for any two objects~$X, Y \in \Ob(\Ccat^\op)$ the morphisms set~$\Ccat^\op(X,Y)$ is given by
+  \[
+      \Ccat^\op(X,Y)
+    = \Ccat(Y,X) \,.
+  \]
+  The composition of any two morphisms~$f \colon X \to Y$ and~$g \colon Y \to Z$ in~$\Ccat^\op$ is given by
+  \[
+      g \circ_{\Ccat^\op} f
+    = f \circ_{\Ccat} g \,.
+  \]
+\end{definition}
+
+
+
+

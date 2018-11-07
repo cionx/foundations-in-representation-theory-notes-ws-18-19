@@ -1,0 +1,240 @@
+\section{Representable Functors}
+
+
+\begin{lemma}[Yoneda’s lemma]\index{Yoneda’s lemma}
+  \label{yoneda lemma}
+  Let~$\Ccat$ be a category and let~$X \in \Ob(\Ccat) = \Ob(\Ccat^\op)$.
+  \begin{enumerate}
+    \item
+      \label{covariant yoneda}
+      Let~$F \colon \Ccat \to \Set$ be a (covariant) functor.
+      Then the map
+      \[
+                Y^{F,X}
+        \colon  \Fun(\Ccat, \Set)(h^X, F)
+        \to     F(X) \,,
+        \quad   ( \eta \colon h^X \to F)
+        \mapsto \eta_X(\id_X)
+      \]
+      is a bijection.
+    \item
+      \label{contravariant yoneda}
+      Let~$G \colon \Ccat^\op \to \Set$ be a (contravariant) functor.
+      Then the map
+      \[
+                Y_{G,X}
+        \colon  \Fun(\Ccat, \Set)(h_X, G)
+        \to     G(X) \,,
+        \quad   ( \eta \colon h_X \to G)
+        \mapsto \eta_X(\id_X)
+      \]
+      is a bijection.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+  Part~\ref*{covariant yoneda} follows from part~\ref*{contravariant yoneda} because~$\Ccat = (\Ccat^\op)^\op$ and
+  \[
+      h^X_{(\Ccat)}
+    = \Ccat(X,-)
+    = \Ccat^\op(-,X)
+    = h_X^{(\Ccat^\op)}
+  \]
+  for every~$X \in \Ob(\Ccat) = \Ob(\Ccat^\op)$.
+  We therefore only prove part~\ref*{contravariant yoneda}.
+  
+  To show that the map~$Y_{G,X}$ is injective we need to show that a natural transformation~$\eta \colon h_X \to G$ is uniquely determined by its value~$\eta_X(\id_X)$.
+  This holds because it follows for every~$Y \in \Ob(\Ccat)$ and every~$f \in h_X(Y) = \Ccat(Y,X)$ from the commutativity of the diagram
+  \[
+    \begin{tikzcd}
+        h_X(X)
+        \arrow{r}[above]{f^*}
+        \arrow{d}[left]{\eta_X}
+      & h_X(Y)
+        \arrow{d}[right]{\eta_Y}
+      \\
+        G(X)
+        \arrow{r}[above]{G(f)}
+      & G(Y)
+    \end{tikzcd}
+  \]
+  that
+  \[
+      \eta_Y(f)
+    = \eta_Y(\id_X \circ f)
+    = \eta_Y(f^*(\id_X))
+    = G(f)(\eta_X(\id_X)) \,.
+  \]
+  
+  To show the surjectivity of~$Y_{G,X}$ let~$z \in G(X)$.
+  For every~$Y \in \Ob(\Ccat)$ let
+  \[
+            \zeta_Y
+    \colon  h_X(Y)
+    =       \Ccat(Y,X)
+    \to     G(Y) \,,
+    \quad   f
+    \mapsto G(f)(z) \,.
+  \]
+  It then holds for every morphism~$g \colon Y \to Y'$ in~$\Ccat$ that the diagram
+  \[
+    \begin{tikzcd}
+        h_X(Y')
+        \arrow{r}[above]{g^*}
+        \arrow{d}[left]{\zeta_{Y'}}
+      & h_X(Y)
+        \arrow{d}[right]{\zeta_Y}
+      \\
+        G(Y')
+        \arrow{r}[above]{G(g)}
+      & G(Y)
+    \end{tikzcd}
+  \]
+  commutes, because
+  \[
+      G(g)( \zeta_{Y'}( f ) )
+    = G(g)( G(f)(z) )
+    = G(f \circ g)(z)
+    = \zeta_Y(f \circ g)
+    = \zeta_Y( g^*(f) )
+  \]
+  for every~$f \in h_X(Y')$.
+  This shows that~$\zeta \defined (\zeta_X)_{X \in \Ob(\Ccat)}$ is a natural transformation~$\zeta \colon h_X \to F$.
+  It holds that
+  \[
+      Y_{G,X}(\zeta)
+    = \zeta_X(\id_X)
+    = G(\id_X)(z)
+    = \id_{G(X)}(z)
+    = z \,,
+  \]
+  which altogether shows that~$Y_{G,X}$ is surjective.
+\end{proof}
+
+
+
+
+
+\lecturend{6}
+
+
+\begin{theorem}[Yoneda embedding]
+  \index{Yoneda embedding}
+  Let~$\Ccat$ be a category.
+  \begin{enumerate}
+    \item
+      The functor~$h^{(-)} \colon \Ccat^\op \to \Fun(\Ccat, \Set)$ is fully faithful.
+    \item
+      \label{contravariant yoneda embedding}
+      The functor~$h_{(-)} \colon \Ccat \to \Fun(\Ccat^\op, \Set)$ is fully faithful.
+  \end{enumerate}
+\end{theorem}
+
+
+\begin{proof}
+  It again sufficies to show part~\ref*{contravariant yoneda embedding}.
+  
+  We need to show that for all objects~$X, Y \in \Ob(\Ccat)$ the map
+  \[
+            \Phi
+    \colon  \Ccat(X,Y)
+    \to     \Fun(\Ccat^\op, \Set)(h_X, h_Y) \,,
+    \quad   f
+    \mapsto f_*
+  \]
+  is a bijection.
+  We do so by exhibiting an inverse for~$\Phi$.
+  For this we apply Yoneda’s~lemma to the functors~$h_X, h_Y \colon \Ccat^\op \to \Set$ to find that the map
+  \begin{align*}
+              \Psi
+     \colon   \Fun(\Ccat^\op, \Set)(h_X, h_Y)
+    &\longto  h_Y(X)
+     =        \Ccat(X,Y)  \,,
+    \\
+                  \zeta
+    &\longmapsto  \zeta_X(\id_X)
+  \end{align*}
+  is a bijection.
+  We claim that this is the required inverse to~$\Phi$.
+  Indeed, we have that
+  \[
+      \Psi(\Phi(f))
+    = (\Phi(f))_X(\id_X)
+    = f_*(\id_X)
+    = f \circ \id_X
+    = f
+  \]
+  for all~$f \in \Ccat(X,Y)$, and hence~$\Psi \circ \Phi = \id$.
+  This shows that~$\Phi$ is a right inverse to~$\Psi$, and hence the ({\twosided}) inverse of~$\Psi$ (because~$\Psi$ is a bijection).
+%   \begin{align}
+%         \Phi(\Psi(\zeta))_Z(f)  \notag
+%     &=  \Psi(\zeta)_*(f)  \notag  \\
+%     &=  ( \zeta_X(\id_X) )_*(f) \notag  \\
+%     &=  \zeta_X(\id_X) \circ f  \notag  \\
+%     &=  f^*(\zeta_X(\id_X)) \notag  \\
+%     &=  \zeta_Z(f^*(\id_X)) \label{naturality of zeta}  \\
+%     &=  \zeta_Z(\id_X \circ f)  \notag  \\
+%     &=  \zeta_Z(f)  \notag
+%   \end{align}
+%   for every~$Z \in \Ob(\Ccat)$ and every~$f \in h_X(Z) = \Ccat(Z,X)$.
+%   Here we have used for step~\eqref{naturality of zeta} the commutativity of the following diagram:
+%   \[
+%     \begin{tikzcd}[row sep = large]
+%           h_X(X)
+%           \arrow{rrr}[above]{f^*}
+%           \arrow{ddd}[left]{\zeta_X}
+%           \arrow[equal]{dr}
+%         & {}
+%         & {}
+%         & h_X(Z)
+%           \arrow{ddd}[right]{\zeta_Z}
+%           \arrow[equal]{dl}
+%       \\
+%           {}
+%         & \Ccat(X,X)
+%           \arrow{r}[above]{f^*}
+%           \arrow{d}[left]{\zeta_X}
+%         & \Ccat(Z,X)
+%           \arrow{d}[right]{\zeta_Z}
+%         & {}
+%       \\
+%           {}
+%         & \Ccat(X,Y)
+%           \arrow{r}[below]{f^*}
+%         & \Ccat(Z,Y)
+%         & {}
+%       \\
+%           h_Y(X)
+%           \arrow{rrr}[below]{f^*}
+%           \arrow[equal]{ur}
+%         & {}
+%         & {}
+%         & h_Y(Z)
+%           \arrow[equal]{ul}
+%     \end{tikzcd}
+%   \]
+%   This shows that also~$\Phi \circ \Psi = \id$.
+\end{proof}
+
+
+\begin{definition}
+  Let~$\Ccat$ be a category.
+  \begin{enumerate}
+    \item
+      A (covariant) functor~$F \colon \Ccat \to \Set$ is \emph{representable}\index{representable functor}\index{functor!representable} if it is naturally isomorphic to a functor~$h^X \colon \Ccat \to \Set$ for some object~$X \in \Ob(\Ccat)$.
+    \item
+      A (contravariant) functor~$F \colon \Ccat^\op \to \Set$ is \emph{representable}\index{representable functor}\index{functor!representable} if it is naturally isomorphic to a functor~$h_X \colon \Ccat^\op \to \Set$ for some object~$X \in \Ob(\Ccat)$.
+  \end{enumerate}
+  The object~$X$ is then a \emph{representing object}\index{representing object}\index{object!representing} for~$F$.
+\end{definition}
+
+
+\begin{remark*}
+  If a functor~$F \colon \Ccat \to \Set$ or~$F \colon \Ccat^\op \to \Set$ admits a representing object~$X \in \Ob(\Ccat)$, then~$X$ is unique up to unique isomorphism.
+% TODO: Add an explanation to what this means.
+\end{remark*}
+
+
+
+

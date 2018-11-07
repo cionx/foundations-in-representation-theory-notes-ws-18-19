@@ -1,0 +1,206 @@
+\section{Functors}
+
+
+\begin{definition}
+  Let~$\Ccat$ and~$\Dcat$ be categories.
+  A \emph{functor}\index{functor}~$F \colon \Ccat \to \Dcat$ consists of the following data:
+  \begin{itemize}
+    \item
+      A map (of classes)~$F \colon \Ob(\Ccat) \to \Ob(\Dcat)$, $X \mapsto F(X)$.
+    \item
+      For any two objects~$X$ and~$Y$ of $\Ccat$ a map
+      \[
+                \Ccat(X, Y)
+        \to     \Dcat(F(X), F(Y)) \,,
+        \quad   f
+        \mapsto F(f) \,.
+      \]
+  \end{itemize}
+  These data are subject to the following conditions:
+  \begin{enumerate}[label=(F\arabic*)]
+    \item
+      It holds for every object~$X$ of~$\Ccat$ that~$F(\id_X) = \id_{F(X)}$.
+    \item
+      It holds for any two composable morphisms~$f \colon X \to Y$ and~$g \colon Y \to Z$ in~$\Ccat$ that
+      \[
+          F(g \circ f)
+        = F(g) \circ F(f) \,.
+      \]
+  \end{enumerate}
+\end{definition}
+
+
+\begin{notation*}
+  The application of a functor~$F \colon \Ccat \to \Dcat$ to an object~$X \in \Ob(\Ccat)$ or a morphisms~$f \colon X \to X'$ in~$\Ccat$ is often written without parentheses as~$FX$, resp.\ as~$Ff$.
+\end{notation*}
+
+
+\begin{remark}
+  What we call a \enquote{functor} is sometimes called a \enquote{covariant functor}\index{functor!covariant}\index{covariant functor|see {functor}}.
+  A \emph{contravariant functor}~$G \colon \Ccat \to \Dcat$\index{functor!contravariant}\index{contravariant functor|see {functor}} is a (covariant) functor~$G \colon \Ccat^\op \to \Dcat$.
+  This means in terms of the category~$\Ccat$ that~$G$ assigns to every object~$X \in \Ob(\Ccat)$ an object~$G(X) \in \Dcat$ and to every morphism~$f \colon X \to Y$ in~$\Ccat$ a morphism~$G(f) \colon G(Y) \to G(X)$ in~$\Dcat$, in such a way that
+  \begin{itemize}
+    \item
+      $G(\id_X) = \id_{G(X)}$ for every~$X \in \Ccat$, and
+    \item
+      $G(g \circ f) = G(f) \circ G(g)$ for every pair of composable morphisms~$f \colon X \to Y$ and~$g \colon Y \to Z$ in~$\Ccat$.
+  \end{itemize}
+\end{remark}
+
+
+\begin{remark}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Let~$\Ccat$ be a category.
+      The \emph{identity functor}~$\Id_{\Ccat} \colon \Ccat \to \Ccat$\index{identity!functor} is given by
+      \[
+                \Id_\Ccat
+        \colon  \left\{
+                  \begin{aligned}
+                    X &\mapsto  X \,, \\
+                    f &\mapsto  f \,.
+                  \end{aligned}
+                \right.
+      \]
+    \item
+      If~$\Ccat$,~$\Dcat$ and~$\Ecat$ are categories and~$F \colon \Ccat \to \Dcat$ and~$G \colon \Dcat \to \Ecat$ are functors, then they can be composed to a functor~$G \circ F \colon \Ccat \to \Ecat$ given by
+      \[
+                (F \circ G)
+        \colon  \left\{
+                  \begin{aligned}
+                    X &\mapsto  G(F(X)) \,, \\
+                    f &\mapsto  G(F(f)) \,.
+                  \end{aligned}
+                \right.
+      \]
+  \end{enumerate}
+\end{remark}
+
+
+\begin{example}
+  \label{examples for functors}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      We can define two functors which assign to each set~$X$ its power set:
+      
+      We define a functor~$P_* \colon \Set \to \Set$ which assigns to each set~$X$ its power set~$\power(X)$, and to each map~$f \colon X \to Y$ the induced map
+      \[
+                P_*(f)
+        \colon  \power(X)
+        \to     \power(Y) \,,
+        \quad   A
+        \mapsto f(A) \,.
+      \]
+      We can also define a (contravariant) functor~$P^* \colon \Set^\op \to \Set$ which again assigns to each set~$X$ its power set~$\power(X)$, but to each map~$f \colon X \to Y$ the induced map
+      \[
+                P^*(f)
+        \colon  \power(Y)
+        \to     \power(X) \,,
+        \quad   B
+        \mapsto f^{-1}(B) \,.
+      \]
+    \item
+      We have two functors between the categories~$\kAlg$ and~$\Group$:
+      
+      In the one direction there exists a functor~$(-)^\times \colon \kAlg \to \Group$ which assigns to each~{\kalg}~$A$ its group of units~$A^\times$ and to every homomorphism of~{\kalgs}~$f \colon A \to B$ its induces group homomorphism~$f^\times \colon A^\times \to B^\times$.
+      
+      In the other direction there exists a functor~$\kf[-] \colon \Group \to \kAlg$ which assigns to each group~$G$ its group algebra~$\kf[G]$, and to each group homomorphism~$\varphi \colon G \to H$ the induced homorphism of~{\kalgs}~$\kf[\varphi] \colon \kf[G] \to \kf[H]$, i.e.\ the unique homomorphism of~{\kalgs}~$\kf[G] \to \kf[H]$ which makes the diagram
+      \[
+        \begin{tikzcd}
+            G
+            \arrow{r}[above]{\varphi}
+            \arrow[hook]{d}
+          & H
+            \arrow[hook]{d}
+          \\
+            \kf[G]
+            \arrow{r}[above]{\kf[\varphi]}
+          & \kf[H]
+        \end{tikzcd}
+      \]
+      commute.
+      (Recall from the first exercise sheet that for every~{\kalg}~$A$, every group homomorphism~$G \to A^\times$ extends uniquely to a homomorphism of~{\kalgs}~$\kf[G] \to A$.
+      By applying this to the composition~$G \to H \inclusion k[H]^\times$ it follows that there exists a unique homomorphism~$\kf[G] \to \kf[H]$ which makes the above diagram commute.)
+    \item
+      The functor
+      \[
+                V
+        \colon  \Group
+        \to     \Set \,,
+        \quad   \left\{
+                  \begin{aligned}
+                              G
+                    &\mapsto  (\text{$G$ as a set}) \,,
+                    \\
+                              f
+                    &\mapsto  f
+                  \end{aligned}
+                \right.
+      \]
+      is the \emph{forgetful functor}\index{forgetful functor}\index{functor!forgetful}.
+      More generally, we call every functor \emph{forgetful} if it forgets part of the structure.
+      We have for example forgetful functors~$\Top \to \Set$ and~$\Modl{A} \to \Modl{\kf}$, where~$A$ is a~{\kalg}.
+  \end{enumerate}
+\end{example}
+
+
+\begin{example}
+  Let~$\Ccat$ be a category.
+  \begin{enumerate}
+    \item
+      Every object~$X \in \Ob(\Ccat)$ gives rise to a functor
+      \[
+                h^X
+        \colon  \Ccat
+        \to     \Set \,,
+        \quad   \left\{
+                  \begin{aligned}
+                              Y
+                    &\mapsto  \Ccat(X,Y) \,,
+                    \\
+                              \left( Y \xlongto{f} Y' \right)
+                    &\mapsto  \left( \Ccat(X,Y) \xlongto{f_*} \Ccat(X,Y') \right) \,,
+                  \end{aligned}
+                \right.
+      \]
+      where the induced map~$f_* \colon \Ccat(X,Y) \to \Ccat(X,Y')$ is given by~$f_*(g) = f \circ g$ for every~$g \in \Ccat(X,Y)$.
+      The functor~$h^X$ is also denoted by~$\Ccat(X,-)$.
+    \item
+      Every object~$X \in \Ob(\Ccat)$ gives rise to a (contravariant) functor
+      \[
+                h_X
+        \colon  \Ccat^\op
+        \to     \Set \,,
+        \quad   \left\{
+                  \begin{aligned}
+                              Y
+                    &\mapsto  \Ccat(Y,X) \,,
+                    \\
+                              \left( Y \xlongto{f} Y' \right)
+                    &\mapsto  \left( \Ccat(Y',X) \xlongto{f^*} \Ccat(Y,X) \right) \,,
+                  \end{aligned}
+                \right.
+      \]
+      where the induced map~$f^* \colon \Ccat(Y',X) \to \Ccat(Y,X)$ is given by~$f^*(g) = g \circ f$ for every~$g \in \Ccat(Y',X)$.
+      The functor~$h_X$ is also denoted by~$\Ccat(-,X)$.
+  \end{enumerate}
+\end{example}
+
+
+\begin{definition}[label=properties of functors]
+  Let~$F \colon \Ccat \to \Dcat$ be a functor.
+  \begin{enumerate}
+    \item
+      The functor~$F$ is \emph{faithful}\index{faithful}\index{functor!faithful} if the induced map~$\Ccat(X,Y) \to \Dcat(F(X),F(Y))$,~$f \mapsto F(f)$ is injective for all~$X, Y \in \Ccat$.
+    \item
+      The functor~$F$ is \emph{full}\index{full}\index{functor!full} if the induced map~$\Ccat(X,Y) \to \Dcat(F(X),F(Y))$,~$f \mapsto F(f)$ is surjective for all~$X, Y \in \Ccat$.
+    \item
+      The functor~$F$ is \emph{fully faithful}\index{fully faithful}\index{functor!fully faithful} if it is both full and faithful, i.e.\ if the induced map~$\Ccat(X,Y) \to \Dcat(F(X),F(Y))$,~$f \mapsto F(f)$ is injective for all~$X, Y \in \Ccat$.
+  \end{enumerate}
+\end{definition}
+
+
+
+

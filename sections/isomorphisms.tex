@@ -1,0 +1,46 @@
+\section{Isomorphisms}
+
+
+\begin{definition}
+  A morphism~$f \colon X \to Y$ in a category~$\Ccat$ is an \emph{isomorphism}\index{isomorphism!in a category} if there exist a morphism~$g \colon Y \to X$ with~$g \circ f = \id_X$ and~$f \circ g = \id_Y$.
+\end{definition}
+
+
+\begin{definition}[continues=properties of functors]
+  \leavevmode
+  \begin{enumerate}[start=4]
+    \item
+      The functor~$F$ is \emph{dense}\index{dense}\index{functor!dense} or \emph{essentially surjective}\index{essentially surjective}\index{functor!essentially surjective} if there exist for every object~$Y \in \Ob(\Dcat)$ some object~$X \in \Ob(\Ccat)$ with~$Y \cong F(X)$.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+  Let~$\Ccat$ and~$\Dcat$ be categories.
+  \begin{enumerate}
+    \item
+      If~$f \colon X \to Y$ is an isomorphism in~$\Ccat$ the the morphism~$g \colon Y \to X$ with~$g \circ f = \id_X$ and~$f \circ g = \id_Y$ is uniquely determined.
+      The morphisms~$g$ is the \emph{inverse}\index{inverse}\index{morphism!inverse} of~$f$, and is denoted by~$f^{-1}$.
+    \item
+      For every~$X \in \Ob(\Ccat)$ its identity~$\id_X \colon X \to X$ is an isomorphism.
+    \item
+      If~$F \colon \Ccat \to \Dcat$ is a functor and~$f$ is an isomorphism in~$\Ccat$ then~$F(f)$ is an isomorphism in~$\Dcat$, and it holds that~$F(f)^{-1} = F(f^{-1})$.
+  \end{enumerate}
+\end{remark}
+
+
+\begin{example}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      In the categories~$\Set$,~$\Group$,~$\Modl{A}$, \dots, a morphism~$f$ is an isomorphism if and only if it is bijective (as a \dash{set}{theoretic} map).
+    \item
+      In the category~$\Top$, the isomorphisms are precisely the homeomorphisms, i.e.\ the continuous maps which are both bijective and open.
+    \item
+      In the path category~$\Path(Q)$ of a quiver~$Q$ the isomorphisms are precisely the lazy paths~$\varepsilon_i = \id_i$ for~$i \in Q_0 = \Ob(\Path(Q))$.
+  \end{enumerate}
+\end{example}
+
+
+
+

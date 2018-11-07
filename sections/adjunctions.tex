@@ -1,0 +1,719 @@
+\section{Adjunctions}
+
+
+\begin{definition}
+  \label{definition of adjunction}
+  Let~$\Ccat$ and~$\Dcat$ be two categories.
+  An \emph{adjunction}\index{adjunction}\index{functor!adjoint} (or \emph{adjoint pair}\index{adjoint pair}) from~$\Ccat$ to~$\Dcat$ is a tripel~$(F,G,\varphi)$ consisting of two functors~$F \colon \Ccat \to \Dcat$ and~$G \colon \Dcat \to \Ccat$, together with a family~$(\varphi_{X,Y})_{X \in \Ob(\Ccat), Y \in \Ob(\Dcat)}$ of bijections
+  \[
+            \varphi_{X,Y}
+    \colon  \Dcat(F(X), Y)
+    \to     \Ccat(X, G(Y))
+  \]
+  which are natural in both~$X$ and~$Y$.
+  The functor~$F$ is the \emph{left adjoint}\index{left adjoint} of the adjunction, and the functor~$G$ is the \emph{right adjoint}\index{right adjoint} of the adjunction.
+\end{definition}
+
+
+\begin{remark*}
+  The naturality in~\cref{definition of adjunction} means that for every morphism~$f \colon X \to X'$ in~$\Ccat$ and every object~$Y \in \Ob(\Dcat)$ the square
+  \[
+    \begin{tikzcd}[sep = large]
+        \Dcat(F(X'), Y)
+        \arrow{r}[above]{\varphi_{X',Y}}
+        \arrow{d}[left]{F(f)^*}
+      & \Ccat(X', G(Y))
+        \arrow{d}[right]{f^*}
+      \\
+        \Dcat(F(X), Y)
+        \arrow{r}[above]{\varphi_{X,Y}}
+      & \Ccat(X, G(Y))
+    \end{tikzcd}
+  \]
+  commutes, and that for every object~$X \in \Ob(\Ccat)$ and every morphisms~$g \colon Y \to Y'$ in~$\Dcat$ the square
+  \[
+    \begin{tikzcd}[sep = large]
+        \Dcat(F(X), Y)
+        \arrow{r}[above]{\varphi_{X,Y}}
+        \arrow{d}[left]{g_*}
+      & \Ccat(X, G(Y))
+        \arrow{d}[right]{G(g)_*}
+      \\
+        \Dcat(F(X), Y')
+        \arrow{r}[above]{\varphi_{X,Y'}}
+      & \Ccat(X, G(Y'))
+    \end{tikzcd}
+  \]
+  commutes.%
+  \footnote{This ammounts to~$\varphi$ being a natural isomorphism~$\varphi \colon \Dcat(F(-), -) \to \Ccat(-, G(-))$ between the two (bi)functors~$\Dcat(F(-), -), \Ccat(-, G(-)) \colon \Ccat^\op \times \Dcat \to \Set$.}
+\end{remark*}
+
+
+\begin{example}
+  We give examples for adjoint pairs, where~$F \colon \Ccat \to \Dcat$ is the left adjoint and~$G \colon \Dcat \to \Ccat$ is the right adjoint.
+  \begin{enumerate}
+    \item
+      We have an adjunction from the category~$\Ccat = \Set$ to the category~$\Dcat = \Group$.
+      The left adjoint functor~$F \colon \Set \to \Group$ assigns to every set~$X$ the free group on~$X$, and to every map~$f \colon X \to X'$ between sets~$X$ and~$X'$ the induced group homomorphisms
+      \[
+                F(f)
+        \colon  F(X)
+        \to     F(X') \,,
+        \quad   F(x_1^{\varepsilon_1} \dotsm x_n^{\varepsilon_n})
+        =       f(x_1)^{\varepsilon_1} \dotsm f(x_n)^{\varepsilon_n} \,.
+      \]
+      The right adjoint functor~$G \colon \Group \to \Set$ is the forgetful functor.
+    \item
+      Let~$A$ be a~{\kalg}.
+      We have an adjunction from the category~$\Ccat = \Set$ to the category~$\Dcat = \Modl{A}$.
+      The left adjoint functor~$F \colon \Set \to \Modl{A}$ assigns to each set~$X$ the free~{\module{$A$}} on~$X$, and to every map~$f \colon X \to X'$ between sets~$X$ and~$X'$ the induced homomorphisms of~{\modules{$A$}}
+      \[
+                F(f)
+        \colon  F(X)
+        \to     F(X') \,,
+        \quad   F\left( \sum_{x \in X} a_x [x] \right)
+        =       \sum_{x \in X} a_x [f(x)] \,.
+      \]
+      The right adjoint functor~$G \colon \Modl{A} \to \Set$ is the forgetful functor.
+    \item
+      We have an adjunction from the category~$\Ccat = \Group$ to the category~$\Dcat = \kAlg$.
+      The left adjoint functor~$F \colon \Group \to \kAlg$ is given by~$F = \kf[-]$ and the right functor~$G \colon \kAlg \to \Group$ is given by~$G = (-)^\times$.
+    \item
+      We have an adjunctions from~$\Ccat = \Set$ to~$\Dcat = \kCommAlg$, the category of commutative~{\kalgs}.%
+      \footnote{In the lecture the notation~$\kf$\nobreakdash-$\catname{CommAlg}$ is used instead.
+      The author prefers the shorter version~$\kCommAlg$ as it helps him avoid overfull hboxes.}
+      The left adjoint functor~$F \colon \Set \to \kCommAlg$ assigns to each set~$X$ the polynomial ring~$k[T_x \suchthat x \in X]$ and to each map~$f \colon X \to X'$ between sets~$X$ and~$X'$ the unique homomorphism of~{\kalgs}
+      \[
+                F(f)
+        \colon  k[T_x \suchthat x \in X]
+        \to     k[T_{x'} \suchthat x' \in X'] \,,
+      \]
+      which satisfies~$F(f)(T_x) = T_{f(x)}$ for every~$x \in X$.
+      The right adjoint functor~$G \colon \kCommAlg \to \Set$ is the forgetful functor.
+    \item
+      Let~$A$ and~$B$ be two~{\kalgs} and let~$\indmodule[A]{N}[B]$ be an~{\module{$A$}[$B$]}.
+      We then have an adjunction from the module category~$\Ccat = \Modr{A}$ to the module category~$\Dcat = \Modr{B}$.
+      The left adjoint functor~$F \colon \Modr{A} \to \Modr{B}$ assigns to each right~{\module{$A$}}~$\indmodule{M}[A]$ the right~{\module{$B$}}~$F(M) = M \tensor_A N$, and the right adjoint functor~$G \colon \Modr{B} \to \Modr{A}$ assigns to each right~{\module{$B$}}~$\indmodule{P}[B]$ the right~{\module{$A$}}~$G(P) = \Hom_B(N,P)$.
+      The required bijections~$\varphi_{M,P}$ are given by \cref{hom tensor adjunction}.
+    \item
+      Let~$\varphi \colon A \to B$ be a homomorphism of~{\kalgs}.
+      We have an adjunction from the module category~$\Ccat = \Modl{A}$ to the module category~$\Dcat = \Modl{B}$.
+      The left adjoint functor~$F$ assigns to each left~{\module{$A$}}~$\indmodule[A]{M}$ the extension of scalars~$F(M) = B \tensor_A N$, and the right adjoint functor~$G$ is the forgetful functor, i.e.\ the restriction of scalars.
+    \item
+      We define a category~$\Ccat$ as follows:
+      The objects of~$\Ccat$ are pairs~$(A,S)$ consisting of a commutative ring~$A$ and a multiplicative set~$S \subseteq A$.
+      For any two objects~$(A,S)$ and~$(B,T)$ in~$\Ccat$, a morphisms~$f \colon (A,S) \to (B,T)$ is a ring homomorpism~$f \colon A \to B$ with~$f(S) \subseteq T$.
+      Let~$\Dcat = \CommRing$ be the category of commutative rings.%
+      \footnote{Again, in the lecture the notation~$\catname{CommRing}$ is used instead.}
+      We have a functor~$F \colon \Ccat \to \CommRing$ which assigns to each pair~$(A,S) \in \Ob(\Ccat)$ the localization~$F((A,S)) = S^{-1} A$, and assigns to each morphism~$f \colon (A,S) \to (B,T)$ the induced ring homomorphism
+      \[
+                F(f)
+        \colon  S^{-1} A
+        \to     T^{-1} B \,,
+        \quad   \frac{a}{s}
+        \mapsto \frac{f(a)}{f(s)} \,.
+      \]
+      The functor~$F$ is left adjoint to the functor~$G \colon \CommRing \to \Ccat$ which assigns to each commutative ring~$B$ the pair~$(B,B^\times)$, and to each ring homomorphism~$g \colon B \to C$ between commutative rings~$B$ and~$B'$ the morphism
+      \[
+                G(g)
+        =       (g, g^\times)
+        \colon  (B, B^\times)
+        \to     (C, C^\times) \,.
+      \]
+      The adjunction between~$F$ and~$G$ states that a ring homomorphism~$S^{-1} A \to B$ is \enquote{the same} as a ring homomorphism~$f \colon A \to B$ with~$f(A) \subseteq B^\times$, which is precisely the usual universal property of the localization~$S^{-1} A$.
+  \end{enumerate}
+\end{example}
+
+
+\begin{remark}[label = triangle equalities]
+  Let~$(F,G,\varphi)$ be an adjunction from~$\Ccat$ to~$\Dcat$.
+  \begin{enumerate}
+    \item
+      For any object~$X \in \Ob(\Ccat)$ the identity~$\id_{F(X)} \in \Dcat(F(X), F(X))$ corresponds under the bijection
+      \[
+                        \varphi_{X,F(X)}
+        \colon          \Dcat(F(X), F(X))
+        \xlongto{\cong} \Ccat(X, GF(X))
+      \]
+      to a morphism
+      \[
+                  \eta_X
+        \defined  \varphi_{X,F(X)}(\id_{F(X)})
+        \colon    X
+        \to       GF(X) \,.
+      \]
+      The naturality of~$\varphi$ results in the naturality of the family~$\eta \defined (\eta_X)_{X \in \Ob(\Ccat)}$:
+      If~$f \colon X \to X'$ is a morphism in~$\Ccat$ then the diagram
+      \begin{equation}
+        \label{big diagram}
+        \begin{tikzcd}[sep = large]
+            \Dcat(F(X), F(X))
+            \arrow{r}[above]{F(f)_*}
+            \arrow{d}[left]{\varphi_{X,F(X)}}
+          & \Dcat(F(X), F(X'))
+            \arrow{d}{\varphi_{X,F(X')}}
+          & \Dcat(F(X'), F(X'))
+            \arrow{l}[above]{F(f)^*}
+            \arrow{d}[right]{\varphi_{X',F(X')}}
+          \\
+            \Ccat(X, GF(X))
+            \arrow{r}[above]{GF(f)_*}
+          & \Ccat(X, GF(X'))
+          & \Ccat(X', GF(X'))
+            \arrow{l}[above]{f^*}
+        \end{tikzcd}
+      \end{equation}
+      commutes by the naturality of~$\varphi$.
+      Note that the elements~$\id_{F(X)} \in \Dcat(F(X), F(X))$ (in the top left corner of the diagram) and~$\id_{X'} \in \Dcat(F(X'), F(X'))$ (in the top right corner of the diagram) are assigned under the map~$F(f)_*$, resp.~$F(f)^*$, to the same element~$F(f) \in \Dcat(F(X), F(X'))$ (in the top middle of the diagram).
+      It follows that the square
+      \[
+        \begin{tikzcd}[sep = large]
+            X
+            \arrow{r}[above]{f}
+            \arrow{d}[left]{\eta_X}
+          & X'
+            \arrow{d}[right]{\eta_{X'}}
+          \\
+            GF(X)
+            \arrow{r}[above]{GF(f)}
+          & GF(X')
+        \end{tikzcd}
+      \]
+      commutes, because
+      \begin{align}
+         {}&  GF(f) \circ \eta_X  \notag  \\
+        ={}&  GF(f)_*( \eta_X ) \notag  \\
+        ={}&  GF(f)_* \circ \varphi_{X,F(X)}( \id_{F(X)} )  \label{def of etaX} \\
+        ={}&  \varphi_{X, F(X')} \circ F(f)_*( \id_{F(X)} ) \label{left square} \\
+        ={}&  \varphi_{X, F(X')}(F(f))  \label{use element 1} \\
+        ={}&  \varphi_{X, F(X')} \circ F(f)^*( \id_{F(X')} )  \label{use element 2} \\
+        ={}&  f^* \circ \varphi_{X', F(X')}( \id_{F(X')} )  \label{right square}  \\
+        ={}&  f^* ( \eta_{X'} \label{def of extX'} )  \\
+        ={}&  f \circ \eta_{X'} \notag  \,.
+      \end{align}
+      Here we use for~\eqref{def of etaX} the definition of~$\eta_X$, for~\eqref{left square} the commutativity of the left square in~\eqref{big diagram}, for~\eqref{use element 1} and~\eqref{use element 2} the above observation about~$F(f)$, for~\eqref{right square} the commutativity of the right square in~\eqref{right square}, and for~\eqref{def of extX'} the definition of~$\eta_{X'}$.
+      
+      We have thus constructed a natural transformation~$\eta \colon \id_\Ccat \to G \circ F$.
+      This natural transformation is the \emph{unit}\index{unit}\index{adjunction!unit} of the adjunction~$(F,G,\varphi)$.
+    \item
+      We similarly have for every~$Y \in \Ob(\Dcat)$ that the identity~$\id_{G(Y)} \in \Ccat(G(Y), G(Y))$ corresponds under the bijection
+      \[
+                        \varphi_{G(Y), Y}
+        \colon          \Dcat(FG(Y), Y)
+        \xlongto{\cong} \Ccat(G(Y), G(Y)) \,,
+      \]
+      to a morphism
+      \[
+                  \varepsilon_Y
+        \defined  \varphi_{G(Y), Y}^{-1}( \id_{G(Y)} )
+        \colon    FG(Y)
+        \to       Y \,.
+      \]
+      The naturality of~$\varphi$ results (similarly as for~$\eta$) in the naturality of the family~$\varepsilon \defined (\varepsilon_Y)_{Y \in \Dcat}$:
+      If~$g \colon Y \to Y'$ is a morphisms in~$\Dcat$ then the diagram
+      \begin{equation}
+        \label{big diagram again}
+        \begin{tikzcd}[sep = large]
+            \Dcat(FG(Y), Y)
+            \arrow{r}[above]{g_*}
+          & \Dcat(FG(Y), Y')
+          & \Dcat(FG(Y'), Y')
+            \arrow{l}[above]{FG(g)^*}
+          \\
+            \Ccat(G(Y), G(Y))
+            \arrow{u}[left]{\varphi_{G(Y), Y}^{-1}}
+            \arrow{r}[above]{G(g)_*}
+          & \Ccat(G(Y), G(Y'))
+            \arrow{u}[right]{\varphi_{G(Y), Y'}^{-1}}
+          & \Ccat(G(Y'), G(Y'))
+            \arrow{u}[right]{\varphi_{G(Y'), Y'}^{-1}}
+            \arrow{l}[above]{G(g)^*}
+        \end{tikzcd}
+      \end{equation}
+      commutes by the naturality of~$\varphi$.
+      Note that the elements~$\id_{G(Y)} \in \Ccat(G(Y), G(Y))$ (in the bottom left corner of the diagram) and~$\id_{G(Y')} \in \Ccat(G(Y), G(Y'))$ (in the bottom right corner of the diagram) are assigned under the map~$G(g)_*$, resp.~$G(g)^*$, to the same element~$G(g) \in \Ccat(G(Y), G(Y'))$ (in the bottom middle of the diagram).
+      It follows that the diagram
+      \[
+        \begin{tikzcd}[sep = large]
+            FG(Y)
+            \arrow{r}[above]{FG(g)}
+            \arrow{d}[left]{\varepsilon_Y}
+          & FG(Y')
+            \arrow{d}[right]{\varepsilon_{Y'}}
+          \\
+            Y
+            \arrow{r}[above]{g}
+          & Y'
+        \end{tikzcd}
+      \]
+      commutes, because
+      \begin{align}
+         {}&  g \circ \varepsilon_Y  \notag  \\
+        ={}&  g_*( \varepsilon_Y )  \notag  \\
+        ={}&  g_* \circ \varphi_{G(Y),Y}^{-1}( \id_{G(Y)} ) \label{def of eps Y}  \\
+        ={}&  \varphi_{G(Y),Y'}^{-1} \circ G(g)_*( \id_{G(Y)} ) \label{left square again} \\
+        ={}&  \varphi_{G(Y),Y'}^{-1}( G(g) )  \label{use element again 1} \\
+        ={}&  \varphi_{G(Y),Y'}^{-1} \circ G(g)^*( \id_{G(Y')} )  \label{use element again 2} \\
+        ={}&  FG(g)^* \circ \varphi_{G(Y'),Y'}^{-1}( \id_{G(Y')} )  \label{right square again}  \\
+        ={}&  FG(g)^*( \varepsilon_{Y'} ) \label{def of eps Y'} \\
+        ={}&  \varepsilon_{Y'} \circ FG(g)  \notag  \,.
+      \end{align}
+      Here we use for~\eqref{def of eps Y} the definition of~$\varepsilon_Y$, for~\eqref{left square again} the commutativity of the left square in~\eqref{big diagram again}, for~\eqref{use element again 1} and~\eqref{use element again 2} the above observation about~$G(g)$, for~\eqref{right square again} the commutativity of the right square in~\eqref{big diagram again}, and for~\eqref{def of eps Y'} the definition of~$\varepsilon_{Y'}$.
+      
+      We have thus constructed a natural transformation~$\varepsilon \colon F \circ G \to \Id_\Dcat$.
+      This natural transformation is the \emph{counit}\index{counit}\index{adjunction!counit} of the adjunction~$(F,G,\varphi)$.
+  \end{enumerate}
+\end{remark}
+
+
+
+
+
+\lecturend{7}
+
+\begin{lemma*}
+  Let~$F, G \colon \Ccat \to \Dcat$ be two functors between two categories~$\Ccat$ and~$\Dcat$, and let~$\zeta \colon F \to G$ be a natural transformation.
+  Let~$\Ecat$ be another category.
+  \begin{enumerate}
+    \item
+      If~$H \colon \Ecat \to \Ccat$ is another functor then there exists a natural transformation
+      \[
+                \zeta H
+        \colon  F \circ H
+        \to     G \circ H
+      \]
+      defined by~$(\zeta H)_Z = \zeta_{H(Z)}$ at every object~$Z \in \Ob(\Ecat)$.
+      \[
+        \begin{tikzcd}[column sep = large]
+            \Ecat
+            \arrow{r}[above]{H}
+          & \Ccat
+            \arrow[bend left]{r}[above]{F}[below,name=U]{}
+            \arrow[bend right]{r}[below]{G}[above,name=D]{}
+            \arrow[from=U, to=D, right, "\zeta"]
+          & \Dcat
+        \end{tikzcd}
+        \quad\leadsto\quad
+        \begin{tikzcd}[column sep = large]
+            \Ecat
+            \arrow[bend left]{rr}[above]{F \circ H}[below,name=U]{}
+            \arrow[bend right]{rr}[below]{G \circ H}[above,name=D]{}
+            \arrow[from=U, to=D, right, "\zeta H"]
+          & {}
+          & \Dcat
+        \end{tikzcd}
+      \]
+    \item
+      If~$H \colon \Dcat \to \Ecat$ is another functor then there exists a natural transformation
+      \[
+                H \zeta
+        \colon  H \circ F
+        \to     H \circ G
+      \]
+      defined by~$(H \zeta)_X = H(\zeta_X)$ at every object~$X \in \Ob(\Ccat)$.
+      \[
+        \begin{tikzcd}[column sep = large]
+            \Ccat
+            \arrow[bend left]{r}[above]{F}[below,name=U]{}
+            \arrow[bend right]{r}[below]{G}[above,name=D]{}
+            \arrow[from=U, to=D, right, "\zeta"]
+          & \Dcat
+            \arrow{r}[above]{H}
+          & \Ecat
+        \end{tikzcd}
+        \quad\leadsto\quad
+        \begin{tikzcd}[column sep = large]
+            \Ccat
+            \arrow[bend left]{rr}[above]{H \circ F}[below,name=U]{}
+            \arrow[bend right]{rr}[below]{H \circ G}[above,name=D]{}
+            \arrow[from=U, to=D, right, "H \zeta"]
+          & {}
+          & \Ecat
+        \end{tikzcd}
+      \]
+  \end{enumerate}
+\end{lemma*}
+
+
+% TODO: Add a proof.e
+
+
+\begin{remark}[continues = triangle equalities]
+  \leavevmode
+  \begin{enumerate}[start=3]
+    \item
+      The constructed natural transformations~$\eta$ and~$\varepsilon$ make the triangles
+      \begin{equation}
+        \label{triangle relations}
+        \begin{tikzcd}[sep = large]
+            G
+            \arrow{r}[above]{\eta G}
+            \arrow{dr}[below left]{\id_G}
+          & GFG
+            \arrow{d}[right]{G \varepsilon}
+          \\
+            {}
+          & G
+        \end{tikzcd}
+        \qquad\text{and}\qquad
+        \begin{tikzcd}[sep = large]
+            F
+            \arrow{r}[above]{F \eta}
+            \arrow{dr}[below left]{\id_F}
+          & FGF
+            \arrow{d}[right]{\varepsilon F}
+          \\
+            {}
+          & F
+        \end{tikzcd}
+      \end{equation}
+      commute:
+      
+      To see the commutativity of the left triangle we need to show that at every object~$Y \in \Dcat$ the triangle
+      \[
+        \begin{tikzcd}[sep = large]
+            G(Y)
+            \arrow{r}[above]{\eta_{G(Y)}}
+            \arrow{dr}[below left]{\id_{G(Y)}}
+          & GFG(Y)
+            \arrow{d}[right]{G(\varepsilon_Y)}
+          \\
+            {}
+          & G(Y)
+        \end{tikzcd}
+      \]
+      commutes, i.e.\ we need to show the equality
+      \[
+          G(\varepsilon_Y) \circ \eta_{G(Y)}
+        = \id_{G(Y)} \,.
+      \]
+      This holds because it follows from the naturality of~$\varphi$ that the square
+      \[
+        \begin{tikzcd}[sep = large]
+            \Dcat(FG(Y), FG(Y))
+            \arrow{r}[above]{(\varepsilon_Y)_*}
+            \arrow{d}[left]{\varphi_{G(Y),FG(Y)}}
+          & \Dcat(FG(Y), Y)
+            \arrow{d}[right]{\varphi_{G(Y),Y}}
+          \\
+            \Ccat(G(Y), GFG(Y))
+            \arrow{r}[above]{G(\varepsilon_Y)_*}
+          & \Ccat(G(Y), G(Y))
+        \end{tikzcd}
+      \]
+      commutes, which then gives
+      \begin{align*}
+         {}&  G(\varepsilon_Y) \circ \eta_{G(Y)}  \\
+        ={}&  G(\varepsilon_Y)_*( \eta_{G(Y)} ) \\
+        ={}&  G(\varepsilon_Y)_* \circ \varphi_{G(Y), FG(Y)}( \id_{FG(Y)} ) \\
+        ={}&  \varphi_{G(Y), Y} \circ (\varepsilon_Y)_*( \id_{FG(Y)} )  \\
+        ={}&  \varphi_{G(Y), Y}( \varepsilon_Y )  \\
+        ={}&  \varphi_{G(Y), Y} \circ \varphi_{G(Y),Y}^{-1}( \id_{G(Y)} )  \\
+        ={}&  \id_{G(Y)} \,.
+      \end{align*}
+    
+    The commutativity of the right triangle can be shown similarly:
+    We need to show that at every object~$X \in \Ob(\Ccat)$ the triangle
+    \[
+      \begin{tikzcd}[sep = large]
+          F(X)
+          \arrow{r}[above]{F(\eta_X)}
+          \arrow{dr}[below left]{\id_{F(X)}}
+        & FGF(X)
+          \arrow{d}[right]{\varepsilon_{F(X)}}
+        \\
+          {}
+        & F(X)
+      \end{tikzcd}
+    \]
+    commutes, i.e.\ we need to show the equality
+    \[
+        \varepsilon_{F(X)} \circ F(\eta_X)
+      = \id_{F(X)} \,.
+    \]
+    We use the naturality of~$\varphi$ to find that the square
+    \[
+      \begin{tikzcd}[sep = large]
+          \Dcat(FGF(X), F(X))
+          \arrow{r}[above]{F(\eta_X)^*}
+        & \Dcat(F(X),F(X))
+        \\
+          \Ccat(GF(X), GF(X))
+          \arrow{u}[left]{\varphi_{F(X),GF(X)}^{-1}}
+          \arrow{r}[above]{\eta_X^*}
+        & \Ccat(X,GF(X))
+          \arrow{u}[right]{\varphi_{X,F(X)}^{-1}}
+      \end{tikzcd}
+    \]
+    commutes, which allows us to calculate
+    \begin{align*}
+       {}&  \varepsilon_{F(X)} \circ F(\eta_X)  \\
+      ={}&  F(\eta_X)^*( \varepsilon_{F(X)} ) \\
+      ={}&  F(\eta_X)^* \circ \varphi_{GF(X),F(X)}^{-1}( \id_{GF(X)} )  \\
+      ={}&  \varphi_{X,F(X)}^{-1} \circ \eta_X^*( \id_{GF(X)} ) \\
+      ={}&  \varphi_{X,F(X)}^{-1}( \eta_X ) \\
+      ={}&  \varphi_{X,F(X)}^{-1} \circ \varphi_{X,F(X)}( \id_{F(X)} ) \\
+      ={}&  \id_{F(X)} \,.
+    \end{align*}
+    
+    The commutativity of the triangles~\eqref{triangle relations} are the \emph{triangle relations}\index{triangle relations}.
+  \end{enumerate}
+\end{remark}
+
+
+\begin{proposition}
+  Let~$F \colon \Ccat \to \Dcat$ and~$G \colon \Dcat \to \Ccat$ be functors between categories~$\Ccat$ and~$\Dcat$, and let~$\eta \colon \Id_\Ccat \to G \circ F$ and~$\varepsilon \colon F \circ G \to \Id_\Dcat$ be natural transformation satisfying the triangle relations.
+  Then for any two objects~$X \in \Ob(\Ccat)$ and~$Y \in \Ob(\Dcat)$ the map
+  \[
+            \varphi_{X,Y}
+    \colon  \Dcat(F(X), Y)
+    \to     \Ccat(X, G(Y)) \,,
+    \quad   h
+    \mapsto G(h) \circ \eta_X
+  \]
+   is a bijection with inverse given by
+  \[
+            \varphi_{X,Y}^{-1}
+    \colon  \Ccat(X, G(Y))
+    \to     \Dcat(F(X), Y) \,,
+    \quad   k
+    \mapsto \varepsilon_Y \circ F(k) \,,
+  \]
+  and~$(F,G,\varphi)$ is an adjunction from~$\Ccat$ to~$\Dcat$.
+\end{proposition}
+
+
+\begin{proof}
+  The family~$\varphi \defined (\varphi_{X,Y})_{X \in \Ob(\Ccat), Y \in \Ob(\Dcat)}$ is natural:
+  Let~$f \colon X \to X'$ be a morphism in~$\Ccat$ and let~$Y \in \Ob(\Dcat)$ be an object.
+  We have to show that the square
+  \[
+    \begin{tikzcd}[sep = large]
+        \Dcat(F(X'), Y)
+        \arrow{r}[above]{F(f)^*}
+        \arrow{d}[left]{\varphi_{X',Y}}
+      & \Dcat(F(X), Y)
+        \arrow{d}[right]{\varphi_{X,Y}}
+      \\
+        \Ccat(X', G(Y))
+        \arrow{r}[above]{f^*}
+      & \Ccat(X, G(Y))
+    \end{tikzcd}
+  \]
+  commutes, i.e.\ that
+  \[
+      \varphi_{X,Y}(h \circ F(f))
+    = \varphi_{X',Y}(h) \circ f
+  \]
+  for every~$h \in \Dcat(F(X'), Y)$.
+  This holds because
+  \begin{align}
+     {}&  \varphi_{X,Y}(h \circ F(f)) \notag  \\
+    ={}&  G(h \circ F(f)) \circ \eta_X  \notag  \\
+    ={}&  G(h) \circ GF(f) \circ \eta_X \notag  \\
+    ={}&  G(h) \circ \eta_{X'} \circ f  \label{nat of phi}  \\
+    ={}&  \varphi_{X',Y}(h) \circ f \notag  \,,
+  \end{align}
+  where we use for the equality~\eqref{nat of phi} that the square
+  \[
+    \begin{tikzcd}[sep = large]
+        X
+        \arrow{r}[above]{f}
+        \arrow{d}[left]{\eta_X}
+      & X'
+        \arrow{d}[right]{\eta_{X'}}
+      \\
+        GF(X)
+        \arrow{r}[above]{GF(f)}
+      & GF(X')
+    \end{tikzcd}
+  \]
+  commutes by the naturality of~$\eta$.
+  
+  It remains to show that the map~$\varphi_{X,Y} \colon \Dcat(F(X), Y) \to \Ccat(X, G(Y))$ is for all objects~$X \in \Ob(\Ccat)$ and~$Y \in \Ob(\Dcat)$ a bijection with inverse as claimed.
+  We denote the proposed inverse map by
+  \[
+            \psi_{X,Y}
+    \colon  \Ccat(X, G(Y))
+    \to     \Dcat(F(X), Y) \,,
+    \quad   k
+    \mapsto \varepsilon_Y \circ F(k) \,.
+  \]
+  We need to show that the map~$\varphi_{X,Y}$ and~$\psi_{X,Y}$ are mutually inverse.
+  We have for every~$k \in \Ccat(X,G(Y))$ that
+  \begin{align}
+     {}&  \varphi_{X,Y}( \psi_{X,Y}( k ) )  \notag  \\
+    ={}&  G( \varepsilon_Y \circ F(k) ) \circ \eta_X  \notag  \\
+    ={}&  G(\varepsilon_Y) \circ GF(k) \circ \eta_X \notag  \\
+    ={}&  G(\varepsilon_Y) \circ \eta_{G(Y)} \circ k  \label{nat of eta}  \\
+    ={}&  (G \varepsilon)_Y \circ (\eta G)_Y \circ k  \notag  \\
+    ={}&  (G \varepsilon \circ \eta G)_Y \circ k  \notag  \\
+    ={}&  (\id_G)_Y \circ k \label{triangle left} \\
+    ={}&  \id_{G(Y)}  \circ k \notag  \\
+    ={}&  k \notag \,,
+  \end{align}
+  where we use for the equality~\eqref{nat of eta} that the square
+  \[
+    \begin{tikzcd}[sep = large]
+        X
+        \arrow{r}[above]{k}
+        \arrow{d}[left]{\eta_X}
+      & G(Y)
+        \arrow{d}[right]{\eta_{G(Y)}}
+    \\
+        GF(X)
+        \arrow{r}[above]{GF(k)}
+      & GFG(Y)
+    \end{tikzcd}
+  \]
+  commutes by the naturality of~$\eta$, and where we use for the equality~\eqref{triangle left} a triangle relation.
+  With this we have shown that~$\varphi_{X,Y} \circ \psi_{X,Y} = \id$.
+  We similarly compute for every~$h \in \Dcat(F(X), Y)$ that
+  \begin{align}
+     {}&  \psi_{X,Y}( \varphi_{X,Y}( h ) )  \notag  \\
+    ={}&  \varepsilon_Y \circ F(G(h) \circ \eta_X)  \notag  \\
+    ={}&  \varepsilon_Y \circ FG(h) \circ F(\eta_X) \notag  \\
+    ={}&  h \circ \varepsilon_{F(X)} \circ F(\eta_X)  \label{nat of eps}  \\
+    ={}&  h \circ (\varepsilon F)_X \circ (F \eta)_X  \notag  \\
+    ={}&  h \circ (\varepsilon F \circ F \eta)_X \notag \\
+    ={}&  h \circ (\id_F)_X \label{triangle right}  \\
+    ={}&  h \circ \id_{F(X)}  \notag  \\
+    ={}&  h \notag \,,
+  \end{align}
+  where we use for the equality~\eqref{nat of eps} that the square
+  \[
+    \begin{tikzcd}[sep = large]
+        FGF(X)
+        \arrow{r}[above]{FG(h)}
+        \arrow{d}[left]{\varepsilon_{F(X)}}
+      & FG(Y)
+        \arrow{d}[right]{\varepsilon_Y}
+      \\
+        F(X)
+        \arrow{r}[above]{h}
+      & Y
+    \end{tikzcd}
+  \]
+  commutes by the naturality of~$\eta$, and where we use for the equality~\eqref{triangle right} another triangle relation.
+\end{proof}
+
+
+% TODO: Both constructions are mutually inverse.
+
+
+\begin{remark}
+  Let~$F \colon \Ccat \to \Dcat$ be an equivalence between two categories~$\Ccat$ and~$\Dcat$.
+  Let~$G \colon \Dcat \to \Ccat$ be a \dash{quasi}{inverse} to~$F$, i.e.\ a functor for which there exist natural isomorphisms~$\eta \colon \Id_\Ccat \to G \circ F$ and~$\zeta \colon \Id_\Dcat \to F \circ G$.
+  Then the maps
+  \begin{gather*}
+            \varphi_{X,Y}
+    \colon  \Dcat(F(X), Y)
+    \to     \Ccat(X, G(Y)) \,,
+    \quad   h
+    \mapsto G(h) \circ \eta_X
+  \shortintertext{and}
+            \psi_{Y,X}
+    \colon  \Ccat(G(Y), X)
+    \to     \Dcat(Y, F(X)) \,,
+    \quad   k
+    \mapsto F(k) \circ \zeta_Y
+  \end{gather*}
+  are natural bijections, which make~$(F,G,\varphi)$ and~$(G,F,\psi)$ into adjoint pairs.
+\end{remark}
+
+
+% TODO: Check this!
+
+
+\begin{lemma}
+  \label{uniqueness of adjoints}
+  Let~$G \colon \Dcat \to \Ccat$ be a functor that is part of two adjoint pairs~$(F,G,\varphi)$ and~$(F',G,\varphi')$.
+  Then there exists a unique natural isomorphism~$\zeta \colon F \to F'$ which makes the square
+  \[
+    \begin{tikzcd}[sep = large]
+        \Dcat(F(X), Y)
+        \arrow{r}[above]{\varphi_{X,Y}}
+        \arrow{d}[left]{(\zeta_X)^*}
+      & \Ccat(X,G(Y))
+        \arrow[equal]{d}
+      \\
+        \Dcat(F'(X), Y)
+        \arrow{r}[above]{\varphi'_{X,Y}}
+      & \Ccat(X, G(Y))
+    \end{tikzcd}
+  \]
+  commute for all objects~$X \in \Ob(\Ccat)$ and~$Y \in \Ob(\Dcat)$.
+\end{lemma}
+
+
+\begin{proof}
+  The composition
+  \[
+      \Phi_{X,Y}
+    \colon
+      \Dcat(F'(X), Y)
+    \xlongto{\varphi'_{X,Y}}
+      \Ccat(X, G(Y)
+    \xlongto{\varphi_{X,Y}^{-1}}
+      \Dcat(F(X),Y)
+  \]
+  is for any two objects~$X \in \Ob(\Ccat)$ and~$Y \in \Ob(\Dcat)$ a bijection.
+  The bijection~$\Phi_{X,Y}$ is natural in~$Y$ because both~$\varphi_{X,Y}$ and~$\varphi'_{X,Y}$ are natural in~$Y$.
+  This means for every object~$X \in \Ob(\Ccat)$ that
+  \[
+            \Phi_{X,(-)}
+    \colon  \Dcat(F'(X), -)
+    \to     \Dcat(F(X), -)
+  \]
+  is a natural transformation, and hence a morphism in the functor category~$\Fun(\Dcat, \Set)$.
+  It follows from the fully faithfulness of the Yoneda embedding that there exists a unique morphism~$\zeta_X \colon F(X) \to F'(X)$ in~$\Dcat$ with
+  \[
+      (\zeta_X)_*
+    = \Phi_{X,(-)}
+    = \varphi_{X,(-)}^{-1} \circ \varphi'_{X,(-)} \,.
+  \]
+  The bijections~$\Phi_{X,Y}$ are also natural in~$X$, because both~$\varphi_{X,Y}^{-1}$ and~$\varphi'_{X,Y}$ are natural in~$X$;
+  hence~$\zeta_X \colon F(X) \to F'(X)$ is natural in~$X$.
+  We have therefore defined a natural transformation~$\zeta \colon F \to F'$.
+  It follows at every object~$X \in \Ob(\Ccat)$ from~$\Phi_{X,(-)}$ being an isomorphism that~$\zeta_X$ is also an isomorphism, because the Yoneda embedding is fully faithful, and therefore reflects isomorphisms.
+  This shows that~$\zeta$ is a natural isomorphism.
+  
+  Suppose that~$\zeta' \colon F \to F'$ is another natural isomorphism which makes the square commute.
+  It then holds at every object~$X \in \Ccat$ that
+  \[
+      (\zeta'_X)^*
+    = \Phi_{X,(-)}
+    = (\zeta_X)^* \,,
+  \]
+  and therefore~$\zeta'_X = \zeta_X$ by the faithfulness of the Yoneda embedding.
+  This shows that~$\zeta' = \zeta$.
+\end{proof}
+
+
+% TODO: Make this proof less sketchy.
+
+
+\begin{remark}
+  In the situation of \cref{uniqueness of adjoints}, the natural isomorphism~$\zeta$ and its inverse~$\zeta^{-1}$ can be be constructed using the units~$\eta$,~$\eta'$ and counits~$\varepsilon$,~$\varepsilon'$ via
+  \begin{gather*}
+      \zeta
+    \colon
+      F
+    \xlongto{F \eta'}
+      FGF'
+    \xlongto{\varepsilon F'}
+      F
+  \shortintertext{and}
+      \zeta^{-1}
+    \colon
+      F'
+    \xlongto{F' \eta}
+      F'GF
+    \xlongto{\varepsilon' F}
+      F \,.
+  \end{gather*}
+\end{remark}
+
+
+
+
