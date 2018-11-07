@@ -1294,7 +1294,7 @@
     = F(\id_{G(Y)})
   \]
   and hence~$\id_{G(Y)} = G(\id_Y)$.
-  It holds for any two composable functors~$g \colon Y \to Y'$ and~$g' \colon Y' \to Y''$ in~$\Dcat$ that
+  It holds for any two composable morphisms~$g \colon Y \to Y'$ and~$g' \colon Y' \to Y''$ in~$\Dcat$ that
   \begin{align*}
      {}&  \varepsilon_{Y''}^{-1} \circ (g' \circ g) \circ \varepsilon_Y \\
     ={}&  \varepsilon_{Y''}^{-1} \circ g' \circ \varepsilon_{Y'}
@@ -1522,9 +1522,9 @@
       which satisfies~$F(f)(T_x) = T_{f(x)}$ for every~$x \in X$.
       The right adjoint functor~$G \colon \kCommAlg \to \Set$ is the forgetful functor.
     \item
-      Let~$A$ and~$B$ be two~{\kalgs} an let~$\indmodule[A]{N}[B]$ be an~{\module{$A$}[$B$]}.
+      Let~$A$ and~$B$ be two~{\kalgs} and let~$\indmodule[A]{N}[B]$ be an~{\module{$A$}[$B$]}.
       We then have an adjunction from the module category~$\Ccat = \Modr{A}$ to the module category~$\Dcat = \Modr{B}$.
-      The left adjoint functor~$F \colon \Modr{A} \to \Modr{B}$ assigns to each right~{\module{$A$}}~$\indmodule{M}[A]$ the right~{\module{$B$}}~$F(M) = B \tensor_A M$, and the right adjoint functor~$G \colon \Modr{B} \to \Modr{A}$ assigns to each right~{\module{$B$}}~$\indmodule{P}[B]$ the right~{\module{$A$}}~$G(P) = \Hom_B(N,P)$.
+      The left adjoint functor~$F \colon \Modr{A} \to \Modr{B}$ assigns to each right~{\module{$A$}}~$\indmodule{M}[A]$ the right~{\module{$B$}}~$F(M) = M \tensor_A N$, and the right adjoint functor~$G \colon \Modr{B} \to \Modr{A}$ assigns to each right~{\module{$B$}}~$\indmodule{P}[B]$ the right~{\module{$A$}}~$G(P) = \Hom_B(N,P)$.
       The required bijections~$\varphi_{M,P}$ are given by \cref{hom tensor adjunction}.
     \item
       Let~$\varphi \colon A \to B$ be a homomorphism of~{\kalgs}.
@@ -1627,7 +1627,7 @@
       We have thus constructed a natural transformation~$\eta \colon \id_\Ccat \to G \circ F$.
       This natural transformation is the \emph{unit}\index{unit}\index{adjunction!unit} of the adjunction~$(F,G,\varphi)$.
     \item
-      We similarly have for every~$Y \in \Dcat$ that the identity~$\id_{G(Y)} \in \Ccat(G(Y), G(Y))$ corresponds under the bijection
+      We similarly have for every~$Y \in \Ob(\Dcat)$ that the identity~$\id_{G(Y)} \in \Ccat(G(Y), G(Y))$ corresponds under the bijection
       \[
                         \varphi_{G(Y), Y}
         \colon          \Dcat(FG(Y), Y)
@@ -1824,7 +1824,7 @@
             \Dcat(FG(Y), FG(Y))
             \arrow{r}[above]{(\varepsilon_Y)_*}
             \arrow{d}[left]{\varphi_{G(Y),FG(Y)}}
-          & \Ccat(FG(Y), Y)
+          & \Dcat(FG(Y), Y)
             \arrow{d}[right]{\varphi_{G(Y),Y}}
           \\
             \Ccat(G(Y), GFG(Y))
@@ -1916,7 +1916,7 @@
 
 \begin{proof}
   The family~$\varphi \defined (\varphi_{X,Y})_{X \in \Ob(\Ccat), Y \in \Ob(\Dcat)}$ is natural:
-  Let~$f \colon X \to $ be a morphim in~$\Ccat$ and let~$Y \in \Ob(\Dcat)$ be an object.
+  Let~$f \colon X \to X'$ be a morphism in~$\Ccat$ and let~$Y \in \Ob(\Dcat)$ be an object.
   We have to show that the square
   \[
     \begin{tikzcd}[sep = large]
@@ -2043,7 +2043,7 @@
     \quad   h
     \mapsto G(h) \circ \eta_X
   \shortintertext{and}
-            \psi_{X,Y}
+            \psi_{Y,X}
     \colon  \Ccat(G(Y), X)
     \to     \Dcat(Y, F(X)) \,,
     \quad   k
@@ -2059,7 +2059,7 @@
 \begin{lemma}
   \label{uniqueness of adjoints}
   Let~$G \colon \Dcat \to \Ccat$ be a functor that is part of two adjoint pairs~$(F,G,\varphi)$ and~$(F',G,\varphi')$.
-  Then there exist a unique natural isomorphism~$\zeta \colon F \to F'$ which makes the square
+  Then there exists a unique natural isomorphism~$\zeta \colon F \to F'$ which makes the square
   \[
     \begin{tikzcd}[sep = large]
         \Dcat(F(X), Y)
@@ -2097,7 +2097,7 @@
     \to     \Dcat(F(X), -)
   \]
   is a natural transformation, and hence a morphism in the functor category~$\Fun(\Dcat, \Set)$.
-  It follows from the fully faithfulness of the Yoneda embedding that there exists a unique morphism~$\zeta_X \colon F(X) \to F'(X)$ in~$\Ccat$ with
+  It follows from the fully faithfulness of the Yoneda embedding that there exists a unique morphism~$\zeta_X \colon F(X) \to F'(X)$ in~$\Dcat$ with
   \[
       (\zeta_X)_*
     = \Phi_{X,(-)}
@@ -2135,7 +2135,7 @@
     \xlongto{\varepsilon F'}
       F
   \shortintertext{and}
-      \zeta'
+      \zeta^{-1}
     \colon
       F'
     \xlongto{F' \eta}
