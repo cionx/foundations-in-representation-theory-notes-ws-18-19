@@ -12,12 +12,117 @@
   
   The functor~$F$ is dense because it holds for every object~$Y \in \Ob(\Dcat)$ that~$F(X) \cong Y$ for the object~$X \defined G(Y) \in \Ob(\Ccat)$ via the isomorphism~$\zeta_Y \colon F(G(Y)) \to Y$.
   
-  The proof that~$f$ is fully faithful which was given in the lecture doesn’t seem correct;
-  we%
-  \footnote{Either Dr.\ Franzen or the author.}
-  will add a proof in the near future.
+  To show that~$F$ is fully faithful we first show that~$F$ is faithful, and then, by using that~$G$ is faithful, that~$F$ is full.
   
-  Suppose on the other hand that the functor~$F$ is both fully faithful and dense.
+  To see that~$F$ is faithful we note that for every morphism~$f \colon X \to X'$ in~$\Ccat$ the square
+  \begin{equation}
+  \label{diagram for fully faithful}
+    \begin{tikzcd}[sep = large]
+        GF(X)
+        \arrow{r}[above]{GF(f)}
+        \arrow{d}[left]{\eta_X}
+      & GF(X')
+        \arrow{d}[right]{\eta_{X'}}
+      \\
+        X
+        \arrow{r}[above]{f}
+      & X'
+    \end{tikzcd}
+  \end{equation}
+  commutes by the naturality of~$\eta$.
+  The morphism~$f$ is therefore uniquely determined by its image~$GF(f)$ via the relation
+  \[
+      f
+    = \eta_{X'} \circ GF(f) \circ \eta_X^{-1} \,.
+  \]
+  
+  To show that~$F$ is full we first note that~$G$ is faithful, because we can switch the roles of~$F$ and~$G$ in the above discussion.
+  Let~$X, X' \in \Ob(\Ccat)$ be two objects and let~$g \colon F(X) \to F(X')$ be a morphism in~$\Dcat$.
+  To find a morphism~$f \colon X \to X'$ with~$F(f) = g$ we use the above calculation as a motivatian, and define
+  \[
+              f
+    \coloneqq \eta_{X'} \circ G(g) \circ \eta_X^{-1}
+  \]
+  This ensures that the square
+  \[
+    \begin{tikzcd}[sep = large]
+        GF(X)
+        \arrow{r}[above]{G(g)}
+        \arrow{d}[left]{\eta_X}
+      & GF(X')
+        \arrow{d}[right]{\eta_{X'}}
+      \\
+        X
+        \arrow{r}[above]{f}
+      & X'
+    \end{tikzcd}
+  \]
+  commutes.
+  By applying the functor~$GF$ to this diagram we get the following commutative square:
+  \begin{equation}
+    \label{applying GF}
+    \begin{tikzcd}[sep = large]
+        GFGF(X)
+        \arrow{r}[above]{GFG(g)}
+        \arrow{d}[left]{GF(\eta_X)}
+      & GFGF(X')
+        \arrow{d}[right]{GF(\eta_{X'})}
+      \\
+        GF(X)
+        \arrow{r}[above]{GF(f)}
+      & GF(X')
+    \end{tikzcd}
+  \end{equation}
+  We can also get a similar commutative square by applying the naturality of~$\eta \colon GF \to \Id_{\Ccat}$ to the morphism~$G(g) \colon GF(X) \to GF(X')$, resulting in the following commutative diagram:s 
+  \begin{equation}
+    \label{applying eta}
+    \begin{tikzcd}[sep = large]
+        GFGF(X)
+        \arrow{r}[above]{GFG(g)}
+        \arrow{d}[left]{\eta_{GF(X)}}
+      & GFGF(X')
+        \arrow{d}[right]{\eta_{GF(X')}}
+      \\
+        GF(X)
+        \arrow{r}[above]{G(g)}
+      & GF(X')
+    \end{tikzcd}
+  \end{equation}
+  We can also apply the naturality of~$\eta$ to the morphism~$\eta_X \colon GF(X) \to X$ to get the following commutative square:
+  \[
+    \begin{tikzcd}[sep = large]
+        GFGF(X)
+        \arrow{r}[above]{GF(\eta_X)}
+        \arrow{d}[left]{\eta_{GF(X)}}
+      & GFG(X)
+        \arrow{d}[right]{\eta_X}
+      \\
+        GF(X)
+        \arrow{r}[above]{\eta_X}
+      & X
+    \end{tikzcd}
+  \]
+  It follows from the commutativity of this last diagram that
+  \begin{gather*}
+      \eta_X \circ GF(\eta_X)
+    = \eta_X \circ \eta_{GF(X)}
+  \shortintertext{and hence}
+      GF(\eta_X)
+    = \eta_{GF(X)}
+  \end{gather*}
+  because~$\eta_X$ is an isomorphism.
+  We find in the same way that also~$GF(\eta_{X'}) = \eta_{GF(X')}$.
+  With this we find that the commutative squares~\eqref{applying GF} and~\eqref{applying eta} coincide in both vertical morphisms and in the upper morphism.
+  It hence follows that
+  \[
+      GF(f)
+    = GF(\eta_{X'}) \circ GFG(g) \circ GF(\eta_X)^{-1}
+    = \eta_{GF(X')} \circ GFG(g) \circ \eta_{GF(X)}^{-1}
+    = G(g) \,.
+  \]
+  Because~$G$ is faithful it further follow that~$g = F(f)$, which shows that~$F$ is fulll.
+  
+  Suppose now on the other hand that the functor~$F$ is both fully faithful and dense.
   For every object~$Y \in \Ob(\Dcat)$ let~$G(Y) \in \Ob(\Ccat)$ be an object with~$FG(Y) \cong Y$;
   we choose an isomorphism~$\varepsilon_Y \colon FG(Y) \to Y$.
   If~$g \colon Y \to Y'$ is a morphism in~$\Dcat$ then there exist for the conjugated morphism~$\varepsilon_{Y'}^{-1} \circ g \circ \varepsilon_Y \colon FG(Y) \to FG(Y')$ a unique morphism~$G(g) \colon G(Y) \to G(Y')$ in~$\Dcat$ with~$FG(g) = \varepsilon_{Y'}^{-1} \circ g \circ \varepsilon_Y$, because~$F$ is fully faithful.
@@ -150,17 +255,65 @@
   The above proof displays an important property that a faithful functor~$F \colon \Ccat \to \Dcat$ possesses:
   \begin{enumerate}
     \item
-      An identity between morphisms in~$\Ccat$ holds if and only if it holds after applying~$F$.
-      In particular, a diagram in~$\Ccat$ commutes if and only if it does so after applying~$F$ to it.
-      We have used this observation to show the commutativity of the diagram~\eqref{naturality of eta}.
+      An identity between morphisms in~$\Ccat$ holds if and only if it holds after applying the functor~$F$.
+      In particular, a diagram in~$\Ccat$ commutes if and only if it does so after applying the functor~$F$ to it.
+      We have used this observation in the above proof to show the commutativity of the diagram~\eqref{naturality of eta}.
   \end{enumerate}
-  If~$F$ is not only faithful but also full, then we can observe the following:
+  If~$F$ is not only faithful but also full, and hence fully faithful, then we can observe the following:
   \begin{enumerate}[resume]
     \item
       A morphism~$f \colon X \to X'$ in~$\Ccat$ is an isomorphism if and only if the morphism~$F(f) \colon F(X) \to F(X')$ in~$\Dcat$ is an isomorphism.
       (This means that the functor~$F$ \emph{reflects}\index{reflects isomorphisms}\index{functor!reflects isomorphism} isomorphisms.)
-      We have used this observation to show that~$\eta_X$ is again an isomorphism.
+      We have used this observation in the above proof to show that~$\eta_X$ is again an isomorphism.
   \end{enumerate}
+\end{remark*}
+
+
+\begin{remark*}
+  The author prefers a slightly different argumentation for the fully faithfulness of the functor~$F$ in the first part of the proof:
+  
+  It follows for any two objects~$X, X' \in \Ob(\Ccat)$ from the commutativity of the square~\eqref{diagram for fully faithful} that the composition
+  \[
+      \Ccat(X, X')
+    \xlongto{F}
+      \Dcat(F(X), F(X'))
+    \xlongto{G}
+      \Ccat(GF(X), GF(X'))
+    \xlongto{\eta_{X'} \circ (-) \circ \eta^{-1}_X}
+      \Ccat(X, X')
+  \]
+  is the identity~$\id_{\Ccat(X,X')}$.
+  This tells us that~$F$ is fully faithful, and that~$G$ is full \enquote{on the image of~$F$}, i.e.\ that for objects~$Y, Y' \in \Ob(\Dcat)$ the map
+  \[
+      \Dcat(Y, Y')
+    \xlongto{G}
+      \Ccat(G(Y), G(Y'))
+  \]
+  is surjective if there exist objects~$X, X' \in \Ob(\Ccat)$ with~$Y = F(X)$ and~$Y' = F(X')$.
+  
+  We now use that the functor~$F$ is dense to extend this surjectivity to any two objects~$Y, Y' \in \Ob(\Ccat)$:
+  There exist objects~$X, X' \in \Ob(\Ccat)$ for which there exist isomorphisms~$\varepsilon \colon Y \to F(X)$ and~$\varepsilon' \colon Y' \to F(X')$.
+  It follows from the functoriality of~$G$ that~$G(\varepsilon) \colon G(Y) \to GF(X)$ and~$G(\varepsilon') \colon G(Y') \to GF(X')$ are again isomorphisms, and that the square
+  \[
+    \begin{tikzcd}[row sep = large, column sep = 8em]
+        \Dcat(Y, Y')
+        \arrow{r}[above]{\varepsilon' \circ (-) \circ \varepsilon^{-1}}
+        \arrow{d}[left]{G}
+      & \Dcat(F(X), F(X'))
+        \arrow{d}[right]{G}
+      \\
+        \Ccat(G(Y), G(Y'))
+        \arrow{r}[above]{G(\varepsilon') \circ (-) \circ G(\varepsilon)^{-1}}
+      & \Ccat(GF(X), GF(Y'))
+    \end{tikzcd}
+  \]
+  commutes.
+  The horizontal maps in this square are bijections because the morphisms~$\varepsilon$,~$\varepsilon'$,~$G(\varepsilon)$ and~$G(\varepsilon')$ are isomorphisms;
+  we have also seen above that the vertical map on the right is surjective, 
+  It follows that the vertical map on the left is surjective as well, which shows that~$G$ is full.
+  
+  By switching the roles of~$F$ and~$G$ we also find that~$G$ is faithful and that~$F$ is full.
+  This altogether shows that both~$F$ and~$G$ are fully faithful.
 \end{remark*}
 
 

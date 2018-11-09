@@ -3,8 +3,10 @@
 \usepackage{gitinfo2}   % git information on the title page
 \usepackage[backend=biber,style=alphabetic, dateabbrev=false, urldate=long]{biblatex}   %for bibliography
 \usepackage{amsmath, amssymb, amsthm, mathtools}      % general math stuff
-\usepackage{thmtools}
 \usepackage{extarrows}  % xlongrightarrow
+\usepackage{mathdots}
+\usepackage{stmaryrd}   % bigsqcap
+\usepackage{thmtools}
 \usepackage{fontspec}   % for font stuff
 \usepackage[british]{babel}
   \usepackage{tikzpagenodes}  % to include an image at the right position
@@ -17,7 +19,6 @@
 \usepackage{csquotes}   % for proper quotation marks
 \usepackage{microtype}  % for better typography
 \usepackage{xhfill}
-\usepackage{mathdots}
 \usepackage[original]{imakeidx} % for the index, load before hyperref
 \usepackage{hyperref}   % for internal (and external) links
 \usepackage[capitalise,noabbrev]{cleveref}  % for smarter referencing, load after hyperref
@@ -139,8 +140,10 @@
 \newcommand{\kbilin}{$\kf$\nobreakdash-bilinear}
 \newcommand{\klin}{$\kf$\nobreakdash-linear}
 \newcommand{\kdash}{$\kf$\nobreakdash-}
+\newcommand{\preklin}{pre\nobreakdash-$\kf$\nobreakdash-linear}
 \newcommand{\twosided}{two\nobreakdash-sided}
 \newcommand{\welldef}{well\nobreakdash-defined}
+\newcommand{\Zbilin}{$\Integer$\nobreakdash-bilinear}
 % with arguments
 \newcommand{\balanced}[1]{#1\nobreakdash-balanced}
 % kind of modules and stuff
@@ -172,6 +175,7 @@
 
 % binary operators
 \newcommand{\tensor}{\otimes}
+\newcommand{\dcup}{\amalg}
 \newcommand{\dsum}{\oplus}
 \newcommand{\bigdsum}{\bigoplus}
 \newcommand{\hd}{\mathbin{:}}
@@ -215,11 +219,14 @@
 \newcommand{\Set}{\catname{Set}}
 \newcommand{\Top}{\catname{Top}}
 % generaic categories
+\newcommand{\Acat}{\gencat{A}}
+\newcommand{\Bcat}{\gencat{B}}
 \newcommand{\Ccat}{\gencat{C}}
 \newcommand{\Dcat}{\gencat{D}}
 \newcommand{\Ecat}{\gencat{E}}
 \newcommand{\Fcat}{\gencat{F}}
 \newcommand{\Gcat}{\gencat{G}}
+\newcommand{\Rcat}{\gencat{R}}
 % more complicated constructions
 \newcommand{\Mod}{\catname{Mod}}
 \newcommand{\Modl}[1]{\text{$#1$-$\Mod$}}
