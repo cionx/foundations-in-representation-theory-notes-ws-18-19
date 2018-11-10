@@ -1,5 +1,4 @@
 % all the packages
-
 \usepackage{gitinfo2}   % git information on the title page
 \usepackage[backend=biber,style=alphabetic, dateabbrev=false, urldate=long]{biblatex}   %for bibliography
 \usepackage{amsmath, amssymb, amsthm, mathtools}      % general math stuff
@@ -181,8 +180,10 @@
 \newcommand{\hd}{\mathbin{:}}
 
 
-% misc. shortcuts
+% math shortcuts
+\newcommand{\codiag}{\nabla}
 \newcommand{\del}{\partial}
+\newcommand{\diag}{\Delta}
 \newcommand{\xto}{\xrightarrow}
 \newcommand{\xlongto}{\xlongrightarrow}
 \newcommand{\longto}{\longrightarrow}
@@ -252,7 +253,7 @@
 \DeclareMathOperator{\ringchar}{char}
 \newcommand{\ev}{\mathrm{ev}}
 \newcommand{\Id}{\mathrm{Id}}
-\newcommand{\id}{\mathrm{id}}
+\DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\power}{P}
 
 
