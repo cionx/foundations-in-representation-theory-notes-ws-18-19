@@ -44,7 +44,8 @@
     \coloneqq \eta_{X'} \circ G(g) \circ \eta_X^{-1}
   \]
   This ensures that the square
-  \[
+  \begin{equation}
+    \label{definition of action of morphisms}
     \begin{tikzcd}[sep = large]
         GF(X)
         \arrow{r}[above]{G(g)}
@@ -56,7 +57,7 @@
         \arrow{r}[above]{f}
       & X'
     \end{tikzcd}
-  \]
+  \end{equation}
   commutes.
   By applying the functor~$GF$ to this diagram we get the following commutative square:
   \begin{equation}
@@ -270,50 +271,61 @@
 
 
 \begin{remark*}
-  The author prefers a slightly different argumentation for the fully faithfulness of the functor~$F$ in the first part of the proof:
-  
-  It follows for any two objects~$X, X' \in \Ob(\Ccat)$ from the commutativity of the square~\eqref{diagram for fully faithful} that the composition
-  \[
-      \Ccat(X, X')
-    \xlongto{F}
-      \Dcat(F(X), F(X'))
-    \xlongto{G}
-      \Ccat(GF(X), GF(X'))
-    \xlongto{\eta_{X'} \circ (-) \circ \eta^{-1}_X}
-      \Ccat(X, X')
-  \]
-  is the identity~$\id_{\Ccat(X,X')}$.
-  This tells us that~$F$ is fully faithful, and that~$G$ is full \enquote{on the image of~$F$}, i.e.\ that for objects~$Y, Y' \in \Ob(\Dcat)$ the map
-  \[
-      \Dcat(Y, Y')
-    \xlongto{G}
-      \Ccat(G(Y), G(Y'))
-  \]
-  is surjective if there exist objects~$X, X' \in \Ob(\Ccat)$ with~$Y = F(X)$ and~$Y' = F(X')$.
-  
-  We now use that the functor~$F$ is dense to extend this surjectivity to any two objects~$Y, Y' \in \Ob(\Ccat)$:
-  There exist objects~$X, X' \in \Ob(\Ccat)$ for which there exist isomorphisms~$\varepsilon \colon Y \to F(X)$ and~$\varepsilon' \colon Y' \to F(X')$.
-  It follows from the functoriality of~$G$ that~$G(\varepsilon) \colon G(Y) \to GF(X)$ and~$G(\varepsilon') \colon G(Y') \to GF(X')$ are again isomorphisms, and that the square
-  \[
-    \begin{tikzcd}[row sep = large, column sep = 8em]
-        \Dcat(Y, Y')
-        \arrow{r}[above]{\varepsilon' \circ (-) \circ \varepsilon^{-1}}
-        \arrow{d}[left]{G}
-      & \Dcat(F(X), F(X'))
-        \arrow{d}[right]{G}
-      \\
-        \Ccat(G(Y), G(Y'))
-        \arrow{r}[above]{G(\varepsilon') \circ (-) \circ G(\varepsilon)^{-1}}
-      & \Ccat(GF(X), GF(Y'))
-    \end{tikzcd}
-  \]
-  commutes.
-  The horizontal maps in this square are bijections because the morphisms~$\varepsilon$,~$\varepsilon'$,~$G(\varepsilon)$ and~$G(\varepsilon')$ are isomorphisms;
-  we have also seen above that the vertical map on the right is surjective, 
-  It follows that the vertical map on the left is surjective as well, which shows that~$G$ is full.
-  
-  By switching the roles of~$F$ and~$G$ we also find that~$G$ is faithful and that~$F$ is full.
-  This altogether shows that both~$F$ and~$G$ are fully faithful.
+  \leavevmode
+  \begin{enumerate}
+    \item
+      To show in the first part of the proof that~$G(g) = GF(f)$ (to show that~$F$ is full) one can also compare the squares~\eqref{diagram for fully faithful} and~\eqref{definition of action of morphisms} to find that
+      \[
+          G(g)
+        = \eta_{X'}^{-1} \circ f \circ \eta_X
+        = GF(f) \,.
+      \]
+    \item
+      The author prefers a slightly different argumentation for the fully faithfulness of the functor~$F$ in the first part of the proof:
+      
+      It follows for any two objects~$X, X' \in \Ob(\Ccat)$ from the commutativity of the square~\eqref{diagram for fully faithful} that the composition
+      \[
+          \Ccat(X, X')
+        \xlongto{F}
+          \Dcat(F(X), F(X'))
+        \xlongto{G}
+          \Ccat(GF(X), GF(X'))
+        \xlongto{\eta_{X'} \circ (-) \circ \eta^{-1}_X}
+          \Ccat(X, X')
+      \]
+      is the identity~$\id_{\Ccat(X,X')}$.
+      This tells us that~$F$ is fully faithful, and that~$G$ is full \enquote{on the image of~$F$}, i.e.\ that for objects~$Y, Y' \in \Ob(\Dcat)$ the map
+      \[
+          \Dcat(Y, Y')
+        \xlongto{G}
+          \Ccat(G(Y), G(Y'))
+      \]
+      is surjective if there exist objects~$X, X' \in \Ob(\Ccat)$ with~$Y = F(X)$ and~$Y' = F(X')$.
+      
+      We now use that the functor~$F$ is dense to extend this surjectivity to any two objects~$Y, Y' \in \Ob(\Ccat)$:
+      There exist objects~$X, X' \in \Ob(\Ccat)$ for which there exist isomorphisms~$\varepsilon \colon Y \to F(X)$ and~$\varepsilon' \colon Y' \to F(X')$.
+      It follows from the functoriality of~$G$ that~$G(\varepsilon) \colon G(Y) \to GF(X)$ and~$G(\varepsilon') \colon G(Y') \to GF(X')$ are again isomorphisms, and that the square
+      \[
+        \begin{tikzcd}[row sep = large, column sep = 8em]
+            \Dcat(Y, Y')
+            \arrow{r}[above]{\varepsilon' \circ (-) \circ \varepsilon^{-1}}
+            \arrow{d}[left]{G}
+          & \Dcat(F(X), F(X'))
+            \arrow{d}[right]{G}
+          \\
+            \Ccat(G(Y), G(Y'))
+            \arrow{r}[above]{G(\varepsilon') \circ (-) \circ G(\varepsilon)^{-1}}
+          & \Ccat(GF(X), GF(Y'))
+        \end{tikzcd}
+      \]
+      commutes.
+      The horizontal maps in this square are bijections because the morphisms~$\varepsilon$,~$\varepsilon'$,~$G(\varepsilon)$ and~$G(\varepsilon')$ are isomorphisms;
+      we have also seen above that the vertical map on the right is surjective, 
+      It follows that the vertical map on the left is surjective as well, which shows that~$G$ is full.
+      
+      By switching the roles of~$F$ and~$G$ we also find that~$G$ is faithful and that~$F$ is full.
+      This altogether shows that both~$F$ and~$G$ are fully faithful.
+  \end{enumerate}
 \end{remark*}
 
 
