@@ -137,7 +137,7 @@
       for all~$x \in M$,~$y \in N$,~$a \in A$.
     \item
       A pair~$(T,\tau)$ consisting of a~{\module{$\kf$}}~$T$ and an~{\balanced{$A$}} map~$\tau \colon M \times N \to T$ is a \emph{tensor product}\index{tensor product!of modules} of~$M$ with~$N$ over~$A$ if it satisifies the following universal property:
-      There exists for every~{\module{$\kf$}}~$P$ and every~{\balanced{$A$}} map~$\varphi \colon M \to N \to P$ a unique~{\klin} map~$f \colon M \times N \to T$ with~$f \circ \tau = \varphi$, i.e.\ such that the following diagram commutes:
+      There exists for every~{\module{$\kf$}}~$P$ and every~{\balanced{$A$}} map~$\varphi \colon M \to N \to P$ a unique~{\klin} map~$f \colon M \times N \to T$ with~$f \circ \tau = \varphi$, i.e.\ such that the following triangle commutes:
       \[
         \begin{tikzcd}[row sep = large]
             M \times N
@@ -162,7 +162,7 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
       There exists a tensor product~$(T,\tau)$ of~$M$ with~$N$ over~$A$.
     \item
       The tensor product of~$M$ with~$N$ over~$A$ is unique up to unique isomorphism:
-      If~$(T',\tau')$ is another such tensor product then there exists a unique homomorphism of~{\modules{$\kf$}}~$f \colon T \to T'$ with~$f \circ \tau = \tau'$, i.e.\ such that the diagram
+      If~$(T',\tau')$ is another such tensor product then there exists a unique homomorphism of~{\modules{$\kf$}}~$f \colon T \to T'$ with~$f \circ \tau = \tau'$, i.e.\ such that the triangle
       \[
         \begin{tikzcd}
             {}
@@ -186,7 +186,7 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
   We start by showing the claimed uniqueness of the tensor product.
   It follows from the universal property of the tensor product~$(T,\tau)$ applied to the~{\balanced{$A$}} map~$\tau' \colon M \times N \to T'$ that there exists a unique~{\klin} map~$f \colon T \to T'$ with~$f \circ \tau = \tau'$.
   It also follows from the universal property of the tensor product~$(T',\tau')$ applied to the~{\balanced{$A$}} map $\tau \colon M \times N \to T$ that there exists a unique~{\klin} map~$g \colon T' \to T$ with~$g \circ \tau' = \tau$.
-  Together this means that the following diagrams commute:
+  Together this means that the following triangles commute:
   \[
     \begin{tikzcd}
         {}
@@ -214,7 +214,7 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
       & T
     \end{tikzcd}
   \]
-  These two diagrams team up to form the following commutative diagram:
+  These two triangles team up to form the following commutative diagram:
   \[
     \begin{tikzcd}[sep = large]
         {}
@@ -232,7 +232,7 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
       & T
     \end{tikzcd}
   \]
-  It follows that~$g \circ f$ is the unique homomorphism~$T \to T$ which makes the diagram
+  It follows that~$g \circ f$ is the unique homomorphism~$T \to T$ which makes the triangle
   \[
     \begin{tikzcd}
         {}
@@ -248,7 +248,7 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
     \end{tikzcd}
   \]
   commute.
-  This shows that~$g \circ f = \id_T$ because the identity~$\id_T \colon T \to T$ also makes this diagram commute.
+  This shows that~$g \circ f = \id_T$ because the identity~$\id_T \colon T \to T$ also makes this triangle commute.
   It can be shown in the same way that~$f \circ g = \id_{T'}$.
   Together this then shows that the homomorphism~$f$ is an isomorphism.
   
@@ -270,7 +270,7 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
   
   We need to check that~$(M \tensor_A N, \tau)$ satisfies the universal property of the tensor product:
   Let~$P$ be a~{\module{$\kf$}} and let~$\varphi \colon M \times N \to P$ be an~{\balanced{$A$}} map.
-  It follows from the universal property of the free~{\module{$\kf$}}~$F$ that there exists a unique~{\klin} map~$\hat{\varphi} \colon F \to P$ which makes the diagram
+  It follows from the universal property of the free~{\module{$\kf$}}~$F$ that there exists a unique~{\klin} map~$\hat{\varphi} \colon F \to P$ which makes the triangle
   \[
     \begin{tikzcd}
         M \times N
@@ -603,7 +603,7 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
       \Psi(g)(x \tensor y)
     = g(x)(y) \,,
   \]
-  for all~$x \in M$,~$y \in N$, i.e.\ such that the following diagram commutes:
+  for all~$x \in M$,~$y \in N$, i.e.\ such that the following triangle commutes:
   \[
     \begin{tikzcd}[sep = large]
         M \times N

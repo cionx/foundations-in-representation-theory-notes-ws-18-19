@@ -3,7 +3,7 @@
 
 \begin{definition}
   Let~$\Ccat$,~$\Dcat$ be two categories and let~$F, G \colon \Ccat \to \Dcat$ be two functors between them.
-  A \emph{natural transformation}\index{natural!transformation}~$\eta \colon F \to G$ is a family~$\eta = (\eta_X)_{X \in \Ob(\Ccat)}$ of morphisms~$\eta_X \colon F(X) \to G(X)$ such that for every morphism~$f \colon X \to Y$ in~$\Ccat$ the following diagram (in~$\Dcat$) commutes:
+  A \emph{natural transformation}\index{natural!transformation}~$\eta \colon F \to G$ is a family~$\eta = (\eta_X)_{X \in \Ob(\Ccat)}$ of morphisms~$\eta_X \colon F(X) \to G(X)$ such that for every morphism~$f \colon X \to Y$ in~$\Ccat$ the following square (in~$\Dcat$) commutes:
   \[
     \begin{tikzcd}
         F(X)
@@ -94,7 +94,7 @@
     \quad   \gamma
     \mapsto [\gamma] \,.
   \]
-  The resulting family~$\eta \defined (\eta_X)_{X \in \Ob(\Group)}$ is a natural transformation~$\eta \colon \Id_{\Group} \to G \circ F$, i.e.\ the diagram
+  The resulting family~$\eta \defined (\eta_X)_{X \in \Ob(\Group)}$ is a natural transformation~$\eta \colon \Id_{\Group} \to G \circ F$, i.e.\ the square
   \[
     \begin{tikzcd}[column sep = large]
         \Gamma
@@ -141,7 +141,7 @@
     \quad   \sum_{a \in A^\times} \lambda_a [a]
     \mapsto \sum_{a \in A^\times} \lambda_a a \,.
   \]
-  The resulting family~$\varepsilon \defined (\varepsilon_A)_{A \in \Ob(\kAlg)}$ is a natural transformation~$F \circ G \to \Id_{\kAlg}$, i.e.\ the diagram
+  The resulting family~$\varepsilon \defined (\varepsilon_A)_{A \in \Ob(\kAlg)}$ is a natural transformation~$F \circ G \to \Id_{\kAlg}$, i.e.\ the square
   \[
     \begin{tikzcd}[column sep = large]
         \kf[A^\times]
@@ -195,7 +195,7 @@
   and similarly~$\eta_X \circ \zeta_X = \id_{G(X)}$.
   This then shows that~$\eta_X$ is for every~$X \in \Ob(\Ccat)$ an isomorphism, with inverse given by~$\eta_X^{-1} = \zeta_X$.
   
-  If on the other hand~$\eta_X \colon F(X) \to G(X)$ is an isomorphism for every~$X \in \Ob(\Ccat)$, then it follows for every morphism~$f \colon X \to Y$ in~$\Ccat$ from the commutativity of the diagram
+  If on the other hand~$\eta_X \colon F(X) \to G(X)$ is an isomorphism for every~$X \in \Ob(\Ccat)$, then it follows for every morphism~$f \colon X \to Y$ in~$\Ccat$ from the commutativity of the square
   \[
     \begin{tikzcd}
         F(X)
@@ -209,7 +209,7 @@
       & G(Y)
     \end{tikzcd}
   \]
-  that the diagram
+  that the square
   \[
     \begin{tikzcd}
         F(X)
@@ -255,7 +255,7 @@
               GF(X)
         \cong X
       \]
-      for~$M \in \Ob(\Modl{\kf Q})$ and~$X \in \Ob(\Rep{\kf}{Q})$ are natural, i.e.\ that for every homomorphism of left~{\modules{$\kf Q$}}~$f \colon M \to N$ the diagram
+      for~$M \in \Ob(\Modl{\kf Q})$ and~$X \in \Ob(\Rep{\kf}{Q})$ are natural, i.e.\ that for every homomorphism of left~{\modules{$\kf Q$}}~$f \colon M \to N$ the squrae
       \[
         \begin{tikzcd}[column sep = large]
             FG(M)
@@ -269,7 +269,7 @@
           & N
         \end{tikzcd}
       \]
-      commutes, and that for every homomorphism of representations~$f \colon X \to Y$ the diagram
+      commutes, and that for every homomorphism of representations~$f \colon X \to Y$ the square
       \[
         \begin{tikzcd}[column sep = large]
             GF(X)
@@ -287,7 +287,7 @@
     \item
       Let~$G$ be a group.
       A \emph{representation}\index{representation!of a group}\index{group representation} of~$G$ over~$\kf$ is a pair~$(V,\rho)$ consisting of a~{\module{$\kf$}}~$V$ and a group homomorphism~$\rho \colon G \to \GL(V)$.
-      A \emph{homomorphism of representations}\index{homomorphism!of group representations}~$f \colon (V, \rho) \to (W,\sigma)$ is a~{\klin} map~$f \colon V \to W$ such that the diagram
+      A \emph{homomorphism of representations}\index{homomorphism!of group representations}~$f \colon (V, \rho) \to (W,\sigma)$ is a~{\klin} map~$f \colon V \to W$ such that the square
       \[
         \begin{tikzcd}
             V
@@ -329,7 +329,7 @@
       Then \cref{characterization of algebras} shows that the categories~$\kAlg$ and~$\Ccat$ are equivalent.
     \item
       Let~$A$ be a~{\kalg}.
-      Let~$\Dcat$ be the category whose objects are pairs~$(V, \varphi)$ consisting of a~{\module{$\kf$}}~$V$ and a homomorphism of~{\kalgs}~$\varphi \colon A \to \End_\kf(V)$, and where a morphism~$f \colon (V,\varphi) \to (W,\psi)$ is a~{\klin} map~$f \colon V \to W$ which makes the diagram
+      Let~$\Dcat$ be the category whose objects are pairs~$(V, \varphi)$ consisting of a~{\module{$\kf$}}~$V$ and a homomorphism of~{\kalgs}~$\varphi \colon A \to \End_\kf(V)$, and where a morphism~$f \colon (V,\varphi) \to (W,\psi)$ is a~{\klin} map~$f \colon V \to W$ which makes the squares
       \[
         \begin{tikzcd}
             V
