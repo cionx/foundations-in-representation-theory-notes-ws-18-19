@@ -103,6 +103,7 @@
 \declaretheorem[sibling=everything]{corollary}
 \declaretheorem[sibling=everything]{definition}
 \declaretheorem[sibling=everything]{example}
+\declaretheorem[numbered=no,name=Example]{example*}
 \declaretheorem[sibling=everything]{lemma}
 \declaretheorem[numbered=no,name=Lemma]{lemma*}
 \declaretheorem[numbered=no,name=Notation]{notation*}
@@ -231,7 +232,11 @@
 % more complicated constructions
 \newcommand{\Mod}{\catname{Mod}}
 \newcommand{\Modl}[1]{\text{$#1$-$\Mod$}}
+\newcommand{\Modlfd}[1]{\text{$#1$-$\catname{mod}$}}
+\newcommand{\Modlfg}[1]{\text{$#1$-$\Mod^\fg$}}
 \newcommand{\Modr}[1]{\text{$\Mod$-$#1$}}
+\newcommand{\Modrfd}[1]{\text{$\catname{mod}$-$#1$}}
+\newcommand{\Modrfg}[1]{\text{$\Mod^\fg$-$#1$}}
 
 
 % spaces and sets
@@ -257,12 +262,11 @@
 \DeclareMathOperator{\power}{P}
 
 
-% operations
-\newcommand{\class}[1]{\overline{#1}}
-\newcommand{\rad}[1]{\sqrt{#1}}
-
-
 % decorations
+\DeclarePairedDelimiter{\card}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\class}{[}{]}
+\newcommand{\closure}[1]{\overline{#1}}
+\newcommand{\fg}{\mathrm{fg}}
 \newcommand{\op}{\mathrm{op}}
 
 

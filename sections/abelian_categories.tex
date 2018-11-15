@@ -64,6 +64,8 @@
   \begin{enumerate}
     \item
       In the category~$\Set$ a morphism is an epimorphism if and only if it surjective.
+      The same holds for the category~$\Group$ of groups.%
+      \footnote{This is as evident as one may suspect at first glance.}
     \item
       If~$Q$ is a quiver then in its path category~$\Path(Q)$ every morphism in an epimorphism.
     \item
@@ -84,6 +86,8 @@
   \end{enumerate}
 \end{example}
 
+
+% TODO: Add a proof that the epimorphisms in Grp are precisely the surjective homomorphisms.
 
 
 
@@ -122,8 +126,11 @@
   \begin{enumerate}
     \item
       In the category~$\Set$, the empty set~$\emptyset$ is the unique initial object, and every \dash{one}{point} set~$\{\ast\}$ is a final object.
+      The analogous statements hold for the category~$\Top$.
     \item
       In the category~$\Modl{A}$ the zero module~$0$ is the zero object.
+    \item
+      In the category~$\Group$ the trivial groups~$1$ is the zero object.
     \item
       In the category~$\kAlg$ the~{\kalg}~$\kf$ is initial, while the zero algebra~$0$ is final.
   \end{enumerate}
@@ -132,7 +139,7 @@
 
 \begin{remarkdefinition}
   Let~$\Ccat$ be a category which admits a zero object~$0$.
-  Then there exist for any two objects~$X, Y \in \Ob(\Ccat)$ a unique morphism~$0_{XY} \colon X \to Y$ which factors trough the zero object, i.e.\ which makes the triangle
+  Then there exists for any two objects~$X, Y \in \Ob(\Ccat)$ a unique morphism~$0_{XY} \colon X \to Y$ which factors trough the zero object, i.e.\ which makes the triangle
   \[
     \begin{tikzcd}
         X
@@ -151,6 +158,59 @@
   The morphism~$0_{XY}$ is the \emph{zero morphism}\index{zero!morphism}\index{morphism!zero} from~$X$ to~$Y$.
 \end{remarkdefinition}
 
+
+\begin{remark*}
+  Let~$\Ccat$ be a category which admits a zero object~$0$.
+  Then it holds for every morphism~$f \colon X \to Y$ that
+  \[
+      f \circ 0_{W,X}
+    = 0_{W,Y}
+    \qquad\text{and}\qquad
+      0_{Y,Z} \circ f
+    = 0_{X,Z}
+  \]
+  for all~$W, Z \in \Ob(\Ccat)$.
+  Indeed, we have the following commutative diagrams:
+  \[
+    \begin{tikzcd}
+        W
+        \arrow[dashed, bend left = 40]{rrr}[above]{f \circ 0_{W,X}}
+        \arrow{rr}[above]{0_{W,X}}
+        \arrow{dr}
+      & {}
+      & X
+        \arrow{r}[above]{f}
+      & Y
+      \\
+        {}
+      & 0
+        \arrow{ur}
+        \arrow[dashed, bend right]{urr}
+      & {}
+      & {}
+    \end{tikzcd}
+    \qquad
+    \begin{tikzcd}
+        X
+        \arrow[dashed, bend left = 40]{rrr}[above]{0_{Y,Z} \circ f}
+        \arrow{r}[above]{f}
+        \arrow[dashed, bend right]{drr}
+      & Y
+        \arrow{rr}[above]{0_{Y,Z}}
+        \arrow{dr}
+      & {}
+      & Z
+      \\
+        {}
+      & {}
+      & 0
+        \arrow{ur}
+      & {}
+    \end{tikzcd}
+  \]
+  The commutativity of the first diagram shows that~$f \circ 0_{W,X}$ factors through the zero object~$0$, and is hence the zero morphism~$W \to Y$.
+  The commutativity of the second diagram shows similarly that~$0_{Y,Z} \circ f$ factors through the zero objects~$0$ and is therefore the zero morphism~$X \to Z$.
+\end{remark*}
 
 
 
@@ -271,11 +331,11 @@
 \end{example}
 
 
-\begin{remark}
+\begin{remark*}
   Let~$\Ccat$ be a category.
   A product of an empty family of objects in~$\Ccat$ is the same a terminal object of~$\Ccat$.
   A coproduct of an empty family of objects in~$\Ccat$ is the same an initial object of~$\Ccat$.
-\end{remark}
+\end{remark*}
 
 
 \begin{lemma}
@@ -570,7 +630,7 @@
     \item
       A preadditive category is the same as a pre\nobreakdash-$\Integer$\nobreakdash-linear category.
     \item
-      If~$\Acat$ is a preadditive category, then the opposite category~$\Acat^\op$ is again preadditive with the same addition of morphisms.
+      If~$\Acat$ is a preadditive (resp.\ {\preklin}) category, then the opposite category~$\Acat^\op$ is again preadditive (resp.\ {\preklin}) with the same addition (resp.~{\module{$\kf$}} structure) of morphisms.
   \end{enumerate}
 \end{remark*}
 
@@ -827,6 +887,11 @@
 
 
 \begin{remark*}
+  A category~$\Acat$ is additive (resp.~{\klin}) if and only if its dual category~$\Acat^\op$ is additive (resp.\ {\klin}).
+\end{remark*}
+
+
+\begin{remark*}
   In a preadditive catgory~$\Acat$ one can express morphisms between biproducts as matrices:
   Let~$X_1, \dotsc, X_n$ and~$Y_1, \dotsc, Y_m$ be two families of objects in~$\Acat$ whose biproducts~$X_1 \oplus \dotsb \oplus X_n$ and~$Y_1 \oplus \dotsb \oplus Y_m$ exist, and denote the associated morphisms by
   \begin{align*}
@@ -922,7 +987,7 @@
   This way of representing morphisms between biproducts as matrices is compatible with both sums and composition of morphisms, and if~$\Acat$ is~{\preklin} then also with scalar multiplication of morphisms.
   \begin{itemize}
     \item
-      Let~$f_1, f_2 \colon X_1 \oplus \dotsb \oplus X_n \to Y_1 \oplus \dotsb \oplus Y_m$ be two morphisms in~$\Acat$.
+      Let~$f_1, f_2 \colon X_1 \oplus \dotsb \oplus X_n \to Y_1 \oplus \dotsb \oplus Y_m$ be two parallel morphisms in~$\Acat$.
       Then the morphism~$f_1 + f_2$ has for all~$i = 1, \dotsc, m$ and~$j = 1, \dotsc, n$ the components
       \[
           [f_1 + f_2]_{ij}
@@ -1401,7 +1466,7 @@
 
 
 
-\section{Kernels And Cokernels}
+\section{Kernels and Cokernels}
 
 
 \begin{definition}
@@ -1483,9 +1548,650 @@
 
 
 
+\begin{notation*}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Let~$\Ccat$ be a category that has a zero object and let~$f \colon X \to Y$ be a morphism in~$\Ccat$.
+      Then we write~$\ker(f) = 0$ to mean that the zero morphism~$0 \to X$ is a kernel of~$f$.
+      We dually write~$\coker(f) = 0$ to mean that the zero morphism~$Y \to 0$ is a cokernel of~$f$.
+    \item
+      Let~$\Ccat$ be a category that is preadditive, or that has a zero object, and let~$f \colon X \to Y$ be a morphism in~$\Ccat$.
+      If~$g \colon Y \to Z$ is another morphism in~$\Ccat$ then we write that~$\ker(f) = \ker(gf)$ to mean that a morphism~$k \colon K \to X$ in~$\Ccat$ is a kernel of~$f$ if and only if it is a kernel of~$gf$.
+      (This entails in particular that a kernel for~$f$ exists if and only if a kernel for~$gf$ exist.)
+      
+      Dually, if~$h \colon W \to X$ is a morphism in~$\Ccat$, then we write that~$\coker(f) = \coker(fh)$ to mean that a morphism~$c \colon Y \to C$ in~$\Ccat$ is a cokernel of~$f$ if and only if it is a cokernel of~$fh$.
+      (This entails in particular that a cokernel for~$f$ exists if and only if a cokernel for~$fh$ exists.)
+  \end{enumerate}
+\end{notation*}
+
+
+\begin{remark*}
+  Let~$\Ccat$ be a category that has a zero object and let~$f \colon X \to Y$ be a morphism in~$\Ccat$.
+  Then~$\ker(f) = 0$ if and only if it follows for every morphism~$u \colon W \to X$ in~$\Ccat$ with~$f \circ u = 0$ that already~$u = 0$.
+  
+  Indeed, the composition~$0 \to X \xto{f} Y$ is the zero morphism.
+  That~$\ker(f) = 0$ therefore means that every morphism~$u \colon W \to X$ with~$f \circ u = 0$ factors uniquely trough the zero morphism~$0 \to X$, i.e.\ that there exists a unique morphism~$W \to 0$ that makes the triangle
+  \[
+    \begin{tikzcd}[sep = large]
+        W
+        \arrow[dashed]{d}
+        \arrow{dr}[above right]{u}
+        \arrow[bend left]{drr}[above right]{0}
+      & {}
+      & {}
+      \\
+        0
+        \arrow{r}
+      & X
+        \arrow{r}[above]{f}
+      & Y
+    \end{tikzcd}
+  \]
+  commute.
+  That~$u$ factors trough the zero morphism~$0 \to X$ is equivalent to~$u = 0$, and this factorization is necessarily unique because there exist only one morphism~$W \to 0$.
+  
+  It holds dually that~$\coker(f) = 0$ if and only if it follows for every morphism~$v \colon Y \to Z$ in~$\Ccat$ with~$v \circ f = 0$ that already~$v = 0$.
+\end{remark*}
+
+
+\begin{lemma}
+  Let~$\Ccat$ be a category that is preadditive, or that has a zero object.
+  Let~$f \colon X \to Y$ be a morphism in~$\Ccat$.
+  \begin{enumerate}
+    \item
+      If~$k \colon \ker(f) \to X$ is a kernel of~$f$ then the morphism~$k$ is a monomorphism.
+      Dually, if~$c \colon Y \to \coker(f)$ is a cokernel of~$f$ then the morphism~$c$ is an epimorphism.
+    \item
+      Suppose that~$\Ccat$ is both preadditive and has a zero object (e.g.~$\Ccat$ is additive).
+      If~$\ker(f) = 0$ then~$f$ is a monomorphism.
+      Dually, if~$\coker(f) = 0$ then~$f$ is an epimorphism.
+    \item
+      Suppose that~$\Ccat$ has a zero object.
+      If~$f$ is a monomorphism then~$\ker(f) = 0$, and if~$f$ is an epimorphism then~$\coker(f) = 0$.
+    \item
+      If~$u \colon Y \to Z$ is a monomorphism in~$\Ccat$ then~$\ker(f) = \ker(uf)$.
+      Dually, if~$p \colon W \to X$ is an epimorphism in~$\Ccat$ then~$\coker(f) = \coker(fp)$.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Let~$u, v \colon W \to \ker(f)$ be two parallel morphisms with~$k \circ u = k \circ v$, and denote this composition by~$w \colon W \to X$.
+      Then
+      \[
+          f \circ w
+        = f \circ k \circ u
+        = 0 \circ u
+        = 0 \,.
+      \]
+      It follows from the universal property of the kernel~$k \colon \ker(f) \to X$ that there exist a unique morphism~$W \to \ker(f)$ which makes the triangle
+      \[
+        \begin{tikzcd}[sep = large]
+            W
+            \arrow[dashed]{d}
+            \arrow{dr}[above right]{w}
+          & {}
+          \\
+            \ker(f)
+            \arrow{r}[above, near start]{k}
+          & X
+        \end{tikzcd}
+      \]
+      commute.
+      Both~$u$ and~$v$ make this triangle commute, and so it follows that~$u = v$.
+      
+      That the cokernel~$c \colon Y \to \coker(f)$ is an epimorphism can be shown dually.
+    \item
+      Let~$u,v \colon W \to X$ be two morphisms with~$f \circ u = f \circ v$.
+      Then
+      \[
+          f \circ (u-v)
+        = f \circ u - f \circ v
+        = 0 \,,
+      \]
+      and it follows from the universal property of the kernel~$\ker(f)$ that the difference~$u-v$ factors through~$\ker(f) = 0$, which results in the following commutative triangle:
+      \[
+        \begin{tikzcd}[sep = large]
+            W
+            \arrow[dashed]{d}
+            \arrow{dr}[above right]{u-v}
+          & {}
+          \\
+            0
+            \arrow{r}
+          & X
+        \end{tikzcd}
+      \]
+      The morphisms~$W \to 0$ and~$0 \to X$ are necessarily the zero morphisms, so it follows that~$u-v = 0 \circ 0 = 0$, and hence~$u = v$.
+      
+      That~$f$ is an epimorphism if~$\coker(f) = 0$ can be shown dually.
+    \item
+      If~$u \colon W \to X$ is any morphism with~$f \circ u = 0$ then
+      \[
+          f \circ u
+        = 0
+        = f \circ 0
+      \]
+      and hence~$u = 0$.
+      
+      That~$\coker(f) = 0$ if~$f$ is an epimorphism can be shown dually.
+    \item
+      It holds for every morphism~$v \colon W \to X$ that
+      \[
+              f \circ v = 0
+        \iff  uf \circ v = u \circ 0
+        \iff  uf \circ v = 0 \,,
+      \]
+      where the first equivalence holds because~$u$ is a monomorphism.
+      We thus find for every morphism~$k \colon K \to X$ in~$\Ccat$ that
+      \begin{align*}
+            {}& \text{$k$ is a kernel of~$f$} \\
+        \iff{}& \text{every morphism~$v \colon W \to X$ with~$f \circ v = 0$ factors uniquely through~$k$}  \\
+        \iff{}& \text{every morphism~$v \colon W \to X$ with~$uf \circ v = 0$ factors uniquely through~$k$} \\
+        \iff{}& \text{$k$ is a kernel of~$uf$} \,.
+      \end{align*}
+      
+      That~$\coker(f) = \coker(fp)$ can be shown dually.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+
+\begin{notation*}
+  Let~$\Ccat$ be a category that is preadditive, or that has a zero object.
+  We say that a morphism~$k \colon K \to X$ in~$\Ccat$ \emph{is a kernel} if it is a kernel for some morphism~$f \colon X \to Y$.
+  Dually, we say that a morphism~$c \colon Y \to C$ in~$\Ccat$ \emph{is a cokernel} if it is a cokernel for some morphism~$f \colon X \to Y$.
+\end{notation*}
+
+
+\begin{example}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Let~$A$ be a~{\kalg} and consider the module category~$\Modl{A}$.
+      Let~$f \colon M \to N$ be a homomorphism of~{\modules{$A$}}.
+      Then the submodule~$\ker(f) = f^{-1}(0)$ of~$M$ together with the inclusion~$k \colon \ker(f) \to M$ is a kernel of~$f$.
+      The quotient moduel~$\coker(f) = N/f(M)$ together with the canonical projection~$c \colon N \to \coker(f)$ is a cokernel of~$f$.
+      
+      Note that in the category~$\Modl{A}$, a morphism~$k$ is a monomorphism if and only if~$k$ is a kernel, and similarly that a morphism~$c$ is an epimorphism if and only if~$c$ is a cokernel.
+      (Recall that the monomorphisms in~$\Modl{A}$ are preciely the injective module homomorphisms, and that the epimorphisms in~$\Modl{A}$ are precisely the surjective module homomorphisms.)
+    \item
+      Consider the category~$\Group$ and let~$f \colon G \to H$ be a group homorphism.
+      
+      Then the subgroup~$\ker(f) = f^{-1}(1)$ together with the inclusion~$k \colon \ker(f) \to G$ is a kernel of~$f$.
+      Note that~$\ker(f)$ is always a normal subgroup of~$G$, while for every subgroup~$K' \subseteq G$ the inclusion~$k' \colon K' \to G$ is a monomorphism.
+      So in~$\Group$ not every monomorphism is a kernel.
+      
+      A cokernel of~$f$ is given by the quotient group~$\coker(f) = H/\closure{f(G)}$ together with the canonical projection~$c \colon H \to \coker(f)$, where
+      \[
+                  \closure{f(G)}
+        \defined  \gen{
+                    h f h^{-1}
+                  \suchthat
+                    h \in H, g \in G
+                  }
+      \]
+      is the normal subgroup of~$H$ generated by~$f(G)$, i.e.\ the normal closure of~$f(G)$ in~$H$.
+      If~$p \colon H \to C$ is any epimorphism in~$\Group$, then~$p$ is surjective, and hence
+      \[
+              C
+        \cong H/\ker(p)
+        =     \coker(\ker(p) \to H)
+      \]
+      This shows that in~$\Group$ every epimorphism is a cokernel.
+    \item
+      Let~$\Set_*$ be the category of pointed sets\index{category!of pointed sets}:
+      
+      The objects of~$\Set_*$ are pairs~$(X,x_0)$ consisting of a set~$X$ and a base point~$x_0 \in X$.
+      A morphism~$f \colon (X,x_0) \to (Y,y_0)$ in~$\Set_*$ is a map~$f \colon X \to Y$ with~$f(x_0) = y_0$.
+      (Such maps are also known as \emph{pointed maps}\index{pointed map}.)%
+      \footnote{One may think about pointed sets as~\dash{$\Finite_1$}{vector spaces}.}
+      The category~$\Set_*$ has the singleton~$(\{\ast\}, \ast)$ as a zero object.
+      The monomorphisms in~$\Set_*$ are precisely the injective pointed maps, and the epimorphisms are the surjective pointed maps.
+      
+      Let~$f \colon (X,x_0) \to (Y,y_0)$ be a morphism in~$\Set_*$.
+      A kernel for~$f$ is given by~$\ker(f) = (f^{-1}(y_0), x_0)$ together with the inclusion~$k \colon \ker(f) \to (X,x_0)$.
+      A cokernel for~$f$ is given by~$\coker(f) = (Y/{\sim}, \class{y_0})$ together with the canonical projection~$c \colon (Y, y_0) \to \coker(f)$, where~$\sim$ is the equivalence relation on~$Y$ generated by~$y \sim y'$ for all~$y, y' \in f(X)$.
+      More explicitely, we have for any two~$y, y' \in Y$ that
+      \[
+              y \sim y'
+        \iff (\text{$y = y'$ or~$y, y' \in f(X)$}) \,.
+      \]
+      
+      Every monomorphism in~$\Set_*$ is a kernel (namely that of its cokernel).
+      But not every epimorphism in~$\Set_*$ is a cokernel, because it holds for every cokernel~$c \colon (Y,y_0) \to (C,c_0)$ that every element~$z \in C$ with~$z \neq c_0$ has precisely one preimage under~$c$.
+      (This follows from the above explicit description of the cokernel.)
+%     TODO: Prove the above claims.
+    \item
+      The ring~$A \defined \Integer[t_1, t_2, t_3, \dotsc]$ is not noetherian because the ideal~$I \defined \genideal{t_1, t_2, t_3, \dotsc}$ of~$A$ is not finitely generated.
+      Consider the category~$\Modlfg{A}$ of finitely generated~{\modules{$A$}}.
+      This category is additive.
+      
+      Every morphism~$f \colon M \to N$ in~$\Modlfg{A}$ has a cokernel in~$\Modlfg{A}$ because the cokernel of~$f$ in~$\Modl{A}$ is already contained in~$\Modlfg{A}$ (and the zero morphisms in~$\Modlfg{A}$ coincides with the one in~$\Modl{A}$).
+      
+      Let~$f \colon A \to A/I$ be the canonical projection;
+      note that~$A/I$ is finitely generated and hence contained in~$\Modlfg{A}$ (even though the~{\modules{$A$}}~$I$ is not contained in~$\Modl{A}$).
+      The morphism~$f$ has no kernel in~$\Modl{A}^\fg$:
+      
+      Morally speaking, the problem is that the kernel of~$f$ in~$\Modl{A}$, which is~$I$, is not contained in~$\Modlfg{A}$.
+      But this is not yet a proper proof because a kernel of~$f$ in~$\Modlfg{A}$ does not necessarily have to also be a kernel of~$f$ in~$\Modl{A}$.
+      
+      So instead, assume that there exists a kernel~$k \colon K \to A$ of~$f$ in~$\Modlfg{A}$.
+      Then~$f \circ k = 0$ and hence~$k(K) \subseteq I$.
+      Then for every~$i \in I$ the morphism
+      \[
+                \ell_i
+        \colon  A
+        \to     A \,,
+        \quad   a
+        \mapsto t_i a
+      \]
+      satisfies~$\ell_i(A) \subseteq I$ and hence~$f \circ \ell_i = 0$.
+      It follows that the morphism~$\ell_i$ factors uniquely trough the kernel~$k$, i.e.\ that there exists a unique morphism~$\lambda_i \colon A \to K$ which makes the triangle
+      \[
+        \begin{tikzcd}[sep = large]
+            A
+            \arrow[dashed]{d}[left]{\lambda_i}
+            \arrow{dr}[above right]{\ell_i}
+          & {}
+          \\
+            K
+            \arrow{r}[below]{k}
+          & A
+        \end{tikzcd}
+      \]
+      commute.
+      It follows for every~$i \in I$ that
+      \[
+            t_i
+        =   \ell_i(1)
+        =   (k \circ \lambda_i)(1)
+        =   k(\lambda_i(1))
+        \in k(K)
+      \]
+      and hence~$t_i \in k(K)$.
+      This shows that also~$I \subseteq k(K)$, and hence~$I = k(K)$.
+      But it follows from~$K$ being finitely generated that~$k(K)$ is also finitely generated, which contradicts~$I$ not being finitely generated.
+  \end{enumerate}
+\end{example}
+
+
+% TODO: Add example: divisible abelian groups.
+
+
+\begin{definition}
+  Let~$\Ccat$ be a category that is preadditive, or that has a zero object, and which has kernels and cokernels.
+  Let~$f \colon X \to Y$ be a morphism in~$\Ccat$.
+  \begin{enumerate}
+    \item
+      An \emph{image}\index{image} of~$f$ is a kernel of a cokernel of~$f$, and is denotedy by~$\im(f) \to Y$.
+    \item
+      A \emph{coimage}\index{coimage} of~$f$ is a cokernel of a kernel of~$f$, and is denoted by~$X \to \coim(f)$.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{example*}
+  Let~$A$ be a~{\kalg} and let~$f \colon M \to N$ be a morphism in~$\Modl{A}$ (or~$\Modr{A}$).
+  Then an image of~$f$ is given by the submodule~$\im(f) = f(M)$ of~$N$ together with the inclusion~$\im(f) \to N$.
+  A coimage of~$f$ is given by the quotient module~$\coim(f) = M/\ker(f)$ together with the canonical projection~$M \to \coim(f)$.
+\end{example*}
+
+
+\begin{remark*}
+  Images and coimages are unique up to unique isomorphisms.
+\end{remark*}
+
+
+\begin{lemma}[Canonical factorization]
+  \label{canonical factorization}
+  Let~$\Ccat$ be a category that is preadditive, or that has a zero object, and that has kernels and cokernels.
+  Let~$f \colon X \to Y$ be a morphism in~$\Ccat$.
+  \begin{enumerate}
+    \item
+      \label{restriction to image}
+      There exists a unique morphism~$f' \colon X \to \im(f)$ in~$\Ccat$ which makes the following triangle commute:
+      \[
+        \begin{tikzcd}
+            X
+            \arrow{r}[above]{f}
+            \arrow[dashed]{dr}[below left]{f'}
+          & Y
+          \\
+            {}
+          & \im(f)
+            \arrow{u}
+        \end{tikzcd}
+      \]
+    \item
+      There exist a unique morphism~$\tilde{f} \colon \coim(f) \to Y$ in~$\Ccat$ which make the following triangle commute:
+      \[
+        \begin{tikzcd}
+            X
+            \arrow{r}[above]{f}
+            \arrow{d}
+          & Y
+          \\
+            \coim(f)
+            \arrow[dashed]{ur}[below right]{\tilde{f}}
+          & {}
+        \end{tikzcd}
+      \]
+    \item
+      There exist a unique morphism~$\bar{f} \colon \coim(f) \to \im(f)$ in~$\Ccat$ which makes the following square commute:
+      \begin{equation}
+        \label{canonical morphism from coim to im}
+        \begin{tikzcd}
+            X
+            \arrow{r}[above]{f}
+            \arrow{d}
+          & Y
+          \\
+            \coim(f)
+            \arrow[dashed]{r}[above]{\bar{f}}
+          & \im(f)
+            \arrow{u}
+        \end{tikzcd}
+      \end{equation}
+    \item
+      The morphism~$\bar{f}$ is compatible with the morphisms~$f'$ and~$\tilde{f}$ in the sense that the diagrams
+      \begin{equation}
+        \label{compatibility of induced morphisms}
+        \begin{tikzcd}[column sep = large, row sep = huge]
+            X
+            \arrow{r}[above]{f}
+            \arrow{dr}[above right]{f'}
+            \arrow{d}
+          & Y
+          \\
+            \coim(f)
+            \arrow{r}[above]{\bar{f}}
+          & \im(f)
+            \arrow{u}
+        \end{tikzcd}
+        \qquad\text{and}\qquad
+        \begin{tikzcd}[column sep = large, row sep = huge]
+            X
+            \arrow{r}[above]{f}
+            \arrow{d}
+          & Y
+          \\
+            \coim(f)
+            \arrow{r}[above]{\bar{f}}
+            \arrow{ur}[above left]{\tilde{f}}
+          & \im(f)
+            \arrow{u}
+        \end{tikzcd}
+      \end{equation}
+      commute.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+  We denote the various kernels and cokernels by
+  \[
+    k \colon \ker(f) \to X  \,,
+    \quad
+    c \colon Y \to \coker(f)  \,,
+    \quad
+    i \colon \im(f) \to Y \,,
+    \quad
+    p \colon X \to \coim(f) \,.
+  \]
+  \begin{enumerate}
+    \item
+      The morphism~$i \colon \im(f) \to Y$ is a kernel of the cokernel~$c \colon Y \to \coker(f)$, hence it follows from~$c \circ f = 0$ that there exist a unique morphism~$f' \colon X \to \im(f)$ which makes the following diagram commute:
+      \[
+        \begin{tikzcd}[row sep = large]
+            {}
+          & \coker(f)
+          \\
+            X
+            \arrow{ur}[above left]{0}
+            \arrow{r}[above]{f}
+            \arrow[dashed]{dr}[below left]{f'}
+          & Y
+            \arrow{u}[right]{c}
+          \\
+            {}
+          & \im(f)
+            \arrow{u}[right]{i}
+        \end{tikzcd}
+%         \begin{tikzcd}
+%             X 
+%             \arrow{r}[above]{f}
+%             \arrow[bend left = 40]{rr}[above left]{0}
+%             \arrow[dashed]{dr}[below left]{f'}
+%           & Y
+%             \arrow{r}[above]{c}
+%           & \coker(f)
+%           \\
+%             {}
+%           & \im(f)
+%             \arrow{u}[right]{i}
+%           & {}
+%         \end{tikzcd}
+      \]
+    \item
+      This can be shown dually to part~\ref*{restriction to image}.
+    \item
+      We construct~$\bar{f}$ by using the already constructed morphism~$f' \colon X \to \im(f)$:
+      The morphism~$p \colon X \to \coim(f)$ is a cokernel of the the kernel~$k \colon \ker(f) \to X$.
+      It holds that
+      \[
+          i \circ f' \circ  k
+        = f \circ k
+        = 0
+        = i \circ 0 \,,
+      \]
+      and hence~$f' \circ k = 0$ because~$i$ is a monomorphism.
+      It follows from the universal property of the cokernel~$p \colon X \to \coim(f)$ that there exist a unique morphism~$\bar{f} \colon \coim(f) \to \im(f)$ which makes the following diagram commute:
+      \[
+        \begin{tikzcd}[column sep = 5em, row sep = huge]
+            \ker(f)
+            \arrow{d}[left]{k}
+            \arrow[bend left]{dr}[above right]{0}
+          & {}
+          \\
+            X
+            \arrow{r}[above, near start]{f}
+            \arrow{dr}[above right]{f'}
+            \arrow{d}[left]{p}
+          & Y
+          \\
+            \coim(f)
+            \arrow[dashed]{r}[below]{\bar{f}}
+          & \im(f)
+            \arrow{u}[right]{i}
+            \arrow[dashed, from=uul, bend left = 15, crossing over, near start, "0"]
+        \end{tikzcd}
+      \]
+      This shows the existence of~$\bar{f}$.
+      Suppose that~$\bar{f}' \colon \coim(f) \to \im(f)$ is another morphism which makes the diagram~\eqref{canonical morphism from coim to im} commute.
+      Then
+      \[
+          i \circ \bar{f}' \circ p
+        = f
+        = i \circ \bar{f} \circ p \,.
+      \]
+      It follows from~$i$ being a monomorphism that
+      \[
+          \bar{f}' \circ p
+        = \bar{f} \circ p \,,
+      \]
+      and it then further follows from~$p$ being a epimorphism that
+      \[
+        \bar{f}' = \bar{f} \,.
+      \]
+      This shows the desired uniqueness of the morphism~$\bar{f}$.
+    \item
+      It follows from the above construction of~$\bar{f}$ that of the two diagrams in~\eqref{compatibility of induced morphisms} the left one commutes.
+      We could have dually constructed~$\bar{f}$ by using the morphism~$\tilde{f}$ instead of~$f'$, which would then give us that the right diagram commutes.
+      We can alternatively check the commutativity of the right hand diagram by hand:
+      It holds that
+      \[
+          i \circ \bar{f} \circ p
+        = f
+        = \tilde{f} \circ p
+      \]
+      and hence~$i \circ \bar{f} = \tilde{f}$ because~$p$ is an epimorphism.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+
+\begin{example*}
+  Let~$A$ be a~{\kalg} and consider the category~$\Modl{A}$.
+  Let~$f \colon M \to N$ be a homomorphism of left~{\modules{$A$}}.
+  Then the morphism~$f' \colon \im(f) \to N$ is the inclusion~$n \mapsto n$, the morphism~$\tilde{f} \colon M \to \coker(f) = M/\ker(f)$ is the canonical projection~$m \mapsto \class{m}$, and the morphism~$\bar{f} \colon M/\ker(f) \to \im(f)$ is the isomorphism~$\class{m} \mapsto f(m)$.
+\end{example*}
 
 
 
+
+
+\section{Abelian Categories}
+
+
+\begin{definition}
+  An \emph{abelian category} is an additive category~$\Acat$ that has kernels and cokernels and in which for every morphism~$f \colon X \to Y$ the induced morphism~$\coim(f) \to \im(f)$ from the \hyperref[canonical factorization]{canonical factorization lemma} is an isomorphism.
+\end{definition}
+
+
+\begin{remark*}
+  Let~$\Acat$ be a category.
+  We have previously seen that \enquote{being additive} is a property of~$\Acat$.
+  It follows that \enquote{being abelian} is also a property of~$\Acat$.
+\end{remark*}
+
+
+\begin{remark}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      A category~$\Acat$ is abelian if and only if its dual category~$\Acat^\op$ is abelian.
+    \item
+      If $\Acat$ is an abelian category then we will for~$X, Y \in \Ob(\Acat)$ often write~$\Hom_\Acat(X,Y)$ instead of~$\Acat(X,Y)$.
+    \item
+      If~$F \colon \Acat \to \Bcat$ is an equivalence of categories and~$\Acat$ is abelian, then~$\Bcat$ is also abelian.%
+      \footnote{In the lecture it was instead stated that one can \enquote{use~$F$ to make~$\Bcat$ into an abelian category}.
+      It was then sketched how one can use~$F$ to transfer the group structure on the morphism sets of~$\Acat$ to a group structure of the morphism sets of~$\Bcat$;
+      one can  then check that~$F$ respects biproducts, kernels and cokernels (this was not proven in the lecture).
+      The author finds this presentation somewhat misleading, as \enquote{being abelian} is really a property of a category, and not an additional structure.
+      Hence we can’t \enquote{make} a category abelian.}
+  \end{enumerate}
+\end{remark}
+
+
+\begin{example}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      The category~$\Ab$ of abelian groups is an abelian category (and the term \enquote{abelian category} comes from this example).
+    \item
+      If more generally~$A$ is a~{\kalg} then the module categories~$\Modl{A}$ and~$\Modr{A}$ are abelian.
+    \item
+      If~$G$ is a group then the category~$\Rep{k}{G}$ is equivalent to the the module category~$\Modl{\kf[G]}$ and hence abelian.
+    \item
+      If~$A$ is a left noetherian ring then the additive category~$\Modlfg{A}$ of finitely generated left~{\modules{$A$}} is again abelian:
+      
+      Let~$f \colon M \to N$ be a homomorphism of~{\modules{$A$}} where both~$M$ and~$N$ are finitely generated.
+      Then the submodule~$\ker(f) \subseteq M$ is again finitely generated because~$M$ is noetherian (since finitely generated modules over noetherian rings are noetherian themselves), and the quotient module~$N/f(M)$ is also again finitely generated.
+      We can therefore utilize for~$\Modlfg{A}$ the usual kernels and cokernels.
+      
+      The analogous statement and argumentation also holds for~$\Modrfg{A}$, the category of finitely generated right~{\modules{$A$}}.
+    \item
+      Let~$A$ be a {\fd}~{\kalg} over a field~$\kf$.
+      Then the category~$\Modlfd{A}$ of {\fd} left~{\modules{$A$}} coincides with the category~$\Modlfg{A}$ of finitely generated left~{\modules{$A$}}, and is hence abelian.
+      The analogous observation holds for~$\Modrfd{A}$.
+    \item
+      If~$\Ccat$ is a category and~$\Acat$ is an abelian category then the functor category~$\Fun(\Ccat, \Acat)$ is again abelian.
+      (This will be an exercise on one of the upcoming exercise sheets.)
+  \end{enumerate}
+\end{example}
+
+
+\begin{remark*}
+  If~$\Acat$ is an abelian category and~$f \colon X \to Y$ is a morphism in~$\Acat$ which is both a monomorphism and an epimorphism, then~$f$ is already an isomorphism:
+  
+  The zero morphism~$0 \to X$ is a kernel of~$f$ because~$f$ is a monomorphism.
+  The identity~$\id_X \colon X \to X$ is a cokernel of the zero morphism~$0 \to X$, and hence a coimage of~$f$.
+  We find dually that the identity~$\id_Y \colon Y \to Y$ is an image of~$f$ because~$f$ is an epimorphism.
+  The induced morphism~$f \colon \coim(f) \to \im(f)$ of the \hyperref[canonical factorization]{canonical factorization lemma} is just~$f$ itself because the square
+  \[
+    \begin{tikzcd}
+        X
+        \arrow{r}[above]{f}
+        \arrow{d}[left]{\id_X}
+      & Y
+      \\
+        X 
+        \arrow{r}[above]{f}
+      & Y
+        \arrow{u}[right]{\id_Y}
+    \end{tikzcd}
+  \]
+  commutes.
+  It hence follows from the definition of an abelian category that~$f$ is an isomorphism.
+\end{remark*}
+
+
+\begin{example}[Non-example]
+  Consider the category~$F^* \Ab$ of filtered abelian groups:
+  The objects of~$F^* \Ab$ are pairs~$(A,F^*)$ consisting of an abelian group~$A$ and an increasing \dash{$\Integer$}{filtration}~$F^*$ on~$A$, i.e.\ an increasing sequence
+  \[
+              \dotsb
+    \subseteq F^{i-1}(A)
+    \subseteq F^i(A)
+    \subseteq F^{i+1}(A)
+    \subseteq \dotsb
+  \]
+  of subgroups~$F^i(A) \subseteq A$ with~$i \in \Integer$.
+  A morphism~$f \colon (A, F^*) \to (B,G^*)$ in~$F^* \Ab$ is a group homomorphism~$f \colon A \to B$ with~$f(F^i(A)) \subseteq G^i(B)$ for every~$i \in \Integer$.
+  The category~$F^* \Ab$ is additive and has kernels and cokernels:
+  If~$f \colon (A,F^*) \to (B,G^*)$ is a morphism in~$F^* \Ab$ then a kernel of~$f$ is given by
+  \[
+      \ker_{F^* \Ab}(f)
+    = ( \ker_{\Ab}(f), ( F^i(A) \cap \ker_{\Ab}(f) )_{i \in \Integer} ) \,,
+  \]
+  and a cokernel of~$f$ is given by
+  \[
+      \coker_{F^* \Ab}(f)
+    = ( \coker_{\Ab}(f), ( (F^i(B) + f(A))/f(A) )_{i \in \Integer} ) \,.
+  \]
+  
+  Let now~$A$ be an abelian group and suppose that~$F^*$ and~$\tilde{F}^*$ are two filtrations on~$A$ such that~$F_i(A) \subseteq \tilde{F}_i(A)$ for all~$i \in \Integer$, but~$F_j(A) \subsetneq \tilde{F}_j(A)$ for some~$j \in \Integer$.
+  (One can for example choose any nontrivial abelian group~$A$ and define such filtrations via
+  \[
+      F_i(A)
+    = \begin{cases}
+        0 & \text{if~$i < 1$} \,, \\
+        A & \text{if~$i \geq 1$}  \,,
+      \end{cases}
+    \qquad\text{and}\qquad
+      \tilde{F}_i(A)
+    = \begin{cases}
+        0 & \text{if~$i < 0$} \,, \\
+        A & \text{if~$i \geq 0$}  \,.
+      \end{cases}
+  \]
+  Then both filtrations agree except for~$F_0(A) = 0 \subsetneq A = F_1(A)$.)
+  We can now regard the identity~$\id_A$ as a morphism~$f \colon (A, F^*) \to (A, \tilde{F}^*)$.
+  It then follows from~$\ker_{\Ab}(f) = 0$ and~$\coker_{\Ab}(f) = 0$ that~$\ker_{F^* \Ab}(f) = 0$ and~$\coker_{F^* \Ab}(f) = 0$ by the above explicit construction of kernels and cokernels in~$F^* \Ab$.
+  Hence~$f$ is both a monomorphism and an epimorphism.
+  But~$f$ is not an isomorphism as the filtrations of~$F^*$ and~$\tilde{F}^*$ differ, so~$F^* \Ab$ cannot be abelian.
+\end{example}
+
+
+
+
+
+\lecturend{11}
 
 
 
