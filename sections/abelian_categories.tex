@@ -821,7 +821,7 @@
           \\
             X
             \arrow{r}[below]{p_j}
-          & X_i
+          & X_j
         \end{tikzcd}
       \]
       commute.
@@ -850,7 +850,7 @@
         \end{tikzcd}
       \]
       commutes.
-      But it follows from the uniqueness of products (up to isomorphism) that there exist a \emph{unique} morphism~$X \to X$ which makes this triangle commute.
+      But it follows from the uniqueness of products up to unique isomorphism that there exist a \emph{unique} morphism~$X \to X$ which makes this triangle commute.
       The identity~$\id_X \colon X \to X$ also makes the above triangle commute, and so it follows that~$\sum_{i=1}^n c_i p_i = \id_X$.
     \item
       This can be shown dually to part~\ref*{products into biproducts}.
@@ -1167,7 +1167,7 @@
   We can now describe the sum~$f + g$ of two parallel morphisms~$f, g \colon X \to Y$ in~$\Acat$ as the compositions
   \begin{equation}
     \label{composition for sum}
-      X=
+      X
     \xlongto{\diag_X}
       X \oplus X
     \xlongto{\begin{bsmallmatrix} f & 0 \\ 0 & g \end{bsmallmatrix}}
@@ -1251,9 +1251,9 @@
   Let~$F \colon \Ccat \to \Dcat$ be a functor between arbitrary categories~$\Ccat$ and~$\Dcat$.
   \begin{enumerate}
     \item
-      The functor~$F$ \emph{respect \textup(finite\textup) products}\index{functor!respects!products} if it holds for every (finite) family~$(X_i)_{i \in I}$ of objects~$X_i \in \Ob(\Ccat)$ and every product~$(P, (p_i)_{i \in I})$ of this family that the pair~$(F(P), (F(p_i))_{i \in I})$ is a product of the family~$(F(X_i))_{i \in I}$.
+      The functor~$F$ \emph{respects \textup(finite\textup) products}\index{functor!respects!products} if it holds for every (finite) family~$(X_i)_{i \in I}$ of objects~$X_i \in \Ob(\Ccat)$ and every product~$(P, (p_i)_{i \in I})$ of this family that the pair~$(F(P), (F(p_i))_{i \in I})$ is a product of the family~$(F(X_i))_{i \in I}$.
     \item
-      The functor~$F$ \emph{respect \textup(finite\textup) coproducts}\index{functor!respects!coproducts} if it holds for every (finite) family~$(X_i)_{i \in I}$ of objects~$X_i \in \Ob(\Ccat)$ and every coproduct~$(C, (c_i)_{i \in I})$ of this family that the pair~$(F(C), (F(c_i))_{i \in I})$ is a coproduct of the family~$(F(X_i))_{i \in I}$.
+      The functor~$F$ \emph{respects \textup(finite\textup) coproducts}\index{functor!respects!coproducts} if it holds for every (finite) family~$(X_i)_{i \in I}$ of objects~$X_i \in \Ob(\Ccat)$ and every coproduct~$(C, (c_i)_{i \in I})$ of this family that the pair~$(F(C), (F(c_i))_{i \in I})$ is a coproduct of the family~$(F(X_i))_{i \in I}$.
   \end{enumerate}
   Suppose now that~$F \colon \Acat \to \Bcat$ is a functor between preadditive categories~$\Acat$ and~$\Bcat$.
   \begin{enumerate}[resume]
@@ -1378,7 +1378,7 @@
           The commutativity of this triangle shows that the morphism~$F(0_{X,Y})$ factors through the zero object~$0$, which is precisly what is means for~$F(0_{X,Y})$ to be the zero morphism.
           
           Let now~$(X, (p_i)_i, (c_i)_i)$ be a biproduct of some objects~$X_1, \dotsc, X_n \in \Ob(\Acat)$.
-          Then~$(X, (p_i)_i)$ is a product of~$X_1, \dotsc, X_n$, and it follows that~$(F(X), (F(p_i))_i)$ is a product of~$F(X_1), \dotsc, F(X_n)$ because~$F$ preserves finite product.
+          Then~$(X, (p_i)_i)$ is a product of~$X_1, \dotsc, X_n$, and it follows that~$(F(X), (F(p_i))_i)$ is a product of~$F(X_1), \dotsc, F(X_n)$, because~$F$ respects finite products.
           We find for the morphisms~$F(c_i) \colon F(X_i) \to F(X)$ that
           \[
               F(p_i) \circ F(c_i)
@@ -1470,7 +1470,7 @@
   Let~$f \colon X \to Y$ be a morphism in~$\Ccat$.
   \begin{enumerate}
       \item
-        A \emph{kernel}\index{kernel} of~$f$ is a pair~$(K,k)$ consisting of an object~$K \in \Ob(\Ccat)$ and a morphism~$k \colon K \to X$ with~$f \circ k = 0$, such that for every morphism~$\ell \colon L \to X$ in~$\Ccat$ with~$f \circ \ell = 0$ there exist a unique morphism~$\lambda \colon L \to K$ which makes the following diagram commute:
+        A \emph{kernel}\index{kernel} of~$f$ is a pair~$(K,k)$ consisting of an object~$K \in \Ob(\Ccat)$ and a morphism~$k \colon K \to X$ with~$f \circ k = 0$, such that for every morphism~$\ell \colon L \to X$ in~$\Ccat$ with~$f \circ \ell = 0$ there exists a unique morphism~$\lambda \colon L \to K$ which makes the following diagram commute:
         \[
           \begin{tikzcd}[row sep = small, column sep = large]
               K
@@ -1493,7 +1493,7 @@
           \end{tikzcd}
         \]
       \item
-        A \emph{cokernel}\index{cokernel} of~$f$ is a pair~$(C,c)$ consisting of an object~$C \in \Ob(\Ccat)$ and a morphism~$c \colon Y \to C$ with~$c \circ f = 0$, such that for every morphism~$d \colon Y \to D$ in~$\Ccat$ with~$d \circ f = 0$ there exist a unique morphism~$\mu \colon C \to D$ which makes the following diagram commute:
+        A \emph{cokernel}\index{cokernel} of~$f$ is a pair~$(C,c)$ consisting of an object~$C \in \Ob(\Ccat)$ and a morphism~$c \colon Y \to C$ with~$c \circ f = 0$, such that for every morphism~$d \colon Y \to D$ in~$\Ccat$ with~$d \circ f = 0$ there exists a unique morphism~$\mu \colon C \to D$ which makes the following diagram commute:
         \[
           \begin{tikzcd}[row sep = small, column sep = large]
               {}
@@ -1745,7 +1745,7 @@
       The objects of~$\Set_*$ are pairs~$(X,x_0)$ consisting of a set~$X$ and a base point~$x_0 \in X$.
       A morphism~$f \colon (X,x_0) \to (Y,y_0)$ in~$\Set_*$ is a map~$f \colon X \to Y$ with~$f(x_0) = y_0$.
       (Such maps are also known as \emph{pointed maps}\index{pointed map}.)%
-      \footnote{One may think about pointed sets as~\dash{$\Finite_1$}{vector spaces}.}
+      \footnote{One may think about pointed sets as somewhat similar to~\dash{$\Finite_1$}{vector spaces}.}
       The category~$\Set_*$ has the singleton~$(\{\ast\}, \ast)$ as a zero object.
       The monomorphisms in~$\Set_*$ are precisely the injective pointed maps, and the epimorphisms are the surjective pointed maps.
       
@@ -1865,7 +1865,7 @@
         \end{tikzcd}
       \]
     \item
-      There exist a unique morphism~$\tilde{f} \colon \coim(f) \to Y$ in~$\Ccat$ which make the following triangle commute:
+      There exists a unique morphism~$\tilde{f} \colon \coim(f) \to Y$ in~$\Ccat$ which makes the following triangle commute:
       \[
         \begin{tikzcd}
             X
@@ -1879,7 +1879,7 @@
         \end{tikzcd}
       \]
     \item
-      There exist a unique morphism~$\bar{f} \colon \coim(f) \to \im(f)$ in~$\Ccat$ which makes the following square commute:
+      There exists a unique morphism~$\bar{f} \colon \coim(f) \to \im(f)$ in~$\Ccat$ which makes the following square commute:
       \begin{equation}
         \label{canonical morphism from coim to im}
         \begin{tikzcd}
@@ -2105,7 +2105,7 @@
     \item
       Let~$A$ be a {\fd}~{\kalg} over a field~$\kf$.
       Then the category~$\Modlfd{A}$ of {\fd} left~{\modules{$A$}} coincides with the category~$\Modlfg{A}$ of finitely generated left~{\modules{$A$}}, and is hence abelian.
-      The analogous observation holds for~$\Modrfd{A}$.
+      The analogous observation holds for~$\Modrfd{A}$, the category of {\fd} right~{\modules{$A$}}.
     \item
       If~$\Ccat$ is a category and~$\Acat$ is an abelian category then the functor category~$\Fun(\Ccat, \Acat)$ is again abelian.
       (This will be an exercise on one of the upcoming exercise sheets.)
