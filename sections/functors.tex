@@ -189,6 +189,11 @@
 \end{example}
 
 
+\begin{warning*}
+  Images of functors are not necessarily subcategories.
+\end{warning*}
+
+
 \begin{definition}[label=properties of functors]
   Let~$F \colon \Ccat \to \Dcat$ be a functor.
   \begin{enumerate}
@@ -200,6 +205,12 @@
       The functor~$F$ is \emph{fully faithful}\index{fully faithful}\index{functor!fully faithful} if it is both full and faithful, i.e.\ if the induced map~$\Ccat(X,Y) \to \Dcat(F(X),F(Y))$,~$f \mapsto F(f)$ is injective for all~$X, Y \in \Ccat$.
   \end{enumerate}
 \end{definition}
+
+
+\begin{example*}
+  For every subcategory~$\Scat$ of a category~$\Ccat$ there exists an inclusion functor~$I \colon \Scat \to \Ccat$ which is given on objects by the inclusion~$\Ob(\Scat) \inclusion \Ob(\Ccat)$ on morphisms by the inclusion~$\Scat(X,Y) \inclusion \Ccat(X,Y)$ for any two objects~$X, Y, \in \Ob(\Scat)$.
+  This inclusion functor~$I$ is faithful, and it is full if and only if~$\Scat$ is full as a subcategory of~$\Ccat$.
+\end{example*}
 
 
 

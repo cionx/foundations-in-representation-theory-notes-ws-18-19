@@ -233,5 +233,43 @@
 \end{definition}
 
 
+\begin{definition*}
+  Let~$\Ccat$ be a category.
+  \begin{enumerate}
+    \item 
+      A \emph{subcategory}\index{subcategory}~$\Scat$ of~$\Ccat$ consists of
+      \begin{itemize}
+        \item
+          a subclass~$\Ob(\Scat) \subseteq \Ob(\Ccat)$, and
+        \item
+          for any two objects~$X, Y \in \Ob(\Scat)$ a subset~$\Scat(X,Y) \subseteq \Ccat(X,Y)$,
+      \end{itemize}
+      that are subject to the following conditions:
+      \begin{enumerate}[label=(S\arabic*)]
+        \item
+          It holds that~$\id_X \in \Scat(X,X)$ for every object~$X \in \Ob(\Scat)$.
+        \item
+          It holds that~$g \circ f \in \Scat(X,Z)$ for all objects~$X, Y, Z \in \Ob(\Scat)$ and all morphisms~$f \in \Scat(X,Y)$ and~$g \in \Scat(Y,Z)$.
+      \end{enumerate}
+    \item
+      A subcategory~$\Scat$ of~$\Ccat$ is \emph{full} if~$\Scat(X,Y) = \Ccat(X,Y)$ for all objects~$X, Y \in \Ob(\Scat)$.
+  \end{enumerate}
+  A subcategory~$\Scat$ of~$\Dcat$.
+\end{definition*}
+
+
+\begin{remark*}
+  Let~$\Ccat$ be a category.
+  \begin{enumerate}
+    \item
+      If~$\Scat$ is a subcategory of~$\Ccat$ then~$\Scat$ inherits from~$\Ccat$ the structure of a category.
+    \item
+      Any full subcategory~$\Scat$ of~$\Ccat$ is uniquely determined by its class of objects~$\Ob(\Scat)$.
+      Converseley, every subclass of~$\Ob(\Ccat)$ defines a full subcategory.
+  \end{enumerate}
+\end{remark*}
+
+
+
 
 
