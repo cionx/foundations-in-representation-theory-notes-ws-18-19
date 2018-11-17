@@ -2,13 +2,15 @@
 \usepackage{gitinfo2}   % git information on the title page
 \usepackage[backend=biber,style=alphabetic, dateabbrev=false, urldate=long]{biblatex}   %for bibliography
 \usepackage{amsmath, amssymb, amsthm, mathtools}      % general math stuff
+\usepackage{mathrsfs}
 \usepackage{extarrows}  % xlongrightarrow
 \usepackage{mathdots}
 \usepackage{stmaryrd}   % bigsqcap
+\usepackage{textcomp}
 \usepackage{thmtools}
 \usepackage{fontspec}   % for font stuff
 \usepackage[british]{babel}
-  \usepackage{tikzpagenodes}  % to include an image at the right position
+\usepackage{tikzpagenodes}  % to include an image at the right position
 \usepackage{tikz-cd}    % commutative diagrams
 \usetikzlibrary{positioning}
 \usetikzlibrary{arrows,arrows.meta}
@@ -98,18 +100,25 @@
 % \newtheorem{remarkdefinition}[everything]{Remark\nobreakdash-Definition}
 % \newtheorem{theorem}[everything]{Theorem}
 
-\declaretheorem[numberwithin=chapter]{everything}
+\newcommand{\extrasymbol}{\textborn}
+\declaretheorem[numberwithin=chapter]{everything} % counter hack
+\declaretheorem[numbered=no,name=Claim\textsuperscript{\extrasymbol}]{claim*}
+\declaretheorem[numbered=no,name=Claim]{claimnonum}
 \declaretheorem[numbered=no]{conventions}
 \declaretheorem[sibling=everything]{corollary}
 \declaretheorem[sibling=everything]{definition}
+\declaretheorem[numbered=no,name=Definition]{definitionnonum}
 \declaretheorem[sibling=everything]{example}
-\declaretheorem[numbered=no,name=Example]{example*}
+\declaretheorem[numbered=no,name=Example\textsuperscript{\extrasymbol}]{example*}
+\declaretheorem[numbered=no,name=Example]{examplenonum}
+\declaretheorem[numbered=no,name=Fact]{fact*}
 \declaretheorem[sibling=everything]{lemma}
-\declaretheorem[numbered=no,name=Lemma]{lemma*}
-\declaretheorem[numbered=no,name=Notation]{notation*}
+\declaretheorem[numbered=no,name=Lemma\textsuperscript{\extrasymbol}]{lemma*}
+\declaretheorem[numbered=no,name=Notation\textsuperscript{\extrasymbol}]{notation*}
 \declaretheorem[sibling=everything]{proposition}
 \declaretheorem[sibling=everything]{remark}
-\declaretheorem[numbered=no,name=Remark]{remark*}
+\declaretheorem[numbered=no,name=Remark\textsuperscript{\extrasymbol}]{remark*}
+\declaretheorem[numbered=no,name=Remark]{remarknonum}
 \declaretheorem[sibling=everything,name=Remark-Definition]{remarkdefinition}
 \declaretheorem[sibling=everything]{theorem}
 \renewcommand\thmcontinues[1]{Continued}
@@ -168,11 +177,6 @@
 }
 
 
-% relations
-\newcommand{\defined}{\coloneqq}
-\newcommand{\defines}{\eqqcolon}
-
-
 % binary operators
 \newcommand{\tensor}{\otimes}
 \newcommand{\dcup}{\amalg}
@@ -183,6 +187,8 @@
 
 % math shortcuts
 \newcommand{\codiag}{\nabla}
+\newcommand{\defined}{\coloneqq}
+\newcommand{\defines}{\eqqcolon}
 \newcommand{\del}{\partial}
 \newcommand{\diag}{\Delta}
 \newcommand{\xto}{\xrightarrow}
@@ -202,10 +208,12 @@
 \newcommand{\Finite}{\mathbb{F}}
 
 
-% categories
-% generic macros
+% font choices
 \newcommand{\catname}[1]{\mathbf{#1}}
 \newcommand{\gencat}[1]{\mathcal{#1}}
+\newcommand{\sheaf}[1]{\mathscr{#1}}
+
+% categories
 % fixed categories
 \newcommand{\Ab}{\catname{Ab}}
 \newcommand{\CommRing}{\catname{CRing}}
@@ -216,9 +224,11 @@
 \newcommand{\kAlg}{\text{$\kf$-$\catname{Alg}$}}
 \newcommand{\kCommAlg}{\text{$\kf$-$\catname{CAlg}$}}
 \newcommand{\Path}{\catname{Path}}
+\newcommand{\Presheaf}{\catname{PSh}}
 \newcommand{\Rep}[2]{\catname{Rep}_{#1}(#2)}
 \newcommand{\Ring}{\catname{Ring}}
 \newcommand{\Set}{\catname{Set}}
+\newcommand{\Sheaf}{\catname{Sh}}
 \newcommand{\Top}{\catname{Top}}
 % generaic categories
 \newcommand{\Acat}{\gencat{A}}
@@ -228,7 +238,11 @@
 \newcommand{\Ecat}{\gencat{E}}
 \newcommand{\Fcat}{\gencat{F}}
 \newcommand{\Gcat}{\gencat{G}}
+\newcommand{\Pcat}{\gencat{P}}
 \newcommand{\Rcat}{\gencat{R}}
+\newcommand{\Scat}{\gencat{S}}
+\newcommand{\Tcat}{\gencat{T}}
+\newcommand{\Xcat}{\gencat{X}}
 % more complicated constructions
 \newcommand{\Mod}{\catname{Mod}}
 \newcommand{\Modl}[1]{\text{$#1$-$\Mod$}}
@@ -242,6 +256,7 @@
 % spaces and sets
 \DeclareMathOperator{\coim}{coim}
 \DeclareMathOperator{\coker}{coker}
+\newcommand{\cont}{\sheaf{C}}
 \DeclareMathOperator{\End}{End}
 \DeclarePairedDelimiter{\gen}{\langle}{\rangle}
 \DeclarePairedDelimiter{\genideal}{(}{)}
@@ -252,6 +267,7 @@
 \DeclareMathOperator{\Ob}{Ob}
 \newcommand{\triag}[2]{\operatorname{T}_{#1}(#2)}
 \DeclareMathOperator{\ringcenter}{Z}
+\newcommand{\sphere}{\mathbb{S}}
 
 
 % functions and functors
@@ -269,7 +285,6 @@
 \newcommand{\fg}{\mathrm{fg}}
 \newcommand{\op}{\mathrm{op}}
 
-
 % custom macros with case distinctions
 \NewDocumentCommand{\suchthat}{s}{
   \IfBooleanTF{#1}
@@ -278,8 +293,8 @@
 }
 \NewDocumentCommand{\restrict}{smmO{}}{
   \IfBooleanTF{#1}
-    {\left. {#2} \,\middle|_{#3}^{#4} \right.}
-    {{#2}\,|_{#3}^{#4}}
+    {\left. {#2} \middle|_{#3}^{#4} \right.}
+    {{#2} |_{#3}^{#4}}
 }
 
 

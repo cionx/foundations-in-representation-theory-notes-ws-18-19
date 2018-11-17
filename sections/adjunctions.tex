@@ -15,7 +15,7 @@
 \end{definition}
 
 
-\begin{remark*}
+\begin{remarknonum}
   The naturality in~\cref{definition of adjunction} means that for every morphism~$f \colon X \to X'$ in~$\Ccat$ and every object~$Y \in \Ob(\Dcat)$ the square
   \[
     \begin{tikzcd}[sep = large]
@@ -44,8 +44,23 @@
       & \Ccat(X, G(Y'))
     \end{tikzcd}
   \]
-  commutes.%
-  \footnote{This ammounts to~$\varphi$ being a natural isomorphism~$\varphi \colon \Dcat(F(-), -) \to \Ccat(-, G(-))$ between the two (bi)functors~$\Dcat(F(-), -), \Ccat(-, G(-)) \colon \Ccat^\op \times \Dcat \to \Set$.}
+  commutes.
+\end{remarknonum}
+
+
+\begin{remark*}
+  The naturality of~$\varphi$ in~\cref{definition of adjunction} amount to~$\varphi$ being a natural isomorphism
+  \[
+            \varphi
+    \colon  \Dcat(F(-), -)
+    \to     \Ccat(-, G(-))
+  \]
+  between the two (bi)functors
+  \[
+            \Dcat(F(-), -), \Ccat(-, G(-))
+    \colon  \Ccat^\op \times \Dcat
+    \to     \Set \,.
+  \]
 \end{remark*}
 
 

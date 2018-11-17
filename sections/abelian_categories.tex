@@ -736,11 +736,9 @@
 \end{remark*}
 
 
-\begin{remark*}
-%   TODO: Add this footnote.
-%   \footnote{This was an offical, but unnumbered remark in the lecture.}
+\begin{remarknonum}
   For a preadditive category~$\Acat$, a biproduct of an empty family of objects in~$\Acat$ is the same as a zero object of~$\Acat$.
-\end{remark*}
+\end{remarknonum}
 
 
 \begin{lemma}
@@ -879,11 +877,9 @@
 \end{definition}
 
 
-\begin{remark*}
-% TODO: Add this footnote.
-% \footnote{This remark was made in the lecture, but unnumbered.}
+\begin{remarknonum}
   Additive (and~{\klin}) categories have zero objects, as these are the biproducts of empty family of objects.
-\end{remark*}
+\end{remarknonum}
 
 
 \begin{remark*}
@@ -1842,9 +1838,9 @@
 \end{example*}
 
 
-\begin{remark*}
+\begin{remarknonum}
   Images and coimages are unique up to unique isomorphisms.
-\end{remark*}
+\end{remarknonum}
 
 
 \begin{lemma}[Canonical factorization]
@@ -2196,6 +2192,711 @@
 
 
 
+\begin{example}
+  Let~$X$ be a topological space.
+  We will sketch how to show that the category of sheaves of abelian groups over~$X$ is abelian.
+  \begin{enumerate}
+    \item
+      We start with the notion of a presheaf on~$X$:
+      
+      \begin{definitionnonum}
+        A \emph{presheaf}~$\sheaf{F}$\index{presheaf} (of abelian groups over~$X$) consists of
+        \begin{itemize}
+          \item
+            an abelian group~$\sheaf{F}(U)$ for every open subset~$U \subseteq X$, and
+          \item
+            a group homomorphism~$\rho_{V,U} \colon \sheaf{F}(V) \to \sheaf{F}(U)$ for all open subsets~$U \subseteq V \subseteq X$,
+        \end{itemize}
+        such that
+        \begin{enumerate}[label=(P\arabic*)]
+          \item
+            $\rho_{U,U} = \id_{\sheaf{F}(U)}$ for every open subset~$U \subseteq X$, and
+          \item
+            $\rho_{V,U} \circ \rho_{W,V} = \rho_{W,U}$ for all open subsets~$U \subseteq V \subseteq W \subseteq X$.
+        \end{enumerate}
+      \end{definitionnonum}
+      
+      For an open subset~$U \subseteq X$ one may think about the abelian group~$\sheaf{F}(U)$ as consisting of certain functions on~$U$ which can be added together.
+      One can consequently think about the homomorphism~$\rho_{V,U} \colon \sheaf{F}(V) \to \sheaf{F}(U)$ associated to open subsets~$U \subseteq V \subseteq X$ as restricting the functions on~$V$ to the functions on~$U$.
+      
+      For an open subset~$U \subseteq X$, the elements of~$\sheaf{F}(U)$ are called \emph{sections}\index{section} of~$\sheaf{F}$ on~$U$.
+      For open subsets~$U \subseteq V \subseteq X$, the homomorphism~$\rho_{V,U} \colon \sheaf{F}(V) \to \sheaf{F}(U)$ is the \emph{restriction homomorphism} from~$V$ to~$U$, and for a section~$s \in \sheaf{F}(U)$ one calls~$\rho_{V,U}(s) \in \sheaf{F}(U)$ the \emph{restriction} of~$s$ to~$U$.
+      This restriction is also denoted by~$\restrict{s}{U}$ instead of~$\rho_{V,U}(s)$.
+      We then have that
+      \[
+        \restrict{s}{U} = s
+      \]
+      for every open subset~$U \subseteq X$ and every section~$s \in \sheaf{F}(U)$, and
+      \[
+        \restrict{ (\restrict{s}{V}) }{U} = \restrict{s}{U}
+      \]
+      for all open subsets~$U \subseteq V \subseteq W \subseteq X$ and every section~$s \in \sheaf{F}(W)$.
+      It also holds that
+      \[
+          \restrict{(s+t)}{U}
+        = \restrict{s}{U} + \restrict{t}{U}
+      \]
+      for all open subsets~$U \subseteq V \subseteq X$ and all sections~$s, t \in \sheaf{F}(V)$  because the restriction homomorphism~$\rho_{V,U}$ is a group homomorphism.
+      
+      \begin{examplenonum}
+        \leavevmode
+        \begin{enumerate}
+          \item
+            For every open subset~$U \subseteq X$ let
+            \[
+                        \cont_X(U)
+              \defined  \{
+                          f \colon U \to \Real
+                        \suchthat
+                          \text{$f$ is continuous}
+                        \} \,,
+            \]
+            and for all open subsets~$U \subseteq V \subseteq X$ let
+            \[
+                      \rho_{V,U}
+              \colon  \cont_X(V)
+              \to     \cont_X(U) \,,
+              \quad   f
+              \mapsto \restrict{f}{U}
+            \]
+            be the (literal) restriction homomorphism.
+            This defines a presheaf~$\cont_X$ on~$X$, the \emph{presheaf of continuous functions}.
+          \item
+            For every abelian group~$A$ we can consider the \emph{constant~\dash{$A$}{valued} presheaf}\index{constant!presheaf}\index{presheaf!constant} on~$X$, which is denoted by~$\widetilde{\sheaf{C}}_{X,A}$ and given by~$\widetilde{\sheaf{C}}_{X,A}(U) = A$ for every open subset~$U \subseteq X$, and~$\rho_{V,U} = \id_A$ for all open subsets~$U \subseteq V \subseteq X$.
+        \end{enumerate}
+      \end{examplenonum}
+      
+      Let~$\sheaf{F}, \sheaf{G}$ be two presheaves on~$X$.
+      A \emph{homomorphism}\index{homomorphism!of presheaves} of presheaves~$f \colon \sheaf{F} \to \sheaf{G}$ is a tuple~$(f_U)_{U \subseteq X}$ of group homomorphisms~$f_U \colon \sheaf{F}(U) \to \sheaf{G}(U)$, where~$U \subseteq X$ ranges through the open subsets of~$X$, such that for all open subsets~$U \subseteq V \subseteq X$ the square
+      \[
+        \begin{tikzcd}[sep = large]
+            \sheaf{F}(V)
+            \arrow{r}[above]{f_V}
+            \arrow{d}[left]{\rho_{V,U}^\sheaf{F}}
+          & \sheaf{G}(V)
+            \arrow{d}[right]{\rho_{V,U}^\sheaf{G}}
+          \\
+            \sheaf{F}(U)
+            \arrow{r}[above]{f_U}
+          & \sheaf{G}(U)
+        \end{tikzcd}
+      \]
+      commutes.
+      Let~$\Pcat \defined \Presheaf_X(\Ab)$ be the category of presheaves on~$X$.
+      
+    \item
+      We can interpret the presheaf category~$\Pcat$ as a functor category:
+      Let~$\Xcat$ be the category defined by objects
+      \[
+                  \Ob(\Xcat)
+        \defined  \{
+                    U
+                  \suchthat
+                    \text{$U \subseteq X$ is open}
+                  \}
+      \]
+      and morphism sets
+      \[
+                  \Xcat(U,V)
+        \defined  \begin{cases}
+                    \{ i_{U,V} \} & \text{if~$U \subseteq V$} \,, \\
+                    \emptyset     & \text{otherwise} \,,
+                  \end{cases}
+      \]
+      where~$i_{U,V} \colon U \to V$ is the inclusion.
+      The composition of morphisms in~$\Xcat$ is defined in the only possible way.
+      The presheaf category~$\Pcat$ is then equivalent to the functor category~$\Fun(\Xcat^\op, \Ab)$.
+      We see from this alternative description of the presheaf category~$\Pcat$ that it is abelian.
+      
+      \begin{remark*}
+        A \emph{preorder}\index{preorder} on a set~$P$ is a relation~$\leq$ which is reflexive and transitive, i.e.\ it holds that~$x \leq x$ for every~$x \in P$, and it holds for all~$x, y, z \in P$ with~$x \leq y$ and~$y \leq z$ that also~$x \leq z$.
+        (But in contrast to a partial order, a preorder does not have to be antisymmetric.
+        So there may exist~$x, y \in P$ with both~$x \leq y$ and~$y \leq x$ but~$x \neq y$.)
+        A \emph{preordered set} is a pair~$(P,\leq)$ consisting of a set~$P$ and a preorder~$\leq$ on~$P$.
+        
+        If~$(P,\leq)$ is a preordered set then one can define a category~$\Pcat$ whose objects are given by the elements of~$P$, and in which there exists for every two elements~$x, y \in P$ a morphism~$x \to y$ in~$\Pcat$ if and only if~$x \leq y$, and this morphism is then unique.
+        More formally speaking, we have that
+        \[
+            \Ob(\Pcat)
+          = P \,,
+        \]
+        and the morphisms sets of~$\Pcat$ are for any two objects~$x, y \in P$ given by
+        \[
+            \Pcat(x,y)
+          = \begin{cases}
+              \{\ast\}  & \text{if~$x = y$} \,, \\
+              \emptyset & \text{if~$x \neq y$}  \,.
+            \end{cases}
+        \]
+        The composition of morphisms in defined in the only possible way.
+        In the resulting category~$\Pcat$ there exists between any two objects at most one morphism.
+        Such categories are called~\emph{thin}\index{thin category}\index{category!thin}.
+        
+        If on the other hand~$\Tcat$ is any thin category whose class of objects~$T \defined \Ob(\Tcat)$ is a set (and not a proper class), then one can define a preorder~$\leq$ on~$T$ via
+        \[
+                s \leq t
+          \iff  \Tcat(s,t) \neq \emptyset
+        \]
+        for all~$s, t \in T$.
+        This then results in a preordered set~$(T, \leq)$.
+        
+        These two constructions are mutually inverse, and show that preordered sets~$(P,\leq)$ are \enquote{the same} as thin categories~$\Tcat$ whose class of objects form a set.
+        
+        In the above example, the preordered set (which is already an ordered set) is given by~$P = \{U \subseteq X \suchthat \text{$U$ is open}\}$ together with the inclusion~$\subseteq$ as a preorder.
+        The category~$\Xcat$ then results from the preordered set~$(P, \subseteq)$ via the above construction.
+      \end{remark*}
+      
+    \item
+      We are now ready to introduce sheaves:
+      
+      \begin{definitionnonum}
+        A presheaf~$\sheaf{F}$ on~$X$ is a \emph{sheaf}\index{sheaf} if for every open subset~$U \subseteq X$ and every open cover~$\{ U_i \}_{i \in I}$ of~$U$ the following two conditions are satisfied:
+        \begin{enumerate}[label=(S\arabic*)]
+          \item
+            \label{separation axiom}
+            If~$s \in \sheaf{F}(U)$ is a section with~$\restrict{s}{U_i} = 0$ for every~$i \in I$ then already~$s = 0$.
+          \item
+            \label{glueing axiom}
+            Suppose that~$s_i \in \sheaf{F}(U_i)$ is a section for every~$i \in I$, so that
+            \[
+                \restrict{s_i}{U_i \cap U_j}
+              = \restrict{s_j}{U_i \cap U_j}
+            \]
+            for all~$i, j \in I$.
+            Then there exists a section~$s \in \sheaf{F}(U)$ with~$\restrict{s}{U_i} = s_i$ for every~$i \in I$.
+        \end{enumerate}
+        Condition~\ref*{separation axiom} is the \emph{separation~axiom}\index{separation axiom}\index{sheaf!separation axiom} and condition~\ref*{glueing axiom} is the \emph{glueing~axiom}\index{glueing axiom}\index{sheaf!glueing axiom}.
+      \end{definitionnonum}
+      
+      We denote by~$\Scat = \Sheaf_X(\Ab)$ the category of sheaves on~$X$, which is the full subcategory of the presheaf category~$\Pcat = \Presheaf_X(\Ab)$ whose objects are sheaves.
+      
+      Note that if~$\sheaf{F}$ is any sheaf on~$X$ then~$\sheaf{F}(\emptyset) = 0$:
+      We may choose for the open subset~$U = \emptyset$ the empty covering~$U = \bigcup_{i \in \emptyset} U_i$.
+      It then follows for any two sections~$s, t \in \sheaf{F}(\emptyset)$ from the separation axiom that~$s = t$, which shows that the abelian group~$\sheaf{F}(\emptyset)$ consists of only a single element.
+      
+      \begin{examplenonum}
+        \leavevmode
+        \begin{enumerate}
+          \item
+            The presheaf of continuous functions~$\cont_X$ is already a sheaf.
+          \item
+            If~$A$ is a nonzero abelian group then the constant presheaf~$\widetilde{\sheaf{C}}_{X,A}$ is not a sheaf, because~$\widetilde{\sheaf{C}}_{X,A}(\emptyset) = A \neq 0$.
+        \end{enumerate}
+      \end{examplenonum}
+      
+    \item
+      The sheaf category~$\Scat$ is additive:
+      \begin{description}[font=\bfseries]
+        \item[Preadditive:]
+          The sheaf category~$\Scat$ is a full subcategory of the presheaf category~$\Pcat$, which is a preadditive category.
+          It therefore inherits the structure of a preadditive category from~$\Pcat$.
+          Note that the inclusion functor~$I \colon \Scat \to \Pcat$ is additive.
+        \item[Zero object:]
+          The zero presheaf~$0$ is already a sheaf, and hence contained in~$\Scat$.
+          It is also a zero object in~$\Scat$ because~$\Scat$ is a full subcategory of~$\Pcat$.
+        \item[Biproducts:]
+          The biproduct~$\sheaf{F} \oplus \sheaf{G}$ of two presheaves~$\sheaf{F}$ and~$\sheaf{G}$ in the presheaf category~$\Pcat$ is given by
+          \[
+              (\sheaf{F} \oplus \sheaf{G})(U)
+            = \sheaf{F}(U) \oplus \sheaf{G}(U)
+          \]
+          for every open subset~$U \subseteq X$, together with the restriction homomorphisms
+          \[
+              \rho^{\sheaf{F} \oplus \sheaf{G}}_{V,U}
+            = \rho^\sheaf{F}_{V,U} \oplus \rho^\sheaf{G}_{V,U}
+          \]
+          for all open subsets~$U \subseteq V \subseteq X$, i.e.\
+          \[
+              \restrict{(s,t)}{U}
+            = ( \restrict{s}{U}, \restrict{t}{U} )
+          \]
+          for every section ~$(s,t) \in \sheaf{F}(U) \oplus \sheaf{G}(U)$.
+          
+          If both~$\sheaf{F}$ an~$\sheaf{G}$ are sheaves then their biproduct~$\sheaf{F} \oplus \sheaf{G}$ is again a sheaf:
+          Let~$U \subseteq X$ be an open subset and let~$\{ U_i \}_{i \in I}$ be an open cover of~$U$.
+          \begin{enumerate}[label=(S\arabic*)]
+            \item
+              Let~$s \in \sheaf{F}(U) \oplus \sheaf{G}(U)$ be a section with~$\restrict{s}{U_i} = 0$ for every~$i \in I$.
+              We may write~$s = (t,u)$ for some sections~$t \in \sheaf{F}(U)$ and~$u \in \sheaf{G}(U)$, and it holds for every~$i \in I$ that
+              \[
+                  0
+                = \restrict{s}{U_i}
+                = \restrict{(t,u)}{U_i}
+                = ( \restrict{t}{U_i}, \restrict{u}{U_i} ) \,.
+              \]
+              It therefore holds for every~$i \in I$ that~$\restrict{t}{U_i} = 0$ and~$\restrict{u}{U_i} = 0$.
+              It follows that~$t = 0$ and~$u = 0$ because both~$\sheaf{F}$ and~$\sheaf{G}$ are sheaves (and hence satisify the separation axiom).
+              This shows that~$s = 0$, and hence that~$\sheaf{F} \oplus \sheaf{G}$ satisfies the separation axiom.
+            \item
+              For every~$s \in S$ let~$s_i \in U_i$ be a section, such that
+              \[
+                  \restrict{s_i}{U_i \cap U_j}
+                = \restrict{s_j}{U_i \cap U_j}
+              \]
+              for all~$i,j \in I$.
+              Then every~$s_i$ can be written as~$s_i = (t_i, u_i)$ for some sections~$t_i \in \sheaf{F}(U_i)$ and~$u_i \in \sheaf{G}(U_i)$, and it holds for all~$i, j \in I$ that
+              \begin{align*}
+                    (\restrict{t_i}{U_i \cap U_j}, \restrict{u_i}{U_i \cap U_j})
+                &=  \restrict{(t_i, u_i)}{U_i \cap U_j}
+                 =  \restrict{s_i}{U_i \cap U_j}  \\
+                &=  \restrict{s_j}{U_i \cap U_j}
+                 =  \restrict{(t_j, u_j)}{U_i \cap U_j}
+                 =  (\restrict{t_j}{U_i \cap U_j}, \restrict{u_j}{U_i \cap U_j}) \,.
+              \end{align*}
+%               \begin{align*}
+%                  {}&  ( \restrict{s^i_1}{U_i \cap U_j}, \dotsc, \restrict{s^i_n}{U_i \cap U_j} )  \\
+%                 ={}&  \restrict{(s^i_1, \dotsc, s^i_n)}{U_i \cap U_j} \\
+%                 ={}&  \restrict{s^i}{U_i \cap U_j}
+%                 =     \restrict{s^j}{U_i \cap U_j}  \\
+%                 ={}&  \restrict{(s^j_1, \dotsc, s^j_n)}{U_i \cap U_j} \\
+%                 ={}&  ( \restrict{s^j_1}{U_i \cap U_j}, \dotsc, \restrict{s^j_n}{U_i \cap U_j} )
+%               \end{align*}
+              It therefore holds for all~$i, j \in I$ that
+              \[
+                  \restrict{t_i}{U_i \cap U_j}
+                = \restrict{t_j}{U_i \cap U_j}
+                \qquad\text{and}\quad
+                  \restrict{u_i}{U_i \cap U_j}
+                = \restrict{u_j}{U_i \cap U_j} \,.
+              \]
+              It follows that there exist sections~$t \in \sheaf{F}(U)$ and~$u \in \sheaf{G}(U)$ with~$\restrict{t}{U_i} = t_i$ and~$\restrict{u}{U_i} = u_i$ for every~$i \in I$ because both~$\sheaf{F}$ and~$\sheaf{G}$ are sheaves (and hence satisfiy the glueing axiom).
+              It follows for the section~$s$ that
+              \[
+                  \restrict{s}{U_i}
+                = \restrict{(t,u)}{U_i}
+                = ( \restrict{t}{U_i}, \restrict{u}{U_i} )
+                = ( t_i, u_i )
+                = s_i
+              \]
+              for every~$i \in I$.
+              This shows that~$\sheaf{F} \oplus \sheaf{G}$ satisfies the glueing axiom.
+          \end{enumerate}
+          
+          This shows together that the biproduct~$\sheaf{F} \oplus \sheaf{G}$ is contained in~$\Scat$.
+          The sheaf~$\sheaf{F} \oplus \sheaf{G}$ is also a biproduct of~$\sheaf{F}$ and~$\sheaf{G}$ in~$\Scat$ because~$\Scat$ is a full subcategory of~$\Pcat$.
+          
+          This shows that~$\Scat$ admits binary biproducts;
+          it follows inductively that~$\Scat$ admits biproducts~$\sheaf{F}_1 \oplus \dotsb \oplus \sheaf{F}_n$ for any collections of sheaves~$\sheaf{F}_1, \dotsc, \sheaf{F}_n$ with~$n \geq 1$.
+          For~$n = 0$ this is also true because~$\Scat$ contains a zero object.
+      \end{description}
+      
+      This shows alltogether that the sheaf category~$\Scat$ is indeed additive.
+          
+    \item
+      The sheaf category~$\Scat$ admits kernels:
+      To be more precise, let~$\sheaf{F}$ and~$\sheaf{G}$ be two sheaves and let~$f \colon \sheaf{F} \to \sheaf{G}$ be a homomorphism of sheaves.
+      We may forget that~$\sheaf{F}$ and~$\sheaf{G}$ are sheaves and regard them as just presheaves;
+      then~$f$ is a homomorphisms of presheaves, and hence a morphism in the abelian category~$\Pcat$.
+      We can therefore consider its kernel~$\ker_{\Pcat}(f)$ in the category~$\Pcat$.
+      
+      This kernel~$\ker_\Pcat(f)$ of~$f$ in the presheaf category~$\Pcat$ is already a sheaf:
+      The kernel~$\ker_\Pcat(f)$ is given by
+      \[
+          (\ker_\Pcat(f))(U)
+        = \ker(f_U)
+      \]
+      for every open subset~$U \subseteq X$, together with the restriction homomorphisms
+      \[
+        \rho^{\ker_{\Pcat}(f)}_{V,U} \colon \ker(f_V) \to \ker(f_U)
+      \]
+      for all open subsets~$U \subseteq V \subseteq X$ which are given by restriction of the restriction homomorphisems~$\rho^{\sheaf{F}}_{V,U} \colon \sheaf{F}(V) \to \sheaf{F}(U)$.
+      Let~$U \subseteq X$ be open and let~$\{ U_i \}_{i \in I}$ be an open cover of~$U$.
+      \begin{enumerate}[label=(S\arabic*)]
+        \item
+          Let~$s \in (\ker_{\Pcat}(f))(U) = \ker(f_U)$ be a section with~$\restrict{s}{U_i} = 0$ for every~$i \in I$.
+          This section~$s$ is an element of~$\sheaf{F}(U)$ (because~$\ker(f_U)$ is a subgroup of~$\sheaf{F}(U)$), and the relation~$\restrict{s}{U_i} = 0$ also holds in the sheaf~$\sheaf{F}$ (i.e.\ it follows from~$\rho^{\ker_{\Pcat}(f)}_{U,U_i}(s) = 0$ that also~$\rho^{\sheaf{F}}_{U,U_i}(s) = 0$) because the square
+          \[
+            \begin{tikzcd}[sep = large]
+                \ker(f_U)
+                \arrow[hook]{r}
+                \arrow{d}[left]{\rho_{U,U_i}}
+              & \sheaf{F}(U)
+                \arrow{d}[right]{\rho_{U,U_i}}
+              \\
+                \ker(f_{U_i})
+                \arrow[hook]{r}
+              & \sheaf{F}(U_i)
+            \end{tikzcd}
+          \]
+          commutes.
+          It follows that~$s = 0$ in~$\sheaf{F}(U)$, and hence also in~$\ker(f_U)$, because~$\sheaf{F}$ is a sheaf and hence satisfies the separation axiom.
+          This shows that the presheaf~$\ker_{\Pcat}(f)$ satisfies the separation axiom.
+        \item
+          For every~$i \in I$ let~$s_i \in (\ker_{\Pcat}(f))(U_i) = \ker(f_{U_i})$ be a section such that~$\restrict{s_i}{U_i \cap U_j} = \restrict{s_j}{U_i \cap U_j}$ for all~$i,j \in I$.
+          We can then regard every~$s_i$ as an element of~$\sheaf{F}(U_i)$, and the relation~$\restrict{s_i}{U_i \cap U_j} = \restrict{s_i}{U_i \cap U_j}$ also holds in the sheaf~$\sheaf{F}$ because the diagram
+          \[
+            \begin{tikzcd}[column sep = huge, row sep = tiny]
+                \ker(f_{U_i})
+                \arrow{dr}[above right, near start]{\rho_{U_i, U_i \cap U_j}}
+                \arrow[hook]{dd}
+              & {}
+              & \ker(f_{U_j})
+                \arrow{dl}[above left, near start]{\rho_{U_j, U_i \cap U_j}}
+                \arrow[hook]{dd}
+              \\
+                {}
+              & \ker(f_{U_i \cap U_j})
+                \arrow[hook]{dd}
+              & {}
+              \\
+                \sheaf{F}(U_i)
+                \arrow{dr}[below left, near end]{\rho_{U_i, U_i \cap U_j}}
+              & {}
+              & \sheaf{F}(U_j)
+                \arrow{dl}[below right, near end]{\rho_{U_j, U_i \cap U_j}}
+              \\
+                {}
+              & \sheaf{F}(U_i \cap U_j)
+              & {}
+            \end{tikzcd}
+          \]
+          commutes.
+          It follows that there exists a section~$s \in \sheaf{F}(U)$ with~$\restrict{s}{U_i} = s_i$ for every~$i \in I$ because~$\sheaf{F}$is a sheaf and hence satisfies the glueing axiom.
+          We need to show that already~$s \in \ker(f_U)$, i.e.\ that~$f_U(s) = 0$.
+          We use that~$f$ is a homomorphism of sheaves to calculate
+          \[
+              \restrict{f_U(s)}{U_i}
+            = f_{U_i}( \restrict{s}{U_i} )
+            = f_{U_i}(s_i)
+            = 0
+          \]
+          for every~$i \in I$.
+          It follows that~$f_U(s) = 0$ because~$\sheaf{G}$ is a sheaf and hence satisfies the separation axiom.
+          This shows that~$\ker(f)$ satisfies the glueing axiom.
+      \end{enumerate}
+      
+      We can similarly consider the cokernel~$\coker_{\Pcat}(f)$.
+      This presheaf is given by
+      \[
+        (\coker_{\Pcat}(f))(U) = \coker(f_U)
+      \]
+      for every open subset~$U \subseteq X$, and the restriction homomorphism
+      \[
+                \rho^{\coker_{\Pcat}(f)}_{V,U}
+        \colon  \sheaf{G}(V)
+        \to     \sheaf{G}(U)
+      \]
+      is for all open subsets~$U \subseteq V \subseteq X$ induced by the restriction homomorphism~$\rho^{\sheaf{G}}_{V,U} \colon \sheaf{G}(V) \to \sheaf{G}(U)$ in the sense that the following square commutes:
+      \[
+        \begin{tikzcd}[sep = large]
+            \sheaf{G}(V)
+            \arrow[two heads]{r}
+            \arrow{d}[left]{\rho_{V,U}}
+          & \coker^{\Pcat}(f_V)
+            \arrow{d}[right]{\rho_{V,U}}
+          \\
+            \sheaf{G}(U)
+            \arrow[two heads]{r}
+          & \coker^{\Pcat}(f_U)
+        \end{tikzcd}
+      \]
+      
+      In constrast to kernels it does not necessarily hold that the cokernel~$\coker_{\Pcat}(f)$ is already a sheaf.
+      
+      \begin{examplenonum}
+        Let~$X \defined \sphere^1$ and let~$\sheaf{F} \defined \sheaf{G} \defined \sheaf{C}^\infty$ be the sheaf of smooth \dash{real}{valued} functions on~$\sphere^1$, which is given by
+        \[
+            \sheaf{C}^\infty(U)
+          = \{
+              f \colon U \to \Real
+            \suchthat
+              \text{$f$ is smooth}
+            \}
+        \]
+        for every open subset~$U \subseteq \sphere^1$ and has for all open subsets~$U \subseteq V \subseteq \sphere^1$ as restriction homomorphisms
+        \[
+                  \rho_{V,U}
+          \colon  \sheaf{C}^\infty(V)
+          \to     \sheaf{C}^\infty(U) \,,
+          \quad   f
+          \mapsto \restrict{f}{U}
+        \]
+        the (literal) restriction maps.
+
+        Let us consider the homomorphism~$d \colon \sheaf{C}^\infty \to \sheaf{C}^\infty$ that is given by the derivative, i.e.\ by
+        \[
+                  d_U
+          \colon  \sheaf{C}^\infty(U)
+          \to     \sheaf{C}^\infty(U) \,,
+          \quad   f
+          \mapsto f'
+        \]
+        for every open subset~$U \subseteq \sphere^1$.
+        If~$U \subsetneq \sphere^1$ is a proper open subset then~$U$ corresponds to an open subset of~$(0,1)$, hence there exists for every~$f \in \sheaf{C}^\infty(U)$ an antiderivative for~$f$ on~$U$.
+        The homomorphism~$d_U \colon \sheaf{C}^\infty(U) \to \sheaf{C}^\infty(U)$ is hence surjective, and has therefore the cokernel
+        \[
+            \coker(d_U)
+          = 0 \,.
+        \]
+        Consider on the other hand the open subset~$U = S^1$.
+        On this open subset, the constant~\dash{$1$}{function}~$1 \in \sheaf{C}^\infty(\sphere^1)$ has no antiderivative because it lifts to the constant~\dash{$1$}{function}~$1 \in \sheaf{C}^\infty(\Real)$, whose antiderivatives~$x \mapsto x + c$ with~$c \in \Real$ are not periodic.
+        The homomorphism~$d_{\sphere^1}$ does therefore have a nonvanishing cokernel
+        \[
+                \coker(f_{\sphere^1})
+          \neq  0 \,.
+        \]
+        (One can actually identify the cokernel~$\coker(f_{\sphere^1})$ with the constant functions on~$\sphere^1$, so that~$\coker(f_{\sphere^1}) \cong \Real$.)
+        Let~$\sphere^1 = U_1 \cup U_2$ be an open cover by proper open subsets~$U_1, U_2 \subsetneq \sphere^1$.
+        If~$\coker(d)$ were a sheaf then it would follows from~$\coker(d_{U_1}) = 0$ and~$\coker(d_{U_2}) = 0$ by the separation axiom that also~$\coker(d_{\sphere^1}) = 0$.
+        Hence~$\coker(d)$ is not a sheaf.
+      \end{examplenonum}
+      
+    \item
+      Let~$I \colon \Scat \to \Pcat$ be the inclusion functor, which is both fully faithful and additive.
+      
+      \begin{fact*}
+        The inlcusion functor~$I$ has a left adjoint~$S \colon \Pcat \to \Scat$.
+        The functor~$S$ is again additive and the adjunction is also additive, in the sense that the natural bijections
+        \[
+                  \varphi_{\sheaf{F},\sheaf{G}}
+          \colon  \Scat(S(\sheaf{F}), \sheaf{G})
+          \to     \Pcat(\sheaf{F}, I(\sheaf{G}))
+        \]
+        are isomorphisms of abelian groups.
+      \end{fact*}
+      
+      \begin{definitionnonum}
+        For a presheaf~$\sheaf{F}$ on~$X$, the sheaf~$S(\sheaf{F})$ is the \emph{sheafification}\index{sheafification} of~$\sheaf{F}$.
+      \end{definitionnonum}
+      
+      Let~$\eta \colon \id_{\Pcat} \to I \circ S$ be the unit of the adjunction~$(S,I,\varphi)$.
+      This adjunction then states the the sheafification has the following universal property:      
+      There exists for every sheaf~$\sheaf{G}$ and every homomorphism of presheaves~$f \colon \sheaf{F} \to I(\sheaf{G})$ a unique homomorphism of sheaves~$\lambda \colon S(\sheaf{F}) \to \sheaf{G}$ which make the following triangle commute:
+      \[
+        \begin{tikzcd}[sep = large]
+            \sheaf{F}
+            \arrow{r}[above]{\eta_{\sheaf{F}}}
+            \arrow{dr}[below left]{f}
+          & IS(\sheaf{F})
+            \arrow[dashed]{d}[right]{I(\lambda)}
+          \\
+            {}
+          & I(\sheaf{G})
+        \end{tikzcd}
+      \]
+      
+      If a presheaf~$\sheaf{F}$ is already a sheaf, then it follows from the fully faithfulness of the inclusion~$I$ that the sheafification~$SI(\sheaf{F})$ of~$\sheaf{F}$ is just~$\sheaf{F}$ itself.
+      
+      To be more precise, the sheaf~$\sheaf{F}$ is also a sheafification of the presheaf~$I(\sheaf{F})$, in the sense that the identity~$\id_{I(\sheaf{F})} \colon I(\sheaf{F}) \to I(\sheaf{F})$ fullfills the same universal property as the counit~$\eta_{\sheaf{F}} \colon I(\sheaf{F}) \to ISI(\sheaf{F})$:
+      Let~$\sheaf{G}$ be another sheaf and let~$f \colon I(\sheaf{F}) \to I(\sheaf{G})$ be a homomorphism of presheaves.
+      Then, as~$I$ is fully faithful, there exist a unique homomorphism of sheaves~$\lambda \colon \sheaf{F} \to \sheaf{G}$ which makes the desired triangle
+      \[
+        \begin{tikzcd}[sep = large]
+            I(\sheaf{F})
+            \arrow{r}[above]{\id_{I(\sheaf{F})}}
+            \arrow{dr}[below left]{f}
+          & I(\sheaf{F})
+            \arrow{d}[right]{I(\lambda)}
+          \\
+            {}
+          & I(\sheaf{G})
+        \end{tikzcd}
+      \]
+      commute.
+      
+      As both~$\eta \colon I(\sheaf{F}) \to ISI(\sheaf{F})$ and~$\id_{I(\sheaf{F})} \colon I(\sheaf{F}) \to I(\sheaf{F})$ have the same universal property, we can conclude that there exist a unique homomorphism of presheaves~$ISI(\sheaf{F}) \to I(\sheaf{F})$ which makes the triangle
+      \[
+        \begin{tikzcd}[column sep = small]
+            {}
+          & I(\sheaf{F})
+            \arrow{dl}[above left]{\eta_{\sheaf{F}}}
+            \arrow{dr}[above right]{\id_{I(\sheaf{F})}}
+          & {}
+          \\
+            ISI(\sheaf{F})
+            \arrow[dashed]{rr}
+          & {}
+          & I(\sheaf{F})
+        \end{tikzcd}
+      \]
+      commute, and that this homomorphism is already an isomorphism.
+      This homomorphism is just~$\eta_{\sheaf{F}}$ itself (as~$\eta_{\sheaf{F}}$ makes the above triangle commute) and so~$\eta_{\sheaf{F}}$ is an isomorphism (of presheaves, and hence also of sheaves).
+      
+      \begin{remark*}
+        One can also express the above argumentation in the language of representable functors:
+        It holds that by the naturality of~$\varphi$ and the fully faithfulness of~$I$ that
+        \[
+                \Scat(S(I(\sheaf{F})), -)
+          \cong \Pcat(I(\sheaf{F}), I(-))
+          \cong \Scat(\sheaf{F}, -) \,,
+        \]
+        and hence~$S(I(\sheaf{F})) \cong \sheaf{F}$ (because representing objects are unique up to isomorphism).
+%       TODO: How these isomorphisms look like explicitely, i.e. that eta is an iso.
+      \end{remark*}
+      
+      \begin{examplenonum}[Sheafificaton]
+        \leavevmode
+        \begin{enumerate}
+          \item
+            Let~$A$ be an abelian group.
+            The~$\sheaf{C}_{X,A}$\emph{constant sheaf}\index{constant!sheaf}\index{sheaf!constant} is defined to be the sheafification of the constant presheaf~$\widetilde{\sheaf{C}}_{X,A}$.
+            It is given by
+            \[
+                \sheaf{C}_{X,A}(U)
+              = \{
+                  f \colon U \to A
+                \colon
+                  \text{$f$ is locally constant}
+                \} \,.
+            \]
+            for every open subset~$U \subseteq X$, and for all open subsets~$U \subseteq V \subseteq X$ the restriction homomorphism
+            \[
+                      \rho_{V,U}
+              \colon  \sheaf{C}_{X,A}(V)
+              \to     \sheaf{C}_{X,A}(U) \,,
+              \quad   f
+              \mapsto \restrict{f}{U}
+            \]
+            is the (literal) restriction map.
+          \item
+            Let~$\sheaf{F}$ is a sheaf and let~$\sheaf{F}' \subseteq \sheaf{F}$ be a subpresheaf, i.e.~$\sheaf{F}$ is a presheaf such that $\sheaf{F}'(U) \subseteq \sheaf{F}(U)$ is a subgroup for every open subset~$U \subseteq X$, and such that the square
+            \[
+              \begin{tikzcd}[sep = large]
+                  \sheaf{F}'(V)
+                  \arrow[hook]{r}
+                  \arrow{d}[left]{\rho^{\sheaf{F}'}_{V,U}}
+                & \sheaf{F}(V)
+                  \arrow{d}[right]{\rho^\sheaf{F}_{V,U}}
+                \\
+                  \sheaf{F}'(U)
+                  \arrow[hook]{r}
+                & \sheaf{F}(U)
+              \end{tikzcd}
+            \]
+            commutes for all open subsets~$U \subseteq V \subseteq X$.
+            Then the sheafification~$S(\sheaf{F}')$ is given by
+            \[
+                S(\sheaf{F}')(U)
+              = \left\{
+                  s \in \sheaf{F}(U)
+                \suchthat*
+                  \begin{tabular}{@{}c@{}}
+                    there exists an open cover~$\{U_i\}_{i \in I}$ of~$U$ \\
+                    with~$\restrict{s}{U_i} \in \sheaf{F}'(U_i)$ for every~$i\in I$
+                  \end{tabular}
+                \right\} \,,
+            \]
+            and the restriction homomorphism
+            \[
+                      \rho_{V,U}^{S(\sheaf{F}')}
+              \colon  S(\sheaf{F}')(V)
+              \to     S(\sheaf{F}')(U)
+            \]
+            is for all open subsets~$U \subseteq V \subseteq X$ the restriction of the restriction homomorphism~$\rho_{V,U}^{\sheaf{F}} \colon \sheaf{F}(V) \to \sheaf{F}(U)$.
+        \end{enumerate}
+      \end{examplenonum}
+      
+      For the general construction of the sheafification functor one uses stalks.
+      We will not do this here.
+      
+    \item
+      Let~$f \colon \sheaf{F} \to \sheaf{G}$ be a homomorphism of sheaves.
+      That the cokernel~$\coker_{\Pcat}(I(f))$ is in general not a sheaf can be fixed by applying the sheafification functor~$S$:
+      
+      \begin{claimnonum}
+        The sheafification~$S(\coker_{\Pcat}(I(f)))$ is a cokernel of~$f$ in~$\Scat$.
+      \end{claimnonum}
+      
+      \begin{proof}
+        Let~$\eta \colon \coker_{\Pcat}(I(f)) \to IS( \coker_{\Pcat}(I(f)) )$ be the canonical homomorphism, and let~$c' \colon I(\sheaf{G}) \to \coker(I(f))$ be the morphism belonging to the cokernel~$\coker(I(f))$.
+        The functor~$I$ is fully faithful, and so there exists for the composition
+        \[
+                          I(\sheaf{G})
+          \xlongto{c'}    \coker_{\Pcat}(I(f))
+          \xlongto{\eta}  IS(\coker_{\Pcat}(I(f)))
+        \]
+        a unique homomorphism of sheaves~$c \colon \sheaf{G} \to S(\coker_{\Pcat}(I(f)))$ such that the homomorphism~$I(c)$ is the above composition.
+        Then~$c$ is a cokernel of~$f$:
+        
+        It holds that
+        \[
+            I(c \circ f)
+          = I(c) \circ I(f)
+          = c' \circ I(f)
+          = 0
+        \]
+        because~$c'$ is a cokernel of~$I(f)$ and~$I$ is additive.
+        Suppose that~$h \colon \sheaf{G} \to \sheaf{H}$ is a homomorphism of sheaves with~$h \circ f = 0$.
+        Then
+        \[
+          I(h) \circ I(f) = I(h \circ f) = I(0) = 0
+        \]
+        and it follows from the universal property of the cokernel~$c'$ that there exists a unique homomorphism of presheaves~$\lambda' \colon I(\sheaf{H}) \to \coker_{\Pcat}(I(f))$ which makes the triangle
+        \[
+          \begin{tikzcd}[row sep = large]
+              {}
+            & I(\sheaf{H})
+            \\
+              I(\sheaf{G})
+              \arrow{ur}[above left]{I(h)}
+              \arrow{r}[below]{c'}
+            & \coker_{\Pcat}(I(f))
+              \arrow[dashed]{u}[right]{\lambda'}
+          \end{tikzcd}
+        \]
+        commute. 
+        It follows from the universal property of the sheafification that there exists a unique homomorphism of sheaves~$\lambda' \colon \sheaf{H} \to S(\coker_\Pcat(I(f)))$ which makes the triangle
+        \[
+          \begin{tikzcd}[row sep = large]
+              \coker_\Pcat(I(f))
+              \arrow{r}[above]{\eta}
+              \arrow{dr}[below left]{\lambda'}
+            & IS(\coker_\Pcat(I(f)))
+              \arrow{d}[right]{I(\lambda)}
+            \\
+              {}
+            & I(\sheaf{H})
+          \end{tikzcd}
+        \]
+        commute.
+        It holds that
+        \[
+            I(h)
+          = \lambda' \circ c'
+          = I(\lambda) \circ \eta \circ c'
+          = I(\lambda) \circ I(c)
+          = I(\lambda \circ c)
+        \]
+        and hence~$h = \lambda \circ c$ because~$f$ is fully faithful.
+        
+        The uniqueness of~$\lambda$ can be shown similarly.
+%       TODO: Do this.
+      \end{proof}
+      
+      \begin{remark*}
+        One can express the above proof in the language of representable functors:
+        It follows from the naturality of the adjunction~$\varphi$, the universal property of the cokernel~$\coker_{\Pcat}(f)$ and the fully faithfulness of the inclusion functor~$I$ that
+        \begin{align*}
+               {}&  \Scat(S(\coker_{\Pcat}(I(f))), -) \\
+          \cong{}&  \Pcat(\coker_{\Pcat}(I(f)), I(-)) \\
+          \cong{}&  \{
+                      g \in \Pcat(I(\sheaf{G}), I(-))
+                    \suchthat
+                      g \circ I(f) = 0
+                    \}  \\
+          \cong{}&  \{
+                      h \in \Scat(\sheaf{G},-)
+                    \suchthat
+                      I(h) \circ I(f) = 0
+                    \}  \\
+          \cong{}&  \{
+                      h \in \Scat(\sheaf{G},-)
+                    \suchthat
+                      I(h \circ f) = 0
+                    \}  \\
+          \cong{}&  \{
+                      h \in \Scat(\sheaf{G},-)
+                    \suchthat
+                      h \circ f = 0
+                    \} \,.
+        \end{align*}
+        This shows that~$S(\coker_{\Pcat}(I(f)))$ represents the right kind of functor to make it a cokernel of~$f$.
+%       TODO: Explain this in more detail at a previous spot.
+      \end{remark*}
+  \end{enumerate}
+  
+  \lecturend{12}
+\end{example}
 
 
 
