@@ -1,0 +1,912 @@
+\section{Additive Categories}
+
+
+\begin{definition}
+  A \emph{preadditive~category}\index{pre-additive category}\index{category!pre-additive} is a category~$\Acat$ together with the structure of an abelian group on~$\Acat(X,Y)$ for all~$X, Y \in \Ob(\Acat)$ such that the composition in~$\Ccat$ is~{\Zbilin}, i.e.\ such that
+  \[
+    k \circ (g + h) = k \circ g + k \circ h
+    \quad\text{and}\quad
+    (g + h) \circ f = g \circ f + h \circ f
+  \]
+  for all morphisms~$f \colon W \to X$,~$g, h \colon X \to Y$ and~$k \colon Y \to Z$ in~$\Acat$.
+\end{definition}
+
+
+\begin{remark}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Preddative categories are also known as~\emph{\dash{$\Ab$}{categories}}\index{Ab-category@$\Ab$-category}\index{category!Ab-@$\Ab$-} (where~$\Ab$ denotes the category of abelian groups).
+      (In the language of enriched category theory, an~\dash{$\Ab$}{category} is precisely a category that is enriched over the monoidal category~$(\Ab,{\tensor})$.)
+    \item
+      If~$\kf$ is a commutative ring then one can similarly define the notation of a \emph{{\preklin} category}\index{pre-k-linear category@{\preklin} category}\index{category!pre-k-linear@{\preklin}} (also known as~\emph{\dash{$\Modl{k}$}{category}}\index{k-Mod-category@$\Modl{\kf}$-category}\index{category!k-Mod-@$\Modl{\kf}$-})~$\Ccat$.
+      Every~$\Ccat(X,Y)$ is then endowed with the structure of a~{\module{$\kf$}} and the composition is~{\kbilin}.
+  \end{enumerate}
+\end{remark}
+
+
+\begin{example}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      The category~$\Ab = \Modl{\Integer}$ is preadditive.
+    \item
+      If~$A$ is a~{\kalg} then the categories~$\Modl{A}$ and~$\Modr{A}$ are {\preklin}.
+    \item
+      If~$R$ is a ring then we may think about~$R$ as a preadditive category~$\Rcat$ consisting of a single object~$\Ob(\Rcat) = \{ \ast \}$ with~$\Rcat(\ast,\ast) = R$.
+      The composition in~$\Rcat$ is given by the multiplication of~$R$, i.e.\ by~$g \circ f = gf$ for all~$f, g \in R$, and the addition of morphisms is the addition in~$R$.
+      
+      One can similarly regard every~{\kalg}~$A$ as a {\preklin} category~$\Acat$ which consists of a single object~$\Ob(\Acat) = \{\ast\}$ with~$\Acat(\ast,\ast) = A$.
+    \item
+      Let~$\Ccat$ be any category and let~$\Acat$ be a preadditive category.
+      Then the functor category~$\Fun(\Ccat, \Acat)$ is again preadditive:
+      For any two natural transformations~$\eta, \zeta \colon F \to G$ between functors~$F, G \in \Ob(\Fun(\Ccat, \Acat))$, their sum~$\eta + \zeta$ is at an object~$X \in \Ob(\Ccat)$ given by
+      \[
+          (\eta + \zeta)_X
+        = \eta_X + \zeta_X \,.
+      \]
+      This defines again a natural transformation~$\eta + \zeta \colon F \to G$.
+      Indeed, for every morphism~$f \colon X \to X'$ in~$\Ccat$ the square
+      \[
+        \begin{tikzcd}[sep = large]
+            F(X)
+            \arrow{r}[above]{F(f)}
+            \arrow{d}[left]{\eta_X + \zeta_X}
+          & F(X')
+            \arrow{d}[right]{\eta_{X'} + \zeta_{X'}}
+          \\
+            G(X)
+            \arrow{r}[above]{G(f)}
+          & G(X')
+        \end{tikzcd}
+      \]
+      commutes because
+      \begin{align*}
+            (\eta_{X'} \circ \zeta_{X'}) \circ F(f)
+        &=  \eta_{X'} \circ F(f) + \zeta_{X'} \circ F(f)  \\
+        &=  G(f) \circ \eta_X + G(f) \circ \zeta_X
+         =  G(f) \circ (\eta_X + \zeta_X) \,.
+      \end{align*}
+      
+      We find similarly that for every category~$\Ccat$ and every {\preklin} category~$\Acat$ the functor category~$\Fun(\Ccat, \Acat)$ is again~{\preklin}. 
+  \end{enumerate}
+\end{example}
+
+
+\begin{remark*}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      A preadditive category is the same as a pre\nobreakdash-$\Integer$\nobreakdash-linear category.
+    \item
+      If~$\Acat$ is a preadditive (resp.\ {\preklin}) category, then the opposite category~$\Acat^\op$ is again preadditive (resp.\ {\preklin}) with the same addition (resp.~{\module{$\kf$}} structure) of morphisms.
+  \end{enumerate}
+\end{remark*}
+
+
+\begin{definition}
+  Let~$F \colon \Acat \to \Bcat$ be a functor between categories~$\Acat$ and~$\Bcat$.
+  \begin{enumerate}
+    \item
+      If~$\Acat$ and~$\Bcat$ are preaddive categories then the functor~$F$ is \emph{additive}\index{additive!functor}\index{functor!additive} if
+      \[
+          F(f + g)
+        = F(f) + F(g)
+      \]
+      for all morphisms~$f, g \colon X \to X'$ in~$\Acat$, i.e.\ if the map
+      \[
+                    \Acat(X, Y)
+        \xlongto{F} \Bcat(F(X), F(Y))
+      \]
+      is a group homorphism for all~$X, Y \in \Ob(\Acat)$.
+    \item
+      If~$\Acat$ and~$\Bcat$ are {\preklin} categories then the functor~$F$ is~\emph{{\klin}}\index{k-linear@$\kf$-linear!functor}\index{functor!k-linear@$\kf$-linear} if
+      \[
+        F(f + g) = F(f) + F(g)
+        \quad\text{and}\quad
+        F(\lambda f) = \lambda F(f)
+      \]
+      for all morphisms~$f, g \colon X \to X'$ in~$\Acat$ and scalars~$\lambda \in \kf$, i.e.\ if the map
+      \[
+                    \Acat(X, Y)
+        \xlongto{F} \Bcat(F(X), F(Y))
+      \]
+      is~{\klin} for all~$X, Y \in \Ob(\Acat)$.%
+      \footnote{The notion of a~{\klin} functor was not introduced in the lecture.}
+  \end{enumerate}
+\end{definition}
+
+
+\begin{lemma}
+  \label{inital terminal zero}
+  Let~$\Acat$ be a preadditive category.
+  \begin{enumerate}
+    \item
+      For any object~$X \in \Ob(\Acat)$ the following conditions are equivalent:
+      \begin{enumerate}
+        \item
+          The object~$X$ is unital in~$\Acat$.
+        \item
+          The object~$X$ is terminal in~$\Acat$.
+        \item
+          The object~$X$ is a zero object for~$\Acat$.
+        \item
+          It holds that~$\id_X = 0_{\Acat(X,X)}$.
+        \item
+          The abelian group~$\Acat(X,X)$ consists of only a single element.
+      \end{enumerate}
+    \item
+      Suppose that the category~$\Acat~$ has a zero object.
+      Then it holds for any two objects~$X, Y \in \Ob(\Acat)$ that~$0_{X,Y} = 0_{\Acat(X,Y)}$.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+  This is Exercise~3 of the fifth exercise sheet.
+\end{proof}
+
+
+
+
+
+\lecturend{9}
+
+
+\begin{definition}
+  Let~$\Acat$ be a preadditive category and let~$X_1, \dotsc, X_n \in \Ob(\Acat)$ be objects, where~$n \in \Integer_{\geq 0}$.
+  A \emph{biproduct}\index{biproduct} of~$X_1, \dotsc, X_n$ is a triple~$(X, (p_1, \dotsc, p_n), (c_1, \dotsc, c_n))$ consisting of an object~$X \in \Ob(\Acat)$ together with morphisms~$p_i \colon X \to X_i$ and morphisms~$c_i \colon X_i \to X$ in~$\Acat$,
+  \begin{equation}
+    \label{no abuse of notation}
+      p_j c_i
+    = \begin{cases}
+        \id_{X_i}     & \text{if~$i = j$}     \,, \\
+        0_{X_i, X_j}  & \text{if~$i \neq j$}  \,,
+      \end{cases}
+  \end{equation}
+  for all~$i,j = 1, \dots, n$, and
+  \[
+      \sum_{i=1}^n c_i p_i
+    = {\id_X} \,.
+  \]
+% Add notation.
+\end{definition}
+
+
+\begin{remark*}
+  In the lecture, the formula~\ref{no abuse of notation} was instead written as
+  \[
+      p_j c_i
+    = \delta_{ij} \id_{X_i} \,.
+  \]
+  This is an abuse of notation:
+  For~$j \neq i$ the composition~$p_j c_i$ is a morphism~$X_i \to X_j$, whereas~$\delta_{ij} \id_{X_i} = 0 \cdot \id_{X_i} = 0_{X_i, X_i}$ is the zero morphism~$X_i \to X_i$.
+  The author tries to avoid this abuse of notation, but will still sometimes write~$p_j c_i = \delta_{ij}$ as an abbreviation for~\eqref{no abuse of notation}.
+\end{remark*}
+
+
+\begin{remarknonum}
+  For a preadditive category~$\Acat$, a biproduct of an empty family of objects in~$\Acat$ is the same as a zero object of~$\Acat$.
+\end{remarknonum}
+
+
+\begin{lemma}
+  \label{product coproduct biproduct}
+  Let~$\Acat$ be a preadditive category, let~$X_1, \dotsc, X_n \in \Acat$ where~$n \in \Integer_{\geq 0}$.
+  \begin{enumerate}
+    \item
+      If~$(X, (p_1, \dotsc, p_n), (c_1, \dotsc, c_n))$ is a biproduct of~$X_1, \dotsc, X_n$ then~$(X, (p_1, \dotsc, p_n))$ is a product of~$X_1, \dotsc, X_n$ and~$(X, (c_1, \dotsc, c_n))$ is a coproduct of~$X_1, \dotsc, X_n$.
+    \item
+      \label{products into biproducts}
+      Suppose that~$(X, (p_1, \dotsc, p_n))$ is a product of~$X_1, \dotsc, X_n$.
+      Then there exist for every~$i = 1, \dotsc, n$ a unique morphism~$c_i \colon X_i \to X$ with~$p_j c_i = \delta_{ij} \id_{X_i}$ for every~$j = 1, \dotsc, n$.
+      The triple~$(X, (p_1, \dotsc, p_n), (c_1, \dotsc, c_n))$ is then a biproduct of~$X_1, \dotsc, X_n$.
+    \item
+      Dually, suppose that~$(X, (c_1, \dotsc, c_n))$ is a coproduct of~$X_1, \dotsc, X_n$.
+      Then there exist for every~$i = 1, \dotsc, n$ a unique morphism~$p_i \colon X \to X_i$ with~$p_i c_j = \delta_{ij} \id_{X_i}$ for every~$j = 1, \dotsc, n$.
+      The triple~$(X, (p_1, \dotsc, p_n), (c_1, \dotsc, c_n))$ is then a biproduct of~$X_1, \dotsc, X_n$.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+  For security reasons we consider the case~$n = 0$ separately:
+  The product over the empty family is a final object of~$\Acat$, the coproduct over the empty family is an initial object of~$\Acat$, and the biproduct over the empty family is a zero object of~$\Acat$.
+  The statements therefore follow for~$n = 0$ from \cref{inital terminal zero}.
+  In the following we consider the case~$n \geq 1$.
+  \begin{enumerate}
+    \item
+      It sufficies by duality to show that~$(X, (c_i)_i)$ is a coproduct for~$X_1, \dotsc, X_n$.
+      Let~$(D, (d_i)_i)$ be another pair consisting of an object~$D \in \Ob(\Acat)$ and morphisms~$d_i \colon X_i \to D$.
+      We need to show that there exists a unique morphism~$\mu \colon X \to D$ which makes the triangle
+      \[
+        \begin{tikzcd}[sep = large]
+            X_i
+            \arrow{r}[above]{c_i}
+            \arrow{dr}[below left]{d_i}
+          & X
+            \arrow[dashed]{d}[right]{\mu}
+          \\
+            {}
+          & D
+        \end{tikzcd}
+      \]
+      commute for every~$i = 1, \dotsc, n$. 
+      If such a morphism~$\mu$ exists then
+      \[
+          \mu
+        = \mu \id_X
+        = \mu \sum_{i=1}^n c_i p_i
+        = \sum_{i=1}^n \mu c_i p_i
+        = \sum_{i=1}^n d_i p_i \,,
+      \]
+      which shows that~$\mu$ is unique.
+      If we define on the other hand~$\mu \defined \sum_{i=1}^n d_i p_i$ then
+      \[
+          \mu c_i
+        = \sum_{j=1}^n d_j \underbrace{p_j c_i}_{= \delta_{ij}}
+        = d_i \,,
+      \]
+      which shows the existence of~$\mu$.
+    \item
+      By the universal property of the product there exists for every~$i = 1, \dotsc, n$ a unique morphism~$c_i \colon X_i \to X$ which makes for all~$j \neq i$ the triangles
+      \[
+        \begin{tikzcd}[sep = large]
+            X_i
+            \arrow{dr}[above right]{\id_{X_i}}
+            \arrow[dashed]{d}[left]{c_i}
+          & {}
+          \\
+            X
+            \arrow{r}[below]{p_i}
+          & X_i
+        \end{tikzcd}
+        \qquad\text{and}\qquad
+        \begin{tikzcd}[sep = large]
+            X_i
+            \arrow{dr}[above right]{0}
+            \arrow[dashed]{d}[left]{c_i}
+          & {}
+          \\
+            X
+            \arrow{r}[below]{p_j}
+          & X_j
+        \end{tikzcd}
+      \]
+      commute.
+      This means that~$p_j c_i = \delta_{ij}$ for all~$i, j = 1, \dotsc, n$.
+      
+      We now show that~$\sum_{i=1}^n c_i p_i = \id_X$.
+      Indeed, we find for every~$j = 1, \dotsc, n$ that
+      \[
+          p_j \circ \sum_{i=1}^n c_i p_i
+        = \sum_{i=1}^n \underbrace{ p_j c_i }_{= \delta_{ij}} p_i
+        = p_j \,.
+      \]
+      That shows that for every~$j = 1, \dotsc, n$ the triangle
+      \[
+        \begin{tikzcd}
+            X
+            \arrow{dr}[below left]{p_j}
+            \arrow[dashed]{rr}[above]{\sum_{i=1}^n c_i p_i}
+          & {}
+          & X
+            \arrow{dl}[below right]{p_j}
+          \\
+            {}
+          & X_j
+          &
+        \end{tikzcd}
+      \]
+      commutes.
+      But it follows from the uniqueness of products up to unique isomorphism that there exist a \emph{unique} morphism~$X \to X$ which makes this triangle commute.
+      The identity~$\id_X \colon X \to X$ also makes the above triangle commute, and so it follows that~$\sum_{i=1}^n c_i p_i = \id_X$.
+    \item
+      This can be shown dually to part~\ref*{products into biproducts}.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+
+\begin{remark}
+  It follows from \cref{product coproduct biproduct} that for a preadditive category~$\Acat$ the following are equivalent:
+  \begin{enumerate}
+    \item
+      $\Acat$ has finite products.
+    \item
+      $\Acat$ has finite coproducts.
+    \item
+      $\Acat$ has finite biproducts.
+  \end{enumerate}
+\end{remark}
+
+
+\begin{definition}
+  A preadditve (or {\preklin}) category~$\Acat$ is \emph{additive}\index{additive!category}\index{category!additive} (resp.~{\klin}\index{k-linear@$\kf$-linear!category}\index{category!k-linear@$\kf$-linear}) if it has finite biproducts (and thus equivalently finite products, and equivalently finite coproducts).
+\end{definition}
+
+
+\begin{remarknonum}
+  Additive (and~{\klin}) categories have zero objects, as these are the biproducts of empty family of objects.
+\end{remarknonum}
+
+
+\begin{remark*}
+  A category~$\Acat$ is additive (resp.~{\klin}) if and only if its dual category~$\Acat^\op$ is additive (resp.\ {\klin}).
+\end{remark*}
+
+
+\begin{remark*}
+  In a preadditive catgory~$\Acat$ one can express morphisms between biproducts as matrices:
+  Let~$X_1, \dotsc, X_n$ and~$Y_1, \dotsc, Y_m$ be two families of objects in~$\Acat$ whose biproducts~$X_1 \oplus \dotsb \oplus X_n$ and~$Y_1 \oplus \dotsb \oplus Y_m$ exist, and denote the associated morphisms by
+  \begin{align*}
+    c_i \colon X_i \to X_1 \oplus \dotsb \oplus X_n
+    \quad&\text{and}\quad
+    p_i \colon X_1 \oplus \dotsb \oplus X_n \to X_i \,,
+  \shortintertext{and}
+    d_i \colon Y_i \to Y_1 \oplus \dotsb \oplus Y_m
+    \quad&\text{and}\quad
+    q_i \colon Y_1 \oplus \dotsb \oplus Y_m \to Y_i \,.
+  \end{align*}
+  
+  Suppose first that we are given a morphism
+  \[
+            f
+    \colon  X_1 \oplus \dotsb \oplus X_n
+    \to     Y_1 \oplus \dotsb \oplus Y_m
+  \]
+  in~$\Acat$.
+  It then follows from the calculation
+  \begin{align*}
+        f
+    &=  \id_{Y_1 \oplus \dotsb \oplus Y_m} \circ f \circ \id_{X_1 \oplus \dotsb \oplus X_n} \\
+    &=  \left( \sum_{i=1}^n d_i q_i \right) \circ f \circ \left( \sum_{j=1}^m c_j p_j \right)
+     =  \sum_{i=1}^n \sum_{j=1}^m d_i (q_i \circ f \circ c_j) p_j \,.
+  \end{align*}
+  that the morphism~$f$ is unique determined by the compositions~$q_i \circ f \circ c_j$.
+  We will refer to the composition
+  \[
+    [f]_{ij} \defined q_i \circ f \circ c_j
+  \]
+  as the~\dash{$(i,j)$}{th} component of~$f$.
+  The above calculation shows that the morphism~$f$ can be retrieved from its components via the formula
+  \[
+    f = \sum_{i=1}^n \sum_{j=1}^m d_i [f]_{ij} p_j \,.
+  \]
+  To better visualize the relation between~$f$ and its components, we may arrange these components in the form of an~\dash{$(m \times n)$}{matrix}
+  \[
+    \begin{bmatrix}
+      f_{11}  & \cdots  & f_{1n}  \\
+      \vdots  & \ddots  & \vdots  \\
+      f_{m1}  & \cdots  & f_{mn}
+    \end{bmatrix} \,.
+  \]
+  We will refer to this matrix as~$[f]$.
+  (Note that~$[f]_{ij}$ is hence the~\dash{$(i,j)$}{th} entry of the matrix~$[f]$.)
+  
+  Suppose on the other hand that we are given a collection of morphisms~$g_{ij} \colon X_j \to Y_i$ where~$i = 1, \dotsc, m$ and~$j = 1, \dotsc, n$.
+  We can then define a morphism~$g \colon X \to Y$ via
+  \[
+              g
+    \defined  \sum_{i=1}^m \sum_{j=1}^n d_i g_{ij} p_j \,.
+  \]
+  The components~$[g]_{ij}$ of the morphism~$g$ are then for all~$i = 1, \dotsc, m$ and~$j = 1, \dotsc, n$ given by
+  \begin{align*}
+        [g]_{ij}
+     =  q_i \circ g \circ c_j
+    &=  q_i \circ \left( \sum_{i'=1}^m \sum_{j'=1}^n d_{i'} g_{i'j'} p_{j'} \right) \circ c_j \\
+    &=  \sum_{i=1}^m \sum_{j=1}^n
+        \underbrace{q_i d_{i'}}_{= \delta_{i,i'}} g_{i'j'} \underbrace{p_{j'} c_j}_{= \delta_{j',j}}
+     =  g_{ij} \,.
+  \end{align*}
+  The components~$[g]_{ij}$ of~$g$ are hence the morphisms~$g_{ij}$ that we started with.
+  
+  This shows overall that we have constructed a bijection
+  \begin{align*}
+      \Acat(X_1 \oplus \dotsb \oplus X_n, Y_1 \oplus \dotsb \oplus Y_m)
+    &\longleftrightarrow
+      \left\{
+        \begin{bsmallmatrix}
+          g_{11}  & \cdots  & g_{1n}  \\
+          \vdots  & \ddots  & \vdots  \\
+          g_{m1}  & \cdots  & g_{mn}
+        \end{bsmallmatrix}
+      \suchthat*
+        g_{ij} \in \Acat(X_j, Y_i)
+      \right\}  \,,
+    \\
+      f
+    &\longmapsto
+      [f] \,,
+    \\
+      \sum_{i=1}^m \sum_{j=1}^n q_i g_{ij} c_j
+    =
+      g
+    &\longmapsfrom
+      \begin{bsmallmatrix}
+          g_{11}  & \cdots  & g_{1n}  \\
+          \vdots  & \ddots  & \vdots  \\
+          g_{1n}  & \cdots  & g_{mn}
+        \end{bsmallmatrix}  \,.
+  \end{align*}
+  This way of representing morphisms between biproducts as matrices is compatible with both sums and composition of morphisms, and if~$\Acat$ is~{\preklin} then also with scalar multiplication of morphisms.
+  \begin{itemize}
+    \item
+      Let~$f_1, f_2 \colon X_1 \oplus \dotsb \oplus X_n \to Y_1 \oplus \dotsb \oplus Y_m$ be two parallel morphisms in~$\Acat$.
+      Then the morphism~$f_1 + f_2$ has for all~$i = 1, \dotsc, m$ and~$j = 1, \dotsc, n$ the components
+      \[
+          [f_1 + f_2]_{ij}
+        = q_i \circ (f_1 + f_2) \circ c_j
+        = q_i \circ f_1 \circ c_j + q_i \circ f_2 \circ c_j
+        = [f_1]_{ij} + [f_2]_{ij} \,.
+      \]
+      This shows that indeed
+      \[
+          [f_1 + f_2]
+        = [f_1] + [f_2] \,.
+      \]
+    \item
+      Let~$Z_1, \dotsc, Z_l$ be objects in~$\Acat$ whose biproduct~$Z_1 \oplus \dotsb \oplus Z_l$ exists in~$\Acat$, and let
+      \[
+        e_i \colon Z_i \to Z_1 \oplus \dotsb \oplus Z_l
+      \quad\text{and}\quad
+        r_i \colon Z_1 \oplus \dotsb \oplus Z_l \to Z_i \,,
+      \]
+      be the associated morphisms.
+      It then holds for any two composable morphisms
+      \[
+          X_1 \oplus \dotsb \oplus X_n
+        \xlongto{f}
+          Y_1 \oplus \dotsb \oplus Y_m
+        \xlongto{g}
+          Z_1 \oplus \dotsb \oplus Z_l
+      \]
+      in~$\Acat$ that
+      \[
+          [g \circ f]
+        = [g] \cdot [f]
+      \]
+      where the product on the right hand side is taken in the naive way.
+      Indeed the composition~$g \circ f$ has for all~$i = 1, \dotsc, l$ and~$k = 1, \dotsc, n$ the components
+      \begin{align*}
+            [g \circ f]_{ik}
+        &=  r_i \circ (g \circ f) \circ c_k
+         =  r_i \circ g \circ \id_Y \circ f \circ c_k \\
+        &=  r_i \circ g \circ \left( \sum_{j=1}^m d_j q_j \right) \circ f \circ c_k \\
+        &=  \sum_{j=1}^m (r_i \circ g \circ d_j) \circ (q_j \circ f \circ c_k)
+         =  \sum_{j=1}^m [g]_{ij} [f]_{jk} \,.
+      \end{align*}
+      The resulting term~$\sum_{j=1}^m [g]_{ij} [f]_{jk}$ is precisely the~\dash{$(i,k)$}{th} entry of the matrix product~$[g] \cdot [f]$.
+    \item
+      If~$\Acat$ also~{\preklin} then let~$f \colon X_1 \oplus \dotsb \oplus X_n \to Y_1 \oplus \dotsb \oplus Y_m$ be a morphism in~$\Acat$ and let~$\lambda \in \kf$ be a scalar.
+      Then the morphism~$\lambda f$ has for all~$i = 1, \dotsc, m$ and~$j = 1, \dotsc, n$ the components
+      \[
+          [\lambda f]_{ij}
+        = q_i \circ (\lambda f) \circ c_j
+        = \lambda (q_i \circ f \circ c_j)
+        = \lambda [f]_{ij} \,.
+      \]
+      This shows that indeed
+      \[
+          [\lambda f]
+        = \lambda [f] \,.
+      \]
+  \end{itemize}
+  
+  In the following we will notationally often not distinguish between the morphism~$f \colon X_1 \oplus \dotsb \oplus X_n \to Y_1 \oplus \dotsb \oplus Y_m$ and its matrix representation.
+  So instead of
+  \[
+      [f]
+    = \begin{bmatrix}
+        f_{11}  & \cdots  & f_{1n}  \\
+        \vdots  & \ddots  & \vdots  \\
+        f_{m1}  & \cdots  & f_{mn}
+      \end{bmatrix}
+  \]
+  (where~$f_{ij} = [f]_{ij}$ is the~\dash{$(i,j)$}{th} component of~$f$) we will just write
+  \[
+      f
+    = \begin{bmatrix}
+        f_{11}  & \cdots  & f_{1n}  \\
+        \vdots  & \ddots  & \vdots  \\
+        f_{m1}  & \cdots  & f_{mn}
+      \end{bmatrix} \,.
+  \]
+  If one of the morphisms~$f_{ij}$ is the identity~$\id_Z$ of some object~$Z$ (which is then necessarily given by~$Z = X_j = Y_i$) then we will often just write the corresponding matrix entry as~$1$ instead of~$\id_Z$.
+  
+  We finish this remark by pointing out that the morphisms~$c_i \colon X_i \to X_1 \oplus \dotsb \oplus X_n$ and~$p_i \colon X_1 \oplus \dotsb \oplus X_n \to X_i$ are by these notional conventions given by the matrices
+  \[
+      c_i
+    = \begin{bsmallmatrix}
+        {} \\0 \\ \vdots \\ 0 \\ 1 \\ 0 \\ \vdots \\ 0 \\ {}
+      \end{bsmallmatrix}
+    \qquad\text{and}\qquad
+      p_i
+    = \begin{bsmallmatrix}
+        0 & \cdots & 0 & 1 & 0 & \cdots & 0
+      \end{bsmallmatrix} \,.
+  \]
+  
+  (This whole remark was not present in the lecture.
+  The idea of representing a morphism between biproducts as a matrix was explained only for the special case~$n = m = 2$, since is used in the upcoming \cref{sum via category structure}.
+  But the author found this ad\nobreakdash-hoc explanation a bit insufficient, and thus decided to add a more detailed explanation for these notes.)
+\end{remark*}
+
+
+\begin{remark}
+  \label{sum via category structure}
+  Let$~\Acat$ be an additive category.
+  For any objects~$X \in \Ob(\Acat)$ we can define the \emph{diagonal \textup(morphism\textup)}\index{diagonal morphism}
+  \[
+            \diag_X
+    \colon  X
+    \to     X \oplus X
+  \]
+  by using the universal property of the product for~$X \oplus X$, as the unique morphism~$X \to X \oplus X$ which make the diagram
+  \[
+    \begin{tikzcd}[sep = large]
+        {}
+      & X
+        \arrow[dashed]{d}[right]{\diag_X}
+        \arrow{dl}[above left]{\id_X}
+        \arrow{dr}[above right]{\id_X}
+      & {}
+      \\
+        X
+      & X \oplus X
+        \arrow{l}[below]{p_1}
+        \arrow{r}[below]{p_2}
+      & X
+    \end{tikzcd}
+  \]
+  commute.
+  This means that
+  \[
+    p_1 \circ \diag_X = \id_X
+    \quad\text{and}\quad
+    p_2 \circ \diag_X = \id_X \,,
+  \]
+  so the morphism~$\diag_X$ can be written is matrix form as
+  \[
+      \diag_X
+    = \begin{bmatrix}
+        1 \\ 1
+      \end{bmatrix} \,.
+  \]
+  We can dually define the \emph{codiagonal \textup(morphism\textup)}\index{codiagonal morphism}
+  \[
+            \codiag_X
+    \colon  X \oplus X
+    \to     X
+  \]
+  by using the universal property of the coproduct for~$X \oplus X$, as the unique morphism~$X \oplus X \to X$ which makes the diagram
+  \[
+    \begin{tikzcd}[sep = large]
+        X
+        \arrow{dr}[below left]{\id_X}
+      & X \oplus X
+        \arrow[dashed]{d}[right]{\codiag_X}
+        \arrow{l}[above]{c_1}
+        \arrow{r}[above]{c_2}
+      & X
+        \arrow{dl}[below right]{\id_X}
+      \\
+        {}
+      & X
+      & {}
+    \end{tikzcd}
+  \]
+  commute.
+  This means that
+  \[
+    \codiag_X \circ c_1 = \id_X
+    \quad\text{and}\quad
+    \codiag_X \circ c_2 = \id_X \,,
+  \]
+  so the morphism~$\codiag_X$ can be written in matrix form as
+  \[
+      \codiag_X
+    = \begin{bmatrix}
+        1 & 1
+      \end{bmatrix} \,.
+  \]
+  
+  (Note that for~$\Acat = \Modl{A}$, where~$A$ is a~{\kalg}, the diagonal~$\diag_X$ is the usual diagonal map~$\diag_X(x) = (x,x)$, and the codiagonal~$\codiag_X$ is the addition~$\codiag_X(x_1, x_2) = x_1 + x_2$.)
+  
+  We can now describe the sum~$f + g$ of two parallel morphisms~$f, g \colon X \to Y$ in~$\Acat$ as the compositions
+  \begin{equation}
+    \label{composition for sum}
+      X
+    \xlongto{\diag_X}
+      X \oplus X
+    \xlongto{\begin{bsmallmatrix} f & 0 \\ 0 & g \end{bsmallmatrix}}
+      Y \oplus Y
+    \xlongto{\codiag_Y}
+      Y \,.
+  \end{equation}
+  Indeed, we find by matrix multiplication that
+  \[
+      \codiag_Y
+      \circ
+      \begin{bmatrix}
+        f & 0 \\
+        0 & g
+      \end{bmatrix}
+      \circ
+      \diag_X
+    = \begin{bmatrix}
+        1 & 1
+      \end{bmatrix}
+      \begin{bmatrix}
+        f & 0 \\
+        0 & g
+      \end{bmatrix}
+      \begin{bmatrix}
+        1 \\
+        1
+      \end{bmatrix}
+    = f + g \,.
+  \]
+  By using that
+  \[
+    \begin{bmatrix}
+      1 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+      f & 0 \\
+      0 & g
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      f & g
+    \end{bmatrix}
+    \quad\text{and}\quad
+    \begin{bmatrix}
+      f & 0 \\
+      0 & g
+    \end{bmatrix}
+    \begin{bmatrix}
+      1 \\
+      1
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      f \\
+      g
+    \end{bmatrix}
+  \]
+  we can also rewrite the composition~\eqref{composition for sum} as
+  \[
+      X
+    \xlongto{\diag_X}
+      X \oplus X
+    \xlongto{\begin{bsmallmatrix} f & g \end{bsmallmatrix}}
+      Y
+    \qquad\text{or}\qquad
+      X
+    \xlongto{\begin{bsmallmatrix} f \\ g \end{bsmallmatrix}}
+      Y \oplus Y
+    \xlongto{\codiag_Y}
+      Y \,.
+  \]
+  
+  This shows that the addition of~$\Acat$ can be retrieved from the categorical structure of~$\Acat$.
+  It follows that an arbitrary category~$\Acat$ can be made into an additive category in at most one way.
+  We can therefore regard \enquote{being additive} as a property of a category.
+\end{remark}
+
+
+\begin{definition}
+  Let~$F \colon \Ccat \to \Dcat$ be a functor between arbitrary categories~$\Ccat$ and~$\Dcat$.
+  \begin{enumerate}
+    \item
+      The functor~$F$ \emph{respects \textup(finite\textup) products}\index{functor!respects!products} if it holds for every (finite) family~$(X_i)_{i \in I}$ of objects~$X_i \in \Ob(\Ccat)$ and every product~$(P, (p_i)_{i \in I})$ of this family that the pair~$(F(P), (F(p_i))_{i \in I})$ is a product of the family~$(F(X_i))_{i \in I}$.
+    \item
+      The functor~$F$ \emph{respects \textup(finite\textup) coproducts}\index{functor!respects!coproducts} if it holds for every (finite) family~$(X_i)_{i \in I}$ of objects~$X_i \in \Ob(\Ccat)$ and every coproduct~$(C, (c_i)_{i \in I})$ of this family that the pair~$(F(C), (F(c_i))_{i \in I})$ is a coproduct of the family~$(F(X_i))_{i \in I}$.
+  \end{enumerate}
+  Suppose now that~$F \colon \Acat \to \Bcat$ is a functor between preadditive categories~$\Acat$ and~$\Bcat$.
+  \begin{enumerate}[resume]
+    \item
+      The functor~$F$ \emph{respects biproducts}\index{functor!respects!biproducts} if it holds for all objects~$X_1, \dotsc, X_n \in \Ob(\Acat)$ (where~$n \geq 0$) and every biproduct~$(X, (p_1, \dotsc, p_n), (c_1, \dotsc, c_n))$ of these objects that the triple~$(F(X), (F(p_1), \dotsc, F(p_n)), (F(c_1), \dotsc, F(c_n)))$ is a biproduct of the objects~$F(X_1), \dotsc, F(X_n)$.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{theorem}
+  Let~$F \colon \Acat \to \Bcat$ be a functor between preadditive categories~$\Acat$ and~$\Bcat$.
+  \begin{enumerate}
+    \item
+      \label{additive preserves biproducts}
+      If the functor~$F$ is additive then it respects biproducts (and hence also finite products and finite coproducts).
+    \item
+      If the categories~$\Acat$ and~$\Bcat$ are already additive, then the following conditions on~$F$ are equivalent:
+      \begin{enumerate}
+        \item
+          \label{is additive}
+          $F$ is additive.
+        \item
+          \label{respects biproducts}
+          $F$ respects biproducts.
+        \item
+          \label{respects finite products}
+          $F$ respects finite products.
+        \item
+          \label{respects finite coproducts}
+          $F$ respects finite coproducts.
+      \end{enumerate}
+  \end{enumerate}
+\end{theorem}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Let~$n \geq 0$, let~$X_1, \dotsc, X_n \in \Ob(\Acat)$ and let~$(X, (p_i)_i, (c_i)_i)$ be a biproduct of~$X_1, \dotsc, X_n$.
+      
+      Once again we consider the case~$n = 0$ separately:
+      The biproduct~$X$ is then a zero object of~$\Acat$.
+      It follows that $\id_X = 0_{X,X}$ by \cref{inital terminal zero}, and hence
+      \[
+          \id_{F(X)}
+        = F( \id_X )
+        = F( 0_{X,X} )
+        = 0_{F(X), F(X)} \,,
+      \]
+      by the additivity of~$F$.
+      This shows that~$F(X)$ is a zero object for~$\Bcat$.
+      
+      Let now~$n \geq 1$.
+      We then calculate that
+      \begin{gather*}
+          F(p_j)  F(c_i)
+        = F(p_j c_i)
+        = F
+          \left(
+              \begin{cases}
+                \id_{X_i}     & \text{if~$i = j$} \\
+                0_{X_i, X_j}  & \text{if~$i \neq j$}
+              \end{cases}
+          \right)
+        = \begin{cases}
+            \id_{F(X_i)}        & \text{if~$i = j$}     \,, \\
+            0_{F(X_i), F(X_j)}  & \text{if~$i \neq j$}  \,,
+          \end{cases}
+      \intertext{and}
+          \sum_{i=1}^n F(c_i) F(p_i)
+        = \sum_{i=1}^n F(c_i p_i)
+        = F\left( \sum_{i=1}^n c_i p_i \right)
+        = F( \id_X )
+        = \id_{F(X)} \,.
+      \end{gather*}
+    \item
+      \begin{description}
+        \item[\ref*{is additive}~$\implies$~\ref*{respects biproducts}]
+          This has been shown in part~\ref*{additive preserves biproducts}.
+          
+        \item[\ref*{respects biproducts}~$\implies$~\ref*{respects finite products}]
+          Let~$(X, (p_i)_i)$ be a product of the objects~$X_1, \dotsc, X_n$.
+          It follows from \cref{product coproduct biproduct} unique morphism~$c_i \colon X_i \to X$ such that the triple~$(X, (p_i)_i, (c_i)_i)$ is a biproduct for~$X_1, \dotsc, X_n$.
+          It follows that the triple~$(F(X), (F(p_i))_i, (F(c_i))_i)$ is a biproduct for the objects~$F(X_1), \dotsc, F(X_n)$ because the functor~$F$ preserves biproducts.
+          This entails that the tuple~$(F(X), (F(p_i))_i)$ is a product of these objects.
+        
+        \item[\ref*{respects finite products}~$\implies$~\ref*{respects biproducts}]
+          It follows from~$F$ respecting products that~$F$ respects terminal objects, because a terminal object is the same as an empty product.
+          Hence~$F(0) = 0$.
+          It follows that~$F(0_{X,Y}) = 0_{F(X), F(Y)}$ for any two objects~$X, Y \in \Ob(\Acat)$.
+          Indeed, by applying the fuctor~$F$ to the commutative triangle
+          \[
+            \begin{tikzcd}[column sep = small]
+                X
+                \arrow{rr}[above]{0_{X,Y}}
+                \arrow{dr}
+              & {}
+              & Y
+              \\
+                {}
+              & 0
+                \arrow{ur}
+              & {}
+            \end{tikzcd}
+          \]
+          we get the following commutative triangle:
+          \[
+            \begin{tikzcd}[column sep = small]
+                F(X)
+                \arrow{rr}[above]{F(0_{X,Y})}
+                \arrow{dr}
+              & {}
+              & F(Y)
+              \\
+                {}
+              & 0
+                \arrow{ur}
+              & {}
+            \end{tikzcd}
+          \]
+          The commutativity of this triangle shows that the morphism~$F(0_{X,Y})$ factors through the zero object~$0$, which is precisly what is means for~$F(0_{X,Y})$ to be the zero morphism.
+          
+          Let now~$(X, (p_i)_i, (c_i)_i)$ be a biproduct of some objects~$X_1, \dotsc, X_n \in \Ob(\Acat)$.
+          Then~$(X, (p_i)_i)$ is a product of~$X_1, \dotsc, X_n$, and it follows that~$(F(X), (F(p_i))_i)$ is a product of~$F(X_1), \dotsc, F(X_n)$, because~$F$ respects finite products.
+          We find for the morphisms~$F(c_i) \colon F(X_i) \to F(X)$ that
+          \[
+              F(p_i) \circ F(c_i)
+            = F(p_i \circ c_i)
+            = F( \id_{X_i} )
+            = \id_{F(X_i)}
+          \]
+          and we also find for~$j \neq i$ that
+          \[
+              F(p_j) \circ F(c_i)
+            = F(p_j \circ c_i)
+            = F(0_{X_i, X_j})
+            = 0_{F(X_i), F(X_j)} \,.
+          \]
+          It follows from \cref{product coproduct biproduct} that the triple~$(F(X), (F(p_i))_i, (F(c_i))_i)$ is a biproduct of~$F(X_1), \dotsc, F(X_n)$.
+          
+        \item[\ref*{respects biproducts}~$\iff$~\ref*{respects finite coproducts}]
+          This can be shown dually to the equivalence of~\ref*{respects biproducts} and~\ref*{respects finite products}.
+        
+        \item[\ref*{respects biproducts}~$\implies$~\ref*{is additive}]
+          We find as in the implication \ref*{respects finite products}~$\implies$~\ref*{respects biproducts} that~$F(0) = 0$ and that consequently~$F(0_{X,Y}) =  0_{F(X), F(Y)}$ for all~$X, Y \in \Ob(\Acat)$.
+          It also follows from the already proven implications~\ref*{respects biproducts}~$\implies$~\ref*{respects finite products} and \ref*{respects biproducts}~$\implies$~\ref*{respects finite coproducts} that~$F$ respects products and coproducts.
+          We hence find that
+          \[
+              F(\diag_X)
+            = \diag_{F(X)}
+            \quad\text{and}\quad
+              F(\codiag_Y)
+            = \codiag_{F(Y)}
+          \]
+          for all~$X, Y \in \Ob(\Acat)$.
+          
+          Let~$f, g \colon X \to Y$ be two parallel morphisms in~$\Acat$.
+          We can then describe their sum~$f+g$ as the composition
+          \begin{equation}
+            \label{sum as composition}
+              f+g
+            \colon
+              X
+            \xlongto{\diag_X}
+              X \oplus X
+            \xlongto{\begin{bsmallmatrix} f & 0 \\ 0 & g \end{bsmallmatrix}}
+              Y \oplus Y
+            \xlongto{\codiag_Y}
+              Y \,.
+          \end{equation}
+          It follows from~$F$ preserving coproducts and products, as well as identities and zero morphisms, that
+          \[
+            F
+            \left(
+              \begin{bmatrix}
+                f & 0 \\
+                0 & g
+              \end{bmatrix}
+            \right)
+            =
+            \begin{bmatrix}
+              F(f)  & 0     \\
+              0     & F(g)
+            \end{bmatrix} \,.
+          \]
+          By using that $F(\diag_X) = \diag_{F(X)}$ and~$F(\codiag_Y) = \codiag_{F(Y)}$ we altogether find that applying the functor~$F$ to the compositon~$\eqref{sum as composition}$ exhibits the morphism~$F(f+g)$ as the composition
+          \[
+              F(f+g)
+            \colon
+              F(X)
+            \xlongto{\diag_{F(X)}}
+              F(X) \oplus F(X)
+            \xlongto{\begin{bsmallmatrix} F(f) & 0 \\ 0 & F(g) \end{bsmallmatrix}}
+              F(Y) \oplus F(Y)
+            \xlongto{\codiag_{F(Y)}}
+              Y \,.
+          \]
+          This composition is precisely~$F(f) + F(g)$, so~$F(f + g) = F(f) + F(g)$.
+        \qedhere
+      \end{description}
+  \end{enumerate}
+\end{proof}
+
+
+
+

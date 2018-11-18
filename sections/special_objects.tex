@@ -1,0 +1,129 @@
+\section{Special Objects}
+
+
+\begin{definition}
+  Let~$X$ be an object in a category~$\Ccat$.
+  \begin{enumerate}
+    \item
+      The object~$X$ is \emph{initial}\index{initial object}\index{object!initial} if there exists  for every object~$Y \in \Ob(\Ccat)$ a unique morphism~$X \to Y$ in~$\Ccat$.
+    \item
+      The object~$X$ is \emph{terminal}\index{terminal object}\index{object!terminal} or \emph{final}\index{final object}\index{object!final} if there exists for every object~$Y \in \Ob(\Ccat)$ a unique morphism~$Y \to X$ in~$\Ccat$.
+    \item
+      The object~$X$ is a \emph{zero object}\index{zero!object}\index{object!zero} if it is both initial and terminal.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+  Let~$\Ccat$ be a category.
+  \begin{enumerate}
+    \item
+      An object~$X$ of~$\Ccat$ is initial (in~$\Ccat$) if and only if it is terminal in~$\Ccat^\op$.
+    \item
+      Initial and terminal objects are unique up to unique isomorphisms (if they exist).
+    \item
+      If~$\Ccat$ admits a zero object then it is denoted by~$0 = 0_\Ccat$.
+  \end{enumerate}
+\end{remark}
+
+
+\begin{example}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      In the category~$\Set$, the empty set~$\emptyset$ is the unique initial object, and every \dash{one}{point} set~$\{\ast\}$ is a final object.
+      The analogous statements hold for the category~$\Top$.
+    \item
+      In the category~$\Modl{A}$ the zero module~$0$ is the zero object.
+    \item
+      In the category~$\Group$ the trivial groups~$1$ is the zero object.
+    \item
+      In the category~$\kAlg$ the~{\kalg}~$\kf$ is initial, while the zero algebra~$0$ is final.
+  \end{enumerate}
+\end{example}
+
+
+\begin{remarkdefinition}
+  Let~$\Ccat$ be a category which admits a zero object~$0$.
+  Then there exists for any two objects~$X, Y \in \Ob(\Ccat)$ a unique morphism~$0_{XY} \colon X \to Y$ which factors trough the zero object, i.e.\ which makes the triangle
+  \[
+    \begin{tikzcd}
+        X
+        \arrow{dr}
+        \arrow{rr}[above]{0_{XY}}
+      & {}
+      & Y
+      \\
+        {}
+      & 0
+        \arrow{ur}
+      & {}
+    \end{tikzcd}
+  \]
+  commute.
+  The morphism~$0_{XY}$ is the \emph{zero morphism}\index{zero!morphism}\index{morphism!zero} from~$X$ to~$Y$.
+\end{remarkdefinition}
+
+
+\begin{remark*}
+  Let~$\Ccat$ be a category which admits a zero object~$0$.
+  Then it holds for every morphism~$f \colon X \to Y$ that
+  \[
+      f \circ 0_{W,X}
+    = 0_{W,Y}
+    \qquad\text{and}\qquad
+      0_{Y,Z} \circ f
+    = 0_{X,Z}
+  \]
+  for all~$W, Z \in \Ob(\Ccat)$.
+  Indeed, we have the following commutative diagrams:
+  \[
+    \begin{tikzcd}
+        W
+        \arrow[dashed, bend left = 40]{rrr}[above]{f \circ 0_{W,X}}
+        \arrow{rr}[above]{0_{W,X}}
+        \arrow{dr}
+      & {}
+      & X
+        \arrow{r}[above]{f}
+      & Y
+      \\
+        {}
+      & 0
+        \arrow{ur}
+        \arrow[dashed, bend right]{urr}
+      & {}
+      & {}
+    \end{tikzcd}
+    \qquad
+    \begin{tikzcd}
+        X
+        \arrow[dashed, bend left = 40]{rrr}[above]{0_{Y,Z} \circ f}
+        \arrow{r}[above]{f}
+        \arrow[dashed, bend right]{drr}
+      & Y
+        \arrow{rr}[above]{0_{Y,Z}}
+        \arrow{dr}
+      & {}
+      & Z
+      \\
+        {}
+      & {}
+      & 0
+        \arrow{ur}
+      & {}
+    \end{tikzcd}
+  \]
+  The commutativity of the first diagram shows that~$f \circ 0_{W,X}$ factors through the zero object~$0$, and is hence the zero morphism~$W \to Y$.
+  The commutativity of the second diagram shows similarly that~$0_{Y,Z} \circ f$ factors through the zero objects~$0$ and is therefore the zero morphism~$X \to Z$.
+\end{remark*}
+
+
+
+
+
+\lecturend{8}
+
+
+
+
