@@ -6,51 +6,78 @@
   Let~$f \colon X \to Y$ be a morphism in~$\Ccat$.
   \begin{enumerate}
       \item
-        A \emph{kernel}\index{kernel} of~$f$ is a pair~$(K,k)$ consisting of an object~$K \in \Ob(\Ccat)$ and a morphism~$k \colon K \to X$ with~$f \circ k = 0$, such that for every morphism~$\ell \colon L \to X$ in~$\Ccat$ with~$f \circ \ell = 0$ there exists a unique morphism~$\lambda \colon L \to K$ which makes the following diagram commute:
-        \[
-          \begin{tikzcd}[row sep = small, column sep = large]
-              K
-              \arrow{dr}[above right]{k}
-              \arrow[bend left]{drr}[above right]{0}
-            & {}
-            & {}
-            \\
-              {}
-            & X
-              \arrow{r}[above, near start]{f}
-            & Y
-            \\
-              L
-              \arrow{ur}[below right]{\ell}
-              \arrow[bend right]{urr}[below right]{0}
-              \arrow[dashed]{uu}[left]{\lambda}
-            & {}
-            & {}
-          \end{tikzcd}
-        \]
+        A \emph{kernel}\index{kernel} of~$f$ is a pair~$(K,k)$ consisting of
+        \begin{itemize}
+          \item
+            an object~$K \in \Ob(\Ccat)$ and
+          \item
+            a morphism~$k \colon K \to X$
+        \end{itemize}
+        such that
+        \begin{enumerate}[label = (K\arabic*)]
+          \item
+            $f \circ k = 0$, and
+          \item
+            the morphism~$k$ is universal with in property, in the sense that for every morphism~$\ell \colon L \to X$ in~$\Ccat$ with~$f \circ \ell = 0$ there exists a unique morphism~$\lambda \colon L \to K$ which makes the following diagram commute:
+            \[
+              \begin{tikzcd}[row sep = small, column sep = large]
+                  K
+                  \arrow{dr}[above right]{k}
+                  \arrow[bend left]{drr}[above right]{0}
+                & {}
+                & {}
+                \\
+                  {}
+                & X
+                  \arrow{r}[above, near start]{f}
+                & Y
+                \\
+                  L
+                  \arrow{ur}[below right]{\ell}
+                  \arrow[bend right]{urr}[below right]{0}
+                  \arrow[dashed]{uu}[left]{\lambda}
+                & {}
+                & {}
+              \end{tikzcd}
+            \]
+        \end{enumerate}
       \item
-        A \emph{cokernel}\index{cokernel} of~$f$ is a pair~$(C,c)$ consisting of an object~$C \in \Ob(\Ccat)$ and a morphism~$c \colon Y \to C$ with~$c \circ f = 0$, such that for every morphism~$d \colon Y \to D$ in~$\Ccat$ with~$d \circ f = 0$ there exists a unique morphism~$\mu \colon C \to D$ which makes the following diagram commute:
-        \[
-          \begin{tikzcd}[row sep = small, column sep = large]
-              {}
-            & {}
-            & C
-              \arrow[dashed]{dd}[right]{\mu}
-            \\
-              X
-              \arrow{r}[above]{f}
-              \arrow[bend left]{urr}[above left]{0}
-              \arrow[bend right]{drr}[below left]{0}
-            & Y
-              \arrow{ur}[above left]{c}
-              \arrow{dr}[below left]{d}
-            & {}
-            \\
-              {}
-            & {}
-            & D
-          \end{tikzcd}
-        \]
+        A \emph{cokernel}\index{cokernel} of~$f$ is a pair~$(C,c)$ consisting of
+        \begin{itemize}
+          \item
+            an object~$C \in \Ob(\Ccat)$ and
+          \item
+            a morphism~$c \colon Y \to C$
+        \end{itemize}
+        such that
+        \begin{enumerate}[label=(C\arabic*)]
+          \item
+            $c \circ f = 0$, and
+          \item
+            the morphism~$c$ is universal with this property, in the sense that
+            for every morphism~$d \colon Y \to D$ in~$\Ccat$ with~$d \circ f = 0$ there exists a unique morphism~$\mu \colon C \to D$ which makes the following diagram commute:
+            \[
+              \begin{tikzcd}[row sep = small, column sep = large]
+                  {}
+                & {}
+                & C
+                  \arrow[dashed]{dd}[right]{\mu}
+                \\
+                  X
+                  \arrow{r}[above]{f}
+                  \arrow[bend left]{urr}[above left]{0}
+                  \arrow[bend right]{drr}[below left]{0}
+                & Y
+                  \arrow{ur}[above left]{c}
+                  \arrow{dr}[below left]{d}
+                & {}
+                \\
+                  {}
+                & {}
+                & D
+              \end{tikzcd}
+            \]
+        \end{enumerate}
   \end{enumerate}
 \end{definition}
 
@@ -69,6 +96,9 @@
       The kernel of~$f$ is denoted by~$\ker(f) \to X$, and the cokernel of~$f$ is denoted by~$Y \to \coker(f)$.
   \end{enumerate}
 \end{remark}
+
+
+% TODO: Add a remark about categories with zero morphisms.
 
 
 

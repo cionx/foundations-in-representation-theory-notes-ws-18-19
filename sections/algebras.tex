@@ -269,34 +269,40 @@
       In all other cases the composition of paths is not defined.
       
     \item
-      We define~$Q_*$ to be the set of all paths in~$Q$, that is~$Q_* \defined \coprod_{\ell \geq 0} Q_\ell$.
-      The \emph{path algebra}\index{path!algebra}\index{algebra!path}~$\kf Q$ of~$Q$ is defined as follows:
-      As a~{\module{$\kf$}} we have that
-      \[
-                  \kf Q
-        \defined  \kf^{(Q_*)}
-        =         \left\{
-                    \sum_{p \in Q_*} a_p p
-                  \suchthat*
-                    \begin{tabular}{@{}c@{}}
-                      $a_p \in \kf$ for every~$p \in Q_*$ \\
-                      all but finitely many~$a_p$ vanish
-                    \end{tabular}
-                  \right\} \,.
-      \]
-      The multiplication of two elements~$x, y \in \kf Q$ which are given by linear combinations~$x = \sum_{p \in Q_*} a_p p$ and~$y = \sum_{p \in Q_*} b_p p$ is given by
-      \begin{gather*}
-                  x \cdot y
-        \defined \sum_{p, q \in Q_*} a_p b_q (p \cdot q) \,,
-      \shortintertext{where}
-                  p \cdot q
-        \defined  \begin{cases}
-                    p \circ q & \text{if~$s(p) = t(q)$},  \\
-                    0         & \text{else} \,,
-                  \end{cases}
-      \end{gather*}
-      for all paths~$p, q \in Q_*$.
-      This multiplication is associative because composition of paths is associative and {\kbilin}, and the unit of~$\kf Q$ is given by~$1_{\kf Q} = \sum_{i \in Q_0} \varepsilon_i$.
+      The set of all paths in~$Q$ is denoted by~$Q_* \defined \coprod_{\ell \geq 0} Q_\ell$.
+      The \emph{path algebra}\index{path!algebra}\index{algebra!path}~$\kf Q$ of~$Q$ is the following~{\kalg}:
+      \begin{itemize}
+        \item
+          The underlying~{\module{$\kf$}} of~$\kf Q$ is given by the free~{\module{$\kf$}} on the set~$Q_*$, i.e.\ by
+          \[
+                      \kf Q
+            \defined  \kf^{(Q_*)}
+            =         \left\{
+                        \sum_{p \in Q_*} a_p p
+                      \suchthat*
+                        \begin{tabular}{@{}c@{}}
+                          $a_p \in \kf$ for every~$p \in Q_*$ \\
+                          all but finitely many~$a_p$ vanish
+                        \end{tabular}
+                      \right\} \,.
+          \]
+        \item
+          The multiplication of two elements~$x, y \in \kf Q$ that are given by linear combinations~$x = \sum_{p \in Q_*} a_p p$ and~$y = \sum_{p \in Q_*} b_p p$ is given by
+          \begin{gather*}
+                      x \cdot y
+            \defined \sum_{p, q \in Q_*} a_p b_q (p \cdot q) \,,
+          \shortintertext{where}
+                      p \cdot q
+            \defined  \begin{cases}
+                        p \circ q & \text{if~$s(p) = t(q)$},  \\
+                        0         & \text{else} \,,
+                      \end{cases}
+          \end{gather*}
+          for all paths~$p, q \in Q_*$.
+          (This multiplication is associative because composition of paths is associative and {\kbilin}.)
+        \item
+          The unit of~$\kf Q$ is given by~$1_{\kf Q} = \sum_{i \in Q_0} \varepsilon_i$
+    \end{itemize}
   \end{enumerate}
 \end{definition}
 
