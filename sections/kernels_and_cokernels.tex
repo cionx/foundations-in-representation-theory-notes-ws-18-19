@@ -387,7 +387,7 @@
   \begin{enumerate}
     \item
       \label{restriction to image}
-      There exists a unique morphism~$f' \colon X \to \im(f)$ in~$\Ccat$ which makes the following triangle commute:
+      There exists a unique morphism~$f' \colon X \to \im(f)$ in~$\Ccat$ which makes the following triangle commute:
       \[
         \begin{tikzcd}
             X
@@ -401,7 +401,7 @@
         \end{tikzcd}
       \]
     \item
-      There exists a unique morphism~$\tilde{f} \colon \coim(f) \to Y$ in~$\Ccat$ which makes the following triangle commute:
+      There exists a unique morphism~$\bar{f} \colon \coim(f) \to Y$ in~$\Ccat$ which makes the following triangle commute:
       \[
         \begin{tikzcd}
             X
@@ -410,12 +410,12 @@
           & Y
           \\
             \coim(f)
-            \arrow[dashed]{ur}[below right]{\tilde{f}}
+            \arrow[dashed]{ur}[below right]{\bar{f}}
           & {}
         \end{tikzcd}
       \]
     \item
-      There exists a unique morphism~$\bar{f} \colon \coim(f) \to \im(f)$ in~$\Ccat$ which makes the following square commute:
+      There exists a unique morphism~$\tilde{f} \colon \coim(f) \to \im(f)$ in~$\Ccat$ which makes the following square commute:
       \begin{equation}
         \label{canonical morphism from coim to im}
         \begin{tikzcd}
@@ -425,13 +425,13 @@
           & Y
           \\
             \coim(f)
-            \arrow[dashed]{r}[above]{\bar{f}}
+            \arrow[dashed]{r}[above]{\tilde{f}}
           & \im(f)
             \arrow{u}
         \end{tikzcd}
       \end{equation}
     \item
-      The morphism~$\bar{f}$ is compatible with the morphisms~$f'$ and~$\tilde{f}$ in the sense that the diagrams
+      The morphism~$\tilde{f}$ is compatible with the morphisms~$f'$ and~$\bar{f}$ in the sense that the diagrams
       \begin{equation}
         \label{compatibility of induced morphisms}
         \begin{tikzcd}[column sep = large, row sep = huge]
@@ -442,7 +442,7 @@
           & Y
           \\
             \coim(f)
-            \arrow{r}[above]{\bar{f}}
+            \arrow{r}[above]{\tilde{f}}
           & \im(f)
             \arrow{u}
         \end{tikzcd}
@@ -454,8 +454,8 @@
           & Y
           \\
             \coim(f)
-            \arrow{r}[above]{\bar{f}}
-            \arrow{ur}[above left]{\tilde{f}}
+            \arrow{r}[above]{\tilde{f}}
+            \arrow{ur}[above left]{\bar{f}}
           & \im(f)
             \arrow{u}
         \end{tikzcd}
@@ -513,7 +513,7 @@
     \item
       This can be shown dually to part~\ref*{restriction to image}.
     \item
-      We construct~$\bar{f}$ by using the already constructed morphism~$f' \colon X \to \im(f)$:
+      We construct~$\tilde{f}$ by using the already constructed morphism~$f' \colon X \to \im(f)$:
       The morphism~$p \colon X \to \coim(f)$ is a cokernel of the the kernel~$k \colon \ker(f) \to X$.
       It holds that
       \[
@@ -523,7 +523,7 @@
         = i \circ 0 \,,
       \]
       and hence~$f' \circ k = 0$ because~$i$ is a monomorphism.
-      It follows from the universal property of the cokernel~$p \colon X \to \coim(f)$ that there exist a unique morphism~$\bar{f} \colon \coim(f) \to \im(f)$ which makes the following diagram commute:
+      It follows from the universal property of the cokernel~$p \colon X \to \coim(f)$ that there exist a unique morphism~$\tilde{f} \colon \coim(f) \to \im(f)$ which makes the following diagram commute:
       \[
         \begin{tikzcd}[column sep = 5em, row sep = huge]
             \ker(f)
@@ -538,41 +538,41 @@
           & Y
           \\
             \coim(f)
-            \arrow[dashed]{r}[below]{\bar{f}}
+            \arrow[dashed]{r}[below]{\tilde{f}}
           & \im(f)
             \arrow{u}[right]{i}
             \arrow[dashed, from=uul, bend left = 15, crossing over, near start, "0"]
         \end{tikzcd}
       \]
-      This shows the existence of~$\bar{f}$.
-      Suppose that~$\bar{f}' \colon \coim(f) \to \im(f)$ is another morphism which makes the diagram~\eqref{canonical morphism from coim to im} commute.
+      This shows the existence of~$\tilde{f}$.
+      Suppose that~$\tilde{\tilde{f}} \colon \coim(f) \to \im(f)$ is another morphism which makes the diagram~\eqref{canonical morphism from coim to im} commute.
       Then
       \[
-          i \circ \bar{f}' \circ p
+          i \circ \tilde{\tilde{f}} \circ p
         = f
-        = i \circ \bar{f} \circ p \,.
+        = i \circ \tilde{f} \circ p \,.
       \]
       It follows from~$i$ being a monomorphism that
       \[
-          \bar{f}' \circ p
-        = \bar{f} \circ p \,,
+          \tilde{\tilde{f}} \circ p
+        = \tilde{f} \circ p \,,
       \]
       and it then further follows from~$p$ being a epimorphism that
       \[
-        \bar{f}' = \bar{f} \,.
+        \tilde{\tilde{f}} = \tilde{f} \,.
       \]
-      This shows the desired uniqueness of the morphism~$\bar{f}$.
+      This shows the desired uniqueness of the morphism~$\tilde{f}$.
     \item
-      It follows from the above construction of~$\bar{f}$ that of the two diagrams in~\eqref{compatibility of induced morphisms} the left one commutes.
-      We could have dually constructed~$\bar{f}$ by using the morphism~$\tilde{f}$ instead of~$f'$, which would then give us that the right diagram commutes.
+      It follows from the above construction of~$\tilde{f}$ that of the two diagrams in~\eqref{compatibility of induced morphisms} the left one commutes.
+      We could have dually constructed~$\tilde{f}$ by using the morphism~$\bar{f}$ instead of~$f'$, which would then give us that the right diagram commutes.
       We can alternatively check the commutativity of the right hand diagram by hand:
       It holds that
       \[
-          i \circ \bar{f} \circ p
+          i \circ \tilde{f} \circ p
         = f
-        = \tilde{f} \circ p
+        = \bar{f} \circ p
       \]
-      and hence~$i \circ \bar{f} = \tilde{f}$ because~$p$ is an epimorphism.
+      and hence~$i \circ \tilde{f} = \bar{f}$ because~$p$ is an epimorphism.
     \qedhere
   \end{enumerate}
 \end{proof}

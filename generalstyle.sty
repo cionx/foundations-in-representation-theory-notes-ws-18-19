@@ -1,6 +1,6 @@
 % all the packages
 \usepackage{gitinfo2}   % git information on the title page
-\usepackage[backend=biber,style=alphabetic, dateabbrev=false, urldate=long]{biblatex}   %for bibliography
+\usepackage[backend=biber,style=alphabetic, dateabbrev=false, urldate=long]{biblatex} %for bibliography
 \usepackage{amsmath, amssymb, amsthm, mathtools}      % general math stuff
 \usepackage{mathrsfs}
 \usepackage{extarrows}  % xlongrightarrow
@@ -101,7 +101,9 @@
 % \newtheorem{theorem}[everything]{Theorem}
 
 \newcommand{\extrasymbol}{\textborn}
-\declaretheorem[numberwithin=chapter]{everything} % counter hack
+% counter hacks
+\declaretheorem[numberwithin=chapter]{everything}
+% actual environments
 \declaretheorem[numbered=no,name=Claim\textsuperscript{\extrasymbol}]{claim*}
 \declaretheorem[numbered=no,name=Claim]{claimnonum}
 \declaretheorem[numbered=no]{conventions}
@@ -112,7 +114,7 @@
 \declaretheorem[sibling=everything]{example}
 \declaretheorem[numbered=no,name=Example\textsuperscript{\extrasymbol}]{example*}
 \declaretheorem[numbered=no,name=Example]{examplenonum}
-\declaretheorem[numbered=no,name=Fact]{fact*}
+\declaretheorem{fact}
 \declaretheorem[sibling=everything]{lemma}
 \declaretheorem[numbered=no,name=Lemma\textsuperscript{\extrasymbol}]{lemma*}
 \declaretheorem[numbered=no,name=Notation\textsuperscript{\extrasymbol}]{notation*}
@@ -254,6 +256,12 @@
 \newcommand{\Modrfd}[1]{\text{$\catname{mod}$-$#1$}}
 \newcommand{\Modrfg}[1]{\text{$\Mod^\fg$-$#1$}}
 
+
+% sheafes
+\newcommand{\Cs}{\sheaf{C}}
+\newcommand{\Fs}{\sheaf{F}}
+\newcommand{\Gs}{\sheaf{G}}
+\newcommand{\Hs}{\sheaf{H}}
 
 % spaces and sets
 \DeclareMathOperator{\coim}{coim}
