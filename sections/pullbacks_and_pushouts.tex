@@ -1,0 +1,601 @@
+\section{Pullbacks and Pushouts}
+
+
+\begin{definition*}
+  Let~$\Ccat$ be a category.
+  \begin{enumerate}
+    \item
+      Let~$(f,g)$ be a pair of morphisms
+      \[
+        X \xto{f} Y \xfrom{g} Y'
+      \]
+      in~$\Ccat$.
+      A \emph{pullback}\index{pullback} of the pair~$(f,g)$ is a triple~$(X', f', g')$ consisting of
+      \begin{itemize}
+        \item
+          an object~$X' \in \Ob(\Ccat)$ and
+        \item
+          two morphisms \[Y' \xfrom{f'} X' \xto{g'} X \,,\]
+      \end{itemize}
+      such that
+      \begin{enumerate}[label=(PB\arabic*)]
+        \item
+          the square diagram
+          \[
+            \begin{tikzcd}
+                X'
+                \arrow[dashed]{r}[above]{g'}
+                \arrow[dashed]{d}[right]{f'}
+              & X
+                \arrow{d}[right]{f}
+              \\
+                Y'
+                \arrow{r}[above]{g}
+              & Y
+            \end{tikzcd}
+          \]
+          commutes, and
+        \item
+          the triple~$(X', f', g')$ is universal with this property, in the following sense:
+          If~$(X'', f'', g'')$ is any other triple consisting of an object~$X'' \in \Ob(\Ccat)$ and two morphisms
+          \[
+            Y'' \xlongfrom{f''} X'' \xlongto{g''} X
+          \]
+          such that the square
+          \[
+            \begin{tikzcd}
+                X''
+                \arrow[dashed]{r}[above]{g''}
+                \arrow[dashed]{d}[right]{f''}
+              & X
+                \arrow{d}[right]{f}
+              \\
+                Y''
+                \arrow{r}[above]{g}
+              & Y
+            \end{tikzcd}
+          \]
+          commutes, then there exists a unique morphism~$\lambda \colon X'' \to X'$ that makes the following diagram commute:
+          \[
+            \begin{tikzcd}
+                X''
+                \arrow[bend left]{drr}[above right]{g''}
+                \arrow[dashed]{dr}[above right]{\lambda}
+                \arrow[bend right]{ddr}[below left]{f''}
+              & {}
+              & {}
+              \\
+                {}
+              & X'
+                \arrow{r}[above]{g'}
+                \arrow{d}[right]{f'}
+              & X
+                \arrow{d}[right]{f}
+              \\
+                {}
+              & Y'
+                \arrow{r}[above]{g}
+              & Y
+            \end{tikzcd}
+          \]
+      \end{enumerate}
+      
+    \item
+      Let~$(f,g)$ be a pair of morphisms
+      \[
+        Y \xlongfrom{f} X \xlongto{g} X'
+      \]
+      in~$\Ccat$
+      A \emph{pushout}\index{pushout} of the pair~$(f,g)$ is a triple~$(Y',f',g')$ consisting of
+      \begin{itemize}
+        \item
+          an object~$Y' \in \Ob(\Acat)$ and
+        \item
+          two morphisms
+          \[
+            X' \xlongto{f'} Y' \xlongfrom{g'} Y \,,
+          \]
+      \end{itemize}
+      such that
+      \begin{enumerate}[label=(PO\arabic*)]
+        \item
+          the square diagram
+          \[
+            \begin{tikzcd}
+                X
+                \arrow{r}[above]{g}
+                \arrow{d}[left]{f}
+              & X'
+                \arrow[dashed]{d}[left]{f'}
+              \\
+                Y
+                \arrow[dashed]{r}[above]{g'}
+              & Y'
+            \end{tikzcd}
+          \]
+          commutes, and
+        \item
+          the triple~$(Y',f',g')$ is universal with this property, in the following sense:
+          If~$(Y'', f'', g'')$ is another triple consisting of an object~$Y'' \in \Ob(\Ccat)$ and two morphisms
+          \[
+            X'' \xlongto{f''} Y'' \xlongfrom{g''} Y
+          \]
+          such that the square
+          \[
+            \begin{tikzcd}
+                X
+                \arrow{r}[above]{g}
+                \arrow{d}[left]{f}
+              & X''
+                \arrow[dashed]{d}[left]{f''}
+              \\
+                Y
+                \arrow[dashed]{r}[above]{g''}
+              & Y''
+            \end{tikzcd}
+          \]
+          commutes, then there exists a unique morphism~$\mu \colon Y' \to Y''$ in~$\Ccat$ that makes the following diagram commutes:
+          \[
+            \begin{tikzcd}
+                X
+                \arrow{r}[above]{g}
+                \arrow{d}[left]{f}
+              & X'
+                \arrow[bend left]{ddr}[above right]{f''}
+                \arrow{d}[left]{f'}
+              & {}
+              \\
+                Y
+                \arrow{r}[above]{g'}
+                \arrow[bend right]{drr}[below left]{g''}
+              & Y'
+                \arrow[dashed]{dr}[above right]{\mu}
+              & {}
+              \\
+                {}
+              & {}
+              & Y''
+            \end{tikzcd}
+          \]
+      \end{enumerate}
+  \end{enumerate}
+\end{definition*}
+
+
+\begin{remark*}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      The notions of pullback and pushout are dual to each other:
+      A tripel~$(X', f', g')$ is a pullback of morphisms~$X \xto{f} Y \xfrom{g} Y'$ in~$\Ccat$ if and only if~$(X', f', g')$ is a pushout of~$X \xfrom{f} Y \xto{g} Y'$ in~$\Ccat^\op$.
+    \item
+      Pullbacks and pushouts are unique up to unique isomorphism:
+      If~$(X', f', g')$ and~$(X'', f'', g'')$ are two pullbacks of morphisms~$X \xto{f} Y \xfrom{g} Y'$, then the unique morphism~$\lambda \colon X'' \to X'$ which makes the diagram
+      \[
+        \begin{tikzcd}
+            X''
+            \arrow[bend left]{drr}[above right]{g''}
+            \arrow[dashed]{dr}[above right]{\lambda}
+            \arrow[bend right]{ddr}[below left]{f''}
+          & {}
+          & {}
+          \\
+            {}
+          & X'
+            \arrow{r}[above]{g'}
+            \arrow{d}[right]{f'}
+          & X
+            \arrow{d}[right]{f}
+          \\
+            {}
+          & Y'
+            \arrow{r}[above]{g}
+          & Y
+        \end{tikzcd}
+      \]
+      commute is already an isomorphism.
+      For pushouts the dual statement holds.
+    \item
+      Pullbacks are also know as \emph{fibre products}\index{fibre!product}, and the fibre product of two morphisms~$X \xto{f} Y \xfrom{g} Y'$ is then denoted by~$X \times_Y Y'$.
+      Pushouts are knows as~\emph{fibre coproducts}\index{fibre!coproduct} and \emph{amalgamated sums}\index{amalgamalted sum}, and the amalgamated sum of two morphisms~$Y \xfrom{f} X \xto{g} X'$ is then denoted by~$X' \dcup_X Y$.
+    \item
+      A square diagram
+      \[
+        \begin{tikzcd}
+            X'
+            \arrow[dashed]{r}[above]{g'}
+            \arrow[dashed]{d}[left]{f'}
+          & X
+            \arrow{d}[right]{f}
+          \\
+            Y'
+            \arrow{r}[above]{g}
+          & Y
+        \end{tikzcd}
+      \]
+      is a \emph{pullback square}\index{pullback!square} if the triple~$(X',f',g')$ is a pullback of the two morphisms~$X \xto{f} Y \xfrom{g} Y'$.
+      This is often denoted by adding the symbol~$\pb$ inside of the square: 
+      \[
+        \begin{tikzcd}
+            X'
+            \arrow{r}[above]{g'}
+            \arrow{d}[left]{f'}
+            \arrow[phantom]{dr}[description]{\pb}
+          & X
+            \arrow{d}[right]{f}
+          \\
+            Y'
+            \arrow{r}[above]{g}
+          & Y
+        \end{tikzcd}
+      \]
+      Dually, a square diagram
+      \[
+        \begin{tikzcd}
+            X
+            \arrow{r}[above]{g}
+            \arrow{d}[left]{f}
+          & X'
+            \arrow[dashed]{d}[right]{f'}
+          \\
+            Y
+            \arrow[dashed]{r}[above]{g'}
+          & Y'
+        \end{tikzcd}
+      \]
+      is a \emph{pushout square}\index{pushout!square} if the triple~$(X', f', g')$ is a pushout of the two morphisms~$Y \xfrom{f} X \xto{g} X'$.
+      This is often denoted by adding the symbol~$\po$ inside of the square:
+      \[
+        \begin{tikzcd}
+            X
+            \arrow{r}[above]{g}
+            \arrow{d}[left]{f}
+            \arrow[phantom]{dr}[description]{\po}
+          & X'
+            \arrow{d}[right]{f'}
+          \\
+            Y
+            \arrow{r}[above]{g'}
+          & Y'
+        \end{tikzcd}
+      \]
+    \item
+      We say that the category~$\Ccat$ \emph{has pullbacks}\index{category!has!pullbacks} if every pair of morphisms~$X \xto{f} Y \xfrom{g} Y'$ in~$\Ccat$ admits a pullback in~$\Ccat$.
+      We say dually that~$\Ccat$ \emph{has pushouts}\index{category!has!pushouts} if every pair of morphisms~$Y \xfrom{f} X \xto{g} X'$ in~$\Ccat$ admits a pushout in~$\Ccat$.
+  \end{enumerate}
+\end{remark*}
+
+
+\begin{example*}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      In the category~$\Set$ any pair of maps~$X \xto{f} Y \xfrom{g} Y'$ admits a pullback.
+      This pullback is given by the set
+      \[
+                  X'
+        \defined  \{
+                    (x,y') \in X \times Y'
+                  \suchthat
+                    f(x) = g(y')
+                  \}
+      \]
+      together with the maps~$f' \colon X' \to Y'$ and~$g' \colon X' \to X$ that are the restrictions of the canonical projections~$X \times Y' \to X$ and~$X \times Y' \to Y'$.
+      
+      Note that the set~$X'$ is given by
+      \[
+          X'
+        = \coprod_{y' \in Y'} \bigl( \{ y' \} \times f^{-1}(g(y')) \bigr)  \,,
+      \]
+      which explains the term \emph{fibre product} and the notation~$X \times_Y Y'$
+      
+      The existence and above construction of pullbacks also holds for the categories
+      \[
+        \Top \,,
+        \enskip
+        \Group \,,
+        \enskip
+        \Ring \,,
+        \enskip
+        \CommRing \,,
+        \enskip
+        \kAlg \,,
+        \enskip
+        \kCommAlg \,,
+        \enskip
+        \Modl{A} \,,
+        \enskip
+        \Modr{A} \,,
+      \]
+      where~$A$ is a~{\kalg}.
+    \item
+      In the category~$\Set$ any every pair of maps~$Y \xfrom{f} X \xto{g} X'$ admits a pushout.
+      This pushout is given by the set
+      \[
+                  Y'
+        \defined  (X' \dcup Y) / {\sim}
+      \]
+      where~$\sim$ is the equivalence relation generated by~$i(f(x)) \sim j(g(x))$ for~$x \in X$, where~$i \colon X' \to X' \dcup Y$ and~$j \colon Y \to X' \dcup Y$ are the canonical inclusions.
+      The map~$f' \colon X' \to Y'$ is induced by the inclusion~$i$ and the map~$g' \colon Y \to Y'$ is induced by the inclusion~$j$.
+      
+      This construction also explains the notation~$X' \dcup_X Y$.
+  \end{enumerate}
+\end{example*}
+
+
+\begin{remark*}
+  Let~$\Ccat$ be a category and let~$Y \in \Ob(\Ccat)$ be an object in~$\Ccat$.
+  The \emph{over\nobreakdash-$Y$\nobreakdash-category}~$\Ccat/Y$ is defined as follows:
+  \begin{itemize}
+    \item
+      The objects of~$\Ccat/Y$ are pairs~$(X,x)$ consisting of an an object~$X \in \Ob(\Ccat)$ and a morphism~$x \colon X \to Y$.
+      The objects of~$\Ccat/Y$ may be visualized as follows:
+      \[
+        \begin{tikzcd}
+            X
+            \arrow{d}[left]{x}
+          \\
+            Y
+        \end{tikzcd}
+      \]
+    \item
+      A morphism~$f \colon (X,x) \to (X',x')$ in~$\Ccat/Y$ is a morphism~$f \colon X \to X'$ which makes the triangle
+      \[
+        \begin{tikzcd}
+            X
+            \arrow[dashed]{rr}[above]{f}
+            \arrow{dr}[below left]{x}
+          & {}
+          & X'
+            \arrow{dl}[below right]{x'}
+          \\
+            {}
+          & Y
+          & {}
+        \end{tikzcd}
+      \]
+      commute.
+    \item
+      The composition of two morphism~$f \colon (X,x) \to (X,x')$ and~$f' \colon (X',x') \to (X'',x'')$ is given by~$f' \circ f$, the composition of~$f$ and~$f'$ in~$\Ccat$.
+      This is again a morphism in~$\Ccat/Y$ by the commutativity of the following diagram:
+      \[
+        \begin{tikzcd}[column sep = large]
+            X
+            \arrow[dashed,bend left]{rr}{f' \circ f}
+            \arrow{r}[above]{f}
+            \arrow{dr}[below left]{x}
+          & X'
+            \arrow{r}[above]{f'}
+            \arrow{d}[right]{x'}
+          & X''
+            \arrow{dl}[below right]{x''}
+          \\
+            {}
+          & Y
+          & {}
+        \end{tikzcd}
+      \]
+    \item
+      The identity morphism of an object~$(X,x) \in \Ob(\Ccat/Y)$ is given by~$\id_{(X,x_0)} = \id_X$.
+  \end{itemize}
+  
+  A pair of morphisms~$X \xto{f} Y \xfrom{g} Y'$ can be seen as two objects~$(X,f)$ and~$(Y',g)$ of the category~$\Ccat/Y$.
+  Let~$(X', f', g')$ be a triple consisting of an object~$X \in \Ob(\Ccat)$ and two morphisms~~$Y' \xfrom{f'} X' \xto{g'} X$ such that the square
+  \begin{equation}
+    \label{pullback to product}
+    \begin{tikzcd}
+        X'
+        \arrow[dashed]{r}[above]{g'}
+        \arrow[dashed]{d}[right]{f'}
+      & X
+        \arrow{d}[right]{f}
+      \\
+        Y'
+        \arrow{r}[above]{g}
+      & Y
+    \end{tikzcd}
+  \end{equation}
+  commutes.
+  For~$h \defined f \circ g' = g \circ f'$ we then have the following commutative diagram:
+  \[
+    \begin{tikzcd}
+        Y'
+        \arrow{dr}[below left]{g}
+      & X'
+        \arrow[dashed]{l}[above]{f'}
+        \arrow{d}[right]{h}
+        \arrow[dashed]{r}[above]{g'}
+      & X
+        \arrow{dl}[below right]{f}
+      \\
+        {}
+      & Y
+      & {}
+    \end{tikzcd}
+  \]
+  The two morphisms~$f'$ and~$g'$ are therefore also morphisms~$f' \colon (X',h) \to (Y',g)$ and~$g' \colon (X',h) \to (X,f)$ in~$\Ccat/Y$.
+  That the diagram~\eqref{pullback to product} is a pullback square means precisely that the triple~$((X',h), f', g')$ is a product of the two objects~$(X,f)$ and~$(Y,g)$ in the category~$\Ccat/Y$.
+\end{remark*}
+
+
+\begin{lemma*}
+  Let~$\Ccat$ be a category.
+  \begin{enumerate}
+    \item
+      Let
+      \[
+        \begin{tikzcd}
+            X''
+            \arrow{r}[above]{h'}
+            \arrow{d}[right]{f''}
+          & X'
+            \arrow{r}[above]{h}
+            \arrow{d}[right]{f'}
+          & X
+            \arrow{d}[right]{f}
+          \\
+            Y''
+            \arrow{r}[above]{g'}
+          & Y'
+            \arrow{r}[above]{g}
+          & Y
+        \end{tikzcd}
+      \]
+      be a commutative diagram in~$\Ccat$.
+      \begin{enumerate}
+        \item
+          If the left square and the right square are both pullback squares, then the outer reactangle is again a pullback square.
+        \item
+          If the right square and the outer reactangle are both pullback squares, then the left square is also a pullback square.
+      \end{enumerate}
+    \item
+      \label{pasting pushouts}
+      Let
+      \[
+        \begin{tikzcd}
+            X
+            \arrow{r}[above]{g}
+            \arrow{d}[left]{f}
+          & X'
+            \arrow{r}[above]{g'}
+            \arrow{d}[left]{f'}
+          & X''
+            \arrow{d}[left]{f''}
+          \\
+            Y
+            \arrow{r}[above]{h}
+          & Y'
+            \arrow{r}[above]{h'}
+          & Y''
+        \end{tikzcd}
+      \]
+      be a commutative diagram in~$\Ccat$.
+      \begin{enumerate}
+        \item
+          If the right square and the left square are both pushout diagrams, then the outer rectangle is again a pushout square.
+        \item
+          If the left square and outer reactangle are both pushout squares, then the right square is also a pushout square.
+      \end{enumerate}
+  \end{enumerate}
+\end{lemma*}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      This is Exercise 1 on the sixth exercise sheet.
+    \item
+      This follows from part~\ref*{pasting pushouts} by duality.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+
+\begin{lemma*}
+  Let~$\Acat$ be an additive category that has kernels and cokernels.
+  Then the category~$\Acat$ has pullbacks and pushouts.
+\end{lemma*}
+
+
+\begin{proof}
+  This is Exercise~3 on the sixth exercise sheet.
+\end{proof}
+
+
+\begin{proposition*}
+  \label{mono epi under pull push}
+  Let~$\Ccat$ be a category.
+  \begin{enumerate}
+    \item
+      \label{pullback of mono}
+      Let
+      \[
+        \begin{tikzcd}
+            X'
+            \arrow{r}[above]{g'}
+            \arrow{d}[right]{f'}
+          & X
+            \arrow{d}[right]{f}
+          \\
+            Y'
+            \arrow{r}[above]{g}
+          & Y
+        \end{tikzcd}
+      \]
+      be a pullback square in~$\Ccat$.
+      If~$f$ is a monomorphism then~$f'$ is again a monomorphism.
+    \item
+      Let
+      \[
+        \begin{tikzcd}
+            X
+            \arrow{r}[above]{g}
+            \arrow{d}[left]{f}
+          & X'
+            \arrow{d}[left]{f'}
+          \\
+            Y
+            \arrow{r}[above]{g'}
+          & Y'
+        \end{tikzcd}
+      \]
+      be a pushout square in~$\Ccat$.
+      If~$f$ is an epimorphism then~$f'$ is again an epimorphism.
+  \end{enumerate}
+  In an abelian category~$\Acat$ the same holds when we switch \enquote{monomorphism} and \enquote{epimorphism} in the above statements:
+  \begin{enumerate}[resume]
+    \item
+      \label{pullback of epi}
+      Let
+      \[
+        \begin{tikzcd}
+            X'
+            \arrow{r}[above]{g'}
+            \arrow{d}[right]{f'}
+          & X
+            \arrow{d}[right]{f}
+          \\
+            Y'
+            \arrow{r}[above]{g}
+          & Y
+        \end{tikzcd}
+      \]
+      be a pullback square in~$\Acat$.
+      If~$f$ is an epimorphism then~$f'$ is again a epimorphism.
+    \item
+      Let
+      \[
+        \begin{tikzcd}
+            X
+            \arrow{r}[above]{g}
+            \arrow{d}[left]{f}
+          & X'
+            \arrow{d}[left]{f'}
+          \\
+            Y
+            \arrow{r}[above]{g'}
+          & Y'
+        \end{tikzcd}
+      \]
+      is a pushout square in~$\Acat$.
+      If~$f$ is a monomorphism then~$f'$ is again a monomorphism.
+  \end{enumerate}
+\end{proposition*}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      This is Exercise~2 on the sixth exercise sheet.
+    \item
+      This is the dual statement to part~\ref*{pullback of mono}.
+    \item
+      This is Exercise~4 on the sixth exercise sheet.
+    \item
+      This is the dual statement to part~\ref*{pullback of epi}.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+

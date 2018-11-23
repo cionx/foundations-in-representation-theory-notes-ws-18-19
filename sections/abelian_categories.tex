@@ -60,27 +60,28 @@
 
 
 \begin{remark*}
-  If~$\Acat$ is an abelian category and~$f \colon X \to Y$ is a morphism in~$\Acat$ which is both a monomorphism and an epimorphism, then~$f$ is already an isomorphism:
-  
-  The zero morphism~$0 \to X$ is a kernel of~$f$ because~$f$ is a monomorphism.
-  The identity~$\id_X \colon X \to X$ is a cokernel of the zero morphism~$0 \to X$, and hence a coimage of~$f$.
-  We find dually that the identity~$\id_Y \colon Y \to Y$ is an image of~$f$ because~$f$ is an epimorphism.
-  The induced morphism~$f \colon \coim(f) \to \im(f)$ of the \hyperref[canonical factorization]{canonical factorization lemma} is just~$f$ itself because the square
-  \[
-    \begin{tikzcd}
-        X
-        \arrow{r}[above]{f}
-        \arrow{d}[left]{\id_X}
-      & Y
-      \\
-        X 
-        \arrow{r}[above]{f}
-      & Y
-        \arrow{u}[right]{\id_Y}
-    \end{tikzcd}
-  \]
-  commutes.
-  It hence follows from the definition of an abelian category that~$f$ is an isomorphism.
+  If~$\Acat$ is an abelian category and~$f \colon X \to Y$ is a morphism in~$\Acat$ which is both a monomorphism and an epimorphism, then~$f$ is already an isomorphism.
+  This will be shown in \cref{iso iff epi and mono}.
+%   
+%   The zero morphism~$0 \to X$ is a kernel of~$f$ because~$f$ is a monomorphism.
+%   The identity~$\id_X \colon X \to X$ is a cokernel of the zero morphism~$0 \to X$, and hence a coimage of~$f$.
+%   We find dually that the identity~$\id_Y \colon Y \to Y$ is an image of~$f$ because~$f$ is an epimorphism.
+%   The induced morphism~$f \colon \coim(f) \to \im(f)$ of the \hyperref[canonical factorization]{canonical factorization lemma} is just~$f$ itself because the square
+%   \[
+%     \begin{tikzcd}
+%         X
+%         \arrow{r}[above]{f}
+%         \arrow{d}[left]{\id_X}
+%       & Y
+%       \\
+%         X 
+%         \arrow{r}[above]{f}
+%       & Y
+%         \arrow{u}[right]{\id_Y}
+%     \end{tikzcd}
+%   \]
+%   commutes.
+%   It hence follows from the definition of an abelian category that~$f$ is an isomorphism.
 \end{remark*}
 
 
@@ -432,7 +433,7 @@
       The sheaf category~$\Scat$ admits kernels:
       To be more precise, let~$\Fs$ and~$\Gs$ be two sheaves and let~$f \colon \Fs \to \Gs$ be a homomorphism of sheaves.
       We may forget that~$\Fs$ and~$\Gs$ are sheaves and regard them as just presheaves;
-      then~$f$ is a homomorphisms of presheaves, and hence a morphism in the abelian category~$\Pcat$.
+      then~$f$ is a homomorphisms of presheaves, and hence a homomorphism in the abelian category~$\Pcat$.
       We can therefore consider its kernel~$\ker_{\Pcat}(f)$ in the category~$\Pcat$.
       
       This kernel~$\ker_\Pcat(f)$ of~$f$ in the presheaf category~$\Pcat$ is already a sheaf:
@@ -621,9 +622,9 @@
         \end{tikzcd}
       \]
       
-      If a presheaf~$\Fs$ is already a sheaf, then it follows from the fully faithfulness of the inclusion~$I$ that the sheafification~$SI(\Fs)$ of~$\Fs$ is just~$\Fs$ itself.
+      If a presheaf~$\Fs$ is already a sheaf, then it follows from the fully faithfulness of the inclusion functor~$I$ that the sheafification~$SI(\Fs)$ of~$\Fs$ is just~$\Fs$ itself.
       
-      To be more precise, the sheaf~$\Fs$ is also a sheafification of the presheaf~$I(\Fs)$, in the sense that the identity~$\id_{I(\Fs)} \colon I(\Fs) \to I(\Fs)$ fullfills the same universal property as the counit~$\eta_{I(\Fs)} \colon I(\Fs) \to ISI(\Fs)$:
+      To be more precise, the sheaf~$\Fs$ is also a sheafification of the presheaf~$I(\Fs)$, in the sense that the identity homomorphism~$\id_{I(\Fs)} \colon I(\Fs) \to I(\Fs)$ fullfills the same universal property as the counit~$\eta_{I(\Fs)} \colon I(\Fs) \to ISI(\Fs)$:
       Let~$\Gs$ be another sheaf and let~$f \colon I(\Fs) \to I(\Gs)$ be a homomorphism of presheaves.
       Then, as~$I$ is fully faithful, there exist a unique homomorphism of sheaves~$\lambda \colon \Fs \to \Gs$ which makes the desired triangle
       \[
@@ -657,7 +658,6 @@
       \]
       commute, and that this homomorphism is already an isomorphism.
       This homomorphism is just~$\eta_{I(\Fs)}$ itself (as~$\eta_{I(\Fs)}$ makes the above triangle commute) and so~$\eta_{I(\Fs)}$ is an isomorphism (of presheaves, and hence also of sheaves).
-      
       \begin{remark*}
         \leavevmode
         \begin{enumerate}
@@ -682,7 +682,7 @@
               \item
                 $G$ is fully faithful if and only if the counit~$\varepsilon$ is an isomorphism.
             \end{itemize}
-            Proofs of this can be found in~\cite{stackfullyfaithful}, \cite[Lemma 7.6.6]{Brandenburg} and \cite[IV,~3,~Theorem~1]{Working} (where a slightly more general version is proven).
+            Proofs of this can be found in~\cite{stackfullyfaithful}, \cite[Lemma 7.6.6]{Brandenburg} and \cite[IV,~3,~Theorem~1]{Working} (where it more generally explained under what conditions~$F$ an~$G$ are faithful, and under what conditions they are full).
         \end{enumerate}
       \end{remark*}
       
@@ -760,7 +760,7 @@
       \end{claimnonum}
       
       \begin{proof}
-        Let~$\eta \colon \coker_{\Pcat}(I(f)) \to IS( \coker_{\Pcat}(I(f)) )$ be the canonical homomorphism, and let~$c' \colon I(\Gs) \to \coker(I(f))$ be the morphism belonging to the cokernel~$\coker(I(f))$.
+        Let~$\eta \colon \coker_{\Pcat}(I(f)) \to IS( \coker_{\Pcat}(I(f)) )$ be the canonical homomorphism, and let~$c' \colon I(\Gs) \to \coker(I(f))$ be the homomorphism belonging to the cokernel~$\coker(I(f))$.
         The functor~$I$ is fully faithful, and so there exists for the composition
         \[
                           I(\Gs)
@@ -857,8 +857,318 @@
       \end{remark*}
   \end{enumerate}
   
+  
+  
+  
+  
   \lecturend{12}
+  
+  
+  
+  
+  
+  \begin{enumerate}[resume]
+    \item
+      Let~$f \colon \Fs \to \Gs$ be a homomorphism of presheaves.
+      Then there exists a unique homomorphism of sheaves~$\lambda \colon S( \ker_\Pcat(f) ) \to \ker_{\Scat}(S(f))$ that makes the triangle
+      \[
+        \begin{tikzcd}[sep = large]
+            S( \ker_\Pcat(f) )
+            \arrow[dashed]{d}[left]{\lambda}
+            \arrow{dr}
+          & {}
+          \\
+            \ker_\Scat(S(f))
+            \arrow{r}
+          & S(\Fs)
+        \end{tikzcd}
+      \]
+      commute;
+      here~$\ker_\Scat(S(f)) \to S(\Fs)$ denotes the canonical homomorphism of the kernel, and~$S(\ker_\Pcat(f)) \to S(\Fs)$ denotes the homomorphism induced by the canonical homomorphism~$\ker_\Pcat(f) \to \Fs$.
+      Indeed, the composition
+      \[
+          \ker_\Pcat(f)
+        \to
+          \Fs
+        \xlongto{f}
+          \Gs
+      \]
+      is the zero homomorphism.
+      It follows that the composition
+      \[
+          \ker_\Pcat(f)
+        \to
+          S(\Fs)
+        \xlongto{S(f)}
+          S(\Gs)
+      \]
+      is again the zero homomorphism because the sheafification functor~$S$ is additive.
+      The existence and uniqueness of the homomorphism~$\lambda$ thus follows from the universal property of the kernel~$\ker_\Scat(S(f)) \to S(\Fs)$.
+      
+      \begin{fact}
+        The homomorphism~$\lambda \colon S( \ker_\Pcat(f) ) \to \ker_{\Scat}(S(f))$ is an isomorphism.
+      \end{fact}
+      
+    \item
+      If~$f \colon \Fs \to \Gs$ is a homomorphism of sheaves then the canonical homomorphism~$\tilde{f} \colon \coim(f) \to \im(f)$ is an isomorphism:
+      
+      The resulting homomorphism of presheaves~$I(f) \colon I(\Fs) \to I(\Gs)$ has the following canonical factorization:
+      \[
+        \begin{tikzcd}[sep = large]
+            I(\Fs)
+            \arrow{r}[above]{I(f)}
+            \arrow{d}
+          & I(\Gs)
+          \\
+            \coim(I(f))
+            \arrow{r}[above]{\widetilde{I(f)}}
+          & \im(I(f))
+            \arrow{u}
+        \end{tikzcd}
+      \]
+      We note that the homomorphism~$\widetilde{I(f)} \colon \coim(I(f)) \to \im(I(f))$ is an isomorphism because the presheaf category~$\Pcat$ is abelian.
+      By applying the sheafification functor~$S$ to this square diagram we get the following commutative square:
+      \[
+        \begin{tikzcd}[sep = large]
+            SI(\Fs)
+            \arrow{r}[above]{SI(f)}
+            \arrow{d}
+          & SI(\Gs)
+          \\
+            S(\coim(I(f)))
+            \arrow{r}[above]{S(\widetilde{I(f)})}
+          & S(\im(I(f)))
+            \arrow{u}
+        \end{tikzcd}
+      \]
+      The homomorphisms of sheaves~$S(\widetilde{I(f)})$ is again an isomorphism.      
+      We now get the following diagram:
+      \[
+        \begin{tikzcd}[sep = large]
+            \Fs
+            \arrow{rrr}[above]{f}
+            \arrow{dr}[below left]{\cong}
+            \arrow{ddd}
+          & {}
+          & {}
+          & \Gs
+            \arrow{dl}[below right]{\cong}
+          \\
+            {}
+          & SI(\Fs)
+            \arrow{r}[above]{SI(f)}
+            \arrow{d}
+          & SI(\Gs)
+          & {}
+          \\
+            {}
+          & S( \coim_\Pcat(I(f)) )
+            \arrow{r}[above]{S(\widetilde{I(f)})}
+          & S( \im_\Pcat(I(f)) )
+            \arrow{u}
+          & {}
+          \\
+            \coim_\Scat(f)
+            \arrow{ur}[above left]{\cong}
+            \arrow{rrr}[above]{\tilde{f}}
+          & {}
+          & {}
+          & \im_\Scat(f)
+            \arrow{ul}[above right]{\cong}
+            \arrow{uuu}
+        \end{tikzcd}
+      \]
+      This diagram commutes:
+      \begin{itemize}
+        \item
+          We have seen above that the inner square commutes.
+        \item
+          The outer square commutes by definition of~$\tilde{f}$.
+        \item
+          The upper trapezoid commutes by the naturality of~$\Id_\Scat \cong S \circ I$.
+        \item
+          The author finds the argument that was given in the lecture for the commutativtiy of the left trapezoid not sufficient.
+          This argument is therefore currently missing from these notes.
+%           The left trapezoid commutes because
+%           \begin{align*}
+%             {}&  S( I(\Fs) \to \coim_\Pcat(I(f)) ) \\
+%             ={}&  S( \coker_\Pcat( \ker_\Pcat(I(f)) \to I(\Fs) ) )  \\
+%             ={}&  S( \coker_\Pcat( I(\ker_\Scat(f)) \to I(\Fs) ) )  \\
+%             ={}&  S( \coker_\Pcat(I( \ker_\Scat(f) \to \Fs )) ) \\
+%             ={}&  \coker_\Scat( \ker_\Scat(f) \to \Fs ) \\
+%             ={}&  ( \Fs \to \coim_\Scat(f) ) \,.
+%           \end{align*}
+        \item
+          The commutativity of the right trapezoid was not explained in the lecture.
+        \item
+          The commutativity of the lower trapezoid follows from the commutativity of the rest of the diagram:
+          It holds that
+          \begin{align*}
+               {}&  (
+                          \Fs
+                      \to \coim_\Scat(f)
+                      \to S(\coim_\Pcat(I(f)))
+                      \to S(\im_\Pcat(I(f)))
+                      \to \im_\Scat(f)
+                      \to \Gs
+                    ) \\
+              ={}&  (
+                          \Fs
+                      \to SI(\Fs)
+                      \to S(\coim_\Pcat(I(f)))
+                      \to S(\im_\Pcat(I(f)))
+                      \to SI(\Gs)
+                      \to \Gs
+                    ) \\
+              ={}&  (
+                          \Fs
+                      \to SI(\Fs)
+                      \to SI(\Gs)
+                      \to \Gs
+                    ) \\
+              ={}&  (
+                          \Fs
+                      \to \Gs
+                    )  \\
+              ={}&  (
+                          \Fs
+                      \to \coim_\Scat(f)
+                      \to \im_\Scat(f)
+                      \to \Gs
+                    ) \,.
+          \end{align*}
+          The homomorphism~$\Fs \to \coim_\Scat(f)$ is an epimorphism and the homomorphism~$\im_\Scat(f) \to \Gs$ is a monomorphism.
+          We hence find that already
+          \begin{align*}
+            {}&
+              (
+                    \coim_\Scat(f)
+                \to S(\coim_\Pcat(I(f)))
+                \to S(\im_\Pcat(I(f)))
+                \to \im_\Scat(f)
+              )
+            \\
+            ={}&
+              (
+                    \coim_\Scat(f)
+                \to \im_\Scat(f)
+              ) \,.
+          \end{align*}
+      \end{itemize}
+      The commutativity of the lower trapezoid shows that the canonical homomorphism~$\tilde{f}$ is a composition of three isomorphisms, and therefore an isomorphism itself.
+  \end{enumerate}
+  
+  This altogether shows that the category~$\Scat$ is abelian.
 \end{example}
+
+
+\begin{lemma}
+  Let~$\Acat$ be an abelian category.
+  \begin{enumerate}
+    \item
+      Every monomorphism in~$\Acat$ is the kernel of its cokernel.
+      It is in particular a kernel.
+    \item
+      Every epimorphism in~$\Acat$ is the cokernel of its kernel.
+      It is in particular a cokernel.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Let~$f \colon X \to Y$ be a monomorphism in~$\Acat$.
+      Then~$\ker(f) = 0$ and hence the identity~$\id_Y \colon X \to X$ is a cokernel of~$\ker(f) \to X$.
+      The canonical factorization of~$f$ is therefore given as follows:
+      \[
+        \begin{tikzcd}
+            X
+            \arrow{r}[above]{f}
+            \arrow[equal]{d}
+          & Y
+          \\
+            \coim(f)
+            \arrow{r}[above]{\cong}[below]{\tilde{f}}
+          & \im(f)
+            \arrow{u}
+        \end{tikzcd}
+      \]
+      This commutative square can also be compressed into the following commutative triangle:
+      \[
+        \begin{tikzcd}
+            X
+            \arrow{rr}[above]{\cong}[below]{\tilde{f}}
+            \arrow{dr}[below left]{f}
+          & {}
+          & \im(f)
+            \arrow{dl}
+          \\
+            {}
+          & Y
+          & {}
+        \end{tikzcd}
+      \]
+      The canonical morphism~$\im(f) \to Y$ is a kernel of the cokernel~$Y \to \coker(f)$.
+      It follows from the above triangle that~$f \colon X \to Y$ is also a kernel of~$Y \to \coker(f)$.
+    \item
+      This can be shown dually.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+
+\begin{remark}
+  Let~$f \colon X \to Y$ be a morphism in an abelian category~$\Acat$.
+  Then the canonical morphism~$f' \colon X \to \im(f)$ is an epimorphism and the canonical morphism~$\bar{f} \colon \coim(f) \to Y$ is a monomorphism.
+  Indeed, the morphism~$f'$ is given by the composition of epimorphisms
+  \[
+    X
+    \to
+    \coim(f)
+    \xlongto{\tilde{f}}
+    \im(f) \,,
+  \]
+  while~$\bar{f}$ is given by the composition of monomorphisms
+  \[
+    \coim(f)
+    \xlongto{\tilde{f}}
+    \im(f)
+    \to
+    Y \,.
+  \]
+\end{remark}
+
+
+\begin{proposition}
+  \label{iso iff epi and mono}
+  A morphism~$f$ in an abelian category~$\Acat$ is an isomorphism if and only if it is both an epimorphism and a monomorphism.
+\end{proposition}
+
+
+\begin{proof}
+  If~$f$ is an isomorphism then it is both an epimorphism and a monomorphism, as this holds in every category.
+  
+  Suppose on the other hand that~$f$ is both an epimorphism and a monomorphism.
+  Then the zero morphism~$0 \to X$ is a kernel of~$f$ and the zero morphism~$Y \to 0$ is a cokernel of~$f$.
+  The identity~$\id_X \colon X \to X$ is therefore a coimage of~$f$, while the identity~$\id_Y \colon Y \to Y$ is an image of~$f$.
+  The canonical factorization of~$f$ is therefore given as follows:
+  \[
+    \begin{tikzcd}
+        X
+        \arrow{r}[above]{f}
+        \arrow[equal]{d}
+      & Y
+        \arrow[equal]{d}
+      \\
+        \coim(f)
+        \arrow{r}[above]{\tilde{f}}
+      & \im(f)
+    \end{tikzcd}
+  \]
+  The isomorphism~$\tilde{f}$ is just~$f$ itself.
+\end{proof}
 
 
 

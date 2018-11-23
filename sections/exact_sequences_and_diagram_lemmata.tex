@@ -1,0 +1,822 @@
+\section{Exact Sequences and Diagram Lemmata}
+
+
+\begin{remarknonum}(Orally)
+  We will (at least for now) neither use nor state the Freyd--Mitchell embedding theorem.
+  We will instead explain how one can \enquote{diagram chase} in abelian categories.
+\end{remarknonum}
+
+
+\begin{remarkdefinition}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Let~$f \colon X \to Y$ and~$g \colon Y \to Z$ be two composable morphisms in~$\Acat$.
+      
+      If~$g f = 0$ then there exists a unique morphism~$\lambda \colon \im(f) \to \ker(g)$ that makes the diagram
+      \[
+        \begin{tikzcd}[column sep = large]
+            X
+            \arrow{rr}[above]{f}
+            \arrow{dr}[below left]{f'}
+          & {}
+          & Y
+            \arrow{rr}[above]{g}
+          & {}
+          & Z
+          \\
+            {}
+          & \im(f)
+            \arrow{ur}[above left]{i}
+            \arrow[dashed]{rr}[above]{\lambda}
+          & {}
+          & \ker(g)
+            \arrow{ul}[above right]{k}
+          & {}
+        \end{tikzcd}
+      \]
+      commute, and~$\lambda$ is a monomorphism.
+      Indeed, it holds that
+      \[
+          g i f'
+        = g f
+        = 0
+      \]
+      and hence~$g i = 0$ because~$f'$ is an epimorphism.
+      The existence and uniqueness of~$\lambda$ thus follow from the universal property of the kernel~$\ker(g) \to Y$.
+      
+      The sequence~$X \xto{f} Y \xto{g} Z$ is \emph{exact}\index{exact sequence} if
+      \begin{enumerate}[label=(E\arabic*)]
+        \item
+          $gf = 0$, and
+        \item
+          the canonical morphism~$\lambda \colon \im(f) \to \ker(g)$ is an ismorphism.
+      \end{enumerate}
+    \item
+      A (possibly infinite) sequence
+      \[
+          \dotsb
+        \longto
+          X_{i-1}
+        \xlongto{f_{i-1}}
+          X_i
+        \xlongto{f_i}
+          X_{i+1}
+        \longto
+          \dotsb
+      \]
+      of composable morphisms in~$\Acat$ is \emph{exact}\index{exact sequence} if at every position~$i$ for which both an incoming arrow~$f_{i-1} \colon X_{i-1} \to X_i$ and outgoing~$f_i \colon X_i \to X_{i+1}$ exist, the resulting sequence
+      \[
+          X_{i-1}
+        \xlongto{f_{i-1}}
+          X_i
+        \xlongto{f_i}
+          X_{i+1}
+      \]
+      is exact.
+    \item
+      We have the following special cases of exact sequences:
+      \begin{itemize}
+        \item
+          A sequence of the form
+          \[
+            0
+            \to
+            X
+            \xlongto{f}
+            Y
+          \]
+          is exact if and only if~$f$ is a monomorphism.
+        \item
+          A sequence of the form
+          \[
+            Y
+            \xlongto{g}
+            Z
+            \to
+            0
+          \]
+          is exact if and only if~$g$ is an epimorphism.
+        \item
+          A sequence of the form
+          \[
+            0
+              \to
+            X
+              \xlongto{f}
+            Y
+              \xlongto{g}
+            Z
+              \to
+            0
+          \]
+          is exact if and only if~$f$ is a monomorphism,~$g$ is an epimorphism and the canonical morphism~$\im(f) \to \ker(g)$ is an isomorphism.
+          This is furthermore equivalent to~$f$ being a kernel of~$g$ and~$g$ being a cokernel of~$f$ (at the same time).
+      \end{itemize}
+  \end{enumerate}
+\end{remarkdefinition}
+
+
+\begin{proposition}
+  Let~$\Acat$ be an abelian category and let
+  \[
+    \begin{tikzcd}[sep = large]
+        {}
+      & {}
+      & Y'
+        \arrow{r}[above]{g'}
+        \arrow{d}[right]{h'}
+        \arrow[phantom]{dr}[description]{\pb}
+      & Z'
+        \arrow{d}[right]{h}
+      & {}
+      \\
+        0
+        \arrow{r}
+      & X
+        \arrow{r}[above]{f}
+      & Y
+        \arrow{r}[above]{g}
+      & Z
+        \arrow{r}
+      & 0
+    \end{tikzcd}
+  \]
+  be a commutative diagram in~$\Acat$ where the bottom row is exact and the square is a pullback square.
+  Then there exist a unique morphism~$f' \colon X \to Y'$ such that the diagram
+  \begin{equation}
+    \label{resulting pb of ses}
+    \begin{tikzcd}[sep = large]
+        0
+        \arrow{r}
+      & X
+        \arrow[dashed]{r}[above]{f'}
+        \arrow[equal]{d}
+      & Y'
+        \arrow{r}[above]{g'}
+        \arrow{d}[right]{h'}
+        \arrow[phantom]{dr}[description]{\pb}
+      & Z'
+        \arrow{d}[right]{h}
+        \arrow{r}
+      & 0
+      \\
+        0
+        \arrow{r}
+      & X
+        \arrow{r}[above]{f}
+      & Y
+        \arrow{r}[above]{g}
+      & Z
+        \arrow{r}
+      & 0
+    \end{tikzcd}
+  \end{equation}
+  commutes and the upper row
+  \begin{equation}
+    \label{upper row}
+    0
+    \to
+    X
+    \xlongto{f}
+    Y
+    \xlongto{g}
+    Z
+    \to
+    0
+  \end{equation}
+  is exact.
+\end{proposition}
+
+
+\begin{proof}
+  It follows from \cref{mono epi under pull push} that~$g'$ is an epimorphism because~$g$ is one.
+  
+  To construct the desired morphism~$f' \colon X \to Y$ we use that the given square is a pullback square:
+  The diagram
+  \[
+    \begin{tikzcd}[sep = large]
+        X
+        \arrow[bend left]{drr}[above right]{0}
+        \arrow[bend right]{ddr}[below left]{f}
+      & {}
+      & {}
+      \\
+        {}
+      & Y'
+        \arrow{r}[above]{g'}
+        \arrow{d}[right]{h'}
+        \arrow[phantom]{dr}[description]{\pb}
+      & Z'
+        \arrow{d}[right]{h}
+      \\
+        {}
+      & Y
+        \arrow{r}[above]{g}
+      & Z
+    \end{tikzcd}
+  \]
+  commutes because~$gf = 0$.
+  So it follows that there exists a unique morphism~$f' \colon X \to Y'$ that makes the diagram
+  \[
+    \begin{tikzcd}[sep = large]
+        X
+        \arrow[bend left]{drr}[above right]{0}
+        \arrow[dashed]{dr}[above right]{f'}
+        \arrow[bend right]{ddr}[below left]{f}
+      & {}
+      & {}
+      \\
+        {}
+      & Y'
+        \arrow{r}[above]{g'}
+        \arrow{d}[right]{h'}
+        \arrow[phantom]{dr}[description]{\pb}
+      & Z'
+        \arrow{d}[right]{h}
+      \\
+        {}
+      & Y
+        \arrow{r}[above]{g}
+      & Z
+    \end{tikzcd}
+  \]
+  commute.
+  This means precisely that the morphism~$f'$ makes the diagram~\eqref{resulting pb of ses} commute and satisfies~$g' f' = 0$.
+  
+  The morphism~$f$ is a monomorphism because the composition~$h' f' = f$ is a monomorphism.
+  
+  To show the exactness of the row~\eqref{upper row} it remains to show that~$f'$ is already a kernel of~$g'$.
+  So let~$u \colon W \to Y'$ be a morphism with~$g' u = 0$.
+  \[
+    \begin{tikzcd}[sep = large]
+        {}
+      & {}
+      & W
+        \arrow[dashed]{d}[right]{u}
+        \arrow[dashed, bend left]{dr}[above right]{0}
+      & {}
+      & {}
+      \\
+        0
+        \arrow{r}
+      & X
+        \arrow{r}[above]{f'}
+        \arrow[equal]{d}
+      & Y'
+        \arrow{r}[above]{g'}
+        \arrow{d}[right]{h'}
+        \arrow[phantom]{dr}[description]{\pb}
+      & Z'
+        \arrow{d}[right]{h}
+        \arrow{r}
+      & 0
+      \\
+        0
+        \arrow{r}
+      & X
+        \arrow{r}[above]{f}
+      & Y
+        \arrow{r}[above]{g}
+      & Z
+        \arrow{r}
+      & 0
+    \end{tikzcd}
+  \]
+  Then
+  \[
+      g h' u
+    = h g' u
+    = h \circ 0
+    = 0
+  \]
+  and hence~$h' u$ factors uniquely over the kernel of~$g$, which is~$f$.
+  So there exists some morphism~$\lambda \colon W \to X$ with~$f \lambda = h' u$.
+  \[
+    \begin{tikzcd}[sep = large]
+        {}
+      & {}
+      & W
+        \arrow{d}[right]{u}
+        \arrow[bend left]{dr}[above right]{0}
+        \arrow[dashed,bend right]{dl}[above left]{\lambda}
+      & {}
+      & {}
+      \\
+        0
+        \arrow{r}
+      & X
+        \arrow{r}[above, near end]{f'}
+        \arrow[equal]{d}
+      & Y'
+        \arrow{r}[above, near start]{g'}
+        \arrow{d}[right]{h'}
+        \arrow[phantom]{dr}[description]{\pb}
+      & Z'
+        \arrow{r}
+      & 0
+      \\
+        0
+        \arrow{r}
+      & X
+        \arrow[from=uur, dashed, bend right = 15, near start, swap, "\lambda", crossing over]
+        \arrow{r}[above]{f}
+      & Y
+        \arrow{r}[above]{g}
+      & Z
+        \arrow{r}
+        \arrow[from=uul, dashed, bend left = 15, near start, "0", crossing over]
+        \arrow[from=u, right, "h"]
+      & 0
+    \end{tikzcd}
+  \]
+  To show that~$u = f' \lambda$, i.e.\ that the above diagram commutes, we again use that the \dash{right}{hand} square is a pullback square:
+  The two parallel morphisms~$u, f' \lambda \colon W \to Y$ coincide if and only if they coincide after composition with both~$g'$ and~$h'$.
+  We have that
+  \[
+      h' u
+    = f \lambda
+    = f \id_X \lambda
+    = h' f' \lambda
+  \]
+  and also
+  \[
+      g' u
+    = 0
+    = g' f' \lambda
+  \]
+  because~$g' f' = 0$.
+  Hence~$u = f' \lambda$, which shows the existence of the desired morphism~$\lambda$.
+  The morphism~$\lambda$ is uniquely determined by the composition~$f' \lambda = u$ because~$f'$ is a monomorphism.
+  This shows the uniqueness of~$\lambda$.
+\end{proof}
+
+
+\begin{remarkdefinition}
+  Let~$\Acat$ be an abelian category and let~$X$ be an object in~$\Acat$.
+  \begin{enumerate}
+    \item
+      For every object~$A \in \Ob(\Acat)$ let
+      \[
+                  X(A)
+        \defined  \Hom_\Acat(A,X) \,.
+      \]
+      The elements of~$X(A)$ are the~\emph{\dash{$A$}{valued} points}\index{points of an object}\index{object!points of} of~$X$.
+    \item
+      We denote by~$x  \inA X$ that~$x$ is an~\dash{$A$}{valued} points of~$X$ for some~$A \in \Ob(\Acat)$.
+    \item
+      Two point~$x, y \inA X$, say~$x \in X(A)$ and~$y \in X(B)$, are \emph{equivalent}\index{equivalence!of points of an object}\index{points of an object!equivalence} if there exists for some object~$C \in \Ob(\Acat)$ epimorphisms~$u \colon C \to A$ and~$v \colon C \to B$ that make the square
+      \[
+        \begin{tikzcd}
+            C
+            \arrow{r}[above]{u}
+            \arrow{d}[left]{v}
+          & A
+            \arrow{d}[right]{x}
+          \\
+            B
+            \arrow{r}[above]{y}
+          & X
+        \end{tikzcd}
+      \]
+      commute.
+      That the points~$x$ and~$y$ are equivalent is denoted by~$x \equiv y$.
+      
+      This concept of equivalence~$\equiv$ defines an equivalence relation on the class of points of~$X$:
+      Every point~$x \inA X$, say~$x \in X(A)$, is equivalent to itself because square
+      \[
+        \begin{tikzcd}
+            A
+            \arrow{r}[above]{\id_A}
+            \arrow{d}[left]{\id_A}
+          & A
+            \arrow{d}[right]{x}
+          \\
+            A
+            \arrow{r}[above]{x}
+          & X
+        \end{tikzcd}
+      \]
+      commutes.
+      The relation~$\equiv$ is symmetric because the definition of~$x \equiv y$ is symmetric in~$x$ and~$y$.
+      Let~$x, y, z \inA X$, say
+      \[
+        x \in X(A) \,,
+        \quad
+        y \in X(B) \,,
+        \quad
+        z \in X(C) \,,
+      \]
+      with~$x \equiv y$ and~$y \equiv z$.
+      Let
+      \[
+        u \colon D \to A \,,
+        \quad
+        v \colon D \to B \,,
+        \quad
+        r \colon E \to B \,,
+        \quad
+        s \colon E \to C \,,
+      \]
+      be epimorphism that make the squares
+      \[
+        \begin{tikzcd}
+            D
+            \arrow{r}[above]{u}
+            \arrow{d}[left]{v}
+          & A
+            \arrow{d}[left]{x}
+          \\
+            B
+            \arrow{r}[above]{y}
+          & X
+        \end{tikzcd}
+        \qquad\text{and}\qquad
+        \begin{tikzcd}
+            E
+            \arrow{r}[above]{r}
+            \arrow{d}[left]{s}
+          & B
+            \arrow{d}[left]{y}
+          \\
+            C
+            \arrow{r}[above]{z}
+          & X
+        \end{tikzcd}
+      \]
+      commute.
+      Together with the pullback square
+      \[
+        \begin{tikzcd}
+            F
+            \arrow[dashed]{r}[above]{r'}
+            \arrow[dashed]{d}[left]{v'}
+            \arrow[phantom]{dr}[description]{\pb}
+          & D
+            \arrow{d}[left]{v}
+          \\
+            E
+            \arrow{r}[above]{r}
+          & B
+        \end{tikzcd}
+      \]
+      we get the following commutative diagram:
+      \[
+        \begin{tikzcd}[sep = large]
+            F
+            \arrow[dashed]{r}[above]{r'}
+            \arrow[dashed]{d}[left]{v'}
+            \arrow[phantom]{dr}[description]{\pb}
+          & D
+            \arrow{r}[above]{u}
+            \arrow{d}[left]{v}
+          & A
+            \arrow{d}[left]{x}
+          \\
+            E
+            \arrow{r}[above]{r}
+            \arrow{d}[left]{s}
+          & B
+            \arrow{r}[above]{y}
+            \arrow{d}[left]{y}
+          & X
+            \arrow[dashed]{d}[left]{\id_X}
+          \\
+            C
+            \arrow{r}[above]{z}
+          & X
+            \arrow[dashed]{r}[above]{\id_X}
+          & X
+        \end{tikzcd}
+      \]
+      The morphisms~$v'$ and~$r'$ are epimorphisms by \cref{mono epi under pull push} because the morphisms~$v$ and~$r$ are epimorphisms.
+      The compositions~$u r' \colon F \to A$ and~$s v' \colon F \to C$ are therefore epimorphisms, and they make the square
+      \[
+        \begin{tikzcd}[sep = large]
+            F
+            \arrow{r}[above]{u r'}
+            \arrow{d}[left]{s v'}
+          & A
+            \arrow{d}[left]{x}
+          \\
+            C
+            \arrow{r}[above]{z}
+          & X
+        \end{tikzcd}
+      \]
+      commute.
+      This shows that also~$x \equiv z$.
+    \item
+      Let~$0$ be the zero morphism~$0_\Acat \to X$.
+      It holds for every point~$x \inA X$ that~$x \equiv 0$ if and only if there exists an epimorphism~$u \colon B \to A$ that makes the square
+      \[
+        \begin{tikzcd}
+            B
+            \arrow{r}[above]{v}
+            \arrow{d}
+          & A
+            \arrow{d}[right]{x}
+          \\
+            0
+            \arrow{r}
+          & X
+        \end{tikzcd}
+      \]
+      commute (because the zero morphism~$B \to 0$ is an epimorphism), i.e.\ such that~$xv = 0$.
+      It then follows that~$x = 0$ because~$v$ is an epimorphism.;
+      and if on the other hand~$x = 0$ then we can choose~$B = A$ and~$v = \id_A$.
+      This shows that~$x \equiv 0$ if and only if~$x$ is the zero morphism~$A \to X$.
+      
+      This shows that the zero morphisms~$A \to X$ with~$A \in \Ob(\Acat)$ all give the same point of~$X$, which we will denote by~$0 \inA X$.
+    \item
+      Let~$Y \in \Ob(\Acat)$ be another object and let~$f \colon X \to Y$ be a morphism.
+      Then~$f$ induces for every~$A \in \Ob(\Acat)$ a map
+      \[
+                X(A)
+        \to     Y(A) \,,
+        \quad   x
+        \mapsto fx \,.
+      \]
+      If~$x, y \inA X$ with~$x \equiv y$ then also~$fx \equiv fy$:
+      If~$x \in X(A)$ and~$y \in X(B)$ then there exist epimorphisms~$u \colon C \colon A$ and~$v \colon C \to B$ which make the square
+      \[
+        \begin{tikzcd}
+            C
+            \arrow[dashed]{r}[above]{u}
+            \arrow[dashed]{d}[left]{v}
+          & A
+            \arrow{d}[right]{x}
+          \\
+            B
+            \arrow{r}[above]{y}
+          & X
+        \end{tikzcd}
+      \]
+      commute.
+      We then get the following commutative diagram:
+      \[
+        \begin{tikzcd}
+            C
+            \arrow{r}[above]{u}
+            \arrow{d}[left]{v}
+          & A
+            \arrow[dashed, bend left]{ddr}[above right]{fx}
+            \arrow{d}[left]{x}
+          & {}
+          \\
+            B
+            \arrow{r}[above]{y}
+            \arrow[dashed, bend right]{drr}[below left]{fy}
+          & X
+            \arrow{dr}[above right]{f}
+          & {}
+          \\
+            {}
+          & {}
+          & Y
+        \end{tikzcd}
+      \]
+      The commutativity of the outer square
+      \[
+        \begin{tikzcd}
+            C
+            \arrow[dashed]{r}[above]{u}
+            \arrow[dashed]{d}[left]{v}
+          & A
+            \arrow{d}[right]{fx}
+          \\
+            B
+            \arrow{r}[above]{fy}
+          & Y
+        \end{tikzcd}
+      \]
+      shows that~$fx \equiv fy$.
+  \end{enumerate}
+\end{remarkdefinition}
+
+
+\begin{remark*}
+  Let~$\Acat$ be an abelian category and let~$X$ be an object in~$\Acat$.
+  
+  If~$x \inA X$, say~$x \in X(A)$, and~$u \colon A' \to A$ is an epimorphism, then~$x \equiv xu$.
+  This follows from the commutativity of the following square:
+  \[
+    \begin{tikzcd}
+        A'
+        \arrow{r}[above]{u}
+        \arrow{d}[left]{\id_{A'}}
+      & A
+        \arrow{d}[right]{x}
+      \\
+        A'
+        \arrow{r}[above]{xu}
+      & X
+    \end{tikzcd}
+  \]
+  
+  The equivalence relation~$\equiv$ is already determined by this property:
+  Let~$\equiv'$ be the equivalence relation on the class of points of~$X$ that is generated by~$x \equiv' y$ for~$x, y \inA X$ whenever there exist an epimorphism~$u$ with~$y = xu$.
+  Then the equivalence relations~$\equiv$ and $\equiv'$ coincide.
+  
+  Indeed, we have seen above that the equivalence relation~$\equiv$ is finer than the equivalence relation~$\equiv'$.
+  Suppose on the other hand  that $x, y \inA X$ are points with~$x \equiv y$, say~$x \in X(A)$ and~$y \in X(B)$.
+  Then let~$u \colon C \to A$ and~$v \colon C \to B$ be epimorphisms that make the square
+  \[
+    \begin{tikzcd}
+        C
+        \arrow{r}[above]{u}
+        \arrow{d}[left]{v}
+      & A
+        \arrow{d}[right]{x}
+      \\
+        B
+        \arrow{r}[above]{y}
+      & X
+    \end{tikzcd}
+  \]
+  commute.
+  Then
+  \[
+            x
+    \equiv' x u 
+    =       y v
+    \equiv' y \,.
+  \]
+  This shows that the equivalence relation~$\equiv'$ is finer than the equivalence relation~$\equiv$.
+\end{remark*}
+
+
+\begin{theorem}[Rules for diagram chase]
+  \label{rules for diagram chase}
+  Let~$\Acat$ be an abelian category.
+  \begin{enumerate}
+    \item
+      For a morphism~$f \colon X \to Y$ in~$\Acat$ the following three conditions are equivalent:
+      \begin{enumerate}
+        \item
+          The morphism~$f$ is a monomorphism.
+        \item
+          It follows for all~$x, x' \inA X$ from~$fx \equiv fx'$ that~$x \equiv x'$.
+        \item
+          It follows for every~$z \inA X$ from~$fz \equiv 0$ that~$z \equiv 0$.
+      \end{enumerate}
+    \item
+      For a morphism~$g \colon Y \to Z$ in~$\Acat$ the following two conditions are equivalent:
+      \begin{enumerate}
+        \item
+          The morphism~$g$ is an epimorphism.
+        \item
+          There exists for every~$z \inA Z$ some~$y \inA Y$ with~$gy \equiv z$.
+      \end{enumerate}
+    \item
+      For a sequence~$X \xto{f} Y \xto{g} Z$ in~$\Acat$ the following two conditions are equivalent:
+      \begin{enumerate}
+        \item
+          The sequence~$X \xto{f} Y \xto{g} Z$ is exact.
+        \item
+          It holds that~$gf = 0$ and there exists for every~$y \inA Y$ with~$gy \equiv 0$ some~$x \inA X$ with~$fx \equiv y$.
+      \end{enumerate}
+    \item
+      \label{difference element}
+      Let~$f \colon X \to Y$ be a morphism in~$\Acat$ and let~$x, x' \inA X$ be two points with~$fx \equiv fx'$.
+      Then there exists a point~$\tilde{x} \inA X$ such that
+      \begin{enumerate}
+        \item
+          $f \tilde{x} \equiv 0$, and
+        \item
+          it holds for every morphism~$h \colon X \to W$ that
+          \begin{itemize}
+            \item
+              if~$hx' \equiv 0$ then~$h \tilde{x} \equiv hx$, and
+            \item
+              if~$hx \equiv 0$ then~$h \tilde{x} \equiv -hx'$.
+          \end{itemize}
+      \end{enumerate}
+  \end{enumerate}
+\end{theorem}
+
+
+\begin{notationnonum}
+  The morphism~$\tilde{x}$ from part~\ref*{difference element} of \cref{rules for diagram chase} is denoted by~$x - x'$.
+\end{notationnonum}
+
+
+\begin{proof}
+  \renewcommand{\qedsymbol}{}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Suppose that~$f$ is a monomorphism and let~$x, x' \inA$ be two points with~$fx \equiv fx'$, say~$x \in X(A)$ and~$x' \in X(A')$.
+      Then there exist epimorphisms~$u \colon B \to A$ and~$v \colon B \to A'$ that make the square
+      \[
+        \begin{tikzcd}
+            B
+            \arrow{rr}[above]{u}
+            \arrow{dd}[left]{v}
+          & {}
+          & A
+            \arrow{d}[right]{x}
+          \\
+            {}
+          & {}
+          & X
+            \arrow{d}[right]{f}
+          \\
+            A'
+            \arrow{r}[above]{x'}
+          & X
+            \arrow{r}[above]{f}
+          & Y
+        \end{tikzcd}
+      \]
+      commute, i.e.\ such that~$f x u = f x' v$.
+      It follows from~$f$ being a monomorphism that~$x u = x' v$, i.e.\ that the square
+      \[
+        \begin{tikzcd}
+            B
+            \arrow{r}[above]{u}
+            \arrow{d}[left]{v}
+          & A
+            \arrow{d}[right]{x}
+          \\
+            A'
+            \arrow{r}[above]{x'}
+          & X
+        \end{tikzcd}
+      \]
+      commutes.
+      This shows that~$x \equiv x'$.
+      
+      Suppose that it follows for all points~$x, x' \inA X$ from~$f x \equiv f x'$ that~$x \equiv x'$, and let~$z \inA X$ with~$f z \equiv 0$.
+      Then~$fz \equiv 0 = f \circ 0$ and hence~$z \equiv 0$.
+      
+      Suppose lastly that~$z \equiv 0$ for every~$z \inA X$ with~$fz \equiv 0$.
+      It then follows for every~$x \inA X$ that
+      \[
+                  fx = 0
+        \implies  fx \equiv 0
+        \implies  x \equiv 0
+        \implies  x = 0 \,.
+      \]
+      This shows that~$\ker(f) = 0$ and hence that~$f$ is a monomorphism.
+    \item
+      Suppose that~$g$ is an epimorphism and let~$z \inA Z$.
+      We consider the following pullback square:
+      \[
+        \begin{tikzcd}
+            A'
+            \arrow{r}[above]{g'}
+            \arrow{d}[left]{y}
+            \arrow[phantom]{dr}[description]{\pb}
+          & A
+            \arrow{d}[right]{z}
+          \\
+            Y
+            \arrow{r}[above]{g}
+          & Z
+        \end{tikzcd}
+      \]
+      The morphism~$g'$ is by \cref{mono epi under pull push} again an epimorphism because~$g$ is an epimorphism.
+      It therefore holds that
+      \[
+                z
+        \equiv  z g'
+        =       g y \,.
+      \]
+      
+      Suppose on the other hand that for every point~$z \inA Z$ there exists some~$y \inA Y$ with~$gy \equiv z$.
+      By choosing~$z = \id_Z$ we find that there exists some~$y \inA Y$ with ~$gy \equiv \id_Z$, say~$y \in X(A)$.
+      Then exist epimorphisms~$u \colon B \to Z$ and~$v \colon B \to A$ that make the square
+      \[
+        \begin{tikzcd}
+            B
+            \arrow{r}[above]{u}
+            \arrow{d}[left]{v}
+          & Z
+            \arrow{d}[right]{\id_Z}
+          \\
+            A
+            \arrow{r}[above]{gy}
+          & Z
+        \end{tikzcd}
+      \]
+      commute.
+      The composition~$gyv = u$ is therefore an epimorphism, hence the morphism~$g$ is an epimorphism.
+  \end{enumerate}
+  \lecturend{13}
+  
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

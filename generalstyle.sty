@@ -1,4 +1,4 @@
-% all the packages
+ %all the packages
 \usepackage{gitinfo2}   % git information on the title page
 \usepackage[backend=biber,style=alphabetic, dateabbrev=false, urldate=long]{biblatex} %for bibliography
 \usepackage{amsmath, amssymb, amsthm, mathtools}      % general math stuff
@@ -29,6 +29,12 @@
 
 % the file for the refercences
 \addbibresource{references.bib}
+
+
+% more space for page numbers in the index, default is 1.55
+\renewcommand{\@pnumwidth}{2em}
+
+
 % no unplaned surprises with \cite
 \DeclareFieldFormat{postnote}{#1}
 \DeclareFieldFormat{multipostnote}{#1}
@@ -112,6 +118,7 @@
 \declaretheorem[sibling=extra,name=Notation\textsuperscript{\extrasymbol}]{notation*}
 \declaretheorem[numbered=no,name=Notation]{notationnonum}
 \declaretheorem[sibling=everything]{proposition}
+\declaretheorem[sibling=extra,name=Proposition]{proposition*}
 \declaretheorem[sibling=everything]{remark}
 \declaretheorem[sibling=extra,name=Remark\textsuperscript{\extrasymbol}]{remark*}
 \declaretheorem[numbered=no,name=Remark]{remarknonum}
@@ -188,11 +195,16 @@
 \newcommand{\defines}{\eqqcolon}
 \newcommand{\del}{\partial}
 \newcommand{\diag}{\Delta}
+\newcommand{\inA}{\in_\Acat}
+\newcommand{\xfrom}{\xleftarrow}
 \newcommand{\xto}{\xrightarrow}
+\newcommand{\xlongfrom}{\xlongleftarrow}
 \newcommand{\xlongto}{\xlongrightarrow}
 \newcommand{\longto}{\longrightarrow}
 \newcommand{\inclusion}{\hookrightarrow}
+\newcommand{\pb}{\lrcorner}
 \newcommand{\projection}{\twoheadrightarrow}
+\newcommand{\po}{\ulcorner}
 
 
 % numbers and fields
