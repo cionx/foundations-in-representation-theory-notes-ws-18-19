@@ -75,6 +75,39 @@
 \end{example}
 
 
+\begin{example*}
+  \label{morphism category is a functor category}
+  Let~$\Ccat$ be a category and let~$2$ denote the category which consists of two objects~$0$ and~$1$, and where exist precisely one \dash{non}{idenity} morphism, namely~$\alpha \colon 0 \to 1$.
+  The category~$2$ may be visualized as follows:
+  \[
+    \begin{tikzcd}
+        1
+        \arrow{r}[above]{\alpha}
+      & 2
+    \end{tikzcd}
+  \]
+  
+  A functor~$F \colon 2 \to \Ccat$ is the same as a choice of objects~$F(X), F(Y) \in \Ob(\Ccat)$ together with a morphism~$F(\alpha) \colon F(X) \to F(Y)$.
+  Given two functors~$F, G \colon 2 \to \Ccat$, a morphism~$\eta \colon F \to G$ consists of two morphisms~$\eta_1 \colon F(1) \to G(1)$ and~$\eta_2 \colon F(2) \to G(2)$ that make the square
+  \[
+    \begin{tikzcd}
+        F(1)
+        \arrow{r}[above]{\eta_1}
+        \arrow[dashed]{d}[left]{F(\alpha)}
+      & F(2)
+        \arrow[dashed]{d}[right]{G(\alpha)}
+      \\
+        G(1)
+        \arrow{r}[above]{\eta_2}
+      & G(2)
+    \end{tikzcd}
+  \]
+  commute.
+  
+  We see from this explicit description of the functor category~$\Fun(2, \Ccat)$ that it is equivalent (even isomorphic) to the morphism category~$\Mor(\Ccat)$.
+\end{example*}
+
+
 \begin{definition}
   Let~$\Ccat$ and~$\Dcat$ betwo categories.
   For every object~$X \in \Ob(\Ccat)$ the \emph{evaluation}\index{evaluation}\index{functor!evaluation} at~$X$ is the functor~$\ev_X \colon \Fun(\Ccat, \Dcat) \to \Dcat$ given by

@@ -212,6 +212,70 @@
 \end{example}
 
 
+\begin{example*}
+  \label{morphism category}
+  Let~$\Ccat$ be a category.
+  The morphism category~$\Mor(\Ccat)$ is defined as follows:
+  \begin{itemize}
+    \item 
+      The elements of~$\Mor(\Ccat)$ are tripels~$(X,f,Y)$ consisting of two objects~$X, Y \in \Ob(\Ccat)$ and a morphism~$f \colon X \to Y$;
+      in other words, the objects of~$\Mor(\Ccat)$ are morphisms in~$\Ccat$.
+    \item
+      A morphism~$(X, f, Y) \to (X', f', Y')$ in~$\Mor(\Ccat)$ is a pair~$(g, g')$ consisting of two morphisms~$g \colon X \to X'$ and~$g' \colon Y \to Y'$ that make the square
+      \[
+        \begin{tikzcd}
+            X
+            \arrow{r}[above]{f}
+            \arrow{d}[left]{g}
+          & Y
+            \arrow{d}[right]{g'}
+          \\
+            X'
+            \arrow{r}[above]{f'}
+          & Y'
+        \end{tikzcd}
+      \]
+      commute.
+    \item
+      The composition of two such morphisms
+      \[
+                (g,g')
+        \colon  (X,f,Y)
+        \to     (X',f,Y')
+        \quad\text{and}\quad
+                (h,h')
+        \colon  (X',f',Y')
+        \to     (X'',f'',Y'')
+      \]
+      is given by~$(h,h') \circ (g,g') = (h \circ g, h', g')$.
+      This is again a morphism in~$\Mor(\Ccat)$ by the commutativity of the following diagram:
+      \[
+        \begin{tikzcd}
+            X
+            \arrow{r}[above]{f}
+            \arrow{d}[left]{g}
+            \arrow[dashed, bend right = 60]{dd}[left]{g \circ h}
+          & Y
+            \arrow{d}[right]{g'}
+            \arrow[dashed, bend left = 60]{dd}[right]{h' \circ g'}
+          \\
+            X'
+            \arrow{r}[above]{f'}
+            \arrow{d}[left]{h}
+          & Y'
+            \arrow{d}[right]{h'}
+          \\
+            X''
+            \arrow{r}[above]{f''}
+          & Y''
+        \end{tikzcd}
+      \]
+    \item
+      The identity of an object~$(X,f,Y) \in \Ob(\Mor(\Ccat))$ is given by~$\id_{(X,f,Y)} = (\id_X, \id_Y)$.
+  \end{itemize}
+\end{example*}
+
+
 \begin{definition}
   Let~$\Ccat$ be a category.
   The \emph{opposite category}\index{opposite!category}~$\Ccat^\op$ results from~$\Ccat$ by formally reversing the direction of all morphisms:

@@ -146,6 +146,28 @@
 \end{example}
 
 
+\begin{example*}
+  \label{source target functors}
+  Let~$\Ccat$ be a category and let~$\Mor(\Ccat)$ be the morphism category of~$\Ccat$ from \cref{morphism category}.
+  Then there exist two functors~$S, T \colon \Mor(\Ccat) \to \Ccat$:
+  \begin{itemize}
+    \item
+      The functor~$S$ assigns to each object~$(X,f,Y) \in \Ob(\Mor(\Ccat))$, which represents a morphism~$f \colon X \to Y$ in the category~$\Ccat$, its source
+      \[
+                  S(X,f,Y)
+        \defined  X
+      \]
+      and to each morphism~$(h,h') \colon (X,f,Y) \to (X',f',Y')$ its first component
+      \[
+                  S(h,h')
+        \defined  h \colon X \to X' \,.
+      \]
+    \item
+      The functor~$T$ assigns to each object~$(X,f,Y) \in \Ob(\Mor(\Ccat))$ its target~$T(f)$, and to each morphism~$(h,h') \colon (h,h') \colon (X,f,Y) \to (X',f',Y')$ its second component~$T(h,h') \defined h' \colon Y \to Y'$.
+  \end{itemize}
+\end{example*}
+
+
 \begin{example}
   Let~$\Ccat$ be a category.
   \begin{enumerate}
