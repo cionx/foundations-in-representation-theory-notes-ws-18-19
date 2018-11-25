@@ -385,6 +385,499 @@
 % TODO: Add example: divisible abelian groups.
 
 
+\begin{remark*}[Functoriality of the (co)kernel]
+  \label{functoriality of (co)kernel}
+  Let~$\Ccat$ be a category that is preadditive, or that has a zero object.
+  \begin{enumerate}
+    \item
+      Let~$f \colon X \to Y$ and~$f' \colon X' \to Y'$ be two morphisms in~$\Ccat$ that admit kernels~$k \colon K \to X$ and~$k' \colon K' \to X'$.
+      Then for any pair~$(\varphi,\varphi'')$ of morphisms~$\varphi \colon X \to Y$ and~$\varphi'' \colon Y \to Y''$ that make the square
+      \[
+        \begin{tikzcd}
+          & X
+            \arrow{r}[above]{f}
+            \arrow[dashed]{d}[left]{\varphi}
+          & Y
+            \arrow[dashed]{d}[right]{\varphi''}
+          \\
+          & X'
+            \arrow{r}[above]{f'}
+          & Y'
+        \end{tikzcd}
+      \]
+      commute, there exists a unique morphism~$\varphi' \colon K \to K'$ that makes the diagram
+      \[
+        \begin{tikzcd}
+            K
+            \arrow{r}[above]{k}
+            \arrow[dashed]{d}[left]{\varphi'}
+          & X
+            \arrow{r}[above]{f}
+            \arrow{d}[left]{\varphi}
+          & Y
+            \arrow{d}[right]{\varphi''}
+          \\
+            K'
+            \arrow{r}[above]{k'}
+          & X'
+            \arrow{r}[above]{f'}
+          & Y'
+        \end{tikzcd}
+      \]
+      commute.
+      Indeed, it holds for the composition~$\varphi \circ k \colon K \to X'$ that
+      \[
+          f' \circ \varphi \circ k
+        = \varphi'' \circ f \circ k
+        = \varphi'' \circ 0
+        = 0
+      \]
+      And hence there exists a unique morphism~$\varphi' \colon K \to X$ with~$k' \circ \varphi' = \varphi \circ k$ by the universal property of the kernel~$k' \colon X' \to Y'$ of~$f'$.
+      
+      This induced morphism is functorial in the following sense:
+      \begin{itemize}
+        \item
+          Let~$f \colon X \to Y$ be a morphism in~$\Ccat$ that admits a kernel~$k \colon K \to X$.
+          Then the square
+          \[
+            \begin{tikzcd}
+                X
+                \arrow{r}[above]{f}
+                \arrow[dashed]{d}[left]{\id_X}
+              & Y
+                \arrow[dashed]{d}[right]{\id_Y}
+              \\
+                X
+                \arrow{r}[above]{f}
+              & Y
+            \end{tikzcd}
+          \]
+          commutes.
+          The induced morphism~$K \to K$ is given by the identity~$\id_K$ because the diagram
+          \[
+            \begin{tikzcd}
+                K
+                \arrow{r}[above]{k}
+                \arrow[dashed]{d}[left]{\id_K}
+              & X
+                \arrow{r}[above]{f}
+                \arrow{d}[left]{\id_X}
+              & Y
+                \arrow{d}[right]{\id_Y}
+              \\
+                K
+                \arrow{r}[above]{k}
+              & X
+                \arrow{r}[above]{f}
+              & Y
+            \end{tikzcd}
+          \]
+          commutes.
+        \item
+          Let
+          \[
+            f \colon X \to Y \,,
+            \quad
+            f' \colon X' \to Y' \,,
+            \quad
+            f'' \colon X'' \to Y''
+          \]
+          be morphisms in~$\Ccat$ that admit kernels
+          \[ 
+            k \colon K \to X \,,
+            \quad
+            k' \colon K' \to X' \,,
+            \quad
+            k'' \colon K'' \to X'' \,.
+          \]
+          Let
+          \[
+            \varphi \colon X \to Y \,,
+            \varphi'' \colon X' \to Y'
+            \quad\text{and}\quad
+            \psi \colon X' \to X'' \,,
+            \psi'' \colon Y' \to Y''
+          \]
+          be morphisms in~$\Ccat$ that makes the squares
+          \[
+            \begin{tikzcd}
+              & X
+                \arrow{r}[above]{f}
+                \arrow[dashed]{d}[left]{\varphi}
+              & Y
+                \arrow[dashed]{d}[right]{\varphi''}
+              \\
+              & X'
+                \arrow{r}[above]{f'}
+              & Y'
+            \end{tikzcd}
+            \qquad\text{and}\qquad
+            \begin{tikzcd}
+              & X'
+                \arrow{r}[above]{f}
+                \arrow[dashed]{d}[left]{\psi}
+              & Y'
+                \arrow[dashed]{d}[right]{\psi''}
+              \\
+              & X''
+                \arrow{r}[above]{f'}
+              & Y''
+            \end{tikzcd}
+          \]
+          commute.
+          Then for
+          \[
+                      \theta
+            \defined  \psi \circ  \varphi
+            \quad\text{and}\quad
+                      \theta''
+            \defined  \psi'' \circ \varphi''
+          \]
+          the square
+          \[
+            \begin{tikzcd}
+              & X
+                \arrow{r}[above]{f}
+                \arrow[dashed]{d}[left]{\theta}
+              & Y
+                \arrow[dashed]{d}[right]{\theta''}
+              \\
+              & X''
+                \arrow{r}[above]{f'}
+              & Y''
+            \end{tikzcd}
+          \]
+          again commutes by the commutativity of the following diagram:
+          \[
+            \begin{tikzcd}
+                X
+                \arrow{r}[above]{f}
+                \arrow{d}[left]{\varphi}
+                \arrow[dashed, bend right = 60]{dd}[left]{\theta}
+              & Y
+                \arrow{d}[right]{\varphi''}
+                \arrow[dashed, bend left = 60]{dd}[right]{\theta''}
+              \\
+                X'
+                \arrow{r}[above]{f'}
+                \arrow{d}[left]{\psi}
+              & Y'
+                \arrow{d}[right]{\psi''}
+              \\
+                X''
+                \arrow{r}[above]{f''}
+              & Y''
+            \end{tikzcd}
+          \]
+          Let
+          \[
+            \varphi' \colon K \to K' \,,
+            \quad
+            \psi' \colon K' \to K'' \,,
+            \quad
+            \theta' \colon K \to K''
+          \]
+          be the induced morphisms.
+          Then
+          \[
+              \theta'
+            = \psi' \circ \varphi'  \,.
+          \]
+          Indeed, we have the following commutative diagram:
+          \[
+            \begin{tikzcd}[sep = huge]
+                K
+                \arrow{r}[above]{k}
+                \arrow{d}[left]{\varphi'}
+              & X
+                \arrow{r}[above]{f}
+                \arrow{d}[left]{\varphi}
+              & Y
+                \arrow{d}[right]{\varphi''}
+              \\
+                K'
+                \arrow{r}[above]{k'}
+                \arrow{d}[left]{\psi'}
+              & X'
+                \arrow{r}[above]{\varphi'}
+                \arrow{d}[left]{\psi}
+              & Y'
+                \arrow{d}[right]{\psi''}
+              \\
+                K''
+                \arrow{r}[above]{k''}
+                \arrow[from=uu, dashed, bend right = 45, crossing over, "\theta'" left, near start]
+              & X''
+                \arrow{r}[above]{\varphi''}
+                \arrow[from=uu, dashed, bend right = 45, crossing over, "\theta" left, near start]
+              & Y''
+                \arrow[from=uu, dashed, bend right = 45, crossing over, "\theta''" left, near start]
+            \end{tikzcd}
+          \]
+          The commutativity of the subdiagram
+          \[
+            \begin{tikzcd}
+                K
+                \arrow{r}[above]{k}
+                \arrow[dashed]{d}[left]{\theta'}
+              & X
+                \arrow{r}[above]{f}
+                \arrow{d}[left]{\theta}
+              & Y
+                \arrow[dashed]{d}[right]{\theta''}
+              \\
+                K''
+                \arrow{r}[above]{k''}
+              & X'
+                \arrow{r}[above]{f''}
+              & Y''
+            \end{tikzcd}
+          \]
+          shows the claimed equality.
+      \end{itemize}
+    \item
+      For cokernels the dual construction works:
+      
+      Suppose that~$f \colon X \to Y$ and~$f' \colon X' \to Y'$ are morphisms in~$\Ccat$ that admit cokernels~$c \colon Y \to C$ and~$c' \colon Y' \to C'$.
+      If~$\varphi' \colon X \to X'$ and~$\varphi \colon Y \to Y'$ are morphisms that makes the square
+      \[
+        \begin{tikzcd}
+            X
+            \arrow{r}[above]{f}
+            \arrow[dashed]{d}[left]{\varphi'}
+          & Y
+            \arrow[dashed]{d}[right]{\varphi}
+          \\
+            X'
+            \arrow{r}[above]{f'}
+          & Y'
+        \end{tikzcd}
+      \]
+      commute, then there exist a unique morphism~$\varphi'' \colon C \to C'$ that makes the diagram
+      \[
+        \begin{tikzcd}
+            X
+            \arrow{r}[above]{f}
+            \arrow{d}[left]{\varphi'}
+          & Y
+            \arrow{r}[above]{c}
+            \arrow{d}[right]{\varphi}
+          & C
+            \arrow[dashed]{d}[right]{\varphi''}
+          \\
+            X'
+            \arrow{r}[above]{f'}
+          & Y'
+            \arrow{r}[above]{c'}
+          & C'
+        \end{tikzcd}
+      \]
+      commute.
+      This induced morphism is functorial in the following way:
+      \begin{itemize}
+        \item
+          If~$f \colon X \to Y$ is a morphism in~$\Ccat$ that admits a cokernel~$c \colon Y \to C$ then the square
+          \[
+            \begin{tikzcd}
+                X
+                \arrow{r}[above]{f}
+                \arrow[dashed]{d}[left]{\id_X}
+              & Y
+                \arrow[dashed]{d}[right]{\id_Y}
+              \\
+                X
+                \arrow{r}[above]{f}
+              & Y
+            \end{tikzcd}
+          \]
+          commutes, and the induced morphism~$C \to C$ is the identity~$\id_C$.
+        \item
+          Let
+          \[
+            f \colon X \to Y \,,
+            \quad
+            f' \colon X' \to Y' \,,
+            \quad
+            f'' \colon X'' \to Y''
+          \]
+          be morphisms in~$\Ccat$ that admit cokernels
+          \[
+            c \colon Y \to C \,,
+            \quad
+            c' \colon Y' \to C' \,,
+            \quad
+            c'' \colon Y'' \to C'' \,.
+          \]
+          If
+          \[
+            \varphi' \colon X \to X' \,,
+            \varphi \colon Y \to Y'
+            \quad\text{and}\quad
+            \psi' \colon X' \to X'' \,,
+            \psi \colon Y' \to Y''
+          \]
+          are morphisms that make the squares
+          \[
+            \begin{tikzcd}
+                X
+                \arrow{r}[above]{f}
+                \arrow[dashed]{d}[left]{\varphi'}
+              & Y
+                \arrow[dashed]{d}[right]{\varphi}
+              \\
+                X'
+                \arrow{r}[above]{f'}
+              & Y'
+            \end{tikzcd}
+            \qquad\text{and}\qquad
+            \begin{tikzcd}
+                X
+                \arrow{r}[above]{f}
+                \arrow[dashed]{d}[left]{\psi'}
+              & Y
+                \arrow[dashed]{d}[right]{\psi}
+              \\
+                X'
+                \arrow{r}[above]{f'}
+              & Y'
+            \end{tikzcd}
+          \]
+          commute, then for
+          \[
+                      \theta'
+            \defined  \psi' \circ \varphi'
+            \quad\text{and}\quad
+                      \theta
+            \defined  \psi \circ \varphi
+          \]
+          the square
+          \[
+            \begin{tikzcd}
+                X
+                \arrow{r}[above]{f}
+                \arrow[dashed]{d}[left]{\psi' \circ \varphi'}
+              & Y
+                \arrow[dashed]{d}[right]{\psi \circ \varphi}
+              \\
+                X''
+                \arrow{r}[above]{f''}
+              & Y''
+            \end{tikzcd}
+          \]
+          again commutes.
+          It then holds for the induced morphisms
+          \[
+            \varphi'' \colon C \to C' \,,
+            \quad
+            \psi'' \colon C' \to C'' \,,
+            \quad
+            \theta'' \colon C \to C''
+          \]
+          that~$\theta'' = \psi'' \circ \varphi''$.
+      \end{itemize}
+    \item
+      Suppose that the category~$\Ccat$ has kernels.
+      The above \enquote{functoriality} of the kernel can be used to construct a functor~$\Ker \colon \Mor(\Ccat) \to \Mor(\Ccat)$, where~$\Mor(\Ccat)$ denotes the morphism category of~$\Ccat$ from \cref{morphism category}:
+      For an object~$(X,f,Y) \in \Mor(\Ccat)$ we choose%
+      \footnote{This choice can be avoided by working with \emph{anafunctors} instead of just functors, as explained in~\cite{avoidingchoice}.}
+      a kernel~$k \colon K \to X$ of~$f$ and set~$\Ker(f) \defined (K,k,X)$.
+      For a morphism~$(g,g') \colon (X,f,Y) \to (X,f',Y)$ in~$\Mor(\Ccat)$ we get the following commutative square:
+      \[
+        \begin{tikzcd}
+            X
+            \arrow{r}[above]{f}
+            \arrow[dashed]{d}[left]{g}
+          & Y
+            \arrow[dashed]{d}[right]{g'}
+          \\
+            X'
+            \arrow{r}[above]{f'}
+          & Y'
+        \end{tikzcd}
+      \]
+      For the choosen kernels~$\Ker(X,f,Y) = (K,k,X)$ and~$\Ker(X',f,Y') = (K',k',X')$ we set~$\Ker((h,h')) = (K,h'',K')$ where~$h'' \colon K \to K'$ is the unique morphism that makes the diagram
+      \[
+        \begin{tikzcd}
+            K
+            \arrow{r}[above]{k}
+            \arrow[dashed]{d}[left]{h''}
+          & X
+            \arrow{r}[above]{f}
+            \arrow{d}[left]{g}
+          & Y
+            \arrow{d}[right]{g'}
+          \\
+            K'
+            \arrow{r}[above]{k'}
+          & X'
+            \arrow{r}[above]{f'}
+          & Y'
+        \end{tikzcd}
+      \]
+      commute.
+      The above \enquote{functoriality} of the kernel entails that~$\Ker$ is a functor~$\Ker \colon \Mor(\Ccat) \to \Mor(\Ccat)$.
+      
+      If the category~$\Ccat$ has cokernels then one can similarly use the above \enquote{functoriality} of the cokernel to construct a functor~$\Coker \colon \Mor(\Ccat) \to \Mor(\Ccat)$.
+    \item
+      Suppose that the category~$\Ccat$ has kernels.
+      The data of the constructed kernel functor~$\Ker \colon \Mor(\Ccat) \to \Mor(\Ccat)$ can also arrenged in a different way.
+      Namely that of a kernel functor~$\ker \colon \Mor(\Ccat) \to \Ccat$ together with a natural transformation~$k \colon S \to \ker$.
+      
+      Let~$S \colon \Mor(\Ccat) \to \Ccat$ be the source-functor from \cref{source target functors}.
+      The functor~$\Ker$ assigns to each morphism~$f \colon X \to Y$ in~$\Ccat$ a triple~$(\ker(f), k_f, X)$ such that
+      \[
+                k_f
+        \colon  \ker(f)
+        \to     X
+      \]
+      is a kernel of~$f$.
+      We furthermore get for every commutative square
+      \[
+        \begin{tikzcd}
+            X
+            \arrow{r}[above]{f}
+            \arrow[dashed]{d}[left]{\varphi}
+          & Y
+            \arrow[dashed]{d}[right]{\varphi''}
+          \\
+            X'
+            \arrow{r}[above]{f'}
+          & Y'
+        \end{tikzcd}
+      \]
+      in~$\Ccat$ that~$\Ker((\varphi,\varphi''))$ is the triple~$(\ker(f), \ker(\varphi,\varphi''), \ker(f'))$ where
+      \[
+                \ker(\varphi, \varphi'')
+        \colon  \ker(f)
+        \to     \ker(f')
+      \]
+      is the unique morphism that makes the square
+      \[
+        \begin{tikzcd}
+            \ker(f)
+            \arrow{r}[above]{k_f}
+            \arrow[dashed]{d}[left]{\ker(\varphi, \varphi'')}
+          & X
+            \arrow{r}[above]{f}
+            \arrow{d}[right]{\varphi}
+          & Y
+            \arrow{d}[right]{\varphi''}
+          \\
+            \ker(f')
+            \arrow{r}[above]{k_{f'}}
+          & X'
+            \arrow{r}[above]{f'}
+          & Y'
+        \end{tikzcd}
+      \]
+      commute.
+      In this way we have constructed~$\ker \colon \Mor(\Ccat) \to \Ccat$ together with a natural transformation~$k \colon \ker \to S$.
+      
+      If the category~$\Ccat$ has cokernels, then we can dually encode the data of the cokernel functor~$\Coker \colon \Mor(\Ccat) \to \Mor(\Ccat)$ in form of a functor~$\coker \colon \Mor(\Ccat) \to \Ccat$ together with a natural transformation~$c \colon T \to \coker$, where~$T \colon \Mor(\Ccat) \to \Ccat$ denotes the target-functor from \cref{source target functors}.
+  \end{enumerate}
+\end{remark*}
+
+
 \begin{definition}
   Let~$\Ccat$ be a category that is preadditive, or that has a zero object, and which has kernels and cokernels.
   Let~$f \colon X \to Y$ be a morphism in~$\Ccat$.
