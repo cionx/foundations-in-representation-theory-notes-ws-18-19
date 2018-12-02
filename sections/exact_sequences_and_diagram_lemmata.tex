@@ -12,10 +12,9 @@
   \begin{enumerate}
     \item
       Let~$f \colon X \to Y$ and~$g \colon Y \to Z$ be two composable morphisms in~$\Acat$.
-      
       If~$g f = 0$ then there exists a unique morphism~$\lambda \colon \im(f) \to \ker(g)$ that makes the diagram
       \[
-        \begin{tikzcd}[column sep = large]
+        \begin{tikzcd}[column sep = small, row sep = large]
             X
             \arrow{rr}[above]{f}
             \arrow{dr}[below left]{f'}
@@ -35,7 +34,7 @@
           & {}
         \end{tikzcd}
       \]
-      commute, and~$\lambda$ is a monomorphism.
+      commute, and this morphism is a monomorphism.
       Indeed, it holds that
       \[
           g i f'
@@ -43,9 +42,9 @@
         = 0
       \]
       and hence~$g i = 0$ because~$f'$ is an epimorphism.
-      The existence and uniqueness of~$\lambda$ thus follow from the universal property of the kernel~$\ker(g) \to Y$.
+      The existence and uniqueness of~$\lambda$ thus follow from the universal property of the kernel~$k \colon \ker(g) \to Y$.
       
-      The sequence~$X \xto{f} Y \xto{g} Z$ is \emph{exact}\index{exact sequence} if
+      The sequence~$X \xto{f} Y \xto{g} Z$ is \emph{exact}\index{exact!sequence}\index{sequence!exact} if
       \begin{enumerate}[label=(E\arabic*)]
         \item
           $gf = 0$, and
@@ -65,7 +64,7 @@
         \longto
           \dotsb
       \]
-      of composable morphisms in~$\Acat$ is \emph{exact}\index{exact sequence} if at every position~$i$ for which both an incoming arrow~$f_{i-1} \colon X_{i-1} \to X_i$ and outgoing~$f_i \colon X_i \to X_{i+1}$ exist, the resulting sequence
+      of composable morphisms in~$\Acat$ is \emph{exact}\index{exact sequence} if at every position~$i$ for which both an incoming morphism~$f_{i-1} \colon X_{i-1} \to X_i$ and an outgoing morphism~$f_i \colon X_i \to X_{i+1}$ exist, the resulting sequence
       \[
           X_{i-1}
         \xlongto{f_{i-1}}
@@ -86,7 +85,7 @@
             \xlongto{f}
             Y
           \]
-          is exact if and only if~$f$ is a monomorphism.
+          is exact if and only if the morphism~$f$ is a monomorphism.
         \item
           A sequence of the form
           \[
@@ -96,7 +95,7 @@
             \to
             0
           \]
-          is exact if and only if~$g$ is an epimorphism.
+          is exact if and only if the morphism~$g$ is an epimorphism.
         \item
           A sequence of the form
           \[
@@ -110,14 +109,63 @@
               \to
             0
           \]
-          is exact if and only if~$f$ is a monomorphism,~$g$ is an epimorphism and the canonical morphism~$\im(f) \to \ker(g)$ is an isomorphism.
+          is exact if and only if the morphism~$f$ is a monomorphism, the morphism~$g$ is an epimorphism, and the canonical morphism~$\im(f) \to \ker(g)$ is an isomorphism.
           This is furthermore equivalent to~$f$ being a kernel of~$g$ and~$g$ being a cokernel of~$f$ (at the same time).
       \end{itemize}
   \end{enumerate}
 \end{remarkdefinition}
 
 
+\begin{definition*}
+  Let~$\Acat$ be an abelian category.
+  \begin{enumerate}
+    \item
+      A \emph{short exact sequence}\index{short exact sequence}\index{exact sequence!short}\index{sequence!short exact} in~$\Acat$ is an exact sequence of the form
+      \[
+            0
+        \to X'
+        \to X
+        \to X''
+        \to 0 \,.
+      \]
+    \item
+      A \emph{left exact sequence}\index{left exact!sequence}\index{exact!sequence!left}\index{sequence!left exact} in~$\Acat$ is an exact sequence of the form
+      \[
+            0
+        \to X'
+        \to X
+        \to X'' \,.
+      \]
+    \item
+      A \emph{right exact sequence}\index{right exact!sequence}\index{exact!sequence!right}\index{sequence!right exact} in~$\Acat$ is an exact sequence of the form
+      \[
+            X'
+        \to X
+        \to X''
+        \to 0 \,.
+      \]
+  \end{enumerate}
+\end{definition*}
+
+
+\begin{remark*}
+  \label{language of left and right exact}
+  Let~$\Acat$ be an abelian category.
+  \begin{enumerate}
+    \item
+      Sometimes a sequence~$X' \to X \to X''$ in~$\Acat$ is called \emph{short exact}\index{short exact sequence}\index{exact sequence!short}\index{sequence!short exact} if the corresponding sequence~$0 \to X' \to X \to X'' \to 0$ is short exact.
+      
+      Similarly, a sequence~$X' \to X \to X''$ is sometimes called \emph{left exact}\index{left exact sequence}\index{exact!sequence!left}\index{sequence!left exact} (resp.\ \emph{right exact}\index{right exact sequence}\index{exact!sequence!right}\index{sequence!right exact}) if the sequence~$0 \to X' \to X \to X''$ is (left) exact (resp.\ if the sequence~$X' \to X \to X'' \to 0$ is (right) exact).
+    \item
+      A sequence~$0 \to X' \to X \to X''$ in~$\Acat$ is (left) exact if and only if the morphism~$X' \to X$ is a kernel of the morphism~$X \to X''$.
+      
+      Dually, a sequence~$X' \to X \to X'' \to 0$ is (right) exact if and only if the morphism~$X \to X''$ is a cokernel of the morphism~$X' \to X$.
+  \end{enumerate}
+\end{remark*}
+
+
 \begin{proposition}
+  \label{kernels of pullbacks}
   Let~$\Acat$ be an abelian category and let
   \[
     \begin{tikzcd}[sep = large]
@@ -143,7 +191,7 @@
     \end{tikzcd}
   \]
   be a commutative diagram in~$\Acat$ where the bottom row is exact and the square is a pullback square.
-  Then there exist a unique morphism~$f' \colon X \to Y'$ such that the diagram
+  Then there exists a unique morphism~$f' \colon X \to Y'$ such that the diagram
   \begin{equation}
     \label{resulting pb of ses}
     \begin{tikzcd}[sep = large]
@@ -172,16 +220,16 @@
       & 0
     \end{tikzcd}
   \end{equation}
-  commutes and the upper row
+  commutes and such that the upper row
   \begin{equation}
     \label{upper row}
     0
     \to
-    X
-    \xlongto{f}
-    Y
-    \xlongto{g}
-    Z
+    X'
+    \xlongto{f'}
+    Y'
+    \xlongto{g'}
+    Z'
     \to
     0
   \end{equation}
@@ -197,7 +245,7 @@
   \[
     \begin{tikzcd}[sep = large]
         X
-        \arrow[bend left]{drr}[above right]{0}
+        \arrow[dashed, bend left]{drr}[above right]{0}
         \arrow[bend right]{ddr}[below left]{f}
       & {}
       & {}
@@ -243,7 +291,6 @@
   \]
   commute.
   This means precisely that the morphism~$f'$ makes the diagram~\eqref{resulting pb of ses} commute and satisfies~$g' f' = 0$.
-  
   The morphism~$f$ is a monomorphism because the composition~$h' f' = f$ is a monomorphism.
   
   To show the exactness of the row~\eqref{upper row} it remains to show that~$f'$ is already a kernel of~$g'$.
@@ -291,7 +338,7 @@
     = 0
   \]
   and hence~$h' u$ factors uniquely over the kernel of~$g$, which is~$f$.
-  So there exists some morphism~$\lambda \colon W \to X$ with~$f \lambda = h' u$.
+  So there exists a unique morphism~$\lambda \colon W \to X$ with~$f \lambda = h' u$.
   \[
     \begin{tikzcd}[sep = large]
         {}
@@ -331,7 +378,7 @@
     \end{tikzcd}
   \]
   To show that~$u = f' \lambda$, i.e.\ that the above diagram commutes, we again use that the \dash{right}{hand} square is a pullback square:
-  The two parallel morphisms~$u, f' \lambda \colon W \to Y$ coincide if and only if they coincide after composition with both~$g'$ and~$h'$.
+  The two parallel morphisms~$u, f' \lambda \colon W \to Y'$ coincide if and only if they coincide after composition with both~$g'$ and~$h'$.
   We have that
   \[
       h' u
@@ -352,7 +399,43 @@
 \end{proof}
 
 
-\begin{remarkdefinition}
+\begin{remark*}
+  One can reformulate \cref{kernels of pullbacks}:
+  If
+  \[
+    \begin{tikzcd}
+        0
+        \arrow{r}
+      & X'
+        \arrow{r}[above]{f'}
+        \arrow{d}[right]{h'}
+      & Y'
+        \arrow{r}[above]{g'}
+        \arrow{d}[right]{h}
+        \arrow[phantom]{dr}[description]{\pb}
+      & Z'
+        \arrow{r}
+        \arrow{d}[right]{h''}
+      & 0
+      \\
+        0
+        \arrow{r}
+      & X
+        \arrow{r}[above]{f}
+      & Y
+        \arrow{r}[above]{g}
+      & Z
+        \arrow{r}
+      & 0
+    \end{tikzcd}
+  \]
+  is a commutative diagram with (short) exact rows such that the \dash{right}{hand} square is a pullback square, then~$h' \colon X' \to X$ is an isomorphism.
+  Hence kernels of epimorphisms stay the same under pullbacks.
+% TODO: Explain this in more detail.
+\end{remark*}
+
+
+\begin{remarkdefinition}[label=abstract points]
   Let~$\Acat$ be an abelian category and let~$X$ be an object in~$\Acat$.
   \begin{enumerate}
     \item
@@ -364,13 +447,55 @@
       The elements of~$X(A)$ are the~\emph{\dash{$A$}{valued} points}\index{points of an object}\index{object!points of} of~$X$.
     \item
       We denote by~$x  \inA X$ that~$x$ is an~\dash{$A$}{valued} points of~$X$ for some~$A \in \Ob(\Acat)$.
+  \end{enumerate}
+\end{remarkdefinition}
+
+
+\begin{remark*}
+  \label{motivation for abstract elements}
+  Let~$\Acat$ be an abelian category and let~$f \colon X \to Y$ be a morphism in~$\Acat$.
+  \begin{enumerate}
     \item
-      Two point~$x, y \inA X$, say~$x \in X(A)$ and~$y \in X(B)$, are \emph{equivalent}\index{equivalence!of points of an object}\index{points of an object!equivalence} if there exists for some object~$C \in \Ob(\Acat)$ epimorphisms~$u \colon C \to A$ and~$v \colon C \to B$ that make the square
+      \label{elements of kernel}
+      We can reformulate the universal property of the kernel in terms of points of objects:
+      A morphism~$k \colon K \to X$ is a kernel of~$f$ if and only if for every point~$x \in X$ with~$fx = 0$ there exist a unique point~$\tilde{x} \inA K$ with~$k \tilde{x} = x$.
+      (If~$x$ is an~\dash{$A$}{valued} point then it automatically follows that~$\tilde{x}$ is again~\dash{$A$}{valued}, because~$f \tilde{x}$ is~\dash{$A$}{valued}.)
+    \item
+      However, another similar rule from diagram chasing does not hold (or at least not up to equality, as we will see below):
+      If the morphism~$f$ is an epimorphism and~$y \inA Y$ is a point, say~$y \in Y(A)$, then there does not have to exist a point~$x \in X$ with~$fx = y$.
+      In other words, there does not have to exist a lift~$x \colon A \to X$ of the morphism~$y \colon A \to Y$ along~$f$; here we mean by \enquote{lift} a morphism that makes the triangle
+      \[
+        \begin{tikzcd}
+            {}
+          & X
+            \arrow{d}[right]{f}
+          \\
+            A
+            \arrow[dashed]{ur}[above left]{x}
+            \arrow{r}[below]{y}
+          & Y
+        \end{tikzcd}
+      \]
+      commute.
+      Indeed, we may consider as a (counter)example the abelian category~$\Acat = \Ab$ and choose~$f \colon \Integer \to \Integer/2$ to be the canonical projection.
+      Then for the morphism~$\id_\Integer \colon \Integer/2 \to \Integer/2$ no such lift~$\Integer/2 \to \Integer$ exists.
+      
+      We will in the following circumvent this problem by relaxing under what conditions we consider two points of~$X$ to be \enquote{the same}:
+      Instead of equality of points we will work with equivalence of points, as we will now explain.
+  \end{enumerate}
+\end{remark*}
+
+
+\begin{remarkdefinition}[continues=abstract points]
+  \leavevmode
+  \begin{enumerate}[start=3]
+    \item
+      Two points~$x, y \inA X$, say~$x \in X(A)$ and~$y \in X(B)$, are \emph{equivalent}\index{equivalence!of points of an object}\index{points of an object!equivalence} if there exists for some object~$C \in \Ob(\Acat)$ epimorphisms~$u \colon C \to A$ and~$v \colon C \to B$ that make the square
       \[
         \begin{tikzcd}
             C
-            \arrow{r}[above]{u}
-            \arrow{d}[left]{v}
+            \arrow[dashed]{r}[above]{u}
+            \arrow[dashed]{d}[left]{v}
           & A
             \arrow{d}[right]{x}
           \\
@@ -387,8 +512,8 @@
       \[
         \begin{tikzcd}
             A
-            \arrow{r}[above]{\id_A}
-            \arrow{d}[left]{\id_A}
+            \arrow[dashed]{r}[above]{\id_A}
+            \arrow[dashed]{d}[left]{\id_A}
           & A
             \arrow{d}[right]{x}
           \\
@@ -422,8 +547,8 @@
       \[
         \begin{tikzcd}
             D
-            \arrow{r}[above]{u}
-            \arrow{d}[left]{v}
+            \arrow[dashed]{r}[above]{u}
+            \arrow[dashed]{d}[left]{v}
           & A
             \arrow{d}[left]{x}
           \\
@@ -434,8 +559,8 @@
         \qquad\text{and}\qquad
         \begin{tikzcd}
             E
-            \arrow{r}[above]{r}
-            \arrow{d}[left]{s}
+            \arrow[dashed]{r}[above]{r}
+            \arrow[dashed]{d}[left]{s}
           & B
             \arrow{d}[left]{y}
           \\
@@ -468,14 +593,14 @@
             \arrow[dashed]{d}[left]{v'}
             \arrow[phantom]{dr}[description]{\pb}
           & D
-            \arrow{r}[above]{u}
-            \arrow{d}[left]{v}
+            \arrow[dashed]{r}[above]{u}
+            \arrow[dashed]{d}[left]{v}
           & A
             \arrow{d}[left]{x}
           \\
             E
-            \arrow{r}[above]{r}
-            \arrow{d}[left]{s}
+            \arrow[dashed]{r}[above]{r}
+            \arrow[dashed]{d}[left]{s}
           & B
             \arrow{r}[above]{y}
             \arrow{d}[left]{y}
@@ -490,12 +615,12 @@
         \end{tikzcd}
       \]
       The morphisms~$v'$ and~$r'$ are epimorphisms by \cref{mono epi under pull push} because the morphisms~$v$ and~$r$ are epimorphisms.
-      The compositions~$u r' \colon F \to A$ and~$s v' \colon F \to C$ are therefore epimorphisms, and they make the square
+      The compositions~$u r' \colon F \to A$ and~$s v' \colon F \to C$ are therefore epimorphisms, and they make the outer square
       \[
         \begin{tikzcd}[sep = large]
             F
-            \arrow{r}[above]{u r'}
-            \arrow{d}[left]{s v'}
+            \arrow[dashed]{r}[above]{u r'}
+            \arrow[dashed]{d}[left]{s v'}
           & A
             \arrow{d}[left]{x}
           \\
@@ -512,25 +637,25 @@
       \[
         \begin{tikzcd}
             B
-            \arrow{r}[above]{v}
-            \arrow{d}
+            \arrow[dashed]{r}[above]{u}
+            \arrow[dashed]{d}
           & A
             \arrow{d}[right]{x}
           \\
-            0
+            0_\Acat
             \arrow{r}
           & X
         \end{tikzcd}
       \]
-      commute (because the zero morphism~$B \to 0$ is an epimorphism), i.e.\ such that~$xv = 0$.
-      It then follows that~$x = 0$ because~$v$ is an epimorphism.;
-      and if on the other hand~$x = 0$ then we can choose~$B = A$ and~$v = \id_A$.
+      commute (because the zero morphism~$B \to 0$ is automatically an epimorphism), i.e.\ such that~$xu = 0_{B,X}$.
+      It then follows that~$x = 0_{A,X}$ because~$u$ is an epimorphism;
+      and if on the other hand~$x = 0_{A,X}$ then we can choose~$B = A$ and~$u = \id_A$ for the above commutative square.
       This shows that~$x \equiv 0$ if and only if~$x$ is the zero morphism~$A \to X$.
       
-      This shows that the zero morphisms~$A \to X$ with~$A \in \Ob(\Acat)$ all give the same point of~$X$, which we will denote by~$0 \inA X$.
+      This shows in particular that the various zero morphisms~$A \to X$ with~$A \in \Ob(\Acat)$ all give the same point of~$X$, namely~$0 \inA X$.
     \item
       Let~$Y \in \Ob(\Acat)$ be another object and let~$f \colon X \to Y$ be a morphism.
-      Then~$f$ induces for every~$A \in \Ob(\Acat)$ a map
+      Then~$f$ induces for every object~$A \in \Ob(\Acat)$ a map
       \[
                 X(A)
         \to     Y(A) \,,
@@ -538,7 +663,7 @@
         \mapsto fx \,.
       \]
       If~$x, y \inA X$ with~$x \equiv y$ then also~$fx \equiv fy$:
-      If~$x \in X(A)$ and~$y \in X(B)$ then there exist epimorphisms~$u \colon C \colon A$ and~$v \colon C \to B$ which make the square
+      If~$x \in X(A)$ and~$y \in X(B)$ then there exist epimorphisms~$u \colon C \colon A$ and~$v \colon C \to B$ that make the square
       \[
         \begin{tikzcd}
             C
@@ -603,8 +728,8 @@
   \[
     \begin{tikzcd}
         A'
-        \arrow{r}[above]{u}
-        \arrow{d}[left]{\id_{A'}}
+        \arrow[dashed]{r}[above]{u}
+        \arrow[dashed]{d}[left]{\id_{A'}}
       & A
         \arrow{d}[right]{x}
       \\
@@ -615,7 +740,7 @@
   \]
   
   The equivalence relation~$\equiv$ is already determined by this property:
-  Let~$\equiv'$ be the equivalence relation on the class of points of~$X$ that is generated by~$x \equiv' y$ for~$x, y \inA X$ whenever there exist an epimorphism~$u$ with~$y = xu$.
+  Let~$\equiv'$ be the equivalence relation on the class of points of~$X$ that is generated by~$x \equiv' y$ for all~$x, y \inA X$ for which there exists an epimorphism~$u$ with~$y = xu$.
   Then the equivalence relations~$\equiv$ and $\equiv'$ coincide.
   
   Indeed, we have seen above that the equivalence relation~$\equiv$ is finer than the equivalence relation~$\equiv'$.
@@ -624,8 +749,8 @@
   \[
     \begin{tikzcd}
         C
-        \arrow{r}[above]{u}
-        \arrow{d}[left]{v}
+        \arrow[dashed]{r}[above]{u}
+        \arrow[dashed]{d}[left]{v}
       & A
         \arrow{d}[right]{x}
       \\
@@ -651,6 +776,7 @@
   Let~$\Acat$ be an abelian category.
   \begin{enumerate}
     \item
+      \label{abstract injective}
       For a morphism~$f \colon X \to Y$ in~$\Acat$ the following three conditions are equivalent:
       \begin{enumerate}
         \item
@@ -661,6 +787,7 @@
           It follows for every~$z \inA X$ from~$fz \equiv 0$ that~$z \equiv 0$.
       \end{enumerate}
     \item
+    \label{abstract surjective}
       For a morphism~$g \colon Y \to Z$ in~$\Acat$ the following two conditions are equivalent:
       \begin{enumerate}
         \item
@@ -702,11 +829,10 @@
 
 
 \begin{proof}
-  \renewcommand{\qedsymbol}{}
   \leavevmode
   \begin{enumerate}
     \item
-      Suppose that~$f$ is a monomorphism and let~$x, x' \inA$ be two points with~$fx \equiv fx'$, say~$x \in X(A)$ and~$x' \in X(A')$.
+      Suppose that~$f$ is a monomorphism and let~$x, x' \inA X$ be two points with~$fx \equiv fx'$, say~$x \in X(A)$ and~$x' \in X(A')$.
       Then there exist epimorphisms~$u \colon B \to A$ and~$v \colon B \to A'$ that make the square
       \[
         \begin{tikzcd}
@@ -730,7 +856,7 @@
         \end{tikzcd}
       \]
       commute, i.e.\ such that~$f x u = f x' v$.
-      It follows from~$f$ being a monomorphism that~$x u = x' v$, i.e.\ that the square
+      It follows from~$f$ being a monomorphism that already~$x u = x' v$, i.e.\ that the square
       \[
         \begin{tikzcd}
             B
@@ -786,7 +912,7 @@
       
       Suppose on the other hand that for every point~$z \inA Z$ there exists some~$y \inA Y$ with~$gy \equiv z$.
       By choosing~$z = \id_Z$ we find that there exists some~$y \inA Y$ with ~$gy \equiv \id_Z$, say~$y \in X(A)$.
-      Then exist epimorphisms~$u \colon B \to Z$ and~$v \colon B \to A$ that make the square
+      There then exist epimorphisms~$u \colon B \to Z$ and~$v \colon B \to A$ that make the square
       \[
         \begin{tikzcd}
             B
@@ -803,15 +929,789 @@
       commute.
       The composition~$gyv = u$ is therefore an epimorphism, hence the morphism~$g$ is an epimorphism.
   \end{enumerate}
+  
+  
+  
+  
+  
   \lecturend{13}
   
+  
+  
+  
+  
+  \begin{enumerate}[resume]
+    \item 
+      If~$gf = 0$ then let~$\lambda \colon \im(f) \to \ker(g)$ be the canonical morphism, i.e.\ the unique morphism~$\lambda \colon \im(f) \to \ker(g)$ that makes the diagram
+      \[
+        \begin{tikzcd}[column sep = small, row sep = large]
+            X
+            \arrow{rr}[above]{f}
+            \arrow{dr}[below left]{f'}
+          & {}
+          & Y
+            \arrow{rr}[above]{g}
+          & {}
+          & Z
+          \\
+            {}
+          & \im(f)
+            \arrow{ur}[above left]{i}
+            \arrow[dashed]{rr}[above]{\lambda}
+          & {}
+          & \ker(g)
+            \arrow{ul}[above right]{k}
+          & {}
+        \end{tikzcd}
+      \]
+      commute.
+      If~$y \inA Y$ with~$gy \equiv 0$ then~$gy = 0$ and it follows from the universal property of the kernel~$k \colon \ker(g) \to Y$ that there exist a unique morphism~$\tilde{y} \colon A \to \ker(g)$ that makes the following diagram commute:
+      \[
+        \begin{tikzcd}[column sep = small, row sep = large]
+            {}
+          & {}
+          & A
+            \arrow{d}[left]{y}
+          & {}
+          & {}
+          \\
+            X
+            \arrow{rr}[above]{f}
+            \arrow{dr}[below left]{f'}
+          & {}
+          & Y
+            \arrow{rr}[above, near end]{g}
+          & {}
+          & Z
+          \\
+            {}
+          & \im(f)
+            \arrow{ur}[above left]{i}
+            \arrow{rr}[above]{\lambda}
+          & {}
+          & \ker(g)
+            \arrow[from = uul, dashed, bend left, crossing over, near start, "\tilde{y}"]
+            \arrow{ul}[above right]{k}
+          & {}
+        \end{tikzcd}
+      \]
+      
+      Suppose now that the sequence
+      \[
+        X
+        \xlongto{f}
+        Y
+        \xlongto{g}
+        Z
+      \]
+      is exact.
+      Then the canonical morphism~$\lambda \colon \im(f) \to \ker(g)$ is an isomorphism.
+      Let~$y \inA Y$ such that~$gy \equiv 0$, hence~$gy = 0$.
+      Then
+      \[
+        \lambda^{-1} \tilde{y} \in_A \im(f) \,.
+      \]
+      The morphism~$f' \colon X \to \im(f)$ is an epimorphism, hence it follows from part~\ref*{abstract surjective} that there exists some point~$x \inA X$ with~$f' x \equiv \lambda^{-1} \tilde{y}$.
+      It holds for this point that
+      \[
+                f x
+        =       i f' x
+        \equiv  i \lambda^{-1} \tilde{y}
+        =       k \tilde{y}
+        =       y \,.
+      \]
+      
+      Suppose on the other hand that~$gf = 0$ and that for every~$y \inA Y$ with~$gy \equiv 0$ there exist some~$x \inA X$ with~$fx = y$.
+      We need to show that the morphism~$\lambda \colon \im(f) \to \ker(g)$ is an isomorphism.
+      We already know that~$\lambda$ is a monomorphism (as this is always the case), so it remains to show that~$\lambda$ is an epimorphism.
+      For this we use part~\ref*{abstract surjective}:
+      Let~$\tilde{y} \inA \ker(g)$ and set~$y \defined k \tilde{y} \inA Y$.
+      Then
+      \[
+          g y
+        = g k \tilde{y}
+        = 0 \circ \tilde{y}
+        = 0 \,.
+      \]
+      It follows by assumption that there exist some point~$x \inA X$ with~$f x \equiv y$.
+      For the point
+      \[
+                  \tilde{x}
+        \defined  f' x \inA \im(f)
+      \]
+      we have that~$\lambda \tilde{x} = \tilde{y}$;
+      indeed, we have that
+      \[
+                k \lambda \tilde{x}
+        =       i \tilde{x}
+        =       i f' x
+        =       f x
+        \equiv  y
+        =       k \tilde{y} \,,
+      \]
+      and hence~$\lambda \tilde{x} \equiv \tilde{y}$ because~$k$ is a monomorphism (by part~\ref*{abstract injective}).
+      This shows by part~\ref*{abstract surjective} that~$\lambda$ is an epimorphism.
+    \item
+      Let~$x, x' \inA X$ with~$f x \equiv f x'$, say~$x \in X(A)$ and~$x' \in X(A')$.
+      It follows from~$f x \equiv f x'$ that there exist epimorphisms~$u \colon B \to A$ and~$v \colon B \to A'$ that make the diagram
+      \[
+        \begin{tikzcd}
+            B
+            \arrow{rr}[above]{u}
+            \arrow{dd}[left]{v}
+          & {}
+          & A
+            \arrow{d}[right]{x}
+          \\
+            {}
+          & {}
+          & X
+            \arrow{d}[right]{f}
+          \\
+            A'
+            \arrow{r}[above]{x'}
+          & X
+            \arrow{r}[above]{f}
+          & Y
+        \end{tikzcd}
+      \]
+      commute.
+      It follows for the element
+      \begin{gather*}
+                  \tilde{x}
+        \defined  x v - x' u
+        \in       X(B)
+      \shortintertext{that}
+          f \tilde{x}
+        = f (x v - x' u)
+        = f x v - f x' u
+        = 0
+      \end{gather*}
+      and hence~$f \tilde{x} \equiv 0$.
+      If~$h \colon X \to W$ is a morphism with~$h x' \equiv 0$ then~$h x' = 0$, hence
+      \[
+                h \tilde{x}
+        =       h (x v - x' u)
+        =       h x v - h x' u
+        =       h x v
+        \equiv  h x
+      \]
+      because~$v$ is an epimorphism.
+      We similarly find that if~$h x \equiv 0$ then~$h \tilde{x} \equiv - h x'$.
+    \qedhere
+  \end{enumerate}
 \end{proof}
 
 
 
 
 
+\textline{Below this line proofs are currently missing.}
 
+
+
+
+
+\begin{lemma}[Snake lemma]
+  \index{snake lemma}\index{lemma!snake}
+  Let~$\Acat$ be an abelian category.
+  Let
+  \begin{equation}
+    \label{presnake}
+    \begin{tikzcd}
+        {}
+      & X'
+        \arrow{r}[above]{i}
+        \arrow{d}[right]{f'}
+      & X
+        \arrow{r}[above]{p}
+        \arrow{d}[right]{f}
+      & X''
+        \arrow{d}[right]{f''}
+        \arrow{r}
+      & 0
+      \\
+        0
+        \arrow{r}
+      & Y'
+        \arrow{r}[below]{j}
+      & Y
+        \arrow{r}[below]{q}
+      & Y''
+      & {}
+    \end{tikzcd}
+  \end{equation}
+  be a commutative diagram in~$\Acat$ with exact rows.
+  Let
+  \[
+    k' \colon \ker(f') \to X' \,,
+    \quad
+    k \colon \ker(f) \to X \,,
+    \quad
+    k'' \colon \ker(f'') \to X''
+  \]
+  be kernels of~$f'$,~$f$ and~$f''$, and let
+  \[
+    \tilde{i} \colon \ker(f') \to \ker(f)
+    \quad\text{and}\quad
+    \tilde{p} \colon \ker(f) \to \ker(f'')
+  \]
+  be the unique morphisms which make the following diagram commute:
+  \[
+    \begin{tikzcd}
+        \ker(f')
+        \arrow[dashed]{r}[above]{\tilde{i}}
+        \arrow{d}[right]{k'}
+      & \ker(f)
+        \arrow[dashed]{r}[above]{\tilde{p}}
+        \arrow{d}[right]{k}
+      & \ker(f'')
+        \arrow{d}[right]{k''}
+      \\
+        X'
+        \arrow{r}[above]{i}
+      & X
+        \arrow{r}[above]{p}
+      & X''
+    \end{tikzcd}
+  \]
+  Dually, let
+  \[
+    c' \colon Y' \to \coker(f') \,,
+    \quad
+    c \colon Y \to \coker(f) \,,
+    \quad
+    c'' \colon Y'' \to \coker(f'')
+  \]
+  be cokernels of~$f'$,~$f$ and~$f''$, and let
+  \[
+    \bar{j} \colon \coker(f') \to \coker(f)
+    \quad\text{and}\quad
+    \bar{q} \colon \coker(f) \to \coker(f'')
+  \]
+  be the unique morphisms that make the following diagram commute:
+  \[
+    \begin{tikzcd}
+        Y'
+        \arrow{r}[above]{j}
+        \arrow{d}[right]{c'}
+      & Y
+        \arrow{r}[above]{q}
+        \arrow{d}[right]{c}
+      & Y''
+        \arrow{d}[right]{c''}
+      \\
+        \coker(f')
+        \arrow[dashed]{r}[above]{\bar{j}}
+      & \coker(f)
+        \arrow[dashed]{r}[above]{\bar{q}}
+      & \coker(f'')
+    \end{tikzcd}
+  \]
+  (See \cref{functoriality of (co)kernel} for a more thorough explanation on these induced morphisms.)
+
+  \begin{enumerate}
+    \item
+      There exists a morphism
+      \[
+                \delta
+        \colon  \ker(f'')
+        \to     \coker(f')
+      \]
+      such that the sequence
+      \begin{equation}
+        \label{induced snake}
+        \begin{tikzcd}
+            \ker(f')
+            \arrow{r}[above]{\tilde{i}}
+          & \ker(f)
+            \arrow{r}[above]{\tilde{p}}
+            \arrow[d, phantom, ""{coordinate, name=Z}]
+          & \ker(f'')
+            \arrow[ dll,
+                    "\delta",
+                    rounded corners,
+                    to path={ -- ([xshift=2ex]\tikztostart.east)
+                              |- (Z) \tikztonodes
+                              -| ([xshift=-2ex]\tikztotarget.west)
+                              -- (\tikztotarget)}
+                  ]
+          \\
+            \coker(f')
+            \arrow{r}[above]{\bar{j}}
+          & \coker(f)
+            \arrow{r}[above]{\bar{q}}
+          & \coker(f'')
+        \end{tikzcd}
+      \end{equation}
+      is exact.
+    \item
+      \label{snake inherits mono epi}
+      If~$i$ is a monomorphism then~$\tilde{i} \colon \ker(f') \to \ker(f)$ is again a monomorphism, and if~$q$ is an epimorphism then~$\bar{q} \colon \coker(f) \to \coker(f'')$ is again an epimorphism.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{remark*}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      One can also draw the exact sequence~\eqref{induced snake} into the diagram~\eqref{presnake}.
+      This then results in the following diagram:
+      \[
+        \begin{tikzcd}[row sep = huge]
+            {}
+          & \ker(f')
+            \arrow[dashed]{r}
+            \arrow{d}
+          & \ker(f)
+            \arrow{d}
+            \arrow[dashed]{r}
+            \arrow[ddd, phantom, ""{coordinate, name=Z}]
+          & \ker(f'')
+            \arrow{d}
+          & {}
+          \\
+            {}
+          & X'
+            \arrow{r}[above]{i}
+            \arrow{d}[left, near start]{f'}
+          & X
+            \arrow{r}[above]{p}
+            \arrow{d}[left, near start]{f}
+          & X''
+            \arrow{r}
+            \arrow{d}[left, near start]{f''}
+          & 0
+          \\
+            0
+            \arrow{r}
+          & Y'
+            \arrow{r}[above]{j}
+            \arrow{d}
+          & Y
+            \arrow{r}[above]{q}
+            \arrow{d}
+          & Y''
+            \arrow{d}
+          & {}
+          \\
+            {}
+          & \coker(f')
+            \arrow[ from=uuurr,
+                    dashed,
+                    rounded corners,
+                    crossing over,
+                    "\delta",
+                    to path={ -- ([xshift=2ex]\tikztostart.east)
+                              |- ([yshift=-1.5ex]Z) \tikztonodes
+                              -| ([xshift=-2ex]\tikztotarget.west)
+                              -- (\tikztotarget)}
+                  ]
+            \arrow[dashed]{r}
+          & \coker(f)
+            \arrow[dashed]{r}
+          & \coker(f'')
+          & {}
+        \end{tikzcd}
+      \]
+      The name \enquote{snake lemma} stems from the form of this dashed sequence.
+    \item
+      Part~\ref*{snake inherits mono epi} of the snake lemma states that the sequence
+      \[
+        \begin{tikzcd}
+            0
+            \arrow[dashed]{r}
+          & \ker(f')
+            \arrow{r}
+          & \ker(f)
+            \arrow{r}
+            \arrow[d, phantom, ""{coordinate, name=Z}]
+          & \ker(f'')
+            \arrow[ dll,
+                    "\delta",
+                    rounded corners,
+                    to path={ -- ([xshift=2ex]\tikztostart.east)
+                              |- (Z) \tikztonodes
+                              -| ([xshift=-2ex]\tikztotarget.west)
+                              -- (\tikztotarget)}
+                  ]
+          & {}
+          \\
+            {}
+          & \coker(f')
+            \arrow{r}
+          & \coker(f)
+            \arrow{r}
+          & \coker(f'')
+            \arrow[dotted]{r}
+          & 0
+        \end{tikzcd}
+      \]
+      inherits on the left and right the same additional exactness conditions as the original diagram:
+      \[
+        \begin{tikzcd}
+            0
+            \arrow[dashed]{r}
+          & X'
+            \arrow{r}[above]{i}
+            \arrow{d}[right]{f'}
+          & X
+            \arrow{r}[above]{p}
+            \arrow{d}[right]{f}
+          & X''
+            \arrow{d}[right]{f''}
+            \arrow{r}
+          & 0
+          \\
+            0
+            \arrow{r}
+          & Y'
+            \arrow{r}[below]{j}
+          & Y
+            \arrow{r}[below]{q}
+          & Y''
+            \arrow[dotted]{r}
+          & 0
+        \end{tikzcd}
+      \]
+    \item
+      The morphism~$\delta$ from the snake lemma is known as the \enquote{connecting morphism}.
+    \item
+      The connecting morphism in natural in the following sense:
+      Suppose that we are given a commutative diagram of the following form, where the four horizontal rows are exact.
+      \[
+        \begin{tikzcd}[column sep = 1.88em, row sep = 2.5em]
+            {}
+          & {}
+          & {}
+          & X'
+            \arrow{rr}[above]{i}
+            \arrow{dd}[right, near start]{f'}
+            \arrow[dashed]{dl}[above left]{\alpha'}
+          & {}
+          & X
+            \arrow{rr}[above]{p}
+            \arrow{dd}[right, near start]{f}
+            \arrow[dashed]{dl}[above left]{\alpha}
+          & {}
+          & X''
+            \arrow{dd}[right, near start]{f''}
+            \arrow{rr}
+            \arrow[dashed]{dl}[above left]{\alpha''}
+          & {}
+          & 0
+          \\
+            {}
+          & {}
+          & W'
+          & {}
+          & W
+            \arrow[from=ll, crossing over, above, "i'", near end]
+          & {}
+          & W''
+            \arrow[from=ll, crossing over, above, "p'", near end]
+          & {}
+          & 0
+            \arrow[from=ll, crossing over]
+          & {}
+          \\
+            {}
+          & 0
+            \arrow{rr}
+          & {}
+          & Y'
+            \arrow{rr}[below, near start]{j}
+            \arrow[dashed]{dl}[below right]{\beta'}
+          & {}
+          & Y
+            \arrow{rr}[below, near start]{q}
+            \arrow[dashed]{dl}[below right]{\beta}
+          & {}
+          & Y''
+            \arrow[dashed]{dl}[below right]{\beta''}
+          & {}
+          & {}
+          \\
+            0
+            \arrow{rr}
+          & {}
+          & Z'
+            \arrow[from=uu, crossing over, "g'", swap, near start]
+            \arrow{rr}[below]{j'}
+          & {}
+          & Z
+            \arrow[from=uu, crossing over, "g", swap, near start]
+            \arrow{rr}[below]{q'}
+          & {}
+          & Z''
+            \arrow[from=uu, crossing over, "g''", swap, near start]
+          & {}
+          & {}
+        \end{tikzcd}
+      \]
+      We can then apply the snake lemma to both the back and the front of this diagram.
+      It then follows from the commutativity of the square
+      \[
+        \begin{tikzcd}
+            X''
+            \arrow[dashed]{r}[above]{\alpha''}
+            \arrow{d}[left]{f''}
+          & W''
+            \arrow{d}[right]{g''}
+          \\
+            Y''
+            \arrow[dashed]{r}[above]{\beta''}
+          & Z''
+        \end{tikzcd}
+      \]
+      that~$\alpha''$ induces a unique morphism~$\ker(f'') \to \ker(g'')$ that make the square
+      \[
+        \begin{tikzcd}
+            \ker(f'')
+            \arrow[dashed]{r}
+            \arrow{d}
+          & \ker(g'')
+            \arrow{d}
+          \\
+            X''
+            \arrow[dashed]{r}[above]{\alpha''}
+          & W''
+        \end{tikzcd}
+      \]
+      commute.
+      Similarly, the commutativity of the square
+      \[
+        \begin{tikzcd}
+            X'
+            \arrow[dashed]{r}[above]{\alpha'}
+            \arrow{d}[left]{f'}
+          & W'
+            \arrow{d}[right]{g'}
+          \\
+            Y'
+            \arrow[dashed]{r}[above]{\beta'}
+          & Z'
+        \end{tikzcd}
+      \]
+      shows that~$\beta'$ induces a unique morphism~$\coker(f') \to \coker(g')$ that makes the square
+      \[
+        \begin{tikzcd}
+            Y'
+            \arrow[dashed]{r}[above]{\beta'}
+            \arrow{d}
+          & Z'
+            \arrow{d}
+          \\
+            \coker(f')
+            \arrow[dashed]{r}
+          & \coker(g')
+        \end{tikzcd}
+      \]
+      commute.
+      (See \cref{functoriality of (co)kernel} for a more detailed explanation on this.)
+      The connecting morphisms~$\delta \colon \ker(f'') \to \coker(f')$ and~$\delta' \ker(g'') \to \coker(g')$ then make the square
+      \[
+        \begin{tikzcd}
+            \ker(f'')
+            \arrow{r}[above]{\delta}
+            \arrow[dashed]{d}
+          & \coker(f')
+            \arrow[dashed]{d}
+          \\
+            \ker(g'')
+            \arrow{r}[above]{\delta'}
+          & \coker(g')
+        \end{tikzcd}
+      \]
+      commute.
+      
+      It then follows more more generally that the diagram
+      \[
+        \begin{tikzcd}[column sep = 1.8em]
+            \ker(f')
+            \arrow{r}
+            \arrow[dashed]{d}
+          & \ker(f)
+            \arrow{r}
+            \arrow[dashed]{d}
+          & \ker(f'')
+            \arrow{r}[above]{\delta}
+            \arrow[dashed]{d}
+          & \coker(f')
+            \arrow{r}
+            \arrow[dashed]{d}
+          & \coker(f)
+            \arrow{r}
+            \arrow[dashed]{d}
+          & \coker(f'')
+            \arrow[dashed]{d}
+          \\
+            \ker(g')
+            \arrow{r}
+          & \ker(g)
+            \arrow{r}
+          & \ker(g'')
+            \arrow{r}[above]{\delta'}
+          & \coker(g')
+            \arrow{r}
+          & \coker(g)
+            \arrow{r}
+          & \coker(g'')
+        \end{tikzcd}
+      \]
+      commutes, where the rows are the exact sequences from the snake lemma.
+      The vertical morphisms in this diagram are induced in the same way as~$\ker(f'') \to \ker(g'')$ and~$\coker(f') \to \coker(g')$, as explained above.
+      
+      One may also think about this naturality of the connecting morphism as the functoriality of the exact squences from the snake lemma.
+  \end{enumerate}
+\end{remark*}
+
+
+\begin{definition}
+  Let~$F \colon \Acat \to \Bcat$ be an additive functor between abelian categories~$\Acat$ and~$\Bcat$.
+  The functor~$F$ is
+  \begin{enumerate}
+    \item
+      exact, resp.
+    \item
+      left exact, resp.
+    \item
+      right exact,
+  \end{enumerate}
+  if for every short exact sequence~$0 \to X' \to X \to X'' \to 0$ in~$\Acat$
+  \begin{enumerate}
+    \item
+      the sequence~$0 \to F(X') \to F(X) \to F(X'') \to 0$ is again (short) exact, resp.
+    \item
+     the sequence~$0 \to F(X') \to F(X) \to F(X'')$ is again (left) exact, resp.
+    \item
+      the sequence~$F(X') \to F(X) \to F(X'') \to 0$ is again (right) exact.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+  Let~$F \colon \Acat \to \Bcat$ be a functor between abelian categories~$\Acat$ and~$\Bcat$.
+  \begin{enumerate}
+    \item
+      Left exactness can be detected via left exact sequences:
+      The functor~$F$ is left exact if and only if for every (left) exact sequence~$0 \to X' \to X \to X''$ in~$\Acat$ the sequence~$0 \to F(X') \to F(X) \to F(X'')$ in~$\Bcat$ is again (left) exact.
+    \item
+      Right exactness can similarly be detected via right exact sequences:
+      The functor~$F$ is right exact if and only if for every (right) exact sequence~$X' \to X \to X'' \to 0$ in~$\Acat$ the sequence~$F(X') \to F(X) \to F(X'') \to 0$ in~$\Bcat$ is again (right) exact.
+  \end{enumerate}
+\end{remark}
+
+
+% TODO: Add proofs for this.
+
+
+\begin{remark*}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      In other words, a functor~$F \colon \Acat \to \Bcat$ between abelian categories~$\Acat$ and~$\Bcat$ is left exact (resp.\ right exact) if and only if it respects kernels (resp.\ cokernels);
+      this follows from the characterization of left exact sequences via kernels and right exact sequences via cokernels, as explained in \cref{language of left and right exact}.
+    \item
+      If a functor~$F \colon \Acat \to \Bcat$ between abelian categories~$\Acat$ and~$\Bcat$ is exact then for every exact sequence
+      \[
+        \dotsb
+        \to
+        X_{i-1}
+        \to
+        X_i
+        \to
+        X_{i+1}
+        \to
+        \dotsb
+      \]
+      in~$\Acat$ the sequence
+      \[
+        \dotsb
+        \to
+        F(X_{i-1})
+        \to
+        F(X_i)
+        \to
+        F(X_{i+1})
+        \to
+        \dotsb
+      \]
+      in~$\Bcat$ is again exact.
+  \end{enumerate}
+\end{remark*}
+
+
+\begin{example}
+  Let~$\Acat$ be an abelian category.
+  \begin{enumerate}
+    \item
+      For every object~$X \in \Ob(\Acat)$ the covariant~\dash{$\Hom$}{functor}
+      \[
+        \Hom_\Acat(X,-)
+        \colon
+        \Acat
+        \to
+        \Ab
+      \]
+      is left exact.
+    \item
+      For every object~$X \in \Ob(\Acat)$ the contravariant~\dash{$\Hom$}{functor}
+      \[
+        \Hom_\Acat(-,X)
+        \colon
+        \Acat^\op
+        \to
+        \Ab
+      \]
+      is left exact.
+    \item
+      Let~$A$ be a~{\kalg}.
+      Then for every left~{\module{$A$}}~$\indmodule[A]{N}$ the functor
+      \[
+        (-) \tensor_A N
+        \colon
+        \Modr{A}
+        \to
+        \Modl{\kf}
+      \]
+      is right exact.
+      Similarly, for every right~{\module{$A$}}~$\indmodule{M}[A]$ the functor
+      \[
+        M \tensor_A (-)
+        \colon
+        \Modl{A}
+        \to
+         \Modl{\kf}
+      \]
+      is right exact.
+    \item
+      Let~$X$ be a topological space.
+      The inclusion functor~$I \colon \Sheaf(X) \to \Presheaf(X)$ is left exact.
+      But it is not right exact because it does not respect cokernels.
+      The sheafification functor~$S \colon \Presheaf(X) \to \Sheaf(X)$ is exact.
+%     TODO: Explain this via the given facts.
+    \item
+      Let again~$X$ be a topological space.
+      For every presheaf~$\Fs$ on~$X$ let
+      \[
+                  \Gamma(X,\Fs)
+        \defined  \Fs(X).%
+        \footnote{A more general notation is~$\Gamma(U,\Fs) \defined \Fs(U)$ for every open subseteq~$U \subseteq X$ and every presheaf~$\Fs$ on~$X$.}
+      \]
+      Then~$\Gamma(X,-) \colon \Presheaf(X) \to \Ab$ is the \emph{global section functor}, and this functor is exact.
+%     TODO: Explain this properly.
+      The restriction~$\Gamma(X,-) \colon \Sheaf(X) \to \Ab$ is again left exact, but not right exact.
+%     TODO: Properly explain this.
+  \end{enumerate}
+\end{example}
+
+
+
+
+
+\lecturend{14}
 
 
 

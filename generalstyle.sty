@@ -77,7 +77,8 @@
 
 
 % marking end of lectures
-\newcommand{\boxline}[1]{\noindent\xrfill[0.7ex]{0.4pt}\fbox{#1}\xrfill[0.7ex]{0.4pt}}
+\newcommand{\textline}[1]{\noindent\xrfill[0.7ex]{0.4pt} #1 \xrfill[0.7ex]{0.4pt}}
+\newcommand{\boxline}[1]{\textline{\fbox{#1}}}
 \newcommand{\lecturend}[1]{\boxline{End of lecture #1}}
 
 
