@@ -160,6 +160,8 @@
 \newcommand{\Zbilin}{$\Integer$\nobreakdash-bilinear}
 % with arguments
 \newcommand{\balanced}[1]{#1\nobreakdash-balanced}
+\newcommand{\simplex}[1]{#1\nobreakdash-simplex}
+\newcommand{\simplices}[1]{#1\nobreakdash-simplices}
 % kind of modules and stuff
 \NewDocumentCommand{\indmodule}{O{} m O{}}{%
   {}_{#1} #2_{#3}
@@ -206,6 +208,9 @@
 \newcommand{\pb}{\lrcorner}
 \newcommand{\projection}{\twoheadrightarrow}
 \newcommand{\po}{\ulcorner}
+\newcommand{\qic}{quasi\nobreakdash-isomorphic}
+\newcommand{\qim}{quasi\nobreakdash-isomorphism}
+\newcommand{\qims}{quasi\nobreakdash-isomorphisms}
 
 
 % numbers and fields
@@ -226,6 +231,8 @@
 % categories
 % fixed categories
 \newcommand{\Ab}{\catname{Ab}}
+\newcommand{\Ch}{\cc{\catname{Ch}}}
+\newcommand{\CCh}{\ccc{\catname{Ch}}}
 \newcommand{\CommRing}{\catname{CRing}}
 \newcommand{\Conn}{\catname{Conn}}
 \newcommand{\Fun}{\catname{Fun}}
@@ -270,15 +277,29 @@
 \newcommand{\Gs}{\sheaf{G}}
 \newcommand{\Hs}{\sheaf{H}}
 
+
+% chain complexes
+\newcommand{\chainsymbol}{\bullet}
+\newcommand{\cc}[1]{#1_\chainsymbol}
+\newcommand{\ccc}[1]{#1^\chainsymbol}
+\newcommand{\Ccc}{\cc{C}}
+\newcommand{\Dcc}{\cc{D}}
+\newcommand{\Ecc}{\cc{E}}
+\newcommand{\Cccc}{\ccc{C}}
+\newcommand{\Dccc}{\ccc{D}}
+
 % spaces and sets
+\DeclareMathOperator{\Bl}{B}
 \DeclareMathOperator{\coim}{coim}
 \DeclareMathOperator{\Coker}{Coker}
 \DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\conv}{conv}
 \newcommand{\cont}{\sheaf{C}}
 \DeclareMathOperator{\End}{End}
 \DeclarePairedDelimiter{\gen}{\langle}{\rangle}
 \DeclarePairedDelimiter{\genideal}{(}{)}
 \DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Hl}{H}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\Ker}{Ker}
@@ -287,6 +308,7 @@
 \newcommand{\triag}[2]{\operatorname{T}_{#1}(#2)}
 \DeclareMathOperator{\ringcenter}{Z}
 \newcommand{\sphere}{\mathbb{S}}
+\DeclareMathOperator{\Zl}{Z}
 
 
 % functions and functors
@@ -303,6 +325,7 @@
 \newcommand{\closure}[1]{\overline{#1}}
 \newcommand{\fg}{\mathrm{fg}}
 \newcommand{\op}{\mathrm{op}}
+\newcommand{\sing}{{\,\mathrm{sign}}}
 
 % custom macros with case distinctions
 \NewDocumentCommand{\suchthat}{s}{

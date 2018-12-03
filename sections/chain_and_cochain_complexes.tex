@@ -1,0 +1,792 @@
+\section{Chain and Cochain Complexes}
+
+
+\begin{definition}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      A \emph{chain complex}\index{chain!complex}\index{complex!chain} in~$\Acat$ is a pair~$\Ccc = ( (C_n)_{n \in \Integer}, (d_n)_{n \in \Integer} )$ consisting of
+      \begin{itemize}
+        \item
+          a family of objects~$C_n \in \Ob(\Acat)$, where~$n \in \Integer$, and
+        \item
+          a family of morphisms~$d_n \colon C_n \to C_{n-1}$, where again~$n \in \Integer$,
+      \end{itemize}
+      subject to the condition~$d_{n-1} d_n = 0$ for every~$n \in \Integer$.
+      The family~$d = (d_n)_{n \in \Integer}$ is the \emph{differential}\index{differential} of~$\Ccc$.
+    \item
+      Dually, a \emph{cochain complex}\index{cochain complex}\index{complex!cochain} in~$\Acat$ is a par~$\Cccc = ( (C^n)_{n \in \Integer}, (d^n)_{n \in \Integer} )$ consisting of
+      \begin{itemize}
+        \item
+          a family of objects~$C^n \in \Ob(\Acat)$, where~$n \in \Integer$, and
+        \item
+          a family of morphisms~$d^n \colon C^n \to C^{n+1}$, where again~$n \in \Integer$,
+      \end{itemize}
+      subject to the condition~$d^{n+1} d^n = 0$ for every~$n \in \Integer$.
+      The family~$d \defined (d^n)_{n \in \Integer}$ is the \emph{differential}\index{differential} of~$\Cccc$.%
+      \footnote{The author thinks that~$d$ ought to be called \emph{codifferential} instead.}
+    \item
+      Let~$\Ccc$ and~$\Dcc$ be two chain complexes in~$\Acat$.
+      A morphism of chain complexes~$f \colon \Ccc \to \Dcc$ is a family~$f = (f_n)_{n \in \Integer}$ of morphisms~$f_n \colon C_n \to D_n$ such that~\enquote{$df = fd$}, i.e.\ such that for every~$n \in \Integer$ the following diagram commutes:
+      \[
+        \begin{tikzcd}
+            C_n
+            \arrow{r}[above]{d_n}
+            \arrow{d}[left]{f_n}
+          & C_{n-1}
+            \arrow{d}[right]{f_{n-1}}
+          \\
+            D_n
+            \arrow{r}[above]{d_n}
+          & D_{n-1}
+        \end{tikzcd}
+      \]
+      We obtain with this notion of morphism a category~$\Ch(\Acat)$ of chain complexes in~$\Acat$.
+      
+      The notion of a morphism of cochain complexes is defined similarly, and we obtain a category~$\CCh(\Acat)$ of cochain complexes in~$\Acat$.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      A cochain complexes in~$\Acat$ is the same as a chain complex in~$\Acat^\op$ shifted by~$1$:
+      If~$\Cccc$ is a cochain complex in~$\Acat$ then~$\cc{\tilde{C}} = ( (\tilde{C}_n)_{n \in \Integer}, (\tilde{d}_n)_{n \in \Integer} )$ given by~$\tilde{C}_n \defined C^n$ and~$\tilde{d}_n \defined d^{n-1}$ for every~$n \in \Integer$ is a chain complex in~$\Acat^\op$.
+      
+      To every chain complex~$\Ccc$ in~$\Acat$ we can also associate a cochain complex~$\ccc{\tilde{C}}$ in~$\Acat$ by setting~$\tilde{C}^n \defined C_{-n}$ for every~$n \in \Integer$, as well as~$\tilde{d}^n \defined d_{-n}$ for every~$n \in \Integer$.
+      
+      These constructions can be extended to equivalences of categories
+      \[
+              \CCh(\Acat)
+        \cong \Ch(\Acat^\op)
+        \quad\text{and}\quad
+              \Ch(\Acat)
+        \cong \CCh(\Acat)
+      \]
+    \item
+      One can also describe chain complexes as \emph{differential graded objects}\index{differential graded object}\index{object!differential graded}\index{object!graded!differential}:
+      
+      Suppose that the category~$\Acat$ has countable coproducts, which will be denoted by~$\bigoplus$.
+      A~\dash{$\Integer$}{graded}\index{graded object}\index{object!graded} object of~$\Acat$ is an object~$C$ together with a decomposition~$C = \bigoplus_{n \in \Integer} C_n$ for some countable family~$(C_n)_{n \in \Integer}$ of objects~$C_n \in \Ob(\Acat)$.%
+      \footnote{The author thinks that it is more appropiate to define the described~\dash{$\Integer$}{graded} object as simply the family~$(C_n)_{n \in \Integer}$ itself.}
+      
+      If~$C = \bigoplus_{n \in \Integer}$ and~$D = \bigoplus_{n \in \Integer} D_n$ are~\dash{$\Integer$}{graded} objects in~$\Acat$, then a morphism~$C \to D$ (in~$\Acat$) is \emph{homogeneous}\index{morphism!homogeneous}\index{homogeneous morphism}\index{homogeneous morphism}\index{morphism!homogeneous} of degree~$d \in \Integer$ if for every~$n \in \Integer$ the morphism~$f$ \enquote{restricts to a morphism~$C_n \to D_{n+d}$}, in the sense that there exist a morphism~$f_n \colon C_n \to D_{n+d}$ that makes the following square commute:
+      \[
+        \begin{tikzcd}
+            C
+            \arrow{r}[above]{f}
+          & D
+          \\
+            C_n
+            \arrow{u}
+            \arrow{r}[above]{f_n}
+          & D_{n+d}
+            \arrow{u}
+        \end{tikzcd}
+      \]
+      A \emph{morphism of~\dash{$\Integer$}{graded} objects}\index{morphism!of!graded objects}\index{graded object!morphism}~$f \colon C \to D$ is a homogeneous morphism of degree~$0$.
+      
+      If~$\Ccc$ is a chain complex in~$\Acat$ then~$C \defined \bigoplus_{n \in \Integer} C_n$ is (together with this decomposition) a~\dash{$\Integer$}{graded} object in~$\Acat$, and the differential~$(d_n)_{n \in \Natural}$ induces a morphism~$d \colon C \to C$ of degree~$-1$ with~$d^2 = 0$;
+      this morphism is the unique one that makes the following square commute:
+      \[
+        \begin{tikzcd}
+            C
+            \arrow{r}[above]{d}
+          & C
+          \\
+            C_n
+            \arrow{u}
+            \arrow{r}[above]{d_{n-1}}
+          & C_{n-1}
+            \arrow{u}
+        \end{tikzcd}
+      \]
+      Every morphism of chain complexes~$(f_n)_{n \in \Integer} \colon \Ccc \to \Dcc$ results in a morphism of~\dash{$\Integer$}{graded} objects~$f \colon C \to D$ in~$\Acat$, namely the unique morphism~$C \to D$ such that the following square commutes for every~$n \in \Integer$:
+      \[
+        \begin{tikzcd}
+            C
+            \arrow[dashed]{r}[above]{f}
+          & D
+          \\
+            C_n
+            \arrow{u}
+            \arrow{r}[above]{f_n}
+          & D_n
+            \arrow{u}
+        \end{tikzcd}
+      \]
+      (See \cref{functoriality of (co)product} for more details on this induced morphism and its functoriality.)
+      This morphism then satisfies~$df = fd$.
+      Indeed, we have for every~$n \in \Integer$ the following diagram:
+      \[
+        \begin{tikzcd}[column sep = large]
+            C_n
+            \arrow{rrr}[above]{d_n}
+            \arrow{dr}[above right]{i_n}
+            \arrow{ddd}[left]{f_n}
+          & {}
+          & {}
+          & C_{n-1}
+            \arrow{dl}[above left]{i_{n-1}}
+            \arrow{ddd}[right]{f_{n-1}}
+        \\
+            {}
+          & C
+            \arrow{r}[above]{d}
+            \arrow{d}[left]{f}
+          & C
+            \arrow{d}[right]{f}
+          & {}
+          \\
+            {}
+          & D
+            \arrow{r}[above]{d}
+          & D
+          & {}
+          \\
+            D_n
+            \arrow{ur}[below right]{j_n}
+            \arrow{rrr}[above]{d_n}
+          & {}
+          & {}
+          & D_{n-1}
+            \arrow{ul}[below left]{j_{n-1}}
+        \end{tikzcd}
+      \]
+      The four trapezoids commute by the definitions of~$d$,$d$ and~$f$, and the outer sqare commutes because~$(f_n)_{n \in \Integer}$ is a morphism of chain complexes.
+      It follows that the inner square also commutes;
+      indeed, it follows that for every~$n \in \Integer$ that
+      \[
+          d f i_n
+        = d j_n f_n
+        = j_{n-1} d_n f_n
+        = j_{n-1} f_{n-1} d_n
+        = f i_{n-1} d_n
+        = f d i_n \,,
+      \]
+      and hence overall that~$df = fd$ by the universal property of the coproduct~$C$
+      
+      This leads us to consider the category~$\Ccat$ where
+      \begin{itemize}
+        \item
+          an object of~$\Ccat$ is a pair~$(C,d)$ consisting of a~\dash{$\Integer$}{graded} object~$C$ and a homogeneous morphism~$d \colon C \to C$ of degree~$-1$ with~$d^2 = 0$, and
+        \item
+          a morphism~$f \colon (C,d) \to (D,d)$ is a morphism~$f \colon C \to D$ of~\dash{$\Integer$}{graded} objects such that~$d f = f d$.
+      \end{itemize}
+      We have above constructed a functor~$F \colon \Ch(\Acat) \to \Ccat$, and this functor is an equivalence of categories.
+      The objects of~$\Ccat$ are called \emph{differential graded objects} in~$\Acat$.
+  \end{enumerate}
+\end{remark}
+
+
+\begin{definition}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Let~$\Ccc$ be a chain complex.
+      For every~$n \in \Integer$, the~\emph{\dash{$n$}{th} cycle object}\index{cycle} of~$\Ccc$ is~$\Zl_n(\Ccc) \defined \ker(d_n)$, and the~\emph{\dash{$n$}{th} boundary object}\index{boundary} of~$\Ccc$ is~$\Bl_n(\Ccc) \defined \im(d_{n+1})$.
+      It follows for every~$n \in \Integer$ from~$d_n d_{n+1} = 0$ that there exist a unique morphism~$\Bl_n(\Ccc) \to \Zl_n(\Ccc)$ that makes the diagram
+      \[
+        \begin{tikzcd}[column sep = tiny]
+            \dotsb
+            \arrow{rr}
+          & {}
+          & C_{n+1}
+            \arrow{rr}[above]{d_{n+1}}
+            \arrow{dr}
+          & {}
+          & C_n
+            \arrow{rr}[above]{d_n}
+          & {}
+          & C_{n-1}
+            \arrow{rr}
+          & {}
+          & \dotsb
+          \\
+            {}
+          & {}
+          & {}
+          & \Bl_n(\Ccc)
+            \arrow{ur}
+            \arrow[dashed]{rr}
+          & {}
+          & \Zl_n(\Ccc)
+            \arrow{ul}
+          & {}
+          & {}
+          & {}
+        \end{tikzcd}
+      \]
+      commute, and this morphism is a monomorphism.
+      The~\emph{\dash{$n$}{th} homology object}\index{homology} of the chain complex~$\Ccc$ is
+      \[
+                    \Hl_n(\Ccc)
+        \defined    \coker(\Bl_n(\Ccc) \to \Zl_n(\Ccc)) \,.
+      \]
+      (One may think about~$\Hl_n(\Ccc)$ as a quotient~$\Hl_n(\Ccc) = \Bl_n(\Ccc)/\Zl_n(\Ccc)$.)
+    \item
+      Dually, let~$\Cccc$ be a cochain complex in~$\Acat$.
+      For every~$n \in \Integer$, the~\emph{\dash{$n$}{th} cocycle object}\index{cocycle} of~$\Cccc$ is~$\Zl^n(\Cccc) \defined \ker(d^n)$, and the~\emph{\dash{$n$}{th} coboundary object}\index{coboundary} of~$\Cccc$ is~$\Bl^n(\Cccc) \defined \im(d^{n-1})$.
+      The~\emph{\dash{$n$}{th} cohomology object}\index{cohomology} of~$\Cccc$ is
+      \[
+                  \Hl^n(\Cccc)
+        \defined  \coker( \Bl^n(\Cccc)\to \Zl^n(\Cccc) )
+      \]
+      where~$\Bl^n(\Cccc) \to \Zl^n(\Cccc)$ is the unique morphism that makes the following diagram commute:
+      \[
+        \begin{tikzcd}[column sep = tiny]
+            \dotsb
+            \arrow{rr}
+          & {}
+          & C^{n-1}
+            \arrow{rr}[above]{d^{n-1}}
+            \arrow{dr}
+          & {}
+          & C^n
+            \arrow{rr}[above]{d^n}
+          & {}
+          & C^{n+1}
+            \arrow{rr}
+          & {}
+          & \dotsb
+          \\
+            {}
+          & {}
+          & {}
+          & \Bl^n(\Cccc)
+            \arrow{ur}
+            \arrow[dashed]{rr}
+          & {}
+          & \Zl^n(\Cccc)
+            \arrow{ul}
+          & {}
+          & {}
+          & {}
+        \end{tikzcd}
+      \]
+  \end{enumerate}
+\end{definition}
+
+
+\begin{example*}
+  Let~$A$ be a~{\kalg} and let~$\Ccc$ be a chain complex of~{\modules{$A$}}, i.e.\ a chain complex in the abelian category~$\Modl{A}$.
+  Then~$\Bl_n(\Ccc) \subseteq \Zl_n(\Ccc) \subseteq C_n$ are submodules for every~$n \in \Integer$, whose quotient~$\Hl_n(\Ccc) = \Zl_n(\Ccc)/\Bl_n(\Ccc)$ is the~\dash{$n$}{th} homology of~$\Ccc$.
+  The elements of~$\Zl_n(\Ccc)$ are the~\emph{\dash{$n$}{cycles}} of~$\Ccc$, and the elements of~$\Bl_n(\Ccc)$ are the~\emph{\dash{$n$}{boundaries}} of~$\Ccc$.
+\end{example*}
+
+
+\begin{remark}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Let~$f = (f_n)_n \colon \Ccc \to \Dcc$ be a morphism of chain complexes.
+      It follows for ever~$n \in \Integer$ from the commutativity of the square
+      \[
+        \begin{tikzcd}
+            C_n
+            \arrow{r}[above]{d_n}
+            \arrow{d}[left]{f_n}
+          & C_{n-1}
+            \arrow{d}[right]{f_{n-1}}
+          \\
+            D_n
+            \arrow{r}[above]{d_n}
+          & D_{n-1}
+        \end{tikzcd}
+      \]
+      that there exists a unique induced morphism~$\Zl_n(f) \colon \Zl_n(\Ccc) \to \Zl_n(\Dcc)$ that makes the following diagram commute:
+      \[
+        \begin{tikzcd}
+            \Zl_n(\Ccc)
+            \arrow{r}
+            \arrow[dashed]{d}[left]{\Zl_n(f)}
+          & C_n
+            \arrow{r}[above]{d_n}
+            \arrow{d}[left]{f_n}
+          & C_{n-1}
+            \arrow{d}[right]{f_{n-1}}
+          \\
+            \Zl_n(\Dcc)
+            \arrow{r}
+          & D_n
+            \arrow{r}[above]{d_n}
+          & D_{n-1}
+        \end{tikzcd}
+      \]
+      This induced morphism is functorial in the following sense:
+      \begin{itemize}
+        \item
+          If~$\Dcc = \Ccc$ and~$f = \id_{\Ccc}$ then~$\Zl_n(\id_{\Ccc}) = \id_{\Zl_n(\Ccc)}$ for every~$n \in \Integer$.
+        \item
+          If~$\Ecc$ is another chain complex and~$g \colon \Dcc \to \Ecc$ is another morphism of chain complexes, then
+          \[
+              \Zl_n(g \circ f)
+            = \Zl_n(g) \circ \Zl_n(f)
+          \]
+          for every~$n \in \Integer$.
+      \end{itemize}
+      (See \cref{functoriality of (co)kernel} for more details on this induced morphism and its functoriality.)
+    \item
+      It also follows for every~$n \in \Integer$ from the commutativity of the square
+      \[
+        \begin{tikzcd}[column sep = large]
+            C_{n+1}
+            \arrow{r}[above]{d_{n+1}}
+            \arrow{d}[left]{f_{n+1}}
+          & C_n
+            \arrow{d}[right]{f_n}
+          \\
+            D_{n+1}
+            \arrow{r}[above]{d_{n+1}}
+          & D_n
+        \end{tikzcd}
+      \]
+      that there exists a unique induced morphism~$\Bl_n(f) \colon \Bl_n(\Ccc) \to \Bl_n(\Dcc)$ that makes the following diagram commute:
+      \[
+        \begin{tikzcd}[column sep = large]
+            C_{n+1}
+            \arrow{r}[above]{d_{n+1}}
+            \arrow{d}[left]{f_{n+1}}
+          & C_n
+            \arrow{r}
+            \arrow{d}[right]{f_n}
+          & \Bl_n(\Ccc)
+            \arrow[dashed]{d}[right]{\Bl_n(f)}
+          \\
+            D_{n+1}
+            \arrow{r}[above]{d_{n+1}}
+          & D_n
+            \arrow{r}
+          & \Bl_n(\Dcc)
+        \end{tikzcd}
+      \]
+      This induced morphism is functorial in the following sense:
+      \begin{itemize}
+        \item
+          If~$\Dcc = \Ccc$ and~$f = \id_{\Ccc}$ then~$\Bl_n(\id_{\Ccc}) = \id_{\Bl_n(\Ccc)}$ for every~$n \in \Integer$.
+        \item
+          If~$\Ecc$ is another chain complex and~$g \colon \Dcc \to \Ecc$ is another morphism of chain complexes, then
+          \[
+              \Bl_n(g \circ f)
+            = \Bl_n(g) \circ \Bl_n(f)
+          \]
+          for every~$n \in \Integer$.
+      \end{itemize}
+      (See \cref{functoriality of (co)image} for more details on this induced morphism and its functoriality.)
+    \item
+      We get from the above for every~$n \in \Integer$ the following diagram:
+      \[
+        \begin{tikzcd}[row sep = large, column sep = 2.3em]
+            \dotsb
+            \arrow{r}
+          & C_{n+1}
+            \arrow{rr}[above]{d_{n+1}}
+            \arrow{dd}[left, near start]{f_{n+1}}
+            \arrow{dr}[below left]{p}
+          & {}
+          & C_n
+            \arrow{rr}[above]{d_n}
+            \arrow{dd}[right, near start]{f_n}
+          & {}
+          & C_{n-1}
+            \arrow{r}
+            \arrow{dd}[right, near start]{f_{n-1}}
+          & \dotsb
+          \\
+            {}
+          & {}
+          & \Bl_n(\Ccc)
+            \arrow{ur}[above left]{i}
+          & {}
+          & \Zl_n(\Ccc)
+            \arrow{ul}[above right]{j}
+            \arrow[from=ll, dashed, crossing over, "\lambda", near start]
+          & {}
+          & {}
+          \\
+            \dotsb
+            \arrow{r}
+          & D_{n+1}
+            \arrow{rr}[above, near start]{d_{n+1}}
+            \arrow{dr}[below left]{p'}
+          & {}
+          & D_n
+            \arrow{rr}[above, near end]{d_n}
+          & {}
+          & D_{n-1}
+            \arrow{r}
+          & \dotsb
+          \\
+            {}
+          & {}
+          & \Bl_n(\Dcc)
+            \arrow{ur}[above left]{i'}
+            \arrow[dashed]{rr}[above]{\lambda'}
+            \arrow[from=uu, dashed, crossing over, "\Bl_n(f)", near start]
+          & {}
+          & \Zl_n(\Dcc)
+            \arrow{ul}[above right]{j'}
+            \arrow[from=uu, dashed, crossing over, "\Zl_n(f)", swap, near start]
+          & {}
+          & {}
+        \end{tikzcd}
+      \]
+      This diagram commutes:
+      It remains to show that the dashed square in the front commutes.
+      This holds because
+      \begin{align*}
+            j' \Zl_n(f) \lambda p
+        =  f_n j \lambda p
+        =  f_n i p
+        =  f_n d_{n+1}
+        =  d_{n+1} f_{n+1}
+        =  i' p' f_{n+1}
+        &=  j' \lambda' p' f_{n+1}  \\
+        &=  j' \lambda' \Bl_n(f) p \,,
+      \end{align*}
+      and hence~$\Zl_n(f) \lambda = \lambda' \Bl_n(f)$ because~$p$ is an epimorphism and~$j'$ is a monomorphism.
+      
+      It follows from this commutativity of the frontal square
+      \[
+        \begin{tikzcd}[row sep = large]
+            \Bl_n(\Ccc)
+            \arrow{r}[above]{\lambda}
+            \arrow{d}[left]{\Bl_n(f)}
+          & \Zl_n(\Ccc)
+            \arrow{d}[right]{\Zl_n(f)}
+          \\
+            \Bl_n(\Dcc)
+            \arrow{r}[above]{\lambda'}
+          & \Zl_n(\Dcc)
+        \end{tikzcd}
+      \]
+      that there exists a unique induced morphism~$\Hl_n(f) \colon \Hl_n(\Ccc) \to \Hl_n(\Dcc)$ that makes the following diagram commute:
+      \[
+        \begin{tikzcd}[row sep = large]
+            \Bl_n(\Ccc)
+            \arrow{r}[above]{\lambda}
+            \arrow{d}[left]{\Bl_n(f)}
+          & \Zl_n(\Ccc)
+            \arrow{r}
+            \arrow{d}[right]{\Zl_n(f)}
+          & \Hl_n(\Ccc)
+            \arrow[dashed]{d}[right]{\Hl_n(f)}
+          \\
+            \Bl_n(\Dcc)
+            \arrow{r}[above]{\lambda'}
+          & \Zl_n(\Dcc)
+            \arrow{r}
+          & \Hl_n(\Dcc)
+        \end{tikzcd}
+      \]
+  \end{enumerate}
+
+  It follows from the functorialty of both~$\Bl_n$ and~$\Zl_n$, together with the functoriality of the cokernel (as explained in \cref{functoriality of (co)kernel}) that this induced morphism is functorial in the following sense:
+  \begin{itemize}
+    \item
+      If~$\Dcc = \Ccc$ and~$f = \id_{\Ccc}$ then~$\Hl_n(\id_{\Ccc}) = \id_{\Hl_n(\Ccc)}$ for every~$n \in \Integer$.
+    \item
+      If~$\Ecc$ is another chain complex and~$g \colon \Dcc \to \Ecc$ is another morphism of chain complexes, then
+      \[
+          \Hl_n(g \circ f)
+        = \Hl_n(g) \circ \Hl_n(f)
+      \]
+      for every~$n \in \Integer$.
+  \end{itemize}
+\end{remark}
+
+
+\begin{example*}
+  Let~$A$ be a~{\kalg}.
+  Let~$\Ccc$ and~$\Dcc$ be chain complexes of~{\modules{$A$}}, i.e.\ chain complexes in the abelian category~$\Modl{A}$, and let~$f \colon \Ccc \to \Dcc$ be a morphism of chain complexes.
+  Then~$f(\Zl_n(\Ccc)) \subseteq \Zl_n(\Dcc)$ and~$f(\Bl_n(\Ccc)) \subseteq \Bl_n(\Dcc)$ for every~$n \in \Integer$, and the homomorphisms~$\Zl_n(f)$ and~$\Bl_n(f)$ are the resulting restrictions of~$f$.
+  The induced morphism~$\Hl_n(f) \colon \Hl_n(\Ccc) \to \Hl_n(\Dcc)$ is on elements given by
+  \[
+        \Hl_n(f)( \class{x} )
+    =   \class{f(x)}
+    \in \Hl_n(\Dcc)
+  \]
+  for every~$\class{x} \in \Hl_n(\Ccc)$.
+\end{example*}
+
+
+\begin{definition}
+  A morphism~$f \colon \Ccc \to \Dcc$ of chain complexes is a \emph{{\qim}}\index{quasi-isomorism}\index{chain complex!quasi-isomorphic} if for every~$n \in \Integer$ the morphism~$\Hl_n(f) \colon \Hl_n(\Ccc) \to \Hl_n(\Dcc)$ is an isomorphism.
+  Dually, a morphism~$f \colon \Cccc \to \Dccc$ of cochain complexes is a \emph{{\qim}} if for every~$n \in \Integer$ the morphism~$\Hl^n(f) \colon \Hl^n(\Cccc) \to \Hl^n(\Dccc)$ is an isomorphism.
+\end{definition}
+
+
+\begin{remarkdefinition}
+  For a chain complex~$\Ccc$ in~$\Acat$ the following conditions are equivalent:
+  \begin{enumerate}
+    \item
+      The sequence
+      \[
+        \dotsb
+        \to
+        C_{n+1}
+        \xlongto{d_{n+1}}
+        C_n
+        \xlongto{d_n}
+        C_{n-1}
+        \to
+        \dotsb
+      \]
+      is exact.
+    \item
+      It holds that~$\Hl_n(\Ccc) = 0$ for every~$n \in \Integer$.
+    \item
+      The morphism~$0 \to \Ccc$ is a {\qim}.
+    \item[iii')]
+%     TODO: Makes this less hacky.
+      The morphism~$\Ccc \to 0$ is a {\qim}.
+    \item
+      The chain complex~$\Ccc$ is {\qic} to the zero complex.
+  \end{enumerate}
+  If the chain complex~$\Ccc$ satisfies these equivalent conditions then~$\Ccc$ is \emph{acyclic}\index{acyclic}\index{chain complex!acyclic}.
+\end{remarkdefinition}
+
+
+\begin{example}
+  Consider the chain complex~$\Ccc$ of abelian groups, i.e.\ in the abelian category~$\Ab$, given by
+  \[
+              C_n
+    \defined  \begin{cases}
+                \Integer/8  & \text{if~$n \geq 0$}  \,, \\
+                0           & \text{if~$n < 0$} \,,
+              \end{cases}
+  \]
+  together with the differential morphisms~$d_n \colon C_n \to C_{n-1}$ given by
+  \[
+              d_n
+    \defined  \begin{cases}
+                \text{multiplication by~$4$}  & \text{if~$n > 0$} \,, \\
+                0                             & \text{if~$n \leq 0$}  \,.
+              \end{cases}
+  \]
+  This is indeed a chain complex, and its homology is given by
+  \[
+          \Hl_n(\Ccc)
+    \cong \begin{cases}
+            0           & \text{if~$n < 0$}     \,, \\
+            \Integer/4  & \text{if~$n = 0$}     \,, \\
+            \Integer/2  & \text{if~$n \geq 1$}  \,. \\
+          \end{cases}
+  \]
+  Indeed, we have for every~$n < 0$ that~$C_n = 0$, hence~$\Zl_n(\Ccc) = 0$ and therefore also~$\Hl_n(\Ccc) = 0$.
+  For~$n = 0$ we have that~$\Zl_0(\Ccc) = \Integer/8$ and~$\Bl_0(\Ccc) = 4\Integer/8$, and hence that
+  \[
+          \Hl_0(\Ccc)
+    =     \Zl_0(\Ccc) / \Bl_0(\Ccc)
+    =     (\Integer/8) / (4\Integer/8)
+    \cong \Integer/4 \,.
+  \]
+  For~$n \geq 1$ we have that~$\Zl_n(\Ccc) = 2\Integer/8$ and~$\Bl_n(\Ccc) = 4\Integer/8$, and hence that
+  \[
+          \Hl_n(\Ccc)
+    =     \Zl_4(\Ccc) / \Bl_n(\Ccc)
+    =     (2 \Integer/8) / (4\Integer/8)
+    \cong 2\Integer/4
+    \cong \Integer/2 \,.
+  \]
+\end{example}
+
+
+\begin{example}
+  For every~$n \geq 0$ let
+  \[
+              \Delta^n
+    \defined  \conv(e_0, \dotsc, e_n)
+    =         \left\{
+                (t_0, \dotsc, t_n) \in \Real^{n+1}
+              \suchthat*
+                t_0, \dotsc, t_n \geq 0,
+                \sum_{i=0}^n t_i = 1
+              \right\}
+  \]
+  be the \emph{standard~\simplex{$n$}}, together with the usual topology.
+  For every~$k = 0, \dotsc, n$ let
+  \[
+            f^{(n)}_k
+    \colon  \Delta^{n-1}
+    \to     \Delta^n \,,
+    \quad   (t_0, \dotsc, t_{n-1})
+    \mapsto (t_0, \dotsc, t_{i-1}, 0, t_i, \dotsc, t_{n-1})
+  \]
+  be the inclusion of~$\Delta^{n-1}$ into~$\Delta^n$ as the~\dash{$k$}{th} face.
+  
+  Let now~$X$ be a topological space.
+  A~\simplex{$n$} in~$X$ is a continuous map~$\sigma \colon \Delta^n \to X$.
+  For every~$n \geq 0$ let
+  \[
+              C^\sing_n(X)
+    \defined  \text{free abelian group on the set~$\{ \text{\simplices{$n$} $\sigma \colon \Delta^n \to X$} \}$} \,,
+  \]
+  and for every~$n < 0$ let~$C^\sing_n(X) \defined 0$.
+  We define for every~$n \in \Integer$ a differential
+  \[
+    d^\sing_n
+    \colon
+    C^\sing_n(X)
+    \to
+    C^\sing_{n-1}(X)
+  \]
+  by~$d^\sing_n = 0$ for~$n \leq 0$, and for~$n > 0$ on basis elements by
+  \[
+      d^\sing_n(\sigma)
+    = \sum_{i=0}^n (-1)^i \sigma \circ f^{(n)}_i
+  \]
+  for every~{\simplex{$n$}}~$\sigma$ in~$X$.
+  This resulting chain complex~$\Ccc^\sing \defined ( (C^\sing_n(X))_{n \in \Integer}, (d_n^\sing)_{n \in \Integer} )$ is the \emph{singular chain complex}\index{singular!chain complex}\index{chain complex!singular} of~$X$.
+  (That this really defines a chain complex of abelian groups follows from Exercise~4 of Exercise~sheet~8.)
+  Its~\dash{$n$}{th} homology
+  \[
+              \Hl_n^\sing(X)
+    \defined  \Hl_n( \Ccc^\sing(X) )
+  \]
+  is the~\dash{$n$}{th} \emph{singular homology}\index{singular!homology}\index{homology!singular} of~$X$.
+  
+  The \emph{singular cochain complex}\index{singular!cochain complex}\index{chochain complex!singular} of~$X$ is denoted by~$\Cccc_\sing(X)$;
+  it is given by
+  \[
+              C^n_\sing(X)
+    \defined  \Hom_\Integer( C^\sing_n(X), \Integer )
+  \]
+  for every~$n \in \Integer$, and the differential~$d^n_\sing \colon C^n_\sing(X) \to C^{n+1}_\sing(X)$ is for every~$n \in \Integer$ the dual map to~$d^\sing_{n+1} \colon C_{n+1}^\sing(X) \to C_n^\sing(X)$.
+  The~\dash{$n$}{th} cohomology of this cochain complex~$\Cccc_\sing(X)$,
+  \[
+              \Hl^n_\sing(X)
+    \defined  \Hl^n( \Cccc_\sing(X) ) \,,
+  \]
+  is the~\dash{$n$}{th} \emph{singular cohomology}\index{singular!cohomology}\index{cohomology!singular} of~$X$.
+\end{example}
+
+
+\begin{lemma}
+  The categories~$\Ch(\Acat)$ and~$\CCh(\Acat)$ are additive.
+\end{lemma}
+
+
+\begin{proof}
+  It sufficies to consider the category~$\Ch(\Acat)$.
+  For any two parallel morphisms of chain complexes~$f, g \colon \Ccc \to \Dcc$ their sum is given by
+  \[
+              (g + f)_n
+    \defined  g_n + f_n
+  \]
+  for every~$n \in \Integer$.
+  This makes~$\Ch(\Acat)(\Ccc, \Dcc)$ into an abelian group.
+  
+  The category~$\Ch(\Acat)$ has biproducts:
+  Let~$\Ccc^{(1)}, \dotsc, \Ccc^{(k)}$ be chain complexes in~$\Acat$.
+  Their biproduct~$\Ccc$ is given by
+  \[
+              C_n
+    \defined  C^{(1)}_n \oplus \dotsb \oplus C^{(k)}_n
+  \]
+  for every~$n \in \Integer$, together with the differentials~$d_n \colon C_n \to C_{n-1}$ given by
+  \[
+              d_n
+    \defined  \begin{bmatrix}
+                d^{(1)}_n &         &           \\
+                          & \ddots  &           \\
+                          &         & d^{(k)}_n
+              \end{bmatrix}
+    \colon    C_n
+    \to       C_{n-1}
+  \]
+  for every~$n \in \Integer$.
+  The canonical morphisms~$c_i \colon \Ccc^{(i)} \to \Ccc$ and~$p_i \colon \Ccc \to \Ccc^{(i)}$ are given in components by
+  \[
+              c_i
+    \defined  (c_{i,n})_{n \in \Integer}
+    \quad\text{and}\quad
+              p_i
+    \defined  (p_{i,n})_{n \in \Integer} \,,
+  \]
+  where
+  \[
+            c_{i,n}
+    \colon  C^{(i)}_n
+    \to     C^{(1)}_n \oplus \dotsb \oplus C^{(k)}_n
+    \quad\text{and}\quad
+            p_{i,n}
+    \colon  C^{(1)}_n \oplus \dotsb \oplus C^{(k)}_n
+    \to     C^{(i)}_n
+  \]
+  are for every~$n \in \Integer$ the canonical morphisms belonging to the biproduct in~$\Acat$.
+  These are indeed morphisms of chain complexes.
+% TODO: Check that these are indeed morphisms of chain complexes.
+  It remains check that~$p_j c_i = 0$ for all~$i \neq j$, and that~$\sum_{i=1}^k c_i p_i = \id_{\Ccc}$.
+  This holds true because it holds componentwise.
+\end{proof}
+
+
+\begin{lemma}
+  Let~$f \colon \Ccc \to \Dcc$ be a morphism of chain complexes.
+  It follows for every~$n \in \Integer$ from the commutativity of the square
+  \[
+    \begin{tikzcd}
+        C_n
+        \arrow{r}[above]{d_n}
+        \arrow{d}[left]{f_n}
+      & C_{n-1}
+        \arrow{d}[right]{f_{n-1}}
+      \\
+        D_n
+        \arrow{r}[above]{d_n}
+      & D_{n-1}
+    \end{tikzcd}
+  \]
+  that there exist unique morphisms
+  \begin{gather*}
+    d^{\,\ker}_n \colon \ker(f_n) \to \ker(f_{n-1})
+  \shortintertext{and}
+    d^{\,\coker}_n \colon \coker(f_n) \to \coker(f_{n-1})
+  \end{gather*}
+  that make the following two squares commute:
+  \[
+    \begin{tikzcd}[column sep = large]
+        \ker(f_n)
+        \arrow[dashed]{r}[above]{d^{\,\ker}_n}
+        \arrow{d}[left]{k_n}
+      & \ker(f_{n-1})
+        \arrow{d}[right]{k_{n-1}}
+      \\
+        C_n
+        \arrow{r}[above]{d_n}
+      & C_{n-1}
+    \end{tikzcd}
+    \qquad\qquad
+    \begin{tikzcd}[column sep = large]
+        D_n
+        \arrow{r}[above]{d_n}
+        \arrow{d}[left]{c_n}
+      & D_{n-1}
+        \arrow{d}[right]{c_{n-1}}
+      \\
+        \coker(f_n)
+        \arrow[dashed]{r}[above]{d^{\,\coker}_n}
+      & \coker(f_{n-1})
+    \end{tikzcd}
+  \]
+  Then~$\ker(f) \defined ( (\ker(f_n))_{n \in \Integer}, (d^{\,\ker}_n)_{n \in \Integer} )$ is again a chain complex,~$k \defined (k_n)_{n \in \Integer}$ is a morphism of chain complexes~$k \colon \ker(f) \to \Ccc$, and~$k$ is a kernel of~$f$.
+  Dually,~$\coker(f) \defined ( (\coker(f_n))_{n \in \Integer}, (d^{\,\coker}_n)_{n \in \Integer} )$ is again a chain complex,~$c \defined (c_n)_{n \in \Integer}$ is a morphism of chain complexes~$c \colon \Dcc \to \coker(f)$, and~$c$ is a cokernel of~$f$.
+\end{lemma}
+
+
+\begin{proof}
+  This is part of Exercise~1 of Exercise~sheet~8.
+\end{proof}
+
+
+
+
+
+\lecturend{15}
+
+
+
+
