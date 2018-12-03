@@ -158,6 +158,7 @@
 
 
 \begin{lemma}
+  \label{properties of (co)kernels}
   Let~$\Ccat$ be a category that is preadditive, or that has a zero object.
   Let~$f \colon X \to Y$ be a morphism in~$\Ccat$.
   \begin{enumerate}
@@ -902,6 +903,11 @@
 \end{remarknonum}
 
 
+\begin{remark*}
+  It follows from \cref{properties of (co)kernels} that images are monomorphisms and coimages are epimorphisms.
+\end{remark*}
+
+
 \begin{lemma}[Canonical factorization]
   \index{canonical factorization}
   \label{canonical factorization}
@@ -1105,6 +1111,386 @@
   Let~$A$ be a~{\kalg} and consider the module category~$\Modl{A}$, which is additive.
   Let~$f \colon M \to N$ be a homomorphism of left~{\modules{$A$}}, i.e.\ a morphism in~$\Modl{A}$.
   Then the canonical morphism~$f' \colon \im(f) \to N$ is the inclusion~$n \mapsto n$, the canonical morphism~$\tilde{f} \colon M \to \coker(f) = M/\ker(f)$ is the canonical projection~$m \mapsto \class{m}$, and the canonical morphism~$\bar{f} \colon M/\ker(f) \to \im(f)$ is the isomorphism~$\class{m} \mapsto f(m)$.
+\end{example*}
+
+
+\begin{remark*}[Functoriality of the (co)image]
+  \label{functoriality of (co)image}
+  Let~$\Ccat$ be a category that is preadditive, or that has a zero object, and that has kernels and cokernels.
+  It follows from the functoriality of the (co)kernel (as discussed in \cref{functoriality of (co)kernel}) that images and coimages are also functorial:
+  Let~$f \colon X \to Y$ and~$f' \colon X' \to Y'$ be two morphisms in~$\Ccat$.
+  \begin{enumerate}
+    \item
+      Let~$i \colon \im(f) \to Y$ and~$i' \colon \im(f') \to Y'$ be images of~$f$ and~$f'$.
+      If~$f$ and~$f'$ fit into a commutative square
+      \[
+        \begin{tikzcd}
+            X
+            \arrow{r}[above]{f}
+            \arrow{d}[left]{h}
+          & Y
+            \arrow{d}[right]{h''}
+          \\
+            X'
+            \arrow{r}[above]{f'}
+          & Y'
+        \end{tikzcd}
+      \]
+      then there exists a unique morphism~$h' \colon \im(f) \to \im(f')$ that makes the following square commute:
+      \[
+        \begin{tikzcd}
+            \im(f)
+            \arrow{r}[above]{i}
+            \arrow[dashed]{d}[left]{h'}
+          & Y
+            \arrow{d}[right]{h''}
+          \\
+            \im(f')
+            \arrow{r}[above]{i'}
+          & Y'
+        \end{tikzcd}
+      \]
+      To show the existence of~$h'$ let~$c \colon Y \to \coker(f)$ and~$c' \colon Y' \to \coker(f')$ be cokernels of~$f$, resp.~$f'$, so that~$i$ is a kernel of~$c$ and~$i'$ is a kernel of~$c'$.
+      Then there exists by the functoriality of the cokernel a unique morphism~$\bar{h} \colon \coker(f) \to \coker(f')$ that makes the diagram
+      \[
+        \begin{tikzcd}
+            X
+            \arrow{r}[above]{f}
+            \arrow{d}[left]{h}
+          & Y
+            \arrow{r}[above]{c}
+            \arrow{d}[right]{h''}
+          & \coker(f)
+            \arrow[dashed]{d}[right]{\bar{h}}
+          \\
+            X'
+            \arrow{r}[above]{f'}
+          & Y'
+            \arrow{r}[above]{c'}
+          & \coker(f')
+        \end{tikzcd}
+      \]
+      commute.
+      By applying the functoriality of the kernel to the right square, it follows that there exists a unique morphism~$h' \colon \im(f) \to \im(f')$ that makes the diagram
+      \[
+        \begin{tikzcd}
+            \im(f)
+            \arrow{r}[above]{i}
+            \arrow[dashed]{d}[left]{h'}
+          & Y
+            \arrow{r}[above]{c}
+            \arrow{d}[right]{h''}
+          & \coker(f)
+            \arrow{d}[right]{\bar{h}}
+          \\
+            \im(f')
+            \arrow{r}[above]{i'}
+          & Y'
+            \arrow{r}[above]{c'}
+          & \coker(f')
+        \end{tikzcd}
+      \]
+      commute.
+      This shows the existence of~$h'$.
+      The uniqueness of~$h'$ follows from the uniqueness of~$h'$ in the above construction;
+      it also follows from~$h'$ being uniquely determined by the composition~$i' h' = h'' i$ because~$i'$ is a monomorphism.
+      
+      This induced morphism between images is functorial in the following sense:
+      \begin{itemize}
+        \item
+          The morphism~$\im(f) \to \im(f)$ that results from the commutative square
+          \[
+            \begin{tikzcd}
+                X
+                \arrow{r}[above]{f}
+                \arrow{d}[left]{\id_X}
+              & Y
+                \arrow{d}[right]{\id_Y}
+              \\
+                X
+                \arrow{r}[above]{f}
+              & Y
+            \end{tikzcd}
+          \]
+          is the identity~$\id_{\im(f)}$.
+%           Indeed, the diagram
+%           \[
+%             \begin{tikzcd}
+%                 \im(f)
+%                 \arrow{r}[above]{i}
+%                 \arrow{d}[left]{\id_{\im(f)}}
+%               & Y
+%                 \arrow{d}[right]{\id_Y}
+%               \\
+%                 \im(f)
+%                 \arorw{r}[above]{i}
+%               & Y
+%             \end{tikzcd}
+%           \]
+%           commutes, and hence~$\id_{\im(f)}$ satisfies the defining property of the induced morphism.
+        \item
+          Suppose that we are given another morphism~$f'' \colon X'' \to Y''$, and that the morphisms~$f$,~$f'$ and~$f''$ fits into a commutative diagram of the following form:
+          \[
+            \begin{tikzcd}
+                X
+                \arrow{r}[above]{f}
+                \arrow{d}[left]{h}
+              & Y
+                \arrow{d}[right]{h''}
+              \\
+                X'
+                \arrow{r}[above]{f'}
+                \arrow{d}[left]{g}
+              & Y'
+                \arrow{d}[right]{g''}
+              \\
+                X''
+                \arrow{r}[above]{f''}
+              & Y''
+            \end{tikzcd}
+          \]
+          Let~$i'' \colon \im(f'') \to Y''$ be an image of~$f''$ and let~$g' \colon \im(f') \to \im(f'')$ be the morphism induced by lower commutative square of the above diagram.
+          Then the composition~$g' \circ h' \colon \im(f) \to \im(f'')$ is the morphism inducde by the outer commutative square:
+          \[
+            \begin{tikzcd}
+                X
+                \arrow{r}[above]{f}
+                \arrow{d}[left]{g \circ h}
+              & Y
+                \arrow{d}[right]{g'' \circ h''}
+              \\
+                X''
+                \arrow{r}[above]{f''}
+              & Y''
+            \end{tikzcd}
+          \]
+%           Indeed, we have the following commutative diagram:
+%           \[
+%             \begin{tikzcd}
+%                 X
+%                 \arrow{r}[above]{f}
+%                 \arrow{d}[left]{h}
+%               & Y
+%                 \arrow{d}[right]{h''}
+%               \\
+%                 X'
+%                 \arrow{r}[above]{f'}
+%                 \arrow{d}[left]{g}
+%               & Y'
+%                 \arrow{d}[right]{g''}
+%               \\
+%                 X''
+%                 \arrow{r}[above]{f''}
+%               & Y''
+%             \end{tikzcd}
+%           \]
+      \end{itemize}
+      This claimed functoriality follows from the above explicit construction of the induced morphism by functoriality of the (co)kernel, as explained in \cref{functoriality of (co)kernel}.
+    \item
+      Dually, if~$p \colon X \to \coim(f)$ and~$p' \colon X' \to \coim(f')$ are coimages of~$f$ and~$f'$ then there exists a unique morphism~$\bar{h} \colon \coim(f) \to \coim(f')$ that makes the following square commute:
+      \[
+        \begin{tikzcd}
+            X
+            \arrow{r}[above]{p}
+            \arrow{d}[left]{h}
+          & \coim(f)
+            \arrow[dashed]{d}[right]{\bar{h}}
+          \\
+            X'
+            \arrow{r}[above]{p'}
+          & \coim(f')
+        \end{tikzcd}
+      \]
+      This induced morphism between coimages is functorial in the following sense:
+      \begin{itemize}
+        \item
+          The morphism~$\coim(f) \to \coim(f)$ that results from the commutative square
+          \[
+            \begin{tikzcd}
+                X
+                \arrow{r}[above]{f}
+                \arrow{d}[left]{\id_X}
+              & Y
+                \arrow{d}[right]{\id_Y}
+              \\
+                X
+                \arrow{r}[above]{f}
+              & Y
+            \end{tikzcd}
+          \]
+          is the identity~$\id_{\coim(f)}$.
+        \item
+          Suppose that we are given another morphism~$f'' \colon X'' \to Y''$, and that the morphisms~$f$,~$f'$ and~$f''$ fits into a commutative diagram of the following form:
+          \[
+            \begin{tikzcd}
+                X
+                \arrow{r}[above]{f}
+                \arrow{d}[left]{h}
+              & Y
+                \arrow{d}[right]{h''}
+              \\
+                X'
+                \arrow{r}[above]{f'}
+                \arrow{d}[left]{g}
+              & Y'
+                \arrow{d}[right]{g''}
+              \\
+                X''
+                \arrow{r}[above]{f''}
+              & Y''
+            \end{tikzcd}
+          \]
+          Let~$p'' \colon X'' \to \coim(f'')$ be a coimage of~$f''$ and let~$g' \colon \coim(f') \to \coim(f'')$ be the morphism induced by lower commutative square of the above diagram.
+          Then the composition~$g' \circ h' \colon \coim(f) \to \coim(f'')$ is the morphism inducde by the outer commutative square:
+          \[
+            \begin{tikzcd}
+                X
+                \arrow{r}[above]{f}
+                \arrow{d}[left]{g \circ h}
+              & Y
+                \arrow{d}[right]{g'' \circ h''}
+              \\
+                X''
+                \arrow{r}[above]{f''}
+              & Y''
+            \end{tikzcd}
+          \]
+      \end{itemize}
+    \item
+      These induced morphisms are compatible with the canonical factorization from \cref{canonical factorization} in the sense that the following diagram commutes:
+      \[
+        \begin{tikzcd}
+            X
+            \arrow{rrr}[above]{f}
+            \arrow{dr}[below left]{p}
+            \arrow{dd}[left]{h}
+          & {}
+          & {}
+          & Y
+            \arrow{dd}[right]{h''}
+          \\
+            {}
+          & \coim(f)
+            \arrow{r}[above]{\tilde{f}}
+          & \im(f)
+            \arrow{ur}[below right]{i}
+          & {}
+          \\
+            X'
+            \arrow{rrr}[above]{f'}
+            \arrow{dr}[below left]{p'}
+          & {}
+          & {}
+          & Y'
+          \\
+            {}
+          & \coim(f')
+            \arrow[from=uu, crossing over, "\bar{h}", swap, near start]
+            \arrow{r}[above]{\tilde{f}'}
+          & \im(f')
+            \arrow[from=uu, crossing over, "h'", right, near start]
+            \arrow{ur}[below right]{i'}
+          & {}
+        \end{tikzcd}
+      \]
+      Indeed, the trapezoids on the top commutes by definition of~$\tilde{f}$, the trapezoid on the bottom commutes by definition of~$\tilde{f}'$, the square on the left commutes by definition of~$\bar{h}$, the square on the right commutes by definition of~$h'$, and the rectangle in the back commutes by assumption.
+      It follows that the front square commutes.
+      Indeed, it follows that
+      \[
+          i' h' \tilde{f} p
+        = h'' i \tilde{f} p
+        = h'' f
+        = f' h
+        = i' \tilde{f}' p' h
+        = i' \tilde{f}' \bar{h} p \,,
+      \]
+      and hence~$h' \tilde{f} = \tilde{f}' \bar{h}$ because~$p$ is an epimorphism and~$i'$ is a monomorphism.
+      
+      It follows that also the following diagrams commute, where the unlabeled arrows are the ones from the \hyperref[canonical factorization]{canonical factorization lemma}.
+      \[
+        \begin{tikzcd}[sep = small]
+            X
+            \arrow{rrr}[above]{f}
+            \arrow{dr}[below left]{p}
+            \arrow{dd}[left]{h}
+          & {}
+          & {}
+          & Y
+            \arrow{dd}[right]{h''}
+          \\
+            {}
+          & \coim(f)
+            \arrow{urr}
+          & {}
+          & {}
+          \\
+            X'
+            \arrow{rrr}[above, near end]{f'}
+            \arrow{dr}[below left]{p'}
+          & {}
+          & {}
+          & Y'
+          \\
+            {}
+          & \coim(f')
+            \arrow[from=uu, crossing over, "\bar{h}", swap, very near start]
+            \arrow{urr}
+          & {}
+          & {}
+        \end{tikzcd}
+        \quad\quad
+        \begin{tikzcd}[sep = small]
+            X
+            \arrow{rrr}[above]{f}
+            \arrow{drr}
+            \arrow{dd}[left]{h}
+          & {}
+          & {}
+          & Y
+            \arrow{dd}[right]{h''}
+          \\
+            {}
+          & {}
+          & \im(f)
+            \arrow{ur}[below right]{i}
+          & {}
+          \\
+            X'
+            \arrow{rrr}[above, near start]{f'}
+            \arrow{drr}
+          & {}
+          & {}
+          & Y'
+          \\
+            {}
+          & {}
+          & \im(f')
+            \arrow[from=uu, crossing over, "h'", right, very near start]
+            \arrow{ur}[below right]{i'}
+          & {}
+        \end{tikzcd}
+      \]
+  \end{enumerate}
+\end{remark*}
+
+
+\begin{example*}
+  Let~$A$ be a~{\kalg} and let~$f \colon X \to Y$ and~$f' \colon X' \to Y'$ be two homomorphisms of~{\modules{$A$}} that fit into a commutative square:
+  \[
+    \begin{tikzcd}
+        X
+        \arrow{r}[above]{f}
+        \arrow{d}[left]{h}
+      & Y
+        \arrow{d}[right]{h''}
+      \\
+        X'
+        \arrow{r}[above]{f'}
+      & Y'
+    \end{tikzcd}
+  \]
+  Then~$h''(\im(f)) \subseteq \im(f')$, and hence the homomorphism~$h''$ restricts to a homomorphism~$h' \colon \im(f) \to \im(f')$.
+  It similarly holds that the homomorphism~$f$ induces a {\welldef} homomorphism~$\bar{f} \colon X/\ker(f) \to X'/\ker(f')$ that is given by~$\bar{f}(\class{x}) = \class{f(x)}$ for every~$\class{x} \in X/\ker(f)$.
 \end{example*}
 
 
