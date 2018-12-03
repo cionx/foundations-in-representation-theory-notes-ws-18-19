@@ -48,6 +48,12 @@
 \end{definition}
 
 
+\begin{remark*}
+  If~$f = (f_n)_n \colon \Ccc \to \Dcc$ is a morphism of chain complexes such that~$f_n$ is for every~$n \in \Integer$ an isomorphism then~$(f_n^{-1})_{n \in \Integer}$ is a morphism of chain complexes~$\Dcc \to \Ccc$.
+  The morphism~$f$ is therefore an isomorphism if and only if~$f_n$ is for every~$n \in \Integer$ an isomorphism.
+\end{remark*}
+
+
 \begin{remark}
   \leavevmode
   \begin{enumerate}
@@ -186,7 +192,16 @@
   \begin{enumerate}
     \item
       Let~$\Ccc$ be a chain complex.
-      For every~$n \in \Integer$, the~\emph{\dash{$n$}{th} cycle object}\index{cycle} of~$\Ccc$ is~$\Zl_n(\Ccc) \defined \ker(d_n)$, and the~\emph{\dash{$n$}{th} boundary object}\index{boundary} of~$\Ccc$ is~$\Bl_n(\Ccc) \defined \im(d_{n+1})$.
+      For every~$n \in \Integer$, the~\emph{\dash{$n$}{th} cycle object}\index{cycle} of~$\Ccc$ is
+      \[
+                  \Zl_n(\Ccc)
+        \defined  \ker(d_n) \,,
+      \]
+      and the~\emph{\dash{$n$}{th} boundary object}\index{boundary} of~$\Ccc$ is
+      \[
+                  \Bl_n(\Ccc)
+        \defined  \im(d_{n+1})  \,.
+      \]
       It follows for every~$n \in \Integer$ from~$d_n d_{n+1} = 0$ that there exist a unique morphism~$\Bl_n(\Ccc) \to \Zl_n(\Ccc)$ that makes the diagram
       \[
         \begin{tikzcd}[column sep = tiny]
@@ -228,7 +243,15 @@
       (One may think about~$\Hl_n(\Ccc)$ as a quotient~$\Hl_n(\Ccc) = \Bl_n(\Ccc)/\Zl_n(\Ccc)$.)
     \item
       Dually, let~$\Cccc$ be a cochain complex in~$\Acat$.
-      For every~$n \in \Integer$, the~\emph{\dash{$n$}{th} cocycle object}\index{cocycle} of~$\Cccc$ is~$\Zl^n(\Cccc) \defined \ker(d^n)$, and the~\emph{\dash{$n$}{th} coboundary object}\index{coboundary} of~$\Cccc$ is~$\Bl^n(\Cccc) \defined \im(d^{n-1})$.
+      For every~$n \in \Integer$, the~\emph{\dash{$n$}{th} cocycle object}\index{cocycle} of~$\Cccc$ is
+      \[
+        \Zl^n(\Cccc) \defined \ker(d^n) \,,
+      \]
+      and the~\emph{\dash{$n$}{th} coboundary object}\index{coboundary} of~$\Cccc$ is
+      \[
+                  \Bl^n(\Cccc)
+        \defined  \im(d^{n-1})  \,.
+      \]
       The~\emph{\dash{$n$}{th} cohomology object}\index{cohomology} of~$\Cccc$ is
       \[
                   \Hl^n(\Cccc)
@@ -639,7 +662,12 @@
     = \sum_{i=0}^n (-1)^i \sigma \circ f^{(n)}_i
   \]
   for every~{\simplex{$n$}}~$\sigma$ in~$X$.
-  This resulting chain complex~$\Ccc^\sing \defined ( (C^\sing_n(X))_{n \in \Integer}, (d_n^\sing)_{n \in \Integer} )$ is the \emph{singular chain complex}\index{singular!chain complex}\index{chain complex!singular} of~$X$.
+  This resulting chain complex
+  \[
+              \Ccc^\sing
+    \defined  ( (C^\sing_n(X))_{n \in \Integer}, (d_n^\sing)_{n \in \Integer} )
+  \]
+  is the \emph{singular chain complex}\index{singular!chain complex}\index{chain complex!singular} of~$X$.
   (That this really defines a chain complex of abelian groups follows from Exercise~4 of Exercise~sheet~8.)
   Its~\dash{$n$}{th} homology
   \[
@@ -665,7 +693,9 @@
 
 
 \begin{lemma}
+  \label{chain complexes are additive}
   The categories~$\Ch(\Acat)$ and~$\CCh(\Acat)$ are additive.
+  Moreover, both sums of morphisms and biproducts can be computed componentwise.
 \end{lemma}
 
 
@@ -673,8 +703,8 @@
   It sufficies to consider the category~$\Ch(\Acat)$.
   For any two parallel morphisms of chain complexes~$f, g \colon \Ccc \to \Dcc$ their sum is given by
   \[
-              (g + f)_n
-    \defined  g_n + f_n
+              (f + g)_n
+    \defined  f_n + g_n
   \]
   for every~$n \in \Integer$.
   This makes~$\Ch(\Acat)(\Ccc, \Dcc)$ into an abelian group.
@@ -725,6 +755,7 @@
 
 
 \begin{lemma}
+  \label{chain complexes have (co)kernels}
   Let~$f \colon \Ccc \to \Dcc$ be a morphism of chain complexes.
   It follows for every~$n \in \Integer$ from the commutativity of the square
   \[
@@ -786,6 +817,51 @@
 
 
 \lecturend{15}
+
+
+\begin{theorem}
+  The categories~$\Ch(\Acat)$ and~$\CCh(\Acat)$ are again abelian.
+\end{theorem}
+
+
+\begin{proof}
+  It sufficies to show that~$\Ch(\Acat)$ is abelian.
+  It follows from \cref{chain complexes are additive} and \cref{chain complexes have (co)kernels} that the category~$\Ch(\Acat)$ is additive and has kernels and cokernels.
+  It remains to show that for a morphism~$f = (f_n)_{n \in \Integer} \colon \Ccc \to \Dcc$ of chain complexes the induced morphism~$\tilde{f} \colon \coim(f) \to \im(f)$, i.e.\ the unique morphism that makes the square
+  \[
+    \begin{tikzcd}
+        \Ccc
+        \arrow{r}[above]{f}
+        \arrow{d}
+      & \Dcc
+        \arrow{d}
+      \\
+        \coim(f)
+        \arrow[dashed]{r}[above]{\tilde{f}}
+      & \im(f)
+    \end{tikzcd}
+  \]
+  commute, is an isomorphism.
+  Let~$\Ecc \defined \coim(f)$ and~$\Fcc \defined \im(f)$.
+  It follows from \cref{chain complexes have (co)kernels} that~$C_n \to E_n$ is for every~$n \in \Integer$ a coimage of~$f_n$ and that~$F_n \to D_n$ is for every~$n \in \Integer$ an image of~$f_n$.
+  It holds for~$\tilde{f} = (\tilde{f}_n)_{n \in \Integer}$ that~$\tilde{f}_n \colon E_n \to F_n$ is for every~$n \in \Integer$ the canonical morphism from the \hyperref[canonical factorization]{canonical factorization lemma} induced by~$f_n$, because the square
+  \[
+    \begin{tikzcd}
+        C_n
+        \arrow{r}[above]{f_n}
+        \arrow{d}
+      & D_n
+        \arrow{d}
+      \\
+        \coim(f_n)
+        \arrow[dashed]{r}[above]{\tilde{f}_n}
+      & \im(f_n)
+    \end{tikzcd}
+  \]
+  commutes.
+  It follows that~$\tilde{f}_n$ is an isomorphism for every~$n \in \Integer$ because~$\Acat$ is abelian.
+  Hence~$\tilde{f}$ is an isomorphism.
+\end{proof}
 
 
 

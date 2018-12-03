@@ -1,0 +1,101 @@
+\section{Constructions with Complexes}
+
+
+\begin{definition}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Let~$\Ccc$ be a chain complex in~$\Acat$.
+      Then for every~$p \in \Integer$ the \emph{shifted chain complex}~$\Ccc[p]$\index{shifted!chain complex}\index{chain complex!shifted} is given by
+      \[
+                  (\Ccc[p])_n
+        \defined  C_{n+p}
+        \quad\text{and}\quad
+                  d^{\,\Ccc[p]}_n
+        \defined  (-1)^p d^{\,\Ccc}_{n+p}
+      \]
+      for every~$n \in \Integer$.
+    \item
+      Let~$\Cccc$ be a chain complex in~$\Acat$.
+      Then for every~$p \in \Integer$ the \emph{shifted cochain complex}~$\Ccc[p]$\index{shifted!cochain complex}\index{cochain complex!shifted} is given by
+      \[
+                  (\Cccc[p])^n
+        \defined  C^{n-p}
+        \quad\text{and}\quad
+                  d_{\,\Cccc[p]}^n
+        \defined  (-1)^p d_{\,\Cccc}^{n-p}
+      \]
+      for every~$n \in \Integer$.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Shifting complexes is covariantly functorial (for both chain complexes and cochain complexes):
+      
+      If~$f = (f_n)_{n \in \Integer} \colon \Ccc \to \Dcc$ is a morphism of chain complexes then for every~$p \in \Integer$ the family~$f[p] \defined (f_{n+p})_{n \in \Integer}$ is a morphism of chain complexes~$f[p] \colon \Ccc[p] \to \Dcc[p]$.
+      Dually, if~$f = (f^n)_{n \in \Integer} \colon \Cccc \to \Dccc$ is a morphism of cochain complexes then for every~$p \in \Integer$ the family~$f[p] \defined (f^{n-p})_{n \in \Integer}$ is a morphism of cochain complexes~$f[p] \colon \Cccc[p] \to \Dccc[p]$.
+      
+      The shift operator~$[1]$ is also denoted by~$\Sigma$ (for both chain complexes and cochain complexes).
+    \item
+      Let~$p \in \Integer$.
+      If~$\Ccc$ is a chain complex in~$\Acat$ then
+      \[
+          \Hl_n(\Ccc[p])
+        = \Hl_{n+p}(\Ccc)
+      \]
+      for every~$n \in \Integer$, and if~$\Cccc$ is a cochain complex in~$\Acat$ then
+      \[
+          \Hl^n(\Cccc[p])
+        = \Hl^{n-p}(\Cccc)
+      \]
+      for every~$n \in \Integer$.
+  \end{enumerate}
+\end{remark}
+
+
+\begin{remark}
+  Let~$\Ccc$ be a chain complex in~$\Acat$.
+  We can consider the subcomplexes~$\Zcc$ and~$\Bcc$ of~$\Ccc$ that are given in components by
+  \[
+      Z_n
+    = \Zl_n(\Ccc)
+    \quad\text{and}\quad
+      B_n
+    = \Bl_n(\Ccc)
+  \]
+  for every~$n \in \Integer$, together with the zero morphisms as the differentials.
+  We then get a short exact sequence of chain complexes
+  \[
+    0
+    \to
+    \Zcc
+    \to
+    \Ccc
+    \to
+    \Bcc[-1]
+    \to
+    0 \,.
+  \]
+  
+  We get dually for every cochain complex~$\Cccc$ in~$\Acat$ a short exact sequence of cochain complexes
+  \[
+    0
+    \to
+    \Zccc
+    \to
+    \Cccc
+    \to
+    \Bccc[-1]
+    \to
+    0 \,.
+  \]
+
+\end{remark}
+
+
+
+

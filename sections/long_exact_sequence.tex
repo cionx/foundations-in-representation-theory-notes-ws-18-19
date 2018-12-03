@@ -1,0 +1,480 @@
+\section{Long Exact Sequence}
+
+
+\begin{theorem}[Long exact (co)homology sequence]
+  \leavevmode
+  \begin{enumerate}
+    \item
+      For every short exact sequence of chain complexes
+      \[
+        \xi
+        \colon
+        0
+        \to
+        \Ccc'
+        \to
+        \Ccc
+        \to
+        \Ccc''
+        \to
+        0
+      \]
+      and every~$n \in \Integer$ there exists a connecting morphism
+      \[
+        \del_n
+        =
+        \del_n^\xi
+        \colon
+        \Hl_n(\Ccc'')
+        \to
+        \Hl_{n-1}(\Ccc')
+      \]
+      with the following two properties:
+      \begin{enumerate}
+        \item
+          The resulting sequence
+          \[
+            \begin{tikzcd}
+                {}
+              & \dotsb
+                \arrow{r}
+                \arrow[d, phantom, ""{coordinate, name=Y}]
+              & \Hl_{n+1}(\Ccc')
+                \arrow[ dll,
+                        "\del_{n+1}",
+                        rounded corners,
+                        to path={ -- ([xshift=2ex]\tikztostart.east)
+                                  |- (Y) \tikztonodes
+                                  -| ([xshift=-2ex]\tikztotarget.west)
+                                  -- (\tikztotarget)}
+                      ]
+              \\
+                \Hl_n(\Ccc')
+                \arrow{r}
+              & \Hl_n(\Ccc)
+                \arrow{r}
+                \arrow[d, phantom, ""{coordinate, name=Z}]
+              & \Hl_n(\Ccc'')
+                \arrow[ dll,
+                        "\del_n",
+                        rounded corners,
+                        to path={ -- ([xshift=2ex]\tikztostart.east)
+                                  |- (Z) \tikztonodes
+                                  -| ([xshift=-2ex]\tikztotarget.west)
+                                  -- (\tikztotarget)}
+                      ]
+              \\
+                \Hl_{n-1}(\Ccc')
+                \arrow{r}
+              & \dotsb
+              & {}
+            \end{tikzcd}
+          \]
+          is exact.
+        \item
+          \label{fuctoriality of long exact homology sequence}
+          If
+          \[
+            \begin{tikzcd}
+                0
+                \arrow{r}
+              & \Ccc'
+                \arrow{r}
+                \arrow{d}
+              & \Ccc
+                \arrow{r}
+                \arrow{d}
+              & \Ccc''
+                \arrow{r}
+                \arrow{d}
+              & 0
+              \\
+                0
+                \arrow{r}
+              & \Dcc'
+                \arrow{r}
+              & \Dcc
+                \arrow{r}
+              & \Dcc''
+                \arrow{r}
+              & 0
+            \end{tikzcd}
+          \]
+          is a commutative diagram of chain complexes with (short) exact rows~$\xi$ and~$\zeta$ then the following square commutes for every~$n \in \Integer$:
+          \[
+            \begin{tikzcd}
+                \Hl_n(\Ccc'')
+                \arrow{r}[above]{\del_n^\xi}
+                \arrow{d}
+              & \Hl_{n-1}(\Ccc')
+                \arrow{d}
+              \\
+                \Hl_n(\Dcc'')
+                \arrow{r}[above]{\del_n^\zeta}
+              & \Hl_{n-1}(\Dcc')
+            \end{tikzcd}
+          \]
+      \end{enumerate}
+    \item
+      Dually, there exists for every short exact sequence of cochain complexes
+      \[
+        \xi
+        \colon
+        0
+        \to
+        \bp\Cccc
+        \to
+        \Cccc
+        \to
+        \bpp\Cccc
+        \to
+        0
+      \]
+      and every~$n \in \Integer$ a connecting morphism
+      \[
+        \del^n
+        =
+        \del^n_\xi
+        \colon
+        \Hl^n(\,\bpp\Cccc)
+        \to
+        \Hl^{n+1}(\,\bp\Cccc)
+      \]
+      with the following two properties:
+      \begin{enumerate}
+        \item
+          The resulting sequence
+          \[
+            \begin{tikzcd}
+                {}
+              & \dotsb
+                \arrow{r}
+                \arrow[d, phantom, ""{coordinate, name=Y}]
+              & \Hl^{n-1}(\,\bpp\Cccc)
+                \arrow[ dll,
+                        "\del^{n-1}",
+                        rounded corners,
+                        to path={ -- ([xshift=2ex]\tikztostart.east)
+                                  |- (Y) \tikztonodes
+                                  -| ([xshift=-2ex]\tikztotarget.west)
+                                  -- (\tikztotarget)}
+                      ]
+              \\
+                \Hl^n(\,\bp\Cccc)
+                \arrow{r}
+              & \Hl^n(\Cccc)
+                \arrow{r}
+                \arrow[d, phantom, ""{coordinate, name=Z}]
+              & \Hl^n(\,\bpp\Cccc)
+                \arrow[ dll,
+                        "\del^n",
+                        rounded corners,
+                        to path={ -- ([xshift=2ex]\tikztostart.east)
+                                  |- (Z) \tikztonodes
+                                  -| ([xshift=-2ex]\tikztotarget.west)
+                                  -- (\tikztotarget)}
+                      ]
+              \\
+                \Hl^{n+1}(\,\bp\Ccc)
+                \arrow{r}
+              & \dotsb
+              & {}
+            \end{tikzcd}
+          \]
+          is exact.
+        \item
+          If
+          \[
+            \begin{tikzcd}
+                0
+                \arrow{r}
+              & \bp\Cccc
+                \arrow{r}
+                \arrow{d}
+              & \Cccc
+                \arrow{r}
+                \arrow{d}
+              & \bpp\Cccc
+                \arrow{r}
+                \arrow{d}
+              & 0
+              \\
+                0
+                \arrow{r}
+              & \bp\Dccc
+                \arrow{r}
+              & \Dccc
+                \arrow{r}
+              & \bpp\Dccc
+                \arrow{r}
+              & 0
+            \end{tikzcd}
+          \]
+          is a commutative diagram of cochain complexes with (short) exact rows~$\xi$ and~$\zeta$ then the following square commutes for every~$n \in \Integer$:
+          \[
+            \begin{tikzcd}
+                \Hl^n(\,\bpp\Cccc)
+                \arrow{r}[above]{\del^n_\xi}
+                \arrow{d}
+              & \Hl^{n+1}(\,\bp\Cccc)
+                \arrow{d}
+              \\
+                \Hl^n(\,\bpp\Dccc)
+                \arrow{r}[above]{\del^n_\zeta}
+              & \Hl^{n+1}(\,\bp\Dccc)
+            \end{tikzcd}
+          \]
+      \end{enumerate}
+  \end{enumerate}
+\end{theorem}
+
+
+\begin{proof}
+  This proof is currently missing from these notes and will be added later.
+% TODO: Add this proof.
+\end{proof}
+
+
+\begin{remark*}
+  If
+  \[
+    \begin{tikzcd}
+        0
+        \arrow{r}
+      & \Ccc'
+        \arrow{r}
+        \arrow{d}
+      & \Ccc
+        \arrow{r}
+        \arrow{d}
+      & \Ccc''
+        \arrow{r}
+        \arrow{d}
+      & 0
+      \\
+        0
+        \arrow{r}
+      & \Dcc'
+        \arrow{r}
+      & \Dcc
+        \arrow{r}
+      & \Dcc''
+        \arrow{r}
+      & 0
+    \end{tikzcd}
+  \]
+  is a short exact sequence of chain complexes in~$\Acat$ then property~\ref*{fuctoriality of long exact homology sequence} states that the induced ladder diagram
+  \[
+    \begin{tikzcd}[column sep = 1em]
+        \dotsb
+        \arrow{r}
+      & \Hl_{n+1}(\Ccc'')
+        \arrow{rr}[above]{\del_{n+1}^\xi}
+        \arrow{d}
+      & {}
+      & \Hl_{n}(\Ccc')
+        \arrow{r}
+        \arrow{d}
+      & \Hl_{n}(\Ccc)
+        \arrow{r}
+        \arrow{d}
+      & \Hl_{n}(\Ccc'')
+        \arrow{rr}[above]{\del_n^\xi}
+        \arrow{d}
+      & {}
+      & \Hl_{n-1}(\Ccc')
+        \arrow{r}
+        \arrow{d}
+      & \dotsb
+      \\
+        \dotsb
+        \arrow{r}
+      & \Hl_{n+1}(\Dcc'')
+        \arrow{rr}[above]{\del_{n+1}^\zeta}
+      & {}
+      & \Hl_{n}(\Dcc')
+        \arrow{r}
+      & \Hl_{n}(\Dcc)
+        \arrow{r}
+      & \Hl_{n}(\Dcc'')
+        \arrow{rr}[above]{\del_n^\zeta}
+      & {}
+      & \Hl_{n-1}(\Dcc')
+        \arrow{r}
+      & \dotsb
+    \end{tikzcd}
+  \]
+  with (long) exact rows is again commutative.
+  For cochain complexes the analogous statement holds.
+\end{remark*}
+
+
+\begin{example}
+  Let~$X$ be a topological space.
+  \begin{enumerate}
+    \item
+      The singular chain complex~$\Ccc^\sing(X)$ is covariantly functorial in~$X$, in the following sense:
+      If~$Y$ is another topological space and~$f \colon X \to Y$ is a continuous map, then for every~{\simplex{$n$}}~$\sigma \colon \Delta^n \to X$ in~$X$ we get an~{\simplex{$n$}}~$f \sigma \colon \Delta^n \to Y$ in~$Y$.
+      We hence get for every~$n \geq 0$ an induced group homomorphism
+      \[
+        f_n
+        \colon
+        C^\sing_n(X)
+        \to
+        C^\sing_n(Y)  \,,
+      \]
+      which is on basis elements given by~$f_n(\sigma) = f \sigma$.
+      By also setting~$f_n = 0$ for every~$n < 0$ we get a family of group homomorphisms~$f_* \defined (f_n)_{n \in \Integer}$ which is a morphism of chain complexes
+      \[
+        f_*
+        \colon
+        \Ccc^\sing(X)
+        \to
+        \Ccc^\sing(Y)
+        \,.
+      \]
+      
+      If~$A \subseteq X$ is a subspace then the chain complex~$\Ccc^\sing(A)$ is a subcomplex of the chain complex~$\Ccc^\sing(X)$, i.e.\ it holds that~$C^\sing_n(A) \subseteq C^\sing_n(X)$ is a subgroup for every~$n \in \Integer$, and the differential of~$\Ccc^\sing(A)$ is the ({\welldef}) restriction of the differential of~$\Ccc^\sing(X)$.
+      We can hence form the quotient chain complex
+      \[
+                  \Ccc^\sing(X,A)
+        \defined  \Ccc^\sing(X)/\Ccc^\sing(A) \,,
+      \]
+      which is given in components by
+      \[
+          C^\sing_n(X,A)
+        = C^\sing_n(X)/C^\sing_n(A)
+      \]
+      for every~$n \in \Integer$, and where the differential~$C^\sing_n(X,A) \to C^\sing_{n-1}(X,A)$ is for every~$n \in \Integer$ induced by the differential~$C^\sing_n(X) \to C^\sing_{n-1}(X)$.
+      The homology
+      \[
+                  \Hl^\sing_n(X,A)
+        \defined  \Hl_n( \Ccc^\sing(X,A) )
+      \]
+      is the~\dash{$n$}{th} \emph{relative singular homology}\index{relative singular homology}\index{singular homology!relative} of~$X$ with respect to~$A$.
+      
+      The inclusion~$i \colon A \to X$ is an injective continuous map.
+      It follows at every position~$n \in \Integer$ that the induced group homomorphism~$i_n \colon C^\sing_n(A) \to C^\sing_n(X)$ is a monomorphism, and hence overall that the induced morphism of chain complexes~$i_* \colon \Ccc^\sing(A) \to \Ccc^\sing(X)$ is a monomorphism.
+      The above chain complex~$\Ccc(X,A)$ is precisely the cokernel of this morphism~$i_*$, and we therefore have a short exact sequence of chain complexes
+      \begin{equation}
+        \label{ses of singular cc}
+        0
+        \to
+        \Ccc^\sing(A)
+        \xlongto{i_*}
+        \Ccc^\sing(X)
+        \to 
+        \Ccc^\sing(X,A)
+        \to
+        0 \,.
+      \end{equation}
+      We hence get the folloing long exact sequence:
+      \[
+        \begin{tikzcd}[row sep = small]
+            {}
+          & \dotsb
+            \arrow{r}
+            \arrow[d, phantom, ""{coordinate, name=Y}]
+          & \Hl_{n+1}^\sing(X,A)
+            \arrow[ dll,
+                    "\del_{n+1}",
+                    rounded corners,
+                    to path={ -- ([xshift=2ex]\tikztostart.east)
+                              |- (Y) \tikztonodes
+                              -| ([xshift=-2ex]\tikztotarget.west)
+                              -- (\tikztotarget)}
+                  ]
+          \\
+            \Hl_n^\sing(A)
+            \arrow{r}
+          & \Hl_n^\sing(X)
+            \arrow{r}
+            \arrow[d, phantom, ""{coordinate, name=Z}]
+          & \Hl_n^\sing(X,A)
+            \arrow[ dll,
+                    "\del_n",
+                    rounded corners,
+                    to path={ -- ([xshift=2ex]\tikztostart.east)
+                              |- (Z) \tikztonodes
+                              -| ([xshift=-2ex]\tikztotarget.west)
+                              -- (\tikztotarget)}
+                  ]
+          \\
+            \Hl_{n-1}^\sing(A)
+            \arrow{r}
+          & \dotsb
+          & {}
+        \end{tikzcd}
+      \]
+    \item
+      The singular cochain complex~$\Cccc_\sing(X)$ is the dual of the singular chain complex~$\Cccc_\sing(X)$, and is hence contravariantly functorial~$X$:
+      If~$Y$ is another topological space and~$f \colon X \to Y$ is a continuous map then we get an induced morphism of cochain complexes~$f^* \colon \Cccc_\sing(Y) \to \Cccc_\sing(X)$, where for every~$n \in \Integer$ the group homomorphism~$f^n \colon C^n_\sing(Y) \to C^n_\sing(X)$ is the dual homomorphism to the homomorphism~$f_n \colon C_n^\sing(X) \to C_n^\sing(Y)$ as constructed above.
+      
+      If~$A \subseteq X$ is a subspace with inclusion~$i \colon A \to X$ then the three chain complexes~$\Ccc^\sing(X)$,~$\Ccc^\sing(A)$ and~$\Ccc^\sing(X,A)$ consist of free abelian groups.
+      We hence get by dualizing the short exact sequence~\eqref{ses of singular cc} again a short exact sequence%
+      \footnote{Every short exact sequence~$0 \to X' \to X \to X'' \to 0$ of free abelian groups is already a split short exact sequence.
+      Its dual is then again a split short exact sequence.}
+      \begin{equation}
+        \label{ses of singular ccc}
+        0
+        \to
+        \Cccc_\sing(X,A)
+        \to
+        \Cccc_\sing(X)
+        \xlongto{i^*}
+        \Cccc_\sing(A)
+        \to
+        0 \,.
+      \end{equation}
+      The cochain complex~$\Cccc_\sing(X,A)$ is the dual of the chain complex~$\Ccc^\sing(X,A)$, i.e.\ it is given in components by
+      \[
+                  C^n_\sing(X,A)
+        \defined  \Hom_\Integer(C_n^\sing(X,A), \Integer)
+      \]
+      for every~$n \in \Integer$, and its differential~$C^n_\sing(X,A) \to C^{n+1}_\sing(X,A)$ is the dual homomorphism to the differential~$C_{n+1}^\sing(X,A) \to C_n^\sing(X,A)$.%
+      \footnote{It follows from the exactness of the sequence~\eqref{ses of singular ccc} that~$\Cccc_\sing(X,A)$ is a kernel of the morphism~$f^*$, hence we could have also defined~$\Cccc_\sing(X,A)$ in this way.}
+      
+      We now get from the short exact sequence~\eqref{ses of singular ccc} the following long exact sequence:
+      \[
+        \begin{tikzcd}[row sep = small]
+            {}
+          & \dotsb
+            \arrow{r}
+            \arrow[d, phantom, ""{coordinate, name=Y}]
+          & \Hl^{n-1}_\sing(A)
+            \arrow[ dll,
+                    "\del^{n-1}",
+                    rounded corners,
+                    to path={ -- ([xshift=2ex]\tikztostart.east)
+                              |- (Y) \tikztonodes
+                              -| ([xshift=-2ex]\tikztotarget.west)
+                              -- (\tikztotarget)}
+                  ]
+          \\
+            \Hl^n_\sing(X,A)
+            \arrow{r}
+          & \Hl^n_\sing(X)
+            \arrow{r}
+            \arrow[d, phantom, ""{coordinate, name=Z}]
+          & \Hl^n_\sing(A)
+            \arrow[ dll,
+                    "\del^n",
+                    rounded corners,
+                    to path={ -- ([xshift=2ex]\tikztostart.east)
+                              |- (Z) \tikztonodes
+                              -| ([xshift=-2ex]\tikztotarget.west)
+                              -- (\tikztotarget)}
+                  ]
+          \\
+            \Hl^{n+1}_\sing(X,A)
+            \arrow{r}
+          & \dotsb
+          & {}
+        \end{tikzcd}
+      \]
+  \end{enumerate}
+\end{example}
+
+
+
+
