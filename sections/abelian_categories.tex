@@ -65,7 +65,7 @@
 
 
 \begin{remark*}
-  If~$\Acat$ is an abelian category and~$f \colon X \to Y$ is a morphism in~$\Acat$ which is both a monomorphism and an epimorphism, then~$f$ is already an isomorphism.
+  If~$\Acat$ is an abelian category and~$f \colon X \to Y$ is a morphism in~$\Acat$ that is both a monomorphism and an epimorphism, then~$f$ is already an isomorphism.
   This will be shown in \cref{iso iff epi and mono}.
 %   
 %   The zero morphism~$0 \to X$ is a kernel of~$f$ because~$f$ is a monomorphism.
@@ -168,7 +168,7 @@
         \end{enumerate}
       \end{definitionnonum}
       
-      For an open subset~$U \subseteq X$ one may think about the abelian group~$\Fs(U)$ as consisting of certain functions on~$U$ which can be added together.
+      For an open subset~$U \subseteq X$ one may think about the abelian group~$\Fs(U)$ as consisting of certain functions on~$U$ that can be added together.
       One can consequently think about the homomorphism~$\rho_{V,U} \colon \Fs(V) \to \Fs(U)$ associated to open subsets~$U \subseteq V \subseteq X$ as restricting the functions on~$V$ to the functions on~$U$.
       
       For an open subset~$U \subseteq X$, the elements of~$\Fs(U)$ are called \emph{sections}\index{section} of~$\Fs$ on~$U$.
@@ -261,7 +261,7 @@
       We see from this alternative description of the presheaf category~$\Pcat$ that it is abelian.
       
       \begin{remark*}
-        A \emph{preorder}\index{preorder} on a set~$P$ is a relation~$\leq$ which is reflexive and transitive, i.e.\ it holds that~$x \leq x$ for every~$x \in P$, and it holds for all~$x, y, z \in P$ with~$x \leq y$ and~$y \leq z$ that also~$x \leq z$.
+        A \emph{preorder}\index{preorder} on a set~$P$ is a relation~$\leq$ that is reflexive and transitive, i.e.\ it holds that~$x \leq x$ for every~$x \in P$, and it holds for all~$x, y, z \in P$ with~$x \leq y$ and~$y \leq z$ that also~$x \leq z$.
         (But in contrast to a partial order, a preorder does not have to be antisymmetric.
         So there may exist~$x, y \in P$ with both~$x \leq y$ and~$y \leq x$ but~$x \neq y$.)
         A \emph{preordered set} is a pair~$(P,\leq)$ consisting of a set~$P$ and a preorder~$\leq$ on~$P$.
@@ -294,7 +294,7 @@
         
         These two constructions are mutually inverse, and show that preordered sets~$(P,\leq)$ are \enquote{the same} as thin categories~$\Tcat$ whose class of objects form a set.
         
-        In the above example, the preordered set (which is already an ordered set) is given by~$P = \{U \subseteq X \suchthat \text{$U$ is open}\}$ together with the inclusion~$\subseteq$ as a preorder.
+        In the above example, the preordered set (that is already an ordered set) is given by~$P = \{U \subseteq X \suchthat \text{$U$ is open}\}$ together with the inclusion~$\subseteq$ as a preorder.
         The category~$\Xcat$ then results from the preordered set~$(P, \subseteq)$ via the above construction.
       \end{remark*}
       
@@ -451,7 +451,7 @@
       \[
         \rho^{\ker_{\Pcat}(f)}_{V,U} \colon \ker(f_V) \to \ker(f_U)
       \]
-      for all open subsets~$U \subseteq V \subseteq X$ which are given by restriction of the restriction homomorphisems~$\rho^{\Fs}_{V,U} \colon \Fs(V) \to \Fs(U)$.
+      for all open subsets~$U \subseteq V \subseteq X$ that are given by restriction of the restriction homomorphisems~$\rho^{\Fs}_{V,U} \colon \Fs(V) \to \Fs(U)$.
       Let~$U \subseteq X$ be open and let~$\{ U_i \}_{i \in I}$ be an open cover of~$U$.
       \begin{enumerate}[label=(S\arabic*)]
         \item
@@ -546,7 +546,7 @@
       In constrast to kernels it does not necessarily hold that the cokernel~$\coker_{\Pcat}(f)$ is already a sheaf.
       
       \begin{examplenonum}
-        Let~$X \defined \sphere^1$ and let~$\Fs \defined \Gs \defined \Cs^\infty$ be the sheaf of smooth \dash{real}{valued} functions on~$\sphere^1$, which is given by
+        Let~$X \defined \sphere^1$ and let~$\Fs \defined \Gs \defined \Cs^\infty$ be the sheaf of smooth \dash{real}{valued} functions on~$\sphere^1$, that is given by
         \[
             \Cs^\infty(U)
           = \{
@@ -613,7 +613,7 @@
       
       Let~$\eta \colon \id_{\Pcat} \to I \circ S$ be the unit of the adjunction~$(S,I,\varphi)$.
       This adjunction then states the the sheafification has the following universal property:      
-      There exists for every sheaf~$\Gs$ and every homomorphism of presheaves~$f \colon \Fs \to I(\Gs)$ a unique homomorphism of sheaves~$\lambda \colon S(\Fs) \to \Gs$ which make the following triangle commute:
+      There exists for every sheaf~$\Gs$ and every homomorphism of presheaves~$f \colon \Fs \to I(\Gs)$ a unique homomorphism of sheaves~$\lambda \colon S(\Fs) \to \Gs$ that makes the following triangle commute:
       \[
         \begin{tikzcd}[sep = large]
             \Fs
@@ -631,7 +631,7 @@
       
       To be more precise, the sheaf~$\Fs$ is also a sheafification of the presheaf~$I(\Fs)$, in the sense that the identity homomorphism~$\id_{I(\Fs)} \colon I(\Fs) \to I(\Fs)$ fullfills the same universal property as the counit~$\eta_{I(\Fs)} \colon I(\Fs) \to ISI(\Fs)$:
       Let~$\Gs$ be another sheaf and let~$f \colon I(\Fs) \to I(\Gs)$ be a homomorphism of presheaves.
-      Then, as~$I$ is fully faithful, there exist a unique homomorphism of sheaves~$\lambda \colon \Fs \to \Gs$ which makes the desired triangle
+      Then, as~$I$ is fully faithful, there exist a unique homomorphism of sheaves~$\lambda \colon \Fs \to \Gs$ that makes the desired triangle
       \[
         \begin{tikzcd}[sep = large]
             I(\Fs)
@@ -646,7 +646,7 @@
       \]
       commute.
       
-      As both~$\eta \colon I(\Fs) \to ISI(\Fs)$ and~$\id_{I(\Fs)} \colon I(\Fs) \to I(\Fs)$ have the same universal property, we can conclude that there exist a unique homomorphism of presheaves~$ISI(\Fs) \to I(\Fs)$ which makes the triangle
+      As both~$\eta \colon I(\Fs) \to ISI(\Fs)$ and~$\id_{I(\Fs)} \colon I(\Fs) \to I(\Fs)$ have the same universal property, we can conclude that there exist a unique homomorphism of presheaves~$ISI(\Fs) \to I(\Fs)$ that makes the triangle
       \[
         \begin{tikzcd}[column sep = small]
             {}
@@ -788,7 +788,7 @@
         \[
           I(h) \circ I(f) = I(h \circ f) = I(0) = 0
         \]
-        and it follows from the universal property of the cokernel~$c'$ that there exists a unique homomorphism of presheaves~$\lambda' \colon I(\Hs) \to \coker_{\Pcat}(I(f))$ which makes the triangle
+        and it follows from the universal property of the cokernel~$c'$ that there exists a unique homomorphism of presheaves~$\lambda' \colon I(\Hs) \to \coker_{\Pcat}(I(f))$ that makes the triangle
         \[
           \begin{tikzcd}[row sep = large]
               {}
@@ -802,7 +802,7 @@
           \end{tikzcd}
         \]
         commute. 
-        It follows from the universal property of the sheafification that there exists a unique homomorphism of sheaves~$\lambda' \colon \Hs \to S(\coker_\Pcat(I(f)))$ which makes the triangle
+        It follows from the universal property of the sheafification that there exists a unique homomorphism of sheaves~$\lambda' \colon \Hs \to S(\coker_\Pcat(I(f)))$ that makes the triangle
         \[
           \begin{tikzcd}[row sep = large]
               \coker_\Pcat(I(f))

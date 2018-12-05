@@ -18,7 +18,7 @@
           \item
             $f \circ k = 0$, and
           \item
-            the morphism~$k$ is universal with in property, in the sense that for every morphism~$\ell \colon L \to X$ in~$\Ccat$ with~$f \circ \ell = 0$ there exists a unique morphism~$\lambda \colon L \to K$ which makes the following diagram commute:
+            the morphism~$k$ is universal with in property, in the sense that for every morphism~$\ell \colon L \to X$ in~$\Ccat$ with~$f \circ \ell = 0$ there exists a unique morphism~$\lambda \colon L \to K$ that makes the following diagram commute:
             \[
               \begin{tikzcd}[row sep = small, column sep = large]
                   K
@@ -55,7 +55,7 @@
             $c \circ f = 0$, and
           \item
             the morphism~$c$ is universal with this property, in the sense that
-            for every morphism~$d \colon Y \to D$ in~$\Ccat$ with~$d \circ f = 0$ there exists a unique morphism~$\mu \colon C \to D$ which makes the following diagram commute:
+            for every morphism~$d \colon Y \to D$ in~$\Ccat$ with~$d \circ f = 0$ there exists a unique morphism~$\mu \colon C \to D$ that makes the following diagram commute:
             \[
               \begin{tikzcd}[row sep = small, column sep = large]
                   {}
@@ -191,7 +191,7 @@
         = 0 \circ u
         = 0 \,.
       \]
-      It follows from the universal property of the kernel~$k \colon \ker(f) \to X$ that there exist a unique morphism~$W \to \ker(f)$ which makes the triangle
+      It follows from the universal property of the kernel~$k \colon \ker(f) \to X$ that there exist a unique morphism~$W \to \ker(f)$ that makes the triangle
       \[
         \begin{tikzcd}[sep = large]
             W
@@ -354,7 +354,7 @@
         \mapsto t_i a
       \]
       satisfies~$\ell_i(A) \subseteq I$ and hence~$f \circ \ell_i = 0$.
-      It follows that the morphism~$\ell_i$ factors uniquely trough the kernel~$k$, i.e.\ that there exists a unique morphism~$\lambda_i \colon A \to K$ which makes the triangle
+      It follows that the morphism~$\ell_i$ factors uniquely trough the kernel~$k$, i.e.\ that there exists a unique morphism~$\lambda_i \colon A \to K$ that makes the triangle
       \[
         \begin{tikzcd}[sep = large]
             A
@@ -431,9 +431,9 @@
           f' \circ \varphi \circ k
         = \varphi'' \circ f \circ k
         = \varphi'' \circ 0
-        = 0
+        = 0 \,,
       \]
-      And hence there exists a unique morphism~$\varphi' \colon K \to X$ with~$k' \circ \varphi' = \varphi \circ k$ by the universal property of the kernel~$k' \colon X' \to Y'$ of~$f'$.
+      hence there exists a unique morphism~$\varphi' \colon K \to X$ with~$k' \circ \varphi' = \varphi \circ k$ by the universal property of the kernel~$k' \colon X' \to Y'$ of~$f'$.
       
       This induced morphism is functorial in the following sense:
       \begin{itemize}
@@ -880,7 +880,7 @@
 
 
 \begin{definition}
-  Let~$\Ccat$ be a category that is preadditive, or that has a zero object, and which has kernels and cokernels.
+  Let~$\Ccat$ be a category that is preadditive, or that has a zero object, and that has kernels and cokernels.
   Let~$f \colon X \to Y$ be a morphism in~$\Ccat$.
   \begin{enumerate}
     \item
@@ -916,7 +916,7 @@
   \begin{enumerate}
     \item
       \label{restriction to image}
-      There exists a unique morphism~$f' \colon X \to \im(f)$ in~$\Ccat$ which makes the following triangle commute:
+      There exists a unique morphism~$f' \colon X \to \im(f)$ in~$\Ccat$ that makes the following triangle commute:
       \[
         \begin{tikzcd}
             X
@@ -930,7 +930,7 @@
         \end{tikzcd}
       \]
     \item
-      There exists a unique morphism~$\bar{f} \colon \coim(f) \to Y$ in~$\Ccat$ which makes the following triangle commute:
+      There exists a unique morphism~$\bar{f} \colon \coim(f) \to Y$ in~$\Ccat$ that makes the following triangle commute:
       \[
         \begin{tikzcd}
             X
@@ -944,7 +944,7 @@
         \end{tikzcd}
       \]
     \item
-      There exists a unique morphism~$\tilde{f} \colon \coim(f) \to \im(f)$ in~$\Ccat$ which makes the following square commute:
+      There exists a unique morphism~$\tilde{f} \colon \coim(f) \to \im(f)$ in~$\Ccat$ that makes the following square commute:
       \begin{equation}
         \label{canonical morphism from coim to im}
         \begin{tikzcd}
@@ -1007,7 +1007,7 @@
   \]
   \begin{enumerate}
     \item
-      The morphism~$i \colon \im(f) \to Y$ is a kernel of the cokernel~$c \colon Y \to \coker(f)$, hence it follows from~$c \circ f = 0$ that there exist a unique morphism~$f' \colon X \to \im(f)$ which makes the following diagram commute:
+      The morphism~$i \colon \im(f) \to Y$ is a kernel of the cokernel~$c \colon Y \to \coker(f)$, hence it follows from~$c \circ f = 0$ that there exist a unique morphism~$f' \colon X \to \im(f)$ that makes the following diagram commute:
       \[
         \begin{tikzcd}[row sep = large]
             {}
@@ -1052,7 +1052,7 @@
         = i \circ 0 \,,
       \]
       and hence~$f' \circ k = 0$ because~$i$ is a monomorphism.
-      It follows from the universal property of the cokernel~$p \colon X \to \coim(f)$ that there exist a unique morphism~$\tilde{f} \colon \coim(f) \to \im(f)$ which makes the following diagram commute:
+      It follows from the universal property of the cokernel~$p \colon X \to \coim(f)$ that there exist a unique morphism~$\tilde{f} \colon \coim(f) \to \im(f)$ that makes the following diagram commute:
       \[
         \begin{tikzcd}[column sep = 5em, row sep = huge]
             \ker(f)
@@ -1074,7 +1074,7 @@
         \end{tikzcd}
       \]
       This shows the existence of~$\tilde{f}$.
-      Suppose that~$\tilde{\tilde{f}} \colon \coim(f) \to \im(f)$ is another morphism which makes the diagram~\eqref{canonical morphism from coim to im} commute.
+      Suppose that~$\tilde{\tilde{f}} \colon \coim(f) \to \im(f)$ is another morphism that makes the diagram~\eqref{canonical morphism from coim to im} commute.
       Then
       \[
           i \circ \tilde{\tilde{f}} \circ p

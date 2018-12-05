@@ -83,9 +83,9 @@
   \leavevmode
   \begin{enumerate}
     \item
-      We can define two functors which assign to each set~$X$ its power set:
+      We can define two functors that assign to each set~$X$ its power set:
       
-      We define a functor~$P_* \colon \Set \to \Set$ which assigns to each set~$X$ its power set~$\power(X)$, and to each map~$f \colon X \to Y$ the induced map
+      We define a functor~$P_* \colon \Set \to \Set$ that assigns to each set~$X$ its power set~$\power(X)$, and to each map~$f \colon X \to Y$ the induced map
       \[
                 P_*(f)
         \colon  \power(X)
@@ -93,7 +93,7 @@
         \quad   A
         \mapsto f(A) \,.
       \]
-      We can also define a (contravariant) functor~$P^* \colon \Set^\op \to \Set$ which again assigns to each set~$X$ its power set~$\power(X)$, but to each map~$f \colon X \to Y$ the induced map
+      We can also define a (contravariant) functor~$P^* \colon \Set^\op \to \Set$ that again assigns to each set~$X$ its power set~$\power(X)$, but to each map~$f \colon X \to Y$ the induced map
       \[
                 P^*(f)
         \colon  \power(Y)
@@ -104,9 +104,9 @@
     \item
       We have two functors between the categories~$\kAlg$ and~$\Group$:
       
-      In the one direction there exists a functor~$(-)^\times \colon \kAlg \to \Group$ which assigns to each~{\kalg}~$A$ its group of units~$A^\times$ and to every homomorphism of~{\kalgs}~$f \colon A \to B$ its induces group homomorphism~$f^\times \colon A^\times \to B^\times$.
+      In the one direction there exists a functor~$(-)^\times \colon \kAlg \to \Group$ that assigns to each~{\kalg}~$A$ its group of units~$A^\times$ and to every homomorphism of~{\kalgs}~$f \colon A \to B$ its induces group homomorphism~$f^\times \colon A^\times \to B^\times$.
       
-      In the other direction there exists a functor~$\kf[-] \colon \Group \to \kAlg$ which assigns to each group~$G$ its group algebra~$\kf[G]$, and to each group homomorphism~$\varphi \colon G \to H$ the induced homorphism of~{\kalgs}~$\kf[\varphi] \colon \kf[G] \to \kf[H]$, i.e.\ the unique homomorphism of~{\kalgs}~$\kf[G] \to \kf[H]$ which makes the square
+      In the other direction there exists a functor~$\kf[-] \colon \Group \to \kAlg$ that assigns to each group~$G$ its group algebra~$\kf[G]$, and to each group homomorphism~$\varphi \colon G \to H$ the induced homorphism of~{\kalgs}~$\kf[\varphi] \colon \kf[G] \to \kf[H]$, i.e.\ the unique homomorphism of~{\kalgs}~$\kf[G] \to \kf[H]$ that makes the square
       \[
         \begin{tikzcd}
             G
@@ -122,7 +122,7 @@
       \]
       commute.
       (Recall from the first exercise sheet that for every~{\kalg}~$A$, every group homomorphism~$G \to A^\times$ extends uniquely to a homomorphism of~{\kalgs}~$\kf[G] \to A$.
-      By applying this to the composition~$G \to H \inclusion k[H]^\times$ it follows that there exists a unique homomorphism~$\kf[G] \to \kf[H]$ which makes the above square commute.)
+      By applying this to the composition~$G \to H \inclusion k[H]^\times$ it follows that there exists a unique homomorphism~$\kf[G] \to \kf[H]$ that makes the above square commute.)
     \item
       The functor
       \[
@@ -230,7 +230,7 @@
 
 
 \begin{example*}
-  For every subcategory~$\Scat$ of a category~$\Ccat$ there exists an inclusion functor~$I \colon \Scat \to \Ccat$ which is given on objects by the inclusion~$\Ob(\Scat) \inclusion \Ob(\Ccat)$ on morphisms by the inclusion~$\Scat(X,Y) \inclusion \Ccat(X,Y)$ for any two objects~$X, Y, \in \Ob(\Scat)$.
+  For every subcategory~$\Scat$ of a category~$\Ccat$ there exists an inclusion functor~$I \colon \Scat \to \Ccat$, that is given on objects by the inclusion~$\Ob(\Scat) \inclusion \Ob(\Ccat)$, and on morphisms by the inclusion~$\Scat(X,Y) \inclusion \Ccat(X,Y)$ for any two objects~$X, Y, \in \Ob(\Scat)$.
   This inclusion functor~$I$ is faithful, and it is full if and only if~$\Scat$ is full as a subcategory of~$\Ccat$.
 \end{example*}
 

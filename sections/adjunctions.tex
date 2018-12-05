@@ -10,7 +10,7 @@
     \colon  \Dcat(F(X), Y)
     \to     \Ccat(X, G(Y))
   \]
-  which are natural in both~$X$ and~$Y$.
+  that are natural in both~$X$ and~$Y$.
   The functor~$F$ is the \emph{left adjoint}\index{left!adjoint} of the adjunction, and the functor~$G$ is the \emph{right adjoint}\index{right!adjoint} of the adjunction.
 \end{definition}
 
@@ -103,7 +103,7 @@
         \colon  k[T_x \suchthat x \in X]
         \to     k[T_{x'} \suchthat x' \in X'] \,,
       \]
-      which satisfies~$F(f)(T_x) = T_{f(x)}$ for every~$x \in X$.
+      that satisfies~$F(f)(T_x) = T_{f(x)}$ for every~$x \in X$.
       The right adjoint functor~$G \colon \kCommAlg \to \Set$ is the forgetful functor.
     \item
       Let~$A$ and~$B$ be two~{\kalgs} and let~$\indmodule[A]{N}[B]$ be an~{\module{$A$}[$B$]}.
@@ -120,7 +120,7 @@
       For any two objects~$(A,S)$ and~$(B,T)$ in~$\Ccat$, a morphisms~$f \colon (A,S) \to (B,T)$ is a ring homomorpism~$f \colon A \to B$ with~$f(S) \subseteq T$.
       Let~$\Dcat = \CommRing$ be the category of commutative rings.%
       \footnote{Again, in the lecture the notation~$\catname{CommRing}$ is used instead.}
-      We have a functor~$F \colon \Ccat \to \CommRing$ which assigns to each pair~$(A,S) \in \Ob(\Ccat)$ the localization~$F((A,S)) = S^{-1} A$, and assigns to each morphism~$f \colon (A,S) \to (B,T)$ the induced ring homomorphism
+      We have a functor~$F \colon \Ccat \to \CommRing$ that assigns to each pair~$(A,S) \in \Ob(\Ccat)$ the localization~$F((A,S)) = S^{-1} A$, and assigns to each morphism~$f \colon (A,S) \to (B,T)$ the induced ring homomorphism
       \[
                 F(f)
         \colon  S^{-1} A
@@ -128,7 +128,7 @@
         \quad   \frac{a}{s}
         \mapsto \frac{f(a)}{f(s)} \,.
       \]
-      The functor~$F$ is left adjoint to the functor~$G \colon \CommRing \to \Ccat$ which assigns to each commutative ring~$B$ the pair~$(B,B^\times)$, and to each ring homomorphism~$g \colon B \to C$ between commutative rings~$B$ and~$B'$ the morphism
+      The functor~$F$ is left adjoint to the functor~$G \colon \CommRing \to \Ccat$ that assigns to each commutative ring~$B$ the pair~$(B,B^\times)$, and to each ring homomorphism~$g \colon B \to C$ between commutative rings~$B$ and~$B'$ the morphism
       \[
                 G(g)
         =       (g, g^\times)
@@ -633,7 +633,7 @@
     \quad   k
     \mapsto F(k) \circ \zeta_Y
   \end{gather*}
-  are natural bijections, which make~$(F,G,\varphi)$ and~$(G,F,\psi)$ into adjoint pairs.
+  are natural bijections, that make~$(F,G,\varphi)$ and~$(G,F,\psi)$ into adjoint pairs.
 \end{remark}
 
 
@@ -643,7 +643,7 @@
 \begin{lemma}
   \label{uniqueness of adjoints}
   Let~$G \colon \Dcat \to \Ccat$ be a functor that is part of two adjoint pairs~$(F,G,\varphi)$ and~$(F',G,\varphi')$.
-  Then there exists a unique natural isomorphism~$\zeta \colon F \to F'$ which makes the square
+  Then there exists a unique natural isomorphism~$\zeta \colon F \to F'$ thta makes the square
   \[
     \begin{tikzcd}[sep = large]
         \Dcat(F(X), Y)
@@ -693,7 +693,7 @@
   It follows at every object~$X \in \Ob(\Ccat)$ from~$\Phi_{X,(-)}$ being an isomorphism that~$\zeta_X$ is also an isomorphism, because the Yoneda embedding is fully faithful, and therefore reflects isomorphisms.
   This shows that~$\zeta$ is a natural isomorphism.
   
-  Suppose that~$\zeta' \colon F \to F'$ is another natural isomorphism which makes the square commute.
+  Suppose that~$\zeta' \colon F \to F'$ is another natural isomorphism that makes the square commute.
   It then holds at every object~$X \in \Ccat$ that
   \[
       (\zeta'_X)^*

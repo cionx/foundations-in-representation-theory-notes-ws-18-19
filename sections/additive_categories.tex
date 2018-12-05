@@ -36,7 +36,7 @@
       If~$R$ is a ring then we may think about~$R$ as a preadditive category~$\Rcat$ consisting of a single object~$\Ob(\Rcat) = \{ \ast \}$ with~$\Rcat(\ast,\ast) = R$.
       The composition in~$\Rcat$ is given by the multiplication of~$R$, i.e.\ by~$g \circ f = gf$ for all~$f, g \in R$, and the addition of morphisms is the addition in~$R$.
       
-      One can similarly regard every~{\kalg}~$A$ as a {\preklin} category~$\Acat$ which consists of a single object~$\Ob(\Acat) = \{\ast\}$ with~$\Acat(\ast,\ast) = A$.
+      One can similarly regard every~{\kalg}~$A$ as a {\preklin} category~$\Acat$ that consists of a single object~$\Ob(\Acat) = \{\ast\}$ with~$\Acat(\ast,\ast) = A$.
     \item
       Let~$\Ccat$ be any category and let~$\Acat$ be a preadditive category.
       Then the functor category~$\Fun(\Ccat, \Acat)$ is again preadditive:
@@ -218,7 +218,7 @@
     \item
       It sufficies by duality to show that~$(X, (c_i)_i)$ is a coproduct for~$X_1, \dotsc, X_n$.
       Let~$(D, (d_i)_i)$ be another pair consisting of an object~$D \in \Ob(\Acat)$ and morphisms~$d_i \colon X_i \to D$.
-      We need to show that there exists a unique morphism~$\mu \colon X \to D$ which makes the triangle
+      We need to show that there exists a unique morphism~$\mu \colon X \to D$ that makes the triangle
       \[
         \begin{tikzcd}[sep = large]
             X_i
@@ -249,7 +249,7 @@
       \]
       which shows the existence of~$\mu$.
     \item
-      By the universal property of the product there exists for every~$i = 1, \dotsc, n$ a unique morphism~$c_i \colon X_i \to X$ which makes for all~$j \neq i$ the triangles
+      By the universal property of the product there exists for every~$i = 1, \dotsc, n$ a unique morphism~$c_i \colon X_i \to X$ that makes for all~$j \neq i$ the triangles
       \[
         \begin{tikzcd}[sep = large]
             X_i
@@ -299,7 +299,7 @@
         \end{tikzcd}
       \]
       commutes.
-      But it follows from the uniqueness of products up to unique isomorphism that there exist a \emph{unique} morphism~$X \to X$ which makes this triangle commute.
+      But it follows from the uniqueness of products up to unique isomorphism that there exist a \emph{unique} morphism~$X \to X$ that makes this triangle commute.
       The identity~$\id_X \colon X \to X$ also makes the above triangle commute, and so it follows that~$\sum_{i=1}^n c_i p_i = \id_X$.
     \item
       This can be shown dually to part~\ref*{products into biproducts}.
@@ -512,7 +512,7 @@
         f_{m1}  & \cdots  & f_{mn}
       \end{bmatrix} \,.
   \]
-  If one of the morphisms~$f_{ij}$ is the identity~$\id_Z$ of some object~$Z$ (which is then necessarily given by~$Z = X_j = Y_i$) then we will often just write the corresponding matrix entry as~$1$ instead of~$\id_Z$.
+  If one of the morphisms~$f_{ij}$ is the identity~$\id_Z$ of some object~$Z$ (that is then necessarily given by~$Z = X_j = Y_i$) then we will often just write the corresponding matrix entry as~$1$ instead of~$\id_Z$.
   
   We finish this remark by pointing out that the morphisms~$c_i \colon X_i \to X_1 \oplus \dotsb \oplus X_n$ and~$p_i \colon X_1 \oplus \dotsb \oplus X_n \to X_i$ are by these notional conventions given by the matrices
   \[
@@ -540,9 +540,9 @@
   \[
             \diag_X
     \colon  X
-    \to     X \oplus X
+    \to     X \oplus X \,,
   \]
-  by using the universal property of the product for~$X \oplus X$, as the unique morphism~$X \to X \oplus X$ which make the diagram
+  by using the universal property of the product for~$X \oplus X$, as the unique morphism~$X \to X \oplus X$ that makes the diagram
   \[
     \begin{tikzcd}[sep = large]
         {}
@@ -579,7 +579,7 @@
     \colon  X \oplus X
     \to     X
   \]
-  by using the universal property of the coproduct for~$X \oplus X$, as the unique morphism~$X \oplus X \to X$ which makes the diagram
+  by using the universal property of the coproduct for~$X \oplus X$, as the unique morphism~$X \oplus X \to X$ that makes the diagram
   \[
     \begin{tikzcd}[sep = large]
         X
