@@ -1712,6 +1712,128 @@
 
 
 
+\begin{lemma*}[5-Lemma]
+  Let~$\Acat$ be an abelian category
+  \[
+    \begin{tikzcd}
+        X_1
+        \arrow{r}
+        \arrow{d}[right]{f_1}
+      & X_2
+        \arrow{r}
+        \arrow{d}[right]{f_2}
+      & X_3
+        \arrow{r}
+        \arrow{d}[right]{f_3}
+      & X_4
+        \arrow{r}
+        \arrow{d}[right]{f_4}
+      & X_5
+        \arrow{d}[right]{f_5}
+      \\
+        Y_1
+        \arrow{r}
+      & Y_2
+        \arrow{r}
+      & Y_3
+        \arrow{r}
+      & Y_4
+        \arrow{r}
+      & Y_5
+    \end{tikzcd}
+  \]
+  be a commutative diagram in~$\Acat$ with exact rows.
+  \begin{enumerate}
+    \item
+      If~$f_2$ and~$f_4$ are monomorphisms and~$f_1$ is an epimorphism then~$f_3$ is again a monomorphism.
+    \item
+      If~$f_2$ and~$f_4$ are epimorphisms and~$f_5$ is a monomorphism then~$f_3$ is again an epimorphism.
+    \item
+      If~$f_2$ and~$f_4$ are isomorphisms,~$f_1$ is an epimorphism and~$f_5$ is a monomorphism, then~$f_3$ is again an isomorphism.
+  \end{enumerate}
+\end{lemma*}
+
+
+\begin{proof}
+  This is Exercise~3 of Exercise~sheet~7.
+\end{proof}
+
+
+\begin{lemma}[9-Lemma]
+  Let~$\Acat$ be an abelian category and let
+  \[
+    \begin{tikzcd}
+        {}
+      & 0
+        \arrow{d}
+      & 0
+        \arrow{d}
+      & 0
+        \arrow{d}
+      & {}
+      \\
+        0
+        \arrow{r}
+      & X'
+        \arrow{r}
+        \arrow{d}
+      & X
+        \arrow{r}
+        \arrow{d}
+      & X''
+        \arrow{r}
+        \arrow{d}
+      & 0
+      \\
+        0
+        \arrow{r}
+      & Y'
+        \arrow{r}
+        \arrow{d}
+      & Y
+        \arrow{r}
+        \arrow{d}
+      & Y''
+        \arrow{r}
+        \arrow{d}
+      & 0
+      \\
+        0
+        \arrow{r}
+      & Z'
+        \arrow{r}
+        \arrow{d}
+      & Z
+        \arrow{r}
+        \arrow{d}
+      & Z''
+        \arrow{r}
+        \arrow{d}
+      & 0
+      \\
+        {}
+      & 0
+      & 0
+      & 0
+      & {}
+    \end{tikzcd}
+  \]
+  be a commutative diagram in~$\Acat$.
+  \begin{enumerate}
+    \item
+      If the upper two rows are exact then the lower row is also exact.
+    \item
+      If the lower two rows are exact then the upper row is also exact.
+    \item
+      If the upper and lower rows are exact and the composition~$Y' \to Y \to Y''$ is zero than the middle row is also exact.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+  This is Exercise~4 of Exercise~sheet~7.
+\end{proof}
+
 
 
 

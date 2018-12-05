@@ -140,6 +140,20 @@
 \end{example}
 
 
+\begin{example*}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Let~$A$ be a~{\kalg}.
+      Then the forgetful functor~$\Modl{A} \to \Modl{\kf}$ has both a left adjoint and a right adjoint.
+      (This is part~(i) of Exercise~2 of Exercise~sheet~4.)
+    \item
+      The forgetful functor~$\Top \to \Set$ has both a left adjoint a right adjoint.
+      (This is part~(ii) of Exercise~2 of Exercise~sheet~4.)
+  \end{enumerate}
+\end{example*}
+
+
 \begin{remark}[label = triangle equalities]
   Let~$(F,G,\varphi)$ be an adjunction from~$\Ccat$ to~$\Dcat$.
   \begin{enumerate}
@@ -281,10 +295,28 @@
 \end{remark}
 
 
+\begin{remark*}
+  Let~$\Ccat$ and~$\Dcat$ be two categories.
+  \begin{enumerate}
+    \item
+      \label{left adjoint via representing}
+      A functor~$G \colon \Dcat \to \Ccat$ admits a left adjoint functor~$\Ccat \to \Dcat$ if and only if the functor~$\Ccat(X,G(-)) \colon \Dcat \to \Set$ is representable for every object~$X \in \Ob(\Ccat)$.
+    \item
+      \label{right adjoint via representing}
+      Dually, a functor~$F \colon \Ccat \to \Dcat$ admits a right adjoint functor~$\Dcat \to \Ccat$ if and only if the functor~$\Dcat(F(-),Y) \colon \Ccat \to \Set$ is representable for every object~$Y \in \Ob(\Dcat)$.
+  \end{enumerate}
+  (Part~\ref*{left adjoint via representing} is Exercise~1 of Exercise~sheet~4, and part~\ref*{right adjoint via representing} is dual to part~\ref*{left adjoint via representing}.)
+\end{remark*}
+
+
 
 
 
 \lecturend{7}
+
+
+
+
 
 \begin{lemma*}
   Let~$F, G \colon \Ccat \to \Dcat$ be two functors between two categories~$\Ccat$ and~$\Dcat$, and let~$\zeta \colon F \to G$ be a natural transformation.
