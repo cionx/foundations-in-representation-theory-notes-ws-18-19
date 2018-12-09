@@ -27,7 +27,7 @@
       \footnote{The author thinks that~$d$ ought to be called \emph{codifferential} instead.}
     \item
       Let~$\Ccc$ and~$\Dcc$ be two chain complexes in~$\Acat$.
-      A morphism of chain complexes~$f \colon \Ccc \to \Dcc$ is a family~$f = (f_n)_{n \in \Integer}$ of morphisms~$f_n \colon C_n \to D_n$ such that~\enquote{$df = fd$}, i.e.\ such that for every~$n \in \Integer$ the following diagram commutes:
+      A \emph{morphism}\index{morphism!of!chain complexes} of chain complexes~$f \colon \Ccc \to \Dcc$ is a family~$f = (f_n)_{n \in \Integer}$ of morphisms~$f_n \colon C_n \to D_n$ such that~\enquote{$df = fd$}, i.e.\ such that for every~$n \in \Integer$ the following diagram commutes:
       \[
         \begin{tikzcd}
             C_n
@@ -187,6 +187,9 @@
 \end{remark}
 
 
+% TODO: Remark regarding leaving out indices.
+% informal explanation & also via morphisms of graded modules
+
 \begin{definition}
   \leavevmode
   \begin{enumerate}
@@ -300,7 +303,8 @@
 \end{example*}
 
 
-\begin{remark}
+\begin{remark}[Functoriality of homology]
+  \label{functoriality of homology}
   \leavevmode
   \begin{enumerate}
     \item
@@ -349,8 +353,15 @@
             = \Zl_n(g) \circ \Zl_n(f)
           \]
           for every~$n \in \Integer$.
+        \item
+          If~$g \colon \Ccc \to \Dcc$ is another morphisms of chain complexes that is parallel to the morphism~$f$, then
+          \[
+              \Zl_n(f + g)
+            = \Zl_n(f) + \Zl_n(g) \,.
+          \]
+          for every~$n \in \Integer$.
       \end{itemize}
-      (See \cref{functoriality of (co)kernel} for more details on this induced morphism and its functoriality.)
+      (See \cref{functoriality of (co)kernel} for more details on this induced morphism and its functoriality and additivity.)
     \item
       It also follows for every~$n \in \Integer$ from the commutativity of the square
       \[
@@ -396,8 +407,15 @@
             = \Bl_n(g) \circ \Bl_n(f)
           \]
           for every~$n \in \Integer$.
+        \item
+          If~$g \colon \Ccc \to \Dcc$ is another morphism of chain complexes that is parallel to the morphism~$g$ then
+          \[
+              \Bl_n(f + g)
+            = \Bl_n(f) + \Bl_n(g)
+          \]
+          for every~$n \in \Integer$.
       \end{itemize}
-      (See \cref{functoriality of (co)image} for more details on this induced morphism and its functoriality.)
+      (See \cref{functoriality of (co)image} for more details on this induced morphism and its functoriality and additivity.)
     \item
       We get from the above for every~$n \in \Integer$ the following diagram:
       \[
@@ -506,7 +524,7 @@
       \]
   \end{enumerate}
 
-  It follows from the functorialty of both~$\Bl_n$ and~$\Zl_n$, together with the functoriality of the cokernel (as explained in \cref{functoriality of (co)kernel}) that this induced morphism is functorial in the following sense:
+  It follows from the functorialty of both~$\Bl_n$ and~$\Zl_n$, together with the functoriality of the cokernel (as explained in \cref{functoriality of (co)kernel}) that this induced morphism is functorial and additive in the following sense:
   \begin{itemize}
     \item
       If~$\Dcc = \Ccc$ and~$f = \id_{\Ccc}$ then~$\Hl_n(\id_{\Ccc}) = \id_{\Hl_n(\Ccc)}$ for every~$n \in \Integer$.
@@ -515,6 +533,13 @@
       \[
           \Hl_n(g \circ f)
         = \Hl_n(g) \circ \Hl_n(f)
+      \]
+      for every~$n \in \Integer$.
+    \item
+      If~$g \colon \Ccc \to \Dcc$ is another morphism of chain complexes that is parallel to the morphism~$f$, then
+      \[
+          \Hl_n(f + g)
+        = \Hl_n(f) + \Hl_n(g)
       \]
       for every~$n \in \Integer$.
   \end{itemize}

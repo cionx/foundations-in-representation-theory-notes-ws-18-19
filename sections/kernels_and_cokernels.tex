@@ -6,7 +6,7 @@
   Let~$f \colon X \to Y$ be a morphism in~$\Ccat$.
   \begin{enumerate}
       \item
-        A \emph{kernel}\index{kernel} of~$f$ is a pair~$(K,k)$ consisting of
+        A \emph{kernel}\index{kernel!of a morphism} of~$f$ is a pair~$(K,k)$ consisting of
         \begin{itemize}
           \item
             an object~$K \in \Ob(\Ccat)$ and
@@ -42,7 +42,7 @@
             \]
         \end{enumerate}
       \item
-        A \emph{cokernel}\index{cokernel} of~$f$ is a pair~$(C,c)$ consisting of
+        A \emph{cokernel}\index{cokernel!of a morphism} of~$f$ is a pair~$(C,c)$ consisting of
         \begin{itemize}
           \item
             an object~$C \in \Ob(\Ccat)$ and
@@ -435,7 +435,7 @@
       \]
       hence there exists a unique morphism~$\varphi' \colon K \to X$ with~$k' \circ \varphi' = \varphi \circ k$ by the universal property of the kernel~$k' \colon X' \to Y'$ of~$f'$.
       
-      This induced morphism is functorial in the following sense:
+      This induced morphism between kernels is functorial in the following sense:
       \begin{itemize}
         \item
           Let~$f \colon X \to Y$ be a morphism in~$\Ccat$ that admits a kernel~$k \colon K \to X$.
@@ -493,10 +493,10 @@
           \]
           Let
           \[
-            \varphi \colon X \to Y \,,
+            \varphi \colon X \to Y,\,
             \varphi'' \colon X' \to Y'
             \quad\text{and}\quad
-            \psi \colon X' \to X'' \,,
+            \psi \colon X' \to X'',\,
             \psi'' \colon Y' \to Y''
           \]
           be morphisms in~$\Ccat$ that makes the squares
@@ -589,19 +589,19 @@
             \begin{tikzcd}[sep = huge]
                 K
                 \arrow{r}[above]{k}
-                \arrow{d}[left]{\varphi'}
+                \arrow{d}[right]{\varphi'}
               & X
                 \arrow{r}[above]{f}
-                \arrow{d}[left]{\varphi}
+                \arrow{d}[right]{\varphi}
               & Y
                 \arrow{d}[right]{\varphi''}
               \\
                 K'
                 \arrow{r}[above]{k'}
-                \arrow{d}[left]{\psi'}
+                \arrow{d}[right]{\psi'}
               & X'
                 \arrow{r}[above]{f'}
-                \arrow{d}[left]{\psi}
+                \arrow{d}[right]{\psi}
               & Y'
                 \arrow{d}[right]{\psi''}
               \\
@@ -635,6 +635,137 @@
             \end{tikzcd}
           \]
           shows the claimed equality.
+      \end{itemize}
+      Suppose that the category~$\Ccat$ is preadditive.
+      Then we also have the following additivity of the induced morphism between kernels:
+      \begin{itemize}[resume]
+        \item
+          Let
+          \[
+            f \colon X \to Y
+            \quad\text{and}\quad
+            f' \colon X' \to Y'
+          \]
+          be morphisms in~$\Ccat$ that admit kernels
+          \[
+            k \colon K \to X
+            \quad\text{and}\quad
+            k' \colon K' \to X' \,.
+          \]
+          Let
+          \[
+            \varphi \colon X \to X',\,
+            \varphi'' \colon Y \to Y'
+            \quad\text{and}\quad
+            \psi \colon X \to X',\,
+            \psi'' \colon Y \to Y'
+          \]
+          be morphisms in~$\Ccat$ that make the squares
+          \[
+            \begin{tikzcd}
+                X
+                \arrow{r}[above]{f}
+                \arrow[dashed]{d}[left]{\varphi}
+              & Y
+                \arrow[dashed]{d}[right]{\varphi''}
+              \\
+                X'
+                \arrow{r}[above]{f'}
+              & Y'
+            \end{tikzcd}
+            \qquad\text{and}\qquad
+            \begin{tikzcd}
+                X
+                \arrow{r}[above]{f}
+                \arrow[dashed]{d}[left]{\psi}
+              & Y
+                \arrow[dashed]{d}[right]{\psi''}
+              \\
+                X'
+                \arrow{r}[above]{f'}
+              & Y'
+            \end{tikzcd}
+          \]
+          commute.
+          Then for the morphisms
+          \[
+            \theta \defined \psi +\varphi
+            \quad\text{and}\quad
+            \theta'' \defined \psi'' + \varphi''
+          \]
+          the square
+          \[\begin{tikzcd}
+                X
+                \arrow{r}[above]{f}
+                \arrow[dashed]{d}[left]{\theta}
+              & Y
+                \arrow[dashed]{d}[right]{\theta''}
+              \\
+                X'
+                \arrow{r}[above]{f'}
+              & Y'
+            \end{tikzcd}
+          \]
+          again commutes because
+          \begin{align*}
+                \theta'' \circ f
+             =  (\varphi'' + \psi'') \circ f
+            &=  \varphi'' \circ f + \psi'' \circ f  \\
+            &=  f \circ \varphi + f \circ \psi
+             =  f \circ (\varphi + \psi)
+             =  f \circ \theta \,.
+          \end{align*}
+          It then holds for the induced morphisms between kernels
+          \begin{gather*}
+                    \varphi', \psi', \theta'
+            \colon  K
+            \to     K'
+          \shortintertext{and}
+              \theta'
+            = \varphi' + \psi' \,.
+          \end{gather*}
+          Indeed, it follows from the commutativity of the squares
+          \[
+            \begin{tikzcd}
+                K
+                \arrow{r}[above]{f}
+                \arrow[dashed]{d}[left]{\varphi'}
+              & X
+                \arrow[dashed]{d}[right]{\varphi}
+              \\
+                K'
+                \arrow{r}[above]{f'}
+              & X'
+            \end{tikzcd}
+            \qquad\text{and}\qquad
+            \begin{tikzcd}
+                K
+                \arrow{r}[above]{f}
+                \arrow[dashed]{d}[left]{\psi'}
+              & X
+                \arrow[dashed]{d}[right]{\psi}
+              \\
+                K'
+                \arrow{r}[above]{f'}
+              & X'
+            \end{tikzcd}
+          \]
+          in the same way as above that the square
+          \[
+            \begin{tikzcd}
+                K
+                \arrow{r}[above]{f}
+                \arrow[dashed]{d}[left]{\varphi' + \psi'}
+              & X
+                \arrow[dashed]{d}[right]{\varphi + \psi}
+              \\
+                K'
+                \arrow{r}[above]{f'}
+              & X'
+            \end{tikzcd}
+          \]
+          again commutes.
+          Hence~$\varphi' + \psi'$ satisfies the defining property of the induced morphism~$\theta'$, and thus~$\theta' = \varphi' + \psi'$.
       \end{itemize}
     \item
       For cokernels the dual construction works:
@@ -674,7 +805,7 @@
         \end{tikzcd}
       \]
       commute.
-      This induced morphism is functorial in the following way:
+      This induced morphism between cokernels is functorial and additive in the following way:
       \begin{itemize}
         \item
           If~$f \colon X \to Y$ is a morphism in~$\Ccat$ that admits a cokernel~$c \colon Y \to C$ then the square
@@ -775,6 +906,82 @@
             \theta'' \colon C \to C''
           \]
           that~$\theta'' = \psi'' \circ \varphi''$.
+        \item
+          Suppose that~$\Ccat$ is preadditive, and let
+          \[
+            f \colon X \to Y
+            \quad\text{and}\quad
+            f' \colon X' \to Y'
+          \]
+          be morphisms in~$\Ccat$ that admit cokernels
+          \[
+            c \colon Y \to C
+            \quad\text{and}\quad
+            c' \colon Y' \to C' \,.
+          \]
+          Let
+          \[
+            \varphi' \colon X \to X',\,
+            \varphi \colon Y \to Y'
+            \quad\text{and}\quad
+            \psi' \colon X \to X',\,
+            \psi \colon Y \to Y'
+          \]
+          be morphisms in~$\Ccat$ that make the squares
+          \[
+            \begin{tikzcd}
+                X
+                \arrow{r}[above]{f}
+                \arrow[dashed]{d}[left]{\varphi'}
+              & Y
+                \arrow[dashed]{d}[right]{\varphi}
+              \\
+                X'
+                \arrow{r}[above]{f'}
+              & Y'
+            \end{tikzcd}
+            \qquad\text{and}\qquad
+            \begin{tikzcd}
+                X
+                \arrow{r}[above]{f}
+                \arrow[dashed]{d}[left]{\psi'}
+              & Y
+                \arrow[dashed]{d}[right]{\psi}
+              \\
+                X'
+                \arrow{r}[above]{f'}
+              & Y'
+            \end{tikzcd}
+          \]
+          commute.
+          Then for the morphisms
+          \[
+            \theta' \defined \psi' +\varphi'
+            \quad\text{and}\quad
+            \theta \defined \psi + \varphi
+          \]
+          the square
+          \[\begin{tikzcd}
+                X
+                \arrow{r}[above]{f}
+                \arrow[dashed]{d}[left]{\theta'}
+              & Y
+                \arrow[dashed]{d}[right]{\theta}
+              \\
+                X'
+                \arrow{r}[above]{f'}
+              & Y'
+            \end{tikzcd}
+          \]
+          again commutes, and it holds for the induced morphisms
+          \begin{gather*}
+                    \varphi'', \psi'', \theta''
+            \colon  C
+            \to     C'
+          \shortintertext{that}
+              \theta''
+            = \varphi'' + \psi'' \,.
+          \end{gather*}
       \end{itemize}
     \item
       Suppose that the category~$\Ccat$ has kernels.
@@ -804,9 +1011,9 @@
             \arrow[dashed]{d}[left]{h''}
           & X
             \arrow{r}[above]{f}
-            \arrow{d}[left]{g}
+            \arrow{d}[left]{h}
           & Y
-            \arrow{d}[right]{g'}
+            \arrow{d}[right]{h'}
           \\
             K'
             \arrow{r}[above]{k'}
@@ -884,9 +1091,9 @@
   Let~$f \colon X \to Y$ be a morphism in~$\Ccat$.
   \begin{enumerate}
     \item
-      An \emph{image}\index{image} of~$f$ is a kernel of a cokernel of~$f$, and is denotedy by~$\im(f) \to Y$.
+      An \emph{image}\index{image!of a morphism} of~$f$ is a kernel of a cokernel of~$f$, and is denotedy by~$\im(f) \to Y$.
     \item
-      A \emph{coimage}\index{coimage} of~$f$ is a cokernel of a kernel of~$f$, and is denoted by~$X \to \coim(f)$.
+      A \emph{coimage}\index{coimage!of a morphism} of~$f$ is a cokernel of a kernel of~$f$, and is denoted by~$X \to \coim(f)$.
   \end{enumerate}
 \end{definition}
 
@@ -1127,9 +1334,9 @@
         \begin{tikzcd}
             X
             \arrow{r}[above]{f}
-            \arrow{d}[left]{h}
+            \arrow[dashed]{d}[left]{h}
           & Y
-            \arrow{d}[right]{h''}
+            \arrow[dashed]{d}[right]{h''}
           \\
             X'
             \arrow{r}[above]{f'}
@@ -1195,7 +1402,7 @@
       The uniqueness of~$h'$ follows from the uniqueness of~$h'$ in the above construction;
       it also follows from~$h'$ being uniquely determined by the composition~$i' h' = h'' i$ because~$i'$ is a monomorphism.
       
-      This induced morphism between images is functorial in the following sense:
+      This induced morphism between images is functorial and additive in the following sense:
       \begin{itemize}
         \item
           The morphism~$\im(f) \to \im(f)$ that results from the commutative square
@@ -1203,9 +1410,9 @@
             \begin{tikzcd}
                 X
                 \arrow{r}[above]{f}
-                \arrow{d}[left]{\id_X}
+                \arrow[dashed]{d}[left]{\id_X}
               & Y
-                \arrow{d}[right]{\id_Y}
+                \arrow[dashed]{d}[right]{\id_Y}
               \\
                 X
                 \arrow{r}[above]{f}
@@ -1234,15 +1441,15 @@
             \begin{tikzcd}
                 X
                 \arrow{r}[above]{f}
-                \arrow{d}[left]{h}
+                \arrow[dashed]{d}[left]{h}
               & Y
-                \arrow{d}[right]{h''}
+                \arrow[dashed]{d}[right]{h''}
               \\
                 X'
                 \arrow{r}[above]{f'}
-                \arrow{d}[left]{g}
+                \arrow[dashed]{d}[left]{g}
               & Y'
-                \arrow{d}[right]{g''}
+                \arrow[dashed]{d}[right]{g''}
               \\
                 X''
                 \arrow{r}[above]{f''}
@@ -1250,20 +1457,51 @@
             \end{tikzcd}
           \]
           Let~$i'' \colon \im(f'') \to Y''$ be an image of~$f''$ and let~$g' \colon \im(f') \to \im(f'')$ be the morphism induced by lower commutative square of the above diagram.
-          Then the composition~$g' \circ h' \colon \im(f) \to \im(f'')$ is the morphism inducde by the outer commutative square:
+          Then the composition~$g' \circ h' \colon \im(f) \to \im(f'')$ is the morphism that is induced by the outer commutative square, i.e.\ by the following commutative square:
           \[
             \begin{tikzcd}
                 X
                 \arrow{r}[above]{f}
-                \arrow{d}[left]{g \circ h}
+                \arrow[dashed]{d}[left]{g \circ h}
               & Y
-                \arrow{d}[right]{g'' \circ h''}
+                \arrow[dashed]{d}[right]{g'' \circ h''}
               \\
                 X''
                 \arrow{r}[above]{f''}
               & Y''
             \end{tikzcd}
           \]
+        \item
+          Suppose that the category~$\Ccat$ is preadditive and that~$g \colon X \to X'$ and~$g'' \colon Y \to Y'$ is another pair of morphisms in~$\Ccat$ that make the square
+          \[
+            \begin{tikzcd}
+                X
+                \arrow{r}[above]{f}
+                \arrow[dashed]{d}[left]{g}
+              & Y
+                \arrow[dashed]{d}[right]{g''}
+              \\
+                X'
+                \arrow{r}[above]{f'}
+              & Y'
+            \end{tikzcd}
+          \]
+          commute, and let~$g' \colon \im(f) \to \im(f')$ be the resulting induced morphism between images.
+          Then the square
+          \[
+            \begin{tikzcd}
+                X
+                \arrow{r}[above]{f}
+                \arrow[dashed]{d}[left]{h + g}
+              & Y
+                \arrow[dashed]{d}[right]{h'' + g''}
+              \\
+                X'
+                \arrow{r}[above]{f'}
+              & Y'
+            \end{tikzcd}
+          \]
+          again commutes, and resulting induced morphism~$\im(f) \to \im(f')$ is precisely the sum~$h' + g'$.
 %           Indeed, we have the following commutative diagram:
 %           \[
 %             \begin{tikzcd}
@@ -1285,7 +1523,7 @@
 %             \end{tikzcd}
 %           \]
       \end{itemize}
-      This claimed functoriality follows from the above explicit construction of the induced morphism by functoriality of the (co)kernel, as explained in \cref{functoriality of (co)kernel}.
+      This claimed functoriality and additivity of the induced morphism follow via the above explicit construction of the induced morphism from functoriality of the (co)kernel, as explained in \cref{functoriality of (co)kernel}.
     \item
       Dually, if~$p \colon X \to \coim(f)$ and~$p' \colon X' \to \coim(f')$ are coimages of~$f$ and~$f'$ then there exists a unique morphism~$\bar{h} \colon \coim(f) \to \coim(f')$ that makes the following square commute:
       \[
@@ -1301,7 +1539,7 @@
           & \coim(f')
         \end{tikzcd}
       \]
-      This induced morphism between coimages is functorial in the following sense:
+      This induced morphism between coimages is functorial and additive in the following sense:
       \begin{itemize}
         \item
           The morphism~$\coim(f) \to \coim(f)$ that results from the commutative square
@@ -1309,9 +1547,9 @@
             \begin{tikzcd}
                 X
                 \arrow{r}[above]{f}
-                \arrow{d}[left]{\id_X}
+                \arrow[dashed]{d}[left]{\id_X}
               & Y
-                \arrow{d}[right]{\id_Y}
+                \arrow[dashed]{d}[right]{\id_Y}
               \\
                 X
                 \arrow{r}[above]{f}
@@ -1325,15 +1563,15 @@
             \begin{tikzcd}
                 X
                 \arrow{r}[above]{f}
-                \arrow{d}[left]{h}
+                \arrow[dashed]{d}[left]{h}
               & Y
-                \arrow{d}[right]{h''}
+                \arrow[dashed]{d}[right]{h''}
               \\
                 X'
                 \arrow{r}[above]{f'}
-                \arrow{d}[left]{g}
+                \arrow[dashed]{d}[left]{g}
               & Y'
-                \arrow{d}[right]{g''}
+                \arrow[dashed]{d}[right]{g''}
               \\
                 X''
                 \arrow{r}[above]{f''}
@@ -1341,33 +1579,78 @@
             \end{tikzcd}
           \]
           Let~$p'' \colon X'' \to \coim(f'')$ be a coimage of~$f''$ and let~$g' \colon \coim(f') \to \coim(f'')$ be the morphism induced by lower commutative square of the above diagram.
-          Then the composition~$g' \circ h' \colon \coim(f) \to \coim(f'')$ is the morphism inducde by the outer commutative square:
+          Then the composition~$g' \circ h' \colon \coim(f) \to \coim(f'')$ is the morphism that is induced by the outer commutative square, i.e.\ by the following commutative square:
           \[
             \begin{tikzcd}
                 X
                 \arrow{r}[above]{f}
-                \arrow{d}[left]{g \circ h}
+                \arrow[dashed]{d}[left]{g \circ h}
               & Y
-                \arrow{d}[right]{g'' \circ h''}
+                \arrow[dashed]{d}[right]{g'' \circ h''}
               \\
                 X''
                 \arrow{r}[above]{f''}
               & Y''
             \end{tikzcd}
           \]
+        \item
+          Suppose that the category~$\Ccat$ is preadditive and that~$g \colon X \to X'$ and~$g'' \colon Y \to Y'$ is another pair of morphisms in~$\Ccat$ that make the square
+          \[
+            \begin{tikzcd}
+                X
+                \arrow{r}[above]{f}
+                \arrow[dashed]{d}[left]{g}
+              & Y
+                \arrow[dashed]{d}[right]{g''}
+              \\
+                X'
+                \arrow{r}[above]{f'}
+              & Y'
+            \end{tikzcd}
+          \]
+          commute, and let~$g' \colon \coim(f) \to \coim(f')$ be the resulting induced morphism.
+          Then the square
+          \[
+            \begin{tikzcd}
+                X
+                \arrow{r}[above]{f}
+                \arrow[dashed]{d}[left]{h + g}
+              & Y
+                \arrow[dashed]{d}[right]{h'' + g''}
+              \\
+                X'
+                \arrow{r}[above]{f'}
+              & Y'
+            \end{tikzcd}
+          \]
+          again commutes, and resulting induced morphism~$\coim(f) \to \coim(f')$ is precisely the sum~$h' + g'$.
       \end{itemize}
     \item
-      These induced morphisms are compatible with the canonical factorization from \cref{canonical factorization} in the sense that the following diagram commutes:
+      These induced morphisms between images and coimages are compatible with the canonical factorization from \cref{canonical factorization} in the sense that for every commutative sqare
+      \[
+        \begin{tikzcd}
+            X
+            \arrow{r}[above]{f}
+            \arrow[dashed]{d}[left]{h}
+          & Y
+            \arrow[dashed]{d}[right]{h''}
+          \\
+            X'
+            \arrow{r}[above]{f'}
+          & Y'
+        \end{tikzcd}
+      \]
+      the following diagram commutes:
       \[
         \begin{tikzcd}
             X
             \arrow{rrr}[above]{f}
             \arrow{dr}[below left]{p}
-            \arrow{dd}[left]{h}
+            \arrow[dashed]{dd}[left]{h}
           & {}
           & {}
           & Y
-            \arrow{dd}[right]{h''}
+            \arrow[dashed]{dd}[right]{h''}
           \\
             {}
           & \coim(f)
@@ -1385,15 +1668,15 @@
           \\
             {}
           & \coim(f')
-            \arrow[from=uu, crossing over, "\bar{h}", swap, near start]
+            \arrow[from=uu, dashed, crossing over, "\bar{h}", swap, near start]
             \arrow{r}[above]{\tilde{f}'}
           & \im(f')
-            \arrow[from=uu, crossing over, "h'", right, near start]
+            \arrow[from=uu, dashed, crossing over, "h'", right, near start]
             \arrow{ur}[below right]{i'}
           & {}
         \end{tikzcd}
       \]
-      Indeed, the trapezoids on the top commutes by definition of~$\tilde{f}$, the trapezoid on the bottom commutes by definition of~$\tilde{f}'$, the square on the left commutes by definition of~$\bar{h}$, the square on the right commutes by definition of~$h'$, and the rectangle in the back commutes by assumption.
+      Indeed, the trapezoid on the top commutes by definition of~$\tilde{f}$, the trapezoid on the bottom commutes by definition of~$\tilde{f}'$, the square on the left commutes by definition of~$\bar{h}$, the square on the right commutes by definition of~$h'$, and the rectangle in the back commutes by assumption.
       It follows that the front square commutes.
       Indeed, it follows that
       \[

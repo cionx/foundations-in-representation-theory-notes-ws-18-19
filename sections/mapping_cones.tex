@@ -1,0 +1,204 @@
+\section{Mapping Cones}
+
+
+\begin{definition}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Let~$f \colon \Ccc \to \Dcc$ be a morphism of chain complexes.
+      The \emph{mapping cone}\index{mapping cone}\index{cone} of~$f$ is the chain complex~$\cone(f)$ that is given by
+      \begin{itemize}
+        \item
+          the components~$\cone(f)_n \defined C_{n-1} \oplus D_n$ for every~$n \in \Integer$, together with
+        \item
+          the differential
+          \[
+                      d^{\,\cone(f)}_n
+            \defined  \begin{bmatrix}
+                        -d^{\,C}_{n-1}  & 0     \\
+                        -f_{n-1}    & d^D_n
+                      \end{bmatrix}
+            \colon    C_{n-1} \oplus D_n
+            \to       C_{n-2} \oplus D_{n-1}
+          \]
+          for every~$n \in \Integer$.
+      \end{itemize}
+    \item
+      Let~$f \colon \Cccc \to \Dccc$ be a morphism of cochain complexes.
+      The \emph{mapping cone}\index{mapping cone}\index{cone} of~$f$ is the cochain complex~$\cone(f)$ that is given by
+      \begin{itemize}
+        \item
+          the components~$\cone(f)^n \defined C^{n+1} \oplus D^n$ for every~$n \in \Integer$, together with
+        \item
+          the differential
+          \[
+                      d_{\cone(f)}^n
+            \defined  \begin{bmatrix}
+                        -d_C^{n+1}  & 0     \\
+                        -f^{n+1}    & d_D^n
+                      \end{bmatrix}
+            \colon    C^{n+1} \oplus D^n
+            \to       C^{n+2} \oplus D^{n+1}
+          \]
+          for every~$n \in \Integer$.
+      \end{itemize}
+  \end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+  If~$f \colon \Ccc \to \Dcc$ is a morphism of chain complexes, or~$f \colon \Cccc \to \Dccc$ a morphism of cochain complexes, then~$\cone(f)$ is indeed a (co)chain complex because
+  \[
+      \begin{bmatrix}
+        -d  & 0 \\
+        -f  & d \\
+      \end{bmatrix}
+      \begin{bmatrix}
+        -d  & 0 \\
+        -f  & d
+      \end{bmatrix}
+    = \begin{bmatrix}
+        d^2    & 0   \\
+        fd-df  & d^2
+      \end{bmatrix}
+    = \begin{bmatrix}
+        0 & 0 \\
+        0 & 0
+      \end{bmatrix} \,.
+  \]
+\end{remark}
+
+
+\begin{proposition}
+  \label{exact sequence of cone}
+  Let~$f \colon \Ccc \to \Dcc$ be a morphism of chain complexes.
+  \begin{enumerate}
+    \item
+      The family~$\alpha = (\alpha_n)_{n \in \Integer}$ of morphisms
+      \[
+                  \alpha_n
+        \defined  \begin{bmatrix}
+                    0 \\
+                    \id_{D_n}
+                  \end{bmatrix}
+        \colon    D_n
+        \to       C_{n-1} \oplus D_n
+      \]
+      is a morphism of chain complexes~$\alpha \colon \Dcc \to \cone(f)$.
+    \item
+      The family~$\beta = (\beta_n)_{n \in \Integer}$ of morphisms
+      \[
+                  \beta_n
+        \defined  \begin{bmatrix}
+                    -\id_{C_{n-1}} & 0
+                  \end{bmatrix}
+        \colon    C_{n-1} \oplus D_n
+        \to       C_{n-1}
+      \]
+      is a morphism of chain complexes~$\beta \colon \cone(f) \to \Ccc[-1]$.
+    \item
+      The morphisms~$\alpha$ and~$\beta$ fit into a short exact sequence
+      \[
+        0
+        \to
+        \Dcc
+        \xlongto{\alpha}
+        \cone(f)
+        \xlongto{\beta}
+        \Ccc[-1]
+        \to
+        0 \,.
+      \]
+    \item
+      In the induced long exact homology sequence
+      \[
+        \begin{tikzcd}
+            {}
+          & \dotsb
+            \arrow{r}
+            \arrow[d, phantom, ""{coordinate, name=Y}]
+          & \Hl_{n+1}(\Ccc[-1])
+            \arrow[ dll,
+                    "\del_{n+1}",
+                    rounded corners,
+                    to path={ -- ([xshift=2ex]\tikztostart.east)
+                              |- (Y) \tikztonodes
+                              -| ([xshift=-2ex]\tikztotarget.west)
+                              -- (\tikztotarget)}
+                  ]
+          \\
+            \Hl_n(\Dcc)
+            \arrow{r}[above]{\Hl_n(\alpha)}
+          & \Hl_n(\cone(f))
+            \arrow{r}[above]{\Hl_n(\beta)}
+            \arrow[d, phantom, ""{coordinate, name=Z}]
+          & \Hl_n(\Ccc[-1])
+            \arrow[ dll,
+                    "\del_n",
+                    rounded corners,
+                    to path={ -- ([xshift=2ex]\tikztostart.east)
+                              |- (Z) \tikztonodes
+                              -| ([xshift=-2ex]\tikztotarget.west)
+                              -- (\tikztotarget)}
+                  ]
+          \\
+            \Hl_{n-1}(\Dcc)
+            \arrow{r}
+          & \dotsb
+          & {}
+        \end{tikzcd}
+      \]
+      the connecting morphism
+      \[
+        \delta_{n+1}
+        \colon
+        \Hl_n(\Ccc)
+        =
+        \Hl_{n+1}(\Ccc[-1])
+        \to
+        \Hl_n(\Dcc)
+      \]
+      is given by~$\Hl_n(f)$ for every~$n \in \Integer$.
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+  Next time.
+\end{proof}
+
+
+\begin{corollary}
+  A morphism of chain complexes~$f \colon \Ccc \to \Dcc$ is a {\qim} if and only if its cone is acyclic.
+\end{corollary}
+
+
+\begin{proof}
+  We get by~\cref{exact sequence of cone} a long exact sequence
+  \[
+    \dotsb
+    \to
+    \Hl_{n+1}(\cone(f))
+    \to
+    \Hl_n(\Ccc)
+    \xlongto{\Hl_n(f)}
+    \Hl_n(\Dcc)
+    \to
+    \Hl_n(\cone(f))
+    \to
+    \dotsb
+  \]
+  The morphism~$f$ is a {\qim} if and only if~$\Hl_n(f)$ is for every~$n \in \Integer$ an isomorphism.
+  This holds by the exactness of the above sequence if and only if~$\Hl_n(\cone(f)) = 0$ for every~$n \in \Integer$.
+  This is precisely what it means for~$\cone(f)$ to be acyclic.
+\end{proof}
+
+
+
+
+
+\lecturend{17}
+
+
+
+

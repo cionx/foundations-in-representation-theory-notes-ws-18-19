@@ -17,7 +17,7 @@
       for every~$n \in \Integer$.
     \item
       Let~$\Cccc$ be a chain complex in~$\Acat$.
-      Then for every~$p \in \Integer$ the \emph{shifted cochain complex}~$\Ccc[p]$\index{shifted!cochain complex}\index{cochain complex!shifted} is given by
+      Then for every~$p \in \Integer$ the \emph{shifted cochain complex}~$\Cccc[p]$\index{shifted!cochain complex}\index{cochain complex!shifted} is given by
       \[
                   (\Cccc[p])^n
         \defined  C^{n-p}
@@ -67,7 +67,7 @@
       B_n
     = \Bl_n(\Ccc)
   \]
-  for every~$n \in \Integer$, together with the zero morphisms as the differentials.
+  for every~$n \in \Integer$, together with the zero morphisms as differentials.
   We then get a short exact sequence of chain complexes
   \[
     0
@@ -95,6 +95,282 @@
   \]
 
 \end{remark}
+
+
+
+
+
+\lecturend{16}
+
+
+
+
+\begin{remarkdefinition}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Let~$\Ccc$ be a chain complex in~$\Acat$ and let~$p \in \Integer$.
+      \begin{itemize}
+        \item
+          The differential~$d_{p+1} \colon C_{p+1} \to C_p$ induces for~$\widetilde{C}_p \defined \Zl_p(\Ccc) = \ker(d_p)$ a morphism~$\tilde{d}_{p+1} \colon C_{p+1} \to \widetilde{C}_p$.
+          This results in a chain complex
+          \[
+                      \tau_{\,\geq p}(\Ccc)
+            \defined  \left(
+                        \dotsb
+                        \to
+                        C_{p+2}
+                        \xlongto{d_{p+2}}
+                        C_{p+1}
+                        \xlongto{\tilde{d}_{p+1}}
+                        \widetilde{C}_p
+                        \to
+                        0
+                        \to
+                        0
+                        \to
+                        \dotsb
+                      \right) \,.
+          \]
+        \item
+          The differential~$d_p \colon C_p \to C_{p-1}$ induces for~$\widetilde{C}_p \defined \coker(d_{p+1})$ a morphism~$\tilde{d}_p \colon \tilde{C}_p \to C_{p-1}$.
+          This results in a chain complex
+          \[
+                      \tau_{\,\leq p}(\Ccc)
+            \defined  \left(
+                        \dotsb
+                        \to
+                        0
+                        \to
+                        0
+                        \to
+                        \widetilde{C}_p
+                        \xlongto{\tilde{d}_p}
+                        C_{p-1}
+                        \xlongto{d_{p+1}}
+                        C_{p-2}
+                        \to
+                        \dotsb
+                      \right).
+          \]
+        \end{itemize}
+        The chain complexes~$\tau_{\,\geq p}(\Ccc)$ and~$\tau_{\,\leq p}(\Ccc)$ are the \emph{truncated complexes}\index{truncation}\index{chain complex!truncation} of~$\Ccc$.
+      \item
+        Dually, let~$\Cccc$ be a cochain complex in~$\Acat$ and let~$p \in \Integer$.
+      \begin{itemize}
+        \item
+          The differential~$d^{p-1} \colon C^{p-1} \to C^p$ induces for~$\widetilde{C}^p \defined \Zl^p(\Cccc) = \ker(d^p)$ a morphism~$\tilde{d}^{p-1} \colon C^{p-1} \to \widetilde{C}^p$.
+          This results in a cochain complex
+          \[
+                      \tau^{\,\leq p}(\Cccc)
+            \defined  \left(
+                        \dotsb
+                        \to
+                        C^{p-2}
+                        \xlongto{d^{p-2}}
+                        C^{p-1}
+                        \xlongto{\tilde{d}^{p-1}}
+                        \widetilde{C}^p
+                        \to
+                        0
+                        \to
+                        0
+                        \to
+                        \dotsb
+                      \right) \,.
+          \]
+        \item
+          The differential~$d^p \colon C^p \to C^{p+1}$ induces for~$\widetilde{C}^p \defined \coker(\tilde{d}^{p+1})$ a morphism~$\tilde{d}^p \colon \widetilde{C}^p \to C^{p+1}$.
+          This results in a cochain complex
+          \[
+                      \tau^{\,\geq p}(\Cccc)
+            \defined  \left(
+                        \dotsb
+                        \to
+                        0
+                        \to
+                        0
+                        \to
+                        \widetilde{C}^p
+                        \xlongto{\tilde{d}^p}
+                        C^{p+1}
+                        \xlongto{d^{p+1}}
+                        C^{p+2}
+                        \to
+                        \dotsb
+                      \right).
+          \]
+      \end{itemize}
+      The chain complexes~$\tau^{\,\leq p}(\Cccc)$ and~$\tau^{\,\geq p}(\Cccc)$ are the \emph{truncated complexes}\index{truncation}\index{cochain complex!truncation} of~$\Cccc$.
+  \end{enumerate}
+\end{remarkdefinition}
+
+
+\begin{remark}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Truncation of complexes is functorial (for both chain complexes and cochain complexes):
+      
+      Let~$f = (f_n)_{n \in \Integer} \colon \Ccc \to \Dcc$ be a morphism of chain complexes and let~$p \in \Integer$.
+      Then the morphism~$f_p \colon C_p \to D_p$ restrict to a morphism~$\tilde{f}_p \colon \ker(d^C_p) \to \ker(d^D_p)$. 
+      We get from this a morphism of chain complexes
+      \[
+                \tau_{\,\geq p}(f)
+        \colon  \tau_{\,\geq p}(\Ccc)
+        \to     \tau_{\,\geq p}(\Dcc)
+      \]
+      that is given in components given by
+      \[
+                  \tau_{\,\geq p}(f)_n
+        \defined  \begin{cases}
+                    f_n         & \text{if~$n > p$} \,, \\
+                    \tilde{f}_n & \text{if~$n = p$} \,, \\
+                    0           & \text{if~$n < p$} \,.
+                  \end{cases}
+      \]
+      We similarly get an induced morphism~$\tilde{f}_p \colon \coker(d^C_{p+1}) \to \coker(d^D_{p+1})$, from which we get a morphism of chain complexes
+      \[
+                \tau_{\,\leq p}(f)
+        \colon  \tau_{\,\leq p}(\Ccc)
+        \to     \tau_{\,\leq p}(\Dcc)
+      \]
+      that is given in components by
+      \[
+                  \tau_{\,\leq p}(f)_n
+        \defined  \begin{cases}
+                    f_n         & \text{if~$n < p$} \,, \\
+                    \tilde{f}_n & \text{if~$n = p$} \,, \\
+                    0           & \text{if~$n > p$} \,.
+                  \end{cases}
+      \]
+      These induced morphisms are compatible with identity morphisms and composition of morphisms by the \hyperref[functoriality of (co)kernel]{functoriality of (co)kernels}.
+      
+      For truncation of cochain complexes the analogous construction works.
+    \item
+      If~$\Cccc$ is a chain complex in~$\Acat$ and~$p \in \Integer$ then
+      \begin{align*}
+                \Hl_n(\tau_{\,\geq p}(\Ccc))
+        &\cong  \begin{cases}
+                  \Hl_n(\Ccc) & \text{if~$n \geq p$}  \,, \\
+                  0           & \text{if~$n < p$}     \,,
+                \end{cases}
+      \shortintertext{and}
+                \Hl_n(\tau_{\,\leq p}(\Ccc))
+        &\cong  \begin{cases}
+                  \Hl_n(\Ccc) & \text{if~$n \leq p$}  \,, \\
+                  0           & \text{if~$n > p$}     \,.
+                \end{cases}
+      \end{align*}
+      Similarly, if~$\Cccc$ is a cochain complex in~$\Acat$ and~$p \in \Integer$ then
+      \begin{align*}
+                \Hl^n(\tau^{\,\leq p}(\Cccc))
+        &\cong  \begin{cases}
+                  \Hl^n(\Cccc)  & \text{if~$n \leq p$}  \,, \\
+                  0             & \text{if~$n > p$}     \,,
+                \end{cases}
+      \shortintertext{and}
+                \Hl^n(\tau_{\,\geq p}(\Cccc))
+        &\cong  \begin{cases}
+                  \Hl^n(\Cccc)  & \text{if~$n \geq p$}  \,, \\
+                  0             & \text{if~$n < p$}     \,.
+                \end{cases}
+      \end{align*}
+  \end{enumerate}
+\end{remark}
+
+
+% Make this isomorphism of homologies more precise: It is induced by the canonical morphisms of chain complexes.
+
+\begin{remark*}
+  If~$\Ccc$ as a chain complex in~$\Acat$ and~$p \in \Integer$ then one can also define the \enquote{stupid truncations}\index{stupid truncation}\index{truncation!stupid}\index{chain complex!truncation!stupid}
+  \begin{align*}
+              \sigma_{\,\geq p}(\Ccc)
+    &\defined (
+                \dotsb
+                \to
+                C_{p+2}
+                \xlongto{d_{p+2}}
+                C_{p+1}
+                \xlongto{d_{p+1}}
+                C_p
+                \to
+                0
+                \to
+                0
+                \to 
+                \dotsb
+              )
+  \shortintertext{and}
+              \sigma_{\,\leq p}(\Ccc)
+    &\defined (
+                \dotsb
+                \to
+                0
+                \to
+                0
+                \to
+                C_p
+                \xlongto{d_p}
+                C_{p-1}
+                \xlongto{d_{p-1}}
+                C_{p-2}
+                \to
+                \dotsb
+              ) \,.
+  \end{align*}
+  For a cochain complex~$\Cccc$ in~$\Acat$ and~$p \in \Integer$ one can define the \enquote{stupid truncations}\index{stupid truncation}\index{truncation!stupid}\index{cochain complex!truncation!stupid}
+  \begin{align*}
+              \sigma^{\,\leq p}(\Cccc)
+    &\defined (
+                \dotsb
+                \to
+                C^{p-2}
+                \xlongto{d^{p-2}}
+                C^{p-1}
+                \xlongto{d^{p-1}}
+                C_p
+                \to
+                0
+                \to
+                0
+                \to
+                \dotsb
+              )
+  \shortintertext{and}
+              \sigma^{\,\geq p}(\Cccc)
+    &\defined (
+                \dotsb
+                \to
+                0
+                \to
+                0
+                \to
+                C^p
+                \xlongto{d^p}
+                C^{p+1}
+                \xlongto{d^{p+1}}
+                C^{p+2}
+                \to
+                \dotsb
+              ) \,.
+  \end{align*}
+  But then
+  \begin{alignat*}{2}
+          \Hl_p( \sigma_{\,\geq p}(\Ccc) )
+    &\cong \coker(d_{p+1}) \,,
+    &\quad&
+          \Hl_p( \sigma_{\,\leq p}(\Ccc) )
+    =     \Zl_p(\Ccc) \,,
+  \shortintertext{and}
+          \Hl^p( \sigma^{\,\leq p}(\Cccc) )
+    &\cong \coker(d^{p-1}) \,,
+    &\quad&
+          \Hl^p( \sigma^{\,\geq p}(\Cccc) )
+    =     \Zl^p(\Cccc)  \,.
+  \end{alignat*}
+  Hence the~\dash{$p$}{th} (co)homology is (in general) not preserved by the stupid truncations.
+\end{remark*}
 
 
 
