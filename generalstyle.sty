@@ -149,6 +149,8 @@
 
 % text shortcuts
 \newcommand{\dash}[2]{#1\nobreakdash-#2}
+\newcommand{\deltafun}{$\delta$\nobreakdash-func\-tor}
+\newcommand{\deltafuns}{$\delta$\nobreakdash-func\-tors}
 \newcommand{\fd}{finite\nobreakdash-dimensional}
 \newcommand{\kalg}{$\kf$\nobreakdash-algebra}
 \newcommand{\kalgs}{$\kf$\nobreakdash-algebras}
@@ -205,6 +207,7 @@
 \newcommand{\defines}{\eqqcolon}
 \newcommand{\del}{\partial}
 \newcommand{\diag}{\Delta}
+\newcommand{\from}{\leftarrow}
 \newcommand{\inA}{\in_\Acat}
 \newcommand{\xfrom}{\xleftarrow}
 \newcommand{\xto}{\xrightarrow}
@@ -236,7 +239,9 @@
 % fixed categories
 \newcommand{\Ab}{\catname{Ab}}
 \newcommand{\Ch}{\cc{\catname{Ch}}}
+\newcommand{\Chh}{\catname{Ch}}
 \newcommand{\CCh}{\ccc{\catname{Ch}}}
+\newcommand{\CChh}{\catname{Ch}}
 \newcommand{\CommRing}{\catname{CRing}}
 \newcommand{\Conn}{\catname{Conn}}
 \newcommand{\Field}{\catname{Field}}
@@ -294,11 +299,26 @@
 \newcommand{\Dcc}{\cc{D}}
 \newcommand{\Ecc}{\cc{E}}
 \newcommand{\Fcc}{\cc{F}}
+\newcommand{\Hlcc}{\cc{\Hl}}
+\newcommand{\Hlccc}{\ccc{\Hl}}
+\newcommand{\Tcc}{\cc{T}}
 \newcommand{\Zcc}{\cc{Z}}
 \newcommand{\Bccc}{\ccc{B}}
 \newcommand{\Cccc}{\ccc{C}}
 \newcommand{\Dccc}{\ccc{D}}
+\newcommand{\Tccc}{\ccc{T}}
 \newcommand{\Zccc}{\ccc{Z}}
+
+
+% delta functors
+\newcommand{\Hldeltac}{\ccc{\Hl}}
+\newcommand{\Hldeltah}{\cc{\Hl}}
+\newcommand{\Sdeltac}{\ccc{S}}
+\newcommand{\Sdeltah}{\cc{S}}
+\newcommand{\Tdeltac}{\ccc{T}}
+\newcommand{\Tdeltah}{\cc{T}}
+\newcommand{\Udeltac}{\ccc{U}}
+\newcommand{\Udeltah}{\cc{U}}
 
 % spaces and sets
 \DeclareMathOperator{\Bl}{B}
@@ -353,6 +373,19 @@
   \IfBooleanTF{#1}
     {\left. {#2} \middle|_{#3}^{#4} \right.}
     {{#2} |_{#3}^{#4}}
+}
+
+
+% cocolon
+\newcommand*\cocolon{%
+        \nobreak
+        \mskip6mu plus1mu
+        \mathpunct{}%
+        \nonscript
+        \mkern-\thinmuskip
+        {:}%
+        \mskip2mu
+        \relax
 }
 
 
