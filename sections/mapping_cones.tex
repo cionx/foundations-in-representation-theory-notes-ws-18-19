@@ -196,6 +196,111 @@
 \end{proof}
 
 
+\begin{remark*}
+  Let~$\Ccc$,~$\Dcc$ and~$\Ecc$ be chain complexes in~$\Acat$.
+  \begin{enumerate}
+    \item
+      Let~$f \colon \Ccc \to \Dcc$ be a morphism of chain complexes.
+      Then for a family~$g = (g_n)_{n \in \Integer}$ of morphisms
+      \[
+        g_n
+        \colon
+        C_{n-1} \oplus D_n
+        \to
+        E_n
+      \]
+      we have that~$g$ is a morphism of chain complexes~$g \colon \cone(f) \to \Ecc$ if and only if
+      \begin{equation}
+        \label{morphism out of mapping cone}
+          d^E_n g_n
+        = g_{n-1} d^{\,\cone(f)}_n
+      \end{equation}
+      for every~$n \in \Integer$.
+      We may write for every~$n \in \Integer$ the morphism~$g_n$ as
+      \[
+          g_n
+        = \begin{bmatrix}
+            s_{n-1} & -h_n
+          \end{bmatrix}
+      \]
+      for unique morphisms~$s_{n-1} \colon C_{n-1} \to E_n$ and~$h_n \colon D_n \to E_n$.
+      We can then rewrite the condition~\eqref{morphism out of mapping cone} for every~$n \in \Integer$ as
+      \begin{align*}
+            &{}   d^E_n g_n
+                = g_{n-1} d^{\,\cone(f)}_n  \\
+        \iff&{}   d_n
+                  \begin{bmatrix}
+                    s_{n-1} & -h_n
+                  \end{bmatrix}
+                =
+                  \begin{bmatrix}
+                    s_{n-2} & -h_{n-1}
+                  \end{bmatrix}
+                  \begin{bmatrix}
+                    -d_{n-1}  & 0   \\
+                    -f_{n-1}  & d_n
+                  \end{bmatrix} \\
+        \iff&{}   \begin{bmatrix}
+                    d_n s_{n-1} & -d_n h_n
+                  \end{bmatrix}
+                  =
+                  \begin{bmatrix}
+                    - s_{n-2} d_{n-1} + h_{n-1} f_{n-1} & -h_{n-1} d_n
+                  \end{bmatrix} \\
+        \iff&{}   \left\{
+                    \begin{array}{rcl}
+                      h_{n-1} f_{n-1} &=& d_n s_{n-1} + s_{n-2} d_{n-1} \,, \\
+                      d_n h_n     &=& h_{n-1} d_n \,.
+                    \end{array}
+                  \right.
+      \end{align*}
+      That the second condition holds for every~$n \in \Integer$ means precisely that~$h \defined (h_n)_{n \in \Integer}$ is a morphism of chain complexes~$h \colon \Dcc \to \Ecc$, and the first condition means that~$s \defined (s_n)_{n \in \Integer}$ is a null homotopy for the composition~$h f$.
+      
+      We hence find that morphisms of chain complexes~$g \colon \cone(f) \to \Ecc$ are in {\onetoone} correspondence to pairs~$(h,s)$ consisting of
+      \begin{itemize}
+        \item
+          a morphism of chain complexes~$h \colon \Dcc \to \Ecc$ such that the composition~$hf$ is null homotopic, and
+        \item
+          a choosen null homotopy~$s$ for~$hf$.
+      \end{itemize}
+    \item
+      The \emph{cone}\index{cone}\index{chain complex!cone} of the chain complex~$\Ccc$ it the mapping cone of its identity, i.e.\
+      \[
+                  \cone(\Ccc)
+        \defined  \cone(\id_{\Ccc}) \,.
+      \]
+      We have the canonical morphism of chain complexes~$\Ccc \to \cone(\Ccc)$, whose~\dash{$n$}{th} component is for every~$n \in \Integer$ given by
+      \[
+        \begin{bmatrix}
+            0
+          & \id
+        \end{bmatrix}
+        \colon
+        C_n
+        \to
+        C_{n-1} \oplus C_n \,.
+      \]
+      We from the above discussion that a morphism of chain complexes~$f \colon \Ccc \to \Dcc$ extends to a morphism of chain complexes~$\hat{f} \colon \cone(f) \to \Dcc$, in the sense that the diagram
+      \[
+        \begin{tikzcd}
+            \cone(f)
+            \arrow[dashed]{dr}[above right]{\hat{f}}
+          & {}
+          \\
+            \Ccc
+            \arrow{u}
+            \arrow{r}[below]{f}
+          & \Dcc
+        \end{tikzcd}
+      \]
+      commutes, if and only if the morphism~$f$ is null homotopic.
+      (This is also Exercise~3 of Exercise~Sheet~9.)
+      To be more precise, such extensions~$\hat{f}$ of~$f$ are in {\onetoone} correspondence to null homotopies of~$f$.
+  \end{enumerate}
+\end{remark*}
+
+
+
 
 
 

@@ -1,0 +1,814 @@
+\section{Injective and Projective Resolutions}
+
+
+\begin{definition}
+  \label{definition of projective and injective}
+  Let~$\Ccat$ be a category.
+  \begin{enumerate}
+    \item
+      An object~$P \in \Ob(\Ccat)$ is \emph{projective}\index{projective!object}\index{object!projective} if for every epimorphism~$f \colon X \to Y$ in~$\Ccat$ and every morphism~$g \colon P \to Y$ in~$\Ccat$ there exists a lift of~$g$ along~$f$, i.e.\ a morphism~$g' \colon P \to X$ that makes the following diagram commute:
+      \[
+        \begin{tikzcd}
+            {}
+          & P
+            \arrow{d}[right]{g}
+            \arrow[dashed]{dl}[above left]{g'}
+          \\
+            X
+            \arrow{r}[below]{f}
+          & Y
+        \end{tikzcd}
+      \]
+    \item
+      An object~$I \in \Ob(\Ccat)$ is \emph{injective}\index{injective!object}\index{object!injective} if for every monomorphism~$f \colon X \to Y$ and every morphism~$g \colon X \to I$ there exist a morphism~$g' \colon Y \to I$ that makes the following diagram commute:
+      \[
+        \begin{tikzcd}
+            X
+            \arrow{r}[above]{f}
+            \arrow{d}[left]{g}
+          & Y
+            \arrow[dashed]{dl}[below right]{g'}
+          \\
+            I
+          & {}
+        \end{tikzcd}
+      \]
+  \end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+  Let~$\Ccat$ be a category.
+  \begin{enumerate}
+    \item
+      An object~$X \in \Ob(\Ccat)$ is projective in~$\Ccat$ if and only if it is injective in~$\Ccat^\op$.
+    \item
+      The induced morphisms~$g'$ in \cref{definition of projective and injective} are in general not unique.
+  \end{enumerate}
+\end{remark}
+
+
+\begin{lemma}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      \label{characterization of projectives}
+      For an object~$P \in \Ob(\Acat)$ the following conditions are equivalent:
+      \begin{enumerate}
+        \item
+          \label{is projective}
+          The object~$P$ is projective.
+        \item
+          \label{is exact}
+          The functor~$\Hom_{\Acat}(P,-) \colon \Acat \to \Ab$ is exact.
+        \item
+          \label{sends epis to epis}
+          The functor~$\Hom_{\Acat}(P,-) \colon \Acat \to \Ab$ maps epimorphisms to epimorphisms.
+      \end{enumerate}
+    \item
+      For an object~$I \in \Ob(\Acat)$ the following conditions are equivalent:
+      \begin{enumerate}
+        \label{characterization of injectives}
+        \item
+          The object~$I$ is injective.
+        \item
+          The functor~$\Hom_\Acat(-,I) \colon \Acat^\op \to \Ab$ is exact.
+        \item
+          The functor~$\Hom_\Acat(-,I) \colon \Acat^\op \to \Ab$ maps epimorphisms to epimorphisms.%
+          \footnote{If one thinks about~$\Hom_\Acat(-,I)$ not as a covariant functor~$\Acat^\op \to \Ab$ but instead as a contravariant functor~$\Acat \to \Ab$, then this means that~$\Hom_{\Acat}(-,I)$ maps monomorphisms (in~$\Acat$) to epimorphisms.}
+      \end{enumerate}
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+  It sufficies to show part~\ref*{characterization of projectives} because part~\ref*{characterization of injectives} then follows by duality.
+  
+  \begin{description}
+    \item[\ref*{is projective}~$\iff$~\ref*{sends epis to epis}]
+      That the functor~$\Hom_{\Acat}(P,-)$ maps epimorphisms to surjections is just a reformulation of the definition of a projective object.
+    \item[\ref*{sends epis to epis}~$\implies$~\ref*{is exact}]
+      This holds because the functor~$\Hom_\Acat(P,-)$ is already left exact.
+    \item[\ref*{is exact}~$\implies$~\ref*{sends epis to epis}]
+      Every epimorphism~$f \colon X \to Y$ can be extended to a short exact sequence
+      \[
+        0
+        \to
+        \ker(f)
+        \to
+        X
+        \to
+        Y
+        \to
+        0
+      \]
+      in~$\Acat$, and the exactness of the induced sequence
+      \[
+        0
+        \to
+        \Hom_\Acat(P,\ker(f))
+        \to
+        \Hom_\Acat(P,X)
+        \to
+        \Hom_\Acat(P,Y)
+        \to
+        0
+      \]
+      entails that the group homomorphism~$\Hom_\Acat(P,X) \to \Hom_\Acat(P,Y)$ is surjective.
+    \qedhere
+  \end{description}
+\end{proof}
+
+
+% TODO: Projective modules.
+% TODO: Remarks about injective modules.
+
+
+\begin{definition*}
+  Let~$\Ccat$ be a category and let~$s \colon X \to Y$ and~$r \colon Y \to X$ be two morphisms in~$\Ccat$ with~$rs = \id_X$.
+  Then the morphism~$s$ is a \emph{section \textup(for~$r$\textup)}\index{section} and the morphism~$r$ is a \emph{retraction \textup(for~$s$\textup)}\index{retraction}.
+  (This definition is given in Exercise~2 of Exercise~Sheet~9.)
+\end{definition*}
+
+
+\begin{remark*}
+  Let~$\Ccat$ and~$\Dcat$ be categories.
+  \begin{enumerate}
+    \item
+      Sections are also called \emph{split monomorphisms}\index{split!monomorphism}\index{monomorphism!split}, and retractions are also called \emph{split epimorphisms}\index{split!epimorphism}\index{epimorphism!split}.
+  
+      Split monomorphisms are monomorphisms, and split epimorphisms are epimorphisms (as the names indicate).
+      (This observation is also made in Exercise~2 of Exercise~Sheet~9.)
+      Indeed, if~$s \colon X \to Y$ and~$r \colon Y \to X$ are morphisms in~$\Ccat$ with~$rs = \id_X$ then it follows for all morphisms~$t, t' \colon W \to X$ that
+      \[
+        st = st'
+        \implies
+        rst = rst
+        \implies
+        t = t' \,,
+      \]
+      and simiarly for all morphisms~$u, u' \colon Y \to Z$ that
+      \[
+        ur = u'r
+        \implies
+        urs = u'rs
+        \implies
+        u = u'  \,.
+      \]
+      
+      A monomorphism is said to be \emph{split} if it is a split monomorphism.
+      Similary, an epimorphism is said to be \emph{split} if it is a split epimorphism.
+    \item
+      A morphism~$f$ in~$\Ccat$ is a section in~$\Ccat$ if and only if it is a retraction in~$\Ccat^\op$.
+    \item
+      A morphism~$f$ in~$\Ccat$ is both a section and a rectration if and only it is an isomorphism.
+    \item
+      Functors respect sections and retractions:
+      Let~$F \colon \Ccat \to \Dcat$ be a functor, let~$s$ is a section and~$\Ccat$ and~$r$ is a retraction in~$\Ccat$.
+      Then~$F(s)$ is a section in~$\Dcat$ and~$F(r)$ is a retraction in~$\Dcat$.
+  \end{enumerate}
+\end{remark*}
+
+
+\begin{lemma*}
+  \label{characterizations of split ses}
+  For a short exact sequence
+  \[
+    0
+    \to
+    X'
+    \xto{f}
+    X
+    \xto{g}
+    X''
+    \to
+    0
+  \]
+  in~$\Acat$, the following conditions are equivalent:
+  \begin{enumerate}
+    \item
+      \label{is left split}
+      The morphism~$f$ is a section.
+    \item
+      \label{is right split}
+      The morphism~$g$ is a retraction.
+    \item
+      \label{is total split}
+      There exists an isomorphism~$\alpha \colon X \to X' \oplus X''$ that makes the diagram
+      \[
+        \begin{tikzcd}
+            0
+            \arrow{r}
+          & X'
+            \arrow{r}[above]{f}
+            \arrow[equal]{d}
+          & X
+            \arrow{r}[above]{g}
+            \arrow[dashed]{d}[right]{\alpha}
+          & X''
+            \arrow{r}
+            \arrow[equal]{d}
+          & 0
+          \\
+            0
+            \arrow{r}
+          & X'
+            \arrow{r}
+          & X' \oplus X''
+            \arrow{r}
+          & X''
+            \arrow{r}
+          & 0
+        \end{tikzcd}
+      \]
+      commute, where~$X' \to X' \oplus X''$ and~$X' \oplus X'' \to X''$ are the canonical morphisms that are part of the biproduct structure of~$X' \oplus X''$.
+    \item
+      \label{is biproduct}
+      There exists morphisms~$r \colon X \to X'$ and~$s \colon X'' \to X$ such that~$(X, (f,s), (r,g))$ is a biproduct of~$X'$ and~$X''$.
+  \end{enumerate}
+\end{lemma*}
+
+
+\begin{proof*}
+  The equivalence of the parts~\ref*{is left split},~\ref*{is right split} and~\ref*{is biproduct} is Exercise~2 of Exercise~sheet~9.
+  
+  The implication \ref*{is total split}~$\implies$~\ref*{is biproduct} can be seen by pulling back the~$X'$\nobreakdash-$X''$\nobreakdash-biproduct structure of~$X' \oplus X''$ along~$\alpha$ to a~$X'$\nobreakdash-$X''$\nobreakdash-biproduct structure on~$X$.
+  It then follows from the commutativity of the given diagram that the canonical morphism~$X' \to X' \oplus X''$ corresponds to the morphism~$f \colon X' \to X$, and that the canonical morphism~$X' \oplus X'' \to X''$ corresponds to the morphism~$g \colon X \to X''$.
+  
+  For the implications \ref*{is left split}~$\implies$~\ref*{is total split} one chooses a retraction~$r \colon X \to X'$ of~$f$.
+  Then the morphism
+  \[
+    \alpha
+    \defined
+    \begin{bmatrix}
+      r \\
+      g
+    \end{bmatrix}
+    \colon
+    X
+    \to
+    X' \oplus X''
+  \]
+  makes the given diagram commute, and it follows from the \hyperref[5 lemma]{\dash{$5$}{lemma}} that~$\alpha$ is an isomorphism.
+\end{proof*}
+
+
+% TODO: Make this a proper proof.
+
+
+\begin{definition*}
+  A short exact sequence in~$\Acat$ is \emph{split}\index{split!short exact sequence}\index{short exact sequence!split} if it satisfies the equivalent conditions from~\cref{characterizations of split ses}.
+\end{definition*}
+
+
+\begin{warning*}
+  While it still makes sense to talk about short exact sequences in the category~$\Group$ of groups, it is for such a short exact sequence of groups
+  \[
+    1
+    \to
+    K
+    \xlongto{f}
+    G
+    \xlongto{g}
+    H
+    \to
+    1
+  \]
+  not equivalent that~$f$ is a section and that~$g$ is a retraction.
+  Indeed, that~$f$ is a section is---roughly speaking---equivalent to~$G$ being a direct product of the groups~$K$ and~$H$;
+  whereas~$g$ being a retract is equivalent to~$G$ being a semidirect product of the groups~$K$ and~$H$.
+\end{warning*}
+
+
+\begin{remark*}[Split chain complexes]
+  \leavevmode
+  \begin{enumerate}
+    \item
+      If more generally~$\Ccc$ is a chain complex in~$\Acat$, then~$\Ccc$ \emph{splits}\index{split!chain complex}\index{chain complex!split} if there exists a family~$s = (s_n)_{n \in \Integer}$ of morphisms~$s_n \colon C_n \to C_{n+1}$ with~$dsd = d$, i.e.\ such that~$d_n s_n d_n = d_n$ for every~$n \in \Integer$.
+      Such a family~$s$ is a \emph{split} for~$\Ccc$, and may be visualized as follows:
+      \[
+        \begin{tikzcd}[column sep = large]
+            \dotsb
+            \arrow{r}
+          & C_{n+1}
+            \arrow[dashed, bend right=55]{l}
+            \arrow{r}[above]{d_{n+1}}
+          & C_n
+            \arrow[dashed, bend right=55]{l}[above]{s_n}
+            \arrow{r}[above]{d_n}
+          & C_{n-1}
+            \arrow[dashed, bend right=55]{l}[above]{s_{n-1}}
+            \arrow{r}
+          & \dotsb
+            \arrow[dashed, bend right=55]{l}
+        \end{tikzcd}
+      \]
+    \item
+      A more intuitive but equivalent definition of~$\Ccc$ being split is the following:
+      There exist families~$(B_n)_{n \in \Integer}$ and~$(H_n)_{n \in \Integer}$ of objects~$B_n, H_n \in \Ob(\Acat)$, and isomorphisms
+      \[
+        \alpha_n
+        \colon
+        C_n
+        \to
+        B_n \oplus H_n \oplus B_{n-1}
+      \]
+      that make the following diagram commute for every~$n \in \Integer$:
+      \[
+        \begin{tikzcd}[ampersand replacement = \&, column sep = 4em]
+              \dotsb
+              \arrow{r}
+          \&  C_n
+              \arrow{r}[above]{d_n}
+              \arrow{d}[right]{\alpha_n}
+          \&  C_{n-1}
+              \arrow{r}
+              \arrow{d}[right]{\alpha_{n-1}}
+          \&  \dotsb
+          \\
+              \dotsb
+              \arrow{r}
+          \&  B_n \oplus H_n \oplus B_{n-1}
+              \arrow{r}[below]{\begin{bsmallmatrix} 0 & 0 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bsmallmatrix}}
+          \&  B_{n-1} \oplus H_{n-1} \oplus B_{n-2}
+              \arrow{r}
+          \&  \dotsb
+        \end{tikzcd}
+      \]
+      (This characterization of split chain complexes should be compared with the characterization~\ref*{is total split} of a split short exact sequence from \cref{characterizations of split ses}.)
+      The split morphisms~$s_n \colon C_n \to C_{n+1}$ correspond to the morphisms
+      \[
+        \begin{bmatrix}
+          0 & 0 & 0 \\
+          0 & 0 & 0 \\
+          1 & 0 & 0
+        \end{bmatrix}
+        \colon
+        B_n \oplus H_n \oplus B_{n-1}
+        \to
+        B_{n+1} \oplus H_{n+1} \oplus B_n \,.
+      \]
+      We furthermore have that~$\Bl_n(\Ccc) \cong B_n$,~$\Zl_n(\Ccc) \cong B_n \oplus H_n$ and~$\Hl_n(\Ccc) \cong H_n$ for every~$n \in \Integer$.
+      Moverover, under these identifications the canonical (mono)mor\-phism~$\Bl_n(\Ccc) \to \Zl_n(\Ccc)$ corresponds to the canonical morphism~$B_n \to B_n \oplus H_n$, and the canonical (epi)morphism~$\Zl_n(\Ccc) \to \Hl_n(\Ccc)$ corresponds to the canonical morphism~$B_n \oplus H_n \to H_n$.
+    \item
+      A short exact sequence
+      \[
+        0
+        \to
+        X'
+        \xlongto{f}
+        X
+        \xlongto{g}
+        X''
+        \to
+        0
+      \]
+      in~$\Acat$ can be regarded as a chain complex
+      \[
+        \dotsb
+        \to
+        0
+        \to
+        0
+        \to
+        X'
+        \xlongto{f}
+        X
+        \xlongto{g}
+        X''
+        \to
+        0
+        \to
+        0
+        \to
+        \dotsb
+      \]
+      in~$\Acat$.
+      Then both notions of \enquote{being split} coincide:
+      
+      The chain complex is split (according to the above definition) if and only if there exists morphisms~$r \colon X \to X'$ and~$s \colon X'' \to X$ such that~$frf = f$ and~$gsg = g$.
+      \[
+        \begin{tikzcd}[column sep = 3.2em]
+            \dotsb
+            \arrow{r}
+          & 0
+            \arrow{r}
+          & X'
+            \arrow{r}[above]{f}
+          & X
+            \arrow[dashed, bend right=55]{l}[above]{r}
+            \arrow{r}[above]{g}
+          & X''
+            \arrow[dashed, bend right=55]{l}[above]{s}
+            \arrow{r}
+          & 0
+            \arrow{r}
+          & \dotsb
+        \end{tikzcd}
+      \]
+      That~$frf = f$ is equivalent to~$rf = \id_{X'}$ because~$f$ is a monomorphism, and that~$gsg = g$ is equivalent to~$gs = \id_{X''}$ because~$g$ is an epimorphism.
+  \end{enumerate}
+\end{remark*}
+
+
+\begin{definition}
+  Let~$X \in \Ob(\Acat)$ be an object in~$\Acat$.
+  An object~$Y \in \Ob(\Acat)$ is a \emph{direct summand}\index{direct summand} of~$X$ if there exists another object~$Y' \in \Ob(\Acat)$ with~$X \cong Y \oplus Y'$.
+\end{definition}
+
+
+\begin{lemma}
+  Let~$P \in \Ob(\Acat)$ be a projective object in~$\Acat$, and let~$I \in \Ob(\Acat)$ be an injective object in~$\Acat$.
+  \begin{enumerate}
+    \item
+      \label{ses ending in projective}
+      Every short exact sequence~$0 \to X' \to X \to P \to 0$ in~$\Acat$ splits.
+    \item
+      Every short exact sequence~$0 \to I \to X \to X'' \to 0$ in~$\Acat$ splits.
+    \item
+      \label{direct summand of projective}
+      Every direct summand of~$P$ is again projective.
+    \item
+      Every direct summand of~$I$ is again injective.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      There exist a lift of the identity~$\id_P \colon P \to P$ along the epimorphism~$X \to P$, which is then a section for~$X \to P$.
+      Hence~$X \to P$ is a retraction.
+      \[
+        \begin{tikzcd}
+            0
+            \arrow{r}
+          & X'
+            \arrow{r}
+          & X
+            \arrow{r}
+          & P
+            \arrow{r}
+          & 0
+          \\
+            {}
+          & {}
+          & {}
+          & P
+            \arrow{u}[right]{\id_P}
+            \arrow[dashed]{ul}
+          & {}
+        \end{tikzcd}
+      \]
+    \item
+      This is dual to part~\ref*{ses ending in projective}.
+    \item
+      This is left as an exercise.
+%     TODO: Add a reference to the exercise sheet.
+    \item
+      This is dual to part~\ref*{direct summand of projective}.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+
+\begin{remark*}
+  Let~$\Ccat$ be a category.
+  \begin{enumerate}
+    \item
+      If~$(P_j)_{j \in J}$ is a family of projective objects~$P_j$ in~$\Ccat$ that admit a coproduct~$\coprod_{j \in J} P_j$ then~$\coprod_{j \in J} P_j$ is again projective.
+      
+      If there exists in the category~$\Ccat$ for any two objects~$X, Y \in \Ob(\Ccat)$ a morphism~$X \to Y$ (e.g.\ if~$\Ccat$ is preadditive or has a zero object) then the converse also holds:
+      If~$\coprod_{j \in J} P_j$ is projective then~$P_j$ is projective for every~$j \in J$.
+%     TODO: Prove this.
+    \item
+      If~$(I_j)_{j \in J}$ is a family of injective objects~$I_j$ in~$\Ccat$ that admit a product~$\prod_{j \in J} I_j$ then~$\prod_{j \in J} I_j$ is again injective.
+      
+      If there exists in the category~$\Ccat$ for any two objects~$X, Y \in \Ob(\Ccat)$ a morphism~$X \to Y$ then the converse also holds:
+      If~$\prod_{j \in J} I_j$ is injective then~$I_j$ is injective for every~$j \in J$.
+  \end{enumerate}
+\end{remark*}
+
+
+\begin{definition}
+  \leavevmode
+  \begin{enumerate}
+    \item 
+      The category~$\Acat$ \emph{has enough projectives}\index{enough!projectives} if for every object~$X \in \Ob(\Acat)$ there exists an epimorphism~$P \to X$ coming from some projective object~$P \in \Ob(\Acat)$.
+    \item
+      The category~$\Acat$ \emph{has enough injectives}\index{enough!injectives} if for every object~$X \in \Ob(\Acat)$ there exists a monomorphism~$X \to I$ into some injective object~$I \in \Ob(\Acat)$.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{definition}
+  Let~$X \in \Ob(\Acat)$ be an object in~$\Acat$.
+  \begin{enumerate}
+    \item
+      A \emph{chain resolution}\index{chain!resolution}\index{resolution!chain} of~$X$ is a pair~$(\Ccc, p_0)$ consisting of
+      \begin{itemize}
+        \item
+          a chain complex~$\Ccc \in \Chh_{\geq 0}(\Acat)$ bounded below by degree~$0$, together with
+        \item
+          a morphism~$p_0 \colon C_0 \to X$,
+      \end{itemize}
+      such that the resulting sequence
+      \[
+        \dotsb
+        \to
+        C_2
+        \xlongto{d_2}
+        C_1
+        \xlongto{d_1}
+        C_0
+        \xlongto{p_0}
+        X
+        \to
+        0
+      \]
+      is exact.
+    \item
+      A \emph{projective resolution}\index{projective!resolution}\index{resolution!projective} of~$X$ is a chain resolution~$(\Pcc, p_0)$ of~$X$ in which~$P_n$ is projective for every~$n \geq 0$.
+    \item
+      A \emph{cochain resolution}\index{cochain!resolution}\index{resolution!cochain} of~$X$ is a pair~$(\Cccc, i^0)$ consisting of
+      \begin{itemize}
+        \item
+          a cochain complex~$\Cccc \in \CChh^{\geq 0}(\Acat)$ bounded below by degree~$0$, together with
+        \item
+          a morphism~$i^0 \colon X \to C^0$,
+      \end{itemize}
+      such that the resulting sequence
+      \[
+        0
+        \to
+        X
+        \xlongto{i^0}
+        C_0
+        \xlongto{d^0}
+        C_1
+        \xlongto{d^1}
+        C_2
+        \to
+        \dotsb
+      \]
+      is exact.
+    \item
+      An \emph{injective resolution}\index{injective!resolution}\index{resolution!injective} of~$X$ is a cochain resolution~$(\Iccc, i^0)$ of~$X$ in which~$I_n$ is injective for every~$n \geq 0$.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+  Let~$X \in \Ob(\Acat)$ be an object in~$\Acat$.
+  \begin{enumerate}
+    \item
+      We can consider the object~$X$ as a chain (resp.\ cochain) complex that is concentrated in degree~$0$.
+      Then~$\Hl_0(X) = X$ (resp.\ $\Hl^0(X) = X$) and~$\Hl_n(X) = 0$ (resp.\ $\Hl^n(X) = 0$) for every~$n \neq 0$.
+    \item
+      For a chain complex~$\Ccc \in \Ch(\Acat)$, a morphism~$f \colon \Ccc \to X$ is uniquely determined by the single morphism~$C_0 \to X$ (for all~$n \neq 0$ it holds that~$f_n = 0$), and the morphism~$f_0$ is subject to the single conditions~$f_0 d_1 = 0$.
+      Indeed, this is precisely what it means for the following diagram to commute:
+      \[
+        \begin{tikzcd}
+            \dotsb
+            \arrow{r}
+          & C_2
+            \arrow{r}[above]{d_2}
+            \arrow{d}
+          & C_1
+            \arrow{r}[above]{d_1}
+            \arrow{d}
+          & C_0
+            \arrow{r}[above]{d_0}
+            \arrow{d}[right]{f_0}
+          & C_{-1}
+            \arrow{r}[above]{d_{-1}}
+            \arrow{d}
+          & C_{-2}
+            \arrow{r}
+            \arrow{d}
+          & \dotsb
+          \\
+            \dotsb
+            \arrow{r}
+          & 0
+            \arrow{r}
+          & 0
+            \arrow{r}
+          & X
+            \arrow{r}
+          & 0
+            \arrow{r}
+          & 0
+            \arrow{r}
+          & \dotsb
+        \end{tikzcd}
+      \]
+    \item
+      For a cochain complex~$\Cccc \in \CCh(\Acat)$, a morphism~$f \colon X \to \Cccc$ is uniquely determined by the single morphism~$f^0 \colon X \to C^0$ (for all~$n \neq 0$ it holds that~$f^n = 0$), and the morphism~$f^0$ is subject to the single condition~$d^0 f^0 = 0$.
+      Indeed, this is precisely what it means for the following diagram to commute:
+      \[
+        \begin{tikzcd}
+            \dotsb
+            \arrow{r}
+          & 0
+            \arrow{r}
+            \arrow{d}
+          & 0
+            \arrow{r}
+            \arrow{d}
+          & X
+            \arrow{r}
+            \arrow{d}[right]{f^0}
+          & 0
+            \arrow{r}
+            \arrow{d}
+          & 0
+            \arrow{r}
+            \arrow{d}
+          & \dotsb
+          \\
+            \dotsb
+            \arrow{r}
+          & C^{-2}
+            \arrow{r}[above]{d^{-2}}
+          & C^{-1}
+            \arrow{r}[above]{d^{-1}}
+          & C^0
+            \arrow{r}[above]{d^0}
+          & C^1
+            \arrow{r}[above]{d^1}
+          & C^2
+            \arrow{r}
+          & \dotsb
+        \end{tikzcd}
+      \]
+  \end{enumerate}
+\end{remark}
+
+
+\begin{lemma}
+  Let~$X \in \Ob(\Acat)$ be an object in~$\Acat$.
+  \begin{enumerate}
+    \item
+      \label{resolution iff qim}
+      Let~$\Ccc \in \Chh_{\geq 0}(\Acat)$ be a chain complex that is bounded below by degree~$0$, and let~$p_0 \colon C_0 \to X$ be a morphism with~$p_0 d_1 = 0$.
+      Let~$p \colon \Ccc \to X$ be the corresponding morphism of chain complexes.
+      Then the pair~$(\Ccc, p_0)$ is a chain resolution of~$X$ if and only if the morphism of chain complexes~$p$ is a {\qim}.
+    \item
+      \label{coresolution iff qim}
+      Let~$\Cccc \in \CChh^{\geq 0}(\Acat)$ be a cochain complex this is bounded below by degree~$0$, and let~$i^0 \colon X \to C^0$ be a morphism with~$d^0 i^0 = 0$.
+      Let~$i \colon X \to \Cccc$ be the corresponding morphism of cochain complexes.
+      Then the pair~$(\Cccc, i^0)$ is a cochain resolution of~$X$ if and only if the morphism of cochain complexes~$i$ is a {\qim}.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+  It sufficies to prove part~\ref*{resolution iff qim}, as part~\ref*{coresolution iff qim} follows by duality.
+  
+  That~$(\Ccc, p_0)$ is a chain resolution of~$X$, i.e.\ that the sequence
+  \[
+    \dotsb
+    \to
+    C_2
+    \xlongto{d_2}
+    C_1
+    \xlongto{d_1}
+    C_0
+    \xlongto{p_0}
+    X
+    \to
+    0
+  \]
+  is exact, means that~$\Hl_n(\Ccc) = 0$ for every~$n \neq 0$, that~$C_1 \xto{d_1} C_0 \xto{p_0} X \to 0$ is exact.
+  That the morphism~$p \colon \Ccc \to X$ given by the commutative diagram
+  \[
+    \begin{tikzcd}
+        \dotsb
+        \arrow{r}
+      & C_2
+        \arrow{r}[above]{d_2}
+        \arrow{d}
+      & C_1
+        \arrow{r}[above]{d_1}
+        \arrow{d}
+      & C_0
+        \arrow{r}
+        \arrow{d}[right]{p_0}
+      & 0
+        \arrow{r}
+        \arrow{d}
+      & 0
+        \arrow{r}
+        \arrow{d}
+      & \dotsb
+      \\
+        \dotsb
+        \arrow{r}
+      & 0
+        \arrow{r}
+      & 0
+        \arrow{r}
+      & X
+        \arrow{r}
+      & 0
+        \arrow{r}
+      & 0
+        \arrow{r}
+      & \dotsb
+    \end{tikzcd}
+  \]
+  is a {\qim} means that~$\Hl_n(\Ccc) = 0$ for every~$n \neq 0$ and that the induced morphism~$\coker(d_1) \to X$ is an isomorphism.
+  This induced morphism is the unique morphism that makes the triangle
+  \[
+    \begin{tikzcd}
+        C_0
+        \arrow{r}
+        \arrow{dr}[below left]{p_0}
+      & \coker(d_1)
+        \arrow[dashed]{d}
+      \\
+        {}
+      & X
+    \end{tikzcd}
+  \]
+  commute.
+  The commutativity of this triangle together with~$\coker(d_1) \to X$ being an isomorphism is equivalent to~$p_0$ being a cokernel of~$d_1$, which is in turn equivalent to the exactness of the sequence~$C_1 \xto{d_1} C_0 \xto{p_0} X \to 0$.
+\end{proof}
+
+
+\begin{lemma}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      If the category~$\Acat$ has enough projectives, then every object~$X \in \Ob(\Acat)$ admits a projective resolution.
+    \item
+      If the category~$\Acat$ has enough injectives, then every object~$X \in \Ob(\Acat)$ admits an injective resolution.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+  The proof will be given in the next lecture.
+\end{proof}
+
+
+\begin{example}
+  We give a short overview about which abelian categories have enough projectives or enough injectives.
+  (Details on this will be given in the upcoming Chapter~6.)
+  \begin{center}
+    \begingroup
+    \renewcommand{\arraystretch}{2}
+    \begin{tabular}{ccc}
+        category
+      & enough projectives
+      & enough injectives
+      \\
+      \hline
+        \begingroup
+        \renewcommand{\arraystretch}{1}
+        \begin{tabular}{c}
+          $\Modl{A}$ and~$\Modr{A}$ \\
+          where~$A$ is a~{\kalg}
+        \end{tabular}
+        \endgroup
+      & Yes
+      & Yes
+      \\
+        $\Sheaf_X(\Ab)$
+      & No (in general)
+      & Yes
+      \\
+        $\Presheaf_X(\Ab)$
+      & Yes
+      & Yes
+      \\
+        $\Modlfg{\Integer}$
+      & Yes
+      & No
+      \\
+        \begingroup
+        \renewcommand{\arraystretch}{1}
+        \begin{tabular}{c}
+          $\Modlfd{A}$ and~$\Modrfd{A}$ \\
+          where~$\kf$ is a field  \\
+          and~$A$ is a f.d.~{\kalg}
+        \end{tabular}
+        \endgroup
+      & Yes
+      & Yes
+    \end{tabular}
+    \endgroup
+  \end{center}
+\end{example}
+
+
+
+
+
+\lecturend{19}
+
+
+
+

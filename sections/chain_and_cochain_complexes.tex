@@ -303,6 +303,19 @@
 \end{example*}
 
 
+\begin{remark*}
+  \label{Hn as cokernel with Cn}
+  Let~$\Ccc$ be a chain complex in~$\Acat$ and let~$n \in \Integer$.
+  Then the canonical morphism~$C_{n+1} \to \Bl_n(\Ccc)$ is an epimorphism, and hence
+  \[
+      \Hl_n(\Ccc)
+    = \coker( \Bl_n(\Ccc) \to \Zl_n(\Ccc) )
+    = \coker( C_{n+1} \to \Bl_n(\Ccc) \to \Zl_n(\Ccc) ) \,.
+  \]
+  The morphism~$C_{n+1} \to \Zl_n(\Ccc)$ is induced by the differential~$d_{n+1} \colon C_{n+1} \to C_n$ via the universal property of the kernel, which can be used because~$d_{n+1} d_n = 0$.
+\end{remark*}
+
+
 \begin{remark}[Functoriality of homology]
   \label{functoriality of homology}
   \leavevmode
@@ -522,28 +535,108 @@
           & \Hl_n(\Dcc)
         \end{tikzcd}
       \]
-  \end{enumerate}
+    \end{enumerate}
 
-  It follows from the functorialty of both~$\Bl_n$ and~$\Zl_n$, together with the functoriality of the cokernel (as explained in \cref{functoriality of (co)kernel}) that this induced morphism is functorial and additive in the following sense:
-  \begin{itemize}
-    \item
-      If~$\Dcc = \Ccc$ and~$f = \id_{\Ccc}$ then~$\Hl_n(\id_{\Ccc}) = \id_{\Hl_n(\Ccc)}$ for every~$n \in \Integer$.
-    \item
-      If~$\Ecc$ is another chain complex and~$g \colon \Dcc \to \Ecc$ is another morphism of chain complexes, then
-      \[
-          \Hl_n(g \circ f)
-        = \Hl_n(g) \circ \Hl_n(f)
-      \]
-      for every~$n \in \Integer$.
-    \item
-      If~$g \colon \Ccc \to \Dcc$ is another morphism of chain complexes that is parallel to the morphism~$f$, then
-      \[
-          \Hl_n(f + g)
-        = \Hl_n(f) + \Hl_n(g)
-      \]
-      for every~$n \in \Integer$.
-  \end{itemize}
+    It follows from the functorialty of both~$\Bl_n$ and~$\Zl_n$, together with the functoriality of the cokernel (as explained in \cref{functoriality of (co)kernel}), that this induced morphism is both functorial and additive in the following sense:
+    \begin{itemize}
+      \item
+        If~$\Dcc = \Ccc$ and~$f = \id_{\Ccc}$ then~$\Hl_n(\id_{\Ccc}) = \id_{\Hl_n(\Ccc)}$ for every~$n \in \Integer$.
+      \item
+        If~$\Ecc$ is another chain complex and~$g \colon \Dcc \to \Ecc$ is another morphism of chain complexes, then
+        \[
+            \Hl_n(g \circ f)
+          = \Hl_n(g) \circ \Hl_n(f)
+        \]
+        for every~$n \in \Integer$.
+      \item
+        If~$g \colon \Ccc \to \Dcc$ is another morphism of chain complexes that is parallel to the morphism~$f$, then
+        \[
+            \Hl_n(f + g)
+          = \Hl_n(f) + \Hl_n(g)
+        \]
+        for every~$n \in \Integer$.
+    \end{itemize}
 \end{remark}
+
+
+\begin{remark*}
+  We have seen in~\cref{Hn as cokernel with Cn} that the~\dash{$n$}{th} homology~~$\Hl_n(\Ccc)$ of a chain complex~$\Ccc$ can alse be described as the cokernel of the morphism~$C_{n+1} \to \Zl_n(\Ccc)$ that is induced by the morphism~$d_{n+1} \colon C_{n+1} \to C_n$ via the universal propery of the kernel~$\Zl_n(\Ccc) = \ker(d_n)$ .
+  This description of the~\dash{$n$}{th} homology leads to the same induced morphism between homology objects:
+  
+  Let~$f \colon \Ccc \to \Dcc$ be a morphism of chain complexes.
+  We have the following commutative diagram in~$\Acat$:
+  \[
+    \begin{tikzcd}[row sep = large]
+        C_{n+1}
+        \arrow{rr}[above]{d_{n+1}}
+        \arrow[dashed]{dd}[left, near start]{f_{n+1}}
+        \arrow{dr}
+      & {}
+      & C_n
+        \arrow{rr}[above]{d_n}
+        \arrow{dd}[left, very near start]{f_n}
+      & {}
+      & C_{n-1}
+        \arrow{dd}[right, near start]{f_{n-1}}
+      & {}
+      \\
+        {}
+      & \Bl_n(\Ccc)
+      & {}
+      & \Zl_n(\Ccc)
+        \arrow{ul}
+        \arrow[dashed, from=ulll, crossing over]
+        \arrow[from=ll, crossing over]
+      & {}
+      & \Hl_n(\Ccc)
+        \arrow[dashed,from=ll, crossing over]
+        \arrow[dashed]{dd}[right]{\Hl_n(f)}
+      \\
+        D_{n+1}
+        \arrow{rr}[above, near start]{d_{n+1}}
+        \arrow[dashed]{drrr}
+        \arrow{dr}
+      & {}
+      & D_n
+        \arrow{rr}[above, near start]{d_n}
+      & {}
+      & D_{n-1}
+      & {}
+      \\
+        {}
+      & \Bl_n(\Dcc)
+        \arrow{rr}
+        \arrow[from=uu, crossing over, "\Bl_n(f)", near start]
+      & {}
+      & \Zl_n(\Dcc)
+        \arrow{ul}
+        \arrow[dashed]{rr}
+        \arrow[dashed,from=uu, crossing over, "\Zl_n(f)", near start]
+      & {}
+      & \Hl_n(\Dcc)
+    \end{tikzcd}
+  \]
+  The commutativity of the dashed subdiagram
+  \[
+    \begin{tikzcd}
+        C_{n+1}
+        \arrow{r}
+        \arrow{d}[left]{f_{n+1}}
+      & \Zl_n(\Ccc)
+        \arrow{r}
+        \arrow{d}[right]{\Zl_n(f)}
+      & \Hl_n(\Ccc)
+        \arrow[dashed]{d}[right]{\Hl_n(f)}
+      \\
+        D_{n+1}
+        \arrow{r}
+      & \Zl_n(\Dcc)
+        \arrow{r}
+      & \Hl_n(\Dcc)
+    \end{tikzcd}
+  \]
+  shows the claim.
+\end{remark*}
 
 
 \begin{example*}

@@ -128,6 +128,8 @@
 \declaretheorem[numbered=no,name=Warning]{warningnonum}
 \declaretheorem[sibling=extra,name=Warning\textsuperscript{\extrasymbol}]{warning*}
 \renewcommand{\thmcontinues}[1]{Continued}
+\newenvironment{proof*}{\begin{proof}[Proof\textsuperscript{\;\extrasymbol}]}{\end{proof}}
+
 
 
 % reset equation counters between sections
@@ -299,6 +301,7 @@
 \newcommand{\Dcc}{\cc{D}}
 \newcommand{\Ecc}{\cc{E}}
 \newcommand{\Fcc}{\cc{F}}
+\newcommand{\Pcc}{\cc{P}}
 \newcommand{\Hlcc}{\cc{\Hl}}
 \newcommand{\Hlccc}{\ccc{\Hl}}
 \newcommand{\Tcc}{\cc{T}}
@@ -306,6 +309,7 @@
 \newcommand{\Bccc}{\ccc{B}}
 \newcommand{\Cccc}{\ccc{C}}
 \newcommand{\Dccc}{\ccc{D}}
+\newcommand{\Iccc}{\ccc{I}}
 \newcommand{\Tccc}{\ccc{T}}
 \newcommand{\Zccc}{\ccc{Z}}
 
@@ -313,12 +317,22 @@
 % delta functors
 \newcommand{\Hldeltac}{\ccc{\Hl}}
 \newcommand{\Hldeltah}{\cc{\Hl}}
+\newcommand{\Rdeltac}{\ccc{R}}
+\newcommand{\Rdeltah}{\cc{R}}
 \newcommand{\Sdeltac}{\ccc{S}}
 \newcommand{\Sdeltah}{\cc{S}}
 \newcommand{\Tdeltac}{\ccc{T}}
 \newcommand{\Tdeltah}{\cc{T}}
 \newcommand{\Udeltac}{\ccc{U}}
 \newcommand{\Udeltah}{\cc{U}}
+\newcommand{\Vdeltac}{\ccc{V}}
+\newcommand{\Vdeltah}{\cc{V}}
+% derived functors
+\DeclareMathOperator{\Left}{L}
+\newcommand{\Leftdelta}{\cc{\Left}}
+\DeclareMathOperator{\Right}{R}
+\newcommand{\Rightdelta}{\cc{\Right}}
+
 
 % spaces and sets
 \DeclareMathOperator{\Bl}{B}
