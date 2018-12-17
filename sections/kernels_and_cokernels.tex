@@ -111,6 +111,7 @@
 
 
 \begin{notation*}
+  \label{equality of (co)kernels}
   \leavevmode
   \begin{enumerate}
     \item
@@ -173,6 +174,7 @@
       Suppose that~$\Ccat$ has a zero object.
       If~$f$ is a monomorphism then~$\ker(f) = 0$, and if~$f$ is an epimorphism then~$\coker(f) = 0$.
     \item
+      \label{(co)kernels under compositions with epis and monos}
       If~$u \colon Y \to Z$ is a monomorphism in~$\Ccat$ then~$\ker(f) = \ker(uf)$.
       Dually, if~$p \colon W \to X$ is an epimorphism in~$\Ccat$ then~$\coker(f) = \coker(fp)$.
   \end{enumerate}
@@ -1111,7 +1113,18 @@
 
 
 \begin{remark*}
-  It follows from \cref{properties of (co)kernels} that images are monomorphisms and coimages are epimorphisms.
+  \label{(co)images and monos and epis}
+  Let~$\Ccat$ be a category that is preadditive, or that admits a zero object.
+  \begin{enumerate}
+    \item
+      It follows from \cref{properties of (co)kernels} that images are monomorphisms and coimages are epimorphisms.
+    \item
+      If~$f \colon X \to Y$ is a morphism in~$\Ccat$ and~$h \colon W \to X$ is an epimorphism in~$\Ccat$ then~$\im(fh) = \im(f)$ (in the sense of \cref{equality of (co)kernels}).
+      Indeed, it follows from part~\ref*{(co)kernels under compositions with epis and monos} of \cref{properties of (co)kernels} that~$\coker(f) = \coker(fh)$, i.e.\ that for the morphisms~$f$ and~$fh$ the same cokernel can be choosen (and that a cokernel exists for one of them if and only if a cokernel exists for the other one).
+      We can then also choose the kernels of~$\coker(f)$ and~$\coker(fh)$ to be the same.
+      
+      Similarly, if~$g \colon Y \to Z$ is a monomorphism then~$\coim(f) = \coim(gf)$.
+  \end{enumerate}
 \end{remark*}
 
 

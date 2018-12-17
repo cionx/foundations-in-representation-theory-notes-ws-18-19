@@ -411,25 +411,25 @@
 \end{remark*}
 
 
-\begin{definition}
+\begin{definition*}
   Let~$X \in \Ob(\Acat)$ be an object in~$\Acat$.
   An object~$Y \in \Ob(\Acat)$ is a \emph{direct summand}\index{direct summand} of~$X$ if there exists another object~$Y' \in \Ob(\Acat)$ with~$X \cong Y \oplus Y'$.
-\end{definition}
+\end{definition*}
 
 
 \begin{lemma}
-  Let~$P \in \Ob(\Acat)$ be a projective object in~$\Acat$, and let~$I \in \Ob(\Acat)$ be an injective object in~$\Acat$.
+  Let~$P, I \in \Ob(\Acat)$ be a objects in~$\Acat$.
   \begin{enumerate}
     \item
       \label{ses ending in projective}
-      Every short exact sequence~$0 \to X' \to X \to P \to 0$ in~$\Acat$ splits.
+      The object~$P$ is projective if and only if every short exact sequence of the form~$0 \to X' \to X \to P \to 0$ in~$\Acat$ splits.
     \item
-      Every short exact sequence~$0 \to I \to X \to X'' \to 0$ in~$\Acat$ splits.
+      Dually, the object~$I$ is injective if and only if every short exact sequence of the form~$0 \to I \to X \to X'' \to 0$ in~$\Acat$ splits.
     \item
       \label{direct summand of projective}
-      Every direct summand of~$P$ is again projective.
+      If~$P$ is projective then every direct summand of~$P$ is again projective.
     \item
-      Every direct summand of~$I$ is again injective.
+      If~$I$ is injective then every direct summand of~$I$ is again injective.
   \end{enumerate}
 \end{lemma}
 
@@ -438,8 +438,9 @@
   \leavevmode
   \begin{enumerate}
     \item
-      There exist a lift of the identity~$\id_P \colon P \to P$ along the epimorphism~$X \to P$, which is then a section for~$X \to P$.
-      Hence~$X \to P$ is a retraction.
+      Suppose that~$P$ is projective and let~$0 \to X' \to X \to P \to 0$ be a short exact sequence in~$\Acat$ that ends in~$P$.
+      Then there exists a lift of the identity~$\id_P \colon P \to P$ along the epimorphism~$X \to P$, that is then a section for~$X \to P$.
+      Hence~$X \to P$ is a retraction, which shows that the given short exact sequence splits.
       \[
         \begin{tikzcd}
             0
@@ -460,6 +461,59 @@
             \arrow[dashed]{ul}
           & {}
         \end{tikzcd}
+      \]
+      
+      Suppose now on the other hand that every short exact sequence that ends in~$P$ splits.
+      Let~$f \colon X \to Y$ be an epimorphism in~$\Acat$ and let~$g \colon P \to Y$ be a morphism in~$\Acat$.
+      We may extend the epimorphism~$f$ to a short exact sequence
+      \[
+        0
+        \to
+        \ker(f)
+        \to
+        X
+        \xlongto{f}
+        Y
+        \to
+        0
+      \]
+      in~$\Acat$.
+      By using \cref{kernels of pullbacks} we get a commutative diagram
+      \[
+        \begin{tikzcd}
+            0
+            \arrow{r}
+          & \ker(f)
+            \arrow{r}
+            \arrow[equal]{d}
+          & X'
+            \arrow{r}[above]{f'}
+            \arrow{d}[right]{g'}
+          & P
+            \arrow{r}
+            \arrow{d}[right]{g}
+          & 0
+          \\
+            0
+            \arrow{r}
+          & \ker(f)
+            \arrow{r}
+          & X
+            \arrow{r}[above]{f}
+          & Y
+            \arrow{r}
+          & 0
+        \end{tikzcd}
+      \]
+      with exact rows.
+      The upper row splits by assumption, hence there exists a section~$s \colon P \to X'$ for~$f'$.
+      For the morphism~$g'' \defined g's \colon P \to X$ we then have
+      \[
+          f g''
+        = f g' s
+        = g f' s
+        = g \id_P
+        = g \,.
       \]
     \item
       This is dual to part~\ref*{ses ending in projective}.
@@ -742,15 +796,113 @@
   \leavevmode
   \begin{enumerate}
     \item
+      \label{existence of projective resolution}
       If the category~$\Acat$ has enough projectives, then every object~$X \in \Ob(\Acat)$ admits a projective resolution.
     \item
+      \label{existence of injective resolution}
       If the category~$\Acat$ has enough injectives, then every object~$X \in \Ob(\Acat)$ admits an injective resolution.
   \end{enumerate}
 \end{lemma}
 
 
 \begin{proof}
-  The proof will be given in the next lecture.
+  It sufficies to prove part~\ref*{existence of projective resolution}, as part~\ref*{existence of injective resolution} follows from part~\ref*{existence of projective resolution} by duality.
+  So suppose that the abelian category~$\Acat$ has enough enough projectives.
+  
+  For any object~$X \in \Ob(\Acat)$ there exists by assumption an epimorphism~$p_0 \colon P_0 \to X$ for some projective object~$P_0$ in~$\Acat$.
+  We have thus an exact sequence.
+  \[
+    P_0
+    \xlongto{p_0}
+    X
+    \to
+    0 \,.
+  \]
+  Suppose now that we have already constructed an exact sequence
+  \[
+    P_n
+    \xlongto{d_n}
+    P_{n-1}
+    \xlongto{d_{n-1}}
+    \dotsb
+    \xlongto{d_1}
+    P_0
+    \xlongto{p_0}
+    X
+    \to
+    0 \,.
+  \]
+  for some~$n \geq 0$.
+  For the kernel~$\ker(d_n)$ there exists an epimorphism
+  \[
+    \tilde{d}_{n+1}
+    \colon
+    P_{n+1}
+    \to
+    \ker(d_n)
+  \]
+  for some projective object~$P_{n+1}$ in~$\Acat$.
+  It follows for the composition
+  \[
+    d_{n+1}
+    \colon
+    P_{n+1}
+    \xlongto{\tilde{d}_{n+1}}
+    \ker(d_n)
+    \to
+    P_n
+  \]
+  from the exactness of the sequence
+  \[
+    \ker(d_n)
+    \to
+    P_n
+    \xlongto{d_n}
+    P_{n-1}
+  \]
+  that the sequence
+  \[
+    P_{n+1}
+    \xlongto{d_{n+1}}
+    P_n
+    \xlongto{d_n}
+    P_{n-1}
+  \]
+  is again exact, as seen in~\cref{composing exact sequence with epi and mono}.
+  We hence arrive at the exact sequence
+  \[
+    P_{n+1}
+    \xlongto{d_{n+1}}
+    P_n
+    \xlongto{d_n}
+    P_{n-1}
+    \xlongto{d_{n-1}}
+    \dotsb
+    \xlongto{d_1}
+    P_0
+    \xlongto{p_0}
+    X
+    \to
+    0 \,.
+  \]
+  By induction we get the desired projective resolution of~$X$.
+%   Let~$d_{n+1} \colon P_{n+1} \to P_n$ be the composition
+%   \[
+%     d_{n+1}
+%     \colon
+%     P_{n+1}
+%     \xlongto{\tilde{d}_{n+1}}
+%     \ker(d_n)
+%     \to
+%     P_n \,.
+%   \]
+%   Then
+%   \[
+%       \im(d_{n+1})
+%     = \im(\ker(d_n) \to P_n)
+%     = \ker(d_n) \,,
+%   \]
+%   where the first equality holds because~$\tilde{d}_{n+1}$ is an epimorphism, and the second equality because every monomorphism is the kernel of its cokernel.
 \end{proof}
 
 
@@ -808,6 +960,1172 @@
 
 
 \lecturend{19}
+
+
+
+
+
+\begin{theorem}[Comparison theorem]\index{comparison theorem}\index{theorem!comparison}
+  Let~$f \colon X \to Y$ be a morphism in~$\Acat$.
+  \begin{enumerate}
+    \item
+      \label{comparison for projective}
+      Let~$\Pcc \xto{p_0} X$ be a projective resolution of~$X$ and let~$\Ccc \xto{c_0} Y$ be a chain resolution of~$Y$.
+      Then there exists a morphism of chain complexes~$\hat{f} \colon \Pcc \to \Ccc$ that makes the square
+      \begin{equation}
+        \label{comparison square for projective}
+        \begin{tikzcd}
+            P_0
+            \arrow{r}[above]{p_0}
+            \arrow[dashed]{d}[left]{\hat{f}_0}
+          & X
+            \arrow{d}[right]{f}
+          \\
+            C_0
+            \arrow{r}[above]{c_0}
+          & Y
+        \end{tikzcd}
+      \end{equation}
+      commute.
+      The morphism~$\hat{f}$ is uniquely determined up to homotopy by this property.
+    \item
+      \label{comparison for injective}
+      Let~$Y \xto{i^0} \Iccc$ be an injective resolution of~$Y$ and let~$X \xto{c^0} \Cccc$ be a cochain resolution of~$X$.
+      Then there exists a morphism of cochain complexes~$\hat{f} \colon \Cccc \to \Iccc$ that makes the square
+      \begin{equation}
+        \label{comparison square for injective}
+        \begin{tikzcd}
+            X
+            \arrow{r}[above]{c^0}
+            \arrow{d}[left]{f}
+          & C^0
+            \arrow[dashed]{d}[right]{\hat{f}^0}
+          \\
+            Y
+            \arrow{r}[above]{i^0}
+          & I^0
+        \end{tikzcd}
+      \end{equation}
+      commute.
+      The morphism~$\hat{f}$ is uniquely determined up to homotopy by this property.
+  \end{enumerate}
+\end{theorem}
+
+
+\begin{proof}
+  It sufficies to prove part~\ref*{comparison for projective}, as part~\ref*{comparison for injective} follows from part~\ref*{comparison for projective} by duality.
+  We first construct the morphism~$\hat{f}$, and then show that it is unique up to homotopy.
+  
+  We set for~$P_{-1} \defined X$ and~$P_{-2} \defined 0$ with~$d^P_0 \defined p_0$ and~$d^P_{-1} = 0$, and we similarly set~$C_{-1} \defined Y$ and~$C_{-2} \defined 0$ with~$d^C_0 = c_0$ and~$d^C_{-1} = 0$.
+  We also set $\hat{f}_{-1} \defined f$ and~$\hat{f}_{-2} = 0$.
+  The given commutative diagram
+  \[
+    \begin{tikzcd}
+        \dotsb
+        \arrow{r}
+      & P_2
+        \arrow{r}[above]{d_2}
+      & P_1
+        \arrow{r}[above]{d_1}
+      & P_0
+        \arrow{r}[above]{p_0}
+      & X
+        \arrow{r}
+        \arrow{d}[right]{f}
+      & 0
+        \arrow{d}
+      \\
+        \dotsb
+        \arrow{r}
+      & C_2
+        \arrow{r}[below]{d_2}
+      & C_1
+        \arrow{r}[below]{d_1}
+      & C_0
+        \arrow{r}[below]{c_0}
+      & Y
+        \arrow{r}
+      & 0
+    \end{tikzcd}
+  \]
+  is hence the following commutative diagram:
+  \[
+    \begin{tikzcd}
+        \dotsb
+        \arrow{r}
+      & P_2
+        \arrow{r}[above]{d_2}
+      & P_1
+        \arrow{r}[above]{d_1}
+      & P_0
+        \arrow{r}[above]{d_0}
+      & P_{-1}
+        \arrow{r}[above]{d_{-1}}
+        \arrow{d}[right]{\hat{f}_{-1}}
+      & P_{-2}
+        \arrow{d}[right]{\hat{f}_{-2}}
+      \\
+        \dotsb
+        \arrow{r}
+      & C_2
+        \arrow{r}[below]{d_2}
+      & C_1
+        \arrow{r}[below]{d_1}
+      & C_0
+        \arrow{r}[below]{d_0}
+      & C_{-1}
+        \arrow{r}[below]{d_{-1}}
+      & C_{-2}
+    \end{tikzcd}
+  \]
+  This commutative diagram has exact rows and the object~$P_n$ is projective for every~$n \geq 0$.
+  
+  We construct the required morphisms~$\hat{f}_n \colon P_n \to C_n$ by induction over~$n \geq -2$, with~$\hat{f}_{-1}$ and~$\hat{f}_{-2}$ being already given.
+  So suppose more generally that we have already constructed morphisms~$\hat{f}_n, \dotsc, \hat{f}_0, \hat{f}_{-1}, \hat{f}_{-2}$ for some~$n \geq -1$ that make the diagram
+  \[
+    \begin{tikzcd}
+        P_n
+        \arrow{r}[above]{d_n}
+        \arrow{d}[right]{\hat{f}_n}
+      & P_{n-1}
+        \arrow{r}[above]{d_{n-1}}
+        \arrow{d}[right]{\hat{f}_{n-1}}
+      & \dotsb
+        \arrow{r}[above]{d_1}
+      & P_0
+        \arrow{r}[above]{d_0}
+        \arrow{d}[right]{\hat{f}_0}
+      & P_{-1}
+        \arrow{r}
+        \arrow{d}[right]{\hat{f}_{-1}}
+      & P_{-2}
+        \arrow{d}[right]{\hat{f}_{-2}}
+      \\
+        C_n
+        \arrow{r}[below]{d_n}
+      & C_{n-1}
+        \arrow{r}[below]{d_{n-1}}
+      & \dotsb
+        \arrow{r}[below]{d_1}
+      & C_0
+        \arrow{r}[below]{d_0}
+      & C_{-1}
+        \arrow{r}
+      & C_{-2}
+    \end{tikzcd}
+  \]
+  commute.
+  It follows from~$d^P_n d^P_{n+1} = 0$ and~$d^C_n d^C_{n+1} = 0$ that the differentials~$d^P$ and~$d^C$ induce morphisms~$p \colon P_{n+1} \to \ker(d^P_n)$ and~$q \colon C_{n+1} \to \ker(d^C_n)$ that make the triangles
+  \[
+    \begin{tikzcd}[column sep = tiny]
+        P_{n+1}
+        \arrow{rr}[above]{d_{n+1}}
+        \arrow[dashed]{dr}[below left]{p}
+      & {}
+      & P_n
+      \\
+        {}
+      & \ker(d_n)
+        \arrow{ur}[below right]{i}
+      & {}
+    \end{tikzcd}
+    \qquad\text{and}\qquad
+    \begin{tikzcd}[column sep = tiny]
+        C_{n+1}
+        \arrow{rr}[above]{d_{n+1}}
+        \arrow[dashed]{dr}[below left]{q}
+      & {}
+      & C_n
+      \\
+        {}
+      & \ker(d_n)
+        \arrow{ur}[below right]{j}
+      & {}
+    \end{tikzcd}
+  \]
+  commute.
+  It follows from the commutativity of the square
+  \[
+    \begin{tikzcd}
+        P_n
+        \arrow{r}[above]{d_n}
+        \arrow{d}[left]{\hat{f}_n}
+      & P_{n-1}
+        \arrow{d}[right]{\hat{f}_{n-1}}
+      \\
+        C_n
+        \arrow{r}[above]{d_n}
+      & C_{n-1}
+    \end{tikzcd}
+  \]
+  that the morphism~$\hat{f}_n \colon P_n \to C_n$ induces a morphism~$\tilde{f}_n \colon \ker(d^P_n) \to \ker(d^C_n)$ that makes the following diagram commute:
+  \[
+    \begin{tikzcd}[column sep = small]
+        P_{n+1}
+        \arrow{rrr}[above, near start]{d_{n+1}}
+        \arrow{drr}[below left]{p}
+      & {}
+      & {}
+      & P_n
+        \arrow{dd}[right]{\hat{f}_n}
+      \\
+        {}
+      & {}
+      & \ker(d_n)
+        \arrow{ur}[below right]{i}
+      & {}
+      \\
+        C_{n+1}
+        \arrow{rrr}[above, near start]{d_{n+1}}
+        \arrow{drr}[below left]{q}
+      & {}
+      & {}
+      & C_n
+      \\
+        {}
+      & {}
+      & \ker(d_n)
+        \arrow[dashed, from=uu, crossing over, "\tilde{f}_n", right, near start]
+        \arrow{ur}[below right]{j}
+      & {}
+    \end{tikzcd}
+  \]
+  The morphism~$q \colon C_{n+1} \to \ker(d^C_n)$ is an epimorphism because it is the composition
+  \[
+    q
+    \colon
+    C_{n+1}
+    \to
+    \im(d^C_{n+1})
+    \to
+    \ker(d^C_n)
+  \]
+  with~$C_{n+1} \to \im(d_{n+1})$ being an epimorphism, and~$\im(d^C_{n+1}) \to \ker(d^C_n)$ being an isomorphism by the exactness of the sequence~$C_{n+1} \xto{d_{n+1}} C_n \xto{d_n} C_{n-1}$.
+  It follows from~$P_{n+1}$ being projective that there exist a morphism~$\hat{f}_{n+1} \colon P_{n+1} \to C_{n+1}$ that makes the square
+  \[
+    \begin{tikzcd}
+        P_{n+1}
+        \arrow{r}[above]{p}
+        \arrow[dashed]{d}[left]{\hat{f}_{n+1}}
+      & \ker(d_n)
+        \arrow{d}[right]{\tilde{f}_n}
+      \\
+        C_{n+1}
+        \arrow{r}[below]{q}
+      & \ker(d_n)
+    \end{tikzcd}
+  \]
+  commute.
+  Then also the square
+  \[
+    \begin{tikzcd}[column sep = large]
+        P_{n+1}
+        \arrow{r}[above]{d_{n+1}}
+        \arrow[dashed]{d}[left]{\hat{f}_{n+1}}
+      & P_n
+        \arrow{d}[right]{\hat{f}_n}
+      \\
+        C_{n+1}
+        \arrow{r}[above]{d_n}
+      & C_n
+    \end{tikzcd}
+  \]
+  commute, i.e.\ the complete diagram
+  \[
+    \begin{tikzcd}[column sep = small]
+        P_{n+1}
+        \arrow{rrr}[above, near start]{d_{n+1}}
+        \arrow{drr}[below left]{p}
+        \arrow[dashed]{dd}[left]{\hat{f}_{n+1}}
+      & {}
+      & {}
+      & P_n
+        \arrow{dd}[right]{\hat{f}_n}
+      \\
+        {}
+      & {}
+      & \ker(d_n)
+        \arrow{ur}[below right]{i}
+      & {}
+      \\
+        C_{n+1}
+        \arrow{rrr}[above, near start]{d_{n+1}}
+        \arrow{drr}[below left]{q}
+      & {}
+      & {}
+      & C_n
+      \\
+        {}
+      & {}
+      & \ker(d_n)
+        \arrow[from=uu, crossing over, "\tilde{f}_n", right, near start]
+        \arrow{ur}[below right]{j}
+      & {}
+    \end{tikzcd}
+  \]
+  commutes.
+  Indeed, we have that
+  \[
+      d_{n+1} \hat{f}_{n+1}
+    = j q \hat{f}_{n+1}
+    = j \tilde{f}_n p
+    = \hat{f}_n i p
+    = \hat{f}_n d_{n+1} \,.
+  \]
+  
+  To show that the morphism~$\hat{f}$ is unique up to homotopy we may assume that~$f = 0$:
+  Indeed, if~$\hat{f}' \colon \Pcc \to \Ccc$ is another lift of~$f \colon X \to Y$ then the difference~$\hat{f}' - \hat{f}$ is a lift of~$f - f = 0$.
+  And the morphisms~$\hat{f}'$ and~$\hat{f}$ are homotopic if and only if this difference~$\hat{f}' - \hat{f}$ is null homotopic, i.e.\ is homotopic to the zero morphism~$\Pcc \to \Ccc$, which is another lift of the zero morphism~$X \to Y$.
+  
+  So let~$f = 0$, and let us shows that any lift~$\hat{f} \colon \Pcc \to \Ccc$ is null homotopic.
+  For this we need to construct morphisms~$s_n \colon P_n \to C_{n+1}$ for~$n \geq 0$ such that
+  \[
+    d_1 s_0 = \hat{f}_0
+    \qquad\text{and}\qquad
+    \text{$d_{n+1} s_n + s_{n-1} d_n = \hat{f}_n$ for every~$n \geq 1$} \,.
+  \]
+  We may visualize the role of the morphisms~$s_n$ as follows:
+  \[
+    \begin{tikzcd}[row sep = large]
+        \dotsb
+        \arrow{r}
+      & P_2
+        \arrow{r}[above]{d_2}
+        \arrow{d}[right, near start]{\hat{f}_2}
+        \arrow[dashed]{dl}
+      & P_1
+        \arrow{r}[above]{d_1}
+        \arrow{d}[right, near start]{\hat{f}_1}
+        \arrow[dashed]{dl}[below right]{s_1}
+      & P_0
+        \arrow{r}[above]{d_0}
+        \arrow{d}[right]{\hat{f}_0}
+        \arrow[dashed]{dl}[below right]{s_0}
+      & P_{-1}
+        \arrow{r}{d_{-1}}
+        \arrow{d}[right]{0}
+      & P_{-2}
+        \arrow{d}[right]{0}
+      \\
+        \dotsb
+        \arrow{r}
+      & C_2
+        \arrow{r}[below]{d_2}
+      & C_1
+        \arrow{r}[below]{d_1}
+      & C_0
+        \arrow{r}[below]{d_0}
+      & C_{-1}
+        \arrow{r}[below]{d_{-1}}
+      & C_{-2}
+    \end{tikzcd}
+  \]
+  We define~$s_{-1} \colon P_{-1} \to C_0$ and~$s_{-2} \colon P_{-2} \to C_{-1}$ as the respective zero morphisms, and hence need to show that
+  \[
+      \hat{f}_n
+    = d_{n+1} s_n + s_{n-1} d_n
+  \]
+  for every~$n \geq -1$, with this relation already holding for~$n = -1$.
+  
+  Suppose that~$s_{n-1}, \dotsc, s_{-1}, s_{-2}$ are already constructed for some~$n \geq 0$.
+  Then the morphism
+  \[
+    \hat{f}_n - s_{n-1} d_n
+    \colon
+    P_n
+    \to
+    C_n
+  \]
+  satisfies
+  \begin{align*}
+        d_n ( \hat{f}_n - s_{n-1} d_n)
+    &=  d_n \hat{f}_n - d_n s_{n-1} d_n \\
+    &= d_n \hat{f}_n - ( \hat{f}_{n-1} - s_{n-2} d_{n-1} ) d_n  \\
+    &= d_n \hat{f}_n - \hat{f}_{n-1} d_n  \\
+    &= 0
+  \end{align*}
+  because~$\hat{f}$ is a morphism of chain complexes.
+  It follows from the universal property of the kernel~$\ker(d_n) \to C_n$ that there exists a (unique) morphism~$\tilde{s}_n \colon P_n \to \ker(d_n)$ that makes the diagram
+  \[
+    \begin{tikzcd}
+        {}
+      & P_n
+        \arrow[bend left]{drr}[above right]{0}
+        \arrow{d}[right]{\hat{f}_n - s_{n-1} d_n}
+        \arrow[dashed]{dl}[above left]{\tilde{s}_n}
+      & {}
+      \\
+        \ker(d_n)
+        \arrow{r}
+      & C_n
+        \arrow{rr}[below]{d_n}
+      & {}
+      & C_{n+1}
+    \end{tikzcd}
+  \]
+  commute.
+  The canonical morphism~$C_{n+1} \to \ker(d_n)$ that makes the diagram
+  \[
+    \begin{tikzcd}
+        C_{n+1}
+        \arrow[dashed]{r}
+        \arrow[bend right]{rr}[below]{d_{n+1}}
+      & \ker(d_n)
+        \arrow{r}
+      & C_n
+    \end{tikzcd}
+  \]
+  commute is an epimorphism by the exactness of the sequence~$C_{n+1} \to C_n \to C_{n-1}$, as seen in the previous part of the proof.
+  It follows from~$P_n$ being projective that there exists a morphism~$s_n \colon P_n \to C_{n+1}$ that makes the diagram
+  \[
+    \begin{tikzcd}
+        {}
+      & {}
+      & P_n
+        \arrow{d}[right]{\hat{f}_n - s_{n-1} d_n}
+        \arrow{dl}[above left]{\tilde{s}_n}
+        \arrow[dashed, bend right]{dll}[above left]{s_n}
+      \\
+        C_{n+1}
+        \arrow{r}
+        \arrow[bend right]{rr}[below]{d_{n+1}}
+      & \ker(d_n)
+        \arrow{r}
+      & C_n
+    \end{tikzcd}
+  \]
+  commute.
+  Then
+  \[
+      d_{n+1} s_n + s_{n-1} d_n
+    = \hat{f}_n - s_{n-1} d_n + s_{n-1} d_n
+    = \hat{f}_n \,,
+  \]
+  as desired.
+\end{proof}
+
+
+\begin{remark*}
+  One may rewrite the commutative square~\eqref{comparison square for projective} as
+  \[
+    \begin{tikzcd}
+        \Pcc
+        \arrow{r}[above]{p_0}
+        \arrow[dashed]{d}[left]{\hat{f}}
+      & X
+        \arrow{d}[right]{f}
+      \\
+        \Ccc
+        \arrow{r}[above]{c_0}
+      & Y
+    \end{tikzcd}
+  \]
+  and the commutative square~\eqref{comparison square for injective} as follows:
+  \[
+    \begin{tikzcd}
+        X
+        \arrow{r}[above]{c^0}
+        \arrow{d}[left]{f}
+      & \Cccc
+        \arrow[dashed]{d}[right]{\hat{f}}
+      \\
+        Y
+        \arrow{r}[above]{i^0}
+      & \Iccc
+    \end{tikzcd}
+  \]
+\end{remark*}
+
+
+\begin{lemma}[Horseshoe lemma]\index{horseshoe lemma}\index{lemma!horseshoe}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      \label{projective horseshoe}
+      Let~$0 \to X' \to X \to X'' \to 0$ be a short exact sequence in~$\Acat$.
+      If~$\Pcc' \xto{p'_0} X'$ and~$\Pcc'' \xto{p''_0} X''$ are projective resolutions then there exists a projective resolution~$\Pcc \xto{p_0} X$ of~$X$ such that the short exact sequence~$0 \to X' \to X \to X'' \to 0$ lifts to a short exact sequence of chain complexes
+      \[
+        0
+        \to
+        \Pcc'
+        \to
+        \Pcc
+        \to
+        \Pcc''
+        \to
+        0 \,,
+      \]
+      in the sense that the following diagram commutes: 
+      \[
+        \begin{tikzcd}
+            0
+            \arrow{r}
+          & \Pcc'
+            \arrow{r}
+            \arrow{d}[right]{p'_0}
+          & \Pcc
+            \arrow{r}
+            \arrow{d}[right]{p_0}
+          & \Pcc''
+            \arrow{r}
+            \arrow{d}[right]{p''_0}
+          & 0
+          \\
+            0
+            \arrow{r}
+          & X'
+            \arrow{r}
+          & X
+            \arrow{r}
+          & X''
+            \arrow{r}
+          & 0
+        \end{tikzcd}
+      \]
+      In other words, the following diagram commutes:
+      \[
+        \begin{tikzcd}
+            0
+            \arrow{r}
+          & P'_0
+            \arrow{r}
+            \arrow{d}[right]{p'_0}
+          & P_0
+            \arrow{r}
+            \arrow{d}[right]{p_0}
+          & P''_0
+            \arrow{r}
+            \arrow{d}[right]{p''_0}
+          & 0
+          \\
+            0
+            \arrow{r}
+          & X'
+            \arrow{r}
+          & X
+            \arrow{r}
+          & X''
+            \arrow{r}
+          & 0
+        \end{tikzcd}
+      \]
+    \item
+      \label{injective horseshoe}
+      Let~$0 \to \bp X \to X \to \bpp X \to 0$ be a short exact sequence in~$\Acat$.
+      If~$\bp X \xto{\bp i^0} \bp\Iccc$ and~$\bpp X \xto{\bpp i^0} \bpp\Iccc$ are injective resolutions then there exists an injective resolution~$X \xto{i^0} \Iccc$ of~$X$ such that the short exact sequence~$0 \to \bp X \to X \to \bpp X \to 0$ lifts to a short exact sequence of cochain complexes
+      \[
+        0
+        \to
+        \bp\Iccc
+        \to
+        \Iccc
+        \to
+        \bpp\Iccc
+        \to
+        0 \,,
+      \]
+      in the sense that the following diagram commutes:
+      \[
+        \begin{tikzcd}
+            0
+            \arrow{r}
+          & \bp X
+            \arrow{r}
+            \arrow{d}[right]{\bp i^0}
+          & X
+            \arrow{r}
+            \arrow{d}[right]{i^0}
+          & \bpp X
+            \arrow{r}
+            \arrow{d}[right]{\bpp i^0}
+          & 0
+          \\
+            0
+            \arrow{r}
+          & \bp\Iccc
+            \arrow{r}
+          & \Iccc
+            \arrow{r}
+          & \bpp\Iccc
+            \arrow{r}
+          & 0
+        \end{tikzcd}
+      \]
+      In other words, the following diagram commute:
+      \[
+        \begin{tikzcd}
+            0
+            \arrow{r}
+          & \bp X
+            \arrow{r}
+            \arrow{d}[right]{\bp i^0}
+          & X
+            \arrow{r}
+            \arrow{d}[right]{i^0}
+          & \bpp X
+            \arrow{r}
+            \arrow{d}[right]{\bpp i^0}
+          & 0
+          \\
+            0
+            \arrow{r}
+          & \bp I^0
+            \arrow{r}
+          & I^0
+            \arrow{r}
+          & \bpp I^0
+            \arrow{r}
+          & 0
+        \end{tikzcd}
+      \]
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+  It sufficies to prove part~\ref*{projective horseshoe}, as part~\ref*{injective horseshoe} follows from part~\ref*{projective horseshoe} by duality.
+  We denote the given short exact sequence by
+  \[
+    0
+    \to
+    X'
+    \xlongto{f}
+    X
+    \xlongto{g}
+    X''
+    \to
+    0 \,.
+  \]
+  
+  We set~$P_n \defined P'_n \oplus P''_n$ for every~$n \geq 0$
+  and consider for every~$n \geq 0$ the short exact sequence
+  \[
+    0
+    \to
+    P'_n
+    \xlongto{ \begin{bsmallmatrix} \id \\ 0 \end{bsmallmatrix} }
+    P_n
+    \xlongto{ \begin{bsmallmatrix} 0 & \id \end{bsmallmatrix} }
+    P''_n
+    \to
+    0
+  \]
+  We need to construct morphisms~$d_n \colon P_n \to P_{n-1}$ and~$p_0 \colon P_0 \to X$ that make the diagram
+  \[
+    \begin{tikzcd}[ampersand replacement = \&, column sep = large]
+          {}
+      \&  \vdots
+          \arrow{d}
+      \&  \vdots
+          \arrow[dashed]{d}
+      \&  \vdots
+          \arrow{d}
+      \&  {}
+      \\
+          0
+          \arrow{r}
+      \&  P'_2
+          \arrow{r}[above]{\begin{bsmallmatrix} \id \\ 0 \end{bsmallmatrix}}
+          \arrow{d}[left]{d'_2}
+      \&  P_2
+          \arrow{r}[above]{\begin{bsmallmatrix} 0 & \id \end{bsmallmatrix}}
+          \arrow[dashed]{d}[right]{d_2}
+      \&  P''_2
+          \arrow{r}
+          \arrow{d}[right]{d''_2}
+      \&  0
+      \\
+          0
+          \arrow{r}
+      \&  P'_1
+          \arrow{r}[above]{\begin{bsmallmatrix} \id \\ 0 \end{bsmallmatrix}}
+          \arrow{d}[left]{d'_1}
+      \&  P_1
+          \arrow{r}[above]{\begin{bsmallmatrix} 0 & \id \end{bsmallmatrix}}
+          \arrow[dashed]{d}[right]{d_1}
+      \&  P''_1
+          \arrow{r}
+          \arrow{d}[right]{d''_1}
+      \&  0
+      \\
+          0
+          \arrow{r}
+      \&  P'_0
+          \arrow{r}[above]{\begin{bsmallmatrix} \id \\ 0 \end{bsmallmatrix}}
+          \arrow{d}[left]{p'_0}
+      \&  P_0
+          \arrow{r}[above]{\begin{bsmallmatrix} 0 & \id \end{bsmallmatrix}}
+          \arrow[dashed]{d}{p_0}
+      \&  P''_0
+          \arrow{r}
+          \arrow{d}[right]{p''_0}
+      \&  0
+      \\
+          0
+          \arrow{r}
+      \&  X'
+          \arrow{r}[above]{f}
+          \arrow{d}
+      \&  X
+          \arrow{r}[above]{g}
+          \arrow{d}
+      \&  X''
+          \arrow{r}
+          \arrow{d}
+      \&  0
+      \\
+          {}
+      \&  0
+      \&  0
+      \&  0
+      \&  {}
+    \end{tikzcd}
+  \]
+  commute and that make the middle column into a projective resolution of~$X$.
+  That the sequence~$0 \to \Pcc' \to \Pcc \to \Pcc'' \to 0$ of chain complexes is then already (short) exact follows because exactness in~$\Ch(\Acat)$ is component componentwise (as explained in \cref{exactness for chain complexes is computed degreewise}).
+  
+  We start by contructing the morphism~$p_0$:
+  We have the following diagram in which the morphism~$g$ is an epimorphism and the object~$P''_0$ is projective:
+  \[
+    \begin{tikzcd}
+        {}
+      & P'_0
+        \arrow{d}[right]{p'_0}
+      & {}
+      & P''_0
+        \arrow{d}[right]{p''_0}
+      & {}
+      \\
+        0
+        \arrow{r}
+      & X
+        \arrow{r}[above]{f}
+        \arrow{d}
+      & Y
+        \arrow{r}[above]{g}
+      & Z 
+        \arrow{r}
+        \arrow{d}
+      & 0
+      \\
+        {}
+      & 0
+      & {}
+      & 0
+      & {}
+    \end{tikzcd}
+  \]
+  It follows that there exist a morphism~$g' \colon P''_0 \to X$ that makes the triangle
+  \[
+    \begin{tikzcd}
+        {}
+      & P''_0
+        \arrow{d}[right]{p''_0}
+        \arrow[dashed]{dl}[above left]{g'}
+      \\
+        X
+        \arrow{r}[below]{g}
+      & X''
+    \end{tikzcd}
+  \]
+  commute.
+  We define
+  \[
+    p_0
+    \defined
+    \begin{bmatrix}
+      f p'_0  & g'
+    \end{bmatrix}
+    \colon
+    P_0
+    =
+    P'_0 \oplus P''_0
+    \to
+    X \,.
+  \]
+  Then the diagram
+  \[
+    \begin{tikzcd}[ampersand replacement = \&]
+          0
+          \arrow{r}
+      \&  P'_0
+          \arrow{r}[above]{\begin{bsmallmatrix} \id \\ 0 \end{bsmallmatrix}}
+          \arrow{d}[left]{p'_0}
+      \&  P_0
+          \arrow{r}[above]{\begin{bsmallmatrix} 0 & \id \end{bsmallmatrix}}
+          \arrow[dashed]{d}[right]{p_0}
+      \&  P''_0
+          \arrow{r}
+          \arrow{d}[right]{p''_0}
+      \&  0
+      \\
+          0
+          \arrow{r}
+      \&  X'
+          \arrow{r}[above]{f}
+      \&  X
+          \arrow{r}[above]{g}
+      \&  X''
+          \arrow{r}
+      \&  0
+    \end{tikzcd}
+  \]
+  commutes because
+  \begin{gather*}
+      p_0
+      \begin{bmatrix}
+        \id \\
+        0
+      \end{bmatrix}
+    = \begin{bmatrix}
+        f p'_0  & g'
+      \end{bmatrix}
+      \begin{bmatrix}
+        \id \\
+        0
+      \end{bmatrix}
+    = f p'_0
+  \shortintertext{and}
+      g p_0
+    = g
+      \begin{bmatrix}
+        f p'_0  & g'
+      \end{bmatrix}
+    = \begin{bmatrix}
+        g f p'_0  & g g'
+      \end{bmatrix}
+    = \begin{bmatrix}
+        0 & p''_0
+      \end{bmatrix}
+    = p''_0
+      \begin{bmatrix}
+        0 & \id
+      \end{bmatrix} \,.
+  \end{gather*}
+  It follows from the~\hyperref[5 lemma]{\dash{5}{lemma}} that the morphisms~$p_0$ is an epimorphism, because both~$p'_0$ and~$p''_0$ are epimorphism.
+  We have hence the following commutative diagram with exact column:
+  \[
+    \begin{tikzcd}[ampersand replacement = \&, column sep = large]
+          {}
+      \&  \vdots
+          \arrow{d}
+      \&  {}
+      \&  \vdots
+          \arrow{d}
+      \&  {}
+      \\
+          {}
+      \&  P'_2
+          \arrow{d}[right]{d'_2}
+      \&  {}
+      \&  P''_2
+          \arrow{d}[right]{d''_2}
+      \&  {}
+      \\
+          {}
+      \&  P'_1
+          \arrow{d}[right]{d'_1}
+      \&  {}
+      \&  P''_1
+          \arrow{d}[right]{d''_1}
+      \&  {}
+      \\
+          0
+          \arrow{r}
+      \&  P'_0
+          \arrow{r}[above]{\begin{bsmallmatrix} \id \\ 0 \end{bsmallmatrix}}
+          \arrow{d}[right]{p'_0}
+      \&  P_0
+          \arrow{r}[above]{\begin{bsmallmatrix} 0 & \id \end{bsmallmatrix}}
+          \arrow{d}[right]{p_0}
+      \&  P''_0
+          \arrow{r}
+          \arrow{d}[right]{p''_0}
+      \&  0
+      \\
+          0
+          \arrow{r}
+      \&  X'
+          \arrow{r}[below]{f}
+          \arrow{d}
+      \&  X
+          \arrow{r}[below]{g}
+          \arrow{d}
+      \&  X''
+          \arrow{r}
+          \arrow{d}
+      \&  0
+      \\
+          {}
+      \&  0
+      \&  0
+      \&  0
+      \&  {}
+    \end{tikzcd}
+  \]
+  
+  To construct the morphism~$d_1 \colon P_1 \to P_0$ we proceed similar as before:
+  We get the following commutative diagram with exact columns:
+  \[
+    \begin{tikzcd}[ampersand replacement = \&]
+          {}
+      \&  0
+          \arrow{d}
+      \&  0
+          \arrow{d}
+      \&  0
+          \arrow{d}
+      \&  {}
+      \\
+          0
+          \arrow{r}
+      \&  \ker(p'_0)
+          \arrow{r}
+          \arrow{d}[right]{\tilde{d}'_0}
+      \&  \ker(p_0)
+          \arrow{r}
+          \arrow{d}[right]{\tilde{d}_0}
+      \&  \ker(p''_0)
+          \arrow{r}
+          \arrow{d}[right]{\tilde{d}''_0}
+      \& 0
+      \\
+          0
+          \arrow{r}
+      \&  P'_0
+          \arrow{r}
+          \arrow{d}[right]{p'_0}
+      \&  P_0
+          \arrow{r}
+          \arrow{d}[right]{p_0}
+      \&  P''_0
+          \arrow{r}
+          \arrow{d}[right]{p''_0}
+      \&  0
+      \\
+          0
+          \arrow{r}
+      \&  X'
+          \arrow{r}[below]{f}
+          \arrow{d}
+      \&  X
+          \arrow{r}[below]{g}
+          \arrow{d}
+      \&  X''
+          \arrow{r}
+          \arrow{d}
+      \&  0
+      \\
+          {}
+      \&  0
+      \&  0
+      \&  0
+      \&  {}
+    \end{tikzcd}
+  \]
+  The lower two rows are exact, hence the upper row is also exact by the~\hyperref[9 lemma]{\dash{9}{lemma}}.
+  We can therefore consider the following subdiagram, in which the morphism~$\ker(p_0) \to \ker(p''_0)$ is an epimorphism and the object~$P''_1$ is projective.
+  \[
+    \begin{tikzcd}
+        {}
+      & P'_1
+        \arrow{d}[right]{\tilde{d}'_1}
+      & {}
+      & P''_1
+        \arrow{d}[right]{\tilde{d}''_1}
+      & {}
+      \\
+        0
+        \arrow{r}
+      & \ker(p'_0)
+        \arrow{r}
+        \arrow{d}
+      & \ker(p_0)
+        \arrow{r}
+      & \ker(p''_0)
+        \arrow{r}
+        \arrow{d}
+      & 0
+      \\
+        {}
+      & 0
+      & {}
+      & 0
+      & {}
+    \end{tikzcd}
+  \]
+  We find as before that there exists an epimorphism~$d_1 \colon P_1 \to \ker(p_0)$ that makes the diagram
+  \[
+    \begin{tikzcd}[ampersand replacement = \&]
+          0
+          \arrow{r}
+      \&  P'_1
+          \arrow{r}[above]{\begin{bsmallmatrix} \id \\ 0 \end{bsmallmatrix}}
+          \arrow{d}[right]{\tilde{d}'_1}
+      \&  P_1
+          \arrow{r}[above]{\begin{bsmallmatrix} 0 & \id \end{bsmallmatrix}}
+          \arrow[dashed]{d}[right]{\tilde{d}_1}
+      \&  P''_1
+          \arrow{r}
+          \arrow{d}[right]{\tilde{d}''_1}
+      \&  0
+      \\
+          0
+          \arrow{r}
+      \&  \ker(p'_0)
+          \arrow{r}
+      \&  \ker(p_0)
+          \arrow{r}
+      \&  \ker(p''_0)
+          \arrow{r}
+      \&  0
+    \end{tikzcd}
+  \]
+  commute.
+  It follows from the exactness of the sequence
+  \[
+    \ker(p_0)
+    \xlongto{\tilde{d}_0}
+    P_0
+    \xlongto{p_0}
+    X
+  \]
+  that the sequence
+  \[
+    P_1
+    \xlongto{\tilde{d}_0 \tilde{d}_1}
+    P_0
+    \xlongto{p_0}
+    X
+  \]
+  is again exact because~$\tilde{d}_1$ is an epimorphism.
+  We have hence arrived at the following commutatitve diagram with exact columns:
+  \[
+    \begin{tikzcd}[ampersand replacement = \&, column sep = large]
+          {}
+      \&  \vdots
+          \arrow{d}
+      \&  {}
+      \&  \vdots
+          \arrow{d}
+      \&  {}
+      \\
+          {}
+      \&  P'_2
+          \arrow{d}[right]{d'_2}
+      \&  {}
+      \&  P''_2
+          \arrow{d}[right]{d''_2}
+      \&  {}
+      \\
+          0
+          \arrow{r}
+      \&  P'_1
+          \arrow{r}[above]{\begin{bsmallmatrix} \id \\ 0 \end{bsmallmatrix}}
+          \arrow{d}[right]{d'_1}
+      \&  P_1
+          \arrow{r}[above]{\begin{bsmallmatrix} 0 & \id \end{bsmallmatrix}}
+          \arrow{d}[right]{d_0}
+      \&  P''_1
+          \arrow{r}
+          \arrow{d}[right]{d''_1}
+      \& 0
+      \\
+          0
+          \arrow{r}
+      \&  P'_0
+          \arrow{r}[above]{\begin{bsmallmatrix} \id \\ 0 \end{bsmallmatrix}}
+          \arrow{d}[right]{p'_0}
+      \&  P_0
+          \arrow{r}[above]{\begin{bsmallmatrix} 0 & \id \end{bsmallmatrix}}
+          \arrow{d}[right]{p_0}
+      \&  P''_0
+          \arrow{r}
+          \arrow{d}[right]{p''_0}
+      \&  0
+      \\
+          0
+          \arrow{r}
+      \&  X'
+          \arrow{r}[below]{f}
+          \arrow{d}
+      \&  X
+          \arrow{r}[below]{g}
+          \arrow{d}
+      \&  X''
+          \arrow{r}
+          \arrow{d}
+      \&  0
+      \\
+          {}
+      \&  0
+      \&  0
+      \&  0
+      \&  {}
+    \end{tikzcd}
+  \]
+  We can now continue by induction.
+\end{proof}
+
+
+\begin{remark*}
+  The term \enquote{horse shoe lemma} comes from the form of the following diagram, that we are filling in with an exact column in the middle:
+  \[
+    \begin{tikzcd}[ampersand replacement = \&, column sep = large]
+          {}
+      \&  \vdots
+          \arrow{d}
+      \&  {}
+      \&  \vdots
+          \arrow{d}
+      \&  {}
+      \\
+          {}
+      \&  P'_2
+          \arrow{d}[left]{d'_2}
+      \&  {}
+      \&  P''_2
+          \arrow{d}[right]{d''_2}
+      \&  {}
+      \\
+          {}
+      \&  P'_1
+          \arrow{d}[left]{d'_1}
+      \&  {}
+      \&  P''_1
+          \arrow{d}[right]{d''_1}
+      \&  {}
+      \\
+          {}
+      \&  P'_0
+          \arrow{d}[left]{p'_0}
+      \&  {}
+      \&  P''_0
+          \arrow{d}[right]{p''_0}
+      \&  {}
+      \\
+          0
+          \arrow{r}
+      \&  X'
+          \arrow{r}[above]{f}
+          \arrow{d}
+      \&  X
+          \arrow{r}[above]{g}
+          \arrow{d}
+      \&  X''
+          \arrow{r}
+          \arrow{d}
+      \&  0
+      \\
+          {}
+      \&  0
+      \&  0
+      \&  0
+      \&  {}
+    \end{tikzcd}
+  \]
+\end{remark*}
+
 
 
 

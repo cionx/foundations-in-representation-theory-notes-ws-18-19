@@ -1,0 +1,115 @@
+\section{Existence of Derived Functors}
+
+
+\begin{goalnonum}
+  We want to construct for every left exact (resp.\ right exact) functor a right (resp.\ left) derived functor.
+\end{goalnonum}
+
+
+\begin{conventionnonum}
+  Let~$F \colon \Acat \to \Bcat$ be a left exact functor between abelian categories~$\Acat$ and~$\Bcat$, where the category~$\Acat$ has enough injectives.
+\end{conventionnonum}
+
+
+\begin{notation*}
+  If~$\Cccc$ is a cochain complex in~$\Acat$ then we denote by~$F(\Cccc)$ the cochain complex
+  \[
+    \dotsb
+    \to
+    F(C^{n+1})
+    \xlongto{F(d^{n+1})}
+    F(C^n)
+    \xlongto{F(d^n)}
+    F(C^{n-1})
+    \to
+    \dotsb
+  \]
+  in~$\Bcat$.
+  If~$f \colon \Cccc \to \Dccc$ is a morphism of cochain complexes in~$\CCh(\Acat)$ then we denote by~$F(f)$ the morphism of cochain complexes~$F(f) \to F(\Cccc) \to F(\Dccc)$ that is given by~$F(f) \defined (F(f^n))_{n \in \Integer}$.
+\end{notation*}
+
+
+\begin{lemma}
+  Let~$X \in \Ob(\Acat)$ be an object in~$\Acat$.
+  Let~$(\Iccc, i^0)$ be an injective resolution of~$X$, and set
+  \[
+    (\Right^n_{(\Iccc,i^0)}F)(X)
+    \defined
+    \Hl^n( F(\Iccc) )
+  \]
+  for every~$n \geq 0$.
+  \begin{enumerate}
+    \item
+      Let~$f \colon X \to Y$ be a morphism in~$\Acat$ and let~$(\Jccc, j^0)$ be an injective resolution of~$Y$.
+      Then for any two morphisms of cochain complexes~$\hat{f}, \hat{f}' \colon \Iccc \to \Jccc$ that extend the morphism~$f$, it holds that~$\Hl^n(F(\hat{f})) = \Hl^n(F(\hat{f}'))$  for every~$n \geq 0$.
+  \end{enumerate}
+  Let~$(\Right^n_{(\Iccc,i^0), (\Jccc,j^0)} F)(f) \defined \Hl^n(F(\hat{f}))$ in the above situation.
+  \begin{enumerate}[resume]
+    \item
+      \label{functoriality of morphism between derived functors}
+      For any two composable morphisms~$f \colon X \to Y$ and~$g \colon Y \to Z$ in~$\Acat$ and injective resolutions~$(\Jccc, j^0)$ of~$Y$ and~$(\Kccc,k^0)$ of~$Z$ it holds for every~$n \geq 0$ that
+      \[
+        (\Right^n_{(\Jccc,j^0), (\Kccc,k^0)} F)(g)
+        \circ
+        (\Right^n_{(\Iccc,i^0), (\Jccc,j^0)} F)(f)
+        =
+        (\Right^n_{(\Iccc,i^0), (\Kccc,k^0)} F)(g \circ f)  \,.
+      \]
+    \item
+      If~$(\bp\Iccc, \bp i^0)$ is another injective resolution of~$X$ then~$(\Right^n_{(\Iccc,i^0), (\bp\Iccc, \bp i^0)} F)(\id_X)$ is an isomorphism for every~$n \geq 0$.
+    \item
+      If furthemore~$f \colon X \to Y$ is a morphism in~$\Acat$  and~$(\Jccc, j^0)$ and~$(\bp\Jccc, \bp j^0)$ are two injective resolutions of~$Y$, then the following square commutes:
+      \[
+        \begin{tikzcd}[column sep = 11em, row sep = 6em]
+            (\Right^n_{(\Iccc,i^0)} F)(X)
+            \arrow{r}[above]{ (\Right^n_{(\Iccc,i^0), (\Jccc,j^0)} F)(f) }
+            \arrow{d}[right, near start]{ (\Right^n_{(\Iccc,i^0), (\bp\Iccc, \bp i^0)} F)(\id_X) }
+          & (\Right^n_{(\Jccc,j^0)} F)(Y)
+            \arrow{d}[left, near end]{ (\Right^n_{(\Jccc,j^0), (\bp\Jccc, \bp j^0)} F)(\id_Y) }
+          \\          
+            (\Right^n_{(\bp\Iccc, \bp i^0)} F)(X)
+            \arrow{r}[below]{ (\Right^n_{(\bp\Iccc, \bp i^0), (\bp\Jccc, \bp j^0)} F)(f) }
+          & (\Right^n_{(\bp \Jccc, \bp j^0)} F)(Y)
+        \end{tikzcd}
+      \]
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      It follows from the comparison theorem that any two such extensions~$\hat{f}$ and~$\hat{f}'$ are homotopic.
+      Then the morphisms~$F(\hat{f})$ and~$F(\hat{f}')$ is are also homotopic, and hence induce the same morphism in homology.
+    \item
+      If~$\hat{f} \colon \Iccc \to \Jccc$ is a lift of~$f$ and~$\hat{g} \colon \Jccc \to \Kccc$ is a lift of~$g$, then the composition~$\hat{g} \circ \hat{f} \colon \Iccc \to \Kccc$ is a lift of the composition~$g \circ f \colon X \to Z$.
+      Hence
+      \begin{align*}
+         &{}  (\Right^n_{(\Iccc,i^0), (\Kccc,k^0)} F)(g \circ f)  \\
+        =&{}  \Hl^n( F(\hat{g} \circ \hat{f}) ) \\
+        =&{}  \Hl^n( F(\hat{g}) \circ F(\hat{f}) )  \\
+        =&{}  \Hl^n( F(\hat{g}) ) \circ \Hl^n( F(\hat{f}) ) \\
+        =&{}  (\Right^n_{(\Jccc,j^0), (\Kccc,k^0)} F)(g)
+              \circ
+              (\Right^n_{(\Iccc,i^0), (\Jccc,j^0)} F)(f)  \,.
+      \end{align*}
+    \item
+      It holds that
+      \[
+        (\Right^n_{(\Iccc,i^0), (\Iccc, i^0)} F)(\id_X) 
+        =
+        \id_{(\Right^n_{(\Iccc,i^0)} F)(X)} \,.
+      \]
+      It hence follows from part~\ref*{functoriality of morphism between derived functors} that the morphism~$(\Right^n_{(\Iccc,i^0), (\bp\Iccc, \bp i^0)} F)(\id_X)$ is an isomorphism with
+      \[
+          (\Right^n_{(\Iccc,i^0), (\bp\Iccc, \bp i^0)} F)(\id_X)^{-1}
+        = (\Right^n_{(\bp\Iccc, \bp i^0), (\Iccc,i^0)} F)(\id_X) \,.
+      \]
+    \item
+      This follows from part~\ref*{functoriality of morphism between derived functors}.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+

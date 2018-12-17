@@ -116,6 +116,50 @@
 \end{remarkdefinition}
 
 
+\begin{remark*}
+  \label{composing exact sequence with epi and mono}
+  Let~$\Acat$ be an abelian category and let~$X \xto{f} Y \xto{g} Z$ be a sequence in~$\Acat$.
+  If~$h \colon W \to X$ is an epimorphism in~$\Acat$ then the sequence~$X \xto{f} Y \xto{g} Z$ is exact if and only if the sequence~$W \xto{fh} Y \xto{g} Z$ is exact:
+  
+  Indeed, we have that~$gf = 0$ if and only if~$gfh = 0$ because~$h$ is an epimorphism.
+  We hence need to show that if~$gf = 0$ (and then also~$gfh = 0$) then the induced morphism~$\im(f) \to \ker(g)$ is an isomorphism if and only if the induced morphism~$\im(fh) \to \ker(g)$ is an isomorphism.
+  
+  We have seen in \cref{(co)images and monos and epis} that~$\im(f) = \im(fh)$, in the sense that a morphism~$Y' \to Y$ is an image of~$f$ if and only if it is an image of~$fh$.
+  We hence get the following commutative diagram:
+  \[
+    \begin{tikzcd}[column sep = small, row sep = large]
+        W
+        \arrow{rr}[above]{h}
+        \arrow{dr}
+      & {}
+      & X
+        \arrow{rr}[above]{f}
+        \arrow{dr}
+      & {}
+      & Y
+        \arrow{rr}[above]{g}
+      & {}
+      & Z
+      \\
+      & \im(fh)
+        \arrow[equal]{rr}
+      & {}
+      & \im(f)
+        \arrow{ur}
+        \arrow[dashed]{rr}
+      & {}
+      & \ker(g)
+        \arrow{ul}
+      & {}
+    \end{tikzcd}
+  \]
+  The commutativity of this diagram shows that the induced morphism~$\im(fh) \to \ker(g)$ is the same as the induced morphism~$\im(f) \to \ker(g)$.
+  So the morphism~$\im(f) \to \ker(g)$ is an isomorphism if and only if the morphism~$\im(fh) \to \ker(g)$ is an isomorphism, as both are the same morphism.
+  
+  If dually~$h' \colon Z \to Z'$ is a monomorphism in~$\Acat$, then the sequence~$X \xto{f} Y \xto{g} Z$ is exact if and only if the sequence~$X \xto{f} Y \xto{h' g} Z'$ is exact.
+\end{remark*}
+
+
 \begin{definition*}
   Let~$\Acat$ be an abelian category.
   \begin{enumerate}
@@ -1762,6 +1806,7 @@
 
 
 \begin{lemma}[9-Lemma]
+  \label{9 lemma}
   Let~$\Acat$ be an abelian category and let
   \[
     \begin{tikzcd}
