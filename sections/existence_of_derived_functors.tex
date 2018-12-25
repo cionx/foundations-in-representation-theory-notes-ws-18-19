@@ -30,6 +30,7 @@
 
 
 \begin{lemma}
+  \label{preparation for right derived functors}
   Let~$X \in \Ob(\Acat)$ be an object in~$\Acat$.
   Let~$(\Iccc, i^0)$ be an injective resolution of~$X$, and set
   \[
@@ -40,6 +41,7 @@
   for every~$n \geq 0$.
   \begin{enumerate}
     \item
+      \label{induced morphism in right derived}
       Let~$f \colon X \to Y$ be a morphism in~$\Acat$ and let~$(\Jccc, j^0)$ be an injective resolution of~$Y$.
       Then for any two morphisms of cochain complexes~$\hat{f}, \hat{f}' \colon \Iccc \to \Jccc$ that extend the morphism~$f$, it holds that~$\Hl^n(F(\hat{f})) = \Hl^n(F(\hat{f}'))$  for every~$n \geq 0$.
   \end{enumerate}
@@ -111,5 +113,1755 @@
     \qedhere
   \end{enumerate}
 \end{proof}
+
+
+
+
+
+\lecturend{20}
+
+
+
+
+
+\begin{remarkdefinition}
+  For every object~$X \in \Ob(\Acat)$ we fix an injective resolution~$(\Iccc_X, i^0_X)$ of~$X$.
+  We define for every~$n \geq 0$ a functor~$\Right^n F \colon \Acat \to \Bcat$ by
+  \[
+    (\Right^n F)(X)
+    \defined
+    \Hl^n( F(\Iccc_X) )
+  \]
+  for every object~$X \in \Ob(\Acat)$, and
+  \[
+    (\Right^n F)(f)
+    \defined
+    \Hl^n(F(\hat{f}))
+  \]
+   and every morphism~$f \colon X \to Y$ in~$\Acat$, where~$\hat{f} \colon \Iccc_X \to \Iccc_Y$ is an extension of~$f$.
+  This is a {\welldef} functor by parts~\ref*{induced morphism in right derived} and~\ref*{functoriality of morphism between derived functors} of \cref{preparation for right derived functors}.
+  The functor~$\Right^n F$ is up to isomorphism independent of the choice of injective resolutions, again by \cref{preparation for right derived functors}.
+\end{remarkdefinition}
+
+
+\begin{lemma}
+  The functors~$\Right^n F \colon \Acat \to \Bcat$ with~$n \geq 0$ are additive.
+\end{lemma}
+
+
+\begin{proof}
+  Let~$f, g \colon X \to Y$ be two parallel morphisms in~$\Acat$ and let~$\hat{f}, \hat{g} \colon \Iccc_X \to \Iccc_Y$ be lifts of~$f$ and~$g$ to morphisms of chain complexes.
+  Then~$\hat{f} + \hat{g}$ is a lift of the morphism~$f + g$.
+  It follows that
+  \begin{align*}
+        (\Right^n F)(f + g)
+    &=  \Hl^n(F(\hat{f}+\hat{g})) \\
+    &=  \Hl^n(F(\hat{f})) + \Hl^n(F(\hat{g})) \\
+    &=  (\Right^n F)(f) + (\Right^n F)(g) \,,
+  \end{align*}
+  as desired.
+\end{proof}
+
+
+\begin{lemma}
+  It holds that~$\Right^0 F \cong F$.
+\end{lemma}
+
+
+\begin{proof}
+  It follows for every object~$X \in \Ob(\Acat)$ from the exactness of the sequence
+  \[
+    0
+    \to
+    X
+    \to
+    I^0_X
+    \to
+    I^1_X
+    \to
+    I^2_X
+    \to
+    \dotsb
+  \]
+  that the sequence
+  \[
+    0
+    \to
+    F(X)
+    \to
+    F(I^0_X)
+    \to
+    F(I^1_X)
+  \]
+  is again exact, because the functor~$F$ is left exact.
+  This exactness means that the morphism~$F(X) \to F(I^0_X)$ is a kernel of the morphism~$F(I^0_X) \to F(I^1_X)$.
+  The chain complex~$F(\Iccc_X)$ is given by
+  \[
+    \dotsb
+    \to
+    0
+    \to
+    F(I^0_X)
+    \to
+    F(I^1_X)l
+    \to
+    F(I^2_X)
+    \to
+    \dotsb
+  \]
+  The zeroeth cohomology of this cochain complex, which is~$(\Right^0 F)(X)$, is also a kernel of the morphism~$F(I^0_X) \to F(I^1_X)$.
+  It follows that~$F(X) \cong (\Right^0 F)(X)$.
+  More precisely, there exists a unique morphism~$\lambda_X \colon (\Right^0 F)(X) \to F(X)$ that makes the square
+  \[
+    \begin{tikzcd}
+        (\Right^0 F)(X)
+        \arrow{r}[above]{j_X}
+        \arrow{d}[left]{\lambda_X}
+      & F(I^0_X)
+        \arrow[equal]{d}
+      \\
+        F(X)
+        \arrow{r}[below]{F(i^0_X)}
+      & F(I^0_X)
+    \end{tikzcd}
+  \]
+  commute, and the morphism~$\lambda_X$ is an isomorphism.
+  
+  We need to show that this isomorphism is natural in~$X$.
+  For this, we consider for a morphism~$f \colon X \to Y$ in~$\Acat$ and an extension~$\hat{f} \colon \Iccc_X \to \Iccc_Y$ of~$f$ the following cube:
+  \[
+    \begin{tikzcd}[row sep = large, column sep = small]
+        (\Right^0 F)(X)
+        \arrow{rr}[above, near start]{j_X}
+        \arrow{dr}[above right]{(\Right^0 F)(f)}
+        \arrow{dd}[left, near start]{\lambda_X}
+      & {}
+      & F(I^0_X)
+        \arrow{dr}[above right]{F(\hat{f}^0)}
+        \arrow[equal]{dd}
+      & {}
+      \\
+        {}
+      & (\Right^0 F)(Y)
+      & {}
+      & F(I^0_Y)
+        \arrow[from=ll, crossing over, "j_Y", near start]
+        \arrow[equal]{dd}
+      \\
+        F(X)
+        \arrow{rr}[above, near end]{F(i^0_X)}
+        \arrow{dr}[below left]{F(f)}
+      & {}
+      & F(I^0_X)
+        \arrow{dr}[below left]{F(\hat{f}^0)}
+      & {}
+      \\
+        {}
+      & F(Y)
+        \arrow[from=uu, crossing over, "\lambda_Y", swap, near start]
+        \arrow{rr}[below, near end]{F(i^0_Y)}
+      & {}
+      & F(I^0_Y)
+    \end{tikzcd}
+  \]
+  This cube commutes:
+  The front and back squares commute by choice of the isomorphisms~$\lambda_X$ and~$\lambda_Y$.
+  The top square commutes by construction of~$(\Right^0 F)(f)$.
+  The bottom square results by applying the functor~$F$ to the following commutative square:
+  \[
+    \begin{tikzcd}
+        X
+        \arrow{r}[above]{i^0_X}
+        \arrow{d}[left]{f}
+      & I^0_X
+        \arrow{d}[right]{\hat{f}}
+      \\
+        Y
+        \arrow{r}[below]{i^0_Y}
+      & I^0_Y
+    \end{tikzcd}
+  \]
+  The commutativity of the left square follows from the commutativity of the other sides and~$F(i^0_Y)$ being a monomorphism (which holds because it is a kernel):
+  It holds that
+  \begin{align*}
+        F(i^0_Y) \lambda_Y (\Right^0 F)(f)
+    &=  \id_{F(I^0_Y)} j_Y (\Right^0 F)(f)  \\
+    &=  \id_{F(I^0_Y)} F(\hat{f}^0) j_X \\
+    &=  F(\hat{f}^0) \id_{F(I^0_X)} j_X \\
+    &=  F(\hat{f}^0) F(i^0_X) \lambda_X \\
+    &=  F(i^0_Y) F(f) \lambda_X \,,
+  \end{align*}
+  and hence
+  \[
+      \lambda_Y (\Right^0 F)(f)
+    = F(f) \lambda_X  \,.
+  \]
+  This commutativity of the left square
+  \[
+    \begin{tikzcd}[column sep = huge]
+        (\Right^0 F)(X)
+        \arrow{r}[above]{(\Right^0 F)(f)}
+        \arrow{d}[left]{\lambda_X}
+      & (\Right^0 F)(Y)
+        \arrow{d}[right]{\lambda_Y}
+      \\
+        F(X)
+        \arrow{r}[below]{F(f)}
+      & F(Y)
+    \end{tikzcd}
+  \]
+  shows that the family~$\lambda = (\lambda_X)_{X \in \Ob(\Acat)}$ is a natural isomorphism~$\Right^0 F \to F$.
+\end{proof}
+
+
+\begin{goalnonum}
+  We want to show that the family~$(\Right^n F)_{n \geq 0}$ of functors~$\Right^n F \colon \Acat \to \Bcat$ can be made into a universal cohomlogical~{\deltafun}.
+\end{goalnonum}
+
+
+\begin{lemma}
+  Let
+  \[
+    \begin{tikzcd}[column sep = 2em]
+        {}
+      & {}
+      & {}
+      & X'
+        \arrow{rr}[above, near start]{a}
+        \arrow{dl}[above left]{i'}
+        \arrow{dd}[right, near start]{f'}
+      & {}
+      & X
+        \arrow{rr}[above, near start]{b}
+        \arrow{dl}[above left]{i}
+        \arrow{dd}[right, near start]{f}
+      & {}
+      & X''
+        \arrow{rr}
+        \arrow{dl}[above left]{i''}
+        \arrow{dd}[right, near start]{f''}
+      & {}
+      & 0
+      \\
+        0
+        \arrow{rr}
+      & {}
+      & I'
+        \arrow{dd}[right, near start]{g'}
+      & {}
+      & I
+        \arrow[from=ll, crossing over, "\alpha", near end]
+      & {}
+      & I''
+        \arrow[from=ll, crossing over, "\beta", near end]
+      & {}
+      & 0
+        \arrow[from=ll, crossing over]
+      & {}
+      \\
+        {}
+      & {}
+      & {}
+      & Y'
+        \arrow{rr}[above, near start]{c}
+        \arrow{dl}[below right]{j'}
+      & {}
+      & Y
+        \arrow{rr}[above, near start]{d}
+        \arrow{dl}[below right]{j}
+      & {}
+      & Y''
+        \arrow{dl}[below right]{j''}
+      & {}
+      & {}
+      \\
+        0
+        \arrow{rr}
+      & {}
+      & J'
+        \arrow{rr}[above, near end]{\gamma}
+      & {}
+      & J
+        \arrow{rr}[above, near end]{\delta}
+      & {}
+      & J''
+        \arrow[from=uu, crossing over, "g''", near start]
+        \arrow{rr}
+      & {}
+      & 0
+      & {}
+    \end{tikzcd}
+  \]
+  be a commutative diagram in~$\Acat$ with exact rows, such that the objects~$I'$ and~$J'$ are injective, and the diagonal morphism~$i''$ is a monomorphism.%
+  \footnote{One should think about the diagonal morphisms in the diagram as starting points of injective resolutions.}
+  Then there exists a morphism~$g'' \colon I \to J$ that makes the resulting diagram commute.
+\end{lemma}
+
+
+\begin{proof}
+  The frontal short exact sequences
+  \[
+    0 
+    \to
+    I'
+    \to
+    I
+    \to
+    I''
+    \to
+    0
+    \qquad\text{and}\qquad
+    0
+    \to
+    J'
+    \to
+    J
+    \to
+    J''
+    \to
+    0
+  \]
+  split because the objects~$I'$ and~$J'$ are injective.
+  We may therefore assume that the given diagram is of the form
+  \[
+    \begin{tikzcd}[column sep = 1.8em]
+        {}
+      & {}
+      & {}
+      & X'
+        \arrow{rr}[above, near start]{a}
+        \arrow{dl}[above left]{i'}
+        \arrow{dd}[right, near start]{f'}
+      & {}
+      & X
+        \arrow{rr}[above, near start]{b}
+        \arrow{dl}[above left]{i}
+        \arrow{dd}[right, near start]{f}
+      & {}
+      & X''
+        \arrow{rr}
+        \arrow{dl}[above left]{i''}
+        \arrow{dd}[right, near start]{f''}
+      & {}
+      & 0
+      \\
+        0
+        \arrow{rr}
+      & {}
+      & I'
+        \arrow{dd}[right, near start]{g'}
+      & {}
+      & I' \oplus I''
+        \arrow[from=ll, crossing over, "\alpha", near end]
+      & {}
+      & I''
+        \arrow[from=ll, crossing over, "\beta", near end]
+      & {}
+      & 0
+        \arrow[from=ll, crossing over]
+      & {}
+      \\
+        {}
+      & {}
+      & {}
+      & Y'
+        \arrow{rr}[above, near start]{c}
+        \arrow{dl}[below right]{j'}
+      & {}
+      & Y
+        \arrow{rr}[above, near start]{d}
+        \arrow{dl}[below right]{j}
+      & {}
+      & Y''
+        \arrow{dl}[below right]{j''}
+      & {}
+      & {}
+      \\
+        0
+        \arrow{rr}
+      & {}
+      & J'
+        \arrow{rr}[above, near end]{\gamma}
+      & {}
+      & J' \oplus J''
+        \arrow{rr}[above, near end]{\delta}
+      & {}
+      & J''
+        \arrow[from=uu, crossing over, "g''", near start]
+        \arrow{rr}
+      & {}
+      & 0
+      & {}
+    \end{tikzcd}
+  \]
+  with
+  \[
+    \alpha
+    =
+    \begin{bmatrix}
+      1 \\
+      0
+    \end{bmatrix} \,,
+    \qquad
+    \beta
+    =
+    \begin{bmatrix}
+      0 & 1
+    \end{bmatrix} \,,
+    \qquad
+    \gamma
+    =
+    \begin{bmatrix}
+      1 \\
+      0
+    \end{bmatrix} \,,
+    \qquad
+    \delta
+    =
+    \begin{bmatrix}
+      0 & 1
+    \end{bmatrix} \,.
+  \]
+  We will define the desired morphism~$g \colon I' \oplus I'' \to J' \oplus J''$ as
+  \[
+    g
+    =
+    \begin{bmatrix}
+      g'  & \varepsilon \\
+          & g''
+    \end{bmatrix}
+  \]
+  for a suitable morphism~$\varepsilon \colon I'' \to J'$.
+  To contruct~$\varepsilon$, we start by defining a morphism~$ X \to J'$, that we then extend to a morphism~$X'' \to J'$, and then further extend to the desired morphism~$I'' \to J'$.
+  
+  Let~$\alpha' \colon I' \oplus I'' \to I'$ and~$\gamma' \colon J' \oplus J'' \to J'$ be the splits of~$\alpha$ and~$\gamma$ given by given by
+  \[
+    \alpha'
+    \defined
+    \begin{bmatrix}
+      1 & 0
+    \end{bmatrix}
+    \quad
+    \text{and}\quad
+    \gamma'
+    \defined
+    \begin{bmatrix}
+      1 & 0
+    \end{bmatrix}
+  \]
+  We start off with the morphism~$\varepsilon'' \colon X \to J'$ given by
+  \[
+    \varepsilon''
+    \defined
+    \gamma' j f - g' \alpha' i \,.
+  \]
+  Then
+  \begin{align*}
+    \varepsilon'' a
+    =
+    (\gamma' j f - g' \alpha' i) a
+    =
+    \gamma' j f a - g' \alpha i a
+    &=
+    \gamma' j c f' - g' \alpha i a  \\
+    &=
+    \gamma' \gamma j' f' - g' \alpha' \alpha i'
+    =
+    j' f' - g' i'
+    =
+    0 \,.
+  \end{align*}
+  It follows that the morphism~$\varepsilon''$ factors through the morphism~$b$, because~$b$ is a cokernel of~$a$ by the exactness of the sequence
+  \[
+    X'
+    \xlongto{a}
+    X
+    \xlongto{b}
+    X''
+    \to
+    0 \,.
+  \]
+  There hence exists a (unique) morphism~$\varepsilon' \colon X'' \to  J'$ that makes the triangle
+  \[
+    \begin{tikzcd}
+        X
+        \arrow{r}[above]{b}
+        \arrow{d}[left]{\varepsilon''}
+      & X''
+        \arrow[dashed]{dl}[below right]{\varepsilon'}
+      \\
+        J'
+      & {}
+    \end{tikzcd}
+  \]
+  commute.
+  It follows from the injectivity of the object~$J'$ and~$i''$ being a monomorphism that the morphism~$\varepsilon'$ further extends to a morphism~$I'' \to J'$, i.e.\ that there exists a morphism~$\varepsilon \colon I'' \to J'$ that makes the following triangle commute:
+  \[
+    \begin{tikzcd}
+        X''
+        \arrow{r}[above]{i''}
+        \arrow{d}[left]{\varepsilon'}
+      & I''
+        \arrow[dashed]{dl}[below right]{\varepsilon''}
+      \\
+        J'
+      & {}
+    \end{tikzcd}
+  \]
+  
+  We now find for the morphism
+  \[
+    g
+    \defined
+    \begin{bmatrix}
+      g'  & \varepsilon \\
+          & g''
+    \end{bmatrix}
+    \colon
+    I' \oplus I''
+    \to
+    J' \oplus J''
+  \]
+  that the diagram
+  \[
+    \begin{tikzcd}[column sep = 1.8em]
+        {}
+      & {}
+      & {}
+      & X'
+        \arrow{rr}[above, near start]{a}
+        \arrow{dl}[above left]{i'}
+        \arrow{dd}[right, near start]{f'}
+      & {}
+      & X
+        \arrow{rr}[above, near start]{b}
+        \arrow{dl}[above left]{i}
+        \arrow{dd}[right, near start]{f}
+      & {}
+      & X''
+        \arrow{rr}
+        \arrow{dl}[above left]{i''}
+        \arrow{dd}[right, near start]{f''}
+      & {}
+      & 0
+      \\
+        0
+        \arrow{rr}
+      & {}
+      & I'
+        \arrow{dd}[right, near start]{g'}
+      & {}
+      & I' \oplus I''
+        \arrow[from=ll, crossing over, "\alpha", near end]
+      & {}
+      & I''
+        \arrow[from=ll, crossing over, "\beta", near end]
+      & {}
+      & 0
+        \arrow[from=ll, crossing over]
+      & {}
+      \\
+        {}
+      & {}
+      & {}
+      & Y'
+        \arrow{rr}[above, near start]{c}
+        \arrow{dl}[below right]{j'}
+      & {}
+      & Y
+        \arrow{rr}[above, near start]{d}
+        \arrow{dl}[below right]{j}
+      & {}
+      & Y''
+        \arrow{dl}[below right]{j''}
+      & {}
+      & {}
+      \\
+        0
+        \arrow{rr}
+      & {}
+      & J'
+        \arrow{rr}[above, near end]{\gamma}
+      & {}
+      & J' \oplus J''
+        \arrow[dashed, from=uu, crossing over, "g", near start]
+        \arrow{rr}[above, near end]{\delta}
+      & {}
+      & J''
+        \arrow[from=uu, crossing over, "g''", near start]
+        \arrow{rr}
+      & {}
+      & 0
+      & {}
+    \end{tikzcd}
+  \]
+  commutes.
+  Indeed, it holds that
+  \begin{gather*}
+    g \alpha
+    =
+    \begin{bmatrix}
+      g'  & \varepsilon \\
+          & g''
+    \end{bmatrix}
+    \begin{bmatrix}
+      1 \\
+      0
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      g'  \\
+      0
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      1 \\
+      0
+    \end{bmatrix}
+    g'
+    =
+    \gamma g'
+  \shortintertext{and}
+    \delta g
+    =
+    \begin{bmatrix}
+      0 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+      g'  & \varepsilon \\
+          & g''
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      0 \\
+      g''
+    \end{bmatrix}
+    =
+    g''
+    \begin{bmatrix}
+      0 \\
+      1
+    \end{bmatrix}
+    =
+    g'' \beta \,,
+  \end{gather*}
+  which shows the commutativity of the frontal two squares.
+  (Note that this commutativity only needs that~$g$ has an upper triangular form with diagonal entries~$g'$ and~$g''$.)
+  To check that~$gi = jf$ we use the universal property of the product~$(J' \oplus J'', \gamma', \delta)$, and show that~$\delta gi = \delta jf$ and~$\gamma' gi = \gamma' jf$.
+  We have that
+  \[
+    \delta g i
+    =
+    g'' \beta i
+    =
+    g'' i'' b
+    =
+    j'' f'' b
+    =
+    j'' {d} {f}
+    =
+    \delta j f \,r
+  \]
+  which shows the first equality.
+  We also have that
+  \[
+    \gamma' g
+    =
+    \begin{bmatrix}
+      1 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+      g'  & \varepsilon \\
+          & g''
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      g'  & \varepsilon
+    \end{bmatrix}
+    =
+    g' \alpha' + \varepsilon \beta \,,
+  \]
+  and therefore
+  \begin{align*}
+    \gamma' g i
+    =
+    (g' \alpha' + \varepsilon \beta) i
+    &=
+    g' \alpha' i + \varepsilon \beta i
+    =
+    g' \alpha' i + \varepsilon i'' b  \\
+    &=
+    g' \alpha' i + \varepsilon' b
+    =
+    g' \alpha' i + \varepsilon''
+    =
+    g' \alpha' i + \gamma' j f - g' \alpha' i
+    =
+    \gamma' j f \,.
+  \end{align*}
+  This shows the second equality.
+\end{proof}
+
+
+\begin{corollary*}
+  \label{extension into commutative diagram}
+  Let
+  \[
+    \begin{tikzcd}
+        0
+        \arrow{r}
+      & \bp X
+        \arrow{r}
+        \arrow{d}
+      & X
+        \arrow{r}
+        \arrow{d}
+      & \bpp X
+        \arrow{r}
+        \arrow{d}
+      & 0
+      \\
+        0
+        \arrow{r}
+      & \bp Y
+        \arrow{r}
+      & Y
+        \arrow{r}
+      & \bpp Y
+        \arrow{r}
+      & 0
+    \end{tikzcd}
+  \]
+  be a commutative diagram in~$\Acat$ with (short) exact rows.
+  Let
+  \[
+    \begin{tikzcd}[sep = small]
+        {}
+      & 0
+        \arrow{rr}
+      & {}
+      & \bp X
+        \arrow{rr}
+        \arrow{dl}
+        \arrow{dd}
+      & {}
+      & X
+        \arrow{rr}
+        \arrow{dl}
+        \arrow{dd}
+      & {}
+      & \bpp X
+        \arrow{rr}
+        \arrow{dl}
+        \arrow{dd}
+      & {}
+      & 0
+      \\
+        0
+        \arrow{rr}
+      & {}
+      & \bp \Iccc
+      & {}
+      & \Iccc
+        \arrow[from=ll, crossing over]
+      & {}
+      & \bpp \Iccc
+        \arrow[from=ll, crossing over]
+      & {}
+      & 0
+        \arrow[from=ll, crossing over]
+      & {}
+      \\
+        {}
+      & 0
+        \arrow{rr}
+      & {}
+      & \bp Y
+        \arrow{rr}
+        \arrow{dl}
+      & {}
+      & Y
+        \arrow{rr}
+        \arrow{dl}
+      & {}
+      & \bpp Y
+        \arrow{rr}
+        \arrow{dl}
+      & {}
+      & 0
+      \\
+        0
+        \arrow{rr}
+      & {}
+      & \bp \Jccc
+        \arrow[from=uu, crossing over, "\bp f", swap, near start]
+        \arrow{rr}
+      & {}
+      & \Jccc
+        \arrow{rr}
+      & {}
+      & \bpp \Jccc
+        \arrow[from=uu, crossing over, "\bpp f", swap, near start]
+        \arrow{rr}
+      & {}
+      & 0
+      & {}
+    \end{tikzcd}
+  \]
+  be a resulting commutative diagram of injective resolutions with short exact rows.
+  Then there exists a morphism of chain complexes~$f \colon \Iccc \to \Jccc$ that makes the resulting diagram commute.
+\end{corollary*}
+
+
+\begin{proof}
+  We construct the required morphisms~$f^n \colon I^n \to J^n$ inductively.
+  For~$n = 0$ we apply the previous lemma to the commutative diagram
+  \[
+    \begin{tikzcd}[sep = small]
+        {}
+      & 0
+        \arrow{rr}
+      & {}
+      & \bp X
+        \arrow{rr}
+        \arrow{dl}
+        \arrow{dd}
+      & {}
+      & X
+        \arrow{rr}
+        \arrow{dl}
+        \arrow{dd}
+      & {}
+      & \bpp X
+        \arrow{rr}
+        \arrow{dl}
+        \arrow{dd}
+      & {}
+      & 0
+      \\
+        0
+        \arrow{rr}
+      & {}
+      & \bp I^0
+      & {}
+      & I^0
+        \arrow[from=ll, crossing over]
+      & {}
+      & \bpp I^0
+        \arrow[from=ll, crossing over]
+      & {}
+      & 0
+        \arrow[from=ll, crossing over]
+      & {}
+      \\
+        {}
+      & 0
+        \arrow{rr}
+      & {}
+      & \bp Y
+        \arrow{rr}
+        \arrow{dl}
+      & {}
+      & Y
+        \arrow{rr}
+        \arrow{dl}
+      & {}
+      & \bpp Y
+        \arrow{rr}
+        \arrow{dl}
+      & {}
+      & 0
+      \\
+        0
+        \arrow{rr}
+      & {}
+      & \bp J^0
+        \arrow[from=uu, crossing over, "\bp f^0", swap, near start]
+        \arrow{rr}
+      & {}
+      & J^0
+        \arrow{rr}
+      & {}
+      & \bpp J^0
+        \arrow[from=uu, crossing over, "\bpp f^0", swap, near start]
+        \arrow{rr}
+      & {}
+      & 0
+      & {}
+    \end{tikzcd}
+  \]
+  to get the desired morphism~$f^0 \colon I^0 \to J^0$.
+  To construct the morphism~$f^1 \colon I^1 \to J^0$ we use that the commutative diagram
+  \[
+    \begin{tikzcd}[column sep = small]
+        {}
+      & 0
+        \arrow{rr}
+      & {}
+      & \bp X
+        \arrow{rr}
+        \arrow{dl}[above left]{\bp i^0}
+        \arrow{dd}
+      & {}
+      & X
+        \arrow{rr}
+        \arrow{dl}[above left]{i^0}
+        \arrow{dd}
+      & {}
+      & \bpp X
+        \arrow{rr}
+        \arrow{dl}[above left]{\bpp i^0}
+        \arrow{dd}
+      & {}
+      & 0
+      \\
+        0
+        \arrow{rr}
+      & {}
+      & \bp I^0
+      & {}
+      & I^0
+        \arrow[from=ll, crossing over]
+      & {}
+      & \bpp I^0
+        \arrow[from=ll, crossing over]
+      & {}
+      & 0
+        \arrow[from=ll, crossing over]
+      & {}
+      \\
+        {}
+      & 0
+        \arrow{rr}
+      & {}
+      & \bp Y
+        \arrow{rr}
+        \arrow{dl}[below right]{\bp j^0}
+      & {}
+      & Y
+        \arrow{rr}
+        \arrow{dl}[below right]{j^0}
+      & {}
+      & \bpp Y
+        \arrow{rr}
+        \arrow{dl}[below right]{\bpp j^0}
+      & {}
+      & 0
+      \\
+        0
+        \arrow{rr}
+      & {}
+      & \bp J^0
+        \arrow[from=uu, crossing over, "\bp f^0", swap, near start]
+        \arrow{rr}
+      & {}
+      & J^0
+        \arrow[from=uu, crossing over, "f^0", swap, near start]
+        \arrow{rr}
+      & {}
+      & \bpp J^0
+        \arrow[from=uu, crossing over, "\bpp f^0", swap, near start]
+        \arrow{rr}
+      & {}
+      & 0
+      & {}
+    \end{tikzcd}
+  \]
+  induces the following commuative diagram:
+  \[
+    \begin{tikzcd}
+        \coker(\bp i^0)
+        \arrow{r}
+        \arrow{d}
+      & \coker(i^0)
+        \arrow{r}
+        \arrow{d}
+      & \coker(\bpp i^0)
+        \arrow{d}
+      \\
+        \coker(\bp j^0)
+        \arrow{r}
+      & \coker(j^0)
+        \arrow{r}
+      & \coker(\bpp j^0)
+    \end{tikzcd}
+  \]
+  We also find from the \hyperref[snake lemma]{snake lemma} that the two sequences
+  \begin{gather*}
+    \coker(\bp i^0)
+    \to
+    \coker(i^0)
+    \to
+    \coker(\bpp i^0)
+    \to
+    0
+  \shortintertext{and}
+    \coker(\bp j^0)
+    \to
+    \coker(j^0)
+    \to
+    \coker(\bpp j^0)
+    \to
+    0
+  \end{gather*}
+  are (right) exact.
+  We hence get the following commutative diagram with (right) exact rows:
+  \[
+    \begin{tikzcd}
+        \coker(\bp i^0)
+        \arrow{r}
+        \arrow{d}
+      & \coker(i^0)
+        \arrow{r}
+        \arrow{d}
+      & \coker(\bpp i^0)
+        \arrow{r}
+        \arrow{d}
+      & 0
+      \\
+        \coker(\bp j^0)
+        \arrow{r}
+      & \coker(j^0)
+        \arrow{r}
+      & \coker(\bpp j^0)
+        \arrow{r}
+      & 0
+    \end{tikzcd}
+  \]
+  The commutative diagram
+  \[
+    \begin{tikzcd}[row sep = small, column sep = 0.8em]
+        {}
+      & 0
+        \arrow{rr}
+      & {}
+      & \bp I^0
+        \arrow{rr}
+        \arrow{dl}
+        \arrow{dd}
+      & {}
+      & I^0
+        \arrow{rr}
+        \arrow{dl}
+        \arrow{dd}
+      & {}
+      & \bpp I^0
+        \arrow{rr}
+        \arrow{dl}
+        \arrow{dd}
+      & {}
+      & 0
+      \\
+        0
+        \arrow{rr}
+      & {}
+      & \bp I^1
+        \arrow[from=ll, crossing over]
+        \arrow{dd}
+      & {}
+      & I^1
+        \arrow[from=ll, crossing over]
+      & {}
+      & \bpp I^1
+        \arrow[from=ll, crossing over]
+      & {}
+      & 0
+        \arrow[from=ll, crossing over]
+      & {}
+      \\
+        {}
+      & 0
+        \arrow{rr}
+      & {}
+      & \bp J^0
+        \arrow{rr}
+        \arrow{dl}
+      & {}
+      & J^0
+        \arrow{rr}
+        \arrow{dl}
+      & {}
+      & \bpp J^0
+        \arrow{rr}
+        \arrow{dl}
+      & {}
+      & 0
+      \\
+        0
+        \arrow{rr}
+      & {}
+      & \bp J^1
+        \arrow[from=uu, crossing over]
+        \arrow[from=ll, crossing over]
+      & {}
+      & J^1
+        \arrow[from=ll, crossing over]
+      & {}
+      & \bpp J^1
+        \arrow[from=uu, crossing over]
+        \arrow[from=ll, crossing over]
+      & {}
+      & 0
+        \arrow[from=ll, crossing over]
+      & {}
+    \end{tikzcd}
+  \]
+  factors through the following commutative diagram:
+  \[
+    \begin{tikzcd}[row sep = small, column sep = 0.8em]
+        {}
+      & {}
+      & {}
+      & \coker(\bp i^0)
+        \arrow{rr}
+        \arrow{dl}
+        \arrow{dd}
+      & {}
+      & \coker(i^0)
+        \arrow{rr}
+        \arrow{dl}
+        \arrow{dd}
+      & {}
+      & \coker(\bpp i^0)
+        \arrow{rr}
+        \arrow{dl}
+        \arrow{dd}
+      & {}
+      & 0
+      \\
+        0
+        \arrow{rr}
+      & {}
+      & \bp I^1
+        \arrow{dd}
+      & {}
+      & I^1
+        \arrow[from=ll, crossing over]
+      & {}
+      & \bpp I^1
+        \arrow[from=ll, crossing over]
+      & {}
+      & 0
+        \arrow[from=ll, crossing over]
+      & {}
+      \\
+        {}
+      & {}
+      & {}
+      & \coker(\bp j^0)
+        \arrow{rr}
+        \arrow{dl}
+      & {}
+      & \coker(j^0)
+        \arrow{rr}
+        \arrow{dl}
+      & {}
+      & \coker(\bpp j^0)
+        \arrow{rr}
+        \arrow{dl}
+      & {}
+      & 0
+      \\
+        0
+        \arrow{rr}
+      & {}
+      & \bp J^1
+        \arrow[from=ll, crossing over]
+      & {}
+      & J^1
+        \arrow[from=ll, crossing over]
+      & {}
+      & \bpp J^1
+        \arrow[from=uu, crossing over]
+        \arrow[from=ll, crossing over]
+      & {}
+      & 0
+        \arrow[from=ll, crossing over]
+      & {}
+    \end{tikzcd}
+  \]
+  We can now apply the previous lemma to get the desired morphism~$f^1 \colon I^1 \to J^1$.
+  To construct the morphisms~$f^n$ with~$n \geq 2$ we can proceed inductively in the same way.
+\end{proof}
+
+
+\begin{theorem}
+  There exist morphisms
+  \[
+    \delta^n_\xi
+    \colon
+    (\Right^n F)(X'')
+    \to
+    (\Right^{n+1} F)(X') \,,
+  \]
+  where~$n \geq 0$ and where
+  \[
+    \xi
+    \colon
+    0
+    \to
+    X'
+    \to
+    X
+    \to
+    X''
+    \to
+    0
+  \]
+  is any short exact sequence in~$\Acat$, that make~$\Rightdelta F \defined ( (\Right^n F)_{n \geq 0}, (\delta^n_\xi)_{n \geq 0, \xi} )$ into a cohomological~{\deltafun}.
+\end{theorem}
+
+
+\begin{proof}
+  Let
+  \[
+    \xi
+    \colon
+    0
+    \to
+    X'
+    \xlongto{g}
+    X
+    \xlongto{h}
+    X''
+    \to
+    0
+  \]
+  be a short exact sequence in~$\Acat$.
+  We get by the \hyperref[horseshoe lemma]{horseshoe lemma} an injective resolution~$(\Iccc, i^0)$ of~$X$ such that the short exact sequence~$\xi$ lifts to a short exact sequence of chain complexes
+  \[
+    0
+    \to
+    \Iccc_{X'}
+    \to
+    \Iccc
+    \to
+    \Iccc_{X''}
+    \to
+    0 \,,
+  \]
+  such that the following diagram commutes:
+  \[
+    \begin{tikzcd}
+        0
+        \arrow{r}
+      & X''
+        \arrow{r}
+        \arrow{d}
+      & X
+        \arrow{r}
+        \arrow{d}
+      & X'
+        \arrow{r}
+        \arrow{d}
+      & 0
+      \\
+        0
+        \arrow{r}
+      & \Iccc_{X'}
+        \arrow{r}
+      & \Iccc
+        \arrow{r}
+      & \Iccc_{X''}
+        \arrow{r}
+      & 0
+    \end{tikzcd}
+  \]
+  The injective resolution~$(\Iccc, i^0)$ can moreover be choosen such that the short sequence~$0 \to \Iccc_{X'} \to \Iccc \to \Iccc_{X''} \to 0$ is split in each degree, i.e.\ such that the sequence~$0 \to I_{X'}^n \to I^n \to I_{X''}^n \to 0$ splits for every~$n \geq 0$ (again by the \hyperref[horseshoe lemma]{horseshoe lemma}).
+  It follows with the additivity of~$F$ that for every~$n \geq 0$ the resulting sequence
+  \[
+    0
+    \to
+    F(I_{X'}^n)
+    \to
+    F(I^n)
+    \to
+    F(I_{X''}^n)
+    \to
+    0
+  \]
+  is again exact (as explained in \cref{split preserved under additive}).
+  This shows that the sequence
+  \[
+    0
+    \to
+    F(\Iccc_{X'})
+    \to
+    F(\Iccc)
+    \to
+    F(\Iccc_{X''})
+    \to
+    0
+  \]
+  is again (short) exact.
+  We can therefore consider the resulting long exact cohomology sequence
+  \[
+    \dotsb
+    \to
+    \Hl^n(F(\Iccc_{X'}))
+    \to
+    \Hl^n(F(\Iccc))
+    \to
+    \Hl^n(F(\Iccc_{X''}))
+    \xlongto{ \delta^n_\xi }
+    \Hl^{n+1}(F(\Iccc_{X''}))
+    \to
+    \dotsb
+  \]
+  It follows from \cref{preparation for right derived functors} that we get the following commutative diagram, in which the vertical arrows are isomorphisms:
+  \[
+    \begin{tikzcd}[column sep = small, row sep = large]
+        \dotsb
+        \arrow{r}
+      & \Hl^n(F(\Iccc_{X'}))
+        \arrow{r}
+        \arrow[equal]{d}
+      & \Hl^n(F(\Iccc))
+        \arrow{rr}
+        \arrow{d}[right]{\Right^n_{(\Iccc, i^0),(\Iccc_X, i_X^0)}(\id_X)}
+      & {}
+      & \Hl^n(F(\Iccc_{X''}))
+        \arrow{r}[above]{\delta^n_\xi}
+        \arrow[equal]{d}
+      & \Hl^{n+1}(F(\Iccc_{X'}))
+        \arrow{r}
+        \arrow[equal]{d}
+      & \dotsb
+      \\
+        \dotsb
+        \arrow{r}
+      & (\Right^n F)(X')
+        \arrow{r}
+      & (\Right^n F)(X)
+        \arrow{rr}
+      & {}
+      & (\Right^n F)(X'')
+        \arrow{r}[above]{\delta^n_\xi}
+      & (\Right^{n+1} F)(X')
+        \arrow{r}
+      & \dotsb
+    \end{tikzcd}
+  \]
+  The lower row of this diagram is therefore a long exact sequence:
+  \[
+    \dotsb
+    \to
+    (\Right^n F)(X')
+    \to
+    (\Right^n F)(X)
+    \to
+    (\Right^n F)(X'')
+    \xlongto{ \delta^n_\xi }
+    (\Right^{n+1} F)(X')
+    \to
+    \dotsb
+  \]
+  
+  We need to show that this induced long exact sequence in natural in~$\xi$:
+  We hence consider a commutative diagram
+  \[
+    \begin{tikzcd}
+        0
+        \arrow{r}
+      & X'
+        \arrow{r}
+        \arrow{d}
+      & X
+        \arrow{r}
+        \arrow{d}
+      & X''
+        \arrow{r}
+        \arrow{d}
+      & 0
+      \\
+        0
+        \arrow{r}
+      & Y'
+        \arrow{r}
+      & Y
+        \arrow{r}
+      & Y''
+        \arrow{r}
+      & 0
+    \end{tikzcd}
+  \]
+  in~$\Acat$ with (short) exact rows.
+  We get by the \hyperref[horseshoe lemma]{horseshoe lemma} injective resolutions~$(\Iccc, i^0)$ and~$(\Jccc, j^0)$ of~$X$ and~$Y$, and short exact sequences
+  \[
+    0
+    \to
+    \Iccc_{X'}
+    \to
+    \Iccc
+    \to
+    \Iccc_{X''}
+    \to
+    0
+    \qquad\text{and}\qquad
+    0
+    \to
+    \Jccc_{X'}
+    \to
+    \Jccc
+    \to
+    \Jccc_{X''}
+    \to
+    0 \,,
+  \]
+  that fit into the following commutative diagram:
+  \[
+    \begin{tikzcd}[sep = small]
+        {}
+      & 0
+        \arrow{rr}
+      & {}
+      & X'
+        \arrow{rr}
+        \arrow{dl}
+        \arrow{dd}
+      & {}
+      & X
+        \arrow{rr}
+        \arrow{dl}
+        \arrow{dd}
+      & {}
+      & X''
+        \arrow{rr}
+        \arrow{dl}
+        \arrow{dd}
+      & {}
+      & 0
+      \\
+        0
+        \arrow{rr}
+      & {}
+      & \Iccc_{X'}
+      & {}
+      & \Iccc
+        \arrow[from=ll, crossing over]
+      & {}
+      & \Iccc_{X''}
+        \arrow[from=ll, crossing over]
+      & {}
+      & 0
+        \arrow[from=ll, crossing over]
+      & {}
+      \\
+        {}
+      & 0
+        \arrow{rr}
+      & {}
+      & Y'
+        \arrow{rr}
+        \arrow{dl}
+      & {}
+      & Y
+        \arrow{rr}
+        \arrow{dl}
+      & {}
+      & Y''
+        \arrow{rr}
+        \arrow{dl}
+      & {}
+      & 0
+      \\
+        0
+        \arrow{rr}
+      & {}
+      & \Jccc_{X'}
+        \arrow{rr}
+      & {}
+      & \Jccc
+        \arrow{rr}
+      & {}
+      & \Jccc_{X''}
+        \arrow{rr}
+      & {}
+      & 0
+      & {}
+    \end{tikzcd}
+  \]
+  It follows from the \hyperref[comparison theorem]{comparison theorem} that there exists morphisms of chain complexes~$\Iccc_{X'} \to \Jccc_{X'}$ and~$\Iccc_{X''} \to \Jccc_{X''}$ that make the resulting diagram
+  \[
+    \begin{tikzcd}[sep = small]
+        {}
+      & 0
+        \arrow{rr}
+      & {}
+      & X'
+        \arrow{rr}
+        \arrow{dl}
+        \arrow{dd}
+      & {}
+      & X
+        \arrow{rr}
+        \arrow{dl}
+        \arrow{dd}
+      & {}
+      & X''
+        \arrow{rr}
+        \arrow{dl}
+        \arrow{dd}
+      & {}
+      & 0
+      \\
+        0
+        \arrow{rr}
+      & {}
+      & \Iccc_{X'}
+      & {}
+      & \Iccc
+        \arrow[from=ll, crossing over]
+      & {}
+      & \Iccc_{X''}
+        \arrow[from=ll, crossing over]
+      & {}
+      & 0
+        \arrow[from=ll, crossing over]
+      & {}
+      \\
+        {}
+      & 0
+        \arrow{rr}
+      & {}
+      & Y'
+        \arrow{rr}
+        \arrow{dl}
+      & {}
+      & Y
+        \arrow{rr}
+        \arrow{dl}
+      & {}
+      & Y''
+        \arrow{rr}
+        \arrow{dl}
+      & {}
+      & 0
+      \\
+        0
+        \arrow{rr}
+      & {}
+      & \Jccc_{X'}
+        \arrow[dashed, from=uu, crossing over, "\bp f", near start, swap]
+        \arrow{rr}
+      & {}
+      & \Jccc
+        \arrow{rr}
+      & {}
+      & \Jccc_{X''}
+        \arrow[dashed, from=uu, crossing over, "\bpp f", near start, swap]
+        \arrow{rr}
+      & {}
+      & 0
+      & {}
+    \end{tikzcd}
+  \]
+  commute.
+  It follows from \cref{extension into commutative diagram} that there exists a morphism of chain complexes~$\Iccc \to \Jccc$ that makes the diagram
+  \[
+    \begin{tikzcd}[sep = small]
+        {}
+      & 0
+        \arrow{rr}
+      & {}
+      & X'
+        \arrow{rr}
+        \arrow{dl}
+        \arrow{dd}
+      & {}
+      & X
+        \arrow{rr}
+        \arrow{dl}
+        \arrow{dd}
+      & {}
+      & X''
+        \arrow{rr}
+        \arrow{dl}
+        \arrow{dd}
+      & {}
+      & 0
+      \\
+        0
+        \arrow{rr}
+      & {}
+      & \Iccc_{X'}
+      & {}
+      & \Iccc
+        \arrow[from=ll, crossing over]
+      & {}
+      & \Iccc_{X''}
+        \arrow[from=ll, crossing over]
+      & {}
+      & 0
+        \arrow[from=ll, crossing over]
+      & {}
+      \\
+        {}
+      & 0
+        \arrow{rr}
+      & {}
+      & Y'
+        \arrow{rr}
+        \arrow{dl}
+      & {}
+      & Y
+        \arrow{rr}
+        \arrow{dl}
+      & {}
+      & Y''
+        \arrow{rr}
+        \arrow{dl}
+      & {}
+      & 0
+      \\
+        0
+        \arrow{rr}
+      & {}
+      & \Jccc_{X'}
+        \arrow[from=uu, crossing over, "\bp f", near start, swap]
+        \arrow{rr}
+      & {}
+      & \Jccc
+        \arrow[dashed, from=uu, crossing over, "f", near start, swap]
+        \arrow{rr}
+      & {}
+      & \Jccc_{X''}
+        \arrow[from=uu, crossing over, "\bpp f", near start, swap]
+        \arrow{rr}
+      & {}
+      & 0
+      & {}
+    \end{tikzcd}
+  \]
+  commute.
+  We get in cohomology the following diagram with long exact rows:
+  \[
+    \begin{tikzcd}[column sep = -0.67em, row sep = small]
+        {}
+      & \dotsb
+        \arrow{rr}
+      & {}
+      & \Hl^n(F(\Iccc_{X'}))
+        \arrow{rr}
+        \arrow[equal]{dl}
+        \arrow{dd}
+      & {}
+      & \Hl^n(F(\Iccc))
+        \arrow{rr}
+        \arrow{dl}
+        \arrow{dd}
+      & {}
+      & \Hl^n(F(\Iccc_{X''}))
+        \arrow{rr}
+        \arrow[equal]{dl}
+        \arrow{dd}
+      & {}
+      & \dotsb
+      \\
+        \dotsb
+        \arrow{rr}
+      & {}
+      & (\Right^n F)(X')
+      & {}
+      & (\Right^n F)(X)
+        \arrow[from=ll, crossing over]
+      & {}
+      & (\Right^n F)(X'')
+        \arrow[from=ll, crossing over]
+      & {}
+      & \dotsb
+        \arrow[from=ll, crossing over]
+      & {}
+      \\
+        {}
+      & \dotsb
+        \arrow{rr}
+      & {}
+      & \Hl^n(F(\Iccc_{Y'}))
+        \arrow{rr}
+        \arrow[equal]{dl}
+      & {}
+      & \Hl^n(F(\Jccc))
+        \arrow{rr}
+        \arrow{dl}
+      & {}
+      & \Hl^n(F(\Iccc_{Y''}))
+        \arrow{rr}
+        \arrow[equal]{dl}
+      & {}
+      & \dotsb
+      \\
+        \dotsb
+        \arrow{rr}
+      & {}
+      & (\Right^n F)(Y')
+        \arrow[from=uu, crossing over]
+        \arrow{rr}
+      & {}
+      & (\Right^n F)(Y)
+        \arrow[from=uu, crossing over]
+        \arrow{rr}
+      & {}
+      & (\Right^n F)(Y'')
+        \arrow[from=uu, crossing over]
+        \arrow{rr}
+      & {}
+      & \dotsb
+      & {}
+    \end{tikzcd}
+  \]
+  We have seen above that the top and bottom squares commute in this diagram, and the back squares commute by the naturality of the long exact cohomology sequence.
+  The commutativity of the front squares folllows because the diagonal morphisms are isomorphisms.
+\end{proof}
+
+
+
+
+
+\lecturend{21}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

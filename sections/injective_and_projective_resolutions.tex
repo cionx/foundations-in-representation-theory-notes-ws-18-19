@@ -411,6 +411,130 @@
 \end{remark*}
 
 
+\begin{remark*}
+  \label{split preserved under additive}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Additive functors respect split short exact sequences:
+      Suppose that~$F \colon \Acat \to \Bcat$ is an an additive functor and let
+      \[
+        0
+        \to
+        X'
+        \to
+        X
+        \to
+        X''
+        \to
+        0
+      \]
+      be a split short exact sequence in~$\Acat$.
+      Then the resulting sequence
+      \[
+        0
+        \to
+        F(X')
+        \to
+        F(X)
+        \to
+        F(X'')
+        \to
+        0
+      \]
+      in~$\Bcat$ is again split short exact.
+      Indeed, there exists in~$\Acat$ an isomorphism
+      \[
+        \alpha
+        \colon
+        X
+        \to
+        X' \oplus X''
+      \]
+      that makes the following diagram commute:
+      \[
+        \begin{tikzcd}[ampersand replacement = \&, column sep = large]
+              0
+              \arrow{r}
+          \&  X'
+              \arrow{r}
+              \arrow[equal]{d}
+          \&  X
+              \arrow{r}
+              \arrow{d}[right]{\alpha}
+          \&  X''
+              \arrow{r}
+              \arrow[equal]{d}
+          \&  0
+          \\
+              0
+              \arrow{r}
+          \&  X'
+              \arrow{r}[above]{\begin{bsmallmatrix} 1 \\ 0 \end{bsmallmatrix}}
+          \&  X' \oplus X''
+              \arrow{r}[above]{\begin{bsmallmatrix} 0 & 1 \end{bsmallmatrix}}
+          \&  X''
+              \arrow{r}
+          \&  0
+        \end{tikzcd}
+      \]
+      By applying the functor~$F$ to this diagram, and using that~$F$ is additive, we get the following commutative diagram in~$\Bcat$:
+      \[
+        \begin{tikzcd}[ampersand replacement = \&, column sep = large]
+              0
+              \arrow{r}
+          \&  F(X')
+              \arrow{r}
+              \arrow[equal]{d}
+          \&  F(X)
+              \arrow{r}
+              \arrow{d}[right]{F(\alpha)}
+          \&  F(X'')
+              \arrow{r}
+              \arrow[equal]{d}
+          \&  0
+          \\
+              0
+              \arrow{r}
+          \&  F(X')
+              \arrow{r}[above]{\begin{bsmallmatrix} 1 \\ 0 \end{bsmallmatrix}}
+          \&  F(X') \oplus F(X'')
+              \arrow{r}[above]{{\begin{bsmallmatrix} 0 & 1 \end{bsmallmatrix}}}
+          \&  F(X'')
+              \arrow{r}
+          \&  0
+        \end{tikzcd}
+      \]
+      The lower row is again split short exact and the vertical arrow are isomorphisms, thus the upper row is split short exact.
+    \item
+      We find in the same way that additive functors respect split chain complexes and split acyclic chain complexes.
+    \item
+      That additive functors respect split chain complexes can also be seen by exhibiting a split for the resulting chain complex:
+      Let~$F \colon \Acat \to \Bcat$ be an additive functor and let~$\Ccc$ be a split chain complex in~$\Acat$, and denote by~$F(\Ccc)$ the resulting chain complex in~$\Bcat$, namely
+      \[
+        \dotsb
+        \to
+        F(C_{n+1})
+        \xlongto{F(d_{n+1})}
+        F(C_n)
+        \xlongto{F(d_n)}
+        F(C_{n-1})
+        \to
+        \dotsb
+      \]
+      If~$s = (s_n)_{n \in \Integer}$ is a split for the chain complex~$\Ccc$, then the resulting family~$F(s) \defined (F(s_n))_{n \in \Integer}$ is a split for the chain complex~$F(\Ccc)$ because
+      \[
+        F(d) F(s) F(d)
+        =
+        F(dsd)
+        =
+        F(d) \,.
+      \]
+      Therefore, the chain complex~$F(\Ccc)$ again splits.
+  \end{enumerate}
+\end{remark*}
+
+
 \begin{definition*}
   Let~$X \in \Ob(\Acat)$ be an object in~$\Acat$.
   An object~$Y \in \Ob(\Acat)$ is a \emph{direct summand}\index{direct summand} of~$X$ if there exists another object~$Y' \in \Ob(\Acat)$ with~$X \cong Y \oplus Y'$.
@@ -966,6 +1090,7 @@
 
 
 \begin{theorem}[Comparison theorem]\index{comparison theorem}\index{theorem!comparison}
+  \label{comparison theorem}
   Let~$f \colon X \to Y$ be a morphism in~$\Acat$.
   \begin{enumerate}
     \item
@@ -987,7 +1112,7 @@
         \end{tikzcd}
       \end{equation}
       commute.
-      The morphism~$\hat{f}$ is uniquely determined up to homotopy by this property.
+      The morphism~$\hat{f}$ is up to homotopy uniquely determined  by the commutativity of the above square.
     \item
       \label{comparison for injective}
       Let~$Y \xto{i^0} \Iccc$ be an injective resolution of~$Y$ and let~$X \xto{c^0} \Cccc$ be a cochain resolution of~$X$.
@@ -1007,7 +1132,7 @@
         \end{tikzcd}
       \end{equation}
       commute.
-      The morphism~$\hat{f}$ is uniquely determined up to homotopy by this property.
+      The morphism~$\hat{f}$ is up to homotopy uniquely determined by the commutativity of the above square.
   \end{enumerate}
 \end{theorem}
 
@@ -1340,9 +1465,9 @@
   \begin{align*}
         d_n ( \hat{f}_n - s_{n-1} d_n)
     &=  d_n \hat{f}_n - d_n s_{n-1} d_n \\
-    &= d_n \hat{f}_n - ( \hat{f}_{n-1} - s_{n-2} d_{n-1} ) d_n  \\
-    &= d_n \hat{f}_n - \hat{f}_{n-1} d_n  \\
-    &= 0
+    &=  d_n \hat{f}_n - ( \hat{f}_{n-1} - s_{n-2} d_{n-1} ) d_n  \\
+    &=  d_n \hat{f}_n - \hat{f}_{n-1} d_n  \\
+    &=  0
   \end{align*}
   because~$\hat{f}$ is a morphism of chain complexes.
   It follows from the universal property of the kernel~$\ker(d_n) \to C_n$ that there exists a (unique) morphism~$\tilde{s}_n \colon P_n \to \ker(d_n)$ that makes the diagram
@@ -1437,7 +1562,30 @@
 \end{remark*}
 
 
+\begin{corollary*}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      \label{he of projective resolutions}
+      Any two projections resolutions~$(\Pcc, p_0)$ and~$(\Pcc', p'_0)$ of an object~$X \in \Ob(\Acat)$ are homotopy equivalent.
+    \item
+      \label{he of injective resolutions}
+      Any two injective resolutions~$(\Iccc, i^0)$ and~$(\bp\Iccc, \bp i^0)$ of an object~$X \in \Ob(\Acat)$ are homotopy equivalent.
+  \end{enumerate}
+\end{corollary*}
+
+
+\begin{proof}
+  It sufficies to prove part~\ref*{he of projective resolutions}, as part~\ref*{he of injective resolutions} follows from part~\ref*{he of projective resolutions} by duality.
+  It follows from the \hyperref[comparison theorem]{comparison theorem} that there exists lifts~$f \colon \Pcc \to \Pcc'$ and~$g \colon \Pcc' \to \Pcc$ of the identity~$\id_X \colon X \to X$.
+  The composition~$g \circ f \colon \Pcc \to \Pcc$ is then a lift of the composition~$\id_X \circ \id_X = \id_X$.
+  The identity~$\id_{\Pcc} \colon \Pcc \to \Pcc$ is also a lift of~$\id_X$, hence~$g \circ f$ and~$\id_{\Pcc}$ are homotopic by the \hyperref[comparison theorem]{comparison theorem}.
+  We find similarly that the composition~$f \circ g$ is homotopic to the identity~$\id_{\Pcc'}$.
+\end{proof}
+
+
 \begin{lemma}[Horseshoe lemma]\index{horseshoe lemma}\index{lemma!horseshoe}
+  \label{horseshoe lemma}
   \leavevmode
   \begin{enumerate}
     \item
@@ -1509,10 +1657,11 @@
           & 0
         \end{tikzcd}
       \]
+      The short exact sequence~$0 \to \Pcc' \to \Pcc \to \Pcc'' \to 0$ can moverover be choosen such that in every degree~$n$, the short exact sequence~$0 \to P'_n \to P_n \to P''_n \to 0$ splits.
     \item
       \label{injective horseshoe}
       Let~$0 \to \bp X \to X \to \bpp X \to 0$ be a short exact sequence in~$\Acat$.
-      If~$\bp X \xto{\bp i^0} \bp\Iccc$ and~$\bpp X \xto{\bpp i^0} \bpp\Iccc$ are injective resolutions then there exists an injective resolution~$X \xto{i^0} \Iccc$ of~$X$ such that the short exact sequence~$0 \to \bp X \to X \to \bpp X \to 0$ lifts to a short exact sequence of cochain complexes
+      If~$\bp X \xto{\bp i^0} \bp\Iccc$ and~$\bpp X \xto{\bpp i^0} \bpp\Iccc$ are injective resolutions then there exists an injective resolution~$X \xto{i^0} \Iccc$ of~$X$ such that the short exact sequence~$0 \to \bp X \to X \to \bpp X \to 0$ extends to a short exact sequence of cochain complexes
       \[
         0
         \to
@@ -1551,7 +1700,7 @@
           & 0
         \end{tikzcd}
       \]
-      In other words, the following diagram commute:
+      In other words, the following diagram commutes:
       \[
         \begin{tikzcd}
             0
@@ -1578,6 +1727,7 @@
           & 0
         \end{tikzcd}
       \]
+      The short exact sequence~$0 \to \bp\Iccc \to \Iccc \to \bpp\Iccc \to 0$ can moreover be choosen such that in every degree~$n$, the short exact sequence~$0 \to \bp I^n \to I^n \to \bpp I^n \to 0$ splits.
   \end{enumerate}
 \end{lemma}
 
