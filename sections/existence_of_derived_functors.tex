@@ -164,6 +164,7 @@
 
 
 \begin{lemma}
+  \label{construction in degree 0}
   It holds that~$\Right^0 F \cong F$.
 \end{lemma}
 
@@ -758,9 +759,9 @@
     =
     j'' f'' b
     =
-    j'' {d} {f}
+    j'' d \mbox{} f
     =
-    \delta j f \,r
+    \delta j f r
   \]
   which shows the first equality.
   We also have that
@@ -1286,6 +1287,7 @@
 
 
 \begin{theorem}
+  \label{construction is delta functor}
   There exist morphisms
   \[
     \delta^n_\xi
@@ -1819,6 +1821,123 @@
 
 
 \lecturend{21}
+
+
+
+\begin{definition}
+  Let~$F \colon \Acat \to \Bcat$ be an additive functor between abelian categories~$\Acat$ and~$\Bcat$.
+  \begin{enumerate}
+    \item
+      The functor~$F$ is \emph{effaceable}\index{effaceable functor}\index{functor!effaceable} if for every object~$X \in \Ob(\Acat)$ there exists a monomorphism~$u \colon X \to M$ in~$\Acat$ with~$F(u) = 0$.
+    \item
+      The functor~$F \colon \Acat \to \Bcat$ is \emph{coeffaceable}\index{coeffaceable functor}\index{functor!effaceable} if there exists for every object~$X \in \Ob(\Acat)$ an epimorphism~$p \colon N \to X$ with~$F(p) = 0$.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+  \label{construction is effaceable}
+  In the given situation (the category~$\Acat$ has enough injectives, the functor~$F \colon \Acat \to \Bcat$ is left exact) we have for the constructed functors~$\Right^n F \colon \Acat \to \Bcat$ that they are effaceable for every~$n \geq 1$:
+  
+  Indeed, we have for every injective object~$I \in \Ob(\Acat)$ the injective resolution~$(\Iccc, i^0)$ given by
+  \[
+    0
+    \to
+    I
+    \xlongto{\id_I}
+    I
+    \to
+    0
+    \to
+    0
+    \to
+    \dotsb
+  \]
+  It follows that
+  \[
+    (\Right^n F)(I)
+    \cong
+    (\Right^n_{(\Iccc, i^0)} F)(I)
+    =
+    0
+  \]
+  for every~$n \geq 1$.
+  For every object~$X \in \Ob(\Acat)$ there exists a monomorphism~$u \colon X \to I$ with~$I$ being injective (because~$\Acat$ has enough injectives) and we find for every~$n \geq 1$ that~$(\Right^n F)(u) = 0$ for the morphim
+  \[
+    (\Right^n F)(u)
+    \colon
+    (\Right^n F)(X)
+    \to
+    (\Right^n F)(I)
+  \]
+  because~$(\Right^n F)(I) = 0$.
+\end{remark}
+
+
+\begin{theorem}
+  \label{effaceable is universal}
+  Let~$\Tdeltac \colon \Acat \to \Bcat$ be a cohomological~{\deltafun}.
+  If the functors~$T^n$ are effaceable for every~$n \geq 1$, then the~{\deltafun}~$\Tdeltac$ is universal.
+\end{theorem}
+
+
+\begin{proof}
+  Next time.
+\end{proof}
+
+
+\begin{theorem}
+  The constructed~{\deltafun}~$\Rightdelta F$ (from \cref{construction is delta functor}) is a right derived functor of~$F$.
+\end{theorem}
+
+
+\begin{proof}
+  By \cref{construction in degree 0} and \cref{construction is delta functor} it remains to show that the~{\deltafun}~$\Rightdelta F$ is universal.
+  This follows from \cref{effaceable is universal} because the functors~$\Right^n F$ are for every~$n \geq 1$ effaceable by \cref{construction is effaceable}.
+\end{proof}
+
+
+\begin{corollary}
+  Let~$\Tdeltac \colon \Acat \to \Bcat$ be a cohomological~{\deltafun} and let~$\Acat$ have enough injectives.
+  Then the following conditions on~$\Tdeltac$ are equivalent:
+  \begin{enumerate}
+    \item
+      \label{is universal}
+      The~{\deltafun}~$\Tdeltac$ is universal.
+    \item
+      \label{is effaceable}
+      The functors~$T^n$ are effaceable for every~$n \geq 1$.
+    \item
+      \label{annihilates injectives}
+      It holds for every injective object~$I \in \Ob(\Acat)$ and every~$n \geq 1$ that~$T^n(I) = 0$.
+    \item
+      \label{is right derived}
+      It holds that~$\Tdeltac \cong \Rightdelta (T^0)$ as cohomological~{\deltafun}.
+  \end{enumerate}
+\end{corollary}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{description}
+    \item[\ref*{is universal}~$\implies$~\ref*{is right derived}]
+      Both~$\Tdeltac$ and~$\Rightdelta (T^0)$ are universal~{\deltafuns}, and~$T^0 \cong \Right^0 (T^0)$.
+      Hence~$\Tdeltac \cong \Rightdelta (T^0)$ by the uniqueness of right derived functors.
+    \item[\ref*{is right derived}~$\implies$~\ref*{annihilates injectives}]
+      This was shown in \cref{construction is effaceable}.
+    \item[\ref*{annihilates injectives}~$\implies$~\ref*{is effaceable}]
+      This follows from~$\Acat$ having enough injectives, as seen in \cref{construction is effaceable}.
+    \item[\ref*{is effaceable}~$\implies$~\ref*{is universal}]
+      This is \cref{effaceable is universal}.
+    \qedhere
+  \end{description}
+\end{proof}
+
+
+
+
+
+\lecturend{22}
 
 
 
