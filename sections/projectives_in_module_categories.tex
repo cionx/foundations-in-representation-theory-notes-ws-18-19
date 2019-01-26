@@ -1,0 +1,135 @@
+\section{Projectives in Module Categories}
+
+
+
+\begin{conventionnonum}
+  Let~$\kf$ be a commutative ring and let~$A$ be a~{\kalg}.
+\end{conventionnonum}
+
+
+\begin{lemma}
+  \label{projective iff summand of free}
+  A left~{\module{$A$}}~$P$ is projective if and only if it is a direct summand of a free~{\module{$A$}}.
+\end{lemma}
+
+
+\begin{proof}
+  This is Exercise~4 on Exercise~sheet~10.
+\end{proof}
+
+
+\begin{corollary}
+  The module category~$\Modl{A}$ has enough projectives.
+\end{corollary}
+
+
+\begin{proof}
+  If~$M$ is any~{\module{$A$}} with generating set~$\{x_i\}_{i \in I}$ then there exists a surjective homomorphism of~{\modules{$A$}}~$A^{\oplus I} \to M$, with~$A^{\oplus I}$ being free and hence projective by \cref{projective iff summand of free}
+\end{proof}
+
+
+\begin{remark}
+  \Cref{projective iff summand of free} also holds for right modules, whence~$\Modr{A}$ has enough projectives as well.
+\end{remark}
+
+
+\begin{remark}
+  Let~$\indmodule{M}[A]$ and~$\indmodule[A]{N}$ be~{\modules{$A$}}.
+  \begin{enumerate}
+    \item
+      The functors
+      \begin{align*}
+        - \tensor_A N
+        \colon
+        \Modr{A}
+        \to
+        \Modl{\kf}
+        \quad&\text{and}\quad
+        M \tensor_A -
+        \colon
+        \Modl{A}
+        \to
+        \Modl{\kf}
+      \intertext{are right exact and hence admit left derived functors}
+        \Leftdelta(- \tensor_A N)
+        \colon
+        \Modr{A}
+        \to
+        \Modl{k}
+        \quad&\text{and}\quad
+        \Leftdelta(M \tensor_A -)
+        \colon
+        \Modl{A}
+        \to
+        \Modl{\kf}  \,.
+      \end{align*}
+    \item
+      The category~$(\Modl{A})^\op$ has enough injectives because the category~$\Modl{A}$ has enough projectives.
+      The functor
+      \[
+        \Hom_A(-,N)
+        \colon
+        (\Modl{A})^\op
+        \to
+        \Modl{\kf}
+      \]
+      is left exact and does therefore admit a right derived functor
+      \[
+        \Rightdelta \Hom_A(-,N)
+        \colon
+        (\Modl{A})^\op
+        \to
+        \Modl{\kf}  \,.
+      \]
+  \end{enumerate}
+\end{remark}
+
+
+\begin{remark}
+  Let~$A$ be a left noetherian~{\kalg}.
+  Then the category~$\Modlfg{A}$ of finitely generated left~{\modules{$A$}} is abelian and the forgetful functor
+  \[
+    U
+    \colon
+    \Modlfg{A}
+    \to
+    \Modl{A}
+  \]
+  is exact.
+  The exact functor~$U$ is in particular right exact and hence respects cokernels.
+  Therefore a morphism in~$\Modlfg{A}$ is an epimorphism if and only if it is an epimorphism in~$\Modl{A}$.
+  It follows that an object~$P$ of~$\Modlfg{A}$ is projective if and only if it is a direct summand of a finitely 
+  generated free~{\module{$A$}}.
+  
+  For finitely generated~{\module{$A$}}~$\indmodule{M}[A]$ and~$\indmodule[A]{N}$ the functors
+  \[
+    - \tensor_A N
+    \colon
+    \Modlfg{A}
+    \to
+    \Modl{\kf}
+    \quad\text{and}\quad
+    M \tensor_A -
+    \colon
+    \Modlfg{A}
+    \to
+    \Modl{\kf}
+  \]
+  are right exact, and the functor
+  \[
+    \Hom_A(-,N)
+    \colon
+    (\Modlfg{A})^\op
+    \to
+    \Modl{\kf}
+  \]
+  is left exact.
+  It follows from the exactness of the forgetful functor~$U$ by~\cref{exact functors respect derived} that their right, resp.\ left derived functor agrees with the right, resp.\ left derived functor for~$\Modl{A}$, resp.~$(\Modl{A}^\op)$.
+\end{remark}
+
+
+
+
+
+
+

@@ -1882,7 +1882,661 @@
 
 
 \begin{proof}
-  Next time.
+  Let~$\Sdeltac \colon \Acat \to \Bcat$ be another cohomological~{\deltafun} and let~$\eta \colon T^0 \to S^0$ be a natural transformation.
+  
+  For every object~$X \in \Ob(\Acat)$ there exists a monomorphism~$u \colon X \to M$ in~$\Acat$ with~$T^1(u) = 0$ because the functor~$T^1$ is effaceable.
+  Let~$N \defined \coker(u)$ and let~$v \colon M \to N$ be the canonical morphism.
+  The short exact sequence
+  \[
+    \xi
+    \colon
+    0
+    \to
+    X
+    \xlongto{u}
+    M
+    \xlongto{v}
+    N
+    \to
+    0
+  \]
+  induces the exact sequence
+  \[
+    T^0(X)
+    \xlongto{u}
+    T^0(M)
+    \xlongto{v}
+    T^0(N)
+    \xlongto{\delta^0_\xi}
+    T^1(X)
+    \xlongto{T^1(u)}
+    T^1(M)
+    \to
+    \dotsb
+  \]
+  It follows with~$T^1(u) = 0$ that the sequence
+  \[
+    T^0(X)
+    \xlongto{u}
+    T^0(M)
+    \xlongto{v}
+    T^0(N)
+    \xlongto{\delta^0_\xi}
+    T^1(X)
+    \to
+    0
+  \]
+  is exact.
+  We arrive at the following diagram with exact rows:
+  \[
+    \begin{tikzcd}[sep = large]
+        T^0(X)
+        \arrow{r}[above]{T^0(u)}
+        \arrow{d}[right]{\eta_X}
+      & T^0(M)
+        \arrow{r}[above]{T^0(v)}
+        \arrow{d}[right]{\eta_M}
+      & T^0(N)
+        \arrow{r}[above]{\delta^0_{T,\xi}}
+        \arrow{d}[right]{\eta_N}
+      & T^1(X)
+        \arrow{r}
+      & 0
+      \\
+        S^0(X)
+        \arrow{r}[above ]{S^0(u)}
+      & S^0(M)
+        \arrow{r}[above]{S^0(v)}
+      & S^0(N)
+        \arrow{r}[above]{\delta^0_{S,\xi}}
+      & S^1(X)
+      & {}
+    \end{tikzcd}
+  \]
+  We show that there exists a morphism~$\eta^1_X \colon T^1(X) \to S^1(X)$ that
+  \begin{enumerate}
+    \item
+      makes the above diagram commute,
+  \end{enumerate}
+  and that
+  \begin{enumerate}
+    \item
+      the morphism~$\eta^1_X$ is unique with this property,
+    \item
+      is independent of the choice of the morphism~$u$,
+    \item
+      is natural in~$X$, and
+    \item
+      is compatible with the long exact sequence.
+  \end{enumerate}
+  Indeed:
+  \begin{enumerate}
+    \item
+      The exactness of the sequence
+      \[
+        T^0(M)
+        \xlongto{T^0(v)}
+        T^0(N)
+        \xlongto{\delta^0_{T,\xi}}
+        T^1(X)
+        \to
+        0
+      \]
+      means that~$\delta^0_{T,\xi}$ is a cokernel of the morphism~$T^0(v)$.
+      It holds that
+      \[
+        \delta^0_{S,\xi} \circ \eta_N \circ T^0(v)
+        =
+        {\underbrace{ \delta^0_{S,\xi} \circ S^0(v) }_{=0}} \circ \eta_M
+        =
+        0 \,,
+      \]
+      whence there exists by the universal property of the cokernel a unique morphism~$\eta^1_{X,u} \colon T^1(X) \to S^1(X)$ that makes the following resulting diagram commute:
+      \[
+        \begin{tikzcd}[sep = large]
+            T^0(X)
+            \arrow{r}[above]{T^0(u)}
+            \arrow{d}[right]{\eta_X}
+          & T^0(M)
+            \arrow{r}[above]{T^0(v)}
+            \arrow{d}[right]{\eta_M}
+          & T^0(N)
+            \arrow{r}[above]{\delta^0_{T,\xi}}
+            \arrow{d}[right]{\eta_N}
+          & T^1(X)
+            \arrow{r}
+            \arrow[dashed]{d}[right]{\eta^1_{X,u}}
+          & 0
+          \\
+            S^0(X)
+            \arrow{r}[above ]{S^0(u)}
+          & S^0(M)
+            \arrow{r}[above]{S^0(v)}
+          & S^0(N)
+            \arrow{r}[above]{\delta^0_{S,\xi}}
+          & S^1(X)
+          & {}
+        \end{tikzcd}
+      \]
+    \item
+      Let
+      \begin{gather*}
+        \xi'
+        \colon
+        0
+        \to
+        X
+        \xlongto{u'}
+        M'
+        \xlongto{v'}
+        N'
+        \to
+        0
+      \shortintertext{and}
+        \xi''
+        \colon
+        0
+        \to
+        X
+        \xlongto{u''}
+        M''
+        \xlongto{v''}
+        N''
+        \to
+        0
+      \end{gather*}
+      be two short exact sequences with~$T^1(u') = 0$ and~$T^1(u'') = 0$.
+      We consider the pushout
+      \[
+        \begin{tikzcd}
+            X
+            \arrow{r}[above]{u'}
+            \arrow{d}[left]{u''}
+            \arrow[phantom]{dr}[description]{\po}
+          & M'
+            \arrow{d}
+          \\
+            M''
+            \arrow{r}
+          & M
+        \end{tikzcd}
+      \]
+      The morphism~$M' \to M$ is a monomorphism by part~\ref*{pushout of mono} of~\cref{mono epi under pull push}. Hence the composition~$u \colon X \to M' \to M$ (which coincides with the composition~$X \to M'' \to M$) is again a monomorphism.
+      We note that~$T^1(u) = 0$ because~$T^1(u') = 0$.
+      We get for~$N \defined \coker(u)$ a short exact sequence
+      \[
+        0
+        \to
+        X
+        \to
+        M
+        \to
+        N
+        \to
+        0
+      \]
+      that fits into the following commutative diagram with exact rows~$\xi'$ and~$\zeta$:
+      \[
+        \begin{tikzcd}
+            \xi'
+            \colon
+          & 0
+            \arrow{r}
+          & X
+            \arrow{r}
+            \arrow[equal]{d}
+          & M'
+            \arrow{r}
+            \arrow{d}
+          & N'
+            \arrow{r}
+          & 0
+          \\
+            \zeta
+            \colon
+          & 0
+            \arrow{r}
+          & X
+            \arrow{r}
+          & M
+            \arrow{r}
+          & N
+            \arrow{r}
+          & 0
+        \end{tikzcd}
+      \]
+      It follows from the \hyperref[functoriality of (co)kernel]{functoriality of the cokernel} that there exists a unique morphism~$N' \to N$ that makes the resulting diagram
+      \[
+        \begin{tikzcd}
+            0
+            \arrow{r}
+          & X
+            \arrow{r}
+            \arrow[equal]{d}
+          & M'
+            \arrow{r}
+            \arrow{d}
+          & N'
+            \arrow{r}
+            \arrow[dashed]{d}
+          & 0
+          \\
+            0
+            \arrow{r}
+          & X
+            \arrow{r}
+          & M
+            \arrow{r}
+          & N
+            \arrow{r}
+          & 0
+        \end{tikzcd}
+      \]
+      commute.
+      We get the following diagram:
+      \[
+        \begin{tikzcd}
+            {}
+          & T^0(N')
+            \arrow{rr}
+            \arrow{dd}
+            \arrow{dl}
+          & {}
+          & T^1(X)
+            \arrow[equal]{dl}
+          \\
+            T^0(N)
+            \arrow{rr}
+            \arrow{dd}
+          & {}
+          & T^1(X)
+            \arrow[from=ll, crossing over]
+          & {}
+          \\
+            {}
+          & S^0(N')
+            \arrow{rr}
+            \arrow{dl}
+          & {}
+          & S^1(X)
+            \arrow[equal]{dl}
+          \\
+            S^0(N)
+            \arrow{rr}
+          & {}
+          & S^1(X)
+          & {}
+        \end{tikzcd}
+      \]
+      The left square commutes by the naturality of~$\eta$, the commutativity of the top and bottom squares are part of the axioms of a~{\deltafun}.
+      The morphism
+      \[
+        \eta^1_{X,u'}
+        \colon
+        T^1(X)
+        \to
+        S^1(X)
+      \]
+      is the unique morphism~$T^1(X) \to S^1(X)$ that makes the resulting back square
+      \[
+        \begin{tikzcd}
+            T^0(N')
+            \arrow{r}
+            \arrow{d}
+          & T^1(X)
+            \arrow[dashed]{d}{\eta^1_{X,u'}}
+          \\
+            S^0(N')
+            \arrow{r}
+          & S^1(X)
+        \end{tikzcd}
+      \]
+      commute, while the morphism~$\eta^1_{X,u} \colon T^1(X) \to S^1(X)$ is the unique morphism~$T^1(X) \to S^1(X)$ that makes the resulting front square
+      \[
+        \begin{tikzcd}
+            T^0(N)
+            \arrow{r}
+            \arrow{d}
+          & T^1(X)
+            \arrow[dashed]{d}{\eta^1_{X,u}}
+          \\
+            S^0(N)
+            \arrow{r}
+          & S^1(X)
+        \end{tikzcd}
+      \]
+      commute.
+      It follows that the cube
+      \[
+        \begin{tikzcd}
+            {}
+          & T^0(N')
+            \arrow{rr}
+            \arrow{dd}
+            \arrow{dl}
+          & {}
+          & T^1(X)
+            \arrow[equal]{dl}
+            \arrow[dashed]{dd}[right, near start]{\eta^1_{X,u'}}
+          \\
+            T^0(N)
+            \arrow{rr}
+            \arrow{dd}
+          & {}
+          & T^1(X)
+            \arrow[from=ll, crossing over]
+          & {}
+          \\
+            {}
+          & S^0(N')
+            \arrow{rr}
+            \arrow{dl}
+          & {}
+          & S^1(X)
+            \arrow[equal]{dl}
+          \\
+            S^0(N)
+            \arrow{rr}
+          & {}
+          & S^1(X)
+            \arrow[from=uu, crossing over, dashed, right, "\eta^1_{X,u}", near start]
+          & {}
+        \end{tikzcd}
+      \]
+      commutes (because the identity~$S^1(X) \to S^1(X)$ going from the back to the front is a monomorphism), and hence that~$\eta^1_{X,u'} = \eta^1_{X,u}$.
+      We find similarly that~$\eta^1_{X,u''} = \eta^1_{X,u}$ and hence~$\eta^1_{X,u'} = \eta^1_{X,u''}$.
+      
+      Instead of~$\eta^1_{X,u}$ we will use the notation~$\eta^1_X$ from now on.
+      
+    \item
+      Let~$f \colon X \to Y$ be a morphism in~$\Acat$.
+      Let
+      \[
+        \xi
+        \colon
+        0
+        \to
+        X
+        \xlongto{u_X}
+        M_X
+        \to
+        N_X
+        \to
+        0
+      \]
+      be a short exact sequence in~$\Acat$ with~$T^1(u_X) = 0$.
+      In the pushout
+      \[
+        \begin{tikzcd}
+            X
+            \arrow{r}[above]{u_X}
+            \arrow{d}[left]{f}
+            \arrow[phantom]{dr}[description]{\po}
+          & M_X
+            \arrow{d}
+          \\
+            Y
+            \arrow{r}[below]{u'}
+          & P
+        \end{tikzcd}
+      \]
+      the morphism~$u'$ is again a monomorphism by part~\ref*{pushout of mono} of~\cref{mono epi under pull push}.
+      Let~$u \colon P \to M_Y$ be a monomorphism with~$T^1(u) = 0$ and let~$u_Y \colon Y \to M_Y$ be the composition
+      \[
+        u_Y
+        \colon
+        Y
+        \xlongto{u'}
+        P
+        \xlongto{u}
+        M_Y \,.
+      \]
+      With~$N_Y \defined \coker(u_Y)$ and the composition~$M_X \to P \xto{u} M_Y$ we get the following commutative diagram with (short) exact rows~$\xi$ and~$\zeta$:
+      \[
+        \begin{tikzcd}
+            \xi
+            \colon
+          & 0
+            \arrow{r}
+          & X
+            \arrow{r}[above]{u_X}
+            \arrow{d}[right]{f}
+          & M_X
+            \arrow{r}
+            \arrow{d}
+          & N_X
+            \arrow{r}
+          & 0
+          \\
+            \zeta
+            \colon
+          & 0
+            \arrow{r}
+          & Y
+            \arrow{r}[below]{u_Y}
+          & M_Y
+            \arrow{r}
+          & N_Y
+            \arrow{r}
+          & 0
+        \end{tikzcd}
+      \]
+      There exists a unique morphism~$N_X \to N_Y$ that makes the resulting diagram
+      \[
+        \begin{tikzcd}
+            0
+            \arrow{r}
+          & X
+            \arrow{r}[above]{u_X}
+            \arrow{d}[right]{f}
+          & M_X
+            \arrow{r}
+            \arrow{d}
+          & N_X
+            \arrow{r}
+            \arrow[dashed]{d}
+          & 0
+          \\
+            0
+            \arrow{r}
+          & Y
+            \arrow{r}[below]{u_Y}
+          & M_Y
+            \arrow{r}
+          & N_Y
+            \arrow{r}
+          & 0
+        \end{tikzcd}
+      \]
+      commute.
+      Together with~$T^1(u_X) = 0$ we get the following diagram in which the upper row is exact:
+      \[
+        \begin{tikzcd}
+            {}
+          & T^0(N_X)
+            \arrow{rr}[above]{\delta^0_{T,\xi}}
+            \arrow{dl}
+            \arrow{dd}[right, near start]{\eta_{N_X}}
+          & {}
+          & T^1(X)
+          \arrow{dl}
+          \arrow{dd}[right, near start]{\eta^1_X}
+          \arrow{rr}
+          & {}
+          & 0
+          \\
+            T^0(N_Y)
+            \arrow{dd}[left, near start]{\eta_{N_Y}}
+          & {}
+          & T^1(Y)
+            \arrow[from=ll, crossing over]
+          & {}
+          & {}
+          & {}
+          \\
+            {}
+          & S^0(N_X)
+            \arrow{dl}
+            \arrow{rr}
+          & {}
+          & S^1(X)
+          \arrow{dl}
+          & {}
+          & {}
+          \\
+            S^0(N_Y)
+            \arrow{rr}
+          & {}
+          & S^1(Y)
+          \arrow[from=uu, crossing over, "\eta^1_Y", right, near start,]
+          & {}
+          & {}
+          & {}
+        \end{tikzcd}
+      \]
+      The left side of this cube commutes by the naturality of~$\eta$, the back and front sides commute by construction of~$\eta^1_X$ and~$\eta^1_Y$, and the commutativity of the upper and lower sides are part of the axioms of a cohomological~{\deltafun}.
+      The commutativity of the right side follows from the commutativity of the other sides because the morphism~$\delta^0_{T,\xi}$ is an epimorphism.
+      The commutativity of this right side shows the desired naturality of~$\eta^1$.
+    \item
+      Let
+      \[
+        \xi
+        \colon
+        0
+        \to
+        X'
+        \to
+        X
+        \to
+        X''
+        \to
+        0
+      \]
+      be a short exact sequence in~$\Acat$.
+      We need to show the commutativity of the following square:
+      \[
+        \begin{tikzcd}[column sep = large]
+            T^0(X'')
+            \arrow{r}[above]{\delta^0_{T,\xi}}
+            \arrow{d}[left]{\eta_{X''}}
+          & T^1(X')
+            \arrow{d}[right]{\eta^1_{X'}}
+          \\
+            S^0(X'')
+            \arrow{r}[below]{\delta^0_{S,\xi}}
+          & S^1(X')
+        \end{tikzcd}
+      \]
+      Let~$u \colon X \to M$ be a monomorphism with~$T^1(u) = 0$ and let~$u' \colon X' \to M$ be the composition
+      \[
+        u'
+        \colon
+        X'
+        \to
+        X
+        \xlongto{u}
+        M \,.
+      \]
+      Note that this morphism~$u'$ is again a monomorphism and that~$T^1(u') = 0$.
+      We get for~$N'' \defined \coker(u')$ the following commutative diagram with (short) exact rows~$\xi$ and~$\zeta$:
+      \[
+        \begin{tikzcd}
+            \xi
+            \colon
+          & 0
+            \arrow{r}
+          & X'
+            \arrow{r}
+            \arrow[equal]{d}
+          & X
+            \arrow{r}
+            \arrow{d}[right]{u}
+          & X''
+            \arrow{r}
+          & 0
+          \\
+            \zeta
+            \colon
+          & 0
+            \arrow{r}
+          & X'
+            \arrow{r}[above]{u'}
+          & M
+            \arrow{r}
+          & N''
+            \arrow{r}
+          & 0
+        \end{tikzcd}
+      \]
+      We find (as above) that there exists a unique morphism~$X'' \to N''$ that makes the resulting diagram
+      \[
+        \begin{tikzcd}
+            0
+            \arrow{r}
+          & X'
+            \arrow{r}
+            \arrow[equal]{d}
+          & X
+            \arrow{r}
+            \arrow{d}[right]{u}
+          & X''
+            \arrow{r}
+            \arrow[dashed]{d}
+          & 0
+          \\
+            0
+            \arrow{r}
+          & X'
+            \arrow{r}[above]{u'}
+          & M
+            \arrow{r}
+          & N''
+            \arrow{r}
+          & 0
+        \end{tikzcd}
+      \]
+      commute.
+      We get the following diagram:
+      \[
+        \begin{tikzcd}
+            {}
+          & T^0(X'')
+            \arrow{rr}[above, near start]{\delta^0_{T,\xi}}
+            \arrow{dd}[right, near start]{\eta_{X''}}
+            \arrow{dl}
+          & {}
+          & T^1(X')
+            \arrow[equal]{dl}
+            \arrow{dd}[right, near start]{\eta^1_{X'}}
+          \\
+            T^0(N'')
+            \arrow{dd}[left, near start]{\eta_{N''}}
+          & {}
+          & T^1(X')
+            \arrow[from=ll, crossing over, "\delta^0_{T,\zeta}", swap, near start]
+          & {}
+          \\
+            {}
+          & S^0(X'')
+            \arrow{rr}[above, near start]{\delta^0_{S,\xi}}
+            \arrow{dl}
+          & {}
+          & S^1(X')
+            \arrow[equal]{dl}
+          \\
+            S^0(N'')
+            \arrow{rr}[below, near start]{\delta^0_{S,\zeta}}
+          & {}
+          & S^1(X')
+            \arrow[from=uu, crossing over, "\eta^1_{X'}", near start]
+          & {}
+          \\
+        \end{tikzcd}
+      \]
+      The left side commute by the naturality of~$\eta$, the right side commutes, the front site commutes by construction of~$\eta^1_{X'}$, and the commutativity of the top and bottom sides are part of the axioms of a cohomological~{\deltafun}.
+      It follows that the back side also commutes (because the identity~$S^1(X') \to S^1(X')$ going from the back to the front is a monomorphism).
+  \end{enumerate}
+  For the construction and uniqueness of the components~$\eta^n$ with~$n \geq 2$ we can proceed indutively in the same way.
 \end{proof}
 
 
@@ -1921,7 +2575,7 @@
   \leavevmode
   \begin{description}
     \item[\ref*{is universal}~$\implies$~\ref*{is right derived}]
-      Both~$\Tdeltac$ and~$\Rightdelta (T^0)$ are universal~{\deltafuns}, and~$T^0 \cong \Right^0 (T^0)$.
+      The~{\deltafuns}~$\Tdeltac$ and~$\Rightdelta (T^0)$ are both universal and~$T^0 \cong \Right^0 (T^0)$.
       Hence~$\Tdeltac \cong \Rightdelta (T^0)$ by the uniqueness of right derived functors.
     \item[\ref*{is right derived}~$\implies$~\ref*{annihilates injectives}]
       This was shown in \cref{construction is effaceable}.
@@ -1932,6 +2586,26 @@
     \qedhere
   \end{description}
 \end{proof}
+
+
+\begin{lemma*}
+  \label{exact functors respect derived}
+  Let~$\Acat$,~$\Bcat$ and~$\Ccat$ be abelian categories such that~$\Acat$ has enough injectives.
+  Let~$F \colon \Acat \to \Bcat$ be a left exact functor and let~$G \colon \Bcat \to \Ccat$ be an exact functor.
+  Then the composition~$G \circ F \colon \Acat \to \Ccat$ is again left exact, and
+  \[
+    \Right^n (G \circ F)
+    \cong
+    G \circ \Right^n F
+  \]
+  for every~$n \geq 0$.
+\end{lemma*}
+
+
+\begin{proof}
+  This is Exercise~1 on Exercise~sheet~11.
+\end{proof}
+
 
 
 
