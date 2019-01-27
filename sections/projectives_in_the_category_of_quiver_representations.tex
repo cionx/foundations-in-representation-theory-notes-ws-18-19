@@ -1,0 +1,680 @@
+\section{Projectives in the Category of Quiver Representations}
+
+
+\begin{conventionnonum}
+  Let~$\kf$ be a field,~$Q$ a finite quiver (i.e.~$Q_0$ is finite), and abbreviate~$A \defined \kf Q$.
+\end{conventionnonum}
+
+
+\begin{definition}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      For all vertices~$i, j \in Q_0$ let
+      \[
+        Q_*(i,j)
+        =
+        \{
+          p \in Q_*
+        \suchthat
+          s(p) = i,
+          t(p) = j
+        \}
+      \]
+      be the set of paths from~$i$ to~$j$ in~$Q$.
+    \item
+      For every vertex~$i \in Q_0$ let~$P(i)$ be the representation of~$Q$ over~$\kf$ that is given by the following data:
+      \begin{itemize}
+        \item
+          For every vertex~$j \in Q_0$ the~{\kvs}~$P(i)_j$ is the free~{\kvs} with basis~$Q(i,j)$.
+        \item
+          For every arrow~$\alpha \in Q_1$ with~$\alpha \colon j \to k$ the~{\klin} map~$P(i)_\alpha \colon P(i)_j \to P(i)_k$ is given on the basis~$Q(i,j)$ of~$P(i)_j$ by the concatenation of paths.
+          We hence have for every~$p \in Q(i,j)$ that
+          \[
+            P(i)_\alpha(p)
+            =
+            \alpha \circ p  \,.
+          \]
+      \end{itemize}
+  \end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+  Recall the equivalence of categories~$F \colon \Rep{\kf}{Q} \to \Modl{A}$ from part~\ref*{quiver reps are modules over path algebra} of \cref{examples for equivalences}:
+  For every representation~$X$ of~$Q$ over~$\kf$ the~{\module{$A$}}~$M \defined F(X)$ has the underlying~{\kvs}
+  \[
+    M
+    =
+    \bigoplus_{j \in Q_0} X_j  \,,
+  \]
+  and the action of an arrow~$\alpha \colon j \to k$ (i.e.\ an element of the basis~$Q_*$ of~$A$) on~$M$ is given by the composition
+  \[
+    M
+    \xlongto{\text{projection}}
+    X_j
+    \xlongto{X_\alpha}
+    X_k
+    \xlongto{\text{inclusion}}
+    M \,.
+  \]
+  Under this equivalence of categories the representation~$P(i)$ corresponds to
+  \[
+    F(P(i))
+    \cong
+    A \varepsilon_i \,.
+  \]
+  
+  Indeed, the~{\kvs}~$F(P(i)) = \bigoplus_{j \in Q_0} P(i)_j$ has as a basis the set of paths
+  \begin{equation}
+  \label{paths starting in i}
+    \{
+      p \in Q_*
+    \suchthat
+      s(p) = i
+    \}  \,.
+  \end{equation}
+  This is also a basis of~$A \varepsilon_i$:
+  We have for every~$p \in Q_*$ that
+  \[
+    p \varepsilon_i
+    =
+    \begin{cases}
+      p & \text{if~$s(p) = i$}  \,, \\
+      0 & \text{otherwise}  \,,
+    \end{cases}
+  \]
+  and hence find that the linearly independent set~\eqref{paths starting in i} is a generating set, and therefore basis, for~$A \varepsilon_i$.
+  The action of an arrow~$\alpha \in Q_1$ on a basis element~$p$ from~\eqref{paths starting in i} is for~$\alpha \colon j \to k$ given by
+  \[
+    \alpha p
+    =
+    \begin{cases}
+      \alpha \circ p  & \text{if~$t(\alpha) = s(p)$}  \,, \\
+      0               & \text{otherwise}  \,,
+    \end{cases}
+    =
+    \begin{cases}
+      \alpha \circ p  & \text{if~$s(p) = j$}  \,, \\
+      0               & \text{otherwise}  \,,
+    \end{cases}
+    =
+    P(i)_\alpha(p)  \,.
+  \]
+  This shows that the actions of~$A$ on~$M$ and~$A \varepsilon_i$ coincide.
+\end{remark}
+
+
+\begin{corollary}
+  The representations~$P(i)$ of~$Q$ are projective objects of~$\Rep{\kf}{Q}$.
+\end{corollary}
+
+
+\begin{proof}
+  It sufficies to show that the~{\modules{$A$}}~$A \varepsilon_i$ are projective.
+  We observe that
+  \begin{align*}
+    A
+    &=
+    \bigoplus_{i \in Q_0}
+    A \varepsilon_i
+  \shortintertext{because on the level of bases}
+    Q_*
+    &=
+    \coprod_{i \in Q_0}
+    \{
+      p \in Q_*
+    \suchthat
+      s(p) = i
+    \}  \,.
+  \end{align*}
+  The~$A \varepsilon_i$ are therefore direct summands of the free~{\module{$A$}}~$A$, whence projective.
+\end{proof}
+
+
+\begin{lemma*}
+  \label{homomorphisms out of P(i)}
+  For every representation~$X$ of~$Q$ over~$\kf$ the map
+  \[
+    \Hom(P(i), X)
+    \to
+    X_i \,,
+    \quad
+    f
+    \mapsto
+    f_i(\varepsilon_i)
+  \]
+  is an isomorphism of~{\kvs}.
+\end{lemma*}
+
+
+\begin{proof}
+  This is part~(i) of Exercise~4 of Exercise sheet~11.
+\end{proof}
+
+
+\begin{definition*}
+  A quiver~$Q$ is \emph{acyclic}\index{acyclic!quiver}\index{quiver!acyclic} if it contains no oriented circles (of length~$\geq 1$).
+\end{definition*}
+
+
+\begin{corollary*}
+  If the quiver~$Q$ is acyclic then every~$P(i)$ is~{\fd} with~$\End_k(P(i)) = k$.
+\end{corollary*}
+
+
+\begin{proof}
+  This is part~(iii) of Exercise~4 of Exercise sheet~11.
+\end{proof}
+
+
+\begin{remark}
+  If the quiver~$Q$ is acyclic then~$A$ is~{\fd} and every~$P(i)$ is indecomposable.
+  (This is part~(iv) of Exercise~4 of Exercise sheet~11.)
+\end{remark}
+
+
+\begin{theoremnonum}[Krull--Remak--Schmidt]
+  Let~$X$ be a~{\fd} representation of an acyclic quiver~$Q$.
+  \begin{enumerate}
+    \item
+      There exists a decomposition~$X \cong X_1^{\oplus a_1} \oplus \dotsb \oplus X_r^{\oplus a_r}$ with~$X_i$ indecomposable,~$X_i \ncong X_j$ for~$i \neq j$ and~$a_i > 0$ for every~$i$.
+    \item
+      If~$X \cong Y_1^{\oplus b_1} \oplus \dotsb \oplus Y_s^{\oplus b_s}$ is another such decomposition then~$r = s$ and, up to reordering,~$X_i \cong Y_i$ and~$a_i = b_i$ for every~$i$.
+  \end{enumerate}
+\end{theoremnonum}
+
+
+\begin{remarknonum}
+  We will not prove the Krull--Remak--Schmidt theorem.
+  A proof can be found in \cite{Elements}.
+% TODO: Make this reference more specific.
+\end{remarknonum}
+
+
+\begin{remark*}
+  The Krull--Remak--Schmidt theorem holds for every~{\kalg}~$A$ and every {\fd}~{\module{$A$}}~$M$;
+  it holds even more generally for every ring~$R$ and every~{\module{$R$}}~$M$ of finite length.
+  We will use the Krull--Remak--Schmidt theorem to show that every~{\fd} projective representation of~$Q$ over~$\kf$ is isomorphic to a direct sum of copies of~$P(i)$.
+% TODO: When do we show this?
+\end{remark*}
+
+
+\begin{theorem}[The standard projective resolution]
+  Let~$M$ be a~{\module{$A$}}.%
+  \footnote{We do not require~$M$ to be~{\fd}, nor~$Q$ to be acyclic.}
+  Then the sequence
+  \[
+    0
+    \to
+    \bigoplus_{\alpha \in Q_1}
+    A \varepsilon_{t(\alpha)} \tensor_\kf \varepsilon_{s(\alpha)} M
+    \xlongto{f}
+    \bigoplus_{i \in Q_0}
+    A \varepsilon_i \tensor_\kf \varepsilon_i M
+    \xlongto{g}
+    M
+    \to
+    0
+  \]
+  given by the~{\klin}~maps
+  \begin{align*}
+    g( (a_i \tensor x_i)_i )
+    &\defined
+    \sum_{i \in Q_0} a_i x_i
+  \shortintertext{and}
+    f( (a_\alpha \tensor x_\alpha)_\alpha )
+    &\defined
+    \sum_{\alpha \in Q_1}
+    \Bigl(
+      \iota_{s(\alpha)}( a_\alpha \alpha \tensor x_\alpha )
+    - \iota_{t(\alpha)}( a_\alpha \tensor \alpha x_\alpha )
+    \Bigr)
+  \end{align*}
+  is exact, and the appearing~{\modules{$A$}}
+  \[
+    P_0
+    \defined
+    \bigoplus_{i \in Q_0} A \varepsilon_i \tensor_\kf \varepsilon_i M
+    \qquad\text{and}\qquad
+    P_1
+    \defined
+    \bigoplus_{\alpha \in Q_1} A \varepsilon_{t(\alpha)} \tensor_\kf \varepsilon_{s(\alpha)} M
+  \]
+  are projective.
+\end{theorem}
+
+
+\begin{proof}
+  The~{\klin} maps~$f$ and~$g$ are {\welldef}, and~$f \circ g = 0$.
+  We have for every~$m \in M$ that
+  \[
+    m
+    =
+    1 \cdot m
+    =
+    \sum_{i \in Q_0} \varepsilon_i m
+    =
+    \sum_{i \in Q_0} \varepsilon_i^2 m
+    =
+    g\left( \sum_{i \in Q_0} \varepsilon_i \otimes \varepsilon_i m \right)
+  \]
+  which shows that~$g$ is surjective.
+  The~{\modules{$A$}}~$P_0$ and~$P_1$ are projective because
+  \[
+    P_0
+    \cong
+    \bigoplus_{i \in Q_0}
+    (A \varepsilon_i)^{\oplus \dim \varepsilon_i M}
+    \quad\text{and}\quad
+    P_1
+    \cong
+    \bigoplus_{\alpha \in Q_1}
+    (A \varepsilon_{t(\alpha)})^{\oplus \dim \varepsilon_{s(\alpha)} M}
+  \]
+  are direct sums of the~{\modules{$A$}}~$A \varepsilon_i$.
+  
+  To show the injectivity of~$f$ and the exactness at~$P_0$ we observe that every element~$\xi \in P_0$ can be uniquely written as
+  \[
+    \xi
+    =
+    \left(
+      \sum_{\substack{p \in Q_* \\ s(p) = i}}
+      p \tensor \xi_p
+    \right)_{i \in Q_0}
+  \]
+  with~$\xi_p \in \varepsilon_i A$ for~$i = s(p)$, because the set~$\{ p \in Q_* \suchthat s(p) = i \}$ is a basis for~$A \varepsilon_i$.
+  The \emph{degree} of~$\xi \neq 0$ is given by
+  \[
+      \deg(\xi)
+    = \max
+      \{
+        \ell(p)
+      \suchthat
+        \xi_p \neq 0
+      \}  \,.
+  \]
+  
+  \begin{claimnonum}
+    For every~$\xi \in P_0$ the residue class~$\xi + \im(f)$ contains either~$0$ or an element of length~$0$.
+  \end{claimnonum}
+  
+  \begin{proof}
+    Suppose that~$\xi_p \neq 0$ for a path~$p \in Q_*$ with starting vertex~$i \defined s(p)$ such that~$\ell(p) \geq 1$.
+    If~$\alpha$ denotes the starting arrow of~$p$ then there exists a unique path~$p' \in Q_*$ with~$p = p' \alpha$.
+    We find for~$\zeta \in P_1$ with components~$\zeta_\alpha = p' \tensor \xi_p$ and~$\zeta_{\alpha'} = 0$ otherwise, i.e.
+    \[
+      ( \delta_{\alpha, \alpha'} p' \tensor \xi_p )_{\alpha' \in Q_1}
+    \]
+    that
+    \[
+      f( \zeta )
+      =
+        \iota_{s(\alpha)}(p' \alpha \tensor \zeta_p)
+      - \iota_{t(\alpha)}(p' \tensor \alpha \zeta_p)
+      =
+        \iota_{s(\alpha)}(p \tensor \zeta_p)
+      - \iota_{t(\alpha)}(p' \tensor \alpha \zeta_p)
+    \]
+    We have that~$s(\alpha) = s(p) = i$ because the path~$p$ starts with~$\alpha$.
+    We hence find that the element
+    \[
+      \xi'
+      \defined
+      \xi - f(\zeta)
+    \]
+    differs from~$\xi$ in (at most) two coordinates:
+    In the~\dash{$i$}{th} coordinate we’re losing the summand~$p \tensor \zeta_p$, while gaining the summand~$p' \tensor \alpha \zeta_p$ in the~\dash{$s(p')$}{th} coordinate.
+    We note that both~$\xi'$ and~$\xi$ have the same residue class modulo~$\im(f)$, and that~$\ell(p') < \ell(p)$.
+    
+    We have thus shows that by changing the representative of the residue class~$\xi + \im(f)$ from~$\xi$ to~$\xi'$ we can replace a summand of length~$d$ in one coordinate by a summand of smaller length in another coordinate.
+    By repeating this process finitely many times we arrive at a representative of the residue class~$\xi + \im(f)$ that is either of length~$0$ or just~$0$ itself.
+%     We find for the element~$\zeta \in P_1$ given by
+%     \[
+%       \zeta
+%       \defined
+%       \left(
+%         \sum_{\subalign{p &\in Q_* \\ \ell(p) &= d \\ p &= q \alpha}}
+%         q \tensor \xi_p
+%       \right)_{\alpha \in Q_1}
+%     \]
+%     that
+%     \[
+%       f(\zeta)
+%       =
+%       \sum_{\alpha \in Q_1}
+%       \left(
+%         \iota_{s(\alpha)}
+%         \left(
+%           \sum_{\subalign{p &\in Q_* \\ \ell(p) &= d}}
+%             p \tensor \xi_p
+%         \right)
+%         -
+%         \iota_{t(\alpha)}
+%         \left(
+%           \sum_{\subalign{p &\in Q_* \\ \ell(p) &= d \\ p &= q \alpha}}
+%             q \tensor \alpha \xi_p
+%         \right)
+%       \right)
+%     \]
+%     It follows for the element~$\xi' \in P_0$ that
+%     \[
+%       \xi'
+%       \defined
+%       \xi- f(\zeta) \,.
+%     \]
+%     The elements~$\xi$ and~$\xi'$ have the same residue class module~$\im(f)$.
+%     All paths of length~$d$ for~$\xi$ are canceled by~$f(\zeta)$, whence~$\deg(\xi') < d$.
+%     The claim follows by induction hypothesis.
+  \end{proof}
+  
+  We now show that~$\ker(g) \subseteq \im(f)$:
+  Suppose that there exists some~$\xi \in \ker(g)$ with~$\xi \notin \im(f)$.
+  Then the residue class~$\xi + \im(f)$ does not contain~$0$, and so we may assume by the above claim that~$\ell(\xi) = 0$.
+  Then
+  \[
+    \xi
+    =
+    (
+      \varepsilon_i \tensor \xi_{\varepsilon_i}
+    )_{i \in Q_0}
+  \]
+  with~$\xi_{\varepsilon_i} \in \varepsilon_i M$ for every~$i \in Q_0$.
+  We have that
+  \[
+    0
+    =
+    g(\xi)
+    =
+    \sum_{i \in Q_0}
+    \varepsilon_i \xi_{\varepsilon_i}
+    =
+    \sum_{i \in Q_0}
+    \xi_{\varepsilon_i}
+  \]
+  because it follows from~$\xi_{\varepsilon_i} \in \varepsilon_i M$ that~$\varepsilon_i \xi_{\varepsilon_i} = \xi_{\varepsilon_i}$.
+  We find from the directness of the sum~$M = \bigoplus_{i \in Q_0} \varepsilon_i M$ that~$\xi_{\varepsilon_i} = 0$ for every~$i \in Q_0$, and hence~$\xi = 0$.
+  But this contradicts~$\xi \notin \im(f)$.
+  We find that indeed~$\ker(g) \subseteq \im(f)$.
+  
+  All that is left to show is the injectivity of~$f$:
+  We may write~$\eta \in P_1$ uniquely as
+  \[
+    \eta
+    =
+    \left(
+      \sum_{\substack{p \in Q_* \\ s(p) = t(\alpha)}}
+      p \tensor \eta_{\alpha,p}
+    \right)_{\alpha \in Q_1}
+  \]
+  with~$\eta_{\alpha, p} \in \varepsilon_{s(\alpha)} A$ for every~$\alpha \in Q_1$ and path~$p \in Q_*$ with~$s(p) = t(\alpha)$.
+  Suppose that~$\eta \neq 0$.
+  Let~$p_0 \in Q_*$ for which there exists an arrow~$\alpha \in Q_1$ with~$\eta_{p_0, \alpha} \neq 0$, and suppose that~$p_0$ is of maximal length with this property.
+ We may write the element
+  \[
+    \xi
+    \defined
+    f(\eta)
+    =
+    \sum_{\alpha \in Q_1}
+    \left(
+      \iota_{s(\alpha)}
+      \left(
+        \sum_{\substack{p \in Q_* \\ s(p) = t(\alpha)}}
+        p \alpha \tensor \eta_{\alpha,p}
+      \right)
+      -
+      \iota_{t(\alpha)}
+      \left(
+        \sum_{\substack{p \in Q_* \\ s(p) = t(\alpha)}}
+        p \tensor \alpha \eta_{\alpha,p}
+      \right)
+    \right)
+  \]
+  as
+  \[
+    \xi
+    =
+    \left(
+      \sum_{\substack{p \in Q_* \\ s(p) = i}}
+      p \tensor \xi_p
+    \right)_{i \in Q_0}
+  \]
+  in the same way as before.
+  We then find that
+  \[
+    \xi_{p_0 \alpha}
+    =
+    \eta_{\alpha, p_0}
+    \neq
+    0 \,.
+  \]
+  and hence that~$f(\eta) \neq 0$.
+  This shows that~$\ker(f) = 0$.
+\end{proof}
+
+
+\begin{remark}
+  Under the equivalence of categories~$F \colon \Rep{\kf}{Q} \to \Modl{\kf Q}$ the standard projective resolution of a representation~$X$ is given by
+  \[
+    0
+    \to
+    \bigoplus_{\alpha \in Q_1}
+    P(t(\alpha)) \tensor_\kf X_{s(\alpha)}
+    \to
+    \bigoplus_{i \in Q_0}
+    P(i) \tensor_\kf X_i
+    \to
+    X
+    \to
+    0 \,.
+  \]
+\end{remark}
+
+
+\begin{corollary}
+  Let~$X$ be a representation~$Q$ over~$\kf$.
+  Then $\Right^n \Hom(-,X) = 0$ for every~$n \geq 2$.
+\end{corollary}
+
+
+\begin{definition}
+  The~\dash{$\Integer$}{bilinear} form
+  \[
+    \bil{-,-}
+    \colon
+    \Integer^{Q_0} \times \Integer^{Q_0}
+    \to
+    \Integer
+  \]
+  given by
+  \[
+    \bil{d,e}
+    =
+    \sum_{i \in Q_0}
+    d_i e_i
+    -
+    \sum_{\alpha \in Q_1}
+    d_{s(\alpha)} e_{t(\alpha)}
+  \]
+  is the \emph{Euler form}\index{Euler form} of~$Q$.
+\end{definition}
+
+
+\begin{definition}
+  The \emph{dimension vector}\index{dimension vector} of a {\fd} representation~$X$ of~$Q$ over~$\kf$ is the tupel
+  \[
+    \dimvect X
+    \defined
+    (\dim X_i)_{i \in Q_0}
+  \]
+
+\end{definition}
+
+
+\begin{corollary}
+  Let~$X$ and~$Y$ be~{\fd} representations of~$Q$ over~$\kf$.
+  Then
+  \[
+    \dim \Hom(X,Y)
+    -
+    \dim (\Right^1 \Hom(-,Y))(X)
+    =
+    \bil{\dimvect X, \dimvect Y}  \,.
+  \]
+\end{corollary}
+
+
+\begin{proof}
+  Let
+  \[
+    \underbrace{
+    \dotsb
+    \to
+    0
+    \to
+    0
+    \to
+    P_1
+    \to
+    P_0
+    }_{\Pcc}
+    \to
+    X
+    \to
+    0
+  \]
+  be the standard projective resolution of~$X$.
+  By applying the functor~$\Hom(-,Y)$ to this resolution we arrive at the cochain complex
+  \[
+    \Hom(\Pcc, Y)
+    =
+    \bigl(
+      \dotsb
+      \to
+      0
+      \to
+      0
+      \to
+      \Hom(P_0, Y)
+      \to
+      \Hom(P_1, Y))
+      \to
+      0
+      \to
+      0
+      \to
+      \dotsb
+    \bigr)  \,.
+  \]
+  We find with the universal property of the coproduct and \cref{homomorphisms out of P(i)} that
+  \begin{align*}
+    \Hom(P_0, Y)
+    &=
+    \Hom
+    \left(
+      \bigoplus_{i \in Q_0}
+      P(i) \tensor_\kf X_i,
+      Y
+    \right)
+    \\
+    &\cong
+    \left(
+      \bigoplus_{i \in Q_0}
+      P(i)^{\oplus \dim X_i},
+      Y
+    \right)
+    \\
+    &\cong
+    \bigoplus_{i \in Q_0}
+    \Hom( P(i), Y )^{\oplus \dim X_i}
+    \\
+    &\cong
+    \bigoplus_{i \in Q_0}
+    Y_i^{\oplus \dim X_i}
+  \end{align*}
+  and hence
+  \[
+    \dim \Hom(P_0, Y)
+    =
+    \sum_{i \in Q_0} \dim X_i \dim Y_i  \,.
+  \]
+  We similarly find that
+  \[
+    \dim \Hom(P_1, Y)
+    =
+    \sum_{\alpha \in Q_1}
+    \dim X_{s(\alpha)} \dim Y_{t(\alpha)} \,.
+  \]
+  We get from the short exact sequence
+  \[
+    0
+    \to
+    P_1
+    \to
+    P_0
+    \to
+    X
+    \to
+    0
+  \]
+  the induced (long) exact equence
+  \[
+    0
+    \to
+    \Hom(X,Y)
+    \to
+    \Hom(P_0,Y)
+    \to
+    \Hom(P_1,Y)
+    \to
+    (\Right^1 \Hom(-,Y))(X)
+    \to
+    0
+    \to
+    \dotsb
+  \]
+  where we use that~$(\Right^1 \Hom(-,Y))(P_0) = 0$ because~$P_0$ is projective.
+  It follows that
+  \begin{align*}
+    {}&
+      \dim \Hom(X,Y)
+    - \dim (\Right^1 \Hom(-,Y))(X)
+    \\
+    ={}&
+      \dim \Hom(P_0, Y)
+    - \Hom \Hom(P_1, Y)
+    \\
+    ={}&
+      \sum_{i \in Q_0} \dim X_i \dim Y_i
+    - \sum_{\alpha \in Q_1} \dim X_{s(\alpha)} \dim Y_{t(\alpha)}
+    \\
+    ={}&
+      \bil{ \dimvect X, \dimvect Y }
+  \end{align*}
+  as claimed.
+\end{proof}
+
+
+
+
+
+\lecturend{24}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

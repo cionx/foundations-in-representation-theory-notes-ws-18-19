@@ -128,6 +128,7 @@
 \declaretheorem[numbered=no,name=Remark]{remarknonum}
 \declaretheorem[sibling=everything,name=Remark-Definition]{remarkdefinition}
 \declaretheorem[sibling=everything]{theorem}
+\declaretheorem[numbered=no,name=Theorem]{theoremnonum}
 \declaretheorem[numbered=no,name=Warning]{warningnonum}
 \declaretheorem[sibling=extra,name=Warning\textsuperscript{\extrasymbol}]{warning*}
 \renewcommand{\thmcontinues}[1]{Continued}
@@ -162,6 +163,8 @@
 \newcommand{\kbilin}{$\kf$\nobreakdash-bilinear}
 \newcommand{\klin}{$\kf$\nobreakdash-linear}
 \newcommand{\kdash}{$\kf$\nobreakdash-}
+\newcommand{\kvs}{$\kf$\nobreakdash-vector space}
+\newcommand{\kvss}{$\kf$\nobreakdash-vector spaces}
 \newcommand{\preklin}{pre\nobreakdash-$\kf$\nobreakdash-linear}
 \newcommand{\onetoone}{one\nobreakdash-to\nobreakdash-one}
 \newcommand{\qic}{quasi\nobreakdash-isomorphic}
@@ -367,6 +370,8 @@
 
 
 % functions and functors
+\DeclarePairedDelimiter{\bil}{\langle}{\rangle}
+\newcommand{\dimvect}{\mathop{\mathbf{dim}}}
 \DeclareMathOperator{\ringchar}{char}
 \newcommand{\ev}{\mathrm{ev}}
 \newcommand{\Id}{\mathrm{Id}}
