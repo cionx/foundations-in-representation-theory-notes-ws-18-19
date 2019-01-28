@@ -1,0 +1,395 @@
+\section{Injectives in Module Categories}
+
+
+\begin{conventionnonum}
+  Let~$\kf$ be a commutative ring and let~$A$ be a~{\kalg}.
+\end{conventionnonum}
+
+
+\begin{theorem}[Baer’s criterion]
+  \label{baers criterion}
+  For an~{\module{$A$}}~$M$ the following conditions are equivalent:
+  \begin{enumerate}
+    \item
+      The module~$M$ is injective.
+    \item
+      \label{Baer condition}
+      For every left ideal~$J \subseteq A$, every module homomorphism~$J \to M$ extends to a module homomorphism~$R \to M$.
+  \end{enumerate}
+\end{theorem}
+
+
+\begin{remark*}
+  Baer’s criterion states that it sufficies to prove the defining condition of an injective module for inclusions~$J \to A$ of left ideals~$J \subseteq A$.
+\end{remark*}
+
+
+\begin{proof}[Proof of Baer’s crtiterion]
+  If~$M$ is injective then condition~\ref*{Baer condition} holds because the inclusion~$J \to M$ is a monomorphism.
+  
+  Suppose on the other hand that condition~\ref*{Baer condition} holds.
+  Let~$N$ be any~{\module{$A$}},~$N' \subseteq N$ a submodule and~$f' \colon N' \to M$ a module homomorphism.
+  We need to show that there exists a module homomorphism~$f \colon N \to M$ with~$\restrict{f}{N'} = f'$.
+  
+  It follows from Zorn’s lemma that there exists a maximal extension~$\overline{f}$ of~$f$.
+  More explicitely, there exists a submodule~$\overline{N} \subseteq M$ and a module homomorphism~$\overline{f} \colon \overline{N} \to M$ with~$N' \subseteq \overline{N}$ and~$\restrict{\overline{f}}{N'} = f'$, such that~$\overline{N}$ is maximal with this property (with respect to the inclusion of submodules).
+  
+  Suppose that~$\overline{N} \neq N$.
+  Then let~$y \in N$ with~$y \notin \overline{N}$ and consider the left ideal
+  \[
+    J
+    \defined
+    \{
+      a \in A
+    \suchthat
+      a y \in \overline{N}
+    \}  \,.
+  \]
+  The map
+  \[
+    g
+    \colon
+    J
+    \to
+    M \,,
+    \quad
+    a
+    \mapsto
+    \overline{f}(a y)
+  \]
+  is a module homomorphism and can therefore (by assumption) be extended to a module homomorphism
+  \[
+    \overline{g}
+    \colon
+    A
+    \to
+    M \,.
+  \]
+  For~$N'' \defined \overline{N} + A y$ the map
+  \[
+    f''
+    \colon
+    N''
+    \to
+    M \,,
+    \quad
+    x + a y
+    \mapsto
+    \overline{f}(x) + \overline{g}(a)
+  \]
+  where ~$x \in \overline{N}$ and~$a \in A$ is a~{\welldef} module homomorphism that extends~$f$.
+  To see that~$f''$ is~{\welldef} suppose that~$x + ay = x' + a'y$ for some~$x, x' \in \overline{N}$ and~$a, a' \in A$.
+  Then
+  \[
+    \overline{N}
+    \ni
+    x - x'
+    =
+    (a' - a)y
+  \]
+  and therefore~$a' - a \in J$;
+  then
+  \[
+      \overline{f}(x) - \overline{f}(x')
+    =
+    \overline{f}(x - x')
+    =
+    \overline{f}( (a' - a) y )
+    =
+    \overline{g}(a' - a)
+    =
+    \overline{g}(a') - \overline{g}(a)
+  \]
+  and therefore
+  \[
+    \overline{f}(x) + \overline{g}(a)
+    =
+    \overline{f}(x') + \overline{g}(a') \,.
+  \]
+  But~$\overline{N}$ is a proper submodule of~$N''$, which contradicts the maximality of~$\overline{N}$.
+\end{proof}
+
+
+\begin{definition*}
+  An~{\module{$A$}}~$M$ is \emph{divisible}\index{divisible} if there exists for every~$m \in M$ and~$a \in A$ with~$a \neq 0$ some~$m' \in M$ such that~$m = a m'$.
+\end{definition*}
+
+
+\begin{corollary}
+  \label{injective iff divisible}
+  An abelian group~$M$ is injective in~$\Ab$ if and only if it is divisible.
+\end{corollary}
+
+
+\begin{proof}
+  If~$M$ is injective then for every~$n \in \Integer$ with~$n \neq 0$ the linear map
+  \[
+    f
+    \colon
+    n\Integer
+    \to
+    M \,,
+    \quad
+    k
+    \mapsto
+    \frac{k}{n} a
+  \]
+  extends to a linear map~$g \colon \Integer \to M$.
+  Then
+  \[
+    n g(1)
+    =
+    g(n)
+    =
+    f(n)
+    =
+    a \,.
+  \]
+  
+  Suppose on the other hand that~$M$ is disivible.
+  We use \hyperref[baers criterion]{Baer’s criterion} to show that~$M$ is is injective:
+  Let~$J \subseteq \Integer$ be an ideal and let~$f \colon J \to M$ be a group homomorphism;
+  we need to show that~$f$ extends to a group homomorphism~$\Integer \to M$.
+  The ideal~$J$ is of the form~$J = (n)$ for some~$n \in \Integer$.
+  If~$J = 0$ then the zero morphism~$\Integer \to M$ is such an extension.
+  Otherwise~$n \neq 0$ and it follows for the element~$f(n) \in M$ from the divisibility of~$M$ that there exists some~$x \in M$ with~$f(n) = n x$.
+  The group homomorphism
+  \[
+    g
+    \colon
+    \Integer
+    \to
+    M \,,
+    \quad
+    k
+    \mapsto
+    k x
+  \]
+  then satisfies
+  \[
+    g(n)
+    =
+    n x
+    =
+    f(n)
+  \]
+  and is therefore an extension on~$f$.
+\end{proof}
+
+
+\begin{remark}
+  \Cref{injective iff divisible} holds more generally when~$\Integer$ is replaced by any~PID.
+\end{remark}
+
+
+\begin{example}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      The abelian group~$\Integer$ is no injective.
+    \item
+      The abelian group~$\Rational$ is injective.
+    \item
+      The abelian group~$\Rational/\Integer$ is injective.
+  \end{enumerate}
+\end{example}
+
+
+\begin{lemma}
+  \label{product of injectives}
+  If~$(I_\beta)_{\beta \in B}$ is a family of injective objects in a category~$\Ccat$ then the product~$\prod_{\beta \in B} I_\beta$ (if it exists) is again injective.
+\end{lemma}
+
+
+\begin{corollary}
+  \label{Ab has enough injectives}
+  The category~$\Ab$ has enough injectives.
+\end{corollary}
+
+
+\begin{proof}
+  Let~$M$ be an abelian group and let
+  \[
+    I
+    \defined
+    \prod_{f \in \Hom_\Integer(M, \Rational/\Integer)} \Rational/\Integer \,.
+  \]
+  The abelian group~$I$ again injective by \cref{product of injectives}.
+  Let~$i \colon M \to I$ be the group homomorphism that is given in the~\dash{$f$}{th} coordinate (for~$f \in \Hom_\Integer(M, \Rational/\Integer)$) by~$f$, i.e.
+  \[
+    i(x)
+    =
+    ( f(x) )_{f \in \Hom_\Integer(M, \Rational/\Integer)} \,.
+  \]
+  There exists by the upcomming \cref{nonzero homomorphism into QZ} for every~$x \in M$ with~$x \neq 0$ a group homomorphism~$f \in \Hom_\Integer(M, \Rational/\Integer)$ with~$f(x) \neq 0$.
+  This shows that~$i(x) \neq 0$, which shows that~$i$ is injective.
+\end{proof}
+
+
+\begin{lemma}
+  \label{nonzero homomorphism into QZ}
+  Let~$M$ be an abelian group.
+  There exists for every~$x \in M$ with~$x \neq 0$ a group homomorphism~$f \in \Hom_\Integer(M, \Rational/\Integer)$ with~$f(x) \neq 0$.
+\end{lemma}
+
+
+\begin{proof}
+  We may assume that~$M = \Integer x$ because~$\Rational/\Integer$ is injective, and every such homomorphism~$\Integer x \to \Rational/\Integer$ therefore extends to a homomorphism~$M \to \Rational/\Integer$.
+  The group~$\Integer x$ is cyclic and so we may assume that~$M = \Integer/n$ for some~$n \geq 0$ and that~$x = \class{1}$.
+  In the case~$n = 0$ we can use the projection~$\Integer \to \Integer/2$  to assume that~$n > 0$.
+  We can now use the embedding~$\Integer/n \to \Rational/\Integer$ given by~$\class{1} \to 1/n$ as a suitable morphism.
+\end{proof}
+
+
+\begin{theorem}
+  \label{adjunctions between abelian categories}
+  Let~$\Acat$ and~$\Bcat$ be abelian categories and let~$(F, G, \varphi)$ be an adjunction from~$\Acat$ to~$\Bcat$
+  (i.e.~$F \colon \Acat \to \Bcat$ and~$G \colon \Bcat \to \Acat$ and~$F$ is left adjoint to~$G$).
+  \begin{enumerate}
+    \item
+      The functors~$F$ and~$G$ are additive, and the map~$\varphi_{X,Y}$ is for all object~$X \in \Ob(\Acat)$ and~$Y \in \Ob(\Bcat)$ an isomorphism of abelian groups.
+    \item
+      The functor~$F$ is right exact, whereas the functor~$G$ is left exact.
+    \item
+      \label{exact preserve inj and proj}
+      If~$F$ is exact and~$I$ is an injective object of~$\Bcat$ then~$G(I)$ is an injective object of~$\Acat$.
+      If~$G$ is exact and~$P$ is a projective object of~$\Acat$ then~$F(P)$ is a projective object of~$\Bcat$.
+  \end{enumerate}
+\end{theorem}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      This is part~(ii) of Exercise~4 of Exercise sheet~13.
+    \item
+      This is part~(iii) of Exercise~4 of Exercise sheet~13.
+    \item
+      We show the first assertion, the second assertion then follows by duality.
+      We show that~$\Hom_\Acat(-,G(I))$ maps monomorphisms to surjections.
+      So let~$f \colon X' \to X$ be a monomorphism in~$\Acat$.
+      We get the following commutative square:
+      \[
+        \begin{tikzcd}[column sep = large]
+            \Hom_\Acat(X, G(I))
+            \arrow{r}[above]{f^*}
+          & \Hom_\Acat(X', G(I))
+          \\
+            \Hom_\Bcat(F(X), I)
+            \arrow{u}[left]{\varphi_{X,Y}}
+            \arrow{r}[below]{F(f)^*}
+          & \Hom_\Bcat(F(X'), I)
+            \arrow{u}[right]{\varphi_{X',Y}}
+        \end{tikzcd}
+      \]
+      The functor~$F$ respects kernels because it is left exact, and hence respect monomorphisms.
+      We therefore find that the morphism~$F(f)$ is again a monomorphism.
+      It follows from the injectivity of the object~$I$ that~$F(f)^*$ is surjective.
+      Therefore~$f^* = \varphi_{X', Y} \circ F(f)^* \circ \varphi_{X,Y}^{-1}$ is surjective.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+
+\begin{corollary}
+  If~$I$ is an injective abelian group then~$\Hom_\Integer(A,I)$ is an injective left~{\module{$A$}}, where~$A$ acts on~$\Hom_\Integer(A,I)$ via
+  \[
+    (a.f)(a')
+    =
+    f(a' a)
+  \]
+  for all~$a \in A$ and all~$f \in \Hom_\Integer(A,I)$ and~$a' \in A$.
+  Similarly for right~{\modules{$A$}}.
+\end{corollary}
+
+
+\begin{proof}
+  The forgetful functor~$F \colon \Modl{A} \to \Ab$ is exact and has a right adjoint
+  \[
+    G
+    \colon
+    \Ab
+    \to
+    \Modl{A} \,,
+    \quad
+    M
+    \mapsto
+    \Hom_\Integer(A,M)  \,.
+  \]
+  It follows from part~\ref*{exact preserve inj and proj} of \cref{adjunctions between abelian categories} that~$G$ respects injectives.
+  It therefore follows from the injectivity of~$I$ that~$G(I) = \Hom_\Integer(A,I)$ is again injective.
+\end{proof}
+
+
+\begin{example}
+  The~{\module{$A$}}~$\Hom_\Integer(A, \Rational/\Integer)$ is injective.
+\end{example}
+
+
+\begin{lemma*}
+  Let~$M$ be an~{\module{$A$}}.
+  Then there exists for every~$x \in M$ with~$x \neq 0$ a module homomorphism~$f \colon M \to \Hom_\Integer(A, \Rational/\Integer)$ with~$f(x) \neq 0$.
+\end{lemma*}
+
+
+\begin{proof}
+  We may assume that~$M = A x$ because by the injectivity of~$\Hom_\Integer(M, \Rational/\Integer)$ every such module homomorphism~$Ax \to \Hom_\Integer(A, \Rational/\Integer)$ can be extended to a module homomorphism~$M \to \Hom_\Integer(A, \Rational/\Integer)$.
+  We may further assume that~$M = A/J$ for a left ideal~$J \subseteq A$ and that~$x = \class{1}$.
+  It follows from~$x \neq 0$ by \cref{nonzero homomorphism into QZ} that there exists some~$h \in \Hom_\Integer(A/J, \Rational/\Integer)$ with~$h(\class{1}) \neq 0$.
+  Let~$g \in \Hom_\Integer(A, \Rational/\Integer)$ be the composition
+  \[
+    g
+    \colon
+    A
+    \xlongto{\pi}
+    A/J
+    \xlongto{h}
+  \]
+  where~$\pi \colon A \to A/J$ is the canonical projection.
+  Let~$\tilde{f} \colon A \to \Hom_\Integer(A, \Rational/\Integer)$ be the unique module homomorphism with~$\tilde{f}(1) = g$.
+  It holds for every~$y \in J$ that
+  \[
+    \tilde{f}(y)(a)
+    =
+    (y g)(a)
+    =
+    g(ay)
+    =
+    h(\class{ay})
+    =
+    h(0)
+    =
+    0
+  \]
+  for every~$a \in A$ because~$ay \in J$;
+  hence~$\tilde{f}(y) = 0$.
+  This shows that~$\tilde{f}$ factors through a {\welldef} module homomorphism~$f \colon A/J \to \Hom_\Integer(A, \Rational/\Integer)$.
+  This homomorphism satisfies
+  \[
+    f(\class{1})
+    =
+    \tilde{f}(1)
+    =
+    g
+  \]
+  with~$g \neq 0$ (because~$h \neq 0$).
+\end{proof}
+
+
+\begin{corollary}
+  The category~$\Modl{A}$ has enough injectives (and so has~$\Modr{A}$).
+\end{corollary}
+
+
+\begin{proof}
+    The proof proceed analogous to \cref{Ab has enough injectives}, with the role of~$\Rational/\Integer$ replaced by~$\Hom_\Integer(A, \Rational/\Integer)$,.
+\end{proof}
+
+
+
+
+
+\lecturend{25}
+
+
