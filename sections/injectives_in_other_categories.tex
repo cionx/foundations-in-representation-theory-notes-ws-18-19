@@ -1,0 +1,73 @@
+\section{Injectives in Other Categories}
+
+
+\begin{example}
+  Let~$X$ be a topological space.
+  Then the catgory~$\Sheaf_X(\Ab)$ has enough injectives.
+  Let us give a sketch of the poof:
+  
+  If~$Y$ is another topological space and~$f \colon X \to Y$ is a continuous map, then~$f$ induces a functor
+  \[
+    f_*
+    \colon
+    \Sheaf_Y(\Ab)
+    \to
+    \Sheaf_X(\Ab)  \,,
+  \]
+  which is given on objects by
+  \[
+    f_*(\Gs)(U)
+    \defined
+    \Gs(f^{-1}(U))
+  \]
+  for every sheaf~$\Gs$ on~$Y$ and every open subset~$U \subseteq X$.
+  For the special case~$X = \{\ast\}$ the sheaf~$f_*(\Gs)$ consists of the single abelian group~$\Gs(Y) = \Gamma(Y,\Gs)$.
+  
+  The functor~$f_*$ admits a left adjoint~$f^* \colon \Sheaf_X(\Ab) \to \Sheaf_Y(\Ab)$, that can be shown to be exact.
+  It follows from \cref{adjunctions between abelian categories} that~$f_*$ respects injectives, i.e.\ that~$f_*(\Is)$ is injective whenever~$\Is$ is injective.
+  
+  We can for every~$x \in X$ consider the inclusion~$i_x \colon \{x\} \to X$ to get for every sheaf~$\Fs$ on~$X$ an abelian group~$\Fs_x \defined i_x^*(\Fs)$.
+  The category~$\Sheaf_{\{x\}}(\Ab) = \Ab$ has enough injectives, whence we have for some injective abelian group~$I_x$ an embedding~$\Fs_x \to I_x$.
+  The induced morphism of sheaves~$(i_x)_*(\Fs_x) \to (i_x)_*(I_x)$ is again a monomorphism because~$(i_x)_*$ is left exact (since it is right adjoint) and hence respects kernels.
+  Together with the adjunction unit
+  \[
+    \Fs
+    \to
+    (i_x)_*( i_x^*(\Fs) )
+    =
+    (i_x)_*( \Fs_x )
+  \]
+  we get a natural morphism
+  \[
+    \Fs
+    \to
+    (i_x)_*( \Fs_x )
+    \to
+    (i_x)_*(I_x)  \,.
+  \]
+  These natural morphisms fit together to form a monomorphism
+  \[
+    \Fs
+    \to
+    \prod_{x \in X} (i_x)_*(\Fs_x)  \,.
+  \]
+  The composition
+  \[
+    \Fs
+    \to
+    \prod_{x \in X} (i_x)_*(\Fs_x)
+    \to
+    \prod_{x \in X} (i_x)_*(I_x)
+  \]
+  is a monomorphism into the injective object~$\prod_{x \in X} (i_x)_*(I_x)$.
+  This shows that~$\Sheaf_X(\Ab)$ has enough injectives.
+  
+  We can therefore consider for every open subset~$U \subseteq X$ the right derived functors of the section functor~$\Gamma(U, -) \colon \Sheaf_X(\Ab) \to \Ab$, or more generally the right derived functors of the aforementioned functor~$f_* \colon \Sheaf_Y(\Ab) \to \Sheaf_X(\Ab)$.
+  The right derived functors~$(\Right^n \Gamma(U,-))(\Fs) \defines \Hl^i(U,\Fs)$ are known%
+  \footnote{and feared}
+  as \emph{sheaf cohomology}, whereas the derived functors~$(\Right^n f_*)(\Fs)$ are known as the \emph{higher direct image}.
+\end{example}
+
+
+
+

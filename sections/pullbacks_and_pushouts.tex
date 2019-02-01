@@ -418,7 +418,8 @@
 \end{remark*}
 
 
-\begin{lemma*}
+\begin{lemma*}[Transitivity of pullback and pushout]
+  \label{transitivity of pullback and pushout}
   Let~$\Ccat$ be a category.
   \begin{enumerate}
     \item
@@ -599,4 +600,632 @@
     \qedhere
   \end{enumerate}
 \end{proof}
+
+
+\begin{remark*}[Functoriality of pullback and pushout]
+  \label{functoriality of pullback and pushout}
+  Let~$\Ccat$ be a category.
+  \begin{enumerate}
+    \item
+      Suppose that we are given two diagrams
+      \[
+        \begin{tikzcd}
+            {}
+          & X_1
+            \arrow{d}
+          \\
+            Y'_1
+            \arrow{r}
+          & Y_1
+        \end{tikzcd}
+        \qquad\text{and}\qquad
+        \begin{tikzcd}
+            {}
+          & X_2
+            \arrow{d}
+          \\
+            Y'_2
+            \arrow{r}
+          & Y_2
+        \end{tikzcd}
+      \]
+      in~$\Ccat$ and morphisms~$X_1 \to X_2$,~$Y_1 \to Y_2$ and~$Y'_1 \to Y'_2$ that make the resulting diagram
+      \begin{equation}
+        \label{morphism between prepullbacks}
+        \begin{tikzcd}[cramped]
+            {}
+          & {}
+          & X_1
+            \arrow{dd}
+            \arrow[dashed]{dr}
+          & {}
+          \\
+            {}
+          & {}
+          & {}
+          & X_2
+            \arrow{dd}
+          \\
+            Y'_1
+            \arrow{rr}
+            \arrow[dashed]{dr}
+          & {}
+          & Y_1
+            \arrow[dashed]{dr}
+          & {}
+          \\
+            {}
+          & Y'_2
+            \arrow{rr}
+          & {}
+          & Y_2
+          \\
+        \end{tikzcd}
+      \end{equation}
+      commute.
+      If the pullbacks
+      \[
+        \begin{tikzcd}
+            X'_1
+            \arrow[dashed]{r}
+            \arrow[dashed]{d}
+          & X_1
+            \arrow{d}
+          \\
+            Y'_1
+            \arrow{r}
+          & Y_1
+        \end{tikzcd}
+        \qquad\text{and}\qquad
+        \begin{tikzcd}
+            X'_2
+            \arrow[dashed]{r}
+            \arrow[dashed]{d}
+          & X_2
+            \arrow{d}
+          \\
+            Y'_2
+            \arrow{r}
+          & Y_2
+        \end{tikzcd}
+      \]
+      exist, then there exists a unique morphism~$X'_1 \to X'_2$ that makes the resulting cube
+      \[
+        \begin{tikzcd}[cramped]
+            X'_1
+            \arrow{rr}
+            \arrow[dashed]{dr}
+            \arrow{dd}
+          & {}
+          & X_1
+            \arrow{dd}
+            \arrow{dr}
+          & {}
+          \\
+            {}
+          & X'_2
+          & {}
+          & X_2
+            \arrow[from=ll, crossing over]
+            \arrow{dd}
+          \\
+            Y'_1
+            \arrow{rr}
+            \arrow{dr}
+          & {}
+          & Y_1
+            \arrow{dr}
+          & {}
+          \\
+            {}
+          & Y'_2
+            \arrow[from=uu, crossing over]
+            \arrow{rr}
+          & {}
+          & Y_2
+          \\
+        \end{tikzcd}
+      \]
+      commute.
+      Both the existence and uniqueness follows by the universal property of the pullback (applied to~$X'_2$) from the commutativity of the diagram~\eqref{morphism between prepullbacks}.
+      This induced morphism is functorial in the following sense:
+      \begin{itemize}
+        \item
+          Let
+          \[
+            \begin{tikzcd}
+                {}
+              & X
+                \arrow{d}
+              \\
+                Y'
+                \arrow{r}
+              & Y
+            \end{tikzcd}
+          \]
+          be a diagram in~$\Ccat$ whose pushout
+          \[
+            \begin{tikzcd}
+                X'
+                \arrow[dashed]{r}
+                \arrow[dashed]{d}
+              & X
+                \arrow{d}
+              \\
+                Y'
+                \arrow{r}
+              & Y
+            \end{tikzcd}
+          \]
+          exists.
+          Then the diagram
+          \[
+            \begin{tikzcd}[cramped]
+                {}
+              & {}
+              & X
+                \arrow{dd}
+                \arrow[dashed]{dr}[above right]{\id_X}
+              & {}
+              \\
+                {}
+              & {}
+              & {}
+              & X
+                \arrow{dd}
+              \\
+                Y'
+                \arrow{rr}
+                \arrow[dashed]{dr}[below left]{\id_{Y'}}
+              & {}
+              & Y
+                \arrow[dashed]{dr}[above right]{\id_Y}
+              & {}
+              \\
+                {}
+              & Y'
+                \arrow{rr}
+              & {}
+              & Y
+              \\
+            \end{tikzcd}
+          \]
+          commutes, and the induced morphism~$X' \to X'$ that makes the diagram
+          \[
+            \begin{tikzcd}[cramped]
+                X'
+                \arrow{rr}
+                \arrow[dashed]{dr}
+                \arrow{dd}
+              & {}
+              & X
+                \arrow{dd}
+                \arrow{dr}[above right]{\id_X}
+              & {}
+              \\
+                {}
+              & X'
+              & {}
+              & X
+                \arrow[from=ll, crossing over]
+                \arrow{dd}
+              \\
+                Y'
+                \arrow{rr}
+                \arrow{dr}[below left]{\id_{Y'}}
+              & {}
+              & Y
+                \arrow{dr}[above right]{\id_Y}
+              & {}
+              \\
+                {}
+              & Y'
+                \arrow[from=uu, crossing over]
+                \arrow{rr}
+              & {}
+              & Y
+              \\
+            \end{tikzcd}
+          \]
+          commute is the identity~$\id_{X'}$.
+        \item
+          Let
+          \[
+            \begin{tikzcd}
+                {}
+              & X_1
+                \arrow{d}
+              \\
+                Y'_1
+                \arrow{r}
+              & Y_1
+            \end{tikzcd}
+            \qquad\text{and}\qquad
+            \begin{tikzcd}
+                {}
+              & X_2
+                \arrow{d}
+              \\
+                Y'_2
+                \arrow{r}
+              & Y_2
+            \end{tikzcd}
+            \qquad\text{and}\qquad
+            \begin{tikzcd}
+                {}
+              & X_3
+                \arrow{d}
+              \\
+                Y'_3
+                \arrow{r}
+              & Y_3
+            \end{tikzcd}
+          \]
+          be diagram in~$\Ccat$ whose pullbacks
+          \[
+            \begin{tikzcd}
+                X'_1
+                \arrow[dashed]{r}
+                \arrow[dashed]{d}
+              & X_1
+                \arrow{d}
+              \\
+                Y'_1
+                \arrow{r}
+              & Y_1
+            \end{tikzcd}
+            \qquad\text{and}\qquad
+            \begin{tikzcd}
+                X'_2
+                \arrow[dashed]{r}
+                \arrow[dashed]{d}
+              & X_2
+                \arrow{d}
+              \\
+                Y'_2
+                \arrow{r}
+              & Y_2
+            \end{tikzcd}
+            \qquad\text{and}\qquad
+            \begin{tikzcd}
+                X'_3
+                \arrow[dashed]{r}
+                \arrow[dashed]{d}
+              & X_3
+                \arrow{d}
+              \\
+                Y'_3
+                \arrow{r}
+              & Y_3
+            \end{tikzcd}
+          \]
+          exist.
+          Suppose that we are given morphisms
+          \[
+            X_i \to X_{i+1} \,,
+            \quad
+            Y_i \to Y_{i+1} \,,
+            \quad
+            Y'_i \to Y'_{i+1}
+          \]
+          that make the resulting diagram
+          \[
+            \begin{tikzcd}[cramped]
+                {}
+              & {}
+              & {}
+              & X_1
+                \arrow[dashed]{dr}
+                \arrow{ddd}
+              & {}
+              & {}
+              \\
+                {}
+              & {}
+              & {}
+              & {}
+              & X_2
+                \arrow[dashed]{dr}
+                \arrow{ddd}
+              & {}
+              \\
+                {}
+              & {}
+              & {}
+              & {}
+              & {}
+              & X_3
+                \arrow{ddd}
+              \\
+                Y'_1
+                \arrow{rrr}
+                \arrow[dashed]{dr}
+              & {}
+              & {}
+              & Y_1
+                \arrow[dashed]{dr}
+              & {}
+              & {}
+              \\
+                {}
+              & Y'_2
+                \arrow{rrr}
+                \arrow[dashed]{dr}
+              & {}
+              & {}
+              & Y_2
+                \arrow[dashed]{dr}
+              & {}
+              \\
+                {}
+              & {}
+              & Y'_3
+                \arrow{rrr}
+              & {}
+              & {}
+              & Y_3
+            \end{tikzcd}
+          \]
+          commutes.
+          Let~$f \colon X'_1 \to X'_2$ and~$g \colon X'_2 \to X'_3$ be the induced morphisms that make the diagram
+          \[
+            \begin{tikzcd}[cramped]
+                X'_1
+                \arrow{rrr}
+                \arrow[dashed]{dr}[above right]{f}
+                \arrow{ddd}
+              & {}
+              & {}
+              & X_1
+                \arrow{dr}
+                \arrow{ddd}
+              & {}
+              & {}
+              \\
+                {}
+              & X'_2
+                \arrow[dashed]{dr}[above]{g}
+              & {}
+              & {}
+              & X_2
+                \arrow[from=lll, crossing over]
+                \arrow{dr}
+                \arrow{ddd}
+              & {}
+              \\
+                {}
+              & {}
+              & X'_3
+              & {}
+              & {}
+              & X_3
+                \arrow[from=lll, crossing over]
+                \arrow{ddd}
+              \\
+                Y'_1
+                \arrow{rrr}
+                \arrow{dr}
+              & {}
+              & {}
+              & Y_1
+                \arrow{dr}
+              & {}
+              & {}
+              \\
+                {}
+              & Y'_2
+                \arrow[from=uuu, crossing over]
+                \arrow{rrr}
+                \arrow{dr}
+              & {}
+              & {}
+              & Y_2
+                \arrow{dr}
+              & {}
+              \\
+                {}
+              & {}
+              & Y'_3
+                \arrow[from=uuu, crossing over]
+                \arrow{rrr}
+              & {}
+              & {}
+              & Y_3
+            \end{tikzcd}
+          \]
+          commute.
+          It then follows from the commutativity of the subcube
+          \[
+            \begin{tikzcd}[cramped]
+                X'_1
+                \arrow{rr}
+                \arrow[dashed]{dr}[above right]{gf}
+                \arrow{dd}
+              & {}
+              & X_1
+                \arrow{dd}
+                \arrow{dr}
+              & {}
+              \\
+                {}
+              & X'_3
+              & {}
+              & X_3
+                \arrow[from=ll, crossing over]
+                \arrow{dd}
+              \\
+                Y'_1
+                \arrow{rr}
+                \arrow{dr}
+              & {}
+              & Y_1
+                \arrow{dr}
+              & {}
+              \\
+                {}
+              & Y'_3
+                \arrow[from=uu, crossing over]
+                \arrow{rr}
+              & {}
+              & Y_3
+              \\
+            \end{tikzcd}
+          \]
+          that~$gf$ is the morphism~$X'_1 \to X'_3$ induced by the commutativity of the following diagram:
+          \[
+            \begin{tikzcd}[cramped]
+                {}
+              & {}
+              & X_1
+                \arrow{dd}
+                \arrow[dashed]{dr}
+              & {}
+              \\
+                {}
+              & {}
+              & {}
+              & X_3
+                \arrow{dd}
+              \\
+                Y'_1
+                \arrow{rr}
+                \arrow[dashed]{dr}
+              & {}
+              & Y_1
+                \arrow[dashed]{dr}
+              & {}
+              \\
+                {}
+              & Y'_3
+                \arrow{rr}
+              & {}
+              & Y_3
+              \\
+            \end{tikzcd}
+          \]
+      \end{itemize}
+    \item
+      We observe similarly the functoriality of the pushout:
+      Suppose that
+      \[
+        \begin{tikzcd}
+            X'_1
+            \arrow{r}
+            \arrow{d}
+          & Y'_1
+          \\
+            X_1
+          & {}
+        \end{tikzcd}
+        \qquad\text{and}\qquad
+        \begin{tikzcd}
+            X'_2
+            \arrow{r}
+            \arrow{d}
+          & Y'_2
+          \\
+            X_2
+          & {}
+        \end{tikzcd}
+      \]
+      are diagrams in~$\Ccat$ whose pushouts
+      \[
+        \begin{tikzcd}
+            X'_1
+            \arrow{r}
+            \arrow{d}
+          & Y'_1
+            \arrow[dashed]{d}
+          \\
+            X_1
+            \arrow[dashed]{r}
+          & Y_1
+        \end{tikzcd}
+        \qquad\text{and}\qquad
+        \begin{tikzcd}
+            X'_2
+            \arrow{r}
+            \arrow{d}
+          & Y'_2
+            \arrow[dashed]{d}
+          \\
+            X_2
+            \arrow[dashed]{r}
+          & Y_2
+        \end{tikzcd}
+      \]
+      exist.
+      If~$X_1 \to X_2$,~$Y_1 \to Y_2$ and~$X'_1 \to X'_2$ are morphisms that make the diagram
+      \[
+        \begin{tikzcd}[cramped]
+            X'_1
+            \arrow{rr}
+            \arrow[dashed]{dr}
+            \arrow{dd}
+          & {}
+          & X_1
+            \arrow[dashed]{dr}
+          & {}
+          \\
+            {}
+          & X'_3
+          & {}
+          & X_3
+            \arrow[from=ll, crossing over]
+          \\
+            Y'_1
+            \arrow[dashed]{dr}
+          & {}
+          & {}
+          & {}
+          \\
+            {}
+          & Y'_3
+            \arrow[from=uu, crossing over]
+          & {}
+          & {}
+          \\
+        \end{tikzcd}
+      \]
+      commute, then there exists a unique morphism~$Y'_1 \to Y'_1$ that makes the resulting cube
+      \[
+        \begin{tikzcd}[cramped]
+            X'_1
+            \arrow{rr}
+            \arrow{dr}
+            \arrow{dd}
+          & {}
+          & X_1
+            \arrow{dd}
+            \arrow{dr}
+          & {}
+          \\
+            {}
+          & X'_3
+          & {}
+          & X_3
+            \arrow[from=ll, crossing over]
+            \arrow{dd}
+          \\
+            Y'_1
+            \arrow{rr}
+            \arrow{dr}
+          & {}
+          & Y_1
+            \arrow[dashed]{dr}
+          & {}
+          \\
+            {}
+          & Y'_3
+            \arrow[from=uu, crossing over]
+            \arrow{rr}
+          & {}
+          & Y_3
+          \\
+        \end{tikzcd}
+      \]
+      commute.
+      We also find that this induced morphism is functorial in the same sense as for the pullback.
+  \end{enumerate}
+\end{remark*}
 

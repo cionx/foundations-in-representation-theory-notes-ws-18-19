@@ -26,7 +26,7 @@
       For every vertex~$i \in Q_0$ let~$P(i)$ be the representation of~$Q$ over~$\kf$ that is given by the following data:
       \begin{itemize}
         \item
-          For every vertex~$j \in Q_0$ the~{\kvs}~$P(i)_j$ is the free~{\kvs} with basis~$Q(i,j)$.
+          For every vertex~$j \in Q_0$ the~{\kvs}~$P(i)_j$ is the free~{\kvs} with basis~$Q_*(i,j)$.
         \item
           For every arrow~$\alpha \in Q_1$ with~$\alpha \colon j \to k$ the~{\klin} map~$P(i)_\alpha \colon P(i)_j \to P(i)_k$ is given on the basis~$Q(i,j)$ of~$P(i)_j$ by the concatenation of paths.
           We hence have for every~$p \in Q(i,j)$ that
@@ -151,6 +151,39 @@
 \begin{proof}
   This is part~(i) of Exercise~4 of Exercise sheet~11.
 \end{proof}
+
+
+\begin{remark*}
+  \label{P(i) projective via Hom}
+  That the representations~$P(i)$ are projective can also be seen with the help of~\cref{homomorphisms out of P(i)}:
+  For every representation~$X$ of~$Q$ over~$\kf$ let
+  \[
+    \varphi_X
+    \colon
+    \Hom(P(i), X)
+    \to
+    X_i
+  \]
+  be the above isomorphism.
+  Let~$X$ and~$Y$ be two such representations and let~$f \colon X \to Y$ be an epimorphism of representations.
+  We note the commutativity of the following square:
+  \[
+    \begin{tikzcd}
+        \Hom(P(i), X)
+        \arrow{r}[above]{f_*}
+        \arrow{d}[left]{\varphi_X}
+      & \Hom(P(i), Y)
+        \arrow{d}[right]{\varphi_Y}
+      \\
+        X_i
+        \arrow{r}[below]{f_i}
+      & Y_i
+    \end{tikzcd}
+  \]
+  The~{\klin} map~$f_i$ is surjective because~$f$ is an epimorphism.
+  It follows that~$f_*$ is also surjective.
+  This shows that the functor~$\Hom(P(i), -)$ maps epimorphisms to surjections, which means that~$P(i)$ is projective.
+\end{remark*}
 
 
 \begin{definition*}

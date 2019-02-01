@@ -1,0 +1,39 @@
+\section{Categories Without Enough Injectives}
+
+
+\begin{example}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      The category of finitely generated abelian groups has no injective objects aside from the trivial group~$0$:
+      
+      Every finitely generated abelian groups~$M$ is a finite direct sum
+      \[
+        M
+        \cong
+        \bigoplus_{n \geq 0}
+        (\Integer/n\Integer)^{\oplus a_n}
+      \]
+      with~$a_n \geq 0$, and~$a_n = 0$ for almost all~$n$.
+      The abelian group~$M$ is injective if and only if each direct summand is injective, by part~\ref*{direct summand of injective} of \cref{more on projectives and injectives}.
+      But none of the~$\Integer/n\Integer$ is injective because the short exact sequence
+      \[
+        0
+        \to
+        \Integer/n
+        \to
+        \Integer/n^2
+        \to
+        \Integer/n
+        \to
+        0
+      \]
+      does not split.
+    \item
+      The same argument shows that the category of finite abelian groups has no injective objects aside from the trivial group~$0$.
+  \end{enumerate}
+\end{example}
+
+
+
+

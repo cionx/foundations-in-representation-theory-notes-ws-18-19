@@ -1,0 +1,761 @@
+\section{\texorpdfstring{$\Ext^1$}{Ext 1}}
+
+
+\begin{conventionnonum}
+  Let~$\Acat$ be an abelian category for which the class of isomorphism classes~$\Ob(\Acat)/{\cong}$ is actually a set.
+\end{conventionnonum}
+
+
+\begin{remarkdefinition}
+  Let~$X$ and~$Y$ be two objects in~$\Acat$.
+  \begin{enumerate}
+    \item
+      We denote by~$\Extensions(X,Y)$ the class
+      \[
+        \Extensions(X,Y)
+        \defined
+        \left\{
+          \xi
+          =
+          (a, E, b)
+        \suchthat*
+          \begin{array}{c}
+            E \in \Ob(\Acat),
+            \\
+            a \colon Y \to E, \;
+            b \colon E \to X,
+            \\
+            \text{$0 \to Y \xto{a} E \xto{b} X \to 0$ is exact}
+          \end{array}
+        \right\}  \,.
+      \]
+    \item
+      Two such sequences~$\xi, \xi' \in \Extensions(X,Y)$ given by~$\xi = (a,E,b)$ and~$\xi' = (a', E', b')$  are \emph{equivalent} if there exists a morphism~$\varphi \colon E \to E'$ that makes the resulting diagram
+      \[
+        \begin{tikzcd}
+            0
+            \arrow{r}
+          & Y
+            \arrow{r}[above]{a}
+            \arrow[equal]{d}
+          & E
+            \arrow{r}[above]{b}
+            \arrow[dashed]{d}[right]{\varphi}
+          & X
+            \arrow{r}
+            \arrow[equal]{d}
+          & 0
+          \\
+            0
+            \arrow{r}
+          & Y
+            \arrow{r}[above]{a'}
+          & E'
+            \arrow{r}[above]{b'}
+          & X
+            \arrow{r}
+          & 0
+        \end{tikzcd}
+      \]
+      commute.
+      That~$\xi$ is equivalent to~$\xi'$ is denoted by~$\xi \sim \xi'$.
+      Note that it follows from the \hyperref[5 lemma]{5-lemma} that~$\varphi$ is an isomorphism, which shows tells us that~$\sim$ is symmetric.
+      We also observe that~$\sim$ is reflexive and transitive.
+      We thus find that~$\sim$ is an equivalence relation on the class~$\Extensions(X,Y)$.
+    \item
+      The quotient~$\Ext^1_\Acat(X,Y) \defined \Extensions(X,Y)/{\sim}$ is by assumption a set.
+      An equivalence class~$[\xi] \in \Ext^1(X,Y)$ is a \emph{Yoneda extension}\index{Yoneda!extension}\index{extension!Yoneda}.
+  \end{enumerate}
+\end{remarkdefinition}
+
+
+\begin{remark*}
+   If there exists a short exact sequence~$0 \to Y \to E \to X \to 0$ then~$E$ is an \emph{extension}\index{extension} of~$X$ by~$Y$.
+   The class~$\Extensions(X,Y)$ can therefore be though of as the class of extensions of~$Y$ by~$X$.
+   (Hence the letter~$\Extensions$.)
+\end{remark*}
+
+
+\begin{remark}
+  Let~$X$ and~$Y$ be objects in~$\Acat$ and let~$\xi = (a,E,b) \in \Extensions(X,Y)$.
+  \begin{enumerate}
+    \item
+      Every morphism~$f \colon X' \to X'$ in~$\Acat$ induces a map~$f^* \colon \Ext^1(X,Y) \to \Ext^1(X',Y)$ as follows:
+      
+      We start with the following pullback square:
+      \[
+        \begin{tikzcd}
+            E'
+            \arrow{r}[above]{b'}
+            \arrow{d}[left]{f'}
+            \arrow[phantom]{dr}[description]{\pb}
+          & X'
+            \arrow{d}[right]{f}
+          \\
+            E
+            \arrow{r}[below]{b}
+          & X
+        \end{tikzcd}
+      \]
+      We know from \cref{kernels of pullbacks} that there exists a unique morphism~$a' \colon Y \to E'$ that makes the resulting diagram
+      \[
+        \begin{tikzcd}
+            0
+            \arrow{r}
+          & Y
+            \arrow{r}[above]{a'}
+            \arrow[equal]{d}
+          & E'
+            \arrow{r}[above]{b'}
+            \arrow{d}[right]{f'}
+            \arrow[phantom]{dr}[description]{\pb}
+          & X'
+            \arrow{r}
+            \arrow{d}[right]{f}
+          & 0
+          \\
+            0
+            \arrow{r}
+          & Y
+            \arrow{r}[below]{a}
+          & E
+            \arrow{r}[below]{b}
+          & X
+            \arrow{r}
+          & 0
+        \end{tikzcd}
+      \]
+      commute, and such that the rows of this diagram are (short) exact.
+      Observe that~$(a', E', b') \in \Extensions(X',Y)$.
+      
+      We claim that this construction is compatible with equivalence.
+      More explicitely, let~$\xi_1, \xi_2 \in \Extensions(X,Y)$ with~$\xi_1 \sim \xi_2$
+      Then for~$\xi'_1, \xi'_2 \in \Extensions(X', Y)$ resulting from the above construction, also~$\xi'_1 \sim \xi'_2$.
+      
+      Indeed, let~$\xi_i = (a_i, E_i, b_i)$ and~$\xi'_i = (a'_i, E'_i, b'_i)$.
+      Let~$\varphi \colon E_1 \to E_2$ be a morphism that makes the resulting diagram
+      \[
+        \begin{tikzcd}
+            0
+            \arrow{r}
+          & Y
+            \arrow{r}[above]{a_1}
+            \arrow[equal]{d}
+          & E_1
+            \arrow{r}[above]{b_1}
+            \arrow[dashed]{d}[right]{\varphi}
+          & X
+            \arrow{r}
+            \arrow[equal]{d}
+          & 0
+          \\
+            0
+            \arrow{r}
+          & Y
+            \arrow{r}[below]{a_2}
+          & E_2
+            \arrow{r}[below]{b_2}
+          & X
+            \arrow{r}
+          & 0
+        \end{tikzcd}
+      \]
+      commute.
+      We get the following commutative diagram:
+      \[
+        \begin{tikzcd}[column sep =  2em, cramped]
+            {}
+          & 0
+            \arrow{rr}
+          & {}
+          & Y
+            \arrow{rr}[above]{a'_1}
+            \arrow[equal]{dd}
+            \arrow[equal]{dl}
+          & {}
+          & E'_1
+            \arrow{rr}[above]{b'_1}
+            \arrow{dd}[right, very near start]{f'_1}
+          & {}
+          & X'
+            \arrow{rr}
+            \arrow{dd}[right, near start]{f}
+            \arrow[equal]{dl}
+          & {}
+          & 0
+          \\
+            0
+            \arrow{rr}
+          & {}
+          & Y
+          & {}
+          & E'_2
+            \arrow[from=ll, crossing over, "a'_2", near end]
+          & {}
+          & X'
+            \arrow[from=ll, crossing over, "b'_2", near end]
+          & {}
+          & 0
+            \arrow[from=ll, crossing over]
+          & {}
+          \\
+            {}
+          & 0
+            \arrow{rr}
+          & {}
+          & Y
+            \arrow{rr}[below, near start]{a_1}
+            \arrow[equal]{dl}
+          & {}
+          & E_1
+            \arrow{rr}[below, near start]{b_1}
+            \arrow{dl}[below right]{\varphi}
+          & {}
+          & X
+            \arrow{rr}
+            \arrow[equal]{dl}
+          & {}
+          & 0
+          \\
+            0
+            \arrow{rr}
+          & {}
+          & Y
+            \arrow[from=uu, crossing over, equal]
+            \arrow{rr}[below]{a_2}
+          & {}
+          & E_2
+            \arrow[from=uu, crossing over, "f'_2", near start]
+            \arrow{rr}[below]{b_2}
+          & {}
+          & X
+            \arrow[from=uu, crossing over, "f", near start]
+            \arrow{rr}
+          & {}
+          & 0
+          & {}
+        \end{tikzcd}
+      \]
+      It follows from the \hyperref[functoriality of pullback and pushout]{functoriality of the pullback} that there exists a unique morphism~$\varphi' \colon E'_1 \to E'_2$ that makes the resulting cube
+      \[
+        \begin{tikzcd}[cramped]
+            {}
+          & E'_1
+            \arrow{rr}[above]{b'_1}
+            \arrow{dd}[right, very near start]{f'_1}
+            \arrow[dashed]{dl}[above left]{\varphi'}
+          & {}
+          & X'
+            \arrow{dd}[right, near start]{f}
+            \arrow[equal]{dl}
+          \\
+            E'_2
+            \arrow{dd}[right, near start]{f'_2}
+          & {}
+          & X'
+            \arrow[from=ll, crossing over, "b'_2", near end]
+          & {}
+          \\
+            {}
+          & E_1
+            \arrow{rr}[above, near start]{b_1}
+            \arrow{dl}[below right]{\varphi}
+          & {}
+          & X
+            \arrow[equal]{dl}
+          \\
+            E_2
+            \arrow{rr}[below]{b_2}
+          & {}
+          & X
+            \arrow[from=uu, crossing over, "f", near start]
+          & {}
+          \\
+        \end{tikzcd}
+      \]
+      commute.
+      It then follows that the complete diagram
+      \[
+        \begin{tikzcd}[column sep =  2em, cramped]
+            {}
+          & 0
+            \arrow{rr}
+          & {}
+          & Y
+            \arrow{rr}[above]{a'_1}
+            \arrow[equal]{dd}
+            \arrow[equal]{dl}
+          & {}
+          & E'_1
+            \arrow{rr}[above]{b'_1}
+            \arrow{dd}[right, very near start]{f'_1}
+            \arrow[dashed]{dl}[above left]{\varphi'}
+          & {}
+          & X'
+            \arrow{rr}
+            \arrow{dd}[right, near start]{f}
+            \arrow[equal]{dl}
+          & {}
+          & 0
+          \\
+            0
+            \arrow{rr}
+          & {}
+          & Y
+          & {}
+          & E'_2
+            \arrow[from=ll, crossing over, "a'_2", near end]
+          & {}
+          & X'
+            \arrow[from=ll, crossing over, "b'_2", near end]
+          & {}
+          & 0
+            \arrow[from=ll, crossing over]
+          & {}
+          \\
+            {}
+          & 0
+            \arrow{rr}
+          & {}
+          & Y
+            \arrow{rr}[below, near start]{a_1}
+            \arrow[equal]{dl}
+          & {}
+          & E_1
+            \arrow{rr}[below, near start]{b_1}
+            \arrow{dl}[below right]{\varphi}
+          & {}
+          & X
+            \arrow{rr}
+            \arrow[equal]{dl}
+          & {}
+          & 0
+          \\
+            0
+            \arrow{rr}
+          & {}
+          & Y
+            \arrow[from=uu, crossing over, equal]
+            \arrow{rr}[below]{a_2}
+          & {}
+          & E_2
+            \arrow[from=uu, crossing over, "f'_2", near start]
+            \arrow{rr}[below]{b_2}
+          & {}
+          & X
+            \arrow[from=uu, crossing over, "f", near start]
+            \arrow{rr}
+          & {}
+          & 0
+          & {}
+        \end{tikzcd}
+      \]
+      commutes:
+      It remains to show that the square
+      \[
+        \begin{tikzcd}
+            Y
+            \arrow{r}[above]{a'_1}
+            \arrow[equal]{d}
+          & E'_1
+            \arrow{d}[right]{\varphi'}
+          \\
+            Y
+            \arrow{r}[below]{a'_2}
+          & E'_2
+        \end{tikzcd}
+      \]
+      commutes.
+      We have that
+      \[
+        f'_2 \varphi' a'_1
+        =
+        \varphi f'_1 a'_1
+        =
+        \varphi a_1 \id_Y
+        =
+        a_2 \id_Y \id_Y
+        =
+        a_2 \id_Y \id_Y
+        =
+        f'_2 a'_2 \id_Y \,.
+      \]
+      and also that
+      \[
+        b'_2 \varphi' a'_1
+        =
+        \id_{X'} \underbrace{b'_1 a'_1}_{=0}
+        =
+        0
+        =
+        \underbrace{b'_2 a'_2}_{=0} \id_Y  \,.
+      \]
+      It follows from the universal property of the pullback (applied to~$E'_2$) that indeed~$\varphi' a'_1 = a'_2 \id_Y$.
+      
+      This shows that~$\xi'_1$ and~$\xi'_2$ are again equivalent.
+      We hence get a~{\welldef}%
+      \footnote{We use, without proof, that different choices of pullback give equivalent sequences.}
+      map
+      \[
+        f^*
+        \colon
+        \Ext^1(X, Y)
+        \to
+        \Ext^1(X', Y) \,.
+      \]
+      For~$\class{\xi} \in \Ext^1(X,Y)$ we also write
+      \[
+        \class{\xi} \cdot f
+        \defined
+        f^*( \class{\xi} )  \,.
+      \]
+
+    \item
+      Let~$g \colon Y \to Y'$ be a morphism in~$\Acat$.
+      We find dually to above discussion that the morphism~$g$ induces a~{\welldef} map
+      \[
+        g_*
+        \colon
+        \Ext^1(X,Y)
+        \to
+        \Ext^1(X,Y')  \,,
+      \]
+      and we denote for~$\class{\xi} \in \Ext^1(X,Y)$ the Yoneda extension~$g_*(\class{\xi}) \in \Ext^1(X,Y')$ by~$g \cdot \class{\xi}$.
+      If~$\xi = (a,E,b)$ and~$g \cdot \class{\xi} = \class{\xi'}$ then one such a representative~$\xi' = (a',E',b')$ is given by the commutative diagram
+      \[
+        \begin{tikzcd}
+            0
+            \arrow{r}
+          & Y
+            \arrow{r}[above]{a}
+            \arrow{d}[left]{g}
+            \arrow[phantom]{dr}[description]{\po}
+          & E
+            \arrow{r}[above]{b}
+            \arrow{d}
+          & X
+            \arrow{r}
+            \arrow[equal]{d}
+          & 0
+          \\
+            0
+            \arrow{r}
+          & Y'
+            \arrow{r}[below]{a'}
+          & E'
+            \arrow{r}[below]{b'}
+          & X
+            \arrow{r}
+          & 0
+        \end{tikzcd}
+      \]
+      where the left square is a pushout.
+    \item
+      If~$f_2 \colon X' \to X$ and~$f_1 \colon X'' \to X'$ are morphisms in~$\Acat$ then
+      \[
+        (f_2 \circ f_1)^*
+        =
+        f_1^* \circ f_2^*
+      \]
+      for the induced maps
+      \begin{align*}
+        f_2^*
+        &\colon
+        \Ext^1(X, Y)
+        \to
+        \Ext^1(X', Y) \,,
+        \\
+        f_1^*
+        &\colon
+        \Ext^1(X', Y)
+        \to
+        \Ext^1(X'', Y)  \,.
+      \end{align*}
+      Indeed, let~$\class{\xi} \in \Ext^1(X,Y)$ with~$\xi = (a,E,b)$.
+      Then~$f_2^*( \class{\xi} ) = \class{\xi'}$ for a sequence~$\xi' = (a', E' ,b') \in \Extensions(X', Y)$ such that we have a commutative diagram
+      \[
+        \begin{tikzcd}
+            0
+            \arrow{r}
+          & Y
+            \arrow{r}[above]{a'}
+            \arrow[equal]{d}
+          & E'
+            \arrow{r}[above]{b'}
+            \arrow{d}[right]{f'_2}
+            \arrow[phantom]{dr}[description]{\pb}
+          & X'
+            \arrow{r}
+            \arrow{d}[right]{f_2}
+          & 0
+          \\
+            0
+            \arrow{r}
+          & Y
+            \arrow{r}[below]{a}
+          & E
+            \arrow{r}[below]{b}
+          & X
+            \arrow{r}
+          & 0
+        \end{tikzcd}
+      \]
+      in which the right square is a pullback.
+      We similarly have that~$f_1^*( \class{\xi'} ) = \class{\xi''}$ for a sequence~$\xi'' = (a'', E'', b'') \in \Extensions(X'', Y)$ such that we have a commutative diagram
+      \[
+        \begin{tikzcd}
+            0
+            \arrow{r}
+          & Y
+            \arrow{r}[above]{a''}
+            \arrow[equal]{d}
+          & E''
+            \arrow{r}[above]{b''}
+            \arrow{d}[right]{f'_1}
+            \arrow[phantom]{dr}[description]{\pb}
+          & X''
+            \arrow{r}
+            \arrow{d}[right]{f_1}
+          & 0
+          \\
+            0
+            \arrow{r}
+          & Y
+            \arrow{r}[below]{a'}
+          & E'
+            \arrow{r}[below]{b'}
+          & X'
+            \arrow{r}
+          & 0
+        \end{tikzcd}
+      \]
+      in which the right square is a pullback.
+      By glueing the above two diagrams together we get the following commutative diagram:
+      \[
+        \begin{tikzcd}
+            0
+            \arrow{r}
+          & Y
+            \arrow{r}[above]{a''}
+            \arrow[equal]{d}
+          & E''
+            \arrow{r}[above]{b''}
+            \arrow{d}[right]{f'_1}
+            \arrow[phantom]{dr}[description]{\pb}
+          & X''
+            \arrow{r}
+            \arrow{d}[right]{f_1}
+          & 0
+          \\
+            0
+            \arrow{r}
+          & Y
+            \arrow{r}[above]{a'}
+            \arrow[equal]{d}
+          & E'
+            \arrow{r}[above]{b'}
+            \arrow{d}[right]{f'_2}
+            \arrow[phantom]{dr}[description]{\pb}
+          & X'
+            \arrow{r}
+            \arrow{d}[right]{f_2}
+          & 0
+          \\
+            0
+            \arrow{r}
+          & Y
+            \arrow{r}[below]{a}
+          & E
+            \arrow{r}[below]{b}
+          & X
+            \arrow{r}
+          & 0
+        \end{tikzcd}
+      \]
+      It follow from the \hyperref[transitivity of pullback and pushout]{transitivity of pullbacks} that in the subdiagram
+      \[
+        \begin{tikzcd}[column sep = large]
+            0
+            \arrow{r}
+          & Y
+            \arrow{r}[above]{a''}
+            \arrow[equal]{d}
+          & E''
+            \arrow{r}[above]{b''}
+            \arrow{d}[right]{f'_2 f'_1}
+            \arrow[phantom]{dr}[description]{\pb}
+          & X''
+            \arrow{r}
+            \arrow{d}[right]{f_2 f_1}
+          & 0
+          \\
+            0
+            \arrow{r}
+          & Y
+            \arrow{r}[below]{a}
+          & E
+            \arrow{r}[below]{b}
+          & X
+            \arrow{r}
+          & 0
+        \end{tikzcd}
+      \]
+      the right square is again a pullback.
+      We find from this diagram that
+      \[
+        (f_2 \circ f_1)^*( \class{\xi} 
+        =
+        \class{\xi''}
+      \]
+      and therefore
+      \[
+        (f_2 \circ f_1)^*( \class{\xi} )
+        =
+        \class{\xi''}
+        =
+        f_1^*( \class{\xi'} )
+        =
+        f_1^*( f_2^*( \class{\xi} ) )
+        =
+        (f_1^* \circ f_2^*)( \class{x_i} )  \,,
+      \]
+      as desired.
+      We note this this equality can also be expressed as
+      \[
+        (\class{\xi} \cdot f_2) \cdot f_1
+        =
+        \class{\xi} \cdot (f_2 \cdot f_1) \,.
+      \]
+
+      We find similarly for all morphisms~$g_1 \colon Y \to Y'$ and~$g_2 \colon Y' \to Y''$ in~$\Acat$ that
+      \[
+        (g_2 \circ g_1)_*
+        =
+        (g_2)_* \circ (g_1)_*
+      \]
+      for the induced maps
+      \begin{align*}
+        (g_1)_*
+        &\colon
+        \Ext^1(X, Y)
+        \to
+        \Ext^1(X, Y') \,,
+        \\
+        (g_2)_*
+        &\colon
+        \Ext^1(X, Y')
+        \to
+        \Ext^1(X, Y'') \,.
+      \end{align*}
+      This equality can also be expressed as
+      \[
+        g_1 \cdot (g_2 \cdot \class{\xi})
+        =
+        (g_1 \circ g_2) \cdot \class{\xi}
+      \]
+      for every~$\class{\xi} \in \Ext^1(X,Y)$.
+      
+    \item
+      We have for all morphisms~$f \colon X' \to X$ and~$g \colon Y \to Y'$ in~$\Acat$ that
+      \[
+        g_* \circ f^*
+        =
+        f^* \circ g_* \,,
+      \]
+      which an also be expressed as
+      \[
+        g \cdot (\class{\xi} \cdot f)
+        =
+        (g \cdot \class{\xi}) \cdot f
+      \]
+      for every~$\class{\xi} \in \Ext^1(X,Y)$:
+      We consider the following commutative diagram:
+      \[
+        \begin{tikzcd}
+            g_* f^* \xi:
+          & 0
+            \arrow{r}
+          & Y'
+            \arrow{r}
+          & \widetilde{E}
+            \arrow{r}
+          & X'
+            \arrow{r}
+          & 0
+          \\
+            f^* \xi:
+          & 0
+            \arrow{r}
+          & Y
+            \arrow{u}[left]{g}
+            \arrow[phantom]{ur}[description]{\llcorner}
+            \arrow{r}
+            \arrow[equal]{d}
+          & E'
+            \arrow{u}[left]{\tilde{g}}
+            \arrow{r}
+            \arrow[phantom]{dr}[description]{\lrcorner}
+            \arrow{d}[right]{f'}
+          & X'
+            \arrow[equal]{u}
+            \arrow{r}
+            \arrow{d}[right]{f}
+          & 0
+          \\
+            \xi:
+          & 0
+            \arrow{r}
+          & Y
+            \arrow{r}
+            \arrow[phantom]{dr}[description]{\ulcorner}
+            \arrow{d}[left]{g}
+          & E
+            \arrow{r}
+            \arrow{d}[left]{g''}
+          & X
+            \arrow{r}
+            \arrow[equal]{d}
+          & 0
+          \\
+            g^* \xi:
+          & 0
+            \arrow{r}
+          & Y'
+            \arrow{r}
+          & E''
+            \arrow{r}
+          & X
+            \arrow{r}
+          & 0
+          \\
+            f^* g_* \xi:
+          & 0
+            \arrow{r}
+          & Y'
+            \arrow[equal]{u}
+            \arrow{r}
+          & \widetilde{\widetilde{E}}
+            \arrow{u}[right]{\tilde{\tilde{f}}}
+            \arrow[phantom]{ur}{\urcorner}
+            \arrow{r}
+          & X'
+            \arrow{u}[right]{f}
+            \arrow{r}
+          & 0
+        \end{tikzcd}
+      \]
+  \end{enumerate}
+  
+  
+  
+  
+  
+  \lecturend{26}
+  
+  
+  
+  
+  
+\end{remark}
+
+

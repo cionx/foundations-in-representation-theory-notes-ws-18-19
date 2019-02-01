@@ -541,7 +541,11 @@
 \end{definition*}
 
 
+% Is this definition still needed?
+
+
 \begin{lemma}
+  \label{more on projectives and injectives}
   Let~$P, I \in \Ob(\Acat)$ be a objects in~$\Acat$.
   \begin{enumerate}
     \item
@@ -551,9 +555,10 @@
       Dually, the object~$I$ is injective if and only if every short exact sequence of the form~$0 \to I \to X \to X'' \to 0$ in~$\Acat$ splits.
     \item
       \label{direct summand of projective}
-      If~$P$ is projective then every direct summand of~$P$ is again projective.
+      If~$P \cong P_1 \oplus P_2$ for objects~$P_1, P_2 \in \Ob(\Acat)$ then~$P$ is projective if and only if both~$P_1$ and~$P_2$ are projective.
     \item
-      If~$I$ is injective then every direct summand of~$I$ is again injective.
+      \label{direct summand of injective}
+      If~$I \cong I_1 \oplus I_2$ for objects~$I_1, I_2 \in \Ob(\Acat)$ then~$I$ is injective if and only if both~$I_1$ and~$I_2$ are projective.
   \end{enumerate}
 \end{lemma}
 
@@ -642,8 +647,7 @@
     \item
       This is dual to part~\ref*{ses ending in projective}.
     \item
-      This is left as an exercise.
-%     TODO: Add a reference to the exercise sheet.
+      This is Exercise~2 on Exercise sheet~10.
     \item
       This is dual to part~\ref*{direct summand of projective}.
     \qedhere

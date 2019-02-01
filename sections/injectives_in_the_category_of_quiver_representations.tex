@@ -1,0 +1,203 @@
+\section{Injectives in the Category of Quiver Representations}
+
+
+\begin{remark}
+  Let~$Q$ be a finite quiver and suppose that~$\kf$ is a field.
+  For every~$i \in Q_0$ we define a representation~$I(i)$ of~$Q$ by the following data:
+  \begin{itemize}
+    \item
+      For every vertex~$j \in Q_0$ the~{\kvs}~$P(i)_j$ is the free~{\kvs} with basis~$Q_*(j,i)$.
+    \item
+      For every arrow~$\alpha \in Q_1$ with~$\alpha \colon j \to k$ the~{\klin} map~$I(i)_\alpha \colon I(i)_j \to I(i)_k$ is given on the basis elements~$p \in Q_*(j,i)$ of~$P(i)_j$ by
+      \[
+        I(i)_\alpha(p)
+        \defined
+        \begin{cases}
+          p'  & \text{if~$p = p' \alpha$} \,, \\
+          0   & \text{otherwise}  \,.
+        \end{cases}
+      \]
+      We get for every representation~$X$ of~$Q$ an isomorphism of~{\kvs}
+      \[
+        \varphi
+        \colon
+        \Hom(X, I(i))
+        \to
+        X_i^* \,,
+      \]
+      where for every~$f \in \Hom(X,I(i))$ the element~$\varphi(f) \in X_i^*$ is given by the composition
+      \[
+        \varphi(f)
+        \colon
+        X_i
+        \xlongto{f_i}
+        I(i)_i
+        \xlongto{\pi_{\varepsilon_i}}
+        k \,.
+      \]
+      It follows that~$I(i)$ is injective.
+  \end{itemize}
+\end{remark}
+
+
+\begin{remark*}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      The injectivity of the~$I(i)$ can be shown similarly to the projectivity of the~$P(i)$ in \cref{P(i) projective via Hom}:
+      For every representation~$X$ of~$Q$ over~$\kf$ let
+      \[
+        \varphi_X
+        \colon
+        \Hom(X, I(i))
+        \to
+        X_i^*
+      \]
+      be the above isomorphism of~{\kvss}.
+      Let~$X$ and~$Y$ be two representations of~$Q$ over~$\kf$ and let~$f \colon X \to Y$ be a monomorphism of representations
+      We then have the following commutative rectangle:
+      \[
+        \begin{tikzcd}
+            \Hom(Y, I(i))
+            \arrow{r}[above]{f^*}
+            \arrow{d}[left]{\varphi_X}
+          & \Hom(X, I(i))
+            \arrow{d}[right]{\varphi_Y}
+          \\
+            Y_i^*
+            \arrow{r}[below]{f_i^*}
+          & X_i^*
+        \end{tikzcd}
+      \]
+      Indeed, we have for~$g \in \Hom(Y,I(i))$ and~$x \in X_i$ that
+      \[
+        \varphi_Y( f^*(g) )(x)
+        =
+        \varphi_Y( g \circ f )(x)
+        =
+        \pi_{\varepsilon_i}( (g \circ f)_i(x) )
+        =
+        \pi_{\varepsilon_i}( g_i( f_i(x) ) )
+      \]
+      and similarly
+      \[
+        (f_i^* \circ \varphi_X)(g)(x)
+        =
+        f_i^*( \varphi_X(g) )(x)
+        =
+        \varphi_X(g)( f_i(x) )
+        =
+        \pi_{\varepsilon_i}( g_i( f_i(x) ) )  \,.
+      \]
+      The~{\klin} map~$f_i \colon X_i \to Y_i$ is injective, so its dual map~$f_i^* \colon Y_i^* \to X_i^*$ is surjective.
+      It follows that~$f^* = \varphi_Y^{-1} \circ f_i^* \circ \varphi_X$ is surjective.
+      This shows that the functor~$\Hom(-,I(i))$ maps monomorphisms (in~$\Acat$) to surjections, which means that the representation~$I(i)$ is injective.
+    \item
+      For any right~{\module{$A$}}~$M$ its dual space~$M^*$ becomes a left~{\module{$A$}} via
+      \[
+        (a \varphi)(m)
+        =
+        \varphi(m a) 
+      \]
+      for all~$a \in A$,~$\varphi \in M^*$ and~$m \in M$.
+      We find for the (projective) right~{\module{$A$}}~$\varepsilon_i A$ that its dual~$(\varepsilon_i A)^*$ becomes a left~{\module{$A$}}.
+      This left~{\module{$A$}} is precisely~$I(i)$:
+      
+      The right~{\module{$A$}}~$\varepsilon_i A$ has as a basis the set
+      \begin{equation}
+        \label{original basis}
+        \{
+          p \in Q_*
+        \suchthat
+          t(p) = i
+        \}  \,,
+      \end{equation}
+      hence its dual~$(\varepsilon_i A)^*$ has as a dual basis the set
+      \begin{equation}
+        \label{dual basis}
+        \{
+          p^*
+        \suchthat
+          p \in Q_*,
+          t(p) = i
+        \}  \,.
+      \end{equation}
+      We have for every arrow~$\alpha \in Q_1$ with~$\alpha \colon j \to k$ that
+      \begin{equation}
+        \label{dual multiplication rule}
+        \alpha \cdot p^*
+        =
+        \begin{cases}
+          (p')^*  & \text{if~$p = p' \alpha$}  \,, \\
+          0       & \text{otherwise}  \,.
+        \end{cases}
+      \end{equation}
+      Indeed, it holds for every basis element~$q$ of~$\varepsilon_i A$, i.e.~$q \in Q_1$ with~$t(\alpha) = i$, that
+      \[
+        (\alpha \cdot p^*)(q)
+        =
+        p^*(q \alpha)
+        =
+        \begin{cases}
+          1 & \text{if~$p = q \alpha$}  \,, \\
+          0 & \text{otherwise}  \,.
+        \end{cases}
+      \]
+      If~$p = p' \alpha$ for some path~$p' \in Q_*$ (with necessarily~$t(p') = t(p) = i$) then therefore
+      \[
+        (\alpha \cdot p^*)(q)
+        =
+        \begin{cases}
+          1 & \text{if~$q = p'$}  \,, \\
+          0 & \text{otherwise}        \\
+        \end{cases}
+        =
+        (p')^*(q)
+      \]
+      and hence~$\alpha \cdot p^* = (p')^*$.
+      If no such~$p'$ exists then~$(\alpha \cdot p^*)(q) = 0$ for every~$q$ and hence~$\alpha \cdot p^* = 0$.
+      
+      We can identify the basis elements of~\eqref{dual basis} with the elements of the original basis~\eqref{original basis} via the bijection~$p^* \mapsto p$.
+      We then get a left~{\module{$A$}}~$I$ with basis~\eqref{original basis}, and on which the multiplication rule~\eqref{dual multiplication rule} becomes
+      \[
+        \alpha \cdot p
+        =
+        \begin{cases}
+          p'  & \text{if~$p = p' \alpha$} \,, \\
+          0   & \text{otherwise}  \,.
+        \end{cases}
+      \]
+      We have in particular for every~$j \in Q_0$ that~$\varepsilon_j I$ has as a basis the set
+      \begin{align*}
+        {}&
+        \{
+          p' \in Q_*
+        \suchthat
+          \text{$p = p' \varepsilon_j$ for some~$p \in Q_*$ with~$t(p) = i$}
+        \}
+        \\
+        ={}&
+        \{
+          p' \in Q_*
+        \suchthat
+          \text{$p = p'$ for some~$p \in Q_*$ with~$t(p) = i$ and~$s(p) = j$}
+        \}
+        \\
+        ={}&
+        \{
+          p \in Q_*
+        \suchthat
+          s(p) = j,
+          t(p) = i
+        \}
+        =
+        Q_*(j,i)  \,.
+      \end{align*}
+      This shows that~$I_j = I(i)_j$ for every~$j \in Q_0$ and that the actions of~$Q$ on~$I$ and~$I(i)$ coincide.
+      Hence~$I(i) = I \cong (\varepsilon_i A)^*$.
+  \end{enumerate}
+\end{remark*}
+
+
+
+
