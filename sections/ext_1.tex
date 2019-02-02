@@ -655,6 +655,20 @@
       \]
       for every~$\class{\xi} \in \Ext^1(X,Y)$.
       
+      We hence have functors
+      \begin{align*}
+        \Ext^1_\Acat(X,-)
+        &\colon
+        \Acat
+        \to
+        \Ab \,,
+      \\
+        \Ext^1_\Acat(-,Y)
+        &\colon
+        \Acat^\op
+        \to
+        \Ab \,.
+      \end{align*}
     \item
       We have for all morphisms~$f \colon X' \to X$ and~$g \colon Y \to Y'$ in~$\Acat$ that
       \[
@@ -668,17 +682,17 @@
         =
         (g \cdot \class{\xi}) \cdot f
       \]
-      for every~$\class{\xi} \in \Ext^1(X,Y)$:
-      We consider the following commutative diagram:
+      for every~$\class{\xi} \in \Ext^1(X,Y)$.
+      To prove this we consider the following commutative diagram:
       \[
         \begin{tikzcd}
             g_* f^* \xi:
           & 0
             \arrow{r}
           & Y'
-            \arrow{r}
-          & \widetilde{E}
-            \arrow{r}
+            \arrow{r}[above]{a^\circ}
+          & E^\circ
+            \arrow{r}[above]{b^\circ}
           & X'
             \arrow{r}
           & 0
@@ -689,11 +703,11 @@
           & Y
             \arrow{u}[left]{g}
             \arrow[phantom]{ur}[description]{\llcorner}
-            \arrow{r}
+            \arrow{r}[above]{a'}
             \arrow[equal]{d}
           & E'
-            \arrow{u}[left]{\tilde{g}}
-            \arrow{r}
+            \arrow{u}[left]{g^\circ}
+            \arrow{r}[above]{b'}
             \arrow[phantom]{dr}[description]{\lrcorner}
             \arrow{d}[right]{f'}
           & X'
@@ -706,11 +720,11 @@
           & 0
             \arrow{r}
           & Y
-            \arrow{r}
+            \arrow{r}[above]{a}
             \arrow[phantom]{dr}[description]{\ulcorner}
             \arrow{d}[left]{g}
           & E
-            \arrow{r}
+            \arrow{r}[above]{b}
             \arrow{d}[left]{g''}
           & X
             \arrow{r}
@@ -721,9 +735,9 @@
           & 0
             \arrow{r}
           & Y'
-            \arrow{r}
+            \arrow{r}[above]{a''}
           & E''
-            \arrow{r}
+            \arrow{r}[above]{b''}
           & X
             \arrow{r}
           & 0
@@ -733,29 +747,659 @@
             \arrow{r}
           & Y'
             \arrow[equal]{u}
-            \arrow{r}
-          & \widetilde{\widetilde{E}}
-            \arrow{u}[right]{\tilde{\tilde{f}}}
+            \arrow{r}[above]{a^{\circ\circ}}
+          & E^{\circ\circ}
+            \arrow{u}[right]{f^{\circ\circ}}
             \arrow[phantom]{ur}{\urcorner}
-            \arrow{r}
+            \arrow{r}[above]{b^{\circ\circ}}
           & X'
             \arrow{u}[right]{f}
             \arrow{r}
           & 0
         \end{tikzcd}
       \]
+      It follows from the universal property of the pushout (applied to~$E^\circ$) that there exists a unique morphism~$\lambda \colon E^\circ \to E''$  that makes the diagram
+      \[
+        \begin{tikzcd}
+            Y
+            \arrow{r}[above]{a'}
+            \arrow[phantom]{dr}[description]{\po}
+            \arrow{d}[left]{g}
+          & E'
+            \arrow{d}[left]{g^\circ}
+            \arrow[bend left]{ddr}[above right]{g'' f'}
+          & {}
+          \\
+            Y'
+            \arrow{r}[above]{a^\circ}
+            \arrow[bend right]{rrd}[below left]{a''}
+          & E^\circ
+            \arrow[dashed]{dr}[above right]{\lambda}
+          & {}
+          \\
+            {}
+          & {}
+          & E''
+        \end{tikzcd}
+      \]
+      commute.
+      Then the square
+      \[
+        \begin{tikzcd}
+            E^\circ
+            \arrow{r}[above]{b^\circ}
+            \arrow{d}[left]{\lambda}
+          & X'
+            \arrow{d}[right]{f}
+          \\
+            E''
+            \arrow{r}[below]{b''}
+          & X
+        \end{tikzcd}
+      \]
+      commutes.
+      This follows from the universal property of the pushout (applied to~$E^\circ$) because
+      \[
+        b'' \lambda a^\circ
+        =
+        b'' a''
+        =
+        f \circ 0
+        =
+        f b^\circ a^\circ
+      \]
+      and
+      \[
+       b'' \lambda g^\circ
+       =
+       b'' g'' f'
+       =
+       b f'
+       =
+       f b'
+       =
+       f \id_{X'} b^\circ g^\circ
+       =
+       f b^\circ g^\circ  \,.
+      \]
+      It now follows from the universal property of the pullback (applied to~$E^{\circ\circ}$) that there exists a unique morphism~$\varphi \colon E^\circ \to E^{\circ\circ}$ that makes the diagram
+      \[
+        \begin{tikzcd}
+            E^\circ
+            \arrow[bend left]{drr}[above right]{b^\circ}
+            \arrow[dashed]{dr}[above right]{\varphi}
+            \arrow[bend right]{ddr}[below left]{\lambda}
+          & {}
+          & {}
+          \\
+            {}
+          & E^{\circ\circ}
+            \arrow{r}[above]{b^{\circ\circ}}
+            \arrow[phantom]{dr}[description]{\pb}
+            \arrow{d}[left]{f^{\circ\circ}}
+          & X'
+            \arrow{d}[right]{f}
+          \\
+            {}
+          & E''
+            \arrow{r}[below]{b''}
+          & X
+        \end{tikzcd}
+      \]
+      commute.
+      We claim that the morphism~$\varphi$ makes the diagram
+      \begin{equation}
+        \label{overall morphism}
+        \begin{tikzcd}
+            0
+            \arrow{r}
+          & Y'
+            \arrow{r}[above]{a^\circ}
+            \arrow[equal]{d}
+          & E^\circ
+            \arrow{r}[above]{b^\circ}
+            \arrow[dashed]{d}[right]{\varphi}
+          & X'
+            \arrow{r}
+            \arrow[equal]{d}
+          & 0
+          \\
+            0
+            \arrow{r}
+          & Y'
+            \arrow{r}[below]{a^{\circ\circ}}
+          & E^{\circ\circ}
+            \arrow{r}[below]{b^{\circ\circ}}
+          & X'
+            \arrow{r}
+          & 0
+        \end{tikzcd}
+      \end{equation}
+      commute.
+      The right square commutes by the construction of~$\varphi$.
+      The commutativity of the left square follows from the universal property of the pullback (applied to~$E^{\circ\circ}$) because
+      \[
+        b^{\circ\circ} \varphi a^\circ
+        =
+        b^\circ a^\circ
+        =
+        0
+        =
+        b^{\circ\circ} a^{\circ\circ}
+      \]
+      and
+      \[
+        f^{\circ\circ} \varphi a^\circ
+        =
+        \lambda a^\circ
+        =
+        a''
+        =
+        f^{\circ\circ} a^{\circ\circ} \,.
+      \]
+      The commutativity of the diagram~\eqref{overall morphism} proves the claim.
   \end{enumerate}
-  
-  
-  
-  
-  
-  \lecturend{26}
-  
-  
-  
-  
-  
 \end{remark}
+
+
+
+
+
+\lecturend{26}
+
+
+
+
+
+\begin{remarkdefinition}
+  Let~$\class{\xi}, \class{\xi'} \in \Ext^1(X,Y)$ be two extensions given by representatives~$\xi = (a,E,b)$ and~$\xi' = (a',E',b')$.
+  Then the sequence
+  \[
+    \xi \oplus \xi'
+    \colon
+    0
+    \to
+    Y \oplus Y
+    \xlongto{ \begin{bsmallmatrix} a & 0 \\ 0 & a' \end{bsmallmatrix} }
+    E \oplus E
+    \xlongto{ \begin{bsmallmatrix} b & 0 \\ 0 & b' \end{bsmallmatrix} }
+    X \oplus X
+    \to
+    0
+  \]
+  is again exact, and hence~$\class{\xi \oplus \xi'} \in \Ext^1(X \oplus X, Y \oplus Y)$.
+  
+  The extension~$\class{\xi \oplus \xi'}$ is independent of the choice of representatives~$\xi$ and~$\xi'$:
+  Let~$\xi_1, \xi_2, \xi'_1, \xi'_2 \in \Extensions(X,Y)$ with~$\xi_1 \sim \xi_2$ and~$\xi'_1 \sim \xi'_2$.
+  Suppose that~$\xi_i = (a_i, E_i, b_i)$ and~$\xi'_i = (a'_i, E'_i, b'_i)$ and let~$\varphi \colon E_1 \to E_2$ and~$\varphi' \colon E'_1 \to E'_2$ be morphisms that make the diagrams
+  \[
+    \begin{tikzcd}
+        0
+        \arrow{r}
+      & Y
+        \arrow{r}[above]{a_1}
+        \arrow[equal]{d}
+      & E_1
+        \arrow{r}[above]{b_1}
+        \arrow[dashed]{d}[right]{\varphi}
+      & X
+        \arrow{r}
+        \arrow[equal]{d}
+      & 0
+      \\
+        0
+        \arrow{r}
+      & Y
+        \arrow{r}[above]{a'_1}
+      & E'_1
+        \arrow{r}[above]{b'_1}
+      & X
+        \arrow{r}
+      & 0
+    \end{tikzcd}
+  \]
+  and
+  \[
+    \begin{tikzcd}
+        0
+        \arrow{r}
+      & Y
+        \arrow{r}[above]{a_2}
+        \arrow[equal]{d}
+      & E_2
+        \arrow{r}[above]{b_2}
+        \arrow[dashed]{d}[right]{\varphi}
+      & X
+        \arrow{r}
+        \arrow[equal]{d}
+      & 0
+      \\
+        0
+        \arrow{r}
+      & Y
+        \arrow{r}[above]{a'_2}
+      & E'_2
+        \arrow{r}[above]{b'_2}
+      & X
+        \arrow{r}
+      & 0
+    \end{tikzcd}
+  \]
+  commute.
+  Then the diagram
+  \[
+    \begin{tikzcd}[column sep = large, row sep = large, ampersand replacement = \&]
+          0
+          \arrow{r}
+      \&  X \oplus X
+          \arrow{r}[above]{ \begin{bsmallmatrix} a_1 & 0 \\ 0 & a'_1 \end{bsmallmatrix} }
+          \arrow[equal]{d}
+      \&  E_1 \oplus E'_1
+          \arrow{r}[above]{ \begin{bsmallmatrix} b_1 & 0 \\ 0 & b'_1 \end{bsmallmatrix} }
+          \arrow{d}[right]{ \begin{bsmallmatrix} \varphi & 0 \\ 0 & \varphi' \end{bsmallmatrix} }
+      \&  Y \oplus Y
+          \arrow{r}
+          \arrow[equal]{d}
+      \&  0
+      \\
+          0
+          \arrow{r}
+      \&  X \oplus X
+          \arrow{r}[below]{ \begin{bsmallmatrix} a_2 & 0 \\ 0 & a'_2 \end{bsmallmatrix} }
+      \&  E_2 \oplus E'_2
+          \arrow{r}[below]{ \begin{bsmallmatrix} b_2 & 0 \\ 0 & b'_2 \end{bsmallmatrix} }
+      \&  Y \oplus Y
+          \arrow{r}
+      \&  0
+    \end{tikzcd}
+  \]
+  commutes, which shows that~$\xi_1 \oplus \xi'_1 \sim \xi_2 \oplus \xi'_2$.
+  This proves the claimed independence, and consequently allows us to write
+  \[
+    \class{\xi} \oplus \class{\xi'}
+    \defined
+    \class{\xi \oplus \xi'}
+    \in
+    \Ext^1(X \oplus X, Y \oplus Y)  \,.
+  \]
+  for all~$\class{\xi}, \class{\xi'} \in \Ext^1(X,Y)$.
+  
+  Together with the diagonal morphism~$\diag_X \colon X \to X \oplus X$ and the codiagonal morphism~$\codiag_Y \colon Y \oplus Y \to Y$ we get for all extensions~$\class{\xi}, \class{\xi'} \in \Ext^1(X,Y)$ an extension
+  \[
+    \class{\xi} + \class{\xi'}
+    \defined
+    \codiag_Y \cdot ( \class{\xi} \oplus \class{\xi'} ) \cdot \diag_X \,.
+  \]
+  The extension~$\class{\xi} + \class{\xi'}$ is the \emph{Baer sum}\index{Baer sum}\index{sum!Baer} of~$\class{\xi}$ and~$\class{\xi'}$.
+\end{remarkdefinition}
+
+
+\begin{remark}
+  Let~$\kf$ be commutative ring and let~$A$ be a~{\kalg}.
+  For all~{\modules{$A$}}~$M$ and~$N$ and all short exact sequences
+  \begin{align*}
+    \xi
+    &\colon
+    0
+    \to
+    N
+    \xlongto{a}
+    E
+    \xlongto{b}
+    M
+    \to
+    0 \,,
+    \\
+    \xi'
+    &\colon
+    0
+    \to
+    N'
+    \xlongto{a'}
+    E'
+    \xlongto{b'}
+    M'
+    \to
+    0
+  \end{align*}
+  the Baer sum~$\class{\xi} + \class{\xi'}$ is given by the short exact sequence
+  \[
+    0
+    \to
+    N
+    \xlongto{a''}
+    E''
+    \xlongto{b''}
+    M
+    \to
+    0
+  \]
+  where
+  \[
+    E''
+    \defined
+    \{
+      (e,e') \in E \oplus E'
+    \suchthat
+      b(e) = b'(e')
+    \}
+    \big/
+    \{
+      (a(y), -a'(y))
+    \suchthat
+      y \in N
+    \}
+  \]
+  and the homomorphisms~$a''$ and~$b''$ are given by
+  \[
+    a''(y)
+    \defined
+    \class{ (a(y), a'(y)) } \,,
+    \quad
+    b''(\class{(e,e')})
+    \defined
+    b(e)
+    = b'(e')  \,.
+  \]
+% TODO: Prove this.
+\end{remark}
+
+
+\begin{lemma}
+  \label{converse for pullback and pushout}
+  Let
+  \[
+    \begin{tikzcd}
+        0
+        \arrow{r}
+      & Y'
+        \arrow{r}[above]{a'}
+        \arrow{d}[left]{g}
+      & E'
+        \arrow{r}[above]{b'}
+        \arrow{d}[left]{h}
+      & X'
+        \arrow{r}
+        \arrow{d}[left]{f}
+      & 0
+      \\
+        0
+        \arrow{r}
+      & Y
+        \arrow{r}[below]{a}
+      & E
+        \arrow{r}[below]{b}
+      & X
+        \arrow{r}
+      & 0
+    \end{tikzcd}
+  \]
+  be a commutative diagram with (short) exact rows in~$\Acat$.
+  \begin{enumerate}
+    \item
+      \label{right is pullback}
+      If the morphism~$g$ is an isomorphism then the right square is a pullback.
+    \item
+      \label{left is pushout}
+      If the morphism~$f$ is an isomorphism then the left square is a pushout.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+  We prove part~\ref*{right is pullback}.
+  Part~\ref*{left is pushout} then follows from part~\ref*{right is pullback} by duality.
+  We consider for part~\ref*{right is pullback} the pullback:
+  \[
+    \begin{tikzcd}
+      P
+      \arrow{r}[above]{q}
+      \arrow[phantom]{dr}[description]{\pb}
+      \arrow{d}[left]{p}
+      &
+      X'
+      \arrow{d}[right]{f}
+      \\
+      E
+      \arrow{r}[below]{b}
+      &
+      X'
+    \end{tikzcd}
+  \]
+  It follows from the universal property of the pullback~$(P,p,q)$ that there exists a unique morphism~$\varphi \colon E' \to P$ that makes the diagram
+  \[
+    \begin{tikzcd}
+          E'
+          \arrow[bend left]{drr}[above right]{b'}
+          \arrow[dashed]{dr}[above right]{\varphi}
+          \arrow[bend right]{ddr}[below left]{h}
+        & {}
+        & {}
+        \\
+          {}
+        & P
+          \arrow{r}[above]{q}
+          \arrow[phantom]{dr}[description]{\pb}
+          \arrow{d}[left]{p}
+        & X'
+          \arrow{d}[right]{f}
+          \
+        \\
+          {}
+        & E
+          \arrow{r}[below]{b}
+        & X
+    \end{tikzcd}
+  \]
+  commute.
+  We show that~$\varphi$ is an isomorphism.
+  For this it is enough to show that~$\varphi$ is both a monomorphism and an epimorphism, because the category~$\Acat$ is abelian.
+  
+  The morphism~$\varphi$ is a monomorphism:
+  Let~$e' \inA E'$ with~$\varphi e' = 0$.
+  Then~$p \varphi e' = 0$ and~$q \varphi e' = 0$ (and by the universal property of the pullback~$P$ this really is equivalent to~$\varphi e' = 0$).
+  Hence~$k \varphi e' = 0$ for the morphism
+  \[
+    k
+    \defined
+    \begin{bmatrix}
+      p \\
+      q
+    \end{bmatrix}
+    \colon
+    P
+    \to
+    E \oplus X' \,.
+  \]
+  We know that
+  \[
+    k \varphi
+    =
+    \begin{bmatrix}
+      p \\
+      q
+    \end{bmatrix}
+    \varphi
+    =
+    \begin{bmatrix}
+      p \varphi \\
+      q \varphi
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      h     \\
+      b'
+    \end{bmatrix}
+  \]
+  and hence conclude from~$k \varphi e' = 0$ that~$b' e' = 0$ and~$h e' = 0$.
+  It follows from the exactness of the upper row that there exists some~$y' \inA Y'$ with~$a' y' \equiv e'$.
+  Then
+  \[
+    0
+    =
+    h e'
+    \equiv
+    h a' y'
+    =
+    a g y'  \,.
+  \]
+  Both~$a$ and~$g$ are monomorphisms, hence~$y' = 0$.
+  Therefore also~$e' \equiv a' y' = 0$.
+  
+  The morphism~$\varphi$ is an epimorphism:
+  Let~$z \inA P$ and set~$e \defined p z$ and~$x' \defined q z$.
+  Then~$b e = f x'$.
+  As~$b'$ is an epimorphism, there exists some~$\tilde{e}' \inA E'$ with~$b' \tilde{e}' \equiv x'$.
+  Then
+  \[
+    b h \tilde{e}'
+    =
+    f b' \tilde{e}'
+    \equiv
+    f x'
+    =
+    b e \,.
+  \]
+  We can therefore consider the point~$e - h \tilde{e}' \inA E$ (from part~\ref*{difference element} of \cref{rules for diagram chase});
+  then in particular~$b(e - h \tilde{e}') = 0$.
+  It follows from the exactness of the lower row that there exists some~$y \inA Y$ with~$a y \equiv e - h \tilde{e}'$.
+  As~$g$ is an epimorphism, there further exists some~$y' \inA Y'$ wih~$g y' \equiv y$.
+  Then
+  \[
+    e - h \tilde{e}'
+    \equiv
+    a y
+    \equiv
+    a g y'
+    =
+    h a' y'
+  \]
+  Therefore~$e \equiv h (a' y' + \tilde{e}')$.%
+  \footnote{The author doesn’t understand why this holds.}
+  Let~$e' \defined a' y' + \tilde{e}' \inA E'$.
+  Then
+  \[
+    h e'
+    =
+    h (a' y' + \tilde{e}')
+    \equiv
+    e
+  \]
+  and
+  \[
+    b' e'
+    =
+    b' (a' y' + \tilde{e}')
+    =
+    b' a' y' + b' \tilde{e}'
+    =
+    0 + b' \tilde{e}'
+    =
+    b' \tilde{e}'
+    \equiv
+    x \,.
+  \]
+  We note that the morphism~$k \colon P \to E \oplus X'$ (as above) is a monomorphism by the universal property of the pullback~$(P,p,q)$.
+  The above calculation shows that
+  \[
+    k \varphi e'
+    =
+    \begin{bmatrix}
+      p \\
+      q
+    \end{bmatrix}
+    \varphi e'
+    =
+    \begin{bmatrix}
+      p \varphi e'  \\
+      q \varphi e'
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      h e'  \\
+      b' e'
+    \end{bmatrix}
+    \equiv
+    \begin{bmatrix}
+      e \\
+      x'
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      p z \\
+      q z
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      p \\
+      q
+    \end{bmatrix}
+    z
+    =
+    k z \,.
+  \]
+  It follows that~$\varphi e' \equiv z$ because~$k$ is a monomorphism.
+  This shows that~$\varphi$ is an epimorphism.
+\end{proof}
+
+
+\begin{remarknonum}
+  \Cref{converse for pullback and pushout} is a converse to \cref{kernels of pullbacks}.
+\end{remarknonum}
+
+
+\begin{theorem}
+  Let~$X$ and~$Y$ be objects in~$\Acat$.
+  \begin{enumerate}
+    \item
+      The Baer sum makes~$\Ext^1(X,Y)$ into an abelian group.
+    \item
+      The neutral element of~$\Ext^1(X,Y)$ is given by the split exact sequence
+      \[
+        0
+        \to
+        Y
+        \xlongto{ \begin{bsmallmatrix} 0 \\ 1 \end{bsmallmatrix} }
+        X \oplus Y
+        \xlongto{ \begin{bsmallmatrix} 1 & 0 \end{bsmallmatrix} }
+        X
+        \to
+        0 \,,
+      \]
+      and for every extension~$\class{\xi} \in \Ext^1_\Acat(X,Y)$ with~$\xi = (a,E,b)$ the inverse to~$\class{\xi}$ is given by the extension~$\class{\xi'}$ with~$\xi' = (-a,E,b)$.
+    \item
+      The functors~$\Ext^1_\Acat(X,-) \colon \Acat \to \Ab$ and~$\Ext^1_\Acat(-,Y) \colon \Acat^\op \to \Ab$ are additive.
+  \end{enumerate}
+\end{theorem}
+
+
+
+
+
+\lecturend{27}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
