@@ -10,16 +10,28 @@
   \leavevmode
   \begin{enumerate}[start=4]
     \item
-      The functor~$F$ is \emph{dense}\index{dense}\index{functor!dense} or \emph{essentially surjective}\index{essentially surjective}\index{functor!essentially surjective} if there exist for every object~$Y \in \Ob(\Dcat)$ some object~$X \in \Ob(\Ccat)$ with~$Y \cong F(X)$.
+      The functor~$F$ is \emph{dense}\index{dense}\index{functor!dense} or \emph{essentially surjective}\index{essentially surjective}\index{functor!essentially surjective} if there exist for every object~$Y \in \Ob(\Dcat)$ an object~$X \in \Ob(\Ccat)$ with~$Y \cong F(X)$.
   \end{enumerate}
 \end{definition}
 
 
 \begin{remark}
-  Let~$\Ccat$ and~$\Dcat$ be categories.
+  Let~$\Ccat$ and~$\Dcat$ be two categories.
   \begin{enumerate}
     \item
-      If~$f \colon X \to Y$ is an isomorphism in~$\Ccat$ the the morphism~$g \colon Y \to X$ with~$g \circ f = \id_X$ and~$f \circ g = \id_Y$ is uniquely determined.
+      If~$f \colon X \to Y$ is an isomorphism in~$\Ccat$ then the morphism~$g \colon Y \to X$ with~$g \circ f = \id_X$ and~$f \circ g = \id_Y$ is uniquely determined.
+      Indeed, if~$g'$ is another such morphism then
+      \[
+        g
+        =
+        g \circ {\id_Y}
+        =
+        g \circ f \circ g'
+        =
+        {\id_X} \circ g'
+        =
+        g'  \,.
+      \]
       The morphisms~$g$ is the \emph{inverse}\index{inverse}\index{morphism!inverse} of~$f$, and is denoted by~$f^{-1}$.
     \item
       For every~$X \in \Ob(\Ccat)$ its identity~$\id_X \colon X \to X$ is an isomorphism.
@@ -29,13 +41,25 @@
 \end{remark}
 
 
+\begin{remark*}
+  Let~$f \colon X \to Y$ and~$g \colon Y \to Z$ be two composable morphisms in a category~$\Ccat$.
+  If both~$f$ and~$g$ are isomorphisms then their composition~$g \circ f$ is again an isomorphism.
+  It then holds that
+  \[
+    (g \circ f)^{-1}
+    =
+    f^{-1} \circ g^{-1} \,.
+  \]
+\end{remark*}
+
+
 \begin{example}
   \leavevmode
   \begin{enumerate}
     \item
-      In the categories~$\Set$,~$\Group$,~$\Modl{A}$, \dots, a morphism~$f$ is an isomorphism if and only if it is bijective (as a \dash{set}{theoretic} map).
+      In the categories~$\Set$,~$\Group$,~$\Modl{A}$, \dots a morphism~$f$ is an isomorphism if and only if it is bijective (as a \dash{set}{theoretic} map).
     \item
-      In the category~$\Top$, the isomorphisms are precisely the homeomorphisms, i.e.\ the continuous maps that are both bijective and open.
+      In the category~$\Top$ the isomorphisms are precisely the homeomorphisms, i.e.\ the continuous maps that are both bijective and open.
     \item
       In the path category~$\Path(Q)$ of a quiver~$Q$ the isomorphisms are precisely the lazy paths~$\varepsilon_i = \id_i$ for~$i \in Q_0 = \Ob(\Path(Q))$.
   \end{enumerate}

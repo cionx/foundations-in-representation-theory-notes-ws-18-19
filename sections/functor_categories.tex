@@ -23,8 +23,8 @@
 
 \begin{remark}
   We’re running into \dash{set}{theoretic} issues again:
-  If~$\Ccat$ and~$\Dcat$ are two categories in our fixed universe~$U$ (i.e.\~$\Ob(\Ccat), \Ob(\Dcat) \subseteq U$) then~$\Ob(\Fun(\Ccat, \Dcat))$ might not be a subset of~$U$.
-  The solution to this problem is to choose another universe~$V$ with~$U \in V$.
+  If~$\Ccat$ and~$\Dcat$ are two categories for our fixed universe~$U$ (i.e.\~$\Ob(\Ccat), \Ob(\Dcat) \subseteq U$) then~$\Ob(\Fun(\Ccat, \Dcat))$ might not be a subset of~$U$.
+  The solution to this problem is to choose another, larger universe~$V$ with~$U \in V$.
   Then~$\Ob(\Fun(\Ccat, \Dcat)) \subseteq V$, so~$\Fun(\Ccat, \Dcat)$ becomes a category with respect to the universe~$V$.
 \end{remark}
 
@@ -77,7 +77,7 @@
 
 \begin{example*}
   \label{morphism category is a functor category}
-  Let~$\Ccat$ be a category and let~$2$ denote the category that consists of two objects~$0$ and~$1$, and where exist precisely one \dash{non}{idenity} morphism, namely~$\alpha \colon 0 \to 1$.
+  Let~$\Ccat$ be a category and let~$2$ denote the category that consists of two objects~$0$ and~$1$, and in which exist precisely one \dash{non}{idenity} morphism, namely~$\alpha \colon 0 \to 1$.
   The category~$2$ may be visualized as follows:
   \[
     \begin{tikzcd}
@@ -87,8 +87,8 @@
     \end{tikzcd}
   \]
   
-  A functor~$F \colon 2 \to \Ccat$ is the same as a choice of objects~$F(X), F(Y) \in \Ob(\Ccat)$ together with a morphism~$F(\alpha) \colon F(X) \to F(Y)$.
-  Given two functors~$F, G \colon 2 \to \Ccat$, a morphism~$\eta \colon F \to G$ consists of two morphisms~$\eta_1 \colon F(1) \to G(1)$ and~$\eta_2 \colon F(2) \to G(2)$ that make the square
+  A functor~$F \colon 2 \to \Ccat$ is the same as a choice of objects~$F(1), F(2) \in \Ob(\Ccat)$ together with a morphism~$F(\alpha) \colon F(1) \to F(2)$.
+  Given two such functors~$F, G \colon 2 \to \Ccat$, a morphism~$\eta \colon F \to G$ consists of two morphisms~$\eta_1 \colon F(1) \to G(1)$ and~$\eta_2 \colon F(2) \to G(2)$ that make the square
   \[
     \begin{tikzcd}
         F(1)
@@ -104,12 +104,12 @@
   \]
   commute.
   
-  We see from this explicit description of the functor category~$\Fun(2, \Ccat)$ that it is equivalent (even isomorphic) to the morphism category~$\Mor(\Ccat)$.
+  We see from this explicit description of the functor category~$\Fun(2, \Ccat)$ that it is equivalent to the morphism category~$\Mor(\Ccat)$.
 \end{example*}
 
 
 \begin{definition}
-  Let~$\Ccat$ and~$\Dcat$ betwo categories.
+  Let~$\Ccat$ and~$\Dcat$ be two categories.
   For every object~$X \in \Ob(\Ccat)$ the \emph{evaluation}\index{evaluation}\index{functor!evaluation} at~$X$ is the functor~$\ev_X \colon \Fun(\Ccat, \Dcat) \to \Dcat$ given by
   \[
             \ev_X
@@ -132,6 +132,8 @@
   \[
               (\ev_f)_F
     \defined  F(f)
+    \colon    F(X)
+    \to       F(Y)
   \]
   for every functor~$F \in \Ob(\Fun(\Ccat, \Dcat))$.
   This is indeed a natural transformation:

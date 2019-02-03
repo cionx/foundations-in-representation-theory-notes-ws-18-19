@@ -2,7 +2,7 @@
 
 
 \begin{definition}
-  Let~$\Ccat$ and~$\Dcat$ be categories.
+  Let~$\Ccat$ and~$\Dcat$ be two categories.
   A \emph{functor}\index{functor}~$F \colon \Ccat \to \Dcat$ consists of the following data:
   \begin{itemize}
     \item
@@ -31,13 +31,14 @@
 
 
 \begin{notation*}
-  The application of a functor~$F \colon \Ccat \to \Dcat$ to an object~$X \in \Ob(\Ccat)$ or a morphisms~$f \colon X \to X'$ in~$\Ccat$ is often written without parentheses as~$FX$, resp.\ as~$Ff$.
+  The application of a functor~$F \colon \Ccat \to \Dcat$ to an object~$X \in \Ob(\Ccat)$ or a morphisms~$f \colon X \to Y$ in~$\Ccat$ is often written without parentheses as~$FX$, resp.\ as~$Ff$.
 \end{notation*}
 
 
 \begin{remark}
   What we call a \enquote{functor} is sometimes called a \enquote{covariant functor}\index{functor!covariant}\index{covariant functor|see {functor}}.
-  A \emph{contravariant functor}~$G \colon \Ccat \to \Dcat$\index{functor!contravariant}\index{contravariant functor|see {functor}} is a (covariant) functor~$G \colon \Ccat^\op \to \Dcat$.
+  A \emph{contravariant functor}~$G \colon \Ccat \to \Dcat$\index{functor!contravariant}\index{contravariant functor|see {functor}} is then a (covariant) functor~$G \colon \Ccat^\op \to \Dcat$.
+  
   This means in terms of the category~$\Ccat$ that~$G$ assigns to every object~$X \in \Ob(\Ccat)$ an object~$G(X) \in \Dcat$ and to every morphism~$f \colon X \to Y$ in~$\Ccat$ a morphism~$G(f) \colon G(Y) \to G(X)$ in~$\Dcat$, in such a way that
   \begin{itemize}
     \item
@@ -64,7 +65,7 @@
                 \right.
       \]
     \item
-      If~$\Ccat$,~$\Dcat$ and~$\Ecat$ are categories and~$F \colon \Ccat \to \Dcat$ and~$G \colon \Dcat \to \Ecat$ are functors, then they can be composed to a functor~$G \circ F \colon \Ccat \to \Ecat$ given by
+      If~$\Ccat$,~$\Dcat$ and~$\Ecat$ are categories and~$F \colon \Ccat \to \Dcat$ and~$G \colon \Dcat \to \Ecat$ are functors, then they can be composed to a functor~$G \circ F \colon \Ccat \to \Ecat$ that is given by
       \[
                 (F \circ G)
         \colon  \left\{
@@ -83,24 +84,27 @@
   \leavevmode
   \begin{enumerate}
     \item
-      We can define two functors that assign to each set~$X$ its power set:
-      
-      We define a functor~$P_* \colon \Set \to \Set$ that assigns to each set~$X$ its power set~$\power(X)$, and to each map~$f \colon X \to Y$ the induced map
-      \[
-                P_*(f)
-        \colon  \power(X)
-        \to     \power(Y) \,,
-        \quad   A
-        \mapsto f(A) \,.
-      \]
-      We can also define a (contravariant) functor~$P^* \colon \Set^\op \to \Set$ that again assigns to each set~$X$ its power set~$\power(X)$, but to each map~$f \colon X \to Y$ the induced map
-      \[
-                P^*(f)
-        \colon  \power(Y)
-        \to     \power(X) \,,
-        \quad   B
-        \mapsto f^{-1}(B) \,.
-      \]
+      We can define two functors that assign to each set~$X$ its power set~$\power(X)$:
+      \begin{itemize}
+        \item
+          We define a functor~$P_* \colon \Set \to \Set$ that assigns to each set~$X$ its power set~$\power(X)$, and to each map~$f \colon X \to Y$ the induced map
+          \[
+                    P_*(f)
+            \colon  \power(X)
+            \to     \power(Y) \,,
+            \quad   A
+            \mapsto f(A) \,.
+          \]
+        \item
+          We can also define a (contravariant) functor~$P^* \colon \Set^\op \to \Set$ that again assigns to each set~$X$ its power set~$\power(X)$, but to each map~$f \colon X \to Y$ the induced map
+          \[
+                    P^*(f)
+            \colon  \power(Y)
+            \to     \power(X) \,,
+            \quad   B
+            \mapsto f^{-1}(B) \,.
+          \]
+      \end{itemize}
     \item
       We have two functors between the categories~$\kAlg$ and~$\Group$:
       
@@ -110,7 +114,7 @@
         \colon  \kAlg
         \to     \Group
       \]
-      that assigns to each~{\kalg}~$A$ its group of units~$A^\times$ and to every homomorphism of~{\kalgs}~$f \colon A \to B$ its induces group homomorphism~$f^\times \colon A^\times \to B^\times$.
+      that assigns to each~{\kalg}~$A$ its group of units~$A^\times$ and to every homomorphism of~{\kalgs}~$f \colon A \to B$ its induced group homomorphism~$f^\times \colon A^\times \to B^\times$ (that results from~$f$ by restriction).
       
       In the other direction we have the functor
       \[
@@ -133,8 +137,8 @@
         \end{tikzcd}
       \]
       commute.
-      (Recall from the first exercise sheet that for every~{\kalg}~$A$, every group homomorphism~$G \to A^\times$ extends uniquely to a homomorphism of~{\kalgs}~$\kf[G] \to A$.
-      By applying this to the composition~$G \to H \inclusion k[H]^\times$ it follows that there exists a unique homomorphism~$\kf[G] \to \kf[H]$ that makes the above square commute.)
+      (Recall from Exercise~sheet~1 that for every~{\kalg}~$A$, every group homomorphism~$G \to A^\times$ extends uniquely to a~{\kalg} homomorphism~$\kf[G] \to A$.
+      By applying this to the composition~$G \to H \inclusion k[H]^\times$ it follows that there exists a unique~{\kalg} homomorphism~$\kf[G] \to \kf[H]$ that makes the above square commute.)
     \item
       The functor
       \[
@@ -152,7 +156,7 @@
                 \right.
       \]
       is the \emph{forgetful functor}\index{forgetful functor}\index{functor!forgetful}.
-      More generally, we call every functor \emph{forgetful} if it forgets part of the structure.
+      More generally, we call every functor \emph{forgetful} if it forgets part of the structure of the objects.
       We have for example forgetful functors~$\Top \to \Set$ and~$\Modl{A} \to \Modl{\kf}$, where~$A$ is a~{\kalg}.
   \end{enumerate}
 \end{example}
@@ -167,15 +171,15 @@
       The functor~$S$ assigns to each object~$(X,f,Y) \in \Ob(\Mor(\Ccat))$, which represents a morphism~$f \colon X \to Y$ in the category~$\Ccat$, its source
       \[
                   S(X,f,Y)
-        \defined  X
+        \defined  X \,,
       \]
       and to each morphism~$(h,h') \colon (X,f,Y) \to (X',f',Y')$ its first component
       \[
                   S(h,h')
-        \defined  h \colon X \to X' \,.
+        \defined  (h \colon X \to X') \,.
       \]
     \item
-      The functor~$T$ assigns to each object~$(X,f,Y) \in \Ob(\Mor(\Ccat))$ its target~$T(f)$, and to each morphism~$(h,h') \colon (h,h') \colon (X,f,Y) \to (X',f',Y')$ its second component~$T(h,h') \defined h' \colon Y \to Y'$.
+      The functor~$T$ assigns to each object~$(X,f,Y) \in \Ob(\Mor(\Ccat))$ its target~$T(f)$, and to each morphism~$(h,h') \colon (h,h') \colon (X,f,Y) \to (X',f',Y')$ its second component~$T(h,h') \defined (h' \colon Y \to Y')$.
   \end{itemize}
 \end{example*}
 
@@ -202,23 +206,23 @@
       where the induced map~$f_* \colon \Ccat(X,Y) \to \Ccat(X,Y')$ is given by~$f_*(g) = f \circ g$ for every~$g \in \Ccat(X,Y)$.
       The functor~$h^X$ is also denoted by~$\Ccat(X,-)$.
     \item
-      Every object~$X \in \Ob(\Ccat)$ gives rise to a (contravariant) functor
+      Every object~$Y \in \Ob(\Ccat)$ gives rise to a (contravariant) functor
       \[
-                h_X
+                h_Y
         \colon  \Ccat^\op
         \to     \Set \,,
         \quad   \left\{
                   \begin{aligned}
-                              Y
-                    &\mapsto  \Ccat(Y,X) \,,
+                              X
+                    &\mapsto  \Ccat(X,Y) \,,
                     \\
-                              \left( Y \xlongto{f} Y' \right)
-                    &\mapsto  \left( \Ccat(Y',X) \xlongto{f^*} \Ccat(Y,X) \right) \,,
+                              \left( X \xlongto{f} X' \right)
+                    &\mapsto  \left( \Ccat(X',Y) \xlongto{f^*} \Ccat(X,Y) \right) \,,
                   \end{aligned}
                 \right.
       \]
-      where the induced map~$f^* \colon \Ccat(Y',X) \to \Ccat(Y,X)$ is given by~$f^*(g) = g \circ f$ for every~$g \in \Ccat(Y',X)$.
-      The functor~$h_X$ is also denoted by~$\Ccat(-,X)$.
+      where the induced map~$f^* \colon \Ccat(X',Y) \to \Ccat(X,Y)$ is given by~$f^*(g) = g \circ f$ for every~$g \in \Ccat(X',Y)$.
+      The functor~$h_Y$ is also denoted by~$\Ccat(-,Y)$.
   \end{enumerate}
 \end{example}
 
@@ -236,14 +240,14 @@
     \item
       The functor~$F$ is \emph{full}\index{full!functor}\index{functor!full} if the induced map~$\Ccat(X,Y) \to \Dcat(F(X),F(Y))$,~$f \mapsto F(f)$ is surjective for all~$X, Y \in \Ccat$.
     \item
-      The functor~$F$ is \emph{fully faithful}\index{fully faithful}\index{functor!fully faithful} if it is both full and faithful, i.e.\ if the induced map~$\Ccat(X,Y) \to \Dcat(F(X),F(Y))$,~$f \mapsto F(f)$ is injective for all~$X, Y \in \Ccat$.
+      The functor~$F$ is \emph{fully faithful}\index{fully faithful}\index{functor!fully faithful} if it is both full and faithful, i.e.\ if the induced map~$\Ccat(X,Y) \to \Dcat(F(X),F(Y))$,~$f \mapsto F(f)$ is bijective for all~$X, Y \in \Ccat$.
   \end{enumerate}
 \end{definition}
 
 
 \begin{example*}
   For every subcategory~$\Scat$ of a category~$\Ccat$ there exists an inclusion functor~$I \colon \Scat \to \Ccat$, that is given on objects by the inclusion~$\Ob(\Scat) \inclusion \Ob(\Ccat)$, and on morphisms by the inclusion~$\Scat(X,Y) \inclusion \Ccat(X,Y)$ for any two objects~$X, Y, \in \Ob(\Scat)$.
-  This inclusion functor~$I$ is faithful, and it is full if and only if~$\Scat$ is full as a subcategory of~$\Ccat$.
+  This inclusion functor~$I$ is faithful, and it is full (and hence fully faithful) if and only if~$\Scat$ is full as a subcategory of~$\Ccat$.
 \end{example*}
 
 

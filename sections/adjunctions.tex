@@ -57,7 +57,7 @@
   \]
   between the two (bi)functors
   \[
-            \Dcat(F(-), -), \Ccat(-, G(-))
+            \Dcat(F(-), -), \, \Ccat(-, G(-))
     \colon  \Ccat^\op \times \Dcat
     \to     \Set \,.
   \]
@@ -86,17 +86,17 @@
                 F(f)
         \colon  F(X)
         \to     F(X') \,,
-        \quad   F\left( \sum_{x \in X} a_x [x] \right)
+        \quad   F(f)\left( \sum_{x \in X} a_x [x] \right)
         =       \sum_{x \in X} a_x [f(x)] \,.
       \]
       The right adjoint functor~$G \colon \Modl{A} \to \Set$ is the forgetful functor.
     \item
       We have an adjunction from the category~$\Ccat = \Group$ to the category~$\Dcat = \kAlg$.
-      The left adjoint functor~$F \colon \Group \to \kAlg$ is given by~$F = \kf[-]$ and the right functor~$G \colon \kAlg \to \Group$ is given by~$G = (-)^\times$.
+      The left adjoint functor~$F \colon \Group \to \kAlg$ is given by the group algebra functor~$F = \kf[-]$ and the right functor~$G \colon \kAlg \to \Group$ is given by the unit group functor~$G = (-)^\times$.
     \item
-      We have an adjunctions from~$\Ccat = \Set$ to~$\Dcat = \kCommAlg$, the category of commutative~{\kalgs}.%
+      We have an adjunctions from the category~$\Ccat = \Set$ to the category~$\Dcat = \kCommAlg$ of commutative~{\kalgs}.%
       \footnote{In the lecture the notation~$\kf$\nobreakdash-$\catname{CommAlg}$ is used instead.
-      The author prefers the shorter version~$\kCommAlg$ as it helps him avoid overfull hboxes.}
+      The author prefers the shorter version~$\kCommAlg$ as it helps him to avoid overfull hboxes.}
       The left adjoint functor~$F \colon \Set \to \kCommAlg$ assigns to each set~$X$ the polynomial ring~$k[T_x \suchthat x \in X]$ and to each map~$f \colon X \to X'$ between sets~$X$ and~$X'$ the unique homomorphism of~{\kalgs}
       \[
                 F(f)
@@ -116,7 +116,7 @@
       The left adjoint functor~$F$ assigns to each left~{\module{$A$}}~$\indmodule[A]{M}$ the extension of scalars~$F(M) = B \tensor_A N$, and the right adjoint functor~$G$ is the forgetful functor, i.e.\ the restriction of scalars.
     \item
       We define a category~$\Ccat$ as follows:
-      The objects of~$\Ccat$ are pairs~$(A,S)$ consisting of a commutative ring~$A$ and a multiplicative set~$S \subseteq A$.
+      The objects of~$\Ccat$ are pairs~$(A,S)$ consisting of a commutative ring~$A$ and a multiplicative subset~$S \subseteq A$.
       For any two objects~$(A,S)$ and~$(B,T)$ in~$\Ccat$, a morphisms~$f \colon (A,S) \to (B,T)$ is a ring homomorpism~$f \colon A \to B$ with~$f(S) \subseteq T$.
       Let~$\Dcat = \CommRing$ be the category of commutative rings.%
       \footnote{Again, in the lecture the notation~$\catname{CommRing}$ is used instead.}
@@ -128,14 +128,14 @@
         \quad   \frac{a}{s}
         \mapsto \frac{f(a)}{f(s)} \,.
       \]
-      The functor~$F$ is left adjoint to the functor~$G \colon \CommRing \to \Ccat$ that assigns to each commutative ring~$B$ the pair~$(B,B^\times)$, and to each ring homomorphism~$g \colon B \to C$ between commutative rings~$B$ and~$B'$ the morphism
+      The functor~$F$ is left adjoint to the functor~$G \colon \CommRing \to \Ccat$ that assigns to each commutative ring~$B$ the pair~$(B,B^\times)$, and to each ring homomorphism~$g \colon B \to C$ between commutative rings~$B$ and~$C$ the morphism
       \[
                 G(g)
         =       (g, g^\times)
         \colon  (B, B^\times)
         \to     (C, C^\times) \,.
       \]
-      The adjunction between~$F$ and~$G$ states that a ring homomorphism~$S^{-1} A \to B$ is \enquote{the same} as a ring homomorphism~$f \colon A \to B$ with~$f(A) \subseteq B^\times$, which is precisely the usual universal property of the localization~$S^{-1} A$.
+      The adjunction between~$F$ and~$G$ states that a ring homomorphism~$S^{-1} A \to B$ is \enquote{the same} as a ring homomorphism~$f \colon A \to B$ with~$f(A) \subseteq B^\times$, which is precisely the universal property of the localization~$S^{-1} A$.
   \end{enumerate}
 \end{example}
 
@@ -301,11 +301,10 @@
     \item
       \label{left adjoint via representing}
       A functor~$G \colon \Dcat \to \Ccat$ admits a left adjoint functor~$\Ccat \to \Dcat$ if and only if the functor~$\Ccat(X,G(-)) \colon \Dcat \to \Set$ is representable for every object~$X \in \Ob(\Ccat)$.
+      (This is Exercise~1 of Exercise~sheet~4.)
     \item
-      \label{right adjoint via representing}
-      Dually, a functor~$F \colon \Ccat \to \Dcat$ admits a right adjoint functor~$\Dcat \to \Ccat$ if and only if the functor~$\Dcat(F(-),Y) \colon \Ccat \to \Set$ is representable for every object~$Y \in \Ob(\Dcat)$.
+      Dually, a functor~$F \colon \Ccat \to \Dcat$ admits a right adjoint functor~$\Dcat \to \Ccat$ if and only if the functor~$\Dcat(F(-),Y) \colon \Ccat^\op \to \Set$ is representable for every object~$Y \in \Ob(\Dcat)$.
   \end{enumerate}
-  (Part~\ref*{left adjoint via representing} is Exercise~1 of Exercise~sheet~4, and part~\ref*{right adjoint via representing} is dual to part~\ref*{left adjoint via representing}.)
 \end{remark*}
 
 
@@ -532,7 +531,7 @@
 
 \begin{proof}
   The family~$\varphi \defined (\varphi_{X,Y})_{X \in \Ob(\Ccat), Y \in \Ob(\Dcat)}$ is natural:
-  Let~$f \colon X \to X'$ be a morphism in~$\Ccat$ and let~$Y \in \Ob(\Dcat)$ be an object.
+  To show the naturality in~$X$ let~$f \colon X \to X'$ be a morphism in~$\Ccat$ and let~$Y \in \Ob(\Dcat)$ be any object in~$\Dcat$.
   We have to show that the square
   \[
     \begin{tikzcd}[sep = large]
@@ -576,6 +575,8 @@
     \end{tikzcd}
   \]
   commutes by the naturality of~$\eta$.
+  The naturality in~$Y$ can be shown similarly.
+% TODO: Do this explicitely.
   
   It remains to show that the map~$\varphi_{X,Y} \colon \Dcat(F(X), Y) \to \Ccat(X, G(Y))$ is for all objects~$X \in \Ob(\Ccat)$ and~$Y \in \Ob(\Dcat)$ a bijection with inverse as claimed.
   We denote the proposed inverse map by
@@ -675,7 +676,7 @@
 \begin{lemma}
   \label{uniqueness of adjoints}
   Let~$G \colon \Dcat \to \Ccat$ be a functor that is part of two adjoint pairs~$(F,G,\varphi)$ and~$(F',G,\varphi')$.
-  Then there exists a unique natural isomorphism~$\zeta \colon F \to F'$ thta makes the square
+  Then there exists a unique natural isomorphism~$\zeta \colon F \to F'$ that makes the square
   \[
     \begin{tikzcd}[sep = large]
         \Dcat(F(X), Y)

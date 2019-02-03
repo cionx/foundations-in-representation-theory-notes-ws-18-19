@@ -4,12 +4,11 @@
   A \emph{category}~$\Ccat$\index{category} consists of the following data:
   \begin{itemize}
     \item
-      A class~$\Ob(\Ccat)$.
-      The elements are the \emph{objects}\index{object} of~$\Ccat$.
+      A class~$\Ob(\Ccat)$, the elements of which are the \emph{objects}\index{object} of~$\Ccat$.
     \item
-      For any two objects~$X, Y \in \Ob(\Ccat)$ a set~$\Ccat(X,Y)$.% dont let footnote see this line break
+      For any two objects~$X, Y \in \Ob(\Ccat)$ a set~$\Ccat(X,Y)$,% dont let footnote see this line break
       \footnote{Other common notations are~$\Hom_{\Ccat}(X,Y)$ or~$\operatorname{Mor}_{\Ccat}(X,Y)$.}
-      The elements of~$\Ccat(X, Y)$ are the \emph{morphisms}\index{morphism!in a category} from~$X$ to~$Y$.
+      the elements of which are the \emph{morphisms}\index{morphism!in a category} from~$X$ to~$Y$.
       That~$f \in \Ccat(X,Y)$ is denoted by~$f \colon X \to Y$ or~$X \xto{f} Y$.
     \item
       For any three objects~$X, Y, Z \in \Ob(\Ccat)$ a map
@@ -19,19 +18,19 @@
         \quad   (g, f)
         \mapsto g \circ f \,.
       \]
-      For any two morphisms~$f \colon X \to Y$ and~$g \colon Y \to Z$ the morphism~$g \circ f \colon X \to Z$ is the \emph{composition} of~$g$ and~$f$.
+      For any two morphisms~$f \colon X \to Y$ and~$g \colon Y \to Z$ in~$\Ccat$ the resulting morphism~$g \circ f \colon X \to Z$ is the \emph{composition} of~$g$ and~$f$.
   \end{itemize}
   These data are subject to the following conditions:
   \begin{enumerate}[label=(C\arabic*)]
     \item
       The composition of morphisms is associative\index{associativity}:
-      For all objects~$X, Y, Z, W \in \Ob(\Ccat)$ and morphisms~$f \colon X \to Y$,~$g \colon Y \to Z$ and~$h \colon Z \to W$ it holds that
+      It holds for all~$X, Y, Z, W \in \Ob(\Ccat)$ and all morphisms~$f \colon X \to Y$,~$g \colon Y \to Z$ and~$h \colon Z \to W$ that
       \[
           (h \circ g) \circ f
         = h \circ (g \circ f) \,.
       \]
     \item
-      There exists for every object~$X \in \Ob(\Ccat)$ an \emph{identity morphism}\index{identity!morphism}~$\id_X \colon X \to X$ such that
+      There exists for every object~$X \in \Ob(\Ccat)$ an \emph{identity morphism}\index{identity!morphism}\index{morphism!identity}~$\id_X \colon X \to X$ such that
       \[
         f \circ {\id_X} = f
         \quad\text{and}\quad
@@ -46,9 +45,9 @@
   Let~$\Ccat$ be a category.
   \begin{enumerate}
     \item
-      It could happen for objects~$X, Y \in \Ccat$ that~$\Ccat(X,Y) = \emptyset$, i.e.\ that there exists no morphism from~$X$ to~$Y$ in~$\Ccat$.
+      It can happen that~$\Ccat(X,Y) = \emptyset$ for some objects~$X, Y \in \Ob(\Ccat)$ i.e.\ that there exists no morphism from~$X$ to~$Y$ in~$\Ccat$.
     \item
-      For every object~$X \in \Ccat$ the identity morphism~$\id_X$ is unique.
+      For every object~$X \in \Ob(\Ccat)$ the identity morphism~$\id_X$ is unique.
       If~$\id'_X$ is another identity morphism of~$X$ then
       \[
           \id_X
@@ -57,6 +56,30 @@
       \]
   \end{enumerate}
 \end{remark}
+
+
+\begin{remark*}
+  \label{disjoint Hom sets}
+  One often also requires an additional condition:
+  \begin{enumerate}[label=(C\arabic*),start=3]
+    \item
+      \label{disjoint Hom sets axiom}
+      For all objects~$X, X', Y, Y' \in \Ob(\Ccat)$ the sets~$\Ccat(X,Y)$ and~$\Ccat(X',Y')$ are disjoint.
+  \end{enumerate}
+  This condition ensures that for every morphism~$f$ in~$\Ccat$ both its domain and codomain are unique.
+  In other words, if~$f \colon X \to Y$ but also~$f \colon X' \to Y'$ (i.e.~$f \in \Ccat(X,Y) \cap \Ccat(X',Y')$) then already~$X = X'$ and~$Y = Y'$.
+  
+  One can always assume that this additional axiom~\ref*{disjoint Hom sets axiom} holds:
+  If~$\Ccat$ is any category then we can replace for all objects~$X, Y \in \Ob(\Ccat)$ the set~$\Ccat(X,Y)$ by the set
+  \[
+    \{
+      (X,f,Y)
+    \suchthat
+      f \in \Ccat(X,Y)
+    \}  \,.
+  \]
+  These sets are then pairwise disjoint.
+\end{remark*}
 
 
 \begin{remark}
@@ -175,7 +198,7 @@
       The composition of morphisms in~$\Top$ is the usual composition of continuous maps.
     \item
       Let~$G$ be a group.
-      We can then define a category~$\Gcat$ that consists of a single object~$\Ob(\Gcat) = \{ \ast \}$, the single morphism set~$\Gcat(\ast,\ast) = G$, and for which the composition of morphisms is the multiplication of~$G$, i.e.\ the composition is given as
+      We can consider a category~$\Gcat$ that consists of a single object~$\Ob(\Gcat) = \{ \ast \}$, the single morphism set~$\Gcat(\ast,\ast) = G$, and for which the composition of morphisms is the multiplication of~$G$, i.e.\ the composition is given by
       \[
                   g \circ h
         \defined  gh
@@ -197,9 +220,9 @@
       The objects of~$\Path(Q)$ are the vertices of~$Q$, hence
       \[
           \Ob(\Path(Q))
-        = Q_0 \,,
+        = Q_0 \,.
       \]
-      and for any two vertices~$i$ and~$j$ in~$Q$ the morphism set~$\Path(Q)(i,j)$ is given by
+      For any two vertices~$i$ and~$j$ in~$Q$ the morphism set~$\Path(Q)(i,j)$ is given by
       \[
           \Path(Q)(i,j)
         = \{
@@ -207,7 +230,7 @@
           \} \,.
       \]
       The composition of morphisms in~$\Path(Q)$ is given by concatenation of paths.
-      This gives a category because concatenation of paths is associative, and for every~$i \in Q_0$ the lazy path~$\varepsilon_i \in \Path(Q)(i,i)$ acts as the identity of the object~$i$.
+      This gives a category because concatenation of paths is associative, and because for every~$i \in Q_0$ the lazy path~$\varepsilon_i \in \Path(Q)(i,i)$ acts as the identity of the object~$i$.
   \end{enumerate}
 \end{example}
 
@@ -219,7 +242,8 @@
   \begin{itemize}
     \item 
       The elements of~$\Mor(\Ccat)$ are tripels~$(X,f,Y)$ consisting of two objects~$X, Y \in \Ob(\Ccat)$ and a morphism~$f \colon X \to Y$;
-      in other words, the objects of~$\Mor(\Ccat)$ are morphisms in~$\Ccat$.
+      in other words, the objects of~$\Mor(\Ccat)$ correspond to morphisms in~$\Ccat$.%
+      \footnote{Or at least if we require the \hyperref[disjoint Hom sets]{additional axiom}~\ref*{disjoint Hom sets axiom}.}
     \item
       A morphism~$(X, f, Y) \to (X', f', Y')$ in~$\Mor(\Ccat)$ is a pair~$(g, g')$ consisting of two morphisms~$g \colon X \to X'$ and~$g' \colon Y \to Y'$ that make the square
       \[
@@ -240,7 +264,7 @@
       The composition of two such morphisms
       \[
                 (g,g')
-        \colon  (X,f,Y)
+        \colon  (X,f',Y)
         \to     (X',f,Y')
         \quad\text{and}\quad
                 (h,h')
@@ -254,7 +278,7 @@
             X
             \arrow{r}[above]{f}
             \arrow{d}[left]{g}
-            \arrow[dashed, bend right = 60]{dd}[left]{g \circ h}
+            \arrow[dashed, bend right = 60]{dd}[left]{h \circ g}
           & Y
             \arrow{d}[right]{g'}
             \arrow[dashed, bend left = 60]{dd}[right]{h' \circ g'}
@@ -287,9 +311,9 @@
   for any two objects~$X, Y \in \Ob(\Ccat^\op)$ the morphisms set~$\Ccat^\op(X,Y)$ is given by
   \[
       \Ccat^\op(X,Y)
-    = \Ccat(Y,X) \,.
+    = \Ccat(Y,X) \,,
   \]
-  The composition of any two morphisms~$f \colon X \to Y$ and~$g \colon Y \to Z$ in~$\Ccat^\op$ is given by
+  and the composition of any two morphisms~$f \colon X \to Y$ and~$g \colon Y \to Z$ in~$\Ccat^\op$ is given by
   \[
       g \circ_{\Ccat^\op} f
     = f \circ_{\Ccat} g \,.
@@ -318,7 +342,6 @@
     \item
       A subcategory~$\Scat$ of~$\Ccat$ is \emph{full}\index{full!subcategory}\index{subcategory!full} if~$\Scat(X,Y) = \Ccat(X,Y)$ for all objects~$X, Y \in \Ob(\Scat)$.
   \end{enumerate}
-  A subcategory~$\Scat$ of~$\Dcat$.
 \end{definition*}
 
 
@@ -329,10 +352,13 @@
       If~$\Scat$ is a subcategory of~$\Ccat$ then~$\Scat$ inherits from~$\Ccat$ the structure of a category.
     \item
       Any full subcategory~$\Scat$ of~$\Ccat$ is uniquely determined by its class of objects~$\Ob(\Scat)$.
-      Converseley, every subclass of~$\Ob(\Ccat)$ defines a full subcategory.
+      Converseley, there exists for every subclass~$S$ of~$\Ob(\Ccat)$ a unique full subcategory~$\Scat$ of~$\Ccat$ with~$\Ob(\Scat) = S$.
   \end{enumerate}
 \end{remark*}
 
+
+% TODO: How to define categories object free.
+%       How opposite and quotient categories then look like.
 
 
 

@@ -2,7 +2,7 @@
 
 
 \begin{definition}
-  Let~$\Ccat$,~$\Dcat$ be two categories and let~$F, G \colon \Ccat \to \Dcat$ be two functors between them.
+  Let~$\Ccat$,~$\Dcat$ be two categories and let~$F, G \colon \Ccat \to \Dcat$ be two parallel functors between them.
   A \emph{natural transformation}\index{natural!transformation}~$\eta \colon F \to G$ is a family~$\eta = (\eta_X)_{X \in \Ob(\Ccat)}$ of morphisms~$\eta_X \colon F(X) \to G(X)$ such that for every morphism~$f \colon X \to Y$ in~$\Ccat$ the following square (in~$\Dcat$) commutes:
   \[
     \begin{tikzcd}
@@ -20,17 +20,27 @@
 \end{definition}
 
 
+% TODO: Natural transformations via their actions on morphisms.
+%       Consequence: Natural transformations with the object free definition of categories.
+
+
 \begin{remark}
   Let~$\Ccat$ and~$\Dcat$ be categories.
   \begin{enumerate}
     \item
       Let~$F, G, H \colon \Ccat \to \Dcat$ be functors and let~$\eta \colon F \to G$ and~$\zeta \colon G \to H$ be natural transformations.
-      Their composition~$\zeta \circ \eta$ is the natural transformation~$F \to H$ that is given by~$(\zeta \circ \eta)_X \defined \zeta_X \circ \eta_X \colon F(X) \to H(X)$ for every~$X \in \Ob(\Ccat)$.
+      Their composition~$\zeta \circ \eta$ is the natural transformation~$F \to H$ that is given by
+      \[
+        (\zeta \circ \eta)_X
+        \defined
+        ( \zeta_X \circ \eta_X \colon F(X) \to H(X) )
+      \]
+      at every object~$X \in \Ob(\Ccat)$.
       To see that this is indeed a natural transfomation we consider the following diagram:
       \[
         \begin{tikzcd}
             F(X)
-            \arrow[bend left]{rr}[above]{(\zeta \circ \eta)_X}
+            \arrow[dashed, bend left = 45]{rr}[above]{(\zeta \circ \eta)_X}
             \arrow{r}[above]{\eta_X}
             \arrow{d}[left]{F(f)}
           & G(X)
@@ -41,7 +51,7 @@
           \\
             F(Y)
             \arrow{r}[above]{\eta_Y}
-            \arrow[bend right]{rr}[below]{(\zeta \circ \eta)_Y}
+            \arrow[dashed, bend right = 45]{rr}[below]{(\zeta \circ \eta)_Y}
           & G(Y)
             \arrow{r}[above]{\zeta_Y}
           & H(Y)
@@ -51,7 +61,22 @@
       It follows that the outer square commutes, which shows that~$\zeta \circ \eta$ is again a natural transformation.
     \item
       For any functor~$F \colon \Ccat \to \Dcat$ its \emph{identical natural transformation}\index{identical natural transformation}\index{natural!transformation!identical}~$\id_F \colon F \to F$ is given by~$(\id_F)_X = \id_{F(X)}$ for every~$X \in \Ob(\Ccat)$.
-      This is indeed a natural transformation, and it holds for every other functor~$G \colon \Ccat \to \Dcat$ that~$\eta \circ {\id_F} = \eta$ for every natural transformation~$\eta \colon F \to G$, and also~${\id_F} \circ \zeta = \zeta$ for every natural transformation~$\zeta \colon G \to F$.
+      This is indeed a natural transformation because the square
+      \[
+        \begin{tikzcd}
+            F(X)
+            \arrow{r}[above]{F(f)}
+            \arrow{d}[left]{\id_X}
+          & F(Y)
+            \arrow{d}[right]{\id_Y}
+          \\
+            F(X)
+            \arrow{r}[below]{F(f)}
+          & F(Y)
+        \end{tikzcd}
+      \]
+      commutes for every morphism~$f \colon X \to Y$ in~$\Ccat$.
+      It holds for every other functor~$G \colon \Ccat \to \Dcat$ that~$\eta \circ {\id_F} = \eta$ for every natural transformation~$\eta \colon F \to G$, and also~${\id_F} \circ \zeta = \zeta$ for every natural transformation~$\zeta \colon G \to F$.
   \end{enumerate}
 \end{remark}
 
@@ -69,7 +94,7 @@
     \colon    \Group
     \to       \kAlg \,.
   \]
-  We examine how the compositions~$F \circ G \colon \Group \to \Group$ and~$G \circ F \colon \kAlg \to \kAlg$ relate to the identity functors~$\id_{\Group}$ and~$\id_{\kAlg}$.
+  We examine how the compositions~$F \circ G \colon \Group \to \Group$ and~$G \circ F \colon \kAlg \to \kAlg$ relate to the identity functors~$\Id_{\Group}$ and~$\Id_{\kAlg}$.
   
   Let us first examine the composition~$G \circ F$:
   This functor is on objects given by
@@ -85,8 +110,8 @@
     \colon  \kf[\Gamma]^\times
     \to     \kf[\Delta]^\times
   \]
-  is the restriction of the induced homomorphism of~{\kalgs}~$\kf[\varphi] \colon \kf[\Gamma] \to \kf[\Delta]$ to the unit groups.
-  For every group~$\Gamma$ we have a group homomorphism
+  is the restriction of the induced homomorphism of~{\kalgs}~$\kf[\varphi] \colon \kf[\Gamma] \to \kf[\Delta]$ to the groups of units on both sides.
+  We observe that we have every group~$\Gamma$ a group homomorphism
   \[
             \eta_\Gamma
     \colon  \Gamma
@@ -133,7 +158,7 @@
     \quad   \sum_{a \in A^\times} \lambda_a [a]
     \mapsto \sum_{a \in A^\times} \lambda_a [f(a)] \,.
   \]
-  For every~{\kalg}~$A$ the identity~$A^\times \to A^\times$ corresponds (as seen on the first exercise sheet) to a homomorphism of~{\kalg}~$\varepsilon_A \colon \kf[A^\times] \to A$, that is given by
+  For every~{\kalg}~$A$ the identity~$A^\times \to A^\times$ corresponds (as seen on Exercise~sheet~1) to a homomorphism of~{\kalg}~$\varepsilon_A \colon \kf[A^\times] \to A$, that is given by
   \[
             \varepsilon_A
     \colon  \kf[A^\times]
@@ -166,7 +191,7 @@
   \end{align*}
   for every~$\sum_{a \in A^\times} \lambda_a [a] \in \kf[A^\times]$.
   
-  We will later see that the functors~$F \colon \Group \to \kAlg$ and~$G \colon \kAlg \to \Group$ form an \emph{adjunction}, and how this can be expressed via the natural transformations~$\eta \colon \Id_{\Group} \to G \circ F$ and~$\varepsilon \colon F \circ G \to \Id_{\kAlg}$.
+  We will see later on that the functors~$F \colon \Group \to \kAlg$ and~$G \colon \kAlg \to \Group$ are \emph{adjoint} (with~$F$ left adjoint to~$G$), and how this can be expressed via the natural transformations~$\eta \colon \Id_{\Group} \to G \circ F$ and~$\varepsilon \colon F \circ G \to \Id_{\kAlg}$.
 \end{example}
 
 
@@ -181,7 +206,7 @@
 
 \begin{remarkdefinition}
   Let~$F, G \colon \Ccat \to \Dcat$ be two functors.
-  A natural transformation~$\eta \colon F \to G$ is a \emph{natural isomorphism}\index{natural!isomorphism}\index{isomorphism!natural} if for every~$X \in \Ob(\Ccat)$ the morphism~$\eta_X \colon F(X) \to G(X)$ is an isomorphism.
+  A natural transformation~$\eta \colon F \to G$ is a \emph{natural isomorphism}\index{natural!isomorphism}\index{isomorphism!natural} if at every object~$X \in \Ob(\Ccat)$ the morphism~$\eta_X \colon F(X) \to G(X)$ is an isomorphism.
   
   The natural transformation~$\eta$ is a natural isomorphism if and only if there exists a natural transformation~$\zeta \colon G \to F$ with~$\zeta \circ \eta = \id_F$ and~$\eta \circ \zeta = \id_G$:
   
@@ -225,16 +250,21 @@
   \]
   also commutes.
   This shows that the family~$\zeta \defined (\eta_X^{-1})_{X \in \Ob(\Ccat)}$ is a natural transformation~$\zeta \colon G \to F$.
-  It holds by construction of~$\zeta$ that~$\zeta \circ \eta = \id_F$ and~$\eta \circ \zeta = \id_G$.
+  It then holds by construction of~$\zeta$ that~$\zeta \circ \eta = \id_F$ and~$\eta \circ \zeta = \id_G$.
   
-  That~$\eta$ is a natural isomorphism is denoted by~$\eta \colon F \xto{\sim} G$.
+  That~$\eta$ is a natural isomorphism is denoted by
+  \[
+                \eta
+    \colon      F
+    \xto{\sim}  G  \,.
+  \]
   The two functors~$F$ and~$G$ are \emph{isomorphic}\index{isomorphic functors}\index{functor!isomorphic} if there exist a natural isomorphism~$F \xto{\sim} G$.
-  That~$F$ and~$G$ are isomorphic is denoted by~$F \cong G$.
+  That the functors~$F$ and~$G$ are isomorphic is denoted by~$F \cong G$.
 \end{remarkdefinition}
 
 
 \begin{definition}
-  Let~$\Ccat$ and~$\Dcat$ be categories.
+  Let~$\Ccat$ and~$\Dcat$ be two categories.
   A functor~$F \colon \Ccat \to \Dcat$ is an \emph{equivalence of categories}\index{equivalence of categories}\index{functor!equivalence} if there exists a functor~$G \colon \Dcat \to \Ccat$ with~$G \circ F \cong \Id_{\Ccat}$ and~$F \circ G \cong \Id_{\Dcat}$.
   The categories~$\Ccat$ and~$\Dcat$ are \emph{equivalent}\index{category!equivalent} if there exists an equivalence of categories between them.
   That~$\Ccat$ and~$\Dcat$ are equivalent is denoted by~$\Ccat \simeq \Dcat$.
@@ -315,10 +345,10 @@
           & B
           \\
             \ringcenter(A)
-            \arrow[hook]{u}
+            \arrow[phantom]{u}[description, rotate=90]{\subseteq}
           & {}
           & \ringcenter(B)
-            \arrow[hook]{u}
+            \arrow[phantom]{u}[description, rotate=90]{\subseteq}
           \\
             {}
           & \kf
