@@ -5,7 +5,7 @@
   Let~$Q$ be a quiver.
   \begin{enumerate}
     \item
-      A \emph{representation}~$X$\index{representation!of a quiver}\index{quiver!representation} of~$Q$ consists of the following data:
+      A \emph{representation}~$X$\index{representation!of a quiver}\index{quiver!representation} of~$Q$ (over~$\kf$) consists of the following data:
       \begin{itemize}
         \item
           A~{\module{$\kf$}}~$X_i$ for every vertex~$i \in Q_0$.
@@ -33,12 +33,56 @@
       commutes for every arrow~$\alpha \in Q_1$.
       
       If~$f \colon X \to Y$ and~$g \colon Y \to Z$ are homomorphisms of representations then the \emph{composition}~$g \circ f$ is the homomorphism~$X \to Z$ with component~$(g \circ f)_i = g_i \circ f_i$ for every~$i \in Q_0$.
+      That this is indeed a homomorphism of representations follows from the commutativity of the following diagram for every arrow~$\alpha \in Q_1$:
+      \[
+        \begin{tikzcd}
+            X_{s(\alpha)}
+            \arrow{r}[above]{X_\alpha}
+            \arrow{d}[left]{f_{s(\alpha)}}
+            \arrow[bend right = 90]{dd}[left]{g_{s(\alpha)} \circ f_{s(\alpha)}}
+          & X_{t(\alpha)}
+            \arrow{d}[right]{f_{t(\alpha)}}
+            \arrow[bend left = 90]{dd}[right]{g_{t(\alpha)} \circ f_{t(\alpha}}
+          \\
+            Y_{s(\alpha)}
+            \arrow{r}[above]{Y_\alpha}
+            \arrow{d}[left]{g_{s(\alpha)}}
+          & Y_{t(\alpha)}
+            \arrow{d}[right]{g_{t(\alpha)}}
+          \\
+            Z_{s(\alpha)}
+            \arrow{r}[above]{Z_\alpha}
+          & Z_{t(\alpha)}
+        \end{tikzcd}
+      \]
       
       The \emph{identity homomorphism}\index{identity!homomorphism}\index{homomorphism!identity} of the representation~$X$ is the homomorphism of representations~$\id_X \colon X \to X$ with~$(\id_X)_i = \id_{X_i}$ for every~$i \in Q_0$.
-      It holds for every homomorphism of representations~$f \colon X \to Y$ that~${\id_Y} \circ f = f$ and~$f \circ {\id_X} = f$.
+      That this is indeed a homomorphism of representations follows from the commutativity of the following diagram for every arrow~$\alpha \in Q_1$:
+      \[
+        \begin{tikzcd}
+            X_{s(\alpha)}
+            \arrow{r}[above]{X_\alpha}
+            \arrow{d}[left]{\id_{X_{s(\alpha)}}}
+          & X_{t(\alpha)}
+            \arrow{d}[right]{\id_{X_{t(\alpha)}}}
+          \\
+            X_{s(\alpha)}
+            \arrow{r}[above]{X_\alpha}
+          & X_{t(\alpha)}
+        \end{tikzcd}
+      \]
+      
+      It holds for every homomorphism of representations~$f \colon X \to Y$ that both
+      \[
+          {\id_Y} \circ f
+        = f
+        \quad\text{and}\quad
+          f \circ {\id_X}
+        = f \,.
+      \]
     \item
       A homomorphism~$f \colon X \to Y$ of representations is an~\emph{isomorphism}\index{isomorphism!of quiver representations} if there exists a homomorphism of representations~$g \colon Y \to X$ with~$g \circ f = \id_X$ and~$f \circ g = \id_Y$.
-      The homomorphism~$f$ is an isomorphism if and only if the component~$f_i$ is an isomorphism for every~$i \in Q_0$.
+      The homomorphism~$f$ is an isomorphism if and only if at every vertex~$i \in Q_0$ the component~$f_i$ is an isomorphism (of~{\modules{$\kf$}}).
   \end{enumerate}
 \end{remarkdefinition}
 
@@ -47,16 +91,41 @@
   \leavevmode
   \begin{enumerate}
     \item
-      For the quiver~$Q = (\bullet)$ a representation of~$Q$ is the same a~{\module{$\kf$}}~$V$.
-      For two such representations~$V$ and~$W$, a homomorphism of representations~$V \to W$ is just a {\klin} map.
+      For the quiver
+      \[
+        Q :
+        \begin{tikzcd}
+          \bullet
+        \end{tikzcd}
+      \]
+      (that consists of a single vertex without any arrows) a representation of~$Q$ is the same a~{\module{$\kf$}}~$V$.
+      For two such representations~$V$ and~$W$, a homomorphism of representations~$V \to W$ is just a~{\klin} map.
     \item
-      For the quiver~$Q = (\begin{tikzcd} \bullet \arrow[loop right] \end{tikzcd})$ a representation of~$Q$ is the same as a pair~$(V,\varphi)$ consisting of a~{\module{$\kf$}}~$V$ together with a~{\klin} endomorphism~$\varphi \colon V \to V$.
+      For the quiver
+      \[
+        Q :
+        \begin{tikzcd}
+          \bullet
+          \arrow[loop right]
+        \end{tikzcd}
+      \]
+      a representation of~$Q$ is the same as a pair~$(V,\varphi)$ consisting of a~{\module{$\kf$}}~$V$ together with a~{\klin} endomorphism~$\varphi \colon V \to V$.
       
       Given two such representations~$(V, \varphi)$ and~$(W,\psi)$, a homomorphism of representations~$f \colon (V,\varphi) \to (W,\psi)$ is the same as a~{\klin} map~$f \colon V \to W$ with~$f \circ \varphi = \psi \circ f$.
     \item
-      For the quiver~$Q = (\begin{tikzcd} 1 \arrow[shift left]{r}[above]{\alpha} \arrow[shift right]{r}[below]{\beta} & 2 \end{tikzcd})$ a representation of~$Q$ is the same as a quadruple~$(V_1,V_2,A_1,A_2)$ consisting of two~{\modules{$\kf$}}~$V_1$ and~$V_2$ and two~{\klin} maps~$A_1, A_2 \colon V_1 \to V_2$.
+      For the quiver
+      \[
+        Q :
+        \begin{tikzcd}
+            1
+            \arrow[shift left]{r}[above]{\alpha}
+            \arrow[shift right]{r}[below]{\beta}
+          & 2
+        \end{tikzcd}
+      \]
+      a representation of~$Q$ is the same as a quadruple~$(V_1,V_2,A_1,A_2)$ consisting of two~{\modules{$\kf$}}~$V_1$ and~$V_2$ and two~{\klin} maps~$A_1, A_2 \colon V_1 \to V_2$.
       
-      Given two such representations~$(V_1, V_2, A_1, B_1)$ and~$(W_1, W_2, A_2, B_2)$, a homomorphism of representations~$f \colon (V_1, V_2, A_1, B_1) \to (W_1, W_2, A_2, B_2)$ is the same as a pair~$(f_1, f_2)$ of~{\klin} maps~$f_1 \colon V_1 \to W_1$ and~$f \colon V_2 \to W_2$ with~$f_2 A_1 = A_2 f_1$ and~$f_2 B_1 = B_2 f_1$.
+      Given two such representations~$(V_1, V_2, A_1, A_2)$ and~$(W_1, W_2, B_1, B_2)$, a homomorphism of representations~$f \colon (V_1, V_2, A_1, A_2) \to (W_1, W_2, B_1, B_2)$ is the same as a pair~$(f_1, f_2)$ of~{\klin} maps~$f_1 \colon V_1 \to W_1$ and~$f \colon V_2 \to W_2$ with~$f_2 A_1 = B_1 f_1$ and~$f_2 A_2 = B_2 f_1$.
   \end{enumerate}
 \end{example}
 
@@ -94,8 +163,12 @@
       As a~{\module{$\kf$}} let~$M = \bigdsum_{i \in Q_0} X_i$.
       Define an action of~$\kf Q$ on~$M$ by actions of the paths~$p \in Q_*$:
       Let~$p$ be a path of length~$\geq 1$ with~$p = \alpha_\ell \dotsm \alpha_1$ for arrows~$\alpha_\ell, \dotsc, \alpha_1 \in Q_1$.
-      Define a~{\klin} map~$X_{s(p)} \to X_{t(p)}$ as~$X_p \defined X_{\alpha_\ell} \dotsm X_{\alpha_1}$.
-      Also define a~{\klin} map~$\tilde{X}_p \colon M \to M$ as the composition
+      We define a~{\klin} map~$X_p \colon X_{s(p)} \to X_{t(p)}$ as
+      \[
+                  X_p
+        \defined  X_{\alpha_\ell} \dotsm X_{\alpha_1} \,.
+      \]
+      We also define a~{\klin} map~$\tilde{X}_p \colon M \to M$ as the composition
       \[
           \tilde{X}_p
         \colon
@@ -129,7 +202,7 @@
           a(bx)
         = (ab)x
       \]
-      for all~$a, b \in \kf Q$ and~$x \in M$.
+      for all~$a, b \in \kf Q$ and all~$x \in M$.
       Both expressions are~{\kbilin} in~$(a,b)$, so it sufficies to show this equality for the case that~$a$ and~$b$ are basis elements of~$\kf Q$, i.e.\ paths~$p$ and~$q$ in~$Q_*$.
       It then holds that
       \begin{align*}
@@ -141,17 +214,17 @@
                 \begingroup
                 \renewcommand{\thickspace}{\kern 0.4em} % column distance
                 \begin{smallmatrix*}[l]
-                  {\id} & \text{if~$s(q) = t(p)$},  \\
+                  {\id} & \text{if~$s(p) = t(q)$},  \\
                   0     & \text{otherwise},
                 \end{smallmatrix*}
                 \endgroup
               \right.
           }}
-          X_q \iota_{s(q)}
+          X_q \pi_{s(q)}(x)
         \\
         &= \begin{cases}
-            \iota_{t(p)} X_p X_q(x_{s(q)})  & \text{if~$t(q) = s(p)$}, \\
-            0                               & \text{otherwise},
+            \iota_{t(p)} X_p X_q(x_{s(q)})  & \text{if~$s(p) = t(q)$} \,, \\
+            0                               & \text{otherwise}
           \end{cases}
       \end{align*}
       as well as
@@ -162,8 +235,8 @@
                   \begingroup
                   \renewcommand{\thickspace}{\kern 0.4em} % column distance
                   \begin{smallmatrix*}[l]
-                    p \circ q & \text{if~$s(q) = t(p)$},  \\
-                    0         & \text{otherwise},
+                    p \circ q & \text{if~$s(p) = t(q)$} \,, \\
+                    0         & \text{otherwise}
                   \end{smallmatrix*}
                   \endgroup
                 \right.
@@ -171,17 +244,17 @@
             )
             \cdot x
         =   \begin{cases}
-              \tilde{X}{(p \circ q)}(x) & \text{if~$s(q) = t(p)$},  \\
-              0                         & \text{otherwise}.
+              \tilde{X}{(p \circ q)}(x) & \text{if~$s(p) = t(q)$} \,, \\
+              0                         & \text{otherwise}  \,.
             \end{cases}
       \]
-      It holds in the case~$t(q) = s(p)$ that
+      It holds in the case~$s(p) = t(q)$ that
       \[
           \tilde{X}_{p \circ q}
         = \iota_{t(p \circ q)} X_{p \circ q} \pi_{s(p \circ q)}
         = \iota_{t(p)} X_p X_q \pi_{s(q)} \,,
       \]
-      which shows that the two expressions~$p \cdot (q \cdot x)$ and~$(p \cdot q) \cdot x$ coincide.
+      which shows that the two expressions~$p \cdot (q \cdot x)$ and~$(p \cdot q) \cdot x$ do indeed coincide.
       
       The construction~$F$ is functorial:
       If~$X$ and~$Y$ are representations of~$Q$ over~$\kf$ and~$f \colon X \to Y$ is a homomorphism of representations then we get an induced homomorphism of left~{\modules{$\kf Q$}}~$F(f) \colon F(X) \to F(Y)$ given by
@@ -214,7 +287,7 @@
       This construction is again functorial:
       Let~$M$ and~$N$ be left~{\modules{$\kf Q$}} and let~$g \colon M \to N$ be a homomorphism of left~{\modules{$\kf Q$}}.
       Let~$X \defined G(M)$ and~$Y \defined G(N)$.
-      For every~$i \in Q_0$ the homomorphism~$g$ restricts to a~{\klin} map
+      At every vertex~$i \in Q_0$ the homomorphism~$g$ restricts to a~{\klin} map
       \[
                 G(g)_i
         \colon  X_i
@@ -274,7 +347,7 @@
     \item
       Let~$X \defined\ G(M)$.
       Then~$F(X) = \bigdsum_{i \in Q_0} X_i = \bigdsum_{i \in Q_0} \varepsilon_i M$ as~{\modules{$\kf$}}.
-      The~{\module{$\kf Q$}}~$M$ is actually the internal direct sum of its~{\submodules{$\kf$}}~$\varepsilon_i M$:
+      We start by showing that the~{\module{$\kf Q$}}~$M$ is actually the internal direct sum of its~{\submodules{$\kf$}}~$\varepsilon_i M$:
       \begin{itemize}
         \item
           It follows from $1_{\kf Q} = \sum_{i \in Q_0} \varepsilon_i$ that every~$x \in M$ can be expressed as
@@ -315,35 +388,23 @@
       It sufficies to show this equality in the cases that~$a = p$ is a path~$p \in Q_*$.
       It then holds for every element~$x = (x_i)_{i \in Q_0} \in F(X)$ that
       \[
-        \begingroup
-        \arraycolsep=1.4pt
-        \renewcommand\arraystretch{1.5}
-        \begin{array}{rcl}
-          \varphi(px)
-        & =
-        & \varphi( \iota_{t(p)} X_p( x_{s(p)} ) )
-        \\
-          {}
-        & \underset{ \text{def.~$X_p$} }{=}
-        & \varphi( \iota_{t(p)}( p \cdot x_{s(p)} ) )
-        \\
-          {}
-        & =
-        & \varphi( p \cdot x_{s(p)} )
-        \\
-          {}
-        & =
-        & p \cdot x_{s(p)}
-        \end{array}
-        \endgroup
+        \varphi(px)
+        =
+        \varphi( \iota_{t(p)} X_p( x_{s(p)} ) )
+        \underset{ \text{def.~$X_p$} }{=}
+        \varphi( \iota_{t(p)}( p \cdot x_{s(p)} ) )
+        =
+        p \cdot x_{s(p)}  \,.
       \]
       as well as
       \[
           p \cdot \varphi(x)
+        = p \cdot \sum_{i \in Q_0} x_i
         = p \cdot \sum_{i \in Q_0} \varepsilon_i x_i
         = \sum_{i \in Q_0} p \varepsilon_i x_i
         = p \cdot x_{s(p)} \,.
       \]
+      because~$p \varepsilon_i = 0$ for~$i \neq s(p)$ and~$p \varepsilon_{s(p)} = p$.
     \item
       Let~$M \defined F(X)$.
       Then
@@ -353,7 +414,7 @@
         =     \varepsilon_i \bigdsum_{j \in Q_0} X_j
         \cong X_i
       \]
-      for every vertex~$i \in Q_0$, and
+      at every vertex~$i \in Q_0$, and
       \[
           G(M)_\alpha( x_{s(\alpha)} )
         = \alpha x_{s(\alpha)}
@@ -365,31 +426,41 @@
 \end{proof}
 
 
+\begin{definition*}
+  An \emph{oriented cycle}\index{oriented!cycle}\index{cycle!oriented} in a quiver~$Q$ is a path~$p$ in~$Q$ of length~$\geq 1$ with~$s(p) = t(p)$.
+\end{definition*}
+
+
 \begin{remark}
   Let~$Q$ be a finite quiver.
   \begin{enumerate}
     \item
       If~$M$ is a left~{\module{$\kf Q$}} and~{$\kf$} is a field then~$\dim_k(M) = \sum_{i \in Q_0} \dim_k(X_i)$ for~$X \defined F(M)$.
     \item
-      The path algebra~$\kf Q$ has finite rank as a~{\module{$\kf$}} if and only if~$Q$ contains no oriented cycles (where an \emph{oriented cycle}\index{oriented cycle} is a path~$p$ of length~$\geq 1$ with~$s(p) = t(p)$).
+      The path algebra~$\kf Q$ has finite rank as a~{\module{$\kf$}} if and only if~$Q$ contains no oriented cycles.
     \item
-      If a~{\kalg}~$A$ is finitely generated as a~{\module{$\kf$}} then a left~{\module{$A$}}~$M$ is finitely generated if and only if it is finitely generated as a~{\module{$\kf$}}:
+      If a~{\kalg}~$A$ is finitely generated as a~{\module{$\kf$}} then a~{\module{$A$}}~$M$ is finitely generated as an~{\module{$A$}} if and only if it is finitely generated as a~{\module{$\kf$}}:
+
       If~$M$ is finitely generated as a~{\module{$\kf$}} then every finite~\dash{$\kf$}{generating} set of~$M$ is also a finite \dash{$A$}{generating} set for~$M$.
-      If on the other hand~$M$ is finitely generated as a left~{\module{$A$}} then there exists a surjective homomorphism of left~{\modules{$A$}}~$A^n \to M$;
-      the~{\module{$A$}}~$A^n$ is again finitely generated and so~$M$ is finitely generated.
+      If on the other hand~$M$ is finitely generated as a left~{\module{$A$}} then there exists a surjective homomorphism of~{\modules{$A$}}~$A^n \to M$;
+      the~{\module{$A$}}~$A^n$ is again finitely generated as a~{\module{$\kf$}}, and so~$M$ is finitely generated as a~{\module{$\kf$}}.
       
       It follows in particular that if~$Q$ has no oriented cycles then a~{\module{$\kf Q$}}~$M$ is finitely generated as an~{\module{$\kf Q$}} if and only if it is is finitely generated as a~{\module{$\kf$}}.
       If~$\kf$ is additionally a field, then this means that~$M$ is finitely generated as a~{\module{$\kf Q$}} if and only if it is {\fd}.
     \item
-      If~$X$ is a representation of~$Q$ over~$\kf$ then a \emph{subrepresentation}\index{sub-!representation} of~$X$ is a tupel~$(Y_i)_{i \in Q_0}$ of~{\submodules{$\kf$}}~$Y_i \subseteq X_i$ such that~$X_\alpha( Y_{s(\alpha)} ) \subseteq Y_{t(\alpha)}$ for every arrow~$\alpha \in Q_1$.
-      The subrepresentations of~$X$ correspond under~$F$ bijectively to the left {\submodules{$\kf Q$}} of~$F(X)$.
+      If~$X$ is a representation of~$Q$ over~$\kf$ then a \emph{subrepresentation}\index{sub-!representation} of~$X$ is a tupel~$Y = (Y_i)_{i \in Q_0}$ of~{\submodules{$\kf$}}~$Y_i \subseteq X_i$ such that~$X_\alpha( Y_{s(\alpha)} ) \subseteq Y_{t(\alpha)}$ for every arrow~$\alpha \in Q_1$.
+      
+      If~$(Y_i)_{i \in Q_0}$ is a subrepresentation of~$X$ and~$Y_\alpha \colon Y_{s(\alpha)} \to Y_{t(\alpha)}$ is for every arrow~$\alpha \in Q_1$ the restriction of the~{\klin} map~$X_\alpha$, then this defines a representation~$Y$ of~$Q$ of~$\kf$.
+      The inclusion~$\iota = (\iota_i)_{i \in Q_0} \colon Y \to X$ that it at every vertex~$i \in Q_0$ given by the inclusion~$\iota_i \colon Y_i \to X_i$ is then a homomorphism of representations.
+      
+      The subrepresentations of~$X$ correspond under~$F$ bijectively to the left~{\submodules{$\kf Q$}} of~$F(X)$.
     \item
-      If~$(X^j)_{j \in J}$ is a family of representations~$X^j$ of~$Q$ over~$\kf$ then their \emph{direct sum}\index{direct sum of representations} is the representations~$\bigdsum_{j \in J} X^j$ of~$Q$ over~$\kf$ that is given on vertices by
+      If~$(X^j)_{j \in J}$ is a family of representations~$X^j$ of~$Q$ over~$\kf$ then their \emph{direct sum}\index{direct sum of representations} is the representations~$\bigdsum_{j \in J} X^j$ of~$Q$ over~$\kf$ that is given at vertices by
       \[
           \left( \bigdsum_{j \in J} X^j \right)_i
         = \bigdsum_{j \in J} X^j_i
       \]
-      for every~$i \in I$, and on arrows by
+      for every~$i \in Q_0$, and on arrows by
       \[
                 \left( \bigdsum_{j \in J} X^j \right)_\alpha
         =       \bigdsum_{j \in J} X^j_\alpha
@@ -397,7 +468,7 @@
         \longto \bigdsum_{j \in J} X^j_{t(\alpha)}
       \]
       for every~$\alpha \in Q_1$.
-      Under~$F$, the direct sum of representations corresponds to the direct sum of left~{\modules{$\kf Q$}}.
+      Under~$F$ the direct sum of representations corresponds to the direct sum of left~{\modules{$\kf Q$}}.
   \end{enumerate}
 \end{remark}
 

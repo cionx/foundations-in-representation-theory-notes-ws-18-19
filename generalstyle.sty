@@ -182,20 +182,20 @@
   {}_{#1} #2_{#3}
 }
 \NewDocumentCommand{\module}{m o}{%
-  \IfNoValueTF{#2}{{#1}\nobreakdash-module}
-                  {{#1}\nobreakdash-{#2}\nobreakdash-bimodule}%
+  \IfNoValueTF{#2}{{#1}\nobreakdash-mod\-ule}
+                  {{#1}\nobreakdash-{#2}\nobreakdash-bi\-mod\-ule}%
 }
 \NewDocumentCommand{\modules}{m o}{%
-  \IfNoValueTF{#2}{{#1}\nobreakdash-modules}
-                  {{#1}\nobreakdash-{#2}\nobreakdash-bimodules}%
+  \IfNoValueTF{#2}{{#1}\nobreakdash-mod\-ules}
+                  {{#1}\nobreakdash-{#2}\nobreakdash-bi\-mod\-ules}%
 }
 \NewDocumentCommand{\submodule}{m o}{%
-  \IfNoValueTF{#2}{{#1}\nobreakdash-submodule}
-                  {{#1}\nobreakdash-{#2}\nobreakdash-bisubmodule}%
+  \IfNoValueTF{#2}{{#1}\nobreakdash-sub\-mod\-ule}
+                  {{#1}\nobreakdash-{#2}\nobreakdash-bi\-sub\-mod\-ule}%
 }
 \NewDocumentCommand{\submodules}{m o}{%
-  \IfNoValueTF{#2}{{#1}\nobreakdash-submodules}
-                  {{#1}\nobreakdash-{#2}\nobreakdash-bisubmodules}%
+  \IfNoValueTF{#2}{{#1}\nobreakdash-sub\-mod\-ules}
+                  {{#1}\nobreakdash-{#2}\nobreakdash-bi\-sub\-mod\-ules}%
 }
 
 
@@ -387,6 +387,7 @@
 \DeclarePairedDelimiter{\class}{[}{]}
 \newcommand{\closure}[1]{\overline{#1}}
 \newcommand{\fg}{\mathrm{fg}}
+\newcommand{\induced}{\overline}
 \newcommand{\op}{\mathrm{op}}
 \newcommand{\sing}{{\,\mathrm{sing}}}
 

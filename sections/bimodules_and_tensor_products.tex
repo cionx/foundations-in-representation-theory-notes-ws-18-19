@@ -18,7 +18,7 @@
             M \times B
     \to     M \,,
     \quad   (m,b)
-    \mapsto mb \,,
+    \mapsto mb
   \end{gather*}
   such that
   \begin{enumerate}[label = (B\arabic*)]
@@ -37,9 +37,12 @@
   \leavevmode
   \begin{enumerate}
     \item
-      Homomorphisms of bimodules\index{homomorphism!of bimodules}\index{bimodule!homomorphism of} and bisubmodules\index{bisubmodule} are defined in the obvious way.
+      If~$\indmodule[A]{M}[B]$ and~$\indmodule[A]{N}[B]$ are~{\modules{$A$}[$B$]} then a map~$f \colon M \to N$ is a \emph{homomorphisms of bimodules}\index{homomorphism!of bimodules}\index{bimodule!homomorphism of} if it is both a homomorphism of left~{\modules{$A$}} and a homomorphism of right~{\modules{$B$}}.
+      
+      If~$\indmodule[A]{M}[B]$ is an~{\module{$A$}[$B$]} then a subset~$N \subseteq M$ is a bisubmodule if is both a left~{\submodule{$A$}} and a right~{\submodule{$B$}}.
+      The~{\module{$A$}[$B$]} structure of~$M$ then restricts to an~{\module{$A$}[$B$]} module structure on~$N$, which is the unique one that makes the inclusion~$N \to M$ a homomorphis of~{\modules{$A$}[$B$]}.
     \item
-      If~$A$ is a~{\kalg} then~$A$ carries the structure of an~{\module{$A$}[$A$]} by letting~$A$ act on itself via left multiplication and right multiplication.
+      If~$A$ is a~{\kalg} then~$A$ carries the structure of an~{\module{$A$}[$A$]} by letting~$A$ act on itself both via left multiplication and right multiplication.
   \end{enumerate}
 \end{remark}
 
@@ -52,25 +55,25 @@
     &\to  \Hom_A(M,N) \,,
     \\
               (b,f)
-    &\mapsto  \left[
+    &\mapsto  \bigl[
                         bf
                 \colon  M
                 \to     N,
                 \;      m
                 \mapsto f(mb)
-              \right] \,,
+              \bigr] \,,
   \shortintertext{and}
           \Hom_A(M,N) \times C
     &\to  \Hom_A(M,N) \,,
     \\
               (g,c)
-    &\mapsto  \left[
+    &\mapsto  \bigl[
                         gc
                 \colon  M
                 \to     N,
                 \;      m
                 \mapsto f(m)c
-              \right] \,.
+              \bigr] \,.
   \end{align*}
 \end{lemma}
 
@@ -91,7 +94,7 @@
     = a g(m) c
     = a ((gc)(m))
   \]
-  for all~$a \in A$ and~all$m \in M$.
+  for all~$a \in A$ and all~$m \in M$.
   
   To show that~$\Hom_A(M,N)$ becomes a left~{\module{$B$}} and right~{\module{$C$}} we need to verify the various module axioms.
   As an example, we check the axiom~\ref{module associative} for the left~{\module{$B$}} structure via the calculation
@@ -102,7 +105,7 @@
     = (b'f)(mb)
     = (b(b'f))(m)
   \]
-  for all~$f \in \Hom_A(M,N)$,~$b, b' \in B$ and all~$m \in M$.
+  for all~$f \in \Hom_A(M,N)$, all~$b, b' \in B$ and all~$m \in M$.
   
   The compatibility of the left~{\module{$B$}} structure and right~{\module{$C$}} structure of~$M$ follow from the calculation
   \[
@@ -112,7 +115,7 @@
     = (fc)(mb)
     = (b(fc))(m)
   \]
-  for all~$f \in \Hom_A(M,N)$,~$b \in B$,~$c \in C$ and all~$m \in M$.
+  for all~$f \in \Hom_A(M,N)$, all~$b \in B$, all~$c \in C$ and all~$m \in M$.
 \end{proof}
 
 
@@ -129,15 +132,15 @@
   Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be right~{\module{$A$}} and let~$\indmodule[A]{N}$ be a left~{\module{$A$}}.
   \begin{enumerate}
     \item
-      If~$P$ is a~{\module{$\kf$}} then then a map~$\varphi \colon M \times N \to P$ is~\emph{\balanced{$A$}}\index{balanced map} if it is~{\kbilin} and satisfies
+      If~$P$ is a~{\module{$\kf$}} then a map~$\varphi \colon M \times N \to P$ is~\emph{\balanced{$A$}}\index{balanced map} if it is~{\kbilin} and satisfies
       \[
           \varphi(xa, y)
         = \varphi(x, ay)
       \]
-      for all~$x \in M$,~$y \in N$,~$a \in A$.
+      for all~$x \in M$, all~$y \in N$, and all~$a \in A$.
     \item
       A pair~$(T,\tau)$ consisting of a~{\module{$\kf$}}~$T$ and an~{\balanced{$A$}} map~$\tau \colon M \times N \to T$ is a \emph{tensor product}\index{tensor product!of modules} of~$M$ with~$N$ over~$A$ if it satisifies the following universal property:
-      There exists for every~{\module{$\kf$}}~$P$ and every~{\balanced{$A$}} map~$\varphi \colon M \to N \to P$ a unique~{\klin} map~$f \colon M \times N \to T$ with~$f \circ \tau = \varphi$, i.e.\ such that the following triangle commutes:
+      There exists for every~{\module{$\kf$}}~$P$ and every~{\balanced{$A$}} map~$\varphi \colon M \times N \to P$ a unique~{\klin} map~$f \colon T \to P$ with~$f \circ \tau = \varphi$, i.e.\ such that the following triangle commutes:
       \[
         \begin{tikzcd}[row sep = large]
             M \times N
@@ -146,7 +149,7 @@
           & P
           \\
             T
-            \arrow[dashed]{ur}[below right]{\exists! f}
+            \arrow[dashed]{ur}[below right]{f}
           & {}
         \end{tikzcd}
       \]
@@ -186,7 +189,7 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
   We start by showing the claimed uniqueness of the tensor product.
   It follows from the universal property of the tensor product~$(T,\tau)$ applied to the~{\balanced{$A$}} map~$\tau' \colon M \times N \to T'$ that there exists a unique~{\klin} map~$f \colon T \to T'$ with~$f \circ \tau = \tau'$.
   It also follows from the universal property of the tensor product~$(T',\tau')$ applied to the~{\balanced{$A$}} map $\tau \colon M \times N \to T$ that there exists a unique~{\klin} map~$g \colon T' \to T$ with~$g \circ \tau' = \tau$.
-  Together this means that the following triangles commute:
+  Together this means that the following two triangles commute:
   \[
     \begin{tikzcd}
         {}
@@ -196,7 +199,7 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
       & {}
       \\
         T
-        \arrow{rr}{f}
+        \arrow[dashed]{rr}{f}
       & {}
       & T'
     \end{tikzcd}
@@ -209,7 +212,7 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
       & {}
       \\
         T'
-        \arrow{rr}{g}
+        \arrow[dashed]{rr}{g}
       & {}
       & T
     \end{tikzcd}
@@ -226,7 +229,7 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
       \\
         T
         \arrow{r}[above, near end]{f}
-        \arrow[bend right]{rr}[below]{g \circ f}
+        \arrow[dashed, bend right]{rr}[below]{g \circ f}
       & T'
         \arrow{r}[above, near start]{g}
       & T
@@ -249,10 +252,10 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
   \]
   commute.
   This shows that~$g \circ f = \id_T$ because the identity~$\id_T \colon T \to T$ also makes this triangle commute.
-  It can be shown in the same way that~$f \circ g = \id_{T'}$.
-  Together this then shows that the homomorphism~$f$ is an isomorphism.
+  We find in the same way that also~$f \circ g = \id_{T'}$.
+  Together this shows that the homomorphism~$f$ is an isomorphism (with inverse~$g$).
   
-  We now show the existence of the tensor product:
+  Now we show the existence of the tensor product:
   Let~$F$ be the free~{\module{$\kf$}} on the set~$M \times N$ and let~$U \subseteq F$ be the~{\submodule{$\kf$}} that is generated by the elements
   \begin{gather*}
     (x_1 + x_2, y) - (x_1, y) - (x_2, y) \,,
@@ -266,11 +269,21 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
     (xa, y) - (x, ay)
   \end{gather*}
   with~$x, x_1, x_2 \in M$,~$y, y_1, y_2 \in N$,~$\lambda \in \kf$,~$a \in A$.
-  We define~$M \tensor_A N$ to be the~{\module{$\kf$}}~$M \tensor_A N \defined F/U$ and define the required map~$\tau \colon M \times N \to M \tensor_A N$ by~$\tau(x,y) \defined x \tensor y \defined [(x,y)]$ for all~$x \in M$,~$y \in N$.
+  We define~$M \tensor_A N$ to be the~{\module{$\kf$}}
+  \[
+              M \tensor_A N
+    \defined  F/U
+  \]
+  and define the required map~$\tau \colon M \times N \to M \tensor_A N$ for all~$x \in M$ and~$y \in N$ by
+  \[
+              \tau(x,y)
+    \defined  x \tensor y 
+    \defined  \class{(x,y)} \,.
+  \]
   
   We need to check that~$(M \tensor_A N, \tau)$ satisfies the universal property of the tensor product:
   Let~$P$ be a~{\module{$\kf$}} and let~$\varphi \colon M \times N \to P$ be an~{\balanced{$A$}} map.
-  It follows from the universal property of the free~{\module{$\kf$}}~$F$ that there exists a unique~{\klin} map~$\hat{\varphi} \colon F \to P$ that makes the triangle
+  It follows from the universal property of the free~{\module{$\kf$}}~$F$ that there exists a unique~{\klin} map~$\widehat{\varphi} \colon F \to P$ that makes the triangle
   \[
     \begin{tikzcd}
         M \times N
@@ -279,13 +292,13 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
       & P
       \\
         F
-        \arrow[dashed]{ur}[below right]{\hat{\varphi}}
+        \arrow[dashed]{ur}[below right]{\widehat{\varphi}}
       & {}
     \end{tikzcd}
   \]
   commute.
-  That~$\varphi$ is~{\balanced{$A$}} means precisely that~$U \subseteq \ker(\hat{\varphi})$.
-  It follows that~$\hat{\varphi}$ factors uniquely through a~{\klin} map~$\overline{\hat{\varphi}} \colon F/U \to P$, which then makes the following diagram commute:
+  That~$\varphi$ is~{\balanced{$A$}} means precisely that~$U \subseteq \ker(\widehat{\varphi})$.
+  It follows that~$\widehat{\varphi}$ factors uniquely through a~{\klin} map~$\induced{\varphi} \colon F/U \to P$, which then makes the following diagram commute:
   \[
     \begin{tikzcd}[sep = large]
         M \times N
@@ -295,16 +308,16 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
       & P
       \\
         F
-        \arrow{ur}[above left]{\hat{\varphi}}
-        \arrow{d}[left]{\text{can}}
+        \arrow{ur}[below right]{\widehat{\varphi}}
+        \arrow{d}[left]{\text{can.}}
       & {}
       \\
         F/U
-        \arrow[dashed]{uur}[below right]{\overline{\hat{\varphi}}}
+        \arrow[dashed, bend right]{uur}[below right]{\induced{\varphi}}
       & {}
     \end{tikzcd}
   \]
-  This shows that there exists a unique~{\klin} map~$f \colon F/U \to P$ with~$\varphi = f \circ \tensor$, namely~$f = \overline{\hat{\varphi}}$.
+  This shows that there exists a unique~{\klin} map~$f \colon F/U \to P$ with~$\varphi = f \circ \tensor$, namely~$f = \induced{\varphi}$.
 \end{proof}
 
 
@@ -312,6 +325,16 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
   For a right~{\module{$A$}}~$M$ and a left~{\module{$N$}} we denote the (up to unique isomorphism unique) tensor product of~$M$ by~$N$ over~$A$ by~$M \tensor_A N$, and the associated~{\balanced{$A$}} map~$M \times N \to M \tensor_A N$ by~$\tensor$.
   For all~$x \in M$ and~$y \in N$ the resulting element of~$M \tensor_A N$ is hence denoted by~$x \tensor y$.
 \end{notationnonum}
+
+
+\begin{warning*}
+  For~{\modules{$A$}}~$\indmodule{M}[A]$ and~$\indmodule[A]{N}$ not every element of their tensor product~$M \tensor_A N$ has to be of the form~$x \tensor y$ for some~$x \in M$ and~$y \in Y$.
+  Such elements of~$M \tensor_A N$ are \emph{simple tensors}\index{tensor!simple}\index{simple!tensor}, and every elements of~$M \tensor_A N$ is a~{\klin} combination of simple tensors.
+  
+  It often sufficies to check things for simple tensors, since for every~{\module{$\kf$}}~$P$ and every~{\klin} map~$f \colon M \tensor_A N \to P$, the action of~$f$ is already uniquely determined by its action on the simple tensors.
+  But to construct such a~{\klin} map one \emph{has to} (in some instance) evoke the universal property of the tensor product;
+  it does not sufficie to check~\dash{well}{definedness} (or~\dash{$\kf$}{linearity}) on simple tensors.
+\end{warning*}
 
 
 \begin{lemma}
@@ -382,7 +405,7 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
   This shows that the proposed action of~$A$ on~$M \tensor_B N$ is {\welldef}.
   It can be shown in the same way that the proposed action of~$C$ on~$M \tensor_B N$ is {\welldef}.
   
-  It can be checked that the action of~$A$ on~$M \tensor_B N$ satisfies the various left module axioms, and hence is a left~{\module{$A$}} structure on~$M \tensor_B N$.
+  It can be checked that the action of~$A$ on~$M \tensor_B N$ satisfies the various left module axioms, and is therefore a left~{\module{$A$}} structure on~$M \tensor_B N$.
   The action of~$C$ on~$M \tensor_B N$ is similarly a right~{\module{$C$}} structure.
   
   The left~{\module{$A$}} structure of~$M \tensor_B N$ is compatible with the right~{\module{$C$}} structure because
@@ -412,8 +435,7 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
     = (a' a) \tensor y
   \]
   for all~$a',a \in A$,~$y \in N$.
-  
-  This construction is the \emph{extension of scalars}\index{extension of scalars} or \emph{induction}\index{induction} from~$B$ to~$A$.
+  This construction is the \emph{extension of scalars}\index{extension!of scalars} or \emph{induction}\index{induction} from~$B$ to~$A$.
 \end{remark}
 
 
@@ -431,7 +453,7 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
           \Phi_1\left( (x_i)_{i \in I} \tensor y \right)
         = ( x_i \tensor y )_{i \in I}
       \end{gather*}
-      for all~$(x_i)_{i \in I} \in \bigoplus_{i \in I} M_i$,~$y \in N$, and the homomorphism~$\Phi_1$ is already an isomorphism.
+      for all~$(x_i)_{i \in I} \in \bigoplus_{i \in I} M_i$ and~$y \in N$, and this homomorphism~$\Phi_1$ is an isomorphism.
     \item
       Let~$\indmodule[A]{M}[B]$ be a bimodule and let~$( \indmodule[B]{(N_j)}[C] )_{j \in J}$ be a family of bimodules.
       Then there exists a unique homomorphism of~{\modules{$A$}[$C$]}
@@ -443,7 +465,7 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
           \Phi_2\left( x \tensor (y_j)_{j \in J} \right)
         = ( x \tensor y_j )_{j \in J}
       \end{gather*}
-      for all~$x \in M$,~$(y_j)_{j \in J} \in \bigoplus_{j \in J} N_j$, and the homomorphism~$\Phi_2$ is already an isomorphism.
+      for all~$x \in M$ and~$(y_j)_{j \in J} \in \bigoplus_{j \in J} N_j$, and this homomorphism~$\Phi_2$ is an isomorphism.
     \item
       Let~$\indmodule[A]{M}[B]$,~$\indmodule[B]{N}[C]$ and $\indmodule[C]{P}[D]$ be bimodules.
       There exists a unique homomorphism of~{\modules{$A$}[$D$]}
@@ -455,23 +477,23 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
           \Phi_3( (x \tensor y) \tensor z )
         = x \tensor (y \tensor z)
       \end{gather*}
-      for all~$x \in M$,~$y \in N$,~$z \in P$, and~$\Phi_3$ is an isomorphism.
+      for all~$x \in M$,~$y \in N$,~$z \in P$, and this homomorphism~$\Phi_3$ is an isomorphism.
     \item
       For every bimodule~$\indmodule[A]{M}[B]$ there exist unique homomorphisms of~{\modules{$A$}[$B$]}
-      \begin{gather*}
+      \begin{align*}
                 \Phi_4
         \colon  A \tensor_A M
         \to     M 
-        \quad\text{and}\quad
+        \quad&\text{and}\quad
                 \Phi_5
         \colon  M \tensor_B B
         \to     M
       \shortintertext{with}
         \Phi_4(a \tensor m) = m
-        \quad\text{and}\quad
+        \quad&\text{and}\quad
         \Phi_5(m \tensor b) = m
-      \end{gather*}
-      for all~$x \in M$,~$a \in A$,~$b \in B$, and both~$\Phi_4$ and~$\Phi_5$ are isomorphisms.
+      \end{align*}
+      for all~$x \in M$,~$a \in A$,~$b \in B$, and the homomorphisms~$\Phi_4$ and~$\Phi_5$ are isomorphisms.
   \end{enumerate}
 \end{lemma}
 
@@ -499,7 +521,7 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
 
 
 \begin{proof}
-  For all~$f \in \Hom_B(M \tensor_A N, P)$ and all~$x \in M$ the map~$\Phi(f)(x) \colon N \to P$ is a homomorphism of right~{\modules{$B$}} because
+  For every~$f \in \Hom_B(M \tensor_A N, P)$ and every~$x \in M$ the map~$\Phi(f)(x) \colon N \to P$ is a homomorphism of right~{\modules{$B$}} because
   \begin{gather*}
     \begin{aligned}
           \Phi(f)(x)(y_1 + y_2)
@@ -516,7 +538,7 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
     = \Phi(f)(x)(y) b
   \end{gather*}
   for all~$y, y_1, y_2 \in N$,~$b \in B$.
-  This shows that the map~$\Phi(f)(x)$ is a {\welldef} element of~$\Hom_B(N,P)$, hence that for every~$f \in \Hom_B(M \tensor_A N, P)$ the map
+  This shows that the map~$\Phi(f)(x)$ is a {\welldef} element of~$\Hom_B(N,P)$, which menas     that for every~$f \in \Hom_B(M \tensor_A N, P)$ the map
   \[
             \Phi(f)
     \colon  M
@@ -562,7 +584,7 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
     = (\lambda f)(x \tensor y)
     = \lambda f(x \tensor y)
     = \lambda \Phi(f)(x)(y)
-    = (\lambda \Phi)(f)(x)(y) \,.
+    = (\lambda \Phi)(f)(x)(y)
   \end{gather*}
   for all~$f, f_1, f_2 \in \Hom_B(M \tensor_A N, P)$,~$\lambda \in \kf$,~$x \in M$,~$y \in N$.
   
@@ -586,7 +608,7 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
        =  \psi(g)(x_1,y) + \psi(g)(x_2,y) \,,
     \end{aligned}
   \\
-      \psi(g)(x)(y_1 + y_2)
+      \psi(g)(x, y_1 + y_2)
     = g(x)(y_1 + y_2)
     = g(x)(y_1) + g(x)(y_2)
     = \psi(g)(x, y_1) + \psi(g)(x, y_2) \,,
@@ -601,7 +623,8 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
   It follows from the universal property of the tensor product~$M \tensor_A N$ that the~{\balanced{$A$}} map~$\psi(g)$ induces a {\welldef}~{\klin} map~$\Psi(g) \colon M \tensor_A N \to P$ with
   \[
       \Psi(g)(x \tensor y)
-    = g(x)(y) \,,
+    = \psi(g)(x, y)
+    = g(x)(y)
   \]
   for all~$x \in M$,~$y \in N$, i.e.\ such that the following triangle commutes:
   \[
@@ -612,11 +635,11 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
       & P
       \\
         M \tensor_A N
-        \arrow{ur}[below right]{\Psi(g)}
+        \arrow[dashed]{ur}[below right]{\Psi(g)}
       & {}
     \end{tikzcd}
   \]
-  The maps~$\Psi(g)$ is already a homomorphism of right~{\modules{$B$}} because
+  The maps~$\Psi(g)$ are already homomorphismso of right~{\modules{$B$}} because
   \[
       \Psi(g)((x \tensor y) b)
     = \Psi{g}(x \tensor (yb))
@@ -625,7 +648,7 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
     = \Psi(g)(x \tensor y) b
   \]
   for all~$x \in M$,~$y \in N$,~$b \in B$.
-  This shows that~$\Psi(g)$ is a {\welldef} element of~$\Hom_B(M \tensor_A N, P)$, hence that the map
+  This shows that~$\Psi(g)$ is a {\welldef} element of the~{\module{$\kf$}}~$\Hom_B(M \tensor_A N, P)$, and hence that the map
   \begin{align*}
               \Psi
      \colon   \Hom_A(M, \Hom_B(N,P))
@@ -644,15 +667,16 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
   \[
       \Psi(\Phi(f))(x \tensor y)
     = \Phi(f)(x)(y)
-    = f(x \tensor y) \,,
+    = f(x \tensor y)
   \]
-  which shows that~$\Psi \circ \Phi = \id$, and it holds for every~$g \in \Hom_A(\Hom_B(N, P))$ that
+  for all~$x \in M$ and~$y \i N$, which shows that~$\Psi \circ \Phi = \id$.
+  It similarly holds for every~$g \in \Hom_A(\Hom_B(N, P))$ that
   \[
       \Phi(\Psi(g))(x,y)
     = \Psi(g)(x \tensor y)
     = g(x)(y) \,,
   \]
-  which shows that~$\Phi \circ \Psi = \id$.
+  for all~$x \in X$ and~$y \in Y$, which shows that~$\Phi \circ \Psi = \id$.
   
   The naturality in~$M$,~$N$ and~$P$ follows from a direct calculation.
 \end{proof}
