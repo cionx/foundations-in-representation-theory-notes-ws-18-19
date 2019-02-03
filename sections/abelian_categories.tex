@@ -26,7 +26,8 @@
       It was then sketched how one can use~$F$ to transfer the group structure on the morphism sets of~$\Acat$ to a group structure of the morphism sets of~$\Bcat$;
       one can  then check that~$F$ respects biproducts, kernels and cokernels (this was not proven in the lecture).
       The author finds this presentation somewhat misleading, as \enquote{being abelian} is really a property of a category, and not an additional structure.
-      Hence we can’t \enquote{make} a category abelian.}
+      Hence we don’t \enquote{make} a category abelian, it \emph{is} abelian.}
+%     TODO: Prove this.
   \end{enumerate}
 \end{remark}
 
@@ -35,7 +36,7 @@
   \leavevmode
   \begin{enumerate}
     \item
-      The category~$\Ab$ of abelian groups is an abelian category (and the term \enquote{abelian category} comes from this example).
+      The category~$\Ab$ of abelian groups is an abelian category.
     \item
       If more generally~$A$ is a~{\kalg} then the module categories~$\Modl{A}$ and~$\Modr{A}$ are abelian.
     \item
@@ -319,7 +320,7 @@
         Condition~\ref*{separation axiom} is the \emph{separation~axiom}\index{separation axiom}\index{sheaf!separation axiom} and condition~\ref*{glueing axiom} is the \emph{glueing~axiom}\index{glueing axiom}\index{sheaf!glueing axiom}.
       \end{definitionnonum}
       
-      We denote by~$\Scat = \Sheaf_X(\Ab)$ the category of sheaves on~$X$, which is the full subcategory of the presheaf category~$\Pcat = \Presheaf_X(\Ab)$ whose objects are sheaves.
+      We denote by~$\Scat = \Sheaf_X(\Ab)$ the category of sheaves on~$X$, which is the full subcategory of the presheaf category~$\Pcat = \Presheaf_X(\Ab)$ whose objects are the sheaves on~$X$.
       
       Note that if~$\Fs$ is any sheaf on~$X$ then~$\Fs(\emptyset) = 0$:
       We may choose for the open subset~$U = \emptyset$ the empty covering~$U = \bigcup_{i \in \emptyset} U_i$.
@@ -379,7 +380,7 @@
               It follows that~$t = 0$ and~$u = 0$ because both~$\Fs$ and~$\Gs$ are sheaves (and hence satisify the separation axiom).
               This shows that~$s = 0$, and hence that~$\Fs \oplus \Gs$ satisfies the separation axiom.
             \item
-              For every~$s \in S$ let~$s_i \in U_i$ be a section, such that
+              For every~$i \in I$ let~$s_i \in U_i$ be a section, such that
               \[
                   \restrict{s_i}{U_i \cap U_j}
                 = \restrict{s_j}{U_i \cap U_j}
@@ -406,12 +407,12 @@
               \[
                   \restrict{t_i}{U_i \cap U_j}
                 = \restrict{t_j}{U_i \cap U_j}
-                \qquad\text{and}\quad
+                \quad\text{and}\quad
                   \restrict{u_i}{U_i \cap U_j}
                 = \restrict{u_j}{U_i \cap U_j} \,.
               \]
               It follows that there exist sections~$t \in \Fs(U)$ and~$u \in \Gs(U)$ with~$\restrict{t}{U_i} = t_i$ and~$\restrict{u}{U_i} = u_i$ for every~$i \in I$ because both~$\Fs$ and~$\Gs$ are sheaves (and hence satisfiy the glueing axiom).
-              It follows for the section~$s$ that
+              It follows for the section~$s \defined (t,u) \in (\Fs \oplus \Gs)(U)$ that
               \[
                   \restrict{s}{U_i}
                 = \restrict{(t,u)}{U_i}
@@ -502,7 +503,7 @@
             \end{tikzcd}
           \]
           commutes.
-          It follows that there exists a section~$s \in \Fs(U)$ with~$\restrict{s}{U_i} = s_i$ for every~$i \in I$ because~$\Fs$is a sheaf and hence satisfies the glueing axiom.
+          It follows that there exists a section~$s \in \Fs(U)$ with~$\restrict{s}{U_i} = s_i$ for every~$i \in I$ because~$\Fs$ is a sheaf and hence satisfies the glueing axiom.
           We need to show that already~$s \in \ker(f_U)$, i.e.\ that~$f_U(s) = 0$.
           We use that~$f$ is a homomorphism of sheaves to calculate
           \[
@@ -596,7 +597,7 @@
       Let~$I \colon \Scat \to \Pcat$ be the inclusion functor, which is both fully faithful and additive.
       
       \begin{fact}
-        The inlcusion functor~$I$ has a left adjoint~$S \colon \Pcat \to \Scat$.
+        The inclusion functor~$I$ has a left adjoint~$S \colon \Pcat \to \Scat$.
         The functor~$S$ is again additive and the adjunction is also additive, in the sense that the natural bijections
         \[
                   \varphi_{\Fs,\Gs}
@@ -701,7 +702,7 @@
                 \Cs_{X,A}(U)
               = \{
                   f \colon U \to A
-                \colon
+                \suchthat
                   \text{$f$ is locally constant}
                 \} \,.
             \]
@@ -715,7 +716,7 @@
             \]
             is the (literal) restriction map.
           \item
-            Let~$\Fs$ is a sheaf and let~$\Fs' \subseteq \Fs$ be a subpresheaf, i.e.~$\Fs$ is a presheaf such that $\Fs'(U) \subseteq \Fs(U)$ is a subgroup for every open subset~$U \subseteq X$, and such that the square
+            Let~$\Fs$ be a sheaf and let~$\Fs' \subseteq \Fs$ be a subpresheaf, i.e.~$\Fs$ is a presheaf such that $\Fs'(U) \subseteq \Fs(U)$ is a subgroup for every open subset~$U \subseteq X$, and such that the square
             \[
               \begin{tikzcd}[sep = large]
                   \Fs'(V)
@@ -1064,7 +1065,7 @@
       The commutativity of the lower trapezoid shows that the canonical homomorphism~$\tilde{f}$ is a composition of three isomorphisms, and therefore an isomorphism itself.
   \end{enumerate}
   
-  This altogether shows that the category~$\Scat$ is abelian.
+  This altogether shows that the sheaf category~$\Scat = \Sheaf_X(\Ab)$ is abelian.
 \end{example}
 
 
@@ -1173,7 +1174,7 @@
       & \im(f)
     \end{tikzcd}
   \]
-  The isomorphism~$\tilde{f}$ is just~$f$ itself.
+  The isomorphism~$\tilde{f}$ is therefore just~$f$ itself.
 \end{proof}
 
 

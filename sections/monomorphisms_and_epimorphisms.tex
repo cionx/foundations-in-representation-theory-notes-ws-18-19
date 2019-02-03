@@ -5,9 +5,9 @@
   Let~$f \colon X \to Y$ be a morphism in a category~$\Ccat$.
   \begin{enumerate}
     \item
-      The morphism~$f$ is a \emph{monomorphism}\index{monomorphism}\index{morphism!mono-} if it follows for every pair of parallel morphisms~$u, v \colon Z \to X$ from~$f \circ u = f \circ v$ that already~$u = v$.
+      The morphism~$f$ is a \emph{monomorphism}\index{monomorphism}\index{morphism!mono-} if it follows for every pair of parallel morphisms~$u, v \colon W \to X$ in~$\Ccat$ from~$f \circ u = f \circ v$ that already~$u = v$.
     \item
-      The morphism~$f$ is an \emph{epimorphism}\index{epimorphism}\index{morphism!epi-} if it follows for every pair of parallel morphisms~$u, v \colon Y \to Z$ from~$u \circ f = v \circ f$ that already~$u = v$.
+      The morphism~$f$ is an \emph{epimorphism}\index{epimorphism}\index{morphism!epi-} if it follows for every pair of parallel morphisms~$u, v \colon Y \to Z$ in~$\Ccat$ from~$u \circ f = v \circ f$ that already~$u = v$.
   \end{enumerate}
 \end{definition}
 
@@ -53,6 +53,9 @@
 \end{example}
 
 
+% TODO: Add example Q -> Q/Z in divisible abelian groups for non-injective mono.
+
+
 \begin{example}
   We give examples for epimorphisms.
   \begin{enumerate}
@@ -66,7 +69,7 @@
       Let~$\Haus$ be the category of Hausdorff topological spaces (where morphisms are just continuous maps).
       A morphism~$f \colon X \to Y$ in~$\Haus$ is an epimorphism if and only if it has dense image.
     \item
-      Let~$A$ be a commutative ring and let~$S \subseteq A$ be a multiplicative set.
+      Let~$A$ be a commutative ring and let~$S \subseteq A$ be a multiplicative subset.
       Then the canonical map~$f \colon A \to S^{-1} A$,~$a \mapsto a/1$ is an epimorphism:
       If~$u,v \colon S^{-1} A \to B$ are two ring homomorphisms with~$u \circ f = v \circ f$ then~$u(a/1) = v(a/1)$ for every~$a \in A$.
       It then follows for every fraction~$a/s \in S^{-1} A$ that
@@ -82,6 +85,33 @@
 
 
 % TODO: Add a proof that the epimorphisms in Grp are precisely the surjective homomorphisms.
+
+
+\begin{remark*}
+  Let~$f \colon X \to Y$ be a morphism in a category~$\Ccat$.
+  \begin{enumerate}
+    \item
+      The morphism~$f$ is a monomorphism if and only if for every object~$W \in \Ob(\Ccat)$ the induced map
+      \[
+        f_*
+        \colon
+        \Ccat(W,X)
+        \to
+        \Ccat(W,Y)
+      \]
+      is injective.
+    \item
+      The morphism~$f$ is an epimorphism if and only if for every object~$Z \in \Ob(\Ccat)$ the induced map
+      \[
+        f^*
+        \colon
+        \Ccat(Y,Z)
+        \to
+        \Ccat(X,Z)
+      \]
+      is injective.
+  \end{enumerate}
+\end{remark*}
 
 
 

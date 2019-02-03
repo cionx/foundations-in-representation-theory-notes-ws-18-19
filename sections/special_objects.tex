@@ -56,7 +56,7 @@
     \begin{tikzcd}
         X
         \arrow{dr}
-        \arrow{rr}[above]{0_{XY}}
+        \arrow[dashed]{rr}[above]{0_{XY}}
       & {}
       & Y
       \\
@@ -86,7 +86,7 @@
   \[
     \begin{tikzcd}
         W
-        \arrow[dashed, bend left = 40]{rrr}[above]{f \circ 0_{W,X}}
+        \arrow[dashed, bend left = 40]{rrr}[above]{f \circ {0_{W,X}}}
         \arrow{rr}[above]{0_{W,X}}
         \arrow{dr}
       & {}
@@ -104,7 +104,7 @@
     \qquad
     \begin{tikzcd}
         X
-        \arrow[dashed, bend left = 40]{rrr}[above]{0_{Y,Z} \circ f}
+        \arrow[dashed, bend left = 40]{rrr}[above]{{0_{Y,Z}} \circ f}
         \arrow{r}[above]{f}
         \arrow[dashed, bend right]{drr}
       & Y

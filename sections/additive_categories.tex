@@ -2,7 +2,7 @@
 
 
 \begin{definition}
-  A \emph{preadditive~category}\index{pre-additive category}\index{category!pre-additive} is a category~$\Acat$ together with the structure of an abelian group on~$\Acat(X,Y)$ for all~$X, Y \in \Ob(\Acat)$ such that the composition in~$\Ccat$ is~{\Zbilin}, i.e.\ such that
+  A \emph{preadditive~category}\index{pre-additive category}\index{category!pre-additive} is a category~$\Acat$ together with the structure of an abelian group on~$\Acat(X,Y)$ for all~$X, Y \in \Ob(\Acat)$ such that the composition in~$\Acat$ is~{\Zbilin}, i.e.\ such that
   \[
     k \circ (g + h) = k \circ g + k \circ h
     \quad\text{and}\quad
@@ -17,12 +17,17 @@
   \begin{enumerate}
     \item
       Preddative categories are also known as~\emph{\dash{$\Ab$}{categories}}\index{Ab-category@$\Ab$-category}\index{category!Ab-@$\Ab$-} (where~$\Ab$ denotes the category of abelian groups).
-      (In the language of enriched category theory, an~\dash{$\Ab$}{category} is precisely a category that is enriched over the monoidal category~$(\Ab,{\tensor})$.)
+      ()
     \item
-      If~$\kf$ is a commutative ring then one can similarly define the notion of a \emph{{\preklin} category}\index{pre-k-linear category@{\preklin} category}\index{category!pre-k-linear@{\preklin}} (also known as~\emph{\dash{$\Modl{k}$}{category}}\index{k-Mod-category@$\Modl{\kf}$-category}\index{category!k-Mod-@$\Modl{\kf}$-})~$\Ccat$.
+      If~$\kf$ is a commutative ring then one can similarly define the notion of a \emph{{\preklin} category}\index{pre-k-linear category@{\preklin} category}\index{category!pre-k-linear@{\preklin}} (also known as~\emph{\dash{$\Modl{\kf}$}{category}}\index{k-Mod-category@$\Modl{\kf}$-category}\index{category!k-Mod-@$\Modl{\kf}$-})~$\Ccat$.
       Every~$\Ccat(X,Y)$ is then endowed with the structure of a~{\module{$\kf$}} and the composition is~{\kbilin}.
   \end{enumerate}
 \end{remark}
+
+
+\begin{remark*}
+  In the language of enriched category theory, an~\dash{$\Ab$}{category} is precisely a category that is enriched over the monoidal category~$(\Ab,{\tensor_\Integer})$, and a \dash{$\Modl{\kf}$}{category} is precisely a category that is enriched over the monoidal category~$(\Modl{\kf}, {\tensor_\kf})$.
+\end{remark*}
 
 
 \begin{example}
@@ -93,7 +98,7 @@
           F(f + g)
         = F(f) + F(g)
       \]
-      for all morphisms~$f, g \colon X \to X'$ in~$\Acat$, i.e.\ if the map
+      for all morphisms~$f, g \colon X \to Y$ in~$\Acat$, i.e.\ if the map
       \[
                     \Acat(X, Y)
         \xlongto{F} \Bcat(F(X), F(Y))
@@ -106,7 +111,7 @@
         \quad\text{and}\quad
         F(\lambda f) = \lambda F(f)
       \]
-      for all morphisms~$f, g \colon X \to X'$ in~$\Acat$ and scalars~$\lambda \in \kf$, i.e.\ if the map
+      for all morphisms~$f, g \colon X \to Y$ in~$\Acat$ and scalars~$\lambda \in \kf$, i.e.\ if the map
       \[
                     \Acat(X, Y)
         \xlongto{F} \Bcat(F(X), F(Y))
@@ -125,7 +130,7 @@
       For any object~$X \in \Ob(\Acat)$ the following conditions are equivalent:
       \begin{enumerate}
         \item
-          The object~$X$ is unital in~$\Acat$.
+          The object~$X$ is inital in~$\Acat$.
         \item
           The object~$X$ is terminal in~$\Acat$.
         \item
@@ -155,7 +160,7 @@
 
 \begin{definition}
   Let~$\Acat$ be a preadditive category and let~$X_1, \dotsc, X_n \in \Ob(\Acat)$ be objects, where~$n \in \Integer_{\geq 0}$.
-  A \emph{biproduct}\index{biproduct} of~$X_1, \dotsc, X_n$ is a triple~$(X, (p_1, \dotsc, p_n), (c_1, \dotsc, c_n))$ consisting of an object~$X \in \Ob(\Acat)$ together with morphisms~$p_i \colon X \to X_i$ and morphisms~$c_i \colon X_i \to X$ in~$\Acat$,
+  A \emph{biproduct}\index{biproduct} of~$X_1, \dotsc, X_n$ is a triple~$(X, (p_1, \dotsc, p_n), (c_1, \dotsc, c_n))$ consisting of an object~$X \in \Ob(\Acat)$ together with morphisms~$p_i \colon X \to X_i$ and morphisms~$c_i \colon X_i \to X$ in~$\Acat$, such that
   \begin{equation}
     \label{no abuse of notation}
       p_j c_i
@@ -337,7 +342,7 @@
 
 
 \begin{remark*}
-  In a preadditive catgory~$\Acat$ one can express morphisms between biproducts as matrices:
+  In a preadditive category~$\Acat$ one can express morphisms between biproducts as matrices:
   Let~$X_1, \dotsc, X_n$ and~$Y_1, \dotsc, Y_m$ be two families of objects in~$\Acat$ whose biproducts~$X_1 \oplus \dotsb \oplus X_n$ and~$Y_1 \oplus \dotsb \oplus Y_m$ exist, and denote the associated morphisms by
   \begin{align*}
     c_i \colon X_i \to X_1 \oplus \dotsb \oplus X_n
@@ -349,187 +354,187 @@
     q_i \colon Y_1 \oplus \dotsb \oplus Y_m \to Y_i \,.
   \end{align*}
   
-  Suppose first that we are given a morphism
-  \[
-            f
-    \colon  X_1 \oplus \dotsb \oplus X_n
-    \to     Y_1 \oplus \dotsb \oplus Y_m
-  \]
-  in~$\Acat$.
-  It then follows from the calculation
-  \begin{align*}
-        f
-    &=  \id_{Y_1 \oplus \dotsb \oplus Y_m} \circ f \circ \id_{X_1 \oplus \dotsb \oplus X_n} \\
-    &=  \left( \sum_{i=1}^n d_i q_i \right) \circ f \circ \left( \sum_{j=1}^m c_j p_j \right)
-     =  \sum_{i=1}^n \sum_{j=1}^m d_i (q_i \circ f \circ c_j) p_j \,.
-  \end{align*}
-  that the morphism~$f$ is unique determined by the compositions~$q_i \circ f \circ c_j$.
-  We will refer to the composition
-  \[
-    [f]_{ij} \defined q_i \circ f \circ c_j
-  \]
-  as the~\dash{$(i,j)$}{th} component of~$f$.
-  The above calculation shows that the morphism~$f$ can be retrieved from its components via the formula
-  \[
-    f = \sum_{i=1}^n \sum_{j=1}^m d_i [f]_{ij} p_j \,.
-  \]
-  To better visualize the relation between~$f$ and its components, we may arrange these components in the form of an~\dash{$(m \times n)$}{matrix}
-  \[
-    \begin{bmatrix}
-      f_{11}  & \cdots  & f_{1n}  \\
-      \vdots  & \ddots  & \vdots  \\
-      f_{m1}  & \cdots  & f_{mn}
-    \end{bmatrix} \,.
-  \]
-  We will refer to this matrix as~$[f]$.
-  (Note that~$[f]_{ij}$ is hence the~\dash{$(i,j)$}{th} entry of the matrix~$[f]$.)
-  
-  Suppose on the other hand that we are given a collection of morphisms~$g_{ij} \colon X_j \to Y_i$ where~$i = 1, \dotsc, m$ and~$j = 1, \dotsc, n$.
-  We can then define a morphism~$g \colon X \to Y$ via
-  \[
-              g
-    \defined  \sum_{i=1}^m \sum_{j=1}^n d_i g_{ij} p_j \,.
-  \]
-  The components~$[g]_{ij}$ of the morphism~$g$ are then for all~$i = 1, \dotsc, m$ and~$j = 1, \dotsc, n$ given by
-  \begin{align*}
-        [g]_{ij}
-     =  q_i \circ g \circ c_j
-    &=  q_i \circ \left( \sum_{i'=1}^m \sum_{j'=1}^n d_{i'} g_{i'j'} p_{j'} \right) \circ c_j \\
-    &=  \sum_{i=1}^m \sum_{j=1}^n
-        \underbrace{q_i d_{i'}}_{= \delta_{i,i'}} g_{i'j'} \underbrace{p_{j'} c_j}_{= \delta_{j',j}}
-     =  g_{ij} \,.
-  \end{align*}
-  The components~$[g]_{ij}$ of~$g$ are hence the morphisms~$g_{ij}$ that we started with.
-  
-  This shows overall that we have constructed a bijection
-  \begin{align*}
-      \Acat(X_1 \oplus \dotsb \oplus X_n, Y_1 \oplus \dotsb \oplus Y_m)
-    &\longleftrightarrow
-      \left\{
-        \begin{bsmallmatrix}
-          g_{11}  & \cdots  & g_{1n}  \\
-          \vdots  & \ddots  & \vdots  \\
-          g_{m1}  & \cdots  & g_{mn}
-        \end{bsmallmatrix}
-      \suchthat*
-        g_{ij} \in \Acat(X_j, Y_i)
-      \right\}  \,,
-    \\
-      f
-    &\longmapsto
-      [f] \,,
-    \\
-      \sum_{i=1}^m \sum_{j=1}^n q_i g_{ij} c_j
-    =
-      g
-    &\longmapsfrom
-      \begin{bsmallmatrix}
-          g_{11}  & \cdots  & g_{1n}  \\
-          \vdots  & \ddots  & \vdots  \\
-          g_{1n}  & \cdots  & g_{mn}
-        \end{bsmallmatrix}  \,.
-  \end{align*}
-  This way of representing morphisms between biproducts as matrices is compatible with both sums and composition of morphisms, and if~$\Acat$ is~{\preklin} then also with scalar multiplication of morphisms.
-  \begin{itemize}
+  \begin{enumerate}
     \item
-      Let~$f_1, f_2 \colon X_1 \oplus \dotsb \oplus X_n \to Y_1 \oplus \dotsb \oplus Y_m$ be two parallel morphisms in~$\Acat$.
-      Then the morphism~$f_1 + f_2$ has for all~$i = 1, \dotsc, m$ and~$j = 1, \dotsc, n$ the components
+      Suppose first that we are given a morphism
       \[
-          [f_1 + f_2]_{ij}
-        = q_i \circ (f_1 + f_2) \circ c_j
-        = q_i \circ f_1 \circ c_j + q_i \circ f_2 \circ c_j
-        = [f_1]_{ij} + [f_2]_{ij} \,.
+                f
+        \colon  X_1 \oplus \dotsb \oplus X_n
+        \to     Y_1 \oplus \dotsb \oplus Y_m
       \]
-      This shows that indeed
-      \[
-          [f_1 + f_2]
-        = [f_1] + [f_2] \,.
-      \]
-    \item
-      Let~$Z_1, \dotsc, Z_l$ be objects in~$\Acat$ whose biproduct~$Z_1 \oplus \dotsb \oplus Z_l$ exists in~$\Acat$, and let
-      \[
-        e_i \colon Z_i \to Z_1 \oplus \dotsb \oplus Z_l
-      \quad\text{and}\quad
-        r_i \colon Z_1 \oplus \dotsb \oplus Z_l \to Z_i \,,
-      \]
-      be the associated morphisms.
-      It then holds for any two composable morphisms
-      \[
-          X_1 \oplus \dotsb \oplus X_n
-        \xlongto{f}
-          Y_1 \oplus \dotsb \oplus Y_m
-        \xlongto{g}
-          Z_1 \oplus \dotsb \oplus Z_l
-      \]
-      in~$\Acat$ that
-      \[
-          [g \circ f]
-        = [g] \cdot [f]
-      \]
-      where the product on the right hand side is taken in the naive way.
-      Indeed the composition~$g \circ f$ has for all~$i = 1, \dotsc, l$ and~$k = 1, \dotsc, n$ the components
+      in~$\Acat$.
+      It then follows from the calculation
       \begin{align*}
-            [g \circ f]_{ik}
-        &=  r_i \circ (g \circ f) \circ c_k
-         =  r_i \circ g \circ \id_Y \circ f \circ c_k \\
-        &=  r_i \circ g \circ \left( \sum_{j=1}^m d_j q_j \right) \circ f \circ c_k \\
-        &=  \sum_{j=1}^m (r_i \circ g \circ d_j) \circ (q_j \circ f \circ c_k)
-         =  \sum_{j=1}^m [g]_{ij} [f]_{jk} \,.
+            f
+        &=  {\id_{Y_1 \oplus \dotsb \oplus Y_m}} \circ f \circ {\id_{X_1 \oplus \dotsb \oplus X_n}} \\
+        &=  \left( \sum_{i=1}^n d_i q_i \right) \circ f \circ \left( \sum_{j=1}^m c_j p_j \right)
+        =  \sum_{i=1}^n \sum_{j=1}^m d_i (q_i \circ f \circ c_j) p_j \,.
       \end{align*}
-      The resulting term~$\sum_{j=1}^m [g]_{ij} [f]_{jk}$ is precisely the~\dash{$(i,k)$}{th} entry of the matrix product~$[g] \cdot [f]$.
+      that the morphism~$f$ is unique determined by the compositions~$q_i \circ f \circ c_j$.
+      We will refer to the composition
+      \[
+                  [f]_{ij}
+        \defined  q_i \circ f \circ c_j
+      \]
+      as the~\dash{$(i,j)$}{th} component of~$f$.
+      The above calculation shows that the morphism~$f$ can be retrieved from its components via the formula
+      \[
+        f = \sum_{i=1}^n \sum_{j=1}^m d_i [f]_{ij} p_j \,.
+      \]
+      To better visualize the relation between~$f$ and its components, we may arrange these components in the form of an~\dash{$(m \times n)$}{matrix}
+      \[
+        \begin{bmatrix}
+          f_{11}  & \cdots  & f_{1n}  \\
+          \vdots  & \ddots  & \vdots  \\
+          f_{m1}  & \cdots  & f_{mn}
+        \end{bmatrix} \,.
+      \]
+      This is the \emph{representing matrix of~$f$} and is denoted by~$[f]$.
+      (Note that the~\dash{$(i,j)$}{th} entry of the matrix~$[f]$ is precisely~$[f]_{ij}$.)
     \item
-      If~$\Acat$ also~{\preklin} then let~$f \colon X_1 \oplus \dotsb \oplus X_n \to Y_1 \oplus \dotsb \oplus Y_m$ be a morphism in~$\Acat$ and let~$\lambda \in \kf$ be a scalar.
-      Then the morphism~$\lambda f$ has for all~$i = 1, \dotsc, m$ and~$j = 1, \dotsc, n$ the components
+      Let on the other hand~$g_{ij} \colon X_j \to Y_i$ for~$i = 1, \dotsc, m$ and~$j = 1, \dotsc, n$ be a collection of morphisms.
+      We can then define a morphism~$g \colon X \to Y$ via
       \[
-          [\lambda f]_{ij}
-        = q_i \circ (\lambda f) \circ c_j
-        = \lambda (q_i \circ f \circ c_j)
-        = \lambda [f]_{ij} \,.
+                  g
+        \defined  \sum_{i=1}^m \sum_{j=1}^n d_i g_{ij} p_j \,.
       \]
-      This shows that indeed
+      The components~$[g]_{ij}$ of the morphism~$g$ are for all~$i = 1, \dotsc, m$ and~$j = 1, \dotsc, n$ given by
+      \begin{align*}
+            [g]_{ij}
+        =  q_i \circ g \circ c_j
+        &=  q_i \circ \left( \sum_{i'=1}^m \sum_{j'=1}^n d_{i'} g_{i'j'} p_{j'} \right) \circ c_j \\
+        &=  \sum_{i=1}^m \sum_{j=1}^n
+            \underbrace{q_i d_{i'}}_{= \delta_{i,i'}} g_{i'j'} \underbrace{p_{j'} c_j}_{= \delta_{j',j}}
+        =  g_{ij} \,.
+      \end{align*}
+      The components~$[g]_{ij}$ of~$g$ are hence the morphisms~$g_{ij}$ that we started with.
+    \item
+      This shows overall that we have constructed a bijection
+      \begin{align*}
+          \Acat(X_1 \oplus \dotsb \oplus X_n, Y_1 \oplus \dotsb \oplus Y_m)
+        &\longleftrightarrow
+          \left\{
+            \begin{bsmallmatrix}
+              g_{11}  & \cdots  & g_{1n}  \\
+              \vdots  & \ddots  & \vdots  \\
+              g_{m1}  & \cdots  & g_{mn}
+            \end{bsmallmatrix}
+          \suchthat*
+            g_{ij} \in \Acat(X_j, Y_i)
+          \right\}  \,,
+        \\
+          f
+        &\longmapsto
+          [f] \,,
+        \\
+          \sum_{i=1}^m \sum_{j=1}^n q_i g_{ij} c_j
+        =
+          g
+        &\longmapsfrom
+          \begin{bsmallmatrix}
+              g_{11}  & \cdots  & g_{1n}  \\
+              \vdots  & \ddots  & \vdots  \\
+              g_{1n}  & \cdots  & g_{mn}
+            \end{bsmallmatrix}  \,.
+      \end{align*}
+      This way of representing morphisms between biproducts as matrices is compatible with both sums and composition of morphisms, and if~$\Acat$ is~{\preklin} then also with scalar multiplication of morphisms:
+      \begin{itemize}
+        \item
+          Let~$f_1, f_2 \colon X_1 \oplus \dotsb \oplus X_n \to Y_1 \oplus \dotsb \oplus Y_m$ be two parallel morphisms in~$\Acat$.
+          Then the morphism~$f_1 + f_2$ has for all~$i = 1, \dotsc, m$ and~$j = 1, \dotsc, n$ the components
+          \[
+              [f_1 + f_2]_{ij}
+            = q_i \circ (f_1 + f_2) \circ c_j
+            = q_i \circ f_1 \circ c_j + q_i \circ f_2 \circ c_j
+            = [f_1]_{ij} + [f_2]_{ij} \,.
+          \]
+          This shows that indeed
+          \[
+              [f_1 + f_2]
+            = [f_1] + [f_2] \,.
+          \]
+        \item
+          Let~$Z_1, \dotsc, Z_l$ be objects in~$\Acat$ whose biproduct~$Z_1 \oplus \dotsb \oplus Z_l$ exists in~$\Acat$, and let
+          \[
+            e_i \colon Z_i \to Z_1 \oplus \dotsb \oplus Z_l
+          \quad\text{and}\quad
+            r_i \colon Z_1 \oplus \dotsb \oplus Z_l \to Z_i \,,
+          \]
+          be the associated morphisms.
+          It then holds for any two composable morphisms
+          \[
+              X_1 \oplus \dotsb \oplus X_n
+            \xlongto{f}
+              Y_1 \oplus \dotsb \oplus Y_m
+            \xlongto{g}
+              Z_1 \oplus \dotsb \oplus Z_l
+          \]
+          in~$\Acat$ that
+          \[
+              [g \circ f]
+            = [g] \cdot [f]
+          \]
+          where the product on the right hand side is taken in the naive way.
+          Indeed the composition~$g \circ f$ has for all~$i = 1, \dotsc, l$ and~$k = 1, \dotsc, n$ the components
+          \begin{align*}
+                [g \circ f]_{ik}
+            &=  r_i \circ (g \circ f) \circ c_k
+            =  r_i \circ g \circ \id_Y \circ f \circ c_k \\
+            &=  r_i \circ g \circ \left( \sum_{j=1}^m d_j q_j \right) \circ f \circ c_k \\
+            &=  \sum_{j=1}^m (r_i \circ g \circ d_j) \circ (q_j \circ f \circ c_k)
+            =  \sum_{j=1}^m [g]_{ij} [f]_{jk} \,.
+          \end{align*}
+          The resulting term~$\sum_{j=1}^m [g]_{ij} [f]_{jk}$ is precisely the~\dash{$(i,k)$}{th} entry of the matrix product~$[g] \cdot [f]$.
+        \item
+          If~$\Acat$ also~{\preklin} then let~$f \colon X_1 \oplus \dotsb \oplus X_n \to Y_1 \oplus \dotsb \oplus Y_m$ be a morphism in~$\Acat$ and let~$\lambda \in \kf$ be a scalar.
+          Then the morphism~$\lambda f$ has for all~$i = 1, \dotsc, m$ and~$j = 1, \dotsc, n$ the components
+          \[
+              [\lambda f]_{ij}
+            = q_i \circ (\lambda f) \circ c_j
+            = \lambda (q_i \circ f \circ c_j)
+            = \lambda [f]_{ij} \,.
+          \]
+          This shows that indeed
+          \[
+              [\lambda f]
+            = \lambda [f] \,.
+          \]
+      \end{itemize}
+    \item
+      In the following we will notationally often not distinguish between the morphism~$f \colon X_1 \oplus \dotsb \oplus X_n \to Y_1 \oplus \dotsb \oplus Y_m$ and its matrix representation.
+      So instead of
       \[
-          [\lambda f]
-        = \lambda [f] \,.
+          [f]
+        = \begin{bmatrix}
+            f_{11}  & \cdots  & f_{1n}  \\
+            \vdots  & \ddots  & \vdots  \\
+            f_{m1}  & \cdots  & f_{mn}
+          \end{bmatrix}
       \]
-  \end{itemize}
-  
-  In the following we will notationally often not distinguish between the morphism~$f \colon X_1 \oplus \dotsb \oplus X_n \to Y_1 \oplus \dotsb \oplus Y_m$ and its matrix representation.
-  So instead of
-  \[
-      [f]
-    = \begin{bmatrix}
-        f_{11}  & \cdots  & f_{1n}  \\
-        \vdots  & \ddots  & \vdots  \\
-        f_{m1}  & \cdots  & f_{mn}
-      \end{bmatrix}
-  \]
-  (where~$f_{ij} = [f]_{ij}$ is the~\dash{$(i,j)$}{th} component of~$f$) we will just write
-  \[
-      f
-    = \begin{bmatrix}
-        f_{11}  & \cdots  & f_{1n}  \\
-        \vdots  & \ddots  & \vdots  \\
-        f_{m1}  & \cdots  & f_{mn}
-      \end{bmatrix} \,.
-  \]
-  If one of the morphisms~$f_{ij}$ is the identity~$\id_Z$ of some object~$Z$ (that is then necessarily given by~$Z = X_j = Y_i$) then we will often just write the corresponding matrix entry as~$1$ instead of~$\id_Z$.
-  
-  We finish this remark by pointing out that the morphisms~$c_i \colon X_i \to X_1 \oplus \dotsb \oplus X_n$ and~$p_i \colon X_1 \oplus \dotsb \oplus X_n \to X_i$ are by these notional conventions given by the matrices
-  \[
-      c_i
-    = \begin{bsmallmatrix}
-        {} \\0 \\ \vdots \\ 0 \\ 1 \\ 0 \\ \vdots \\ 0 \\ {}
-      \end{bsmallmatrix}
-    \qquad\text{and}\qquad
-      p_i
-    = \begin{bsmallmatrix}
-        0 & \cdots & 0 & 1 & 0 & \cdots & 0
-      \end{bsmallmatrix} \,.
-  \]
-  
-  (This whole remark was not present in the lecture.
-  The idea of representing a morphism between biproducts as a matrix was explained only for the special case~$n = m = 2$, since is used in the upcoming \cref{sum via category structure}.
-  But the author found this ad\nobreakdash-hoc explanation a bit insufficient, and thus decided to add a more detailed explanation for these notes.)
+      (where~$f_{ij} = [f]_{ij}$ is the~\dash{$(i,j)$}{th} component of~$f$) we will just write
+      \[
+          f
+        = \begin{bmatrix}
+            f_{11}  & \cdots  & f_{1n}  \\
+            \vdots  & \ddots  & \vdots  \\
+            f_{m1}  & \cdots  & f_{mn}
+          \end{bmatrix} \,.
+      \]
+      If one of the morphisms~$f_{ij}$ is the identity~$\id_Z$ of some object~$Z$ (that is then necessarily given by~$X_j = Z = Y_i$) then we will often just write the corresponding matrix entry as~$1$ instead of~$\id_Z$.
+    \item
+      We finish this remark by pointing out that the morphisms~$c_i \colon X_i \to X_1 \oplus \dotsb \oplus X_n$ and~$p_i \colon X_1 \oplus \dotsb \oplus X_n \to X_i$ are by these notional conventions given by the matrices
+      \[
+          c_i
+        = \begin{bsmallmatrix}
+            {} \\0 \\ \vdots \\ 0 \\ 1 \\ 0 \\ \vdots \\ 0 \\ {}
+          \end{bsmallmatrix}
+        \qquad\text{and}\qquad
+          p_i
+        = \begin{bsmallmatrix}
+            0 & \cdots & 0 & 1 & 0 & \cdots & 0
+          \end{bsmallmatrix} \,.
+      \]
+  \end{enumerate}
 \end{remark*}
 
 
@@ -795,7 +800,7 @@
           It follows from~$F$ respecting products that~$F$ respects terminal objects, because a terminal object is the same as an empty product.
           Hence~$F(0) = 0$.
           It follows that~$F(0_{X,Y}) = 0_{F(X), F(Y)}$ for any two objects~$X, Y \in \Ob(\Acat)$.
-          Indeed, by applying the fuctor~$F$ to the commutative triangle
+          Indeed, by applying the functor~$F$ to the commutative triangle
           \[
             \begin{tikzcd}[column sep = small]
                 X
@@ -828,7 +833,7 @@
           The commutativity of this triangle shows that the morphism~$F(0_{X,Y})$ factors through the zero object~$0$, which is precisly what is means for~$F(0_{X,Y})$ to be the zero morphism.
           
           Let now~$(X, (p_i)_i, (c_i)_i)$ be a biproduct of some objects~$X_1, \dotsc, X_n \in \Ob(\Acat)$.
-          Then~$(X, (p_i)_i)$ is a product of~$X_1, \dotsc, X_n$, and it follows that~$(F(X), (F(p_i))_i)$ is a product of~$F(X_1), \dotsc, F(X_n)$, because~$F$ respects finite products.
+          Then~$(X, (p_i)_i)$ is a product of~$X_1, \dotsc, X_n$, and it follows that~$(F(X), (F(p_i))_i)$ is a product of~$F(X_1), \dotsc, F(X_n)$ because~$F$ respects finite products.
           We find for the morphisms~$F(c_i) \colon F(X_i) \to F(X)$ that
           \[
               F(p_i) \circ F(c_i)

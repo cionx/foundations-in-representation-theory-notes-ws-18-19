@@ -25,7 +25,7 @@
             \begin{tikzcd}
                 X'
                 \arrow[dashed]{r}[above]{g'}
-                \arrow[dashed]{d}[right]{f'}
+                \arrow[dashed]{d}[left]{f'}
               & X
                 \arrow{d}[right]{f}
               \\
@@ -46,7 +46,7 @@
             \begin{tikzcd}
                 X''
                 \arrow[dashed]{r}[above]{g''}
-                \arrow[dashed]{d}[right]{f''}
+                \arrow[dashed]{d}[left]{f''}
               & X
                 \arrow{d}[right]{f}
               \\
@@ -68,7 +68,7 @@
                 {}
               & X'
                 \arrow{r}[above]{g'}
-                \arrow{d}[right]{f'}
+                \arrow{d}[left]{f'}
               & X
                 \arrow{d}[right]{f}
               \\
@@ -85,7 +85,7 @@
       \[
         Y \xlongfrom{f} X \xlongto{g} X'
       \]
-      in~$\Ccat$
+      in~$\Ccat$.
       A \emph{pushout}\index{pushout} of the pair~$(f,g)$ is a triple~$(Y',f',g')$ consisting of
       \begin{itemize}
         \item
@@ -282,7 +282,7 @@
       \]
       together with the maps~$f' \colon X' \to Y'$ and~$g' \colon X' \to X$ that are the restrictions of the canonical projections~$X \times Y' \to X$ and~$X \times Y' \to Y'$.
       
-      Note that the set~$X'$ is given by
+      We observe that the set~$X'$ is given by
       \[
           X'
         = \coprod_{y' \in Y'} \bigl( \{ y' \} \times f^{-1}(g(y')) \bigr)  \,,
@@ -361,7 +361,7 @@
       \[
         \begin{tikzcd}[column sep = large]
             X
-            \arrow[dashed,bend left]{rr}{f' \circ f}
+            \arrow[dashed,bend left = 40]{rr}{f' \circ f}
             \arrow{r}[above]{f}
             \arrow{dr}[below left]{x}
           & X'
@@ -386,7 +386,7 @@
     \begin{tikzcd}
         X'
         \arrow[dashed]{r}[above]{g'}
-        \arrow[dashed]{d}[right]{f'}
+        \arrow[dashed]{d}[left]{f'}
       & X
         \arrow{d}[right]{f}
       \\
@@ -727,7 +727,7 @@
         \end{tikzcd}
       \]
       commute.
-      Both the existence and uniqueness follows by the universal property of the pullback (applied to~$X'_2$) from the commutativity of the diagram~\eqref{morphism between prepullbacks}.
+      Both the existence and uniqueness follow by the universal property of the pullback (applied to~$X'_2$) from the commutativity of the diagram~\eqref{morphism between prepullbacks}.
       This induced morphism is functorial in the following sense:
       \begin{itemize}
         \item
@@ -790,7 +790,7 @@
               \\
             \end{tikzcd}
           \]
-          commutes, and the induced morphism~$X' \to X'$ that makes the diagram
+          commutes, and the induced morphism~$X' \to X'$ that makes the cube
           \[
             \begin{tikzcd}[cramped]
                 X'
@@ -984,7 +984,7 @@
               \\
                 {}
               & X'_2
-                \arrow[dashed]{dr}[above]{g}
+                \arrow[dashed]{dr}[above right]{g}
               & {}
               & {}
               & X_2

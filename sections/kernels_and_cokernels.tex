@@ -90,6 +90,7 @@
       A pair~$(K,k)$ is a kernel of~$f$ in~$\Ccat$ if and only if it is a cokernel of~$f$ in~$\Ccat^\op$.
     \item
       Kernels and cokernels are unique up to unique isomorphism.
+%     TODO: Write down explicitely what this means.
     \item
       If every morphism in~$\Ccat$ has a kernel (resp.\ a cokernel) then the category~$\Ccat$ \emph{has kernels}\index{category!has!kernels}\index{has!kernels} (resp.\ \emph{has cokernels}\index{category!has!cokernels}\index{has!cokernels}).
     \item
@@ -313,8 +314,7 @@
       
       The objects of~$\Set_*$ are pairs~$(X,x_0)$ consisting of a set~$X$ and a base point~$x_0 \in X$.
       A morphism~$f \colon (X,x_0) \to (Y,y_0)$ in~$\Set_*$ is a map~$f \colon X \to Y$ with~$f(x_0) = y_0$.
-      (Such maps are also known as \emph{pointed maps}\index{pointed map}.)%
-      \footnote{One may think about pointed sets as somewhat similar to~\dash{$\Finite_1$}{vector spaces}.}
+      (Such maps are also known as \emph{pointed maps}\index{pointed map}.)
       The category~$\Set_*$ has the singleton~$(\{\ast\}, \ast)$ as a zero object.
       The monomorphisms in~$\Set_*$ are precisely the injective pointed maps, and the epimorphisms are the surjective pointed maps.
       
@@ -393,7 +393,7 @@
   Let~$\Ccat$ be a category that is preadditive, or that has a zero object.
   \begin{enumerate}
     \item
-      Let~$f \colon X \to Y$ and~$f' \colon X' \to Y'$ be two morphisms in~$\Ccat$ that admit kernels~$k \colon K \to X$ and~$k' \colon K' \to X'$.
+      Let~$f \colon X \to Y$ and~$f' \colon X' \to Y'$ be two morphisms in the category~$\Ccat$ that admit kernels~$k \colon K \to X$ and~$k' \colon K' \to X'$.
       Then for any pair~$(\varphi,\varphi'')$ of morphisms~$\varphi \colon X \to Y$ and~$\varphi'' \colon Y \to Y''$ that make the square
       \[
         \begin{tikzcd}
@@ -599,17 +599,17 @@
                 \arrow{d}[right]{\varphi''}
               \\
                 K'
-                \arrow{r}[above]{k'}
+                \arrow{r}[above, near start]{k'}
                 \arrow{d}[right]{\psi'}
               & X'
-                \arrow{r}[above]{f'}
+                \arrow{r}[above, near start]{f'}
                 \arrow{d}[right]{\psi}
               & Y'
                 \arrow{d}[right]{\psi''}
               \\
                 K''
                 \arrow{r}[above]{k''}
-                \arrow[from=uu, dashed, bend right = 45, crossing over, "\theta'" left, near start]
+                \arrow[from=uu, dashed, bend right = 45, crossing over, "\psi' \circ \varphi'" left, near start]
               & X''
                 \arrow{r}[above]{f''}
                 \arrow[from=uu, dashed, bend right = 45, crossing over, "\theta" left, near start]
@@ -622,7 +622,7 @@
             \begin{tikzcd}
                 K
                 \arrow{r}[above]{k}
-                \arrow[dashed]{d}[left]{\theta'}
+                \arrow[dashed]{d}[left]{\psi' \circ \varphi'}
               & X
                 \arrow{r}[above]{f}
                 \arrow{d}[left]{\theta}
@@ -636,7 +636,7 @@
               & Y''
             \end{tikzcd}
           \]
-          shows the claimed equality.
+          shows that~$\psi' \circ \varphi'$ satisfies the defining property of~$\theta'$, and hence~$\theta' = \psi' \circ \varphi'$.
       \end{itemize}
       Suppose that the category~$\Ccat$ is preadditive.
       Then we also have the following additivity of the induced morphism between kernels:
@@ -988,7 +988,8 @@
     \item
       Suppose that the category~$\Ccat$ has kernels.
       The above \enquote{functoriality} of the kernel can be used to construct a functor~$\Ker \colon \Mor(\Ccat) \to \Mor(\Ccat)$, where~$\Mor(\Ccat)$ denotes the morphism category of~$\Ccat$ from \cref{morphism category}:
-      For an object~$(X,f,Y) \in \Mor(\Ccat)$ we choose%
+      
+      For any object~$(X,f,Y) \in \Mor(\Ccat)$ we choose%
       \footnote{This choice can be avoided by working with \emph{anafunctors} instead of just functors, as explained in~\cite{avoidingchoice}.}
       a kernel~$k \colon K \to X$ of~$f$ and set~$\Ker(f) \defined (K,k,X)$.
       For a morphism~$(g,g') \colon (X,f,Y) \to (X,f',Y)$ in~$\Mor(\Ccat)$ we get the following commutative square:
@@ -1025,16 +1026,16 @@
         \end{tikzcd}
       \]
       commute.
-      The above \enquote{functoriality} of the kernel entails that~$\Ker$ is a functor~$\Ker \colon \Mor(\Ccat) \to \Mor(\Ccat)$.
+      The above \enquote{functoriality} of the kernel shows that~$\Ker$ is a functor~$\Ker \colon \Mor(\Ccat) \to \Mor(\Ccat)$.
       
       If the category~$\Ccat$ has cokernels then one can similarly use the above \enquote{functoriality} of the cokernel to construct a functor~$\Coker \colon \Mor(\Ccat) \to \Mor(\Ccat)$.
     \item
       Suppose that the category~$\Ccat$ has kernels.
-      The data of the constructed kernel functor~$\Ker \colon \Mor(\Ccat) \to \Mor(\Ccat)$ can also arrenged in a different way.
+      The data of the constructed kernel functor~$\Ker \colon \Mor(\Ccat) \to \Mor(\Ccat)$ can also arranged in a different way.
       Namely that of a kernel functor~$\ker \colon \Mor(\Ccat) \to \Ccat$ together with a natural transformation~$k \colon S \to \ker$.
       
       Let~$S \colon \Mor(\Ccat) \to \Ccat$ be the source-functor from \cref{source target functors}.
-      The functor~$\Ker$ assigns to each morphism~$f \colon X \to Y$ in~$\Ccat$ a triple~$(\ker(f), k_f, X)$ such that
+      The above functor~$\Ker \colon \Mor(\Ccat) \to \Mor(\Ccat)$ assigns to each morphism~$f \colon X \to Y$ in~$\Ccat$ a triple~$(\ker(f), k_f, X)$ such that
       \[
                 k_f
         \colon  \ker(f)
@@ -1109,6 +1110,7 @@
 
 \begin{remarknonum}
   Images and coimages are unique up to unique isomorphisms.
+% TODO: Make this more explicit and prove it.
 \end{remarknonum}
 
 

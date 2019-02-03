@@ -53,7 +53,7 @@
     \item
       A pair~$(P,(p_i)_{i \in I})$ is a product of the family~$(X_i)_{i \in I}$ in~$\Ccat$ if and only if it is a coproduct of this family in~$\Ccat^\op$.
     \item
-      Products are unique up to unique isomorphism, i.e.\ if~$(P, (p_i)_i)$ and~$(P', (p'_i)_{i \in I})$ are two products of the family~$(X_i)_{i \in I}$ in~$\Ccat$ then there exist a unique morphism~$\lambda \colon P \to P'$ that makes the triangle
+      Products are unique up to unique isomorphism, i.e.\ if~$(P, (p_i)_{i \in I})$ and~$(P', (p'_i)_{i \in I})$ are two products of the family~$(X_i)_{i \in I}$ in~$\Ccat$ then there exist a unique morphism~$\lambda \colon P \to P'$ that makes the triangle
       \[
         \begin{tikzcd}
             P
@@ -133,6 +133,7 @@
         \item
           The coproduct~$\coprod_{i \in I} X_i$ exists in~$\Ccat$.
         \item
+          \label{functor of the product}
           The functor~$\Ccat \to \Set$ given by~$Y \mapsto \prod_{i \in I} \Ccat(X_i,Y)$ is representable.
       \end{enumerate}
   \end{enumerate}
@@ -141,7 +142,7 @@
 
 \begin{proof}
   It sufficies to show part~\ref*{for coproducts}.
-  We denote the given functor~$\Ccat \to \Set$ by~$F$.
+  We denote the given functor~$\Ccat \to \Set$ from condition~\ref*{functor of the product} by~$F$.
   
   Suppose first that the coproduct~$\coprod_{i \in I} X_i$ exists, and denote the associated morphisms by~$c_i \colon X_i \to \coprod_{j \in I} X_j$.
   We claim that the functor~$F$ is represented by the coproduct~$\coprod_{i \in I} X_i$;
@@ -312,7 +313,7 @@
     = F(\lambda)( (c_i)_{i \in I} )
     = (\lambda \circ c_i)_{i \in I} \,.
   \]
-  The bijectivity of~$\eta_D$ therefore means that for every~$(d_i)_{i \in I} \in F(D) = \prod_{i \in I} \Ccat(X_i, D)$ there exists a unique element~$\lambda \in \Ccat(C, D)$ with~$(\lambda \circ c_i)_{i \in I} = (d_i)_{i \in I}$.
+  The bijectivity of the component~$\eta_D$ therefore means that for every family of morphisms~$(d_i)_{i \in I} \in F(D) = \prod_{i \in I} \Ccat(X_i, D)$ there exists a unique element~$\lambda \in \Ccat(C, D)$ with~$(\lambda \circ c_i)_{i \in I} = (d_i)_{i \in I}$.
   In other words, there exists for every object~$D \in \Ob(\Ccat)$ and every family~$(d_i)_{i \in I}$ of morphisms~$d_i \colon X_i \to D$ a unique morphism~$\lambda \colon C \to D$ with~$d_i = \lambda \circ c_i$ for every~$i \in I$.
   But this is precisely what it means for the pair~$(C, (c_i)_{i \in I})$ to be a coproduct of the family~$(X_i)_{i \in I}$.
   
@@ -320,6 +321,9 @@
   It follows in particular that~$C$ is a coproduct of the family~$(X_i)_{i \in I}$, with respect to a suitable choice of morphisms~$c_i \colon X_i \to C$, if and only if there exist a natural isomorphism~$h^C \to F$.
   (This is what was shown in the above proof.)
 \end{remark*}
+
+
+% TODO: Add universal elements and example of (co)products.
 
 
 \begin{remark*}[Functoriality of (co)products]
@@ -439,7 +443,7 @@
         \item
           If~$X_i = Y_i$ and~$c_i = d_i$ for every~$i \in I$, then~$\coprod_{i \in I} \id_{X_i} = \id_{(\coprod_{i \in I} X_i)}$.
         \item
-          If~$(Z_i)_{i \in I}$ is another family of objects in~$\Acat$ whose coproduct~$(\coprod_{i \in I} Z_i, (e_i)_{i \in I})$ exists, and if~$(g_i)_{i \in I}$ is a collection of morphisms~$g_i \colon Y_i \to Z_i$, then
+          If~$(Z_i)_{i \in I}$ is another family of objects in~$\Ccat$ whose coproduct~$(\coprod_{i \in I} Z_i, (e_i)_{i \in I})$ exists, and if~$(g_i)_{i \in I}$ is a collection of morphisms~$g_i \colon Y_i \to Z_i$, then
           \[
               \coprod_{i \in I} (g_i \circ f_i)
             =       \left( \coprod_{i \in I} g_i \right)
