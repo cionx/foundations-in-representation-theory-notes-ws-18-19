@@ -443,40 +443,40 @@
 \end{proof}
 
 
-\begin{remark*}
-  One can reformulate \cref{kernels of pullbacks}:
-  If
-  \[
-    \begin{tikzcd}
-        0
-        \arrow{r}
-      & X'
-        \arrow{r}[above]{f'}
-        \arrow{d}[right]{h'}
-      & Y'
-        \arrow{r}[above]{g'}
-        \arrow{d}[right]{h}
-        \arrow[phantom]{dr}[description]{\pb}
-      & Z'
-        \arrow{r}
-        \arrow{d}[right]{h''}
-      & 0
-      \\
-        0
-        \arrow{r}
-      & X
-        \arrow{r}[above]{f}
-      & Y
-        \arrow{r}[above]{g}
-      & Z
-        \arrow{r}
-      & 0
-    \end{tikzcd}
-  \]
-  is a commutative diagram with (short) exact rows such that the \dash{right}{hand} square is a pullback square, then~$h' \colon X' \to X$ is an isomorphism.
-  Hence kernels of epimorphisms stay the same under pullbacks.
-% TODO: Explain this in more detail.
-\end{remark*}
+% \begin{remark*}
+%   One can reformulate \cref{kernels of pullbacks}:
+%   If
+%   \[
+%     \begin{tikzcd}
+%         0
+%         \arrow{r}
+%       & X'
+%         \arrow{r}[above]{f'}
+%         \arrow{d}[right]{h'}
+%       & Y'
+%         \arrow{r}[above]{g'}
+%         \arrow{d}[right]{h}
+%         \arrow[phantom]{dr}[description]{\pb}
+%       & Z'
+%         \arrow{r}
+%         \arrow{d}[right]{h''}
+%       & 0
+%       \\
+%         0
+%         \arrow{r}
+%       & X
+%         \arrow{r}[above]{f}
+%       & Y
+%         \arrow{r}[above]{g}
+%       & Z
+%         \arrow{r}
+%       & 0
+%     \end{tikzcd}
+%   \]
+%   is a commutative diagram with (short) exact rows such that the \dash{right}{hand} square is a pullback square, then~$h' \colon X' \to X$ is an isomorphism.
+%   Hence kernels of epimorphisms stay the same under pullbacks.
+% % TODO: Explain this in more detail.
+% \end{remark*}
 
 
 \begin{remarkdefinition}[label=abstract points]
@@ -1713,7 +1713,7 @@
       Let~$A$ be a~{\kalg}.
       Then for every left~{\module{$A$}}~$\indmodule[A]{N}$ the functor
       \[
-        (-) \tensor_A N
+        - \tensor_A N
         \colon
         \Modr{A}
         \to
@@ -1722,7 +1722,7 @@
       is right exact.
       Similarly, for every right~{\module{$A$}}~$\indmodule{M}[A]$ the functor
       \[
-        M \tensor_A (-)
+        M \tensor_A -
         \colon
         \Modl{A}
         \to

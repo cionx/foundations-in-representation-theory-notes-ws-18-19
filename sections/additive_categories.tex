@@ -17,7 +17,6 @@
   \begin{enumerate}
     \item
       Preddative categories are also known as~\emph{\dash{$\Ab$}{categories}}\index{Ab-category@$\Ab$-category}\index{category!Ab-@$\Ab$-} (where~$\Ab$ denotes the category of abelian groups).
-      ()
     \item
       If~$\kf$ is a commutative ring then one can similarly define the notion of a \emph{{\preklin} category}\index{pre-k-linear category@{\preklin} category}\index{category!pre-k-linear@{\preklin}} (also known as~\emph{\dash{$\Modl{\kf}$}{category}}\index{k-Mod-category@$\Modl{\kf}$-category}\index{category!k-Mod-@$\Modl{\kf}$-})~$\Ccat$.
       Every~$\Ccat(X,Y)$ is then endowed with the structure of a~{\module{$\kf$}} and the composition is~{\kbilin}.
@@ -367,8 +366,8 @@
       \begin{align*}
             f
         &=  {\id_{Y_1 \oplus \dotsb \oplus Y_m}} \circ f \circ {\id_{X_1 \oplus \dotsb \oplus X_n}} \\
-        &=  \left( \sum_{i=1}^n d_i q_i \right) \circ f \circ \left( \sum_{j=1}^m c_j p_j \right)
-        =  \sum_{i=1}^n \sum_{j=1}^m d_i (q_i \circ f \circ c_j) p_j \,.
+        &=  \left( \sum_{i=1}^m d_i q_i \right) \circ f \circ \left( \sum_{j=1}^n c_j p_j \right)
+        =  \sum_{i=1}^m \sum_{j=1}^n d_i (q_i \circ f \circ c_j) p_j \,.
       \end{align*}
       that the morphism~$f$ is unique determined by the compositions~$q_i \circ f \circ c_j$.
       We will refer to the composition
@@ -379,7 +378,7 @@
       as the~\dash{$(i,j)$}{th} component of~$f$.
       The above calculation shows that the morphism~$f$ can be retrieved from its components via the formula
       \[
-        f = \sum_{i=1}^n \sum_{j=1}^m d_i [f]_{ij} p_j \,.
+        f = \sum_{i=1}^m \sum_{j=1}^n d_i [f]_{ij} p_j \,.
       \]
       To better visualize the relation between~$f$ and its components, we may arrange these components in the form of an~\dash{$(m \times n)$}{matrix}
       \[

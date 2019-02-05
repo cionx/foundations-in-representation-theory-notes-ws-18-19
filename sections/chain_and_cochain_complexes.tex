@@ -65,11 +65,11 @@
       
       These constructions can be extended to equivalences of categories
       \[
-              \CCh(\Acat)
-        \cong \Ch(\Acat^\op)
+                \CCh(\Acat)
+        \simeq  \Ch(\Acat^\op)
         \quad\text{and}\quad
-              \Ch(\Acat)
-        \cong \CCh(\Acat)
+                \Ch(\Acat)
+        \simeq  \CCh(\Acat)
       \]
     \item
       One can also describe chain complexes as \emph{differential graded objects}\index{differential graded object}\index{object!differential graded}:
@@ -243,7 +243,7 @@
                     \Hl_n(\Ccc)
         \defined    \coker(\Bl_n(\Ccc) \to \Zl_n(\Ccc)) \,.
       \]
-      (One may think about~$\Hl_n(\Ccc)$ as a quotient~$\Hl_n(\Ccc) = \Bl_n(\Ccc)/\Zl_n(\Ccc)$.)
+      (One may think about~$\Hl_n(\Ccc)$ as a quotient~$\Hl_n(\Ccc) = {\Zl_n(\Ccc)}/{\Bl_n(\Ccc)}$.)
     \item
       Dually, let~$\Cccc$ be a cochain complex in~$\Acat$.
       For every~$n \in \Integer$, the~\emph{\dash{$n$}{th} cocycle object}\index{cocycle} of~$\Cccc$ is
@@ -298,7 +298,7 @@
 
 \begin{example*}
   Let~$A$ be a~{\kalg} and let~$\Ccc$ be a chain complex of~{\modules{$A$}}, i.e.\ a chain complex in the abelian category~$\Modl{A}$.
-  Then~$\Bl_n(\Ccc) \subseteq \Zl_n(\Ccc) \subseteq C_n$ are submodules for every~$n \in \Integer$, whose quotient~$\Hl_n(\Ccc) = \Zl_n(\Ccc)/\Bl_n(\Ccc)$ is the~\dash{$n$}{th} homology of~$\Ccc$.
+  Then~$\Bl_n(\Ccc) \subseteq \Zl_n(\Ccc) \subseteq C_n$ are submodules for every~$n \in \Integer$, whose quotient~$\Hl_n(\Ccc) = {\Zl_n(\Ccc)}/{\Bl_n(\Ccc)}$ is the~\dash{$n$}{th} homology of~$\Ccc$.
   The elements of~$\Zl_n(\Ccc)$ are the~\emph{\dash{$n$}{cycles}} of~$\Ccc$, and the elements of~$\Bl_n(\Ccc)$ are the~\emph{\dash{$n$}{boundaries}} of~$\Ccc$.
 \end{example*}
 
@@ -322,7 +322,7 @@
   \begin{enumerate}
     \item
       Let~$f = (f_n)_n \colon \Ccc \to \Dcc$ be a morphism of chain complexes.
-      It follows for ever~$n \in \Integer$ from the commutativity of the square
+      It follows for every~$n \in \Integer$ from the commutativity of the square
       \[
         \begin{tikzcd}
             C_n

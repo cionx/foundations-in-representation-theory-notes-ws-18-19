@@ -23,7 +23,7 @@
       Then the map
       \[
                 Y_{G,X}
-        \colon  \Fun(\Ccat, \Set)(h_X, G)
+        \colon  \Fun(\Ccat^\op, \Set)(h_X, G)
         \to     G(X) \,,
         \quad   ( \eta \colon h_X \to G)
         \mapsto \eta_X(\id_X)
@@ -118,16 +118,16 @@
   \begin{align*}
               Y_{G,X}^{-1}
      \colon   G(X)
-    &\to      \Fun(\Ccat, \Set) \,,
+    &\to      \Fun(\Ccat^\op, \Set) \,,
     \\
               z
     &\mapsto  \bigl( \eta_Y \colon h_X(Y) \to G(Y), f \mapsto G(f)(z) \bigr)_{Y \in \Ob(\Ccat)} \,.
   \end{align*}
-  The inverse of the map~$Y^{G,X}$ is similarly given by
+  The inverse of the map~$Y^{F,X}$ is similarly given by
   \begin{align*}
               (Y^{F,X})^{-1}
      \colon   F(Y)
-    &\to      \Fun(\Ccat^\op, \Set) \,,
+    &\to      \Fun(\Ccat, \Set) \,,
     \\
               z
     &\mapsto  \bigl( \eta_Y \colon h^X(Y) \to F(Y), f \mapsto F(f)(z) \bigr)_{Y \in \Ob(\Ccat^\op)} \,.
@@ -139,6 +139,9 @@
 
 
 \lecturend{6}
+
+
+
 
 
 \begin{theorem}[Yoneda embedding]
