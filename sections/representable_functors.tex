@@ -100,7 +100,7 @@
     = \zeta_Y( g^*(f) )
   \]
   for every~$f \in h_X(Y')$.
-  This shows that~$\zeta \defined (\zeta_X)_{X \in \Ob(\Ccat)}$ is a natural transformation~$\zeta \colon h_X \to F$.
+  This shows that~$\zeta \defined (\zeta_X)_{X \in \Ob(\Ccat)}$ is a natural transformation~$\zeta \colon h_X \to G$.
   It holds that
   \[
       Y_{G,X}(\zeta)
@@ -118,7 +118,7 @@
   \begin{align*}
               Y_{G,X}^{-1}
      \colon   G(X)
-    &\to      \Fun(\Ccat^\op, \Set) \,,
+    &\to      \Fun(\Ccat^\op, \Set)(h_X, G) \,,
     \\
               z
     &\mapsto  \bigl( \eta_Y \colon h_X(Y) \to G(Y), f \mapsto G(f)(z) \bigr)_{Y \in \Ob(\Ccat)} \,.
@@ -126,8 +126,8 @@
   The inverse of the map~$Y^{F,X}$ is similarly given by
   \begin{align*}
               (Y^{F,X})^{-1}
-     \colon   F(Y)
-    &\to      \Fun(\Ccat, \Set) \,,
+     \colon   F(X)
+    &\to      \Fun(\Ccat, \Set)(h^X, F) \,,
     \\
               z
     &\mapsto  \bigl( \eta_Y \colon h^X(Y) \to F(Y), f \mapsto F(f)(z) \bigr)_{Y \in \Ob(\Ccat^\op)} \,.

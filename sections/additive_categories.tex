@@ -66,7 +66,7 @@
       \]
       commutes because
       \begin{align*}
-            (\eta_{X'} \circ \zeta_{X'}) \circ F(f)
+            (\eta_{X'} + \zeta_{X'}) \circ F(f)
         &=  \eta_{X'} \circ F(f) + \zeta_{X'} \circ F(f)  \\
         &=  G(f) \circ \eta_X + G(f) \circ \zeta_X
          =  G(f) \circ (\eta_X + \zeta_X) \,.
@@ -588,12 +588,12 @@
     \begin{tikzcd}[sep = large]
         X
         \arrow{dr}[below left]{\id_X}
+        \arrow{r}[above]{c_1}
       & X \oplus X
         \arrow[dashed]{d}[right]{\codiag_X}
-        \arrow{l}[above]{c_1}
-        \arrow{r}[above]{c_2}
       & X
         \arrow{dl}[below right]{\id_X}
+        \arrow{l}[above]{c_2}
       \\
         {}
       & X

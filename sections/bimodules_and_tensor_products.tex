@@ -72,7 +72,7 @@
                 \colon  M
                 \to     N,
                 \;      m
-                \mapsto f(m)c
+                \mapsto g(m)c
               \bigr] \,.
   \end{align*}
 \end{lemma}
@@ -489,9 +489,9 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
         \colon  M \tensor_B B
         \to     M
       \shortintertext{with}
-        \Phi_4(a \tensor m) = m
+        \Phi_4(a \tensor m) = am
         \quad&\text{and}\quad
-        \Phi_5(m \tensor b) = m
+        \Phi_5(m \tensor b) = mb
       \end{align*}
       for all~$x \in M$,~$a \in A$,~$b \in B$, and the homomorphisms~$\Phi_4$ and~$\Phi_5$ are isomorphisms.
   \end{enumerate}
@@ -639,10 +639,10 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
       & {}
     \end{tikzcd}
   \]
-  The maps~$\Psi(g)$ are already homomorphismso of right~{\modules{$B$}} because
+  The maps~$\Psi(g)$ are already homomorphisms of right~{\modules{$B$}} because
   \[
       \Psi(g)((x \tensor y) b)
-    = \Psi{g}(x \tensor (yb))
+    = \Psi(g)(x \tensor (yb))
     = g(x)(yb)
     = g(x)(y) b
     = \Psi(g)(x \tensor y) b
@@ -670,9 +670,9 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
     = f(x \tensor y)
   \]
   for all~$x \in M$ and~$y \in N$, which shows that~$\Psi \circ \Phi = \id$.
-  It similarly holds for every~$g \in \Hom_A(\Hom_B(N, P))$ that
+  It similarly holds for every~$g \in \Hom_A(M, \Hom_B(N, P))$ that
   \[
-      \Phi(\Psi(g))(x,y)
+      \Phi(\Psi(g))(x)(y)
     = \Psi(g)(x \tensor y)
     = g(x)(y) \,,
   \]
