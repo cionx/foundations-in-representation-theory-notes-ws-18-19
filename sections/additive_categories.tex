@@ -524,14 +524,14 @@
       We finish this remark by pointing out that the morphisms~$c_i \colon X_i \to X_1 \oplus \dotsb \oplus X_n$ and~$p_i \colon X_1 \oplus \dotsb \oplus X_n \to X_i$ are by these notional conventions given by the matrices
       \[
           c_i
-        = \begin{bsmallmatrix}
-            {} \\0 \\ \vdots \\ 0 \\ 1 \\ 0 \\ \vdots \\ 0 \\ {}
-          \end{bsmallmatrix}
+        = \begin{bmatrix}
+            0 \\ \vdots \\ 0 \\ 1 \\ 0 \\ \vdots \\ 0
+          \end{bmatrix}
         \qquad\text{and}\qquad
           p_i
-        = \begin{bsmallmatrix}
+        = \begin{bmatrix}
             0 & \cdots & 0 & 1 & 0 & \cdots & 0
-          \end{bsmallmatrix} \,.
+          \end{bmatrix} \,.
       \]
   \end{enumerate}
 \end{remark*}
@@ -791,8 +791,8 @@
           
         \item[\ref*{respects biproducts}~$\implies$~\ref*{respects finite products}]
           Let~$(X, (p_i)_i)$ be a product of the objects~$X_1, \dotsc, X_n$.
-          It follows from \cref{product coproduct biproduct} unique morphism~$c_i \colon X_i \to X$ such that the triple~$(X, (p_i)_i, (c_i)_i)$ is a biproduct for~$X_1, \dotsc, X_n$.
-          It follows that the triple~$(F(X), (F(p_i))_i, (F(c_i))_i)$ is a biproduct for the objects~$F(X_1), \dotsc, F(X_n)$ because the functor~$F$ preserves biproducts.
+          It follows from \cref{product coproduct biproduct} that there exist unique morphisms~$c_i \colon X_i \to X$ such that the triple~$(X, (p_i)_i, (c_i)_i)$ is a biproduct for the objects~$X_1, \dotsc, X_n$.
+          It follows that the triple~$(F(X), (F(p_i))_i, (F(c_i))_i)$ is a biproduct for the objects~$F(X_1), \dotsc, F(X_n)$ as the functor~$F$ preserves biproducts.
           This entails that the tuple~$(F(X), (F(p_i))_i)$ is a product of these objects.
         
         \item[\ref*{respects finite products}~$\implies$~\ref*{respects biproducts}]

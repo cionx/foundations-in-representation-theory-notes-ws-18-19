@@ -19,6 +19,7 @@
 \usepackage[automark,headsepline,autooneside=false]{scrlayer-scrpage}  %for headers
 \usepackage{csquotes}   % for proper quotation marks
 \usepackage{microtype}  % for better typography
+\usepackage{ellipsis}
 \usepackage{xhfill}
 \usepackage{alphalph}
 \usepackage[original]{imakeidx} % for the index, load before hyperref
@@ -77,7 +78,7 @@
 
 
 % marking end of lectures
-\newcommand{\textline}[1]{\noindent\xrfill[0.7ex]{0.4pt} #1 \xrfill[0.7ex]{0.4pt}}
+\newcommand{\textline}[1]{\noindent\xrfill[0.7ex]{0.4pt} #1\xrfill[0.7ex]{0.4pt}}
 \newcommand{\boxline}[1]{\textline{\fbox{#1}}}
 \newcommand{\lecturend}[1]{\boxline{End of lecture #1}}
 

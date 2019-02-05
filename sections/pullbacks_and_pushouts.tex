@@ -7,7 +7,7 @@
     \item
       Let~$(f,g)$ be a pair of morphisms
       \[
-        X \xto{f} Y \xfrom{g} Y'
+        X \xlongto{f} Y \xlongfrom{g} Y'
       \]
       in~$\Ccat$.
       A \emph{pullback}\index{pullback} of the pair~$(f,g)$ is a triple~$(X', f', g')$ consisting of
@@ -15,7 +15,10 @@
         \item
           an object~$X' \in \Ob(\Ccat)$ and
         \item
-          two morphisms \[Y' \xfrom{f'} X' \xto{g'} X \,,\]
+          two morphisms
+          \[
+            Y' \xlongfrom{f'} X' \xlongto{g'} X \,,
+          \]
       \end{itemize}
       such that
       \begin{enumerate}[label=(PB\arabic*)]
@@ -497,6 +500,7 @@
 
 
 \begin{lemma*}
+  \label{existence of pb and po}
   Let~$\Acat$ be an additive category that has kernels and cokernels.
   Then the category~$\Acat$ has pullbacks and pushouts.
 \end{lemma*}

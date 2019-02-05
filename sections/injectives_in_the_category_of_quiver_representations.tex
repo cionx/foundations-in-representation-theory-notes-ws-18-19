@@ -6,7 +6,7 @@
   For every~$i \in Q_0$ we define a representation~$I(i)$ of~$Q$ by the following data:
   \begin{itemize}
     \item
-      For every vertex~$j \in Q_0$ the~{\kvs}~$P(i)_j$ is the free~{\kvs} with basis~$Q_*(j,i)$.
+      For every vertex~$j \in Q_0$ the~{\kvs}~$I(i)_j$ is the free~{\kvs} with basis~$Q_*(j,i)$.
     \item
       For every arrow~$\alpha \in Q_1$ with~$\alpha \colon j \to k$ the~{\klin} map~$I(i)_\alpha \colon I(i)_j \to I(i)_k$ is given on the basis elements~$p \in Q_*(j,i)$ of~$P(i)_j$ by
       \[
@@ -101,7 +101,7 @@
       \]
       for all~$a \in A$,~$\varphi \in M^*$ and~$m \in M$.
       We find for the (projective) right~{\module{$A$}}~$\varepsilon_i A$ that its dual~$(\varepsilon_i A)^*$ becomes a left~{\module{$A$}}.
-      This left~{\module{$A$}} is precisely~$I(i)$:
+      The {\module{$A$}}~$I(i)$ can be constructed as a submodule of~$(\varepsilon_i A)^*$:
       
       The right~{\module{$A$}}~$\varepsilon_i A$ has as a basis the set
       \begin{equation}
@@ -112,7 +112,7 @@
           t(p) = i
         \}  \,,
       \end{equation}
-      hence its dual~$(\varepsilon_i A)^*$ has as a dual basis the set
+      hence its dual~$(\varepsilon_i A)^*$ contains the linear independent family
       \begin{equation}
         \label{dual basis}
         \{
@@ -132,7 +132,7 @@
           0       & \text{otherwise}  \,.
         \end{cases}
       \end{equation}
-      Indeed, it holds for every basis element~$q$ of~$\varepsilon_i A$, i.e.~$q \in Q_1$ with~$t(\alpha) = i$, that
+      Indeed, it holds for every basis element~$q$ of~$\varepsilon_i A$, i.e.~$q \in Q_*$ with~$t(\alpha) = i$, that
       \[
         (\alpha \cdot p^*)(q)
         =
@@ -157,7 +157,7 @@
       and hence~$\alpha \cdot p^* = (p')^*$.
       If no such~$p'$ exists then~$(\alpha \cdot p^*)(q) = 0$ for every~$q$ and hence~$\alpha \cdot p^* = 0$.
       
-      We can identify the basis elements of~\eqref{dual basis} with the elements of the original basis~\eqref{original basis} via the bijection~$p^* \mapsto p$.
+      We can now identify the elements of~\eqref{dual basis} with the elements of the original basis~\eqref{original basis} via the bijection~$p^* \mapsto p$.
       We then get a left~{\module{$A$}}~$I$ with basis~\eqref{original basis}, and on which the multiplication rule~\eqref{dual multiplication rule} becomes
       \[
         \alpha \cdot p
@@ -194,7 +194,7 @@
         Q_*(j,i)  \,.
       \end{align*}
       This shows that~$I_j = I(i)_j$ for every~$j \in Q_0$ and that the actions of~$Q$ on~$I$ and~$I(i)$ coincide.
-      Hence~$I(i) = I \cong (\varepsilon_i A)^*$.
+      Hence~$I(i) = I \inclusion (\varepsilon_i A)^*$.
   \end{enumerate}
 \end{remark*}
 
