@@ -1038,48 +1038,53 @@
   We give a short overview about which abelian categories have enough projectives or enough injectives.
   (Details on this will be given in the upcoming Chapter~6.)
   \begin{center}
-    \begingroup
-    \renewcommand{\arraystretch}{2}
-    \begin{tabular}{ccc}
-        category
-      & enough projectives
-      & enough injectives
+    \begin{tabular}{@{}lll@{}}
+      \toprule
+        \textbf{category}
+      & \textbf{enough projectives}
+      & \textbf{enough injectives}
       \\
-      \hline
-        \begingroup
-        \renewcommand{\arraystretch}{1}
-        \begin{tabular}{c}
-          $\Modl{A}$ and~$\Modr{A}$ \\
-          where~$A$ is a~{\kalg}
-        \end{tabular}
-        \endgroup
-      & Yes
-      & Yes
+      \midrule
+      $\Modl{A}$ and~$\Modr{A}$
+      & \multirow{2}{*}{Yes}
+      & \multirow{2}{*}{Yes}
       \\
+      where~$A$ is a~{\kalg}
+      &
+      {}
+      &
+      {}
+      \\
+      \cmidrule(r){1-1}
         $\Sheaf_X(\Ab)$
       & No (in general)
       & Yes
       \\
+      \cmidrule(r){1-1}
         $\Presheaf_X(\Ab)$
       & Yes
       & Yes
       \\
+      \cmidrule(r){1-1}
         $\Modlfg{\Integer}$
       & Yes
       & No
       \\
-        \begingroup
-        \renewcommand{\arraystretch}{1}
-        \begin{tabular}{c}
-          $\Modlfd{A}$ and~$\Modrfd{A}$ \\
-          where~$\kf$ is a field  \\
-          and~$A$ is a f.d.~{\kalg}
-        \end{tabular}
-        \endgroup
-      & Yes
-      & Yes
+      \cmidrule(r){1-1}
+        $\Modlfd{A}$ and~$\Modrfd{A}$
+      & \multirow{3}{*}{Yes}
+      & \multirow{3}{*}{Yes}
+      \\
+        where~$\kf$ is a field
+      & {}
+      & {}
+      \\
+        and~$A$ is a f.d.~{\kalg}
+      & {}
+      & {}
+      \\
+      \bottomrule
     \end{tabular}
-    \endgroup
   \end{center}
 \end{example}
 
