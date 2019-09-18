@@ -120,11 +120,14 @@
       Then we write~$\ker(f) = 0$ to mean that the zero morphism~$0 \to X$ is a kernel of~$f$.
       We dually write~$\coker(f) = 0$ to mean that the zero morphism~$Y \to 0$ is a cokernel of~$f$.
     \item
-      Let~$\Ccat$ be a category that is preadditive, or that has a zero object, and let~$f \colon X \to Y$ be a morphism in~$\Ccat$.
+      Let~$\Ccat$ be a category that is preadditive, or that has a zero object.
+      
+      Let~$f \colon X \to Y$ be a morphism in~$\Ccat$.
       If~$g \colon Y \to Z$ is another morphism in~$\Ccat$ then we write that~$\ker(f) = \ker(gf)$ to mean that a morphism~$k \colon K \to X$ in~$\Ccat$ is a kernel of~$f$ if and only if it is a kernel of~$gf$.
       (This entails in particular that a kernel for~$f$ exists if and only if a kernel for~$gf$ exist.)
       
-      Dually, if~$h \colon W \to X$ is a morphism in~$\Ccat$, then we write that~$\coker(f) = \coker(fh)$ to mean that a morphism~$c \colon Y \to C$ in~$\Ccat$ is a cokernel of~$f$ if and only if it is a cokernel of~$fh$.
+      Let~$h \colon W \to X$ be another morphism in~$\Ccat$.
+      We write that~$\coker(f) = \coker(fh)$ to mean that a morphism~$c \colon Y \to C$ in~$\Ccat$ is a cokernel of~$f$ if and only if it is a cokernel of~$fh$.
       (This entails in particular that a cokernel for~$f$ exists if and only if a cokernel for~$fh$ exists.)
   \end{enumerate}
 \end{notation*}
@@ -312,7 +315,7 @@
     \item
       Let~$\Set_*$ be the category of pointed sets\index{category!of pointed sets}:
       
-      The objects of~$\Set_*$ are pairs~$(X,x_0)$ consisting of a set~$X$ and a base point~$x_0 \in X$.
+      The objects of~$\Set_*$ are pairs~$(X,x_0)$ consisting of a set~$X$ and a fixed base point~$x_0 \in X$.
       A morphism~$f \colon (X,x_0) \to (Y,y_0)$ in~$\Set_*$ is a map~$f \colon X \to Y$ with~$f(x_0) = y_0$.
       (Such maps are also known as \emph{pointed maps}\index{pointed map}.)
       The category~$\Set_*$ has the singleton~$(\{\ast\}, \ast)$ as a zero object.
