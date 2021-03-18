@@ -2,6 +2,8 @@
 *.bbl
 *.bcf
 *.blg
+*.fdb_latexmk
+*.fls
 *.idx
 *.ilg
 *.ind
@@ -11,3 +13,4 @@
 *.run.xml
 *.synctex.gz
 *.toc
+*.xdv
