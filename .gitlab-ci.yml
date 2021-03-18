@@ -1,0 +1,26 @@
+pages:
+  image: aergus/latex
+  before_script:
+    # install the Libertinus fonts
+  - wget "https://github.com/alerque/libertinus/releases/download/v7.020/Libertinus-7.020.zip"
+  - unzip "Libertinus-7.020.zip"
+  - mkdir -p /usr/share/fonts/opentype/libertinus
+  - cp Libertinus-7.020/static/OTF/*.otf /usr/share/fonts/opentype/libertinus
+  - fc-cache
+  script:
+    # gitinfo2 for git information in the document
+  - wget "https://raw.githubusercontent.com/Hightor/gitinfo2/CTAN/post-xxx-sample.txt" -O generate_gitinfo2
+  - chmod +x generate_gitinfo2
+  - ./generate_gitinfo2
+    # building with latexmk
+    # uses settings from .latexmkrc
+  - latexmk notes.tex
+  - xelatex notes.tex
+    # extract the results
+  - mkdir public
+  - mv notes.pdf public/homological-algebra-notes.pdf
+  artifacts:
+    paths:
+    - public
+  only:
+   - master
