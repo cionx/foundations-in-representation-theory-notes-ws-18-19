@@ -2,7 +2,7 @@ Notes for _Foundations in Representation Theory_, WS 18/19
 [![Build Status](https://travis-ci.org/cionx/foundations-in-representation-theory-notes-ws-18-19.svg?branch=master)][1]
 =================
 
-This repository contains my personal notes for the lecture course _Foundations in Representation Theory_, which is currently being held at the University of Bonn in the winter semester of 2018/19 by Dr. Hans Franzen.
+This repository contains my personal notes for the lecture course _Foundations in Representation Theory_, which was given at the University of Bonn in the winter semester of 2018/19 by Dr. Hans Franzen.
 An up to date compiled version can be found [here][2].
 
 For those who want to compile these notes themselves:
