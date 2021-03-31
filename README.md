@@ -14,4 +14,4 @@ For comments and corrections please contact me at `jendrikstelzner (at) uni-bonn
 
 
 
-[1]: https://lecture-notes-bonn.gitlab.io/foundations-in-representation-theory-notes-ws-18-19/homological-algebra-notes.pdf
+[1]: https://lecture-notes-bonn.gitlab.io/original/foundations-in-representation-theory-notes-ws-18-19/homological-algebra-notes.pdf
