@@ -9,7 +9,7 @@ pages:
   - fc-cache
   script:
     # gitinfo2 for git information in the document
-  - wget "https://raw.githubusercontent.com/Hightor/gitinfo2/CTAN/post-xxx-sample.txt" -O generate_gitinfo2
+  - wget "https://raw.githubusercontent.com/cionx/gitinfo2/develop/post-xxx-sample.txt" -O generate_gitinfo2
   - chmod +x generate_gitinfo2
   - ./generate_gitinfo2
     # building with latexmk
