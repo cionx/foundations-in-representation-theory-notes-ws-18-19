@@ -2,7 +2,7 @@
 
 
 \begin{definition}
-  A \emph{preadditive~category}\index{pre-additive category}\index{category!pre-additive} is a category~$\Acat$ together with the structure of an abelian group on~$\Acat(X,Y)$ for all~$X, Y \in \Ob(\Acat)$ such that the composition in~$\Acat$ is~{\Zbilin}, i.e.\ such that
+  A \emph{preadditive~category}\index{pre-additive category}\index{category!pre-additive} is a category~$\Acat$ together with the structure of an abelian group on~$\Acat(X,Y)$ for all~$X, Y \in \Ob(\Acat)$ such that the composition in~$\Acat$ is~{\Zbilin}, i.e., such that
   \[
     k \circ (g + h) = k \circ g + k \circ h
     \quad\text{and}\quad
@@ -16,7 +16,7 @@
   \leavevmode
   \begin{enumerate}
     \item
-      Preddative categories are also known as~\emph{\dash{$\Ab$}{categories}}\index{Ab-category@$\Ab$-category}\index{category!Ab-@$\Ab$-} (where~$\Ab$ denotes the category of abelian groups).
+      Preadditive categories are also known as~\emph{\dash{$\Ab$}{categories}}\index{Ab-category@$\Ab$-category}\index{category!Ab-@$\Ab$-} (where~$\Ab$ denotes the category of abelian groups).
     \item
       If~$\kf$ is a commutative ring then one can similarly define the notion of a \emph{{\preklin} category}\index{pre-k-linear category@{\preklin} category}\index{category!pre-k-linear@{\preklin}} (also known as~\emph{\dash{$\Modl{\kf}$}{category}}\index{k-Mod-category@$\Modl{\kf}$-category}\index{category!k-Mod-@$\Modl{\kf}$-})~$\Ccat$.
       Every~$\Ccat(X,Y)$ is then endowed with the structure of a~{\module{$\kf$}} and the composition is~{\kbilin}.
@@ -38,7 +38,7 @@
       If~$A$ is a~{\kalg} then the categories~$\Modl{A}$ and~$\Modr{A}$ are {\preklin}.
     \item
       If~$R$ is a ring then we may think about~$R$ as a preadditive category~$\Rcat$ consisting of a single object~$\Ob(\Rcat) = \{ \ast \}$ with~$\Rcat(\ast,\ast) = R$.
-      The composition in~$\Rcat$ is given by the multiplication of~$R$, i.e.\ by~$g \circ f = gf$ for all~$f, g \in R$, and the addition of morphisms is the addition in~$R$.
+      The composition in~$\Rcat$ is given by the multiplication of~$R$, i.e., by~$g \circ f = gf$ for all~$f, g \in R$, and the addition of morphisms is the addition in~$R$.
       
       One can similarly regard every~{\kalg}~$A$ as a {\preklin} category~$\Acat$ that consists of a single object~$\Ob(\Acat) = \{\ast\}$ with~$\Acat(\ast,\ast) = A$.
     \item
@@ -83,7 +83,7 @@
     \item
       A preadditive category is the same as a pre\nobreakdash-$\Integer$\nobreakdash-linear category.
     \item
-      If~$\Acat$ is a preadditive (resp.\ {\preklin}) category, then the opposite category~$\Acat^\op$ is again preadditive (resp.\ {\preklin}) with the same addition (resp.~{\module{$\kf$}} structure) of morphisms.
+      If~$\Acat$ is a preadditive (respectively {\preklin}) category, then the opposite category~$\Acat^\op$ is again preadditive (respectively {\preklin}) with the same addition (respectively~{\module{$\kf$}} structure) of morphisms.
   \end{enumerate}
 \end{remark*}
 
@@ -92,17 +92,17 @@
   Let~$F \colon \Acat \to \Bcat$ be a functor between categories~$\Acat$ and~$\Bcat$.
   \begin{enumerate}
     \item
-      If~$\Acat$ and~$\Bcat$ are preaddive categories then the functor~$F$ is \emph{additive}\index{additive!functor}\index{functor!additive} if
+      If~$\Acat$ and~$\Bcat$ are preadditive categories then the functor~$F$ is \emph{additive}\index{additive!functor}\index{functor!additive} if
       \[
           F(f + g)
         = F(f) + F(g)
       \]
-      for all morphisms~$f, g \colon X \to Y$ in~$\Acat$, i.e.\ if the map
+      for all morphisms~$f, g \colon X \to Y$ in~$\Acat$, i.e., if the map
       \[
                     \Acat(X, Y)
         \xlongto{F} \Bcat(F(X), F(Y))
       \]
-      is a group homorphism for all~$X, Y \in \Ob(\Acat)$.
+      is a group homomorphism for all~$X, Y \in \Ob(\Acat)$.
     \item
       If~$\Acat$ and~$\Bcat$ are {\preklin} categories then the functor~$F$ is~\emph{{\klin}}\index{k-linear@$\kf$-linear!functor}\index{functor!k-linear@$\kf$-linear} if
       \[
@@ -110,7 +110,7 @@
         \quad\text{and}\quad
         F(\lambda f) = \lambda F(f)
       \]
-      for all morphisms~$f, g \colon X \to Y$ in~$\Acat$ and scalars~$\lambda \in \kf$, i.e.\ if the map
+      for all morphisms~$f, g \colon X \to Y$ in~$\Acat$ and scalars~$\lambda \in \kf$, i.e., if the map
       \[
                     \Acat(X, Y)
         \xlongto{F} \Bcat(F(X), F(Y))
@@ -129,7 +129,7 @@
       For any object~$X \in \Ob(\Acat)$ the following conditions are equivalent:
       \begin{enumerate}
         \item
-          The object~$X$ is inital in~$\Acat$.
+          The object~$X$ is initial in~$\Acat$.
         \item
           The object~$X$ is terminal in~$\Acat$.
         \item
@@ -220,7 +220,7 @@
   In the following we consider the case~$n \geq 1$.
   \begin{enumerate}
     \item
-      It sufficies by duality to show that~$(X, (c_i)_i)$ is a coproduct for~$X_1, \dotsc, X_n$.
+      It suffices by duality to show that~$(X, (c_i)_i)$ is a coproduct for~$X_1, \dotsc, X_n$.
       Let~$(D, (d_i)_i)$ be another pair consisting of an object~$D \in \Ob(\Acat)$ and morphisms~$d_i \colon X_i \to D$.
       We need to show that there exists a unique morphism~$\mu \colon X \to D$ that makes the triangle
       \[
@@ -236,7 +236,7 @@
         \end{tikzcd}
       \]
       commute for every~$i = 1, \dotsc, n$. 
-      If such a morphism~$\mu$ exists then
+      If such a morphism~$\mu$ exists, then
       \[
           \mu
         = \mu \id_X
@@ -245,7 +245,7 @@
         = \sum_{i=1}^n d_i p_i \,,
       \]
       which shows that~$\mu$ is unique.
-      If we define on the other hand~$\mu \defined \sum_{i=1}^n d_i p_i$ then
+      If we define on the other hand~$\mu \defined \sum_{i=1}^n d_i p_i$, then
       \[
           \mu c_i
         = \sum_{j=1}^n d_j \underbrace{p_j c_i}_{= \delta_{ij}}
@@ -326,7 +326,7 @@
 
 
 \begin{definition}
-  A preadditve (or {\preklin}) category~$\Acat$ is \emph{additive}\index{additive!category}\index{category!additive} (resp.~{\klin}\index{k-linear@$\kf$-linear!category}\index{category!k-linear@$\kf$-linear}) if it has finite biproducts (and thus equivalently finite products, and equivalently finite coproducts).
+  A preadditive (or {\preklin}) category~$\Acat$ is \emph{additive}\index{additive!category}\index{category!additive} (respectively~{\klin}\index{k-linear@$\kf$-linear!category}\index{category!k-linear@$\kf$-linear}) if it has finite biproducts (and thus equivalently finite products, and equivalently finite coproducts).
 \end{definition}
 
 
@@ -336,7 +336,7 @@
 
 
 \begin{remark*}
-  A category~$\Acat$ is additive (resp.~{\klin}) if and only if its dual category~$\Acat^\op$ is additive (resp.\ {\klin}).
+  A category~$\Acat$ is additive (respectively~{\klin}) if and only if its dual category~$\Acat^\op$ is additive (respectively {\klin}).
 \end{remark*}
 
 
@@ -367,7 +367,7 @@
             f
         &=  {\id_{Y_1 \oplus \dotsb \oplus Y_m}} \circ f \circ {\id_{X_1 \oplus \dotsb \oplus X_n}} \\
         &=  \left( \sum_{i=1}^m d_i q_i \right) \circ f \circ \left( \sum_{j=1}^n c_j p_j \right)
-        =  \sum_{i=1}^m \sum_{j=1}^n d_i (q_i \circ f \circ c_j) p_j \,.
+        =  \sum_{i=1}^m \sum_{j=1}^n d_i (q_i \circ f \circ c_j) p_j
       \end{align*}
       that the morphism~$f$ is unique determined by the compositions~$q_i \circ f \circ c_j$.
       We will refer to the composition
@@ -473,8 +473,8 @@
               [g \circ f]
             = [g] \cdot [f]
           \]
-          where the product on the right hand side is taken in the naive way.
-          Indeed the composition~$g \circ f$ has for all~$i = 1, \dotsc, l$ and~$k = 1, \dotsc, n$ the components
+          where the product on the right-hand side is taken in the naive way.
+          Indeed, the composition~$g \circ f$ has for all~$i = 1, \dotsc, l$ and~$k = 1, \dotsc, n$ the components
           \begin{align*}
                 [g \circ f]_{ik}
             &=  r_i \circ (g \circ f) \circ c_k
@@ -519,7 +519,7 @@
             f_{m1}  & \cdots  & f_{mn}
           \end{bmatrix} \,.
       \]
-      If one of the morphisms~$f_{ij}$ is the identity~$\id_Z$ of some object~$Z$ (that is then necessarily given by~$X_j = Z = Y_i$) then we will often just write the corresponding matrix entry as~$1$ instead of~$\id_Z$.
+      If one of the morphisms~$f_{ij}$ is the identity~$\id_Z$ of some object~$Z$ (that is then necessarily given by~$X_j = Z = Y_i$), then we will often just write the corresponding matrix entry as~$1$ instead of~$\id_Z$.
     \item
       We finish this remark by pointing out that the morphisms~$c_i \colon X_i \to X_1 \oplus \dotsb \oplus X_n$ and~$p_i \colon X_1 \oplus \dotsb \oplus X_n \to X_i$ are by these notional conventions given by the matrices
       \[
@@ -722,7 +722,7 @@
   \begin{enumerate}
     \item
       \label{additive preserves biproducts}
-      If the functor~$F$ is additive then it respects biproducts (and hence also finite products and finite coproducts).
+      If the functor~$F$ is additive, then it respects biproducts (and hence also finite products and finite coproducts).
     \item
       If the categories~$\Acat$ and~$\Bcat$ are already additive, then the following conditions on~$F$ are equivalent:
       \begin{enumerate}
@@ -797,7 +797,7 @@
         
         \item[\ref*{respects finite products}~$\implies$~\ref*{respects biproducts}]
           It follows from~$F$ respecting products that~$F$ respects terminal objects, because a terminal object is the same as an empty product.
-          Hence~$F(0) = 0$.
+          Hence,~$F(0) = 0$.
           It follows that~$F(0_{X,Y}) = 0_{F(X), F(Y)}$ for any two objects~$X, Y \in \Ob(\Acat)$.
           Indeed, by applying the functor~$F$ to the commutative triangle
           \[
@@ -829,7 +829,7 @@
               & {}
             \end{tikzcd}
           \]
-          The commutativity of this triangle shows that the morphism~$F(0_{X,Y})$ factors through the zero object~$0$, which is precisly what is means for~$F(0_{X,Y})$ to be the zero morphism.
+          The commutativity of this triangle shows that the morphism~$F(0_{X,Y})$ factors through the zero object~$0$, which is precisely what is means for~$F(0_{X,Y})$ to be the zero morphism.
           
           Let now~$(X, (p_i)_i, (c_i)_i)$ be a biproduct of some objects~$X_1, \dotsc, X_n \in \Ob(\Acat)$.
           Then~$(X, (p_i)_i)$ is a product of~$X_1, \dotsc, X_n$, and it follows that~$(F(X), (F(p_i))_i)$ is a product of~$F(X_1), \dotsc, F(X_n)$ because~$F$ respects finite products.
@@ -838,7 +838,7 @@
               F(p_i) \circ F(c_i)
             = F(p_i \circ c_i)
             = F( \id_{X_i} )
-            = \id_{F(X_i)}
+            = \id_{F(X_i)} \,,
           \]
           and we also find for~$j \neq i$ that
           \[
@@ -894,7 +894,7 @@
               0     & F(g)
             \end{bmatrix} \,.
           \]
-          By using that $F(\diag_X) = \diag_{F(X)}$ and~$F(\codiag_Y) = \codiag_{F(Y)}$ we altogether find that applying the functor~$F$ to the compositon~$\eqref{sum as composition}$ exhibits the morphism~$F(f+g)$ as the composition
+          By using that $F(\diag_X) = \diag_{F(X)}$ and~$F(\codiag_Y) = \codiag_{F(Y)}$ we altogether find that applying the functor~$F$ to the composition~$\eqref{sum as composition}$ exhibits the morphism~$F(f+g)$ as the composition
           \[
               F(f+g)
             \colon

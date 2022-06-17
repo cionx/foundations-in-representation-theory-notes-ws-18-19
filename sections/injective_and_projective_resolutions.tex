@@ -6,7 +6,7 @@
   Let~$\Ccat$ be a category.
   \begin{enumerate}
     \item
-      An object~$P \in \Ob(\Ccat)$ is \emph{projective}\index{projective!object}\index{object!projective} if for every epimorphism~$f \colon X \to Y$ in~$\Ccat$ and every morphism~$g \colon P \to Y$ in~$\Ccat$ there exists a lift of~$g$ along~$f$, i.e.\ a morphism~$g' \colon P \to X$ that makes the following diagram commute:
+      An object~$P \in \Ob(\Ccat)$ is \emph{projective}\index{projective!object}\index{object!projective} if for every epimorphism~$f \colon X \to Y$ in~$\Ccat$ and every morphism~$g \colon P \to Y$ in~$\Ccat$ there exists a lift of~$g$ along~$f$, i.e., a morphism~$g' \colon P \to X$ that makes the following diagram commute:
       \[
         \begin{tikzcd}
             {}
@@ -82,7 +82,7 @@
 
 
 \begin{proof}
-  It sufficies to show part~\ref*{characterization of projectives} because part~\ref*{characterization of injectives} then follows by duality.
+  It suffices to show part~\ref*{characterization of projectives} because part~\ref*{characterization of injectives} then follows by duality.
   
   \begin{description}
     \item[\ref*{is projective}~$\iff$~\ref*{sends epis to epis}]
@@ -147,7 +147,7 @@
         \implies
         t = t' \,,
       \]
-      and simiarly for all morphisms~$u, u' \colon Y \to Z$ that
+      and similarly for all morphisms~$u, u' \colon Y \to Z$ that
       \[
         ur = u'r
         \implies
@@ -157,11 +157,11 @@
       \]
       
       A monomorphism is said to be \emph{split} if it is a split monomorphism.
-      Similary, an epimorphism is said to be \emph{split} if it is a split epimorphism.
+      Similarly, an epimorphism is said to be \emph{split} if it is a split epimorphism.
     \item
       A morphism~$f$ in~$\Ccat$ is a section in~$\Ccat$ if and only if it is a retraction in~$\Ccat^\op$.
     \item
-      A morphism~$f$ in~$\Ccat$ is both a section and a rectration if and only it is an isomorphism.
+      A morphism~$f$ in~$\Ccat$ is both a section and a retract if and only it is an isomorphism.
     \item
       Functors respect sections and retractions:
       Let~$F \colon \Ccat \to \Dcat$ be a functor, let~$s$ is a section and~$\Ccat$ and~$r$ is a retraction in~$\Ccat$.
@@ -745,8 +745,8 @@
   Let~$X \in \Ob(\Acat)$ be an object in~$\Acat$.
   \begin{enumerate}
     \item
-      We can consider the object~$X$ as a chain (resp.\ cochain) complex that is concentrated in degree~$0$.
-      Then~$\Hl_0(X) = X$ (resp.\ $\Hl^0(X) = X$) and~$\Hl_n(X) = 0$ (resp.\ $\Hl^n(X) = 0$) for every~$n \neq 0$.
+      We can consider the object~$X$ as a chain (respectively cochain) complex that is concentrated in degree~$0$.
+      Then~$\Hl_0(X) = X$ (respectively $\Hl^0(X) = X$) and~$\Hl_n(X) = 0$ (respectively $\Hl^n(X) = 0$) for every~$n \neq 0$.
     \item
       For a chain complex~$\Ccc \in \Ch(\Acat)$, a morphism~$f \colon \Ccc \to X$ is uniquely determined by the single morphism~$C_0 \to X$ (for all~$n \neq 0$ it holds that~$f_n = 0$), and the morphism~$f_0$ is subject to the single conditions~$f_0 d_1 = 0$.
       Indeed, this is precisely what it means for the following diagram to commute:
@@ -847,9 +847,9 @@
 
 
 \begin{proof}
-  It sufficies to prove part~\ref*{resolution iff qim}, as part~\ref*{coresolution iff qim} follows by duality.
+  It suffices to prove part~\ref*{resolution iff qim}, as part~\ref*{coresolution iff qim} follows by duality.
   
-  That~$(\Ccc, p_0)$ is a chain resolution of~$X$, i.e.\ that the sequence
+  That~$(\Ccc, p_0)$ is a chain resolution of~$X$, i.e., that the sequence
   \[
     \dotsb
     \to
@@ -934,8 +934,8 @@
 
 
 \begin{proof}
-  It sufficies to prove part~\ref*{existence of projective resolution}, as part~\ref*{existence of injective resolution} follows from part~\ref*{existence of projective resolution} by duality.
-  So suppose that the abelian category~$\Acat$ has enough enough projectives.
+  It suffices to prove part~\ref*{existence of projective resolution}, as part~\ref*{existence of injective resolution} follows from part~\ref*{existence of projective resolution} by duality.
+  So suppose that the abelian category~$\Acat$ has enough projectives.
   
   For any object~$X \in \Ob(\Acat)$ there exists by assumption an epimorphism~$p_0 \colon P_0 \to X$ for some projective object~$P_0$ in~$\Acat$.
   We have thus an exact sequence.
@@ -958,7 +958,7 @@
     \xlongto{p_0}
     X
     \to
-    0 \,.
+    0
   \]
   for some~$n \geq 0$.
   For the kernel~$\ker(d_n)$ there exists an epimorphism
@@ -1013,7 +1013,7 @@
     \to
     0 \,.
   \]
-  By induction we get the desired projective resolution of~$X$.
+  By induction, we get the desired projective resolution of~$X$.
 %   Let~$d_{n+1} \colon P_{n+1} \to P_n$ be the composition
 %   \[
 %     d_{n+1}
@@ -1147,7 +1147,7 @@
 
 
 \begin{proof}
-  It sufficies to prove part~\ref*{comparison for projective}, as part~\ref*{comparison for injective} follows from part~\ref*{comparison for projective} by duality.
+  It suffices to prove part~\ref*{comparison for projective}, as part~\ref*{comparison for injective} follows from part~\ref*{comparison for projective} by duality.
   We first construct the morphism~$\hat{f}$, and then show that it is unique up to homotopy.
   
   We set for~$P_{-1} \defined X$ and~$P_{-2} \defined 0$ with~$d^P_0 \defined p_0$ and~$d^P_{-1} = 0$, and we similarly set~$C_{-1} \defined Y$ and~$C_{-2} \defined 0$ with~$d^C_0 = c_0$ and~$d^C_{-1} = 0$.
@@ -1364,7 +1364,7 @@
       & C_n
     \end{tikzcd}
   \]
-  commute, i.e.\ the complete diagram
+  commute, i.e., the complete diagram
   \[
     \begin{tikzcd}[column sep = small, cramped]
         P_{n+1}
@@ -1409,7 +1409,7 @@
   
   To show that the morphism~$\hat{f}$ is unique up to homotopy we may assume that~$f = 0$:
   Indeed, if~$\hat{f}' \colon \Pcc \to \Ccc$ is another lift of~$f \colon X \to Y$ then the difference~$\hat{f}' - \hat{f}$ is a lift of~$f - f = 0$.
-  And the morphisms~$\hat{f}'$ and~$\hat{f}$ are homotopic if and only if this difference~$\hat{f}' - \hat{f}$ is null homotopic, i.e.\ is homotopic to the zero morphism~$\Pcc \to \Ccc$, which is another lift of the zero morphism~$X \to Y$.
+  And the morphisms~$\hat{f}'$ and~$\hat{f}$ are homotopic if and only if this difference~$\hat{f}' - \hat{f}$ is null homotopic, i.e., is homotopic to the zero morphism~$\Pcc \to \Ccc$, which is another lift of the zero morphism~$X \to Y$.
   
   So let~$f = 0$, and let us shows that any lift~$\hat{f} \colon \Pcc \to \Ccc$ is null homotopic.
   For this we need to construct morphisms~$s_n \colon P_n \to C_{n+1}$ for~$n \geq 0$ such that
@@ -1585,7 +1585,7 @@
 
 
 \begin{proof}
-  It sufficies to prove part~\ref*{he of projective resolutions}, as part~\ref*{he of injective resolutions} follows from part~\ref*{he of projective resolutions} by duality.
+  It suffices to prove part~\ref*{he of projective resolutions}, as part~\ref*{he of injective resolutions} follows from part~\ref*{he of projective resolutions} by duality.
   It follows from the \hyperref[comparison theorem]{comparison theorem} that there exists lifts~$f \colon \Pcc \to \Pcc'$ and~$g \colon \Pcc' \to \Pcc$ of the identity~$\id_X \colon X \to X$.
   The composition~$g \circ f \colon \Pcc \to \Pcc$ is then a lift of the composition~$\id_X \circ \id_X = \id_X$.
   The identity~$\id_{\Pcc} \colon \Pcc \to \Pcc$ is also a lift of~$\id_X$, hence~$g \circ f$ and~$\id_{\Pcc}$ are homotopic by the \hyperref[comparison theorem]{comparison theorem}.
@@ -1666,7 +1666,7 @@
           & 0
         \end{tikzcd}
       \]
-      The short exact sequence~$0 \to \Pcc' \to \Pcc \to \Pcc'' \to 0$ can moverover be choosen such that in every degree~$n$, the short exact sequence~$0 \to P'_n \to P_n \to P''_n \to 0$ splits.
+      The short exact sequence~$0 \to \Pcc' \to \Pcc \to \Pcc'' \to 0$ can moreover be chosen such that in every degree~$n$, the short exact sequence~$0 \to P'_n \to P_n \to P''_n \to 0$ splits.
     \item
       \label{injective horseshoe}
       Let~$0 \to \bp X \to X \to \bpp X \to 0$ be a short exact sequence in~$\Acat$.
@@ -1736,13 +1736,13 @@
           & 0
         \end{tikzcd}
       \]
-      The short exact sequence~$0 \to \bp\Iccc \to \Iccc \to \bpp\Iccc \to 0$ can moreover be choosen such that in every degree~$n$, the short exact sequence~$0 \to \bp I^n \to I^n \to \bpp I^n \to 0$ splits.
+      The short exact sequence~$0 \to \bp\Iccc \to \Iccc \to \bpp\Iccc \to 0$ can moreover be chosen such that in every degree~$n$, the short exact sequence~$0 \to \bp I^n \to I^n \to \bpp I^n \to 0$ splits.
   \end{enumerate}
 \end{lemma}
 
 
 \begin{proof}
-  It sufficies to prove part~\ref*{projective horseshoe}, as part~\ref*{injective horseshoe} follows from part~\ref*{projective horseshoe} by duality.
+  It suffices to prove part~\ref*{projective horseshoe}, as part~\ref*{injective horseshoe} follows from part~\ref*{projective horseshoe} by duality.
   We denote the given short exact sequence by
   \[
     0
@@ -1756,8 +1756,7 @@
     0 \,.
   \]
   
-  We set~$P_n \defined P'_n \oplus P''_n$ for every~$n \geq 0$
-  and consider for every~$n \geq 0$ the short exact sequence
+  We set~$P_n \defined P'_n \oplus P''_n$ for every~$n \geq 0$, and consider for every~$n \geq 0$ the short exact sequence
   \[
     0
     \to
@@ -1767,7 +1766,7 @@
     \xlongto{ \begin{bsmallmatrix} 0 & \id \end{bsmallmatrix} }
     P''_n
     \to
-    0
+    0 \,.
   \]
   We need to construct morphisms~$d_n \colon P_n \to P_{n-1}$ and~$p_0 \colon P_0 \to X$ that make the diagram
   \[
@@ -1843,7 +1842,7 @@
   commute and that make the middle column into a projective resolution of~$X$.
   That the sequence~$0 \to \Pcc' \to \Pcc \to \Pcc'' \to 0$ of chain complexes is then already (short) exact follows because exactness in~$\Ch(\Acat)$ is component componentwise (as explained in \cref{exactness for chain complexes is computed degreewise}).
   
-  We start by contructing the morphism~$p_0$:
+  We start by constructing the morphism~$p_0$:
   We have the following diagram in which the morphism~$g$ is an epimorphism and the object~$P''_0$ is projective:
   \[
     \begin{tikzcd}
@@ -2158,7 +2157,7 @@
     X
   \]
   is again exact because~$\tilde{d}_1$ is an epimorphism.
-  We have hence arrived at the following commutatitve diagram with exact columns:
+  We have hence arrived at the following commutative diagram with exact columns:
   \[
     \begin{tikzcd}[ampersand replacement = \&, column sep = large]
           {}

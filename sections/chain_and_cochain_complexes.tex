@@ -161,9 +161,9 @@
             \arrow{ul}[below left]{j_{n-1}}
         \end{tikzcd}
       \]
-      The four trapezoids commute by the definitions of~$d$,$d$ and~$f$, and the outer sqare commutes because~$(f_n)_{n \in \Integer}$ is a morphism of chain complexes.
-      It follows that the inner square also commutes;
-      indeed, it follows that for every~$n \in \Integer$ that
+      The four trapezoids commute by the definitions of~$d$,$d$ and~$f$, and the outer square commutes because~$(f_n)_{n \in \Integer}$ is a morphism of chain complexes.
+      It follows that the inner square also commutes.
+      Indeed, it follows that for every~$n \in \Integer$ that
       \[
           d f i_n
         = d j_n f_n
@@ -297,7 +297,7 @@
 
 
 \begin{example*}
-  Let~$A$ be a~{\kalg} and let~$\Ccc$ be a chain complex of~{\modules{$A$}}, i.e.\ a chain complex in the abelian category~$\Modl{A}$.
+  Let~$A$ be a~{\kalg} and let~$\Ccc$ be a chain complex of~{\modules{$A$}}, i.e., a chain complex in the abelian category~$\Modl{A}$.
   Then~$\Bl_n(\Ccc) \subseteq \Zl_n(\Ccc) \subseteq C_n$ are submodules for every~$n \in \Integer$, whose quotient~$\Hl_n(\Ccc) = {\Zl_n(\Ccc)}/{\Bl_n(\Ccc)}$ is the~\dash{$n$}{th} homology of~$\Ccc$.
   The elements of~$\Zl_n(\Ccc)$ are the~\emph{\dash{$n$}{cycles}} of~$\Ccc$, and the elements of~$\Bl_n(\Ccc)$ are the~\emph{\dash{$n$}{boundaries}} of~$\Ccc$.
 \end{example*}
@@ -370,7 +370,7 @@
           If~$g \colon \Ccc \to \Dcc$ is another morphisms of chain complexes that is parallel to the morphism~$f$, then
           \[
               \Zl_n(f + g)
-            = \Zl_n(f) + \Zl_n(g) \,.
+            = \Zl_n(f) + \Zl_n(g)
           \]
           for every~$n \in \Integer$.
       \end{itemize}
@@ -537,7 +537,7 @@
       \]
     \end{enumerate}
 
-    It follows from the functorialty of both~$\Bl_n$ and~$\Zl_n$, together with the functoriality of the cokernel (as explained in \cref{functoriality of (co)kernel}), that this induced morphism is both functorial and additive in the following sense:
+    It follows from the functoriality of both~$\Bl_n$ and~$\Zl_n$, together with the functoriality of the cokernel (as explained in \cref{functoriality of (co)kernel}), that this induced morphism is both functorial and additive in the following sense:
     \begin{itemize}
       \item
         If~$\Dcc = \Ccc$ and~$f = \id_{\Ccc}$ then~$\Hl_n(\id_{\Ccc}) = \id_{\Hl_n(\Ccc)}$ for every~$n \in \Integer$.
@@ -560,7 +560,7 @@
 
 
 \begin{remark*}
-  We have seen in~\cref{Hn as cokernel with Cn} that the~\dash{$n$}{th} homology~~$\Hl_n(\Ccc)$ of a chain complex~$\Ccc$ can alse be described as the cokernel of the morphism~$C_{n+1} \to \Zl_n(\Ccc)$ that is induced by the morphism~$d_{n+1} \colon C_{n+1} \to C_n$ via the universal propery of the kernel~$\Zl_n(\Ccc) = \ker(d_n)$ .
+  We have seen in~\cref{Hn as cokernel with Cn} that the~\dash{$n$}{th} homology~$\Hl_n(\Ccc)$ of a chain complex~$\Ccc$ can also be described as the cokernel of the morphism~$C_{n+1} \to \Zl_n(\Ccc)$ that is induced by the morphism~$d_{n+1} \colon C_{n+1} \to C_n$ via the universal property of the kernel~$\Zl_n(\Ccc) = \ker(d_n)$ .
   This description of the~\dash{$n$}{th} homology leads to the same induced morphism between homology objects:
   
   Let~$f \colon \Ccc \to \Dcc$ be a morphism of chain complexes.
@@ -641,7 +641,7 @@
 
 \begin{example*}
   Let~$A$ be a~{\kalg}.
-  Let~$\Ccc$ and~$\Dcc$ be chain complexes of~{\modules{$A$}}, i.e.\ chain complexes in the abelian category~$\Modl{A}$, and let~$f \colon \Ccc \to \Dcc$ be a morphism of chain complexes.
+  Let~$\Ccc$ and~$\Dcc$ be chain complexes of~{\modules{$A$}}, i.e., chain complexes in the abelian category~$\Modl{A}$, and let~$f \colon \Ccc \to \Dcc$ be a morphism of chain complexes.
   Then~$f(\Zl_n(\Ccc)) \subseteq \Zl_n(\Dcc)$ and~$f(\Bl_n(\Ccc)) \subseteq \Bl_n(\Dcc)$ for every~$n \in \Integer$, and the homomorphisms~$\Zl_n(f)$ and~$\Bl_n(f)$ are the resulting restrictions of~$f$.
   The induced morphism~$\Hl_n(f) \colon \Hl_n(\Ccc) \to \Hl_n(\Dcc)$ is on elements given by
   \[
@@ -686,12 +686,12 @@
     \item
       The chain complex~$\Ccc$ is {\qic} to the zero complex.
   \end{enumerate}
-  If the chain complex~$\Ccc$ satisfies these equivalent conditions then~$\Ccc$ is \emph{acyclic}\index{acyclic}\index{chain complex!acyclic}.
+  If the chain complex~$\Ccc$ satisfies these equivalent conditions, then~$\Ccc$ is \emph{acyclic}\index{acyclic}\index{chain complex!acyclic}.
 \end{remarkdefinition}
 
 
 \begin{example}
-  Consider the chain complex~$\Ccc$ of abelian groups, i.e.\ in the abelian category~$\Ab$, given by
+  Consider the chain complex~$\Ccc$ of abelian groups, i.e., in the abelian category~$\Ab$, given by
   \[
               C_n
     \defined  \begin{cases}
@@ -818,7 +818,7 @@
 
 
 \begin{proof}
-  It sufficies to consider the category~$\Ch(\Acat)$.
+  It suffices to consider the category~$\Ch(\Acat)$.
   For any two parallel morphisms of chain complexes~$f, g \colon \Ccc \to \Dcc$ their sum is given by
   \[
               (f + g)_n
@@ -943,9 +943,9 @@
 
 
 \begin{proof}
-  It sufficies to show that~$\Ch(\Acat)$ is abelian.
+  It suffices to show that~$\Ch(\Acat)$ is abelian.
   It follows from \cref{chain complexes are additive} and \cref{chain complexes have (co)kernels} that the category~$\Ch(\Acat)$ is additive and has kernels and cokernels.
-  It remains to show that for a morphism~$f = (f_n)_{n \in \Integer} \colon \Ccc \to \Dcc$ of chain complexes the induced morphism~$\tilde{f} \colon \coim(f) \to \im(f)$, i.e.\ the unique morphism that makes the square
+  It remains to show that for a morphism~$f = (f_n)_{n \in \Integer} \colon \Ccc \to \Dcc$ of chain complexes the induced morphism~$\tilde{f} \colon \coim(f) \to \im(f)$, i.e., the unique morphism that makes the square
   \[
     \begin{tikzcd}
         \Ccc
@@ -978,14 +978,14 @@
   \]
   commutes.
   It follows that~$\tilde{f}_n$ is an isomorphism for every~$n \in \Integer$ because~$\Acat$ is abelian.
-  Hence~$\tilde{f}$ is an isomorphism.
+  Hence,~$\tilde{f}$ is an isomorphism.
 \end{proof}
 
 
 \begin{remark*}
   \label{exactness for chain complexes is computed degreewise}
-  Kernels and cokernels in the abelian categories~$\Ch(\Acat)$ and~$\CCh(\Acat)$ are computed degreewise, so the same goes for images and coimages.
-  It follows that a sequence~$\Ccc' \to \Ccc \to \Ccc''$ of chain complexes in~$\Acat$ (resp.\ a sequence~$\bp\Cccc \to \Cccc \to \bpp\Cccc$ of cochain complexes in~$\Acat$) is exact if and only if it is exact in each degree, i.e.\ if and only if the sequence~$C'_n \to C_n \to C''_n$ (resp.\ the sequence~$\bp C^n \to C^n \to \bpp C^n$) is exact for every~$n \in \Integer$.
+  Kernels and cokernels in the abelian categories~$\Ch(\Acat)$ and~$\CCh(\Acat)$ are computed degree-wise, so the same goes for images and coimages.
+  It follows that a sequence~$\Ccc' \to \Ccc \to \Ccc''$ of chain complexes in~$\Acat$ (respectively a sequence~$\bp\Cccc \to \Cccc \to \bpp\Cccc$ of cochain complexes in~$\Acat$) is exact if and only if it is exact in each degree, i.e., if and only if the sequence~$C'_n \to C_n \to C''_n$ (respectively the sequence~$\bp C^n \to C^n \to \bpp C^n$) is exact for every~$n \in \Integer$.
 \end{remark*}
 
 

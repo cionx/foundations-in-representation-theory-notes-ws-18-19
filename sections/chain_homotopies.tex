@@ -3,11 +3,11 @@
 
 \begin{remark*}[Quotient categories]
   \label{quotient categories}
-  Let~$\Ccat$ be a category and let~$\Acat$ be a preadditve category.
+  Let~$\Ccat$ be a category and let~$\Acat$ be a preadditive category.
   \begin{enumerate}
     \item
       Suppose that we are given for any two objects~$X, Y \in \Ccat$ an equivalence relation~$\sim_{X,Y}$ of~$\Ccat(X,Y)$.
-      Then we can try to define a \emph{quotient category}\index{quotient category}\index{category!quotient}~$\widetilde{\Ccat}$, that is supposed to be given by
+      Then we can try to define a \emph{quotient category}\index{quotient category}\index{category!quotient}~$\widetilde{\Ccat}$, that is supposed to be given
       \begin{itemize}
         \item
           by the class of objects $\Ob(\widetilde{\Ccat}) \defined \Ob(\Ccat)$, and
@@ -32,19 +32,19 @@
         \implies
         g \circ f \sim_{X,Z} g' \circ f' \,.
       \end{equation}
-      If this condition is satisfied then~$\widetilde{\Ccat}$ is indeed a category:
-      The associativity of compositions of morphisms is inherited from~$\Ccat$, and for every obect~$X \in \Ob(\widetilde{\Ccat}) = \Ob(\Ccat)$ the identity~$\id^{\widetilde{\Ccat}}_X$ is given by
+      If this condition is satisfied, then~$\widetilde{\Ccat}$ is indeed a category:
+      The associativity of compositions of morphisms is inherited from~$\Ccat$, and for every object~$X \in \Ob(\widetilde{\Ccat}) = \Ob(\Ccat)$ the identity~$\id^{\widetilde{\Ccat}}_X$ is given by
       \[
           \id^{\widetilde{\Ccat}}_X
         = \left[ \id^{\Ccat}_X \right] \,.
       \]
       
-      The collection of equivalence relations~$\sim \defined (\sim_{X,Y})_{X, Y \in \Ob(\Ccat)}$ is then a \emph{congruence relations}\index{congruence relation} on~$\Ccat$, and the quotient category~$\widetilde{\Ccat}$ as described above is denoted by~$\Ccat/{\sim}$.
-      The equivalencen relations~$\sim_{X,Y}$ are for simplicity just denoted by~$\sim$.
+      The collection of equivalence relations~$\sim \defined (\sim_{X,Y})_{X, Y \in \Ob(\Ccat)}$ is then a \emph{congruence relation}\index{congruence relation} on~$\Ccat$, and the quotient category~$\widetilde{\Ccat}$ as described above is denoted by~$\Ccat/{\sim}$.
+      The equivalence relations~$\sim_{X,Y}$ are for simplicity just denoted by~$\sim$.
       
-      One may also think about a congruence relation on~$\Ccat$ as an equivalence relations on the class~$\coprod_{X, Y \in \Ob(\Ccat)} \Ccat(X,Y)$ of all morphisms in~$\Ccat$, that is compatible with domains, codomains and composition of morphisms.
+      One may also think about a congruence relation on~$\Ccat$ as an equivalence relation on the class~$\coprod_{X, Y \in \Ob(\Ccat)} \Ccat(X,Y)$ of all morphisms in~$\Ccat$, that is compatible with domains, codomains and composition of morphisms.
       
-      It is also worthwile to notice that the single condition~\eqref{definition of congruence relation} can equivalently be replaced by the two conditions
+      It is also worthwhile to notice that the single condition~\eqref{definition of congruence relation} can equivalently be replaced by the two conditions
       \[
                   f \sim f'
         \implies  g \circ f \sim g \circ f'
@@ -141,7 +141,7 @@
       \]
       for all~$X, Y \in \Ob(\Acat)$.
       
-      If on the other hand~$\Ideal$ is an ideal in~$\Acat$ then we can define an additive congruence relation~$\sim$ on~$\Acat$ that is given by
+      If on the other hand~$\Ideal$ is an ideal in~$\Acat$, then we can define an additive congruence relation~$\sim$ on~$\Acat$ that is given by
       \[
               f \sim g
         \iff  f - g \in \Ideal(X,Y)
@@ -163,7 +163,7 @@
         \in \Ideal(X,Z)
       \]
       because~$f - f' \in \Ideal(X,Y)$ and~$g - g' \in \Ideal(Y,Z)$ and because~$\Ideal$ is an ideal.
-      Hence also~$gf \sim g' f'$.
+      Hence, also~$gf \sim g' f'$.
       This shows altogether that~$\sim$ is indeed an additive congruence relation on~$\Acat$.
       
       These two constructions are mutually inverse, and give a {\onetoone} correspondence between additive congruence relations in~$\Acat$ and ideals in~$\Acat$.
@@ -182,8 +182,8 @@
     \item
       If~$\Ideal$ and~$\Jdeal$ are two ideal in~$\Acat$ then the ideal~$\Ideal$ is a \emph{subideal}\index{subideal} of the ideal~$\Jdeal$, denoted by~$\Ideal \subseteq \Jdeal$, if~$\Ideal(X,Y) \subseteq \Jdeal(X,Y)$ for all~$X, Y \in \Ob(\Acat)$.
       
-      If~$\Ideal$ is an ideal in~$\Acat$ with corresponding additive equivalence relation~$\sim$ on~$\Acat$, then the aforementioned universal propery of the quotient category~$\Acat/{\sim}$ leads to the following universal property of the quotient category~$\Acat/\Ideal$:
-      If~$F \colon \Acat \to \Bcat$ is an additive functor, where~$\Bcat$ is another preadditive category, then~$F$ decends to a functor~$F' \colon \Acat/\Ideal \to \Bcat$ that makes the triangle
+      If~$\Ideal$ is an ideal in~$\Acat$ with corresponding additive equivalence relation~$\sim$ on~$\Acat$, then the aforementioned universal property of the quotient category~$\Acat/{\sim}$ leads to the following universal property of the quotient category~$\Acat/\Ideal$:
+      If~$F \colon \Acat \to \Bcat$ is an additive functor, where~$\Bcat$ is another preadditive category, then~$F$ descends to a functor~$F' \colon \Acat/\Ideal \to \Bcat$ that makes the triangle
       \[
         \begin{tikzcd}
             \Acat
@@ -200,7 +200,7 @@
       The induced functor~$F'$ is then unique with this property and again additive.
     \item
       If~$\Acat$ is an additive category and~$\Ideal$ is an ideal in~$\Acat$ then the resulting quotient category~$\Acat/\Ideal$ is again additive:
-      Let~$X_1, \dotsc, X_n$ be finitely many objects in~$\Ob(\Acat/\Ideal)$ and let~$(X, (c_i)_{i=1}^n, (p_i)_{i=1}^n)$ be a biprodct of~$X_1, \dotsc, X_n$ in~$\Acat$.
+      Let~$X_1, \dotsc, X_n$ be finitely many objects in~$\Ob(\Acat/\Ideal)$ and let~$(X, (c_i)_{i=1}^n, (p_i)_{i=1}^n)$ be a biproduct of~$X_1, \dotsc, X_n$ in~$\Acat$.
       Then~$(X, ([c_i])_{i=1}^n, ([p_i])_{i=1}^n)$ is a biproduct of~$X_1, \dotsc, X_n$ in~$\Acat/\Ideal$ because the projection functor~$P \colon \Acat \to \Acat/\Ideal$ respects biproducts by part~\ref{additive preserves biproducts} of \cref{characterizations of additive functors}.
   \end{enumerate}
 \end{remark*}
@@ -251,7 +251,7 @@
       Let~$\Ccc$ and~$\Dcc$ be two chain complexes in~$\Acat$, and let~$f, g \colon \Ccc \to \Dcc$ be two parallel morphisms of chain complexes.
       \begin{enumerate}
         \item
-          The morphism~$f = (f_n)_{n \in \Integer}$ is \emph{null homotopic}\index{null!homotopic} if there exists a family~$(s_n)_{n \in \Integer}$ of morphisms~$s_n \colon C_n \to D_{n+1}$ such that~$f = ds + sd$, i.e.\ such that
+          The morphism~$f = (f_n)_{n \in \Integer}$ is \emph{null homotopic}\index{null!homotopic} if there exists a family~$(s_n)_{n \in \Integer}$ of morphisms~$s_n \colon C_n \to D_{n+1}$ such that~$f = ds + sd$, i.e., such that
           \[
                 f_n
             =  d_{n+1} s_n + s_{n-1} d_n
@@ -267,7 +267,7 @@
       Let~$\Cccc$ and~$\Dccc$ be two cochain complexes in~$\Acat$, and let~$f, g \colon \Cccc \to \Dccc$ be two parallel morphisms of cochain complexes.
       \begin{enumerate}
         \item
-          The morphism~$f = (f^n)_{n \in \Integer}$ is \emph{null homotopic}\index{null!homotopic} if there exists a family~$(s^n)_{n \in \Integer}$ of morphisms~$s^n \colon C^n \to D^{n-1}$ such that~$f = ds + sd$, i.e.\ such that
+          The morphism~$f = (f^n)_{n \in \Integer}$ is \emph{null homotopic}\index{null!homotopic} if there exists a family~$(s^n)_{n \in \Integer}$ of morphisms~$s^n \colon C^n \to D^{n-1}$ such that~$f = ds + sd$, i.e., such that
           \[
               f^n
             = d^{n-1} s^n + s^{n+1} d^n
@@ -331,7 +331,7 @@
           \end{tikzpicture}
       \]
     \item
-      A family~$s = (s_n)_{n \in \Integer}$ of morphisms~$s_n \colon C_n \to D_{n+1}$ with~$f-g = ds + sd$, i.e.\ a null homotopy for~$f-g$, is a \emph{homotopy}\index{homotopy} between~$f$ and~$g$.
+      A family~$s = (s_n)_{n \in \Integer}$ of morphisms~$s_n \colon C_n \to D_{n+1}$ with~$f-g = ds + sd$, i.e., a null homotopy for~$f-g$, is a \emph{homotopy}\index{homotopy} between~$f$ and~$g$.
   \end{enumerate}
 \end{remark*}
 
@@ -355,10 +355,10 @@
   \begin{enumerate}
     \item
       \label{null homotopic is zero in homotopy}
-      If the morphism~$f$ is null homotopic then~$\Hl_n(f) = 0$ for every~$n \in \Integer$.
+      If the morphism~$f$ is null homotopic, then~$\Hl_n(f) = 0$ for every~$n \in \Integer$.
     \item
       \label{homotopic morphisms are the same in homotopy}
-      If the morphisms~$f$ and~$g$ are homotopic then~$\Hl_n(f) = \Hl_n(g)$ for every~$n \in \Integer$.
+      If the morphisms~$f$ and~$g$ are homotopic, then~$\Hl_n(f) = \Hl_n(g)$ for every~$n \in \Integer$.
     \item
       If~$f$ is a homotopy equivalence then~$f$ is a {\qim}.
   \end{enumerate}
@@ -483,7 +483,7 @@
 
 \begin{example}
   Let~$f, g \colon X \to Y$ be two continuous maps between topological spaces~$X$ and~$Y$.
-  If the maps~$f$ and~$g$ are homotopic then their induced morphisms of chain complexes~$f_*, g_* \colon \Ccc^\sing(X) \to \Ccc^\sing(Y)$ are again homotopic.
+  If the maps~$f$ and~$g$ are homotopic, then their induced morphisms of chain complexes~$f_*, g_* \colon \Ccc^\sing(X) \to \Ccc^\sing(Y)$ are again homotopic.
 \end{example}
 
 
@@ -504,8 +504,8 @@
       is a subgroup of~$\Hom_{\Ch(\Acat)}(\Ccc, \Dcc)$:
       \begin{itemize}
         \item
-          It holds that~$0 \in \Hom_{\Ch(\Acat)}(\Ccc, \Dcc)$, i.e.\ the zero morphism is null homotopic.
-          This can be seen by choosing for the required nullhomotpy~$s = (s_n)_{n \in \Integer}$ the zero morphism~$s_n = 0$ for every~$n \in \Integer$.
+          It holds that~$0 \in \Hom_{\Ch(\Acat)}(\Ccc, \Dcc)$, i.e., the zero morphism is null homotopic.
+          This can be seen by choosing for the required null homotopy~$s = (s_n)_{n \in \Integer}$ the zero morphism~$s_n = 0$ for every~$n \in \Integer$.
         \item
           If two morphisms of chain complexes~$f, g \colon \Ccc \to \Dcc$ are null homotopic then there exist null homotopies~$s = (s_n)_{n \in \Integer}$ and~$t = (t_n)_{n \in \Integer}$ for~$f$ and~$g$.
           Then~$u = (u_n)_{n \in \Integer}$ with~$u_n \defined s_n - t_n$ is a null homotopy for~$f - g$ because
@@ -556,7 +556,7 @@
         = gf - gf' + gf' - g'f'
         = g(f - f') + (g - g')f'
       \]
-      is nullhomotpic because both~$f-f'$ and~$g-g'$ are null homotopic.
+      is null homotopic because both~$f-f'$ and~$g-g'$ are null homotopic.
     \item
       This shows that the composition of morphisms in~$\Ch(\Acat)$ descends to a composition of equivalence classes with respect to homotopy.
       We hence obtain a category~$\Homotopy(\Acat)$ with
@@ -580,7 +580,7 @@
       \end{itemize}
       The category~$\Homotopy(\Acat)$ is the \emph{homotopy category}\index{homotopy!category} of~$\Acat$.
     \item
-      The homotopy category~$\Homotopy(\Acat)$ is again additve:
+      The homotopy category~$\Homotopy(\Acat)$ is again additive:
       The preadditive structure of~$\Homotopy(\Acat)$ is inherited from the category~$\Ch(\Acat)$ via
       \[
                   [f] + [g]
@@ -589,7 +589,7 @@
       for any two parallel morphisms~$[f], [g] \colon \Ccc \to \Dcc$ in~$\Homotopy(\Acat)$.
       Part~\ref{welldefinedness of sum} shows that this addition is {\welldef}, and that~$\Homotopy(\Acat)$ satisfies the axioms of a preadditive category follows from~$\Ch(\Acat)$ satisfying these axioms.
       
-      If~$\Ccc^{(1)}, \dotsc, \Ccc^{(n)}$ are finitely many chain complexes in~$\Acat$, i.e.\ objects of the homotopy category~$\Homotopy(\Acat)$, then a biproduct of~$\Ccc^{(1)}, \dotsc, \Ccc^{(n)}$ in~$\Homotopy(\Acat)$ is given by~$(\Ccc, ([c_i])_{i=1}^n, ([p_i])_{i=1}^n)$ if~$(\Ccc, (c_i)_{i=1}^n, (p_i)_{i=1}^n)$ is a biproduct of~$\Ccc^{(1)}, \dotsc, \Ccc^{(n)}$ in~$\Ch(\Acat)$.
+      If~$\Ccc^{(1)}, \dotsc, \Ccc^{(n)}$ are finitely many chain complexes in~$\Acat$, i.e., objects of the homotopy category~$\Homotopy(\Acat)$, then a biproduct of~$\Ccc^{(1)}, \dotsc, \Ccc^{(n)}$ in~$\Homotopy(\Acat)$ is given by~$(\Ccc, ([c_i])_{i=1}^n, ([p_i])_{i=1}^n)$ if~$(\Ccc, (c_i)_{i=1}^n, (p_i)_{i=1}^n)$ is a biproduct of~$\Ccc^{(1)}, \dotsc, \Ccc^{(n)}$ in~$\Ch(\Acat)$.
   \end{enumerate}
 \end{remarkdefinition}
 

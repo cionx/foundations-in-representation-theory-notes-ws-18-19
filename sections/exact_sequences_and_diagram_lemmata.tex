@@ -199,7 +199,7 @@
     \item
       Sometimes a sequence~$X' \to X \to X''$ in~$\Acat$ is called \emph{short exact}\index{short exact sequence}\index{exact sequence!short}\index{sequence!short exact} if the corresponding sequence~$0 \to X' \to X \to X'' \to 0$ is short exact.
       
-      Similarly, a sequence~$X' \to X \to X''$ is sometimes called \emph{left exact}\index{left exact sequence}\index{exact!sequence!left}\index{sequence!left exact} (resp.\ \emph{right exact}\index{right exact sequence}\index{exact!sequence!right}\index{sequence!right exact}) if the sequence~$0 \to X' \to X \to X''$ is (left) exact (resp.\ if the sequence~$X' \to X \to X'' \to 0$ is (right) exact).
+      Similarly, a sequence~$X' \to X \to X''$ is sometimes called \emph{left exact}\index{left exact sequence}\index{exact!sequence!left}\index{sequence!left exact} (respectively \emph{right exact}\index{right exact sequence}\index{exact!sequence!right}\index{sequence!right exact}) if the sequence~$0 \to X' \to X \to X''$ is (left) exact (respectively if the sequence~$X' \to X \to X'' \to 0$ is (right) exact).
     \item
       A sequence~$0 \to X' \to X \to X''$ in~$\Acat$ is (left) exact if and only if the morphism~$X' \to X$ is a kernel of the morphism~$X \to X''$.
       
@@ -421,7 +421,7 @@
       & 0
     \end{tikzcd}
   \]
-  To show that~$u = f' \lambda$, i.e.\ that the above diagram commutes, we again use that the \dash{right}{hand} square is a pullback square:
+  To show that~$u = f' \lambda$, i.e., that the above diagram commutes, we again use that the right-hand square is a pullback square:
   The two parallel morphisms~$u, f' \lambda \colon W \to Y'$ coincide if and only if they coincide after composition with both~$g'$ and~$h'$.
   We have that
   \[
@@ -437,7 +437,7 @@
     = g' f' \lambda
   \]
   because~$g' f' = 0$.
-  Hence~$u = f' \lambda$, which shows the existence of the desired morphism~$\lambda$.
+  Hence,~$u = f' \lambda$, which shows the existence of the desired morphism~$\lambda$.
   The morphism~$\lambda$ is uniquely determined by the composition~$f' \lambda = u$ because~$f'$ is a monomorphism.
   This shows the uniqueness of~$\lambda$.
 \end{proof}
@@ -691,7 +691,7 @@
           & X
         \end{tikzcd}
       \]
-      commute (because the zero morphism~$B \to 0$ is automatically an epimorphism), i.e.\ such that~$xu = 0_{B,X}$.
+      commute (because the zero morphism~$B \to 0$ is automatically an epimorphism), i.e., such that~$xu = 0_{B,X}$.
       It then follows that~$x = 0_{A,X}$ because~$u$ is an epimorphism;
       and if on the other hand~$x = 0_{A,X}$ then we can choose~$B = A$ and~$u = \id_A$ for the above commutative square.
       This shows that~$x \equiv 0$ if and only if~$x$ is the zero morphism~$A \to X$.
@@ -900,8 +900,8 @@
           & Y
         \end{tikzcd}
       \]
-      commute, i.e.\ such that~$f x u = f x' v$.
-      It follows from~$f$ being a monomorphism that already~$x u = x' v$, i.e.\ that the square
+      commute, i.e., such that~$f x u = f x' v$.
+      It follows from~$f$ being a monomorphism that already~$x u = x' v$, i.e., that the square
       \[
         \begin{tikzcd}
             B
@@ -986,8 +986,8 @@
   
   
   \begin{enumerate}[resume]
-    \item 
-      If~$gf = 0$ then let~$\lambda \colon \im(f) \to \ker(g)$ be the canonical morphism, i.e.\ the unique morphism~$\lambda \colon \im(f) \to \ker(g)$ that makes the diagram
+    \item
+      If~$gf = 0$ then let~$\lambda \colon \im(f) \to \ker(g)$ be the canonical morphism, i.e., the unique morphism~$\lambda \colon \im(f) \to \ker(g)$ that makes the diagram
       \[
         \begin{tikzcd}[column sep = small, row sep = large]
             X
@@ -1569,7 +1569,7 @@
       \]
       commute.
       
-      It then follows more more generally that the diagram
+      It then follows more generally that the diagram
       \[
         \begin{tikzcd}[column sep = 1.8em]
             \ker(f')
@@ -1606,7 +1606,7 @@
       commutes, where the rows are the exact sequences from the snake lemma.
       The vertical morphisms in this diagram are induced in the same way as~$\ker(f'') \to \ker(g'')$ and~$\coker(f') \to \coker(g')$, as explained above.
       
-      One may also think about this naturality of the connecting morphism as the functoriality of the exact squences from the snake lemma.
+      One may also think about this naturality of the connecting morphism as the functoriality of the exact sequences from the snake lemma.
   \end{enumerate}
 \end{remark*}
 
@@ -1616,18 +1616,18 @@
   The functor~$F$ is
   \begin{enumerate}
     \item
-      exact, resp.
+      exact, respectively
     \item
-      left exact, resp.
+      left exact, respectively
     \item
       right exact,
   \end{enumerate}
   if for every short exact sequence~$0 \to X' \to X \to X'' \to 0$ in~$\Acat$
   \begin{enumerate}
     \item
-      the sequence~$0 \to F(X') \to F(X) \to F(X'') \to 0$ is again (short) exact, resp.
+      the sequence~$0 \to F(X') \to F(X) \to F(X'') \to 0$ is again (short) exact, respectively
     \item
-     the sequence~$0 \to F(X') \to F(X) \to F(X'')$ is again (left) exact, resp.
+     the sequence~$0 \to F(X') \to F(X) \to F(X'')$ is again (left) exact, respectively
     \item
       the sequence~$F(X') \to F(X) \to F(X'') \to 0$ is again (right) exact.
   \end{enumerate}
@@ -1654,10 +1654,10 @@
   \leavevmode
   \begin{enumerate}
     \item
-      In other words, a functor~$F \colon \Acat \to \Bcat$ between abelian categories~$\Acat$ and~$\Bcat$ is left exact (resp.\ right exact) if and only if it respects kernels (resp.\ cokernels);
+      In other words, a functor~$F \colon \Acat \to \Bcat$ between abelian categories~$\Acat$ and~$\Bcat$ is left exact (respectively right exact) if and only if it respects kernels (respectively cokernels);
       this follows from the characterization of left exact sequences via kernels and right exact sequences via cokernels, as explained in \cref{language of left and right exact}.
     \item
-      If a functor~$F \colon \Acat \to \Bcat$ between abelian categories~$\Acat$ and~$\Bcat$ is exact then for every exact sequence
+      If a functor~$F \colon \Acat \to \Bcat$ between abelian categories~$\Acat$ and~$\Bcat$ is exact, then for every exact sequence
       \[
         \dotsb
         \to
@@ -1741,7 +1741,7 @@
       \[
                   \Gamma(X,\Fs)
         \defined  \Fs(X).%
-        \footnote{A more general notation is~$\Gamma(U,\Fs) \defined \Fs(U)$ for every open subseteq~$U \subseteq X$ and every presheaf~$\Fs$ on~$X$.}
+        \footnote{A more general notation is~$\Gamma(U,\Fs) \defined \Fs(U)$ for every open subset~$U \subseteq X$ and every presheaf~$\Fs$ on~$X$.}
       \]
       Then~$\Gamma(X,-) \colon \Presheaf(X) \to \Ab$ is the \emph{global section functor}, and this functor is exact.
 %     TODO: Explain this properly.
@@ -1870,11 +1870,11 @@
   be a commutative diagram in~$\Acat$ with exact columns.
   \begin{enumerate}
     \item
-      If the upper two rows are exact then the lower row is also exact.
+      If the upper two rows are exact, then the lower row is also exact.
     \item
-      If the lower two rows are exact then the upper row is also exact.
+      If the lower two rows are exact, then the upper row is also exact.
     \item
-      If the upper and lower rows are exact and the composition~$Y' \to Y \to Y''$ is zero then the middle row is also exact.
+      If the upper and lower rows are exact and the composition~$Y' \to Y \to Y''$ is zero, then the middle row is also exact.
   \end{enumerate}
 \end{lemma}
 

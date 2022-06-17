@@ -32,7 +32,7 @@
 
 
 \begin{remark*}
-  Baer’s criterion states that it sufficies to prove the defining condition of an injective module for inclusions~$J \to A$ of left ideals~$J \subseteq A$.
+  Baer’s criterion states that it suffices to prove the defining condition of an injective module for inclusions~$J \to A$ of left ideals~$J \subseteq A$.
 \end{remark*}
 
 
@@ -44,7 +44,7 @@
   We need to show that there exists a module homomorphism~$f \colon N \to M$ with~$\restrict{f}{N'} = f'$.
   
   It follows from Zorn’s lemma that there exists a maximal extension~$\overline{f}$ of~$f$.
-  More explicitely, there exists a submodule~$\overline{N} \subseteq M$ and a module homomorphism~$\overline{f} \colon \overline{N} \to M$ with~$N' \subseteq \overline{N}$ and~$\restrict{\overline{f}}{N'} = f'$, such that~$\overline{N}$ is maximal with this property (with respect to the inclusion of submodules).
+  More explicitly, there exists a submodule~$\overline{N} \subseteq M$ and a module homomorphism~$\overline{f} \colon \overline{N} \to M$ with~$N' \subseteq \overline{N}$ and~$\restrict{\overline{f}}{N'} = f'$, such that~$\overline{N}$ is maximal with this property (with respect to the inclusion of submodules).
   
   Suppose that~$\overline{N} \neq N$.
   Then let~$y \in N$ with~$y \notin \overline{N}$ and consider the left ideal
@@ -90,7 +90,7 @@
     \overline{f}(x) + \overline{g}(a)
   \]
   where ~$x \in \overline{N}$ and~$a \in A$ is a~{\welldef} module homomorphism that extends~$f$.
-  To see that~$f''$ is~{\welldef} suppose that~$x + ay = x' + a'y$ for some~$x, x' \in \overline{N}$ and~$a, a' \in A$.
+  To see that~$f''$ is~{\welldef}, suppose that~$x + ay = x' + a'y$ for some~$x, x' \in \overline{N}$ and~$a, a' \in A$.
   Then
   \[
     \overline{N}
@@ -158,13 +158,13 @@
     a \,.
   \]
   
-  Suppose on the other hand that~$M$ is disivible.
-  We use \hyperref[baers criterion]{Baer’s criterion} to show that~$M$ is is injective:
+  Suppose on the other hand that~$M$ is divisible.
+  We use \hyperref[baers criterion]{Baer’s criterion} to show that~$M$ is injective:
   Let~$J \subseteq \Integer$ be an ideal and let~$f \colon J \to M$ be a group homomorphism;
   we need to show that~$f$ extends to a group homomorphism~$\Integer \to M$.
   The ideal~$J$ is of the form~$J = (n)$ for some~$n \in \Integer$.
   If~$J = 0$ then the zero morphism~$\Integer \to M$ is such an extension.
-  Otherwise~$n \neq 0$ and it follows for the element~$f(n) \in M$ from the divisibility of~$M$ that there exists some~$x \in M$ with~$f(n) = n x$.
+  Otherwise,~$n \neq 0$ and it follows for the element~$f(n) \in M$ from the divisibility of~$M$ that there exists some~$x \in M$ with~$f(n) = n x$.
   The group homomorphism
   \[
     g
@@ -227,13 +227,13 @@
     \prod_{f \in \Hom_\Integer(M, \Rational/\Integer)} \Rational/\Integer \,.
   \]
   The abelian group~$I$ again injective by \cref{product of injectives}.
-  Let~$i \colon M \to I$ be the group homomorphism that is given in the~\dash{$f$}{th} coordinate (for~$f \in \Hom_\Integer(M, \Rational/\Integer)$) by~$f$, i.e.
+  Let~$i \colon M \to I$ be the group homomorphism that is given in the~\dash{$f$}{th} coordinate (for~$f \in \Hom_\Integer(M, \Rational/\Integer)$) by~$f$, i.e.,
   \[
     i(x)
     =
     ( f(x) )_{f \in \Hom_\Integer(M, \Rational/\Integer)} \,.
   \]
-  There exists by the upcomming \cref{nonzero homomorphism into QZ} for every~$x \in M$ with~$x \neq 0$ a group homomorphism~$f \in \Hom_\Integer(M, \Rational/\Integer)$ with~$f(x) \neq 0$.
+  There exists by the upcoming \cref{nonzero homomorphism into QZ} for every~$x \in M$ with~$x \neq 0$ a group homomorphism~$f \in \Hom_\Integer(M, \Rational/\Integer)$ with~$f(x) \neq 0$.
   This shows that~$i(x) \neq 0$, which shows that~$i$ is injective.
 \end{proof}
 
@@ -247,7 +247,7 @@
 
 \begin{proof}
   We may assume that~$M = \Integer x$ because~$\Rational/\Integer$ is injective, and every such homomorphism~$\Integer x \to \Rational/\Integer$ therefore extends to a homomorphism~$M \to \Rational/\Integer$.
-  The group~$\Integer x$ is cyclic and so we may assume that~$M = \Integer/n$ for some~$n \geq 0$ and that~$x = \class{1}$.
+  The group~$\Integer x$ is cyclic, and so we may assume that~$M = \Integer/n$ for some~$n \geq 0$ and that~$x = \class{1}$.
   In the case~$n = 0$ we can use the projection~$\Integer \to \Integer/2$  to assume that~$n > 0$.
   We can now use the embedding~$\Integer/n \to \Rational/\Integer$ given by~$\class{1} \to 1/n$ as a suitable morphism.
 \end{proof}
@@ -256,7 +256,7 @@
 \begin{theorem}
   \label{adjunctions between abelian categories}
   Let~$\Acat$ and~$\Bcat$ be abelian categories and let~$(F, G, \varphi)$ be an adjunction from~$\Acat$ to~$\Bcat$
-  (i.e.~$F \colon \Acat \to \Bcat$ and~$G \colon \Bcat \to \Acat$ and~$F$ is left adjoint to~$G$).
+  (i.e.,~$F \colon \Acat \to \Bcat$ and~$G \colon \Bcat \to \Acat$ and~$F$ is left adjoint to~$G$).
   \begin{enumerate}
     \item
       The functors~$F$ and~$G$ are additive, and the map~$\varphi_{X,Y}$ is for all objects~$X \in \Ob(\Acat)$ and~$Y \in \Ob(\Bcat)$ an isomorphism of abelian groups.
@@ -298,7 +298,7 @@
       The functor~$F$ respects kernels because it is left exact, and hence respect monomorphisms.
       We therefore find that the morphism~$F(f)$ is again a monomorphism.
       It follows from the injectivity of the object~$I$ that~$F(f)^*$ is surjective.
-      Therefore~$f^* = \varphi_{X', Y} \circ F(f)^* \circ \varphi_{X,Y}^{-1}$ is surjective.
+      Therefore,~$f^* = \varphi_{X', Y} \circ F(f)^* \circ \varphi_{X,Y}^{-1}$ is surjective.
     \qedhere
   \end{enumerate}
 \end{proof}
@@ -395,7 +395,7 @@
 
 
 \begin{proof}
-    The proof proceed analogous to \cref{Ab has enough injectives}, with the role of~$\Rational/\Integer$ replaced by~$\Hom_\Integer(A, \Rational/\Integer)$,.
+    The proof proceeds analogous to \cref{Ab has enough injectives}, with the role of~$\Rational/\Integer$ replaced by~$\Hom_\Integer(A, \Rational/\Integer)$.
 \end{proof}
 
 

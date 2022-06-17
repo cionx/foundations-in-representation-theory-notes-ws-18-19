@@ -30,7 +30,7 @@
       & \Ccat(X, G(Y))
     \end{tikzcd}
   \]
-  commutes, and that for every object~$X \in \Ob(\Ccat)$ and every morphisms~$g \colon Y \to Y'$ in~$\Dcat$ the square
+  commutes, and that for every object~$X \in \Ob(\Ccat)$ and every morphism~$g \colon Y \to Y'$ in~$\Dcat$ the square
   \[
     \begin{tikzcd}[sep = large]
         \Dcat(F(X), Y)
@@ -94,7 +94,7 @@
       We have an adjunction from the category~$\Ccat = \Group$ to the category~$\Dcat = \kAlg$.
       The left adjoint functor~$F \colon \Group \to \kAlg$ is given by the group algebra functor~$F = \kf[-]$ and the right functor~$G \colon \kAlg \to \Group$ is given by the unit group functor~$G = (-)^\times$.
     \item
-      We have an adjunctions from the category~$\Ccat = \Set$ to the category~$\Dcat = \kCommAlg$ of commutative~{\kalgs}.%
+      We have an adjunction from the category~$\Ccat = \Set$ to the category~$\Dcat = \kCommAlg$ of commutative~{\kalgs}.%
       \footnote{In the lecture the notation~$\kf$\nobreakdash-$\catname{CommAlg}$ is used instead.
       The author prefers the shorter version~$\kCommAlg$ as it helps him to avoid overfull hboxes.}
       The left adjoint functor~$F \colon \Set \to \kCommAlg$ assigns to each set~$X$ the polynomial ring~$k[T_x \suchthat x \in X]$ and to each map~$f \colon X \to X'$ between sets~$X$ and~$X'$ the unique homomorphism of~{\kalgs}
@@ -113,11 +113,11 @@
     \item
       Let~$\varphi \colon A \to B$ be a homomorphism of~{\kalgs}.
       We have an adjunction from the module category~$\Ccat = \Modl{A}$ to the module category~$\Dcat = \Modl{B}$.
-      The left adjoint functor~$F$ assigns to each left~{\module{$A$}}~$\indmodule[A]{M}$ the extension of scalars~$F(M) = B \tensor_A N$, and the right adjoint functor~$G$ is the forgetful functor, i.e.\ the restriction of scalars.
+      The left adjoint functor~$F$ assigns to each left~{\module{$A$}}~$\indmodule[A]{M}$ the extension of scalars~$F(M) = B \tensor_A N$, and the right adjoint functor~$G$ is the forgetful functor, i.e., the restriction of scalars.
     \item
       We define a category~$\Ccat$ as follows:
       The objects of~$\Ccat$ are pairs~$(A,S)$ consisting of a commutative ring~$A$ and a multiplicative subset~$S \subseteq A$.
-      For any two objects~$(A,S)$ and~$(B,T)$ in~$\Ccat$, a morphisms~$f \colon (A,S) \to (B,T)$ is a ring homomorpism~$f \colon A \to B$ with~$f(S) \subseteq T$.
+      For any two objects~$(A,S)$ and~$(B,T)$ in~$\Ccat$, a morphism~$f \colon (A,S) \to (B,T)$ is a ring homomorphism~$f \colon A \to B$ with~$f(S) \subseteq T$.
       Let~$\Dcat = \CommRing$ be the category of commutative rings.%
       \footnote{Again, in the lecture the notation~$\catname{CommRing}$ is used instead.}
       We have a functor~$F \colon \Ccat \to \CommRing$ that assigns to each pair~$(A,S) \in \Ob(\Ccat)$ the localization~$F((A,S)) = S^{-1} A$, and assigns to each morphism~$f \colon (A,S) \to (B,T)$ the induced ring homomorphism
@@ -193,7 +193,7 @@
         \end{tikzcd}
       \end{equation}
       commutes by the naturality of~$\varphi$.
-      Note that the elements~$\id_{F(X)} \in \Dcat(F(X), F(X))$ (in the top left corner of the diagram) and~$\id_{X'} \in \Dcat(F(X'), F(X'))$ (in the top right corner of the diagram) are assigned under the map~$F(f)_*$, resp.~$F(f)^*$, to the same element~$F(f) \in \Dcat(F(X), F(X'))$ (in the top middle of the diagram).
+      Note that the elements~$\id_{F(X)} \in \Dcat(F(X), F(X))$ (in the top left corner of the diagram) and~$\id_{X'} \in \Dcat(F(X'), F(X'))$ (in the top right corner of the diagram) are assigned under the map~$F(f)_*$, respectively~$F(f)^*$, to the same element~$F(f) \in \Dcat(F(X), F(X'))$ (in the top middle of the diagram).
       It follows that the square
       \[
         \begin{tikzcd}[sep = large]
@@ -239,7 +239,7 @@
         \to       Y \,.
       \]
       The naturality of~$\varphi$ results (similarly as for~$\eta$) in the naturality of the family~$\varepsilon \defined (\varepsilon_Y)_{Y \in \Dcat}$:
-      If~$g \colon Y \to Y'$ is a morphisms in~$\Dcat$ then the diagram
+      If~$g \colon Y \to Y'$ is a morphism in~$\Dcat$, then the diagram
       \begin{equation}
         \label{big diagram again}
         \begin{tikzcd}[sep = large]
@@ -260,7 +260,7 @@
         \end{tikzcd}
       \end{equation}
       commutes by the naturality of~$\varphi$.
-      Note that the elements~$\id_{G(Y)} \in \Ccat(G(Y), G(Y))$ (in the bottom left corner of the diagram) and~$\id_{G(Y')} \in \Ccat(G(Y), G(Y'))$ (in the bottom right corner of the diagram) are assigned under the map~$G(g)_*$, resp.~$G(g)^*$, to the same element~$G(g) \in \Ccat(G(Y), G(Y'))$ (in the bottom middle of the diagram).
+      Note that the elements~$\id_{G(Y)} \in \Ccat(G(Y), G(Y))$ (in the bottom left corner of the diagram) and~$\id_{G(Y')} \in \Ccat(G(Y), G(Y'))$ (in the bottom right corner of the diagram) are assigned under the map~$G(g)_*$, respectively~$G(g)^*$, to the same element~$G(g) \in \Ccat(G(Y), G(Y'))$ (in the bottom middle of the diagram).
       It follows that the square
       \[
         \begin{tikzcd}[sep = large]
@@ -428,7 +428,7 @@
           & G(Y)
         \end{tikzcd}
       \]
-      commutes, i.e.\ we need to show the equality
+      commutes, i.e., we need to show the equality
       \[
           G(\varepsilon_Y) \circ \eta_{G(Y)}
         = \id_{G(Y)} \,.
@@ -472,7 +472,7 @@
         & F(X)
       \end{tikzcd}
     \]
-    commutes, i.e.\ we need to show the equality
+    commutes, i.e., we need to show the equality
     \[
         \varepsilon_{F(X)} \circ F(\eta_X)
       = \id_{F(X)} \,.
@@ -546,7 +546,7 @@
       & \Ccat(X, G(Y))
     \end{tikzcd}
   \]
-  commutes, i.e.\ that
+  commutes, i.e., that
   \[
       \varphi_{X,Y}(h \circ F(f))
     = \varphi_{X',Y}(h) \circ f
@@ -651,7 +651,7 @@
 
 \begin{remark}
   Let~$F \colon \Ccat \to \Dcat$ be an equivalence between two categories~$\Ccat$ and~$\Dcat$.
-  Let~$G \colon \Dcat \to \Ccat$ be a \dash{quasi}{inverse} to~$F$, i.e.\ a functor for which there exist natural isomorphisms~$\eta \colon \Id_\Ccat \to G \circ F$ and~$\zeta \colon \Id_\Dcat \to F \circ G$.
+  Let~$G \colon \Dcat \to \Ccat$ be a \dash{quasi}{inverse} to~$F$, i.e., a functor for which there exist natural isomorphisms~$\eta \colon \Id_\Ccat \to G \circ F$ and~$\zeta \colon \Id_\Dcat \to F \circ G$.
   Then the maps
   \begin{gather*}
             \varphi_{X,Y}
@@ -714,7 +714,7 @@
     \to     \Dcat(F(X), -)
   \]
   is a natural transformation, and hence a morphism in the functor category~$\Fun(\Dcat, \Set)$.
-  It follows from the fully faithfulness of the Yoneda embedding that there exists a unique morphism~$\zeta_X \colon F(X) \to F'(X)$ in~$\Dcat$ with
+  It follows from the full faithfulness of the Yoneda embedding that there exists a unique morphism~$\zeta_X \colon F(X) \to F'(X)$ in~$\Dcat$ with
   \[
       (\zeta_X)_*
     = \Phi_{X,(-)}
@@ -742,7 +742,7 @@
 
 
 \begin{remark}
-  In the situation of \cref{uniqueness of adjoints}, the natural isomorphism~$\zeta$ and its inverse~$\zeta^{-1}$ can be be constructed using the units~$\eta$,~$\eta'$ and counits~$\varepsilon$,~$\varepsilon'$ via
+  In the situation of \cref{uniqueness of adjoints}, the natural isomorphism~$\zeta$ and its inverse~$\zeta^{-1}$ can be constructed using the units~$\eta$,~$\eta'$ and counits~$\varepsilon$,~$\varepsilon'$ via
   \begin{gather*}
       \zeta
     \colon

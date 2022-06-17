@@ -121,7 +121,7 @@
     &=  \eta_{GF(X')} \circ GFG(g) \circ \eta_{GF(X)}^{-1}
     =   G(g) \,.
   \end{align*}
-  Because~$G$ is faithful it further follow that~$g = F(f)$, which shows that~$F$ is fulll.
+  Because~$G$ is faithful it further follows that~$g = F(f)$, which shows that~$F$ is full.
   
   Suppose now on the other hand that the functor~$F$ is both fully faithful and dense.
   For every object~$Y \in \Ob(\Dcat)$ let~$G(Y) \in \Ob(\Ccat)$ be an object with~$FG(Y) \cong Y$;
@@ -150,7 +150,7 @@
   which shows that~$G(g' \circ g) = G(g') \circ G(g)$.
   
   To show that~$F \circ G \cong \Id_\Dcat$ we note that~$\varepsilon \defined (\varepsilon_Y)_{Y \in \Ob(\Dcat)}$ is a natural isomorphism~$\varepsilon \colon F \circ G \to \Id_\Dcat$.
-  That~$\varepsilon$ is a natural transformation, i.e.\ that the square
+  That~$\varepsilon$ is a natural transformation, i.e., that the square
   \[
     \begin{tikzcd}[sep = large]
         FG(Y)
@@ -169,7 +169,7 @@
   
   To show that~$G \circ F \cong \Id_\Ccat$ we construct a natural isomorphism~$\eta \colon G \circ F \to \Id_\Ccat$:
   
-  There exist for every object~$X \in \Ccat$ for the morphisms~$\varepsilon_{F(X)} \colon FGF(X) \to F(X)$ a unique morphisms~$\eta_X \colon GF(X) \to X$ with~$\varepsilon_{F(X)} = F(\eta_X)$ because~$F$ is fully faithful.
+  There exist for every object~$X \in \Ccat$ for the morphisms~$\varepsilon_{F(X)} \colon FGF(X) \to F(X)$ a unique morphism~$\eta_X \colon GF(X) \to X$ with~$\varepsilon_{F(X)} = F(\eta_X)$ because~$F$ is fully faithful.
   We set~$\eta \defined (\eta_X)_{X \in \Ob(\Ccat)}$.
   
   The family~$\eta$ is a natural transformation~$\eta \colon G \circ F \to \Id_\Ccat$:
@@ -216,7 +216,7 @@
       \eta_{X'} \circ GF(f)
     = f \circ \eta_X \,,
   \]
-  i.e.\ that the square
+  i.e., that the square
   \begin{equation}
     \label{naturality of eta}
     \begin{tikzcd}[sep = large]
@@ -235,7 +235,7 @@
   This shows that~$\eta \colon GF \to \Id_\Ccat$ is indeed a natural transformation.
   
   It follows for every~$X \in \Ob(\Ccat)$ from~$\varepsilon_{F(X)} = F(\eta_X)$ being an isomorphism that~$\eta_X$ is again an isomorphism:
-  Indeed, there exists for the inverse~$\varepsilon_{F(X)}^{-1} \colon F(X) \to FGF(X)$ by the fully faithfulness of~$F$ a unique morphism~$\eta'_X \colon X \to GF(X)$ with~$\varepsilon_{F(X)}^{-1} = F(\eta'_X)$.
+  Indeed, there exists for the inverse~$\varepsilon_{F(X)}^{-1} \colon F(X) \to FGF(X)$ by the full faithfulness of~$F$ a unique morphism~$\eta'_X \colon X \to GF(X)$ with~$\varepsilon_{F(X)}^{-1} = F(\eta'_X)$.
   Then
   \[
       F(\eta_X \circ \eta'_X)
@@ -281,7 +281,7 @@
         = GF(f) \,.
       \]
     \item
-      The author prefers a slightly different argumentation for the fully faithfulness of the functor~$F$ in the first part of the proof:
+      The author prefers a slightly different argumentation for the full faithfulness of the functor~$F$ in the first part of the proof:
       
       It follows for any two objects~$X, X' \in \Ob(\Ccat)$ from the commutativity of the square~\eqref{diagram for fully faithful} that the composition
       \[
@@ -294,7 +294,7 @@
           \Ccat(X, X')
       \]
       is the identity~$\id_{\Ccat(X,X')}$.
-      This tells us that~$F$ is fully faithful, and that~$G$ is full \enquote{on the image of~$F$}, i.e.\ that the map
+      This tells us that~$F$ is fully faithful, and that~$G$ is full \enquote{on the image of~$F$}, i.e., that the map
       \[
           \Dcat(Y, Y')
         \xlongto{G}

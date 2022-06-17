@@ -19,14 +19,14 @@
     \item
       A category~$\Acat$ is abelian if and only if its dual category~$\Acat^\op$ is abelian.
     \item
-      If $\Acat$ is an abelian category then we will for~$X, Y \in \Ob(\Acat)$ often write~$\Hom_\Acat(X,Y)$ instead of~$\Acat(X,Y)$.
+      If $\Acat$ is an abelian category, then we will for~$X, Y \in \Ob(\Acat)$ often write~$\Hom_\Acat(X,Y)$ instead of~$\Acat(X,Y)$.
     \item
       If~$F \colon \Acat \to \Bcat$ is an equivalence of categories and~$\Acat$ is abelian, then~$\Bcat$ is also abelian.%
       \footnote{In the lecture it was instead stated that one can \enquote{use~$F$ to make~$\Bcat$ into an abelian category}.
       It was then sketched how one can use~$F$ to transfer the group structure on the morphism sets of~$\Acat$ to a group structure of the morphism sets of~$\Bcat$;
       one can  then check that~$F$ respects biproducts, kernels and cokernels (this was not proven in the lecture).
       The author finds this presentation somewhat misleading, as \enquote{being abelian} is really a property of a category, and not an additional structure.
-      Hence we don’t \enquote{make} a category abelian, it \emph{is} abelian.}
+      Hence, we don’t \enquote{make} a category abelian, it \emph{is} abelian.}
 %     TODO: Prove this.
   \end{enumerate}
 \end{remark}
@@ -38,9 +38,9 @@
     \item
       The category~$\Ab$ of abelian groups is an abelian category.
     \item
-      If more generally~$A$ is a~{\kalg} then the module categories~$\Modl{A}$ and~$\Modr{A}$ are abelian.
+      If more generally~$A$ is a~{\kalg}, then the module categories~$\Modl{A}$ and~$\Modr{A}$ are abelian.
     \item
-      If~$G$ is a group then the category~$\Rep{k}{G}$ is equivalent to the the module category~$\Modl{\kf[G]}$ and hence abelian.
+      If~$G$ is a group then the category~$\Rep{k}{G}$ is equivalent to the module category~$\Modl{\kf[G]}$ and hence abelian.
     \item
       If~$A$ is a left noetherian ring then the additive category~$\Modlfg{A}$ of finitely generated left~{\modules{$A$}} is again abelian:
       
@@ -92,7 +92,7 @@
 
 \begin{example}[Non-example]
   Consider the category~$F^* \Ab$ of filtered abelian groups:
-  The objects of~$F^* \Ab$ are pairs~$(A,F^*)$ consisting of an abelian group~$A$ and an increasing \dash{$\Integer$}{filtration}~$F^*$ on~$A$, i.e.\ an increasing sequence
+  The objects of~$F^* \Ab$ are pairs~$(A,F^*)$ consisting of an abelian group~$A$ and an increasing \dash{$\Integer$}{filtration}~$F^*$ on~$A$, i.e., an increasing sequence
   \[
               \dotsb
     \subseteq F^{i-1}(A)
@@ -115,7 +115,7 @@
   \]
   
   Let now~$A$ be an abelian group and suppose that~$F^*$ and~$\tilde{F}^*$ are two filtrations on~$A$ such that~$F_i(A) \subseteq \tilde{F}_i(A)$ for all~$i \in \Integer$, but~$F_j(A) \subsetneq \tilde{F}_j(A)$ for some~$j \in \Integer$.
-  (One can for example choose any nontrivial abelian group~$A$ and define such filtrations via
+  (One can for example choose any non-trivial abelian group~$A$ and define such filtrations via
   \[
       F_i(A)
     = \begin{cases}
@@ -132,7 +132,7 @@
   Then both filtrations agree except for~$F_0(A) = 0 \subsetneq A = F_1(A)$.)
   We can now regard the identity~$\id_A$ as a morphism~$f \colon (A, F^*) \to (A, \tilde{F}^*)$.
   It then follows from~$\ker_{\Ab}(f) = 0$ and~$\coker_{\Ab}(f) = 0$ that~$\ker_{F^* \Ab}(f) = 0$ and~$\coker_{F^* \Ab}(f) = 0$ by the above explicit construction of kernels and cokernels in~$F^* \Ab$.
-  Hence~$f$ is both a monomorphism and an epimorphism.
+  Hence,~$f$ is both a monomorphism and an epimorphism.
   But~$f$ is not an isomorphism as the filtrations of~$F^*$ and~$\tilde{F}^*$ differ, so~$F^* \Ab$ cannot be abelian.
 \end{example}
 
@@ -261,7 +261,7 @@
       We see from this alternative description of the presheaf category~$\Pcat$ that it is abelian.
       
       \begin{remark*}
-        A \emph{preorder}\index{preorder} on a set~$P$ is a relation~$\leq$ that is reflexive and transitive, i.e.\ it holds that~$x \leq x$ for every~$x \in P$, and it holds for all~$x, y, z \in P$ with~$x \leq y$ and~$y \leq z$ that also~$x \leq z$.
+        A \emph{preorder}\index{preorder} on a set~$P$ is a relation~$\leq$ that is reflexive and transitive, i.e., it holds that~$x \leq x$ for every~$x \in P$, and it holds for all~$x, y, z \in P$ with~$x \leq y$ and~$y \leq z$ that also~$x \leq z$.
         (But in contrast to a partial order, a preorder does not have to be antisymmetric.
         So there may exist~$x, y \in P$ with both~$x \leq y$ and~$y \leq x$ but~$x \neq y$.)
         A \emph{preordered set} is a pair~$(P,\leq)$ consisting of a set~$P$ and a preorder~$\leq$ on~$P$.
@@ -357,14 +357,14 @@
               \rho^{\Fs \oplus \Gs}_{V,U}
             = \rho^\Fs_{V,U} \oplus \rho^\Gs_{V,U}
           \]
-          for all open subsets~$U \subseteq V \subseteq X$, i.e.\
+          for all open subsets~$U \subseteq V \subseteq X$, i.e.,
           \[
               \restrict{(s,t)}{U}
             = ( \restrict{s}{U}, \restrict{t}{U} )
           \]
           for every section ~$(s,t) \in \Fs(U) \oplus \Gs(U)$.
           
-          If both~$\Fs$ an~$\Gs$ are sheaves then their biproduct~$\Fs \oplus \Gs$ is again a sheaf:
+          If both~$\Fs$ and~$\Gs$ are sheaves, then their biproduct~$\Fs \oplus \Gs$ is again a sheaf:
           Let~$U \subseteq X$ be an open subset and let~$\{ U_i \}_{i \in I}$ be an open cover of~$U$.
           \begin{enumerate}[label=(S\arabic*)]
             \item
@@ -377,7 +377,7 @@
                 = ( \restrict{t}{U_i}, \restrict{u}{U_i} ) \,.
               \]
               It therefore holds for every~$i \in I$ that~$\restrict{t}{U_i} = 0$ and~$\restrict{u}{U_i} = 0$.
-              It follows that~$t = 0$ and~$u = 0$ because both~$\Fs$ and~$\Gs$ are sheaves (and hence satisify the separation axiom).
+              It follows that~$t = 0$ and~$u = 0$ because both~$\Fs$ and~$\Gs$ are sheaves (and hence satisfy the separation axiom).
               This shows that~$s = 0$, and hence that~$\Fs \oplus \Gs$ satisfies the separation axiom.
             \item
               For every~$i \in I$ let~$s_i \in U_i$ be a section, such that
@@ -411,7 +411,7 @@
                   \restrict{u_i}{U_i \cap U_j}
                 = \restrict{u_j}{U_i \cap U_j} \,.
               \]
-              It follows that there exist sections~$t \in \Fs(U)$ and~$u \in \Gs(U)$ with~$\restrict{t}{U_i} = t_i$ and~$\restrict{u}{U_i} = u_i$ for every~$i \in I$ because both~$\Fs$ and~$\Gs$ are sheaves (and hence satisfiy the glueing axiom).
+              It follows that there exist sections~$t \in \Fs(U)$ and~$u \in \Gs(U)$ with~$\restrict{t}{U_i} = t_i$ and~$\restrict{u}{U_i} = u_i$ for every~$i \in I$ because both~$\Fs$ and~$\Gs$ are sheaves (and hence satisfy the glueing axiom).
               It follows for the section~$s \defined (t,u) \in (\Fs \oplus \Gs)(U)$ that
               \[
                   \restrict{s}{U_i}
@@ -432,13 +432,13 @@
           For~$n = 0$ this is also true because~$\Scat$ contains a zero object.
       \end{description}
       
-      This shows alltogether that the sheaf category~$\Scat$ is indeed additive.
+      This shows altogether that the sheaf category~$\Scat$ is indeed additive.
           
     \item
       The sheaf category~$\Scat$ admits kernels:
       To be more precise, let~$\Fs$ and~$\Gs$ be two sheaves and let~$f \colon \Fs \to \Gs$ be a homomorphism of sheaves.
       We may forget that~$\Fs$ and~$\Gs$ are sheaves and regard them as just presheaves;
-      then~$f$ is a homomorphisms of presheaves, and hence a homomorphism in the abelian category~$\Pcat$.
+      then~$f$ is a homomorphism of presheaves, and hence a homomorphism in the abelian category~$\Pcat$.
       We can therefore consider its kernel~$\ker_{\Pcat}(f)$ in the category~$\Pcat$.
       
       This kernel~$\ker_\Pcat(f)$ of~$f$ in the presheaf category~$\Pcat$ is already a sheaf:
@@ -451,12 +451,12 @@
       \[
         \rho^{\ker_{\Pcat}(f)}_{V,U} \colon \ker(f_V) \to \ker(f_U)
       \]
-      for all open subsets~$U \subseteq V \subseteq X$ that are given by restriction of the restriction homomorphisems~$\rho^{\Fs}_{V,U} \colon \Fs(V) \to \Fs(U)$.
+      for all open subsets~$U \subseteq V \subseteq X$ that are given by restriction of the restriction homomorphisms~$\rho^{\Fs}_{V,U} \colon \Fs(V) \to \Fs(U)$.
       Let~$U \subseteq X$ be open and let~$\{ U_i \}_{i \in I}$ be an open cover of~$U$.
       \begin{enumerate}[label=(S\arabic*)]
         \item
           Let~$s \in (\ker_{\Pcat}(f))(U) = \ker(f_U)$ be a section with~$\restrict{s}{U_i} = 0$ for every~$i \in I$.
-          This section~$s$ is an element of~$\Fs(U)$ (because~$\ker(f_U)$ is a subgroup of~$\Fs(U)$), and the relation~$\restrict{s}{U_i} = 0$ also holds in the sheaf~$\Fs$ (i.e.\ it follows from~$\rho^{\ker_{\Pcat}(f)}_{U,U_i}(s) = 0$ that also~$\rho^{\Fs}_{U,U_i}(s) = 0$) because the square
+          This section~$s$ is an element of~$\Fs(U)$ (because~$\ker(f_U)$ is a subgroup of~$\Fs(U)$), and the relation~$\restrict{s}{U_i} = 0$ also holds in the sheaf~$\Fs$ (i.e., it follows from~$\rho^{\ker_{\Pcat}(f)}_{U,U_i}(s) = 0$ that also~$\rho^{\Fs}_{U,U_i}(s) = 0$) because the square
           \[
             \begin{tikzcd}[sep = large]
                 \ker(f_U)
@@ -504,7 +504,7 @@
           \]
           commutes.
           It follows that there exists a section~$s \in \Fs(U)$ with~$\restrict{s}{U_i} = s_i$ for every~$i \in I$ because~$\Fs$ is a sheaf and hence satisfies the glueing axiom.
-          We need to show that already~$s \in \ker(f_U)$, i.e.\ that~$f_U(s) = 0$.
+          We need to show that already~$s \in \ker(f_U)$, i.e., that~$f_U(s) = 0$.
           We use that~$f$ is a homomorphism of sheaves to calculate
           \[
               \restrict{f_U(s)}{U_i}
@@ -543,7 +543,7 @@
         \end{tikzcd}
       \]
       
-      In constrast to kernels it does not necessarily hold that the cokernel~$\coker_{\Pcat}(f)$ is already a sheaf.
+      In contrast to kernels, it does not necessarily hold that the cokernel~$\coker_{\Pcat}(f)$ is already a sheaf.
       
       \begin{examplenonum}
         Let~$X \defined \sphere^1$ and let~$\Fs \defined \Gs \defined \Cs^\infty$ be the sheaf of smooth \dash{real}{valued} functions on~$\sphere^1$, that is given by
@@ -565,7 +565,7 @@
         \]
         the (literal) restriction maps.
 
-        Let us consider the homomorphism~$d \colon \Cs^\infty \to \Cs^\infty$ that is given by the derivative, i.e.\ by
+        Let us consider the homomorphism~$d \colon \Cs^\infty \to \Cs^\infty$ that is given by the derivative, i.e., by
         \[
                   d_U
           \colon  \Cs^\infty(U)
@@ -582,15 +582,15 @@
         \]
         Consider on the other hand the open subset~$U = S^1$.
         On this open subset, the constant~\dash{$1$}{function}~$1 \in \Cs^\infty(\sphere^1)$ has no antiderivative because it lifts to the constant~\dash{$1$}{function}~$1 \in \Cs^\infty(\Real)$, whose antiderivatives~$x \mapsto x + c$ with~$c \in \Real$ are not periodic.
-        The homomorphism~$d_{\sphere^1}$ does therefore have a nonvanishing cokernel
+        The homomorphism~$d_{\sphere^1}$ does therefore have a non-vanishing cokernel
         \[
                 \coker(f_{\sphere^1})
           \neq  0 \,.
         \]
         (One can actually identify the cokernel~$\coker(f_{\sphere^1})$ with the constant functions on~$\sphere^1$, so that~$\coker(f_{\sphere^1}) \cong \Real$.)
         Let~$\sphere^1 = U_1 \cup U_2$ be an open cover by proper open subsets~$U_1, U_2 \subsetneq \sphere^1$.
-        If~$\coker(d)$ were a sheaf then it would follows from~$\coker(d_{U_1}) = 0$ and~$\coker(d_{U_2}) = 0$ by the separation axiom that also~$\coker(d_{\sphere^1}) = 0$.
-        Hence~$\coker(d)$ is not a sheaf.
+        If~$\coker(d)$ were a sheaf, then it would follow from~$\coker(d_{U_1}) = 0$ and~$\coker(d_{U_2}) = 0$ by the separation axiom that also~$\coker(d_{\sphere^1}) = 0$.
+        Hence,~$\coker(d)$ is not a sheaf.
       \end{examplenonum}
       
     \item
@@ -598,7 +598,7 @@
       
       \begin{fact}
         The inclusion functor~$I$ has a left adjoint~$S \colon \Pcat \to \Scat$.
-        The functor~$S$ is again additive and the adjunction is also additive, in the sense that the natural bijections
+        The functor~$S$ is again additive, and the adjunction is also additive, in the sense that the natural bijections
         \[
                   \varphi_{\Fs,\Gs}
           \colon  \Scat(S(\Fs), \Gs)
@@ -612,7 +612,7 @@
       \end{definitionnonum}
       
       Let~$\eta \colon \id_{\Pcat} \to I \circ S$ be the unit of the adjunction~$(S,I,\varphi)$.
-      This adjunction then states the the sheafification has the following universal property:      
+      This adjunction then states the sheafification has the following universal property:
       There exists for every sheaf~$\Gs$ and every homomorphism of presheaves~$f \colon \Fs \to I(\Gs)$ a unique homomorphism of sheaves~$\lambda \colon S(\Fs) \to \Gs$ that makes the following triangle commute:
       \[
         \begin{tikzcd}[sep = large]
@@ -627,9 +627,9 @@
         \end{tikzcd}
       \]
       
-      If a presheaf~$\Fs$ is already a sheaf, then it follows from the fully faithfulness of the inclusion functor~$I$ that the sheafification~$SI(\Fs)$ of~$\Fs$ is just~$\Fs$ itself.
+      If a presheaf~$\Fs$ is already a sheaf, then it follows from the full faithfulness of the inclusion functor~$I$ that the sheafification~$SI(\Fs)$ of~$\Fs$ is just~$\Fs$ itself.
       
-      To be more precise, the sheaf~$\Fs$ is also a sheafification of the presheaf~$I(\Fs)$, in the sense that the identity homomorphism~$\id_{I(\Fs)} \colon I(\Fs) \to I(\Fs)$ fullfills the same universal property as the counit~$\eta_{I(\Fs)} \colon I(\Fs) \to ISI(\Fs)$:
+      To be more precise, the sheaf~$\Fs$ is also a sheafification of the presheaf~$I(\Fs)$, in the sense that the identity homomorphism~$\id_{I(\Fs)} \colon I(\Fs) \to I(\Fs)$ fulfils the same universal property as the counit~$\eta_{I(\Fs)} \colon I(\Fs) \to ISI(\Fs)$:
       Let~$\Gs$ be another sheaf and let~$f \colon I(\Fs) \to I(\Gs)$ be a homomorphism of presheaves.
       Then, as~$I$ is fully faithful, there exist a unique homomorphism of sheaves~$\lambda \colon \Fs \to \Gs$ that makes the desired triangle
       \[
@@ -668,7 +668,7 @@
         \begin{enumerate}
           \item
             One can also express the above argumentation in the language of representable functors:
-            It holds that by the naturality of~$\varphi$ and the fully faithfulness of~$I$ that
+            It holds that by the naturality of~$\varphi$ and the full faithfulness of~$I$ that
             \[
                     \Scat(S(I(\Fs)), -)
               \cong \Pcat(I(\Fs), I(-))
@@ -687,7 +687,7 @@
               \item
                 $G$ is fully faithful if and only if the counit~$\varepsilon$ is an isomorphism.
             \end{itemize}
-            Proofs of this can be found in~\cite{stackfullyfaithful}, \cite[Lemma 7.6.6]{Brandenburg} and \cite[IV,~3,~Theorem~1]{Working} (where it more generally explained under what conditions~$F$ an~$G$ are faithful, and under what conditions they are full).
+            Proofs of this can be found in~\cite{stackfullyfaithful}, \cite[Lemma 7.6.6]{Brandenburg} and \cite[IV,~3,~Theorem~1]{Working} (where it more generally explained under what conditions~$F$ and~$G$ are faithful, and under what conditions they are full).
         \end{enumerate}
       \end{remark*}
       
@@ -704,7 +704,7 @@
                   f \colon U \to A
                 \suchthat
                   \text{$f$ is locally constant}
-                \} \,.
+                \}
             \]
             for every open subset~$U \subseteq X$, and for all open subsets~$U \subseteq V \subseteq X$ the restriction homomorphism
             \[
@@ -716,7 +716,7 @@
             \]
             is the (literal) restriction map.
           \item
-            Let~$\Fs$ be a sheaf and let~$\Fs' \subseteq \Fs$ be a subpresheaf, i.e.~$\Fs$ is a presheaf such that $\Fs'(U) \subseteq \Fs(U)$ is a subgroup for every open subset~$U \subseteq X$, and such that the square
+            Let~$\Fs$ be a sheaf and let~$\Fs' \subseteq \Fs$ be a subpresheaf, i.e.,~$\Fs$ is a presheaf such that $\Fs'(U) \subseteq \Fs(U)$ is a subgroup for every open subset~$U \subseteq X$, and such that the square
             \[
               \begin{tikzcd}[sep = large]
                   \Fs'(V)
@@ -834,7 +834,7 @@
       
       \begin{remark*}
         One can express the above proof in the language of representable functors:
-        It follows from the naturality of the adjunction~$\varphi$, the universal property of the cokernel~$\coker_{\Pcat}(f)$ and the fully faithfulness of the inclusion functor~$I$ that
+        It follows from the naturality of the adjunction~$\varphi$, the universal property of the cokernel~$\coker_{\Pcat}(f)$ and the full faithfulness of the inclusion functor~$I$ that
         \begin{align*}
                {}&  \Scat(S(\coker_{\Pcat}(I(f))), -) \\
           \cong{}&  \Pcat(\coker_{\Pcat}(I(f)), I(-)) \\
@@ -994,7 +994,7 @@
         \item
           The upper trapezoid commutes by the naturality of~$\Id_\Scat \cong S \circ I$.
         \item
-          The author finds the argument that was given in the lecture for the commutativtiy of the left trapezoid not sufficient.
+          The author finds the argument that was given in the lecture for the commutativity of the left trapezoid not sufficient.
           This argument is therefore currently missing from these notes.
 %           The left trapezoid commutes because
 %           \begin{align*}

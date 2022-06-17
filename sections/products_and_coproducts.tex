@@ -53,7 +53,7 @@
     \item
       A pair~$(P,(p_i)_{i \in I})$ is a product of the family~$(X_i)_{i \in I}$ in~$\Ccat$ if and only if it is a coproduct of this family in~$\Ccat^\op$.
     \item
-      Products are unique up to unique isomorphism, i.e.\ if~$(P, (p_i)_{i \in I})$ and~$(P', (p'_i)_{i \in I})$ are two products of the family~$(X_i)_{i \in I}$ in~$\Ccat$ then there exist a unique morphism~$\lambda \colon P \to P'$ that makes the triangle
+      Products are unique up to unique isomorphism, i.e., if~$(P, (p_i)_{i \in I})$ and~$(P', (p'_i)_{i \in I})$ are two products of the family~$(X_i)_{i \in I}$ in~$\Ccat$ then there exist a unique morphism~$\lambda \colon P \to P'$ that makes the triangle
       \[
         \begin{tikzcd}
             P
@@ -73,10 +73,10 @@
     \item
       The product of the family~$(X_i)_{i \in I}$ is denoted by~$\prod_{i \in I} X_i$, or by~$X_1 \times \dotsb \times X_n$ if~$I = \{1, \dotsc, n\}$.
       The coproduct of the family~$(X_i)_{i \in I}$ is denoted by~$\coprod_{i \in I} X_i$, or by~$X_1 \dcup \dotsb \dcup X_n$ if~$I = \{1, \dotsc, n\}$.%
-      \footnote{In the lecture the notations~$\bigsqcap_{i \in I} X_i$, resp.~$\bigsqcup_{i \in I} X_i$ and~$X_1 \sqcup \dotsb \sqcup X_n$ are used instead.}
+      \footnote{In the lecture the notations~$\bigsqcap_{i \in I} X_i$, respectively~$\bigsqcup_{i \in I} X_i$ and~$X_1 \sqcup \dotsb \sqcup X_n$ are used instead.}
     \item
-      If every family of objects in~$\Ccat$ has a product (resp.\ coproduct) in~$\Ccat$ then we say that that~$\Ccat$ \emph{has products} (resp.\ \emph{has coproducts}).
-      If every finite family of objects in~$\Ccat$ has a product (resp.\ coproducts) in~$\Ccat$ then we say that~$\Ccat$ \emph{has finite coproducts} (resp.\ \emph{has finite coproducts}).
+      If every family of objects in~$\Ccat$ has a product (respectively coproduct) in~$\Ccat$, then we say that~$\Ccat$ \emph{has products} (respectively \emph{has coproducts}).
+      If every finite family of objects in~$\Ccat$ has a product (respectively coproducts) in~$\Ccat$, then we say that~$\Ccat$ \emph{has finite coproducts} (respectively \emph{has finite coproducts}).
   \end{enumerate}
 \end{remark}
 
@@ -95,7 +95,7 @@
     \item
       Let~$\Ccat = \kCommAlg$.
       Then the (categorical) product~$\prod_{i \in I} X_i$ is the cartesian product, and the morphism~$p_i \colon \prod_{j \in I} X_j \to X_i$ is for every~$i \in I$ the usual projection onto the~\dash{$i$}{th} factor.
-      The coproduct of finitely many commutative~{\kalg}~$A_1, \dotsc, A_n$ in the category~$\kCommAlg$ is their tensor product~$A_1 \tensor \dotsb \tensor A_n$, and the morphism~$c_i \colon A_i \to A_1 \tensor \dotsb \tensor A_n$ is for every~$i \in I$ the inclusion into the~\dash{$i$}{th} factor, i.e.\ the algebra homomorphism
+      The coproduct of finitely many commutative~{\kalg}~$A_1, \dotsc, A_n$ in the category~$\kCommAlg$ is their tensor product~$A_1 \tensor \dotsb \tensor A_n$, and the morphism~$c_i \colon A_i \to A_1 \tensor \dotsb \tensor A_n$ is for every~$i \in I$ the inclusion into the~\dash{$i$}{th} factor, i.e., the algebra homomorphism
       \[
                 A_i
         \to     A_1 \tensor \dotsb \tensor A_n \,,
@@ -141,7 +141,7 @@
 
 
 \begin{proof}
-  It sufficies to show part~\ref*{for coproducts}.
+  It suffices to show part~\ref*{for coproducts}.
   We denote the given functor~$\Ccat \to \Set$ from condition~\ref*{functor of the product} by~$F$.
   
   Suppose first that the coproduct~$\coprod_{i \in I} X_i$ exists, and denote the associated morphisms by~$c_i \colon X_i \to \coprod_{j \in I} X_j$.
@@ -212,7 +212,7 @@
   and thus commutes.
   
   The natural transformation~$\eta$ is already a natural isomorphism:
-  There exist at every objects~$Y \in \Ob(\Ccat)$ for every family of morphisms~$(h_i)_{i \in I} \in \prod_{i \in I} \Ccat(X_i, Y)$ by the definition of the coproduct~$\coprod_{i \in I} X_i$ a unique morphism~$g \in \Ccat(\coprod_{i \in I} X_i, Y)$ with~$g \circ c_i = h_i$ for every~$i \in I$, i.e.\ with~$\eta_Y(g) = (h_i)_{i \in I}$.
+  There exist at every object~$Y \in \Ob(\Ccat)$ for every family of morphisms~$(h_i)_{i \in I} \in \prod_{i \in I} \Ccat(X_i, Y)$ by the definition of the coproduct~$\coprod_{i \in I} X_i$ a unique morphism~$g \in \Ccat(\coprod_{i \in I} X_i, Y)$ with~$g \circ c_i = h_i$ for every~$i \in I$, i.e., with~$\eta_Y(g) = (h_i)_{i \in I}$.
   This means that~$\eta_Y$ is bijective at every~$Y \in \Ob(\Ccat)$.
   
   Suppose now that the functor~$F$ is representable.
@@ -236,9 +236,9 @@
   \[
         (d_i)_{i \in I}
     \in \prod_{i \in I} \Ccat(X_i, D)
-    =   F(D)
+    =   F(D) \,,
   \]
-  and it follows from~$\eta_D \colon h^C(D) \to F(D)$ being a bijection that there exist a unique element~$\lambda \in h^C(D) = \Ccat(C,D)$, i.e.\ morphism~$\lambda \colon C \to D$, with~$(d_i)_{i \in I} = \eta_D(\lambda)$.
+  and it follows from~$\eta_D \colon h^C(D) \to F(D)$ being a bijection that there exist a unique element~$\lambda \in h^C(D) = \Ccat(C,D)$, i.e., morphism~$\lambda \colon C \to D$, with~$(d_i)_{i \in I} = \eta_D(\lambda)$.
   It follows from the naturality of~$\eta$ that the diagram
   \[
     \begin{tikzcd}[row sep = large]
@@ -296,7 +296,7 @@
     &\mapsto  \eta_C(\id_C)
   \end{align*}
   is a bijection.
-  An element of the right hand side is an element of~$F(C)$, i.e.\ a family~$(c_i)_{i \in I}$ of morphisms~$c_i \colon X_i \to C$.
+  An element of the right-hand side is an element of~$F(C)$, i.e., a family~$(c_i)_{i \in I}$ of morphisms~$c_i \colon X_i \to C$.
   It then holds that a natural transformation~$\eta \colon h^C \to F$ is an isomorphism if and only if the corresponding family~$(c_i)_{i \in I}$ makes the pair~$(C, (c_i)_{i \in I})$ into a coproduct of the family~$(X_i)_{i \in I}$.
   
   Indeed, that the natural transformation~$\eta$ is a natural isomorphism means that at every object~$D \in \Ob(\Ccat)$ the map

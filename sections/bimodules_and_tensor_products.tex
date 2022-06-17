@@ -37,10 +37,10 @@
   \leavevmode
   \begin{enumerate}
     \item
-      If~$\indmodule[A]{M}[B]$ and~$\indmodule[A]{N}[B]$ are~{\modules{$A$}[$B$]} then a map~$f \colon M \to N$ is a \emph{homomorphisms of bimodules}\index{homomorphism!of bimodules}\index{bimodule!homomorphism of} if it is both a homomorphism of left~{\modules{$A$}} and a homomorphism of right~{\modules{$B$}}.
+      If~$\indmodule[A]{M}[B]$ and~$\indmodule[A]{N}[B]$ are~{\modules{$A$}[$B$]} then a map~$f \colon M \to N$ is a \emph{homomorphism of bimodules}\index{homomorphism!of bimodules}\index{bimodule!homomorphism of} if it is both a homomorphism of left~{\modules{$A$}} and a homomorphism of right~{\modules{$B$}}.
       
       If~$\indmodule[A]{M}[B]$ is an~{\module{$A$}[$B$]} then a subset~$N \subseteq M$ is a bisubmodule if is both a left~{\submodule{$A$}} and a right~{\submodule{$B$}}.
-      The~{\module{$A$}[$B$]} structure of~$M$ then restricts to an~{\module{$A$}[$B$]} module structure on~$N$, which is the unique one that makes the inclusion~$N \to M$ a homomorphis of~{\modules{$A$}[$B$]}.
+      The~{\module{$A$}[$B$]} structure of~$M$ then restricts to an~{\module{$A$}[$B$]} module structure on~$N$, which is the unique one that makes the inclusion~$N \to M$ a homomorphism of~{\modules{$A$}[$B$]}.
     \item
       If~$A$ is a~{\kalg} then~$A$ carries the structure of an~{\module{$A$}[$A$]} by letting~$A$ act on itself both via left multiplication and right multiplication.
   \end{enumerate}
@@ -139,8 +139,8 @@
       \]
       for all~$x \in M$, all~$y \in N$, and all~$a \in A$.
     \item
-      A pair~$(T,\tau)$ consisting of a~{\module{$\kf$}}~$T$ and an~{\balanced{$A$}} map~$\tau \colon M \times N \to T$ is a \emph{tensor product}\index{tensor product!of modules} of~$M$ with~$N$ over~$A$ if it satisifies the following universal property:
-      There exists for every~{\module{$\kf$}}~$P$ and every~{\balanced{$A$}} map~$\varphi \colon M \times N \to P$ a unique~{\klin} map~$f \colon T \to P$ with~$f \circ \tau = \varphi$, i.e.\ such that the following triangle commutes:
+      A pair~$(T,\tau)$ consisting of a~{\module{$\kf$}}~$T$ and an~{\balanced{$A$}} map~$\tau \colon M \times N \to T$ is a \emph{tensor product}\index{tensor product!of modules} of~$M$ with~$N$ over~$A$ if it satisfies the following universal property:
+      There exists for every~{\module{$\kf$}}~$P$ and every~{\balanced{$A$}} map~$\varphi \colon M \times N \to P$ a unique~{\klin} map~$f \colon T \to P$ with~$f \circ \tau = \varphi$, i.e., such that the following triangle commutes:
       \[
         \begin{tikzcd}[row sep = large]
             M \times N
@@ -165,7 +165,7 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
       There exists a tensor product~$(T,\tau)$ of~$M$ with~$N$ over~$A$.
     \item
       The tensor product of~$M$ with~$N$ over~$A$ is unique up to unique isomorphism:
-      If~$(T',\tau')$ is another such tensor product then there exists a unique homomorphism of~{\modules{$\kf$}}~$f \colon T \to T'$ with~$f \circ \tau = \tau'$, i.e.\ such that the triangle
+      If~$(T',\tau')$ is another such tensor product then there exists a unique homomorphism of~{\modules{$\kf$}}~$f \colon T \to T'$ with~$f \circ \tau = \tau'$, i.e., such that the triangle
       \[
         \begin{tikzcd}
             {}
@@ -329,11 +329,11 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
 
 \begin{warning*}
   For~{\modules{$A$}}~$\indmodule{M}[A]$ and~$\indmodule[A]{N}$ not every element of their tensor product~$M \tensor_A N$ has to be of the form~$x \tensor y$ for some~$x \in M$ and~$y \in Y$.
-  Such elements of~$M \tensor_A N$ are \emph{simple tensors}\index{tensor!simple}\index{simple!tensor}, and every elements of~$M \tensor_A N$ is a~{\klin} combination of simple tensors.
+  Such elements of~$M \tensor_A N$ are \emph{simple tensors}\index{tensor!simple}\index{simple!tensor}, and every element of~$M \tensor_A N$ is a~{\klin} combination of simple tensors.
   
-  It often sufficies to check things for simple tensors, since for every~{\module{$\kf$}}~$P$ and every~{\klin} map~$f \colon M \tensor_A N \to P$, the action of~$f$ is already uniquely determined by its action on the simple tensors.
+  It often suffices to check things for simple tensors, since for every~{\module{$\kf$}}~$P$ and every~{\klin} map~$f \colon M \tensor_A N \to P$, the action of~$f$ is already uniquely determined by its action on the simple tensors.
   But to construct such a~{\klin} map one \emph{has to} (in some instance) evoke the universal property of the tensor product;
-  it does not sufficie to check~\dash{well}{definedness} (or~\dash{$\kf$}{linearity}) on simple tensors.
+  it does not suffice to check~\dash{well}{definedness} (or~\dash{$\kf$}{linearity}) on simple tensors.
 \end{warning*}
 
 
@@ -395,7 +395,7 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
     = \tau_a(x,by)
   \end{gather*}
   for all~$x, x_1, x_2 \in M$,~$y, y_1, y_2 \in N$,~$\lambda \in \kf$,~$b \in B$.
-  It follows that that~$\tau_a$ induces a {\welldef}~{\klin} map
+  It follows that~$\tau_a$ induces a {\welldef}~{\klin} map
   \[
             M \tensor_B N
     \to     M \tensor_B N \,,
@@ -560,7 +560,7 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
     = f((xa) \tensor y)
     = f(x \tensor (ay))
     = \Phi(f)(x)(ay)
-    = (\Phi(f)(x)a)(y) \,.
+    = (\Phi(f)(x)a)(y)
   \end{gather*}
   for all~$x, x_1, x_2 \in M$,~$a \in A$,~$y \in N$.
   This shows that the proposed map
@@ -617,7 +617,7 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
     = g(xa)(y)
     = (g(x)a)(y)
     = g(x)(ay)
-    = \psi(g)(x,ay) \,.
+    = \psi(g)(x,ay)
   \end{gather*}
   for all~$x, x_1, x_2 \in M$,~$y, y_1, y_2 \in M$,~$a \in A$.
   It follows from the universal property of the tensor product~$M \tensor_A N$ that the~{\balanced{$A$}} map~$\psi(g)$ induces a {\welldef}~{\klin} map~$\Psi(g) \colon M \tensor_A N \to P$ with
@@ -626,7 +626,7 @@ Let~$A$ be a~{\kalg}, let~$\indmodule{M}[A]$ be a right~{\module{$A$}} and let~$
     = \psi(g)(x, y)
     = g(x)(y)
   \]
-  for all~$x \in M$,~$y \in N$, i.e.\ such that the following triangle commutes:
+  for all~$x \in M$,~$y \in N$, i.e., such that the following triangle commutes:
   \[
     \begin{tikzcd}[sep = large]
         M \times N

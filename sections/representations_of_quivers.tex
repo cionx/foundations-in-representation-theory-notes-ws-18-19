@@ -203,7 +203,7 @@
         = (ab)x
       \]
       for all~$a, b \in \kf Q$ and all~$x \in M$.
-      Both expressions are~{\kbilin} in~$(a,b)$, so it sufficies to show this equality for the case that~$a$ and~$b$ are basis elements of~$\kf Q$, i.e.\ paths~$p$ and~$q$ in~$Q_*$.
+      Both expressions are~{\kbilin} in~$(a,b)$, so it suffices to show this equality for the case that~$a$ and~$b$ are basis elements of~$\kf Q$, i.e., paths~$p$ and~$q$ in~$Q_*$.
       It then holds that
       \begin{align*}
           p \cdot (q \cdot x)
@@ -272,7 +272,7 @@
       For every arrow~$\alpha$ of~$Q$ we define a~{\klin} map~$X_\alpha \colon X_{s(\alpha)} \to X_{t(\alpha)}$ by
       \[
                   X_\alpha( x )
-        \defined  \alpha x \,.
+        \defined  \alpha x
       \]
       for every~$x \in X_{s(\alpha)}$.
       This map is~{\welldef} because it holds for every~$x \in X_{s(\alpha)}$ (and more generally every~$x \in M$) that
@@ -385,7 +385,7 @@
       is an isomorphism of~{\modules{$\kf$}}.
       We claim that~$\varphi$ is already an isomorphism of left~{\modules{$\kf Q$}}.
       For this we need to show that~$\varphi(ax) = a \varphi(x)$ for all~$a \in \kf Q$ and all~$x \in M$.
-      It sufficies to show this equality in the cases that~$a = p$ is a path~$p \in Q_*$.
+      It suffices to show this equality in the cases that~$a = p$ is a path~$p \in Q_*$.
       It then holds for every element~$x = (x_i)_{i \in Q_0} \in F(X)$ that
       \[
         \varphi(px)
@@ -394,7 +394,7 @@
         \underset{ \text{def.~$X_p$} }{=}
         \varphi( \iota_{t(p)}( p \cdot x_{s(p)} ) )
         =
-        p \cdot x_{s(p)}  \,.
+        p \cdot x_{s(p)}  \,,
       \]
       as well as
       \[
@@ -402,7 +402,7 @@
         = p \cdot \sum_{i \in Q_0} x_i
         = p \cdot \sum_{i \in Q_0} \varepsilon_i x_i
         = \sum_{i \in Q_0} p \varepsilon_i x_i
-        = p \cdot x_{s(p)} \,.
+        = p \cdot x_{s(p)} \,,
       \]
       because~$p \varepsilon_i = 0$ for~$i \neq s(p)$ and~$p \varepsilon_{s(p)} = p$.
     \item
@@ -418,7 +418,7 @@
       \[
           G(M)_\alpha( x_{s(\alpha)} )
         = \alpha x_{s(\alpha)}
-        = X_\alpha( x_{s(\alpha)} ) \,.
+        = X_\alpha( x_{s(\alpha)} ) \,,
       \]
       for every arrow~$\alpha \in Q_1$.
     \qedhere
@@ -439,13 +439,13 @@
     \item
       The path algebra~$\kf Q$ has finite rank as a~{\module{$\kf$}} if and only if~$Q$ contains no oriented cycles.
     \item
-      If a~{\kalg}~$A$ is finitely generated as a~{\module{$\kf$}} then an~{\module{$A$}}~$M$ is finitely generated as an~{\module{$A$}} if and only if it is finitely generated as a~{\module{$\kf$}}:
+      If a~{\kalg}~$A$ is finitely generated as a~{\module{$\kf$}}, then an~{\module{$A$}}~$M$ is finitely generated as an~{\module{$A$}} if and only if it is finitely generated as a~{\module{$\kf$}}:
 
       If~$M$ is finitely generated as a~{\module{$\kf$}} then every finite~\dash{$\kf$}{generating} set of~$M$ is also a finite \dash{$A$}{generating} set for~$M$.
-      If on the other hand~$M$ is finitely generated as a left~{\module{$A$}} then there exists a surjective homomorphism of~{\modules{$A$}}~$A^n \to M$;
+      If on the other hand~$M$ is finitely generated as a left~{\module{$A$}}, then there exists a surjective homomorphism of~{\modules{$A$}}~$A^n \to M$;
       the~{\module{$A$}}~$A^n$ is again finitely generated as a~{\module{$\kf$}}, and so~$M$ is finitely generated as a~{\module{$\kf$}}.
       
-      It follows in particular that if~$Q$ has no oriented cycles then a~{\module{$\kf Q$}}~$M$ is finitely generated as an~{\module{$\kf Q$}} if and only if it is is finitely generated as a~{\module{$\kf$}}.
+      It follows in particular that if~$Q$ has no oriented cycles then a~{\module{$\kf Q$}}~$M$ is finitely generated as a~{\module{$\kf Q$}} if and only if it is finitely generated as a~{\module{$\kf$}}.
       If~$\kf$ is additionally a field, then this means that~$M$ is finitely generated as a~{\module{$\kf Q$}} if and only if it is {\fd}.
     \item
       If~$X$ is a representation of~$Q$ over~$\kf$ then a \emph{subrepresentation}\index{sub-!representation} of~$X$ is a tuple~$Y = (Y_i)_{i \in Q_0}$ of~{\submodules{$\kf$}}~$Y_i \subseteq X_i$ such that~$X_\alpha( Y_{s(\alpha)} ) \subseteq Y_{t(\alpha)}$ for every arrow~$\alpha \in Q_1$.

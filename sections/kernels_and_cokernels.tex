@@ -92,7 +92,7 @@
       Kernels and cokernels are unique up to unique isomorphism.
 %     TODO: Write down explicitely what this means.
     \item
-      If every morphism in~$\Ccat$ has a kernel (resp.\ a cokernel) then the category~$\Ccat$ \emph{has kernels}\index{category!has!kernels}\index{has!kernels} (resp.\ \emph{has cokernels}\index{category!has!cokernels}\index{has!cokernels}).
+      If every morphism in~$\Ccat$ has a kernel (resp.\ a cokernel), then the category~$\Ccat$ \emph{has kernels}\index{category!has!kernels}\index{has!kernels} (resp.\ \emph{has cokernels}\index{category!has!cokernels}\index{has!cokernels}).
     \item
       The kernel of~$f$ is denoted by~$\ker(f) \to X$, and the cokernel of~$f$ is denoted by~$Y \to \coker(f)$.
   \end{enumerate}
@@ -1009,7 +1009,7 @@
           & Y'
         \end{tikzcd}
       \]
-      For the choosen kernels~$\Ker(X,f,Y) = (K,k,X)$ and~$\Ker(X',f,Y') = (K',k',X')$ we set~$\Ker((h,h')) = (K,h'',K')$ where~$h'' \colon K \to K'$ is the unique morphism that makes the diagram
+      For the chosen kernels~$\Ker(X,f,Y) = (K,k,X)$ and~$\Ker(X',f,Y') = (K',k',X')$ we set~$\Ker((h,h')) = (K,h'',K')$ where~$h'' \colon K \to K'$ is the unique morphism that makes the diagram
       \[
         \begin{tikzcd}
             K
@@ -1031,10 +1031,10 @@
       commute.
       The above \enquote{functoriality} of the kernel shows that~$\Ker$ is a functor~$\Ker \colon \Mor(\Ccat) \to \Mor(\Ccat)$.
       
-      If the category~$\Ccat$ has cokernels then one can similarly use the above \enquote{functoriality} of the cokernel to construct a functor~$\Coker \colon \Mor(\Ccat) \to \Mor(\Ccat)$.
+      If the category~$\Ccat$ has cokernels, then one can similarly use the above \enquote{functoriality} of the cokernel to construct a functor~$\Coker \colon \Mor(\Ccat) \to \Mor(\Ccat)$.
     \item
       Suppose that the category~$\Ccat$ has kernels.
-      The data of the constructed kernel functor~$\Ker \colon \Mor(\Ccat) \to \Mor(\Ccat)$ can also arranged in a different way.
+      The data of the constructed kernel functor~$\Ker \colon \Mor(\Ccat) \to \Mor(\Ccat)$ can also be arranged in a different way.
       Namely that of a kernel functor~$\ker \colon \Mor(\Ccat) \to \Ccat$ together with a natural transformation~$k \colon S \to \ker$.
       
       Let~$S \colon \Mor(\Ccat) \to \Ccat$ be the source-functor from \cref{source target functors}.
@@ -1097,7 +1097,7 @@
   Let~$f \colon X \to Y$ be a morphism in~$\Ccat$.
   \begin{enumerate}
     \item
-      An \emph{image}\index{image!of a morphism} of~$f$ is a kernel of a cokernel of~$f$, and is denotedy by~$\im(f) \to Y$.
+      An \emph{image}\index{image!of a morphism} of~$f$ is a kernel of a cokernel of~$f$, and is denoted by~$\im(f) \to Y$.
     \item
       A \emph{coimage}\index{coimage!of a morphism} of~$f$ is a cokernel of a kernel of~$f$, and is denoted by~$X \to \coim(f)$.
   \end{enumerate}
@@ -1125,7 +1125,7 @@
       It follows from \cref{properties of (co)kernels} that images are monomorphisms and coimages are epimorphisms.
     \item
       If~$f \colon X \to Y$ is a morphism in~$\Ccat$ and~$h \colon W \to X$ is an epimorphism in~$\Ccat$ then~$\im(fh) = \im(f)$ (in the sense of \cref{equality of (co)kernels}).
-      Indeed, it follows from part~\ref*{(co)kernels under compositions with epis and monos} of \cref{properties of (co)kernels} that~$\coker(f) = \coker(fh)$, i.e.\ that for the morphisms~$f$ and~$fh$ the same cokernel can be choosen (and that a cokernel exists for one of them if and only if a cokernel exists for the other one).
+      Indeed, it follows from part~\ref*{(co)kernels under compositions with epis and monos} of \cref{properties of (co)kernels} that~$\coker(f) = \coker(fh)$, i.e., that for the morphisms~$f$ and~$fh$ the same cokernel can be chosen (and that a cokernel exists for one of them if and only if a cokernel exists for the other one).
       We can then also choose the kernels of~$\coker(f)$ and~$\coker(fh)$ to be the same.
       
       Similarly, if~$g \colon Y \to Z$ is a monomorphism then~$\coim(f) = \coim(gf)$.
@@ -1268,7 +1268,7 @@
       This can be shown dually to part~\ref*{restriction to image}.
     \item
       We construct~$\tilde{f}$ by using the already constructed morphism~$f' \colon X \to \im(f)$:
-      The morphism~$p \colon X \to \coim(f)$ is a cokernel of the the kernel~$k \colon \ker(f) \to X$.
+      The morphism~$p \colon X \to \coim(f)$ is a cokernel of the kernel~$k \colon \ker(f) \to X$.
       It holds that
       \[
           i \circ f' \circ  k
@@ -1311,7 +1311,7 @@
           \tilde{\tilde{f}} \circ p
         = \tilde{f} \circ p \,,
       \]
-      and it then further follows from~$p$ being a epimorphism that
+      and it then further follows from~$p$ being an epimorphism that
       \[
         \tilde{\tilde{f}} = \tilde{f} \,.
       \]
@@ -1334,7 +1334,7 @@
 
 \begin{example*}
   Let~$A$ be a~{\kalg} and consider the module category~$\Modl{A}$, which is additive.
-  Let~$f \colon M \to N$ be a homomorphism of left~{\modules{$A$}}, i.e.\ a morphism in~$\Modl{A}$.
+  Let~$f \colon M \to N$ be a homomorphism of left~{\modules{$A$}}, i.e., a morphism in~$\Modl{A}$.
   Then the canonical morphism~$f' \colon \im(f) \to N$ is the inclusion~$n \mapsto n$, the canonical morphism~$\tilde{f} \colon M \to \coker(f) = M/\ker(f)$ is the canonical projection~$m \mapsto \class{m}$, and the canonical morphism~$\bar{f} \colon M/\ker(f) \to \im(f)$ is the isomorphism~$\class{m} \mapsto f(m)$.
 \end{example*}
 
@@ -1375,7 +1375,7 @@
           & Y'
         \end{tikzcd}
       \]
-      To show the existence of~$h'$ let~$c \colon Y \to \coker(f)$ and~$c' \colon Y' \to \coker(f')$ be cokernels of~$f$, resp.~$f'$, so that~$i$ is a kernel of~$c$ and~$i'$ is a kernel of~$c'$.
+      To show the existence of~$h'$ let~$c \colon Y \to \coker(f)$ and~$c' \colon Y' \to \coker(f')$ be cokernels of~$f$, respectively~$f'$, so that~$i$ is a kernel of~$c$ and~$i'$ is a kernel of~$c'$.
       Then there exists by the functoriality of the cokernel a unique morphism~$\bar{h} \colon \coker(f) \to \coker(f')$ that makes the diagram
       \[
         \begin{tikzcd}
@@ -1475,7 +1475,7 @@
             \end{tikzcd}
           \]
           Let~$i'' \colon \im(f'') \to Y''$ be an image of~$f''$ and let~$g' \colon \im(f') \to \im(f'')$ be the morphism induced by lower commutative square of the above diagram.
-          Then the composition~$g' \circ h' \colon \im(f) \to \im(f'')$ is the morphism that is induced by the outer commutative square, i.e.\ by the following commutative square:
+          Then the composition~$g' \circ h' \colon \im(f) \to \im(f'')$ is the morphism that is induced by the outer commutative square, i.e., by the following commutative square:
           \[
             \begin{tikzcd}
                 X
@@ -1597,7 +1597,7 @@
             \end{tikzcd}
           \]
           Let~$p'' \colon X'' \to \coim(f'')$ be a coimage of~$f''$ and let~$g' \colon \coim(f') \to \coim(f'')$ be the morphism induced by lower commutative square of the above diagram.
-          Then the composition~$g' \circ h' \colon \coim(f) \to \coim(f'')$ is the morphism that is induced by the outer commutative square, i.e.\ by the following commutative square:
+          Then the composition~$g' \circ h' \colon \coim(f) \to \coim(f'')$ is the morphism that is induced by the outer commutative square, i.e., by the following commutative square:
           \[
             \begin{tikzcd}
                 X
@@ -1644,7 +1644,7 @@
           again commutes, and resulting induced morphism~$\coim(f) \to \coim(f')$ is precisely the sum~$h' + g'$.
       \end{itemize}
     \item
-      These induced morphisms between images and coimages are compatible with the canonical factorization from \cref{canonical factorization} in the sense that for every commutative sqare
+      These induced morphisms between images and coimages are compatible with the canonical factorization from \cref{canonical factorization} in the sense that for every commutative square
       \[
         \begin{tikzcd}
             X
@@ -1791,7 +1791,7 @@
     \end{tikzcd}
   \]
   Then~$h''(\im(f)) \subseteq \im(f')$, and hence the homomorphism~$h''$ restricts to a homomorphism~$h' \colon \im(f) \to \im(f')$.
-  It similarly holds that the homomorphism~$h$ induces a {\welldef} homomorphism~$\bar{h} \colon X/\ker(f) \to X'/\ker(f')$ that is given on residue classes by by~$\bar{h}(\class{x}) = \class{h(x)}$ for every~$\class{x} \in X/\ker(f)$.
+  It similarly holds that the homomorphism~$h$ induces a {\welldef} homomorphism~$\bar{h} \colon X/\ker(f) \to X'/\ker(f')$ that is given on residue classes by~$\bar{h}(\class{x}) = \class{h(x)}$ for every~$\class{x} \in X/\ker(f)$.
 \end{example*}
 
 
